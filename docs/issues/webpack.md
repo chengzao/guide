@@ -1,0 +1,48 @@
+# 编译工具
+
+## webpack
+
+### entry
+
+- 单个入口: `string|object`
+- 多页面: `object`
+- 动态入口
+
+### output
+
+- `单入口: object`
+- `多入口: object`
+- `publicPath: string`
+- `chunkFilename: string`
+
+### plugins
+
+- `plugins: []`
+
+### module
+
+- `module.rules:[]`
+
+### mode
+
+- `development`
+- `production`
+
+### devtool
+
+## gulp
+
+## parcel
+
+## rollup
+
+## Babel
+
+## browsersync
+
+## browserify
+
+## other
+
+- [webpack 插件总结归类](https://segmentfault.com/a/1190000016816813)
+- [poetries/mywiki](https://github.com/poetries/mywiki/wiki/webpack)

@@ -1,0 +1,16 @@
+# 其他资源
+
+- [atom](https://atom.io/)
+- [atom mirrors](https://npm.taobao.org/mirrors/atom/)
+- [vscode](https://code.visualstudio.com/)
+- [winscp](https://winscp.net)
+- [putty](http://www.putty.org/)
+- [xshell](https://www.netsarang.com/)
+- [notepad++](https://notepad-plus-plus.org/)
+- [screen Gif](http://www.screentogif.com/)
+- [send-anywhere](https://send-anywhere.com/)
+- [安卓ssh](https://juicessh.com/)
+- [snipaste截图](https://zh.snipaste.com/)
+- [ewen0930/WebStorm-Chinese](https://github.com/ewen0930/WebStorm-Chinese/releases)
+- [wireshark抓包工具](https://www.wireshark.org/)
+- [tonsky/FiraCode](https://github.com/tonsky/FiraCode)
