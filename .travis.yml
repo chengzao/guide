@@ -26,4 +26,4 @@ branches:
         - master
 env:
     global:
-        - GH_REF: github.com/chengzao/docs.git
+        - GH_REF: github.com/chengzao/guide.git
