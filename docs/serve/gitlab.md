@@ -32,8 +32,11 @@ services:
       - 'd:/docker/gitlab/config:/etc/gitlab'
       - 'd:/docker/gitlab/logs:/var/log/gitlab'
 
+# run docker-compose.yml
+docker-compose up -d
+
 # windows10
-docker run -d --hostname localhost -p 10080:80 -p 10443:443 --name gitlab -v d:/docker/gitlab/config:/etc/gitlab -v d:/docker/gitlab/logs:/var/log/gitlab gitlab/gitlab-ce:latest
+docker run -d --hostname localhost -p 9090:80 -p 10443:443 --name gitlab -v d:/docker/gitlab/config:/etc/gitlab -v d:/docker/gitlab/logs:/var/log/gitlab gitlab/gitlab-ce:latest
 
 http://localhost:10080/
 ```
@@ -43,9 +46,10 @@ http://localhost:10080/
 ```bash
 # https://docs.gitlab.com/omnibus/docker/#run-the-image
 
+# docker run
 sudo docker run --detach \
 	--hostname 0.0.0.0 \
-	--publish 443:443 --publish 8080:80 --publish 22:22 \
+	--publish 443:443 --publish 9090:80 --publish 22:22 \
 	--name gitlab \
 	--restart always \
 	--volume /Users/pc/srv/gitlab/config:/etc/gitlab \
@@ -70,12 +74,14 @@ web:
     - '/Users/pc/srv/gitlab/logs:/var/log/gitlab'
     - '/Users/pc/srv/gitlab/data:/var/opt/gitlab'
 
-# 运行命令
+# run docker-compose.yml
 docker-compose up -d
 docker-compose down
+
+http://localhost:9090
 ```
 
-## git-runner
+## gitlab-runner
 
 ### docker
 
@@ -240,7 +246,7 @@ https://docs.gitlab.com/runner/register/index.html
 - rmdir /s GitLab-Runner
 ```
 
-## jenkins
+## jenkins docker
 
 - jenkins for mac
 
@@ -255,22 +261,6 @@ docker run -d -p 8080:8080 -p 50000:50000 --name devops-jenkins -v /Users/pc/srv
 
 # 查看log
 docker logs devops-jenkins
-
-# local hosts add: 127.0.0.1  jenkins.chenio.com
-# docker-compose.yml for mac
-
-version: '2'
-services:
-  web:
-    image: 'jenkins/jenkins:latest'
-    restart: always
-    hostname: 'jenkins.chenio.com'
-    pid: "host"
-    ports:
-      - '8080:8080'
-      - '50000:50000'
-    volumes:
-      - '/Users/pc/srv/jenkins_home:/var/jenkins_home'
 ```
 
 - jenkins for windows
@@ -288,8 +278,38 @@ docker run -d -p 8080:8080 -p 50000:50000 --name devops-jenkins -v d:/docker/jen
 D:/docker/jenkins_home/secrets/initialAdminPassword
 
 # local hosts add: 127.0.0.1  jenkins.chenio.com
-# docker-compose.yml for windows
+```
 
+## jenkins docker-compose
+
+### jenkins for mac
+
+- docker-compose.yml
+
+```docker-compose.yml
+# docker-compose.yml
+version: '2'
+services:
+  web:
+    image: 'jenkins/jenkins:latest'
+    restart: always
+    hostname: 'jenkins.chenio.com'
+    pid: "host"
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    volumes:
+      - '/Users/pc/srv/jenkins_home:/var/jenkins_home'
+```
+
+- 运行：docker-compose up -d
+
+### jenkins for windows
+
+- `docker-compose.yml`
+
+```bash
+# local hosts add: 127.0.0.1  jenkins.chenio.com
 version: '3'
 services:
   web:
@@ -303,6 +323,8 @@ services:
     volumes:
       - 'd:/docker/jenkins_home:/var/jenkins_home'
 ```
+
+- 运行：docker-compose up -d
 
 ## GitLab-CI
 

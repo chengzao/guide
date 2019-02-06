@@ -83,11 +83,11 @@ module.exports = {
         text: '框架',
         items: [
           {
-            text: "vue",
+            text: "vue.js",
             link: "/vue/"
           },
           {
-            text: "react",
+            text: "react.js",
             link: "/react/"
           },
           {

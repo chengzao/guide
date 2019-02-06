@@ -116,7 +116,7 @@ scripts		指定了运行脚本命令的npmm命令行缩写，例如start
 - [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
 - [mac上管理不同node版本](http://blog.csdn.net/zly9923218/article/details/53420065)
 
-- `npm config`
+- npm config
 
 ```bash
 npm config set prefix "C:\dev\nvm\npm"
@@ -125,7 +125,7 @@ npm config set registry " https://registry.npm.taobao.org "
 npm install phantomjs-prebuilt@2.1.14 --save-dev  --ignore-scripts
 ```
 
-- `npm publish`
+- npm publish
 
 ```bash
 npm login / npm adduser  # 登录npm账号
@@ -141,31 +141,101 @@ https://packagephobia.now.sh/
 https://unpkg.com/#/ # 在线查看package包
 ```
 
-- `npm help`
+- npm use
 
 ```bash
-npm init [-y] 			 	# 初始化一个package.json文件
-npm install package			# 安装一个包
-npm install –save package		# 将安装的包添加到package.json的依赖中（dependencies）
-npm install –g package			# 安装一个全局命令行工具
-npm docs package				# 查看包的文档
-npm root -g					# 查看全局包安装路径
-npm config set prefix path_url # 修改全局包安装路径
-npm list					# 查看当前目录下安装的所有包
-npm list -g					# 查看全局包的安装路径下所有的包
-npm uninstall package			# 卸载当前目录下某个包
-npm uninstall –g package		# 卸载全局安装路径下的某个包
-npm update package				# 更新当前目录下某个包
-npm update –g package			# 更新某个全局工具包
-npm update					# 更新当前目录下安装的所有包
-npm update –g				# 更新全局所有的工具包
-npm install package –f/—force # 强制重新安装
-npm install package@versin		# 安装指定版本
-npm help 					# 查看命令列表
-npm –l 						# 查看各个命令的简单用法
-
-------------------------------------------------------
 ** 注意：package.json的 name 不要与npm install的包名一致 **
+
+https://docs.npmjs.com/cli-documentation/cli
+
+# 初始化
+npm init 在项目中引导创建一个package.json文件
+
+# npm install 安装包
+npm install (with no args, in package dir)
+npm install [<@scope>/]<name>
+npm install [<@scope>/]<name>@<tag>
+npm install [<@scope>/]<name>@<version>
+npm install [<@scope>/]<name>@<version range>
+npm install <git-host>:<git-user>/<repo-name>
+npm install <git repo url>
+npm install <tarball file>
+npm install <tarball url>
+npm install <folder>
+
+alias: npm i
+common options: [-P|--save-prod|-D|--save-dev|-O|--save-optional] [-E|--save-exact] [-B|--save-bundle] [--no-save] [--dry-run]
+
+# 安装github包
+# 指定安装某个版本
+npm install git+ssh://git@github.com:npm/npm.git#v1.0.27
+# 直接安装
+npm install git+https://isaacs@github.com/npm/npm.git
+# 指定安装某个版本
+npm install git://github.com/npm/npm.git#v1.0.27
+
+# npm uninstall 卸载包
+npm uninstall [<@scope>/]<pkg>[@<version>]... [-S|--save|-D|--save-dev|-O|--save-optional|--no-save]
+
+# npm cache 管理模块的缓存
+npm cache verify
+npm cache clean
+
+# 管理你的模块
+npm list -g --depth=0
+npm list --depth=0
+
+# npm验证
+npm login
+npm adduser
+
+# 针对使用者的语义化版本
+Patch releases: 1.0 or 1.0.x or ~1.0.4
+Minor releases: 1 or 1.x or ^1.0.4
+Major releases: * or x
+
+# 查看模块版本
+npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]
+
+npm version [major(主)| minor(次) | patch(补丁)]
+
+# ~和^的作用和区别
+~ 会匹配最近的小版本依赖包，比如~1.2.3会匹配所有1.2.x版本，但是不包括1.3.0
+^ 会匹配最新的大版本依赖包，比如^1.2.3会匹配所有1.x.x的包，包括1.3.0，但是不包括2.0.0
+
+# npm发布
+npm publish [<tarball>|<folder>] [--tag <tag>] [--access <public|restricted>] [--otp otpcode] [--dry-run]
+
+npm publish
+npm publish [build path] --access=public
+npm version patch && git push --follow-tags origin master && npm publish
+
+# npm包删除
+npm unpublish [<@scope>/]<pkg>[@<version>]
+
+npm unpublish package@version
+
+# npm link
+npm link (in package dir)
+npm link [<@scope>/]<pkg>[@<version>]
+
+cd ~/projects/node-redis    # go into the package directory
+npm link                    # creates global link
+
+# npm其他常用命名
+npm update [-g] [<pkg>...] # 更新模块
+npm outdated [[<@scope>/]<pkg> ...] # 检查模块是否已经过时
+npm help # 查看某条命令的详细帮助
+npm root # 查看包的安装路径
+npm config # 管理npm的配置路径
+npm view # 查看模块的注册信息
+npm access # 在发布的包上设置访问级别
+npm logout # 退出npm登录
+npm whoami # 显示 npm 用户名
+npm bin [-g|--global] #列出 npm 安装可执行文件的文件夹
+
+# 私有的npm仓库: sinopia, cpm, cnpmjs.org, verdaccio
+https://zhuanlan.zhihu.com/p/35773211
 ```
 
 ## yarn

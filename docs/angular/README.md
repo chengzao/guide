@@ -1,4 +1,4 @@
-# angular1.x
+# ng1.x导航
 
 - [AngularJS1.x快速入门](https://blog.csdn.net/qq_14992199/article/details/70828866)
 

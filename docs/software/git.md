@@ -377,6 +377,24 @@ git push [remote] --all    #推送所有分支到远程仓库
 git archive     #生成一个可供发布的压缩包
 ```
 
+## rebase
+
+```bash
+# 合并多个commit为一个完整commit
+
+git rebase -i  [startpoint]  [endpoint]
+git rebase -i 36224db
+git rebase -i HEAD~3
+
+pick：保留该commit（缩写:p）
+reword：保留该commit，但我需要修改该commit的注释（缩写:r）
+edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）
+squash：将该commit和前一个commit合并（缩写:s）
+fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）
+exec：执行shell命令（缩写:x）
+drop：我要丢弃该commit（缩写:d）
+```
+
 ## 常见用法
 
 - 如何使用分支

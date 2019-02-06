@@ -181,7 +181,7 @@ nginx -s stop  # 停止
 
 - 打开浏览器输入网址
 
-## nginx
+## mac
 
 ### nginx for mac
 
