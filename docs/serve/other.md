@@ -1,12 +1,14 @@
 # 其他资源
 
 - [又拍云](https://www.upyun.com/)
+- [七牛云](https://www.qiniu.com)
+- [firebase](https://firebase.google.com/?hl=zh-cn)
+- [Parse](https://parseplatform.org/)
+- [contentful](https://www.contentful.com/)
+- [mlab](https://mlab.com/)
 - [leancloud](https://leancloud.cn/)
 - [daocloud](https://www.daocloud.io/)
 - [野狗](https://www.wilddog.com/)
-- [七牛云](https://www.qiniu.com)
-- [aliyun](https://dev.aliyun.com/search.html)
-- [163yun](https://c.163yun.com/hub#/m/home/)
 - [Heroku](https://www.heroku.com/)
 - [digitalocean](https://www.digitalocean.com/)
 - [sm.ms图床](https://sm.ms/)
