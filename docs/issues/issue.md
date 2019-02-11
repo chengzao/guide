@@ -246,3 +246,18 @@ a:active {
 ```
 
 </details>
+
+## 将hello-world风格的转化为helloWorld风格
+
+```js
+const camelizeRE = /-(\w)/g
+const camelize = (str) => {
+  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '')
+}
+
+camelize('hello-world')
+// "helloWorld"
+```
+
+
+docker run -p 3306:3306 --name mymysql -v /Users/chenzhaohong/srv/mysql/logs:/logs -v /Users/chenzhaohong/srv/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=admin -d mysql:latest

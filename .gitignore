@@ -6,3 +6,4 @@ dist
 *.log
 .deploy*/
 yarn.lock
+test

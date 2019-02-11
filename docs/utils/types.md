@@ -47,6 +47,39 @@ Object.prototype.toString.call(obj).slice(8,-1);
 (obj).constructor.name.toString().toLowerCase()
 ```
 
+## toRawType
+
+- Object.prototype.toString.call(arg) 和 String(arg) 的区别？
+
+```js
+  const _toString = Object.prototype.toString
+
+  var obj = {}
+
+  obj.toString()  // [object Object]
+  _toString.call(obj) // [object Object]
+
+  obj.toString = () => '111'
+
+  obj.toString()  // 111
+  _toString.call(obj) // [object Object]
+
+  /hello/.toString() // /hello/
+  _toString.call(/hello/) // [object RegExp]
+```
+
+- toRawType
+
+```js
+function toRawType (value) {
+  return Object.prototype.toString.call(value).slice(8, -1)
+}
+
+toRawType(null) // "Null"
+toRawType(/sdfsd/) //"RegExp"
+
+```
+
 ## 浏览器标识
 
 <details>
@@ -87,38 +120,52 @@ Object.prototype.toString.call(obj).slice(8,-1);
     let url = navigator.userAgent.toLowerCase();
     //使用toLowerCase将字符串全部转为小写 方便我们判断使用
     if (url.indexOf("15b202 qq") > -1) {
-    //单独判断QQ内置浏览器
-    alert("QQ APP 内置浏览器，做你想做的操作");
+      //单独判断QQ内置浏览器
+      alert("QQ APP 内置浏览器，做你想做的操作");
     }
     if (url.indexOf("micromessenger") > -1) {
-    //单独判断微信内置浏览器
-    alert('微信内置浏览器，做你想做的操作');
+      //单独判断微信内置浏览器
+      alert('微信内置浏览器，做你想做的操作');
     }
     if (url.indexOf("15b202") > -1) {
-    //判断微信内置浏览器，QQ内置浏览器
-    alert("QQ和微信内置浏览器，做你想做的操作");
+      //判断微信内置浏览器，QQ内置浏览器
+      alert("QQ和微信内置浏览器，做你想做的操作");
     }
 ```
 
 </details>
 
-## 匹配机型
-
-```js
- window.location.href =  /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? "https://www.baidu.com/" : "http://news.baidu.com/"
-```
-
 ## BrowserInfo
 
 ```js
 var BrowserInfo = function() {
-    var json = {
-      userAgent: navigator.userAgent.toLowerCase(),
-      isAndroid: Boolean(navigator.userAgent.match(/android/ig)),
-      isIphone: Boolean(navigator.userAgent.match(/iphone|ipod/ig)),
-      isIpad: Boolean(navigator.userAgent.match(/ipad/ig)),
-      isWeixin: Boolean(navigator.userAgent.match(/MicroMessenger/ig)),
-    }
-    return json;
+  var json = {
+    userAgent: navigator.userAgent.toLowerCase(),
+    isAndroid: Boolean(navigator.userAgent.match(/android/ig)),
+    isIphone: Boolean(navigator.userAgent.match(/iphone|ipod/ig)),
+    isIpad: Boolean(navigator.userAgent.match(/ipad/ig)),
+    isWeixin: Boolean(navigator.userAgent.match(/MicroMessenger/ig)),
   }
+  return json;
+}
+
+// other
+const inBrowser = typeof window !== 'undefined'
+
+const inWeex = typeof WXEnvironment !== 'undefined' && !!WXEnvironment.platform
+const weexPlatform = inWeex && WXEnvironment.platform.toLowerCase()
+
+const UA = inBrowser && window.navigator.userAgent.toLowerCase()
+
+const isIE = UA && /msie|trident/.test(UA)
+const isIE9 = UA && UA.indexOf('msie 9.0') > 0
+const isEdge = UA && UA.indexOf('edge/') > 0
+const isAndroid = (UA && UA.indexOf('android') > 0) || (weexPlatform === 'android')
+const isIOS = (UA && /iphone|ipad|ipod|ios/.test(UA)) || (weexPlatform === 'ios')
+const isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge
+const isPhantomJS = UA && /phantomjs/.test(UA)
+const isFF = UA && UA.match(/firefox\/(\d+)/)
+
+
+window.location.href =  /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? "https://www.baidu.com/" : "http://news.baidu.com/"
 ```
