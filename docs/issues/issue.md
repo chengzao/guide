@@ -258,6 +258,3 @@ const camelize = (str) => {
 camelize('hello-world')
 // "helloWorld"
 ```
-
-
-docker run -p 3306:3306 --name mymysql -v /Users/chenzhaohong/srv/mysql/logs:/logs -v /Users/chenzhaohong/srv/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=admin -d mysql:latest
