@@ -38,6 +38,8 @@
 
 ## Babel
 
+Babel是一个JavaScript编译器@babel/polyfill
+
 ## browsersync
 
 ## browserify
@@ -45,4 +47,5 @@
 ## other
 
 - [webpack 插件总结归类](https://segmentfault.com/a/1190000016816813)
-- [poetries/mywiki](https://github.com/poetries/mywiki/wiki/webpack)
+- [poetries/mywiki@github](https://github.com/poetries/mywiki/wiki/webpack)
+- [babel@juejin](https://juejin.im/post/5c20e870e51d4548ac6f6956)

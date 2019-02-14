@@ -1,4 +1,4 @@
-# git bare
+# git裸仓库
 
 - 安装: [INSTALL](https://github.com/git/git/blob/master/INSTALL)
 

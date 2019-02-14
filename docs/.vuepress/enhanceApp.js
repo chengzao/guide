@@ -18,11 +18,11 @@ export default ({
     }
   ])
   // 自动跳转到web页面
-  // router.beforeEach((to, from, next) => {
-  //   if(to.path === '/'){
-  //     router.push('/web/')
-  //   }else{
-  //     next()
-  //   }
-  // })
+  router.beforeEach((to, from, next) => {
+    if(to.path === '/'){
+      router.push('/web/')
+    }else{
+      next()
+    }
+  })
 }

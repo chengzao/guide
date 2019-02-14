@@ -6,7 +6,7 @@
 
 - Dockerfile
 
-```Dockerfile
+```bash
 # Dockerfile
 # 生成的新镜像以centos镜像为基础
 FROM centos
@@ -32,7 +32,7 @@ CMD ["/usr/sbin/sshd", "-D"]
 - docker - run
 
 ```bash
-# 进入Dockefile所在文件夹运行如下
+# 进入Dockerfile所在文件夹运行如下
 
 # 构建Dockerfile
 docker build -t ssh-centos .
@@ -49,7 +49,7 @@ ssh root@127.0.0.1 -p 10020
 
 - docker-compose.yml
 
-```docker-compose.yml
+```bash
 version: '2'
 services:
   centos-ssh:
@@ -67,7 +67,7 @@ services:
 
 - Dockerfile
 
-```Dockefile
+```bash
 # Dockerfile
 # 生成的新镜像以centos镜像为基础
 FROM centos
@@ -94,7 +94,7 @@ CMD /usr/sbin/sshd -D
 
 - docker-compose.yml
 
-```docker-compose.yml
+```bash
 version: '3'
 services:
   centos-ssh:

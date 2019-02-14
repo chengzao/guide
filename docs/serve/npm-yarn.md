@@ -233,9 +233,6 @@ npm access # 在发布的包上设置访问级别
 npm logout # 退出npm登录
 npm whoami # 显示 npm 用户名
 npm bin [-g|--global] #列出 npm 安装可执行文件的文件夹
-
-# 私有的npm仓库: sinopia, cpm, cnpmjs.org, verdaccio
-https://zhuanlan.zhihu.com/p/35773211
 ```
 
 ## yarn
@@ -282,8 +279,10 @@ yarn install --force
 yarn install --production
 ```
 
-## cpm
+## 私有的npm仓库
 
+- 私有的npm仓库: sinopia, cpm, cnpmjs.org, verdaccio
+- [告诉你为何以及如何搭建一个私有的npm仓库](https://zhuanlan.zhihu.com/p/35773211)
 - [CPM](https://cevio.github.io/cpm/guide/#%E4%BE%9D%E8%B5%96)
 - [CPM - 轻量的NPM私有源程序搭建](https://juejin.im/post/5bf62141e51d4509cc6c9b0f)
 
@@ -320,9 +319,6 @@ Path-to-RegExp
 fs-extra memory-fs
 cors http-proxy-middleware
 serve
-
-babel
-@babel/polyfill
 ```
 
 ## url
@@ -331,7 +327,6 @@ babel
 - [koa api cn](http://koa.bootcss.com/#context)
 - [express](http://www.expressjs.com.cn/)
 - [nodejs tur](http://javascript.ruanyifeng.com/nodejs/basic.html)
-- [2018 年了，你还是只会 npm install 吗？](https://juejin.im/post/5ab3f77df265da2392364341)
 - [.gitattributes](https://www.jianshu.com/p/ec9564fe1c2b)
 - [npm config](http://javascript.ruanyifeng.com/nodejs/npm.html)
 - [npm script](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)

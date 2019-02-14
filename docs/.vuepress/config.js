@@ -99,8 +99,8 @@ module.exports = {
             link: "/miniapp/"
           },
           {
-            text: "其他",
-            link: "/frame/"
+            text: "其他框架",
+            link: "/other/"
           }
         ]
       },
@@ -108,7 +108,7 @@ module.exports = {
         text: "工具",
         items: [
           {
-            text: '服务',
+            text: '后端服务',
             link: '/serve/'
           },
           {
@@ -120,7 +120,7 @@ module.exports = {
             link: '/linux/'
           },
           {
-            text: '软件',
+            text: '软件工具',
             link: '/software/'
           }
         ]
@@ -134,7 +134,7 @@ module.exports = {
       '/linux/': genSidebarConfig('linux','linux'),
       '/serve/': genSidebarConfig('服务','serve'),
       '/database/': genSidebarConfig('数据库','database'),
-      '/frame/': genSidebarConfig('其他框架','frame'),
+      '/other/': genSidebarConfig('其他框架','other'),
       '/software/': genSidebarConfig('软件工具','software'),
       '/vue/': genSidebarConfig('vue', 'vue'),
       '/react/': genSidebarConfig('react', 'react'),

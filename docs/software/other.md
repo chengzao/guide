@@ -14,3 +14,8 @@
 - [ewen0930/WebStorm-Chinese](https://github.com/ewen0930/WebStorm-Chinese/releases)
 - [wireshark抓包工具](https://www.wireshark.org/)
 - [tonsky/FiraCode](https://github.com/tonsky/FiraCode)
+- [内网穿透工具Lanproxy](https://lanproxy.thingsglobal.org/)
+- [ngrok.cc](https://ngrok.cc/)
+- [ngrok](https://ngrok.com/)
+- [frp](https://github.com/fatedier/frp/blob/master/README_zh.md)
+- [natapp](https://natapp.cn/)

@@ -286,7 +286,7 @@ D:/docker/jenkins_home/secrets/initialAdminPassword
 
 - docker-compose.yml
 
-```docker-compose.yml
+```bash
 # docker-compose.yml
 version: '2'
 services:

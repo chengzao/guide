@@ -1,8 +1,10 @@
-# 导航
+# 持续导航
 
-- [git工具使用](./git.md)
+- [git常见命令](./git.md)
 
-- [git bare 裸仓库](./git-bare.md)
+- [git裸仓库](./git-bare.md)
+
+- [git常见用法](./git-use.md)
 
 - [代码编辑器](./editor.md)
 

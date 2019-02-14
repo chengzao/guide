@@ -1,4 +1,4 @@
-# Travis CI
+# travis-ci
 
 - [travis-ci 社区版](https://travis-ci.org/)
 - [travis-ci: javascript-with-nodejs](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/)
@@ -57,7 +57,7 @@ after_success:
     - cd ./guide
     - git init
     - git config user.name "chengzao"
-    - git config user.email "czhlink@163.com"
+    - git config user.email "test@test.com"
     - git add .
     - git commit -m "Travis CI Auto Builder"
     - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
