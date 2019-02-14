@@ -74,7 +74,7 @@ module.exports = {
             link: '/issues/'
           },
           {
-            text: 'util',
+            text: '工具',
             link: '/utils/'
           }
         ]
@@ -116,7 +116,7 @@ module.exports = {
             link: '/database/'
           },
           {
-            text: 'linux',
+            text: 'linux使用',
             link: '/linux/'
           },
           {
