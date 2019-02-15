@@ -264,9 +264,9 @@ btn.addEventListener('click', function () {
 
 - [HTML 5 视频/音频参考手册](http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp)
 
-## `rel="noopener noreferrer nofollow"`
+## `other`
 
-- a链接
+- a链接`noopener noreferrer nofollow`
 
 ```html
 <a href="https://an.evil.site" target="_blank" rel="noopener noreferrer nofollow">a链接</a>

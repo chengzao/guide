@@ -1,4 +1,4 @@
-# ng1.x语法
+# angular1.x
 
 ## ng
 
@@ -234,7 +234,7 @@ angular.forEach(objs, function(data, index, array) {
 - $route ,提供一个方法，用于更新路由参数
   - $route.updateParams({page:2})//需要传入一个对象：就路由中的参数名及新的参数值;
 
-## url
+## 参考链接
 
 - [AngularJS1.x快速入门](https://blog.csdn.net/qq_14992199/article/details/70828866)
 - [docs angularjs](http://docs.angularjs.org)

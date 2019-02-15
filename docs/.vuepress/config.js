@@ -59,18 +59,18 @@ module.exports = {
     },
     nav: [
       {
-        text: 'web基础',
+        text: 'HTML',
         link: '/web/'
       },
       {
-        text: 'JS脚本',
+        text: 'JS基础',
+        link: '/js/'
+      },
+      {
+        text: '常见问题',
         items: [
           {
-            text: '文档',
-            link: '/js/'
-          },
-          {
-            text: '资源',
+            text: '问答',
             link: '/issues/'
           },
           {
@@ -80,32 +80,11 @@ module.exports = {
         ]
       },
       {
-        text: '框架',
-        items: [
-          {
-            text: "vue.js",
-            link: "/vue/"
-          },
-          {
-            text: "react.js",
-            link: "/react/"
-          },
-          {
-            text: "angular",
-            link: "/angular/"
-          },
-          {
-            text: "小程序",
-            link: "/miniapp/"
-          },
-          {
-            text: "其他框架",
-            link: "/other/"
-          }
-        ]
+        text: 'web框架',
+        link: '/frame/'
       },
       {
-        text: "工具",
+        text: "软件工具",
         items: [
           {
             text: '后端服务',
@@ -120,7 +99,7 @@ module.exports = {
             link: '/linux/'
           },
           {
-            text: '软件工具',
+            text: '其他工具',
             link: '/software/'
           }
         ]
@@ -134,12 +113,8 @@ module.exports = {
       '/linux/': genSidebarConfig('linux','linux'),
       '/serve/': genSidebarConfig('服务','serve'),
       '/database/': genSidebarConfig('数据库','database'),
-      '/other/': genSidebarConfig('其他框架','other'),
-      '/software/': genSidebarConfig('软件工具','software'),
-      '/vue/': genSidebarConfig('vue', 'vue'),
-      '/react/': genSidebarConfig('react', 'react'),
-      '/angular/': genSidebarConfig('angular', 'angular'),
-      '/miniapp/': genSidebarConfig('小程序', 'miniapp'),
+      '/software/': genSidebarConfig('其他工具','software'),
+      '/frame/': genSidebarConfig('框架', 'frame'),
     }
   },
   configureWebpack: {
