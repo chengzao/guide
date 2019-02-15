@@ -154,7 +154,7 @@ read_only, shm_size, restart, stdin_open, tty, user, working_dir
 Compose 模板文件支持动态读取主机的系统环境变量和当前目录下的 .env 文件中的变量
 ```
 
-## 示例
+## 参考示例
 
 ```bash
 version: '2'

@@ -152,7 +152,7 @@ print()
 - `obj.bind(thisObj, arg1, arg2, ...);` 通过`bind`改变this作用域会返回一个新的函数，这个函数`不会马上执行`
 - `call,apply`和`bind`如果第一个参数是指定为 `null` 或 `undefined` 时会自动指向`全局对象`
 
-## 资源
+## 参考链接
 
 - [Javascript 的 this 用法](http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html)
 - [this、apply、call、bind](https://juejin.im/post/59bfe84351882531b730bac2)

@@ -79,7 +79,7 @@ vi 文件路径
 - hi MatchParen ctermbg=blue ctermfg=white   // 匹配的括号颜色修改
 ```
 
-## 参考
+## 参考链接
 
 - [vim](https://github.com/judasn/Linux-Tutorial/)
 - [Vim YouCompleteMe](https://www.jianshu.com/p/d908ce81017a)

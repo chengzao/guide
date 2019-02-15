@@ -112,11 +112,12 @@ scripts		指定了运行脚本命令的npmm命令行缩写，例如start
 
 ## npm
 
+- [npmjs](https://www.npmjs.com/)
 - [npm淘宝国内镜像](http://npm.taobao.org/)
 - [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
 - [mac上管理不同node版本](http://blog.csdn.net/zly9923218/article/details/53420065)
 
-- npm config
+- config
 
 ```bash
 npm config set prefix "C:\dev\nvm\npm"
@@ -125,23 +126,18 @@ npm config set registry " https://registry.npm.taobao.org "
 npm install phantomjs-prebuilt@2.1.14 --save-dev  --ignore-scripts
 ```
 
-- npm publish
+- publish
 
 ```bash
 npm login / npm adduser  # 登录npm账号
-
 npm publish --access=public # 发布一个公开的package
-
-https://shields.io/#/  # 徽章
-
-https://www.npmjs.com/
-
-https://packagephobia.now.sh/
-
-https://unpkg.com/#/ # 在线查看package包
 ```
 
-- npm use
+- [shields.io徽章](https://shields.io/#/ )
+- [packagephobia](https://packagephobia.now.sh/)
+- [unpkg在线查看package包](https://unpkg.com/#/)
+
+- use
 
 ```bash
 ** 注意：package.json的 name 不要与npm install的包名一致 **
@@ -223,8 +219,6 @@ cd ~/projects/node-redis    # go into the package directory
 npm link                    # creates global link
 
 # npm其他常用命名
-npm update [-g] [<pkg>...] # 更新模块
-npm outdated [[<@scope>/]<pkg> ...] # 检查模块是否已经过时
 npm help # 查看某条命令的详细帮助
 npm root # 查看包的安装路径
 npm config # 管理npm的配置路径
@@ -254,11 +248,6 @@ yarn add [package] # 添加到 dependencies
 yarn add [package] --dev/-D # 添加到 devDependencies
 yarn add [package] --exact/-E # 安装包的精确版本(例如：1.2.1)
 yarn add [package] --tilde/-T # 安装包的次要版本里的最新版(例如：1.2.x)
-
-# 升级包：
-yarn upgrade [package]
-yarn upgrade [package]@[version]
-yarn upgrade [package]@[tag]
 
 # 操作系统上全局安装包
 yarn global <add/bin/list/remove/upgrade> [package]
@@ -321,7 +310,7 @@ cors http-proxy-middleware
 serve
 ```
 
-## url
+## 参考链接
 
 - [nodejs api cn](http://nodejs.cn/)
 - [koa api cn](http://koa.bootcss.com/#context)

@@ -154,7 +154,7 @@ for (let p of searchParams) {
 
 ### encodeURI与decodeURI
 
-### 示例
+### 参考示例
 
 ```js
 const url = "http://www.domain.com/abc?user=Alan&age=123&name=小明";

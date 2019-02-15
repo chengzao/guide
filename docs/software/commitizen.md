@@ -374,7 +374,7 @@ indent_style = space
 trim_trailing_whitespace = false
 ```
 
-## 示例
+## 参考示例
 
 ### 默认Adapter
 

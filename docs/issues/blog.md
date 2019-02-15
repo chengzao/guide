@@ -1,39 +1,74 @@
 # 博客生成器
 
-- gatsby
+- [gatsby](https://www.gatsbyjs.org/)
+- [vuepress](https://github.com/vuejs/vuepress)
+- [hexo](https://hexo.io/zh-cn/index.html)
+- [hugo](https://github.com/stkevintan/canoe-blog)
+- [docsify](https://github.com/docsifyjs/docsify/)
+- [jekyll](https://www.jekyll.com.cn/)
 
-```bash
-https://github.com/greglobinski/gatsby-starter-hero-blog
-https://github.com/greglobinski/gatsby-starter-personal-blog
-```
+## 代码托管
 
-- hexo
+- [github](https://github.com/)
+- [gitlab](https://gitlab.com/)
+- [gitee](https://gitee.com/)
 
-```bash
-https://github.com/yscoder/hexo-theme-indigo
-https://github.com/stkevintan/hexo-theme-material-flow
-```
+## 集成ci
 
-- hugo
+- [禅道](https://www.zentao.net/)
+- [walle-web](https://github.com/meolu/walle-web)
+- [jenkins](https://jenkins.io/)
+- [travis-ci](https://github.com/travis-ci/travis-ci)
+- [gitlab-runner](https://docs.gitlab.com/runner/install/)
+- [flow.ci](https://github.com/FlowCI/docs/blob/master/intro_base.md)
+- [strider](https://github.com/Strider-CD/strider)
 
-```bash
-https://github.com/stkevintan/canoe-blog
-```
+## mock api
 
-- vuepress
+- [YApi](https://github.com/YMFE/yapi)
+- [mockjs](http://mockjs.com/)
+- [easy-mock](https://www.easy-mock.com/)
 
-```bash
-https://github.com/vuejs/vuepress
-```
+## 评论系统
 
-- docsify
+- [Disqus](https://disqus.com/)
+- [Facebook](https://developers.facebook.com/docs/plugins/comments?locale=zh_CN)
+- [Gitment](https://github.com/imsun/gitment)
+- [Valine](https://github.com/xCss/Valine)
+- [gitalk](https://github.com/gitalk/gitalk)
+- [isso](https://github.com/posativ/isso)
 
-```bash
-https://github.com/docsifyjs/docsify/
-```
+## 服务部署
 
-- jekyll
+- [netlify](https://www.netlify.com/)
+- [gh-pages@github](https://pages.github.com/)
+- [zeit.co/now](https://zeit.co/now)
+- [surge.sh](https://surge.sh/)
 
-```bash
-https://www.jekyll.com.cn/
-```
+## 线上服务
+
+- [mlab](https://mlab.com/)
+- [firebase](https://firebase.google.com/?hl=zh-cn)
+- [Parse](https://parseplatform.org/)
+- [contentful](https://www.contentful.com/)
+- [leancloud](https://leancloud.cn/)
+- [daocloud](https://www.daocloud.io/)
+- [wilddog](https://www.wilddog.com/)
+- [Heroku](https://www.heroku.com/)
+- [digitalocean](https://www.digitalocean.com/)
+
+## 图床
+
+- [又拍云](https://www.upyun.com/)
+- [sm.ms图床](https://sm.ms/)
+- [七牛云](https://www.qiniu.com)
+- [PicGo@图床工具](https://github.com/Molunerfinn/PicGo)
+- [ipic@图床工具](https://itunes.apple.com/cn/app/id1101244278?mt=12)
+- [mpic@图床工具](http://mpic.lzhaofu.cn/)
+
+## free ssl
+
+- [letsencrypt](https://letsencrypt.org/)
+- [certbot](https://certbot.eff.org/)
+- [Neilpang/acme.sh@github](https://github.com/Neilpang/acme.sh)
+- [freessl](https://freessl.cn/)

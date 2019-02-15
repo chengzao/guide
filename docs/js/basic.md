@@ -297,7 +297,7 @@ console.log(docFrag.textContent); // ''
 - `Math.log()` 返回以`e`为底的自然对数值
 - `Math.exp()` 返回常数`e`的参数次方
 
-### 示例
+### 参考示例
 
 ```js
 Math.ceil(1.1)// 2

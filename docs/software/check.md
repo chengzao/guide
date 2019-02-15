@@ -9,7 +9,3 @@
 - [jestjs](https://jestjs.io/)
 
 - [mocha](https://mochajs.org/)
-
-- [mockjs](http://mockjs.com/)
-
-- [easy-mock](https://www.easy-mock.com/)

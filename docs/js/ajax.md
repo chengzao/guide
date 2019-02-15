@@ -154,7 +154,7 @@ function jsonp({ url, params, cb }) {
 
 fetch的post请求的时候，导致fetch 第一次发送了一个Options请求，询问服务器是否支持修改的请求头，如果服务器支持，则在第二次中发送真正的请求
 
-## 资源
+## 参考链接
 
 - [前端跨域整理](https://juejin.im/post/5815f4abbf22ec006893b431)
 - [Ajax 知识体系大梳理](https://juejin.im/post/58c883ecb123db005311861a)

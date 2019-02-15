@@ -38,7 +38,7 @@ branches # https://docs.travis-ci.com/user/customizing-the-build/#safelisting-or
 notifications # https://docs.travis-ci.com/user/notifications/
 ```
 
-## 示例
+## 参考示例
 
 ```bash
 sudo: false

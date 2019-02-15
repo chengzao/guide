@@ -4,6 +4,8 @@
 
 - [docker使用](./docker.md)
 
+- [docker示例](./docker-stu.md)
+
 - [nginx文档](./nginx.md)
 
 - [nginx使用](./nginx-use.md)
@@ -17,5 +19,3 @@
 - [gitlab使用](./gitlab.md)
 
 - [travis ci介绍](./travis.md)
-
-- [docker示例](./docker-stu.md)

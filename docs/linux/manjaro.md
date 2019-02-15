@@ -68,6 +68,6 @@ export XMODIFIERS="@im=fcitx"
 - 网易云音乐 (`sudo pacman -S netease-cloud-music`)
 - wine (`pacman -S wine`)
 
-## 参考源
+## 参考链接
 
 - [Manjaro安装以及美化教程](https://juejin.im/post/5a6b1b3651882573443cea61)

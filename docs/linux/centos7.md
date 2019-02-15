@@ -309,7 +309,7 @@ ssserver -c /etc/shadowsocks.json -d start
 }
 ```
 
-## 参考地址
+## 参考链接
 
 - [centos7开机界面出现多个选项](http://www.cnblogs.com/jcblog/p/6431252.html)
 - [Centos7 修改SSH 端口](http://www.cnblogs.com/waslost/p/4459664.html)
