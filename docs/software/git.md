@@ -312,9 +312,15 @@ git checkout -b branch_name      # 创建分支同时切换到这个分支
 git checkout -              # 切换到上一分支
 
 git checkout -b local_branch remote_branch # 拉去远程分支到本地
-git checkout -b a origin/a
+git checkout -b dev origin/dev
+
+git checkout remote_branch_name  # 拉取远程分支到本地并自动新建分支切换到origin_branch_name
 
 git checkout -b [branch] [tag]  #新建一个分支，指向某个tag
+
+# 分离头指针，即HEAD不会指向任何branch，此时切换分支git不会自动保存所做的任何修改和提交的commit。
+# 如果需要保存修改需要保存到一个分支中，git branch newbranch commitid
+git checkout commitid
 ```
 
 ## merge
@@ -400,11 +406,11 @@ git rebase --continue | --skip | --abort | --quit | --edit-todo | --show-current
 
 ## cat-file
 
-```bash
-git cat-file -t/p commitid
+- 显示版本库对象的内容、类型及大小信息
 
-分离头指针，即HEAD不会指向任何branch，此时切换分支git不会自动保存所做的任何修改和提交的commit。
-如果需要保存修改需要保存到一个分支中，git branch newbranch commitid
+```bash
+git cat-file -t commitid # 显示对象的类型
+git cat-file -p commitid # 根据对象的类型显示其内容
 ```
 
 ## 参考链接
