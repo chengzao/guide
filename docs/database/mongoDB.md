@@ -1,6 +1,6 @@
 # mongodb
 
-## yum安装
+## centos7的yum安装
 
 - `https://www.mongodb.com/download-center?jmp=nav#community`
 - `https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat/`
@@ -19,7 +19,7 @@ gpgkey = https://www.mongodb.org/static/pgp/server-3.4.asc
 - vim /etc/mongod.conf
 - service mongod start|stop|restart
 
-- mongo 192.168.2.33:27017
+- mongo your pc ip:27017
 
 ## tgz安装
 
@@ -300,52 +300,47 @@ doc.save((err) => {})
 
 - createUser
 
-  <details>
-  <summary>点击展开内容</summary>
+```bash
+- use admin
+- 添加管理员用户
+  db.createUser({
+    user:"admin",
+    pwd:"123",
+    roles:["userAdminAnyDatabase"]
+  })
 
-  ```bash
-  - use admin
-  - 添加管理员用户
-    db.createUser({
-      user:"admin",
-      pwd:"123",
-      roles:["userAdminAnyDatabase"]
-    })
+  db.createUser({user:"root",pwd:"123",roles:["root"]})
 
-    db.createUser({user:"root",pwd:"123",roles:["root"]})
+- vim /etc/mongod.conf 添加修改如下
+  # ip
+  bindIp: 0.0.0.0
+  # 认证
+  security:
+    authorization: enabled
 
-  - vim /etc/mongod.conf 添加修改如下
-    # ip
-    bindIp: 0.0.0.0
-    # 认证
-    security:
-      authorization: enabled
+- service mongod restart
+- service mongod status
+- 进入mongo
+  # 方式1
+  mongo --port 27017 -u admin -p 123 --authenticationDatabase "admin"
+  # 方式2
+  mongo
+  use admin
+  db.auth("admin","123")
+  db.system.users.find()
+  show users
 
-  - service mongod restart
-  - service mongod status
-  - 进入mongo
-    # 方式1
-    mongo --port 27017 -u admin -p 123 --authenticationDatabase "admin"
-    # 方式2
-    mongo
-    use admin
-    db.auth("admin","123")
-    db.system.users.find()
-    show users
+  # 添加远程用户
+  use test
+  db.createUser({
+    user:"test",
+    pwd:"123",
+    roles:[{role:"readWrite",db:"test"}]
+  })
+  exit # 退出
 
-    # 添加远程用户
-    use test
-    db.createUser({
-      user:"test",
-      pwd:"123",
-      roles:[{role:"readWrite",db:"test"}]
-    })
-    exit # 退出
-
-    # 进入mongo
-    mongo --port 27017 -u test -p 123 --authenticationDatabase "test"
-    use test
-    show tables
-  ```
-
-  </details>
+  # 进入mongo
+  mongo --port 27017 -u test -p 123 --authenticationDatabase "test"
+  use test
+  show tables
+```

@@ -39,7 +39,7 @@ node-sass -w src --output dist --output-style expanded --source-map=true
 node-sass -w src --output dist --output-style expanded --source-map=map
 ```
 
-## 使用
+## 基本使用
 
 - `命令行编译`
 
@@ -78,7 +78,7 @@ sass --style [option] # 表示解析后的css是什么排版格式
 sass --sourcemap # 表示开启sourcemap调试。
 ```
 
-## 语法
+## 常用语法
 
 - 注释
 

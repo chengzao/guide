@@ -105,7 +105,7 @@ document.location === window.location // true
 - 每当同一个文档的浏览历史（即`history`对象）出现变化时，就会触发`popstate`事件
 - 仅仅调用`pushState()`方法或`replaceState()`方法 ，并不会触发该事件
 
-## URL
+## URL统一资源标识符
 
 URI: 统一资源标识符,是用来标识互联网上的资源（例如，网页或文件）和怎样访问这些资源的传输协议（例如，HTTP 或 FTP）的字符串
 

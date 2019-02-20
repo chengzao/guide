@@ -79,7 +79,7 @@ eslint [options] [file|dir|glob]*
 package.json 创建一个 eslintConfig属性，在那里定义你的配置
 ```
 
-## eslint配置示例
+## 配置示例
 
 <details>
 <summary> .eslintrc.js </summary>

@@ -1,9 +1,6 @@
-# Mysql
+# mysql
 
-## 安装mysql
-
-<details>
-<summary>点击展开内容</summary>
+## centos7安装mysql
 
 - `https://dev.mysql.com/downloads/repo/yum/`
 - `https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/`
@@ -20,12 +17,7 @@
 - `ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';`  //修改mysql-root密码
 - `GRANT ALL PRIVILEGES ON *.* TO 'user1'@'%' IDENTIFIED BY 'UerName123!' WITH GRANT OPTION;`  //添加远程登录用户
 
-</details>
-
 ## 登录与退出
-
-<details>
-<summary>点击展开内容</summary>
 
 - mysql登录命令
 
@@ -60,12 +52,7 @@ mysql -u root -p
 ps : prompt mysql \h>
 ```
 
-</details>
-
 ## 数据类型
-
-<details>
-<summary>点击展开内容</summary>
 
 - `tinyint` : 有符号值(signed) => (-2<sup>7</sup> ~ 2<sup>7</sup>-1) | 无符号值(unsigned) => (0 ~ 2<sup>8</sup>-1)
 - `smallint` : 有符号值 => (-2<sup>15</sup> ~ 2<sup>15</sup>-1) | 无符号值 => (0 ~ 2<sup>16</sup>-1)
@@ -85,12 +72,7 @@ ps : prompt mysql \h>
 - `enum('value1','value2',...)`  =>字节取决于枚举值的个数,最多( 2<sup>16</sup>-1 ) 个值   (选择其中一种情况)
 - `set('value1','value2',...)`  => 字节取决于set成员的个数,最多 2<sup>8</sup> 个值  (排列组合所有的情况)
 
-</details>
-
 ## mysql数据库
-
-<details>
-<summary>点击展开内容</summary>
 
 - 创建数据库`CREATE DATABASE 数据库名;`
 
@@ -112,12 +94,7 @@ DROP DATABASE IF EXISTS 数据库名;
   drop database IF EXISTS test01;
 ```
 
-</details>
-
 ## 约束
-
-<details>
-<summary>点击展开内容</summary>
 
 ```sql
 PRIMARY KEY    主键约束，用于唯一标识对应的记录,可以赋值
@@ -141,12 +118,7 @@ RESTRICT
 NO ACTION
 ```
 
-</details>
-
 ## 添加约束
-
-<details>
-<summary>点击展开内容</summary>
 
 - 添加主键约束
 
@@ -192,12 +164,7 @@ ALTER TABLE tbl_name ADD [CONSTRAINT[smybol]] UNIQUE [INDEX|KEY][index_name] [in
 外键: ALTER TABLE table_name DROP FOREIGN KEY fk-symbol;
 ```
 
-</details>
-
 ## 数据表的基本操作
-
-<details>
-<summary>点击展开内容</summary>
 
 - 创建数据表 -- 最后一列不需要逗号
 
@@ -275,12 +242,7 @@ DROP TABLE 表名;
 - 删除 workmates 表: drop table workmates;
 ```
 
-</details>
-
 ## 表记录的基本操作
-
-<details>
-<summary>点击展开内容</summary>
 
 - 向表中插入记录
 
@@ -356,9 +318,6 @@ select 列名称 from 表名称 where 条件;
 CREATE TABLE IF NOT EXISTS table_name [(create_definition,...)] select_statement
 ```
 
-</details>
-
 ## 参考链接
 
 - [21分钟 MySQL 入门教程](http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html)
-- [超详细mysql left join,right join,inner join用法分析](http://www.jb51.net/article/15386.htm)

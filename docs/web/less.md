@@ -4,14 +4,14 @@
 - `npm install -g less`
 - `npm i less --save-dev`
 
-## 使用
+## 基本使用
 
 ```bash
 lessc styles.less > styles.css
 lessc -x styles.less styles.css
 ```
 
-## 语法
+## 常用语法
 
 - import
 
