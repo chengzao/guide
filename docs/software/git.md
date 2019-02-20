@@ -94,6 +94,10 @@ doc/*.txt
 doc/**/*.pdf
 ```
 
+## `.gitkeep`
+
+git默认会忽略空的文件夹, 使用.gitkeep来追踪空的文件夹
+
 ## commit
 
 ```bash
@@ -369,6 +373,9 @@ git remote prune origin
 ```bash
 git pull [remote] [branch]  # 取回远程仓库的变化，并与本地分支合并
 
+git fetch remote branch
+git merge | git rebase
+
 git push [remote] [branch]    # 上传本地分支到远程仓库
 git push [remote] --force   # 强行推送当前分支到远程仓库
 git push [remote] --all    # 推送所有分支到远程仓库
@@ -415,13 +422,10 @@ git cat-file -p commitid # 根据对象的类型显示其内容
 
 ## 参考链接
 
-- [nvm](https://github.com/creationix/nvm/blob/master/README.md#install-script)
 - [git install](https://github.com/git/git/blob/master/INSTALL)
 - [.gitignore](https://git-scm.com/docs/gitignore)
 - [为 git 设置 http https 代理](http://blog.csdn.net/sankoshine/article/details/50602754)
 - [Git的奇技淫巧](https://mp.weixin.qq.com/s/nbQzmDXYSuOnfzy7tuY_Xw)
-- [全面理解Git](https://juejin.im/post/582bd0b4da2f600063d4f89e)
-- [从只会git add .的菜鸟到掌握git基本功能](https://juejin.im/post/5abef8356fb9a028df22bd78)
 - [error while loading shared libraries的解決方法](https://blog.csdn.net/dumeifang/article/details/2963223)
 - [如何从 GitHub 上下载单个文件夹](https://www.zhihu.com/question/25369412)
 - [优雅的提交你的 Git Commit Message](https://juejin.im/post/5afc5242f265da0b7f44bee4)

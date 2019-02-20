@@ -233,7 +233,7 @@ npm bin [-g|--global] #列出 npm 安装可执行文件的文件夹
 
 - [yarn](https://yarnpkg.com)
 - [yarn bootcss](https://yarn.bootcss.com/docs/usage.html)
-- `use`
+- 常见命令
 
 ```bash
 # 初始化包：
@@ -312,11 +312,12 @@ serve
 
 ## 参考链接
 
-- [nodejs api cn](http://nodejs.cn/)
-- [koa api cn](http://koa.bootcss.com/#context)
-- [express](http://www.expressjs.com.cn/)
-- [nodejs tur](http://javascript.ruanyifeng.com/nodejs/basic.html)
+- [nvm](https://github.com/creationix/nvm/blob/master/README.md#install-script)
+- [nodejs中文](http://nodejs.cn/)
+- [koa中文](http://koa.bootcss.com/#context)
+- [express中文](http://www.expressjs.com.cn/)
+- [Node.js 概述](http://javascript.ruanyifeng.com/nodejs/basic.html)
 - [.gitattributes](https://www.jianshu.com/p/ec9564fe1c2b)
-- [npm config](http://javascript.ruanyifeng.com/nodejs/npm.html)
-- [npm script](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
+- [npm模块管理器](http://javascript.ruanyifeng.com/nodejs/npm.html)
+- [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
 - [开源许可证](http://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html)
