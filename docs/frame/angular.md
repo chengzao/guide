@@ -224,6 +224,180 @@ angular.forEach(objs, function(data, index, array) {
   - 可以传递一个布尔值，或者字符串，angular进根据它对数据进行全局查找
   - 也可以传递一个对象，angular会按照对象的属性到数据中精确查找对应的属性。
 
+## angular服务
+
+- config run
+
+- constant: `用于定义常量，一旦定义就不能被改变。可以被注入到任何地方，但是不能被装饰器(decorator)装饰`
+
+```js
+app.constant('APP_KEY', 'a1s2d3f4')
+```
+
+- value： `用来定义值。但与 constant 的区别是：可以被修改，可以被 decorator 装饰，不能被注入到 config 中`
+
+```js
+app.value('version', '1.0')
+```
+
+- decorator: `用来装饰其他 provider 的，不过 constant 除外`
+
+```js
+app.value('version', '1.0');
+app.decorator('version', function ($delegate) {
+    return $delegate + '.1';
+})
+
+app.service('myService', function(){
+    this.setA = function(){};
+    this.getA = function(){};
+    this.foo = function(){};
+})
+// 装饰myService
+app.decorator('myService', function($delegate){
+  // $delegate 代表实际上的 service 实例
+  $delegate.greet = function(){
+      return "Hello, I am a new function of 'myService'";
+  }
+})
+```
+
+- factory: `需要返回一个包含数据，方法的对象`
+
+```js
+// 创建
+angular.module('myApp.services')
+  .factory('User', function($http) { // factory的名字和注入的方法
+    var url = "http://localhost:3000";
+    //把我们定义的方法和数据都放到一个对象中，并且返回这个对象，这就是factory
+    var service = {
+      user: {},
+      setName: function(newName) {
+        service.user['name'] = newName;
+      },
+      save: function() {
+        return $http.post(url + '/users', {
+          user: service.user
+        });
+      }
+    };
+    return service;
+  });
+
+// 调用
+// 注意：需要使用.config()来配置service的时候不能使用factory的方法
+angular.module('myApp')
+.controller('MainCtrl', function($scope, User) { //User就是factory的名字
+  //我们将User这个factory中的一个叫做save()的function赋给我们controller中的变量
+  $scope.saveUser = User.save;
+});
+```
+
+- service
+
+```js
+// 创建
+angular.module('myApp.services')
+.service('User', function($http) { // 在这里注入我们需要的服务
+  var self = this;
+  // 由于service()是通过构造函数创建的，
+  // 那么service()中的function和data都要以this.data和this.function的方式进行声明
+  // service()方法会持有构造函数创建的对象
+  this.user = {};
+  this.url = "http://localhost:3000";
+  this.setName = function(newName) {
+    self.user['name'] = newName;
+  }
+  this.save = function() {
+    return $http.post(self.url + '/users', {
+      user: self.user
+    })
+  }
+});
+
+// 调用
+// 注意：需要使用.config()来配置service的时候不能使用service的方法
+ angular.module('myApp')
+.controller('MainCtrl', function($scope, User) {//注入名字为User的service
+  //用User中名字叫做的save的function给本地变量赋值
+  $scope.saveUser = User.save;
+ });
+```
+
+- provider: `创建 provider，与 factory、service 不同的是，provider 需要使用 this,$get 来返回方法和数据, 可以在 config 中被调用和配置`
+
+```js
+var app = angular.module("myApp", []);
+
+// 在.config()中配置provider
+app.config(function (myFirstProvider) {
+  myFirstProvider.name = "zhangsan";
+});
+
+// 创建
+app.provider("myFirst", function () {
+  this.$get = function () {
+    var that = this;
+    var service = {};
+    service.console = function () {
+      return that.name;
+    }
+    return service;
+  }
+});
+
+// 调用
+// provider 可以在 config 中调用
+app.controller("CartController", ["myFirst", "$scope", function (a, b) {
+  console.log(a.console());
+  b.name = "lisi";
+}]);
+
+--------------
+// other 1
+var myApp = angular.module('app',[]);
+
+myApp.provider('HelloAngular',function(){
+	return {
+		$get:function(){
+			var name = 'xiaowang';
+			function getName(){
+				return name;
+			}
+			return {
+				getName:getName
+			}
+		}
+	}
+})
+
+myApp.controller('myCtrl', ['$scope','HelloAngular', function($scope,HelloAngular){
+	$scope.name = HelloAngular.getName();
+}])
+
+-------------
+// other 2
+var myApp = angular.module('app',[],function($provide){
+	console.log('1');
+	// 自定义服务
+	$provide.provider('CustomService',function(){
+		this.$get = function(){
+			return {
+				message : 'CustomService Message'
+			}
+		}
+	})
+});
+
+myApp.controller('ctrl',['$scope','CustomService',function($scope,CustomService){
+	console.log('2');
+	$scope.name = '小明';
+	console.log(CustomService.message)
+}]);
+```
+
+- angular.run和angular.config有什么不同？`config-->run-->compile/link`
+
 ## 扩展小知识
 
 - track by $index 解决ng-repeat 遍历数组时有重复问题
