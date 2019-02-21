@@ -226,7 +226,9 @@ angular.forEach(objs, function(data, index, array) {
 
 ## angular服务
 
-- config run
+- config `允许注入的是provider和constance(常量)`
+
+- run `允许注入的是provider和constant,还可以是factory，service，value`
 
 - constant: `用于定义常量，一旦定义就不能被改变。可以被注入到任何地方，但是不能被装饰器(decorator)装饰`
 
