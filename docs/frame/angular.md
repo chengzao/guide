@@ -1,124 +1,136 @@
 # angular1.x
 
-## ng
+## ng指令
 
 - 描述：ng-?指令表示angular框架对元素的操作，常见的有如下几种：
 
-```js
-ng-app:定义应用程序的根元素,若不为""时需在js脚本中初始化。
-ng-bind:把应用程序变量绑定到某个元素的 innerHTML。
-ng-controller:定义应用的控制器对象，可以控制的服务有$scope,$rootScope,$location,$http,$timeout,$interval,其中$scope.$watch('lastName', function() {)); 可以监控变量的变化
+```bash
+ng-app  # 定义应用程序的根元素,若不为""时需在js脚本中初始化。
+ng-bind  # 把应用程序变量绑定到某个元素的 innerHTML。
+ng-controller  # 定义应用的控制器对象，可以控制的服务有
+# $scope,$rootScope,$location,$http,$timeout,$interval,
+# 其中$scope.$watch('lastName', function() {)); # 可以监控变量的变化
 
-ng-init:定义应用的初始化值,一般为angular变量值
+$rootScope # 全局作用域，在任一controller之中都能够使用
+$scope # $scope都是$rootScope的子作用域
+$state # 路由中的一项服务
+$stateParams # 处理url的接收参数
 
-ng-hide:隐藏或显示 HTML 元素
-ng-show:显示或隐藏 HTML 元素
+ng-init  # 定义应用的初始化值,一般为angular变量值
 
-ng-href:为<a>元素指定链接
+ng-hide # 隐藏或显示 HTML 元素
+ng-show # 显示或隐藏 HTML 元素
 
-ng-if:如果条件为 false 移除 HTML 元素
-ng-repeat:定义集合中每项数据的模板,该参数还常与ng-click、ng-class配合使用
-ng-switch:规定显示或隐藏子元素的条件。常与ng-switch-when配合使用，类似于switch和case
+ng-href # 为<a>元素指定链接
 
-ng-include:在应用中包含 HTML 文件，如<div ng-include="'myFile.htm'"></div>,但不能执行js代码
+ng-if # 如果条件为 false 移除 HTML 元素
+ng-repeat # 定义集合中每项数据的模板,该参数还常与ng-click、ng-class配合使用
+ng-switch # 规定显示或隐藏子元素的条件。常与ng-switch-when配合使用，类似于switch和case
 
-*ng-non-bindable:规定元素或子元素不能绑定数据,如<p ng-non-bindable>不使用 AngularJS: {{ 5+5 }}</p>显示的是“5+5”而不是“10”
+ng-include # 在应用中包含 HTML 文件，如<div ng-include="'myFile.htm'"></div>,但不能执行js代码
 
-*ng-open:指定元素的 open 属性,可设值为true|false,常与details等具展开效果的元素配合使用
+*ng-non-bindable # 规定元素或子元素不能绑定数据,
+# 如<p ng-non-bindable>不使用 AngularJS: {{ 5+5 }}</p>显示的是“5+5”而不是“10”
+
+*ng-open # 指定元素的 open 属性,可设值为true|false,常与details等具展开效果的元素配合使用
 	<details ng-open=true>
 		<summary>学的不仅是技术，更是梦想！</summary>
 		<p> - 菜鸟教程</p>
 	</details>
 
-ng-src:指定 <img> 元素的 src 属性
-*ng-srcset:指定 <img> 元素的 srcset 属性。H5的新属性，允许输入多张图片地址以匹配不同w像素值宽度的容器
+ng-src # 指定 <img> 元素的 src 属性
+*ng-srcset # 指定 <img> 元素的 srcset 属性。H5的新属性，允许输入多张图片地址以匹配不同w像素值宽度的容器
 	<img ng-src="source.jpg" width="100%" ng-srcset="source_400.jpg 400w, source_600.jpg 600w, source_1280.jpg 1280w">
 ```
 
 ## 指令
 
-```js
-- ng-app:相当于一个入，告诉angular来管理ng-app指令所在的元素及其子元素。
-- ng-controller：指定了一个控制来管理页面的数据模型/行为模型。
-- ng-model:主要是用来进行双向数据绑定。
-- ng-click:类似于onclick,指定一个方法就能运行。
-- ng-init:
-- ng-repeat:渲染数组中的元素。
-- ng-bind:为了解决表达式闪烁问题；只能使用在有双标签的元素上。
-- ng-cloak:利用了anuglar加载后会移动类样式名为ng-cloak的特性。
-- ng-bind-html:
-- ng-class:
-    + 多选一：<div ng-class="{'A':'classA','B':classB}["A"]"></div>
-    + 多选多：<div ng-class="{'classA':布尔值,'classB':布尔值}></div>
-- ng-show/ng-hide：控制页面元素的显示与否,需要提供一个布尔值。
-- ng-if:类似于ng-show,区别是ng-if会彻底删除元素。
-- ng-switch:ng-siwtch-when
+```bash
+ng-app # 相当于一个入，告诉angular来管理ng-app指令所在的元素及其子元素。
+ng-controller # 指定了一个控制来管理页面的数据模型/行为模型。
+ng-model # 主要是用来进行双向数据绑定。
+ng-click # 类似于onclick,指定一个方法就能运行。
+
+ng-repeat # 渲染数组中的元素。
+ng-bind # 为了解决表达式闪烁问题；只能使用在有双标签的元素上。
+ng-cloak # 利用了anuglar加载后会移动类样式名为ng-cloak的特性。
+ng-bind-html
+
+ng-show/ng-hide # 控制页面元素的显示与否,需要提供一个布尔值。
+ng-if # 类似于ng-show,区别是ng-if会彻底删除元素。
+ng-switch:ng-switch-when
+
+ng-class:
+  + 多选一：<div ng-class="{'A':'classA','B':classB}["A"]"></div>
+  + 多选多：<div ng-class="{'classA':布尔值,'classB':布尔值}></div>
 ```
 
 ## 事件
 
-```js
-ng-copy:用户触发拷贝事件时，规定拷贝事件的行为
-ng-cut:用户触发剪切事件时，规定剪切事件的行为
-ng-paste:用户触发粘贴事件时，规定粘贴事件的行为
+```bash
+ng-copy # 用户触发拷贝事件时，规定拷贝事件的行为
+ng-cut # 用户触发剪切事件时，规定剪切事件的行为
+ng-paste # 用户触发粘贴事件时，规定粘贴事件的行为
 
-ng-click:规定click 事件的行为
-ng-dblclick:用户触发双击事件时，规定双击事件的行为
+ng-click # 规定click 事件的行为
+ng-dblclick # 用户触发双击事件时，规定双击事件的行为
 
-ng-blur:规定 blur 事件的行为
-ng-focus:规定focus焦点事件的行为
+ng-blur # 规定 blur 事件的行为
+ng-focus # 规定focus焦点事件的行为
 
-ng-keydown:规定按下按键事件的行为
-ng-keypress:规定按下按键事件的行为,通常情况下会用ng-keydown
-ng-keyup:规定松开按键事件的行为
+ng-keydown # 规定按下按键事件的行为
+ng-keypress # 规定按下按键事件的行为,通常情况下会用ng-keydown
+ng-keyup # 规定松开按键事件的行为
 
-ng-mousedown:规定按下鼠标按键时的行为
-ng-mouseenter:规定鼠标指针穿过元素时的行为
-ng-mouseleave:规定鼠标指针离开元素时的行为
-ng-mousemove:规定鼠标指针在指定的元素中移动时的行为
-ng-mouseover:规定鼠标指针位于元素上方时的行为
-ng-mouseup:规定当在元素上松开鼠标按钮时的行为
+ng-mousedown # 规定按下鼠标按键时的行为
+ng-mouseenter # 规定鼠标指针穿过元素时的行为
+ng-mouseleave # 规定鼠标指针离开元素时的行为
+ng-mousemove # 规定鼠标指针在指定的元素中移动时的行为
+ng-mouseover # 规定鼠标指针位于元素上方时的行为
+ng-mouseup # 规定当在元素上松开鼠标按钮时的行为
 ```
 
 ## 样式
 
-```js
-ng-class:指定 HTML 元素使用的 CSS 类
-ng-class-even:类似 ng-class，但只在偶数行起作用,常用table/tr/td、ul/li等元素配合使用
-ng-class-odd:类似 ng-class，但只在奇数行起作用
+```bash
+ng-class # 指定 HTML 元素使用的 CSS 类
+ng-class-even # 类似 ng-class，但只在偶数行起作用,常用table/tr/td、ul/li等元素配合使用
+ng-class-odd # 类似 ng-class，但只在奇数行起作用
 
-ng-style:指定元素的 style 属性,可在控制器中为ng-style所在变量赋值
+ng-style # 指定元素的 style 属性,可在控制器中为ng-style所在变量赋值
 
-*ng-cloak:在应用正要加载时防止其闪烁。如<p ng-cloak>{{ 5 + 5 }}</p>
+*ng-cloak # 在应用正要加载时防止其闪烁。如<p ng-cloak>{{ 5 + 5 }}</p>
 ```
 
 ## from表单
 
-```js
-ng-submit:规定submit 事件的行为
-ng-value:规定 input 元素的值
-ng-model:绑定 HTML 控制器的值到应用数据,即angular变量值,变量值可以是字符串、对象甚至是对象属性
+```bash
+ng-submit # 规定submit 事件的行为
+ng-value # 规定 input 元素的值
+ng-model # 绑定 HTML 控制器的值到应用数据,即angular变量值,变量值可以是字符串、对象甚至是对象属性
 
-ng-selected:指定元素的 selected 属性,表示当前选择项,常需与select元素配合使用，类似于ng-checked
-ng-readonly:指定元素的 readonly 属性
+ng-selected # 指定元素的 selected 属性,表示当前选择项,常需与select元素配合使用，类似于ng-checked
+ng-readonly # 指定元素的 readonly 属性
 
-ng-disabled:可设为true|false时，规定一个元素是否被禁用,但不会隐藏
+ng-disabled # 可设为true|false时，规定一个元素是否被禁用,但不会隐藏
 
-ng-change:规定在内容改变时要执行的表达式
-ng-checked:用于设置复选框(checkbox)或单选按钮(radio)的 checked 属性
+ng-change # 规定在内容改变时要执行的表达式
+ng-checked # 用于设置复选框(checkbox)或单选按钮(radio)的 checked 属性
 
-*ng-list:输出时将文本转换为列表 (数组)，输入文本时用逗号隔开
+*ng-list # 输出时将文本转换为列表 (数组)，输入文本时用逗号隔开
 	<input ng-model="customers" ng-list/>
 	<pre>{{customers}}</pre>
 
-*ng-model-options:规定如何更新模型,option	指定了绑定数据的规则，规则如下:
-	{updateOn: 'event'}规则指定事件发生后绑定数据,如ng-model-options="{updateOn: 'blur'}"
-	{debounce : 1000} 规定等待多少毫秒后绑定数据
-	{allowInvalid : true|false} 规定是否需要验证后绑定数据
-	{getterSetter : true|false} 规定是否作为 getters/setters 绑定到模型
-	{timezone : '0100'} 规则是否使用时区
+*ng-model-options # 规定如何更新模型,option	指定了绑定数据的规则，规则如下:
+	{updateOn: 'event'} # 规则指定事件发生后绑定数据,如ng-model-options="{updateOn: 'blur'}"
+	{debounce : 1000} # 规定等待多少毫秒后绑定数据
+	{allowInvalid : true|false} # 规定是否需要验证后绑定数据
+	{getterSetter : true|false} # 规定是否作为 getters/setters 绑定到模型
+	{timezone : '0100'} # 规则是否使用时区
 
-ng-options:在 <select> 下拉列中指定 <options>,如<select ng-model="selectedName" ng-options="item for item in names"></select>
+ng-options:
+在 <select> 下拉列中指定 <options>,
+如<select ng-model="selectedName" ng-options="item for item in names"></select>
 	数据格式为字符串数组["",""] 使用x for x in names
 	数据格式为单独的对象{"a":1,"b":2} 使用x for (x,y) in names
 	数据格式为对象数组[{},{}] 使用x.attr for x in names
@@ -126,30 +138,47 @@ ng-options:在 <select> 下拉列中指定 <options>,如<select ng-model="select
 <option ng-repeat="x in address">{{x}}</option>
 ```
 
+- form表单的系统检验指令
+
+```bash
+$error.required # 唯一值验证
+$error.email # 文本输入内置电子邮件验证。
+$error.number # 带有数量验证的文本输入。也可以有最小和最大值的附加属性。
+$error.date # 带有输入日期文本输入。
+$error.url # 带有输入验证的URL文本输入。
+$error.minlength # 参数范围需从input中ng-minlength设置
+$error.maxlength # 参数范围需从input中ng-maxlength设置
+$error.pattern # 正则表达式需从input中ng-pattern设置
+$dirty # 表单有填写记录
+$pristine # 表单没有填写记录
+$valid # 字段内容合法的,如formname.$valid
+$invalid # 字段内容是非法的
+```
+
 ## angualr方法
 
-```js
-angular.isArray()	如果引用的是数组返回 true
-angular.isDate()	如果引用的是日期返回 true
-angular.isDefined()	如果引用的已定义返回 true
-angular.isElement()	如果引用的是 DOM 元素返回 true
-angular.isFunction()	如果引用的是函数返回 true
-angular.isNumber()	如果引用的是数字返回 true,如果输入框是input标签，要检测输入框内容是否为数字，则使用!isNaN($scope.myInput);
-angular.isObject()	如果引用的是对象返回 true
-angular.isString()	如果引用的是字符串返回 true
-angular.isUndefined()	如果引用的未定义返回 true
-angular.equals(a,b)	如果两个对象相等返回 true
+```bash
+angular.isArray()	# 如果引用的是数组返回 true
+angular.isDate()	# 如果引用的是日期返回 true
+angular.isDefined()	# 如果引用的已定义返回 true
+angular.isElement()	# 如果引用的是 DOM 元素返回 true
+angular.isFunction()	# 如果引用的是函数返回 true
+angular.isNumber()	# 如果引用的是数字返回 true,如果输入框是input标签，要检测输入框内容是否为数字，则使用!isNaN($scope.myInput);
+angular.isObject()	# 如果引用的是对象返回 true
+angular.isString()	# 如果引用的是字符串返回 true
+angular.isUndefined()	# 如果引用的未定义返回 true
+angular.equals(a,b)	# 如果两个对象相等返回 true
 
-*angular.fromJson()	反序列化 JSON 字符串
-*angular.toJson()	序列化 JSON 字符串
+*angular.fromJson()	# 反序列化 JSON 字符串
+*angular.toJson()	# 序列化 JSON 字符串
 
-angular.lowercase()	将字符串转换为小写
-angular.uppercase()	将字符串转换为大写
+angular.lowercase()	# 将字符串转换为小写
+angular.uppercase()	# 将字符串转换为大写
 
-angular.copy()	数组或对象深度拷贝
+angular.copy()	# 数组或对象深度拷贝
 
-*angular.forEach()	对象或数组的迭代函数
-/*
+*angular.forEach()	# 对象或数组的迭代函数
+
 var objs = [{a: 1}, {a: 2}];
 angular.forEach(objs, function(data, index, array) {
 	//data等价于array[index]
@@ -161,14 +190,14 @@ angular.forEach(objs, function(data, index, array) {
 	//1 "a" {a: 1, b: 2}
 	console.log(data,index,array);
 });
-*/
 ```
 
 ## 自定义指令
 
 ```bash
 -  template:
-指定了一个字符，最终会被加入自定义指令所有标签的innerHTML位置；
+指定了一个字符，最终会被加入自定义指令所有标签的innerHTML位置
+
 -  templateUrl:
     + 指定了一个文件路径，最终angular会发一个异步请求
       把文件内容加入到自定义指令所在标签的innerHTML位置。
@@ -177,14 +206,17 @@ angular.forEach(objs, function(data, index, array) {
       需要更改script标签中的type属性：type="text/ng-template"
 
 - replace:告诉angular,用template对应的字符串替换自定义指令所在的标签。
+
 - restrict:限制自定义指令的使用方式：
     +'A':attribue :需要以属性的形式书写自定义指令。'<div my-zhiling></div>'
     +'C':class :以类样式名的形式来书指令。   '<div class="my-zhiling"></div>'
     +'E':element:以自定义标签的形式来书写指令 '<my-zhiling></my-zhiling>'
     +'M':comment:以注释的形式来书写指令  <!-- directive: my-zhiling -->
+
 - transclude:需要提供一个布尔，为true会把自定义指令
     所在标签的innerHTML插入到模板中拥有ng-transclude指令的元素的innerHTML位置。
     *注意：不能够与replace共用(指的是transclude为true时，replace不能为true)*
+
 - scope:属性
     + 第一种写法：`scope:{aaa:'@myclass'}` 可以获得自定义指令所在标签中名为myclass的属性值
     + 第二种写法：`scope:{myclass:'@'}` //第一种的简写方式;
@@ -224,6 +256,89 @@ angular.forEach(objs, function(data, index, array) {
   - 可以传递一个布尔值，或者字符串，angular进根据它对数据进行全局查找
   - 也可以传递一个对象，angular会按照对象的属性到数据中精确查找对应的属性。
 
+```bash
+描述：过滤器
+uppercase:格式化字符串为大写
+lowercase:格式化字符串为小写
+currency:格式化为货币符号
+limitTo　: 正数，表示从头开始截取；负数表示从尾巴开始截取
+number : 格式化为保留小数点
+date : 格式化为时间
+orderBy:"?":某属性按从小到大排序 ( orderBy:'-id' , id 降序排列   )  ( orderBy:'id',  id 升序排列   )
+filter:"?":按条件过滤，如filter:{'name':'iphone'}为查找属性name值为iphone的对象
+```
+
+- 示例代码
+
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+  <input type="text" ng-model="name" />
+  <span>大写：{{name | uppercase}}</span>
+  <span>小写：{{name | lowercase}}</span>
+  <br />
+  <p>货币符号：{{ 250 | currency:"RMB" }}</p>
+  <p>正数截取4位：{{"1234567890" | limitTo :4}} </p>
+  <p>负数截取4位：{{"1234567890" | limitTo:-4}} </p>
+  <p>保留2位小数点：{{149016.1945000 | number:2}}</p>
+  <p>time转化为时间：{{1490161945000 | date:"yyyy-MM-dd HH:mm:ss"}}</p>
+  <p>排序及按条件筛选：</p>
+  <input type="text" ng-model="inData" />
+  <ul>
+    <li ng-repeat="x in names | orderBy:'-country' | filter : inData">
+      {{ x.name + ', ' + x.country }}
+    </li>
+  </ul>
+  <p>自定义过滤器，输入一个数值，得到该值+1结果：</p>
+  <input type="text" ng-model="inDIY" />
+  <p>{{inDIY|addOne}}</p>
+  <p>{{inDIY|addOneFilter}}</p>
+</div>
+```
+
+```js
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+  $scope.names = [{
+      name: 'Jani',
+      country: 'Norway'
+    },
+    {
+      name: 'Hege',
+      country: 'Sweden'
+    },
+    {
+      name: 'Kai',
+      country: 'Denmark'
+    }
+  ];
+});
+//自定义过滤器
+app.filter('addOne', function() {
+  return function(i) {
+    var result = 0;
+    if(!isNaN(i)) {
+      result = 1 + parseInt(i);
+    }
+    return result;
+  }
+});
+//自定义过滤器带参数
+app.service('addOneService', function() {
+  this.add = function(i) {
+    var result = 0;
+    if(!isNaN(i)) {
+      result = 1 + parseInt(i);
+    }
+    return result;
+  }
+});
+app.filter('addOneFilter', ['addOneService', function(addOneService) {
+  return function(i) {
+    return addOneService.add(i);
+  };
+}]);
+```
+
 ## angular服务
 
 - config `允许注入的是provider和constance(常量)`
@@ -245,6 +360,7 @@ app.value('version', '1.0')
 - decorator: `用来装饰其他 provider 的，不过 constant 除外`
 
 ```js
+var app = angular.module("myApp", []);
 app.value('version', '1.0');
 app.decorator('version', function ($delegate) {
     return $delegate + '.1';
@@ -264,7 +380,7 @@ app.decorator('myService', function($delegate){
 })
 ```
 
-- factory: `需要返回一个包含数据，方法的对象`
+- factory: 需要返回一个包含数据，方法的对象
 
 ```js
 // 创建
@@ -326,7 +442,7 @@ angular.module('myApp.services')
  });
 ```
 
-- provider: `创建 provider，与 factory、service 不同的是，provider 需要使用 this,$get 来返回方法和数据, 可以在 config 中被调用和配置`
+- provider: 创建 provider，与 factory、service 不同的是，provider 需要使用 `this.$get` 来返回方法和数据, 可以在 config 中被调用和配置
 
 ```js
 var app = angular.module("myApp", []);
@@ -409,6 +525,25 @@ myApp.controller('ctrl',['$scope','CustomService',function($scope,CustomService)
   - setTimeout()
 - $route ,提供一个方法，用于更新路由参数
   - $route.updateParams({page:2})//需要传入一个对象：就路由中的参数名及新的参数值;
+
+- 在一个页面里创建多个ng-app
+
+```js
+<div id="A1" ng-app="app1">
+	<input ng-model="name" type="text" placeholder="请输入姓名">
+	<p>我的姓名： {{name}}</p>
+</div>
+
+<div id="A2" ng-app="app2">
+	<input ng-model="age" type="number" placeholder="请输入年龄">
+	<p>我的年龄: {{age}}</p>
+</div>
+<script type="text/javascript">
+	var app1 = angular.module("app1", []); //自动加载
+	var app2 = angular.module("app2", []); //手动加载
+	angular.bootstrap(document.getElementById("A2"), ['app2']); // 手动加载2
+</script>
+```
 
 ## 参考链接
 
