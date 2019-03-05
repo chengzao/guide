@@ -585,6 +585,8 @@ angular.forEach(objs, function(data, index, array) {
     +'E':element:以自定义标签的形式来书写指令 '<my-zhiling></my-zhiling>'
     +'M':comment:以注释的形式来书写指令  <!-- directive: my-zhiling -->
 
+- controller：控制器里的数据在多个实例中公用
+
 - transclude:需要提供一个布尔，为true会把自定义指令
     所在标签的innerHTML插入到模板中拥有ng-transclude指令的元素的innerHTML位置。
     *注意：不能够与replace共用(指的是transclude为true时，replace不能为true)*
@@ -599,12 +601,10 @@ angular.forEach(objs, function(data, index, array) {
 
 - link：这个属性指向的是function(scope,element,attributes,controllers),
 有三个参数
-    +这三个参数名是随便起
-    + scope参数，类似于控制器的$scope，
-    *注意：只不过这里的scope下的属性值只能用在模板中，
-    一定要与控制器中$scope的使用范围区分*
-    + element:自定义指令所在标签的jqLite对象
-    + attributes:是一个object对象，通过它可以获取所有自定义指令所在标签的指令。
+    scope: 这里的scope下的属性值只能用在模板中, 一定要与控制器中$scope的使用范围区分
+    element: 自定义指令所在标签的jqLite对象
+    attributes: 是一个object对象，通过它可以获取所有自定义指令所在标签
+    controllers: 控制器，与require一起使用
 
 angular.module('docsTabsExample', [])
 .directive('myPane', function() {
@@ -753,7 +753,8 @@ angular
         "$scope",
         function MyTabsController($scope) {
           var panes = ($scope.panes = []);
-
+          // title在多个实例中公用
+          $scope.title = 'controller tab panel'
           $scope.select = function(pane) {
             angular.forEach(panes, function(pane) {
               pane.selected = false;
@@ -789,7 +790,7 @@ angular
 ```
 
 ```html
-# index.html
+<!-- index.html -->
 <my-tabs>
   <my-pane title="Hello">
     <p>Lorem ipsum dolor sit amet</p>
@@ -799,9 +800,20 @@ angular
     <p><a href ng-click="i = i + 1">counter: {{i || 0}}</a></p>
   </my-pane>
 </my-tabs>
+<p>-------------------------</p>
+<my-tabs>
+  <my-pane title="Angular">
+    <p>Lorem ipsum</p>
+  </my-pane>
+  <my-pane title="Well">
+    <em>Mauris elementum .</em>
+    <p><a href ng-click="i = i + 1">counter: {{i || 0}}</a></p>
+  </my-pane>
+</my-tabs>
 
-# my-tab.html
+<!-- my-tab.html -->
 <div class="tabbable">
+  <div>{{title}}</div>
   <ul class="nav nav-tabs">
     <li ng-repeat="pane in panes" ng-class="{active:pane.selected}">
       <a href="" ng-click="select(pane)">{{pane.title}}</a>
@@ -810,7 +822,7 @@ angular
   <div class="tab-content" ng-transclude></div>
 </div>
 
-# my-pane.html
+<!-- my-pane.html -->
 <div class="tab-pane" ng-show="selected">
   <h4>{{title}}</h4>
   <div ng-transclude></div>
