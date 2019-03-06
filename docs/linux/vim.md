@@ -79,7 +79,15 @@ vi 文件路径
 - hi MatchParen ctermbg=blue ctermfg=white   // 匹配的括号颜色修改
 ```
 
+## vim plugin
+
+- [vundle插件管理工具](https://github.com/VundleVim/Vundle.vim)
+- [vim-plug插件管理工具](https://github.com/junegunn/vim-plug)
+- [vim-scripts](http://vim-scripts.org/vim/scripts.html)
+
 ## 参考链接
 
 - [vim](https://github.com/judasn/Linux-Tutorial/)
 - [Vim YouCompleteMe](https://www.jianshu.com/p/d908ce81017a)
+- [利用vundle工具来管理vim插件](https://www.cnblogs.com/aaronLinux/p/6798898.html)
+- [spaceVim](https://github.com/SpaceVim/SpaceVim)
