@@ -50,21 +50,56 @@ Array.prototype.concat.apply([], arguments)
 
 删除数组的最后一个元素, 并返回该元素
 
+```js
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.pop();
+newArr // "d"
+arr // ["a", "b", "c"]
+```
+
 ### `push()`
 
 向数组最后添加一个或多个元素，返回新数组的长度
+
+```js
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.push('e');
+newArr // 5
+arr // ["a", "b", "c", "d", "e"]
+```
 
 ### `shift()`
 
 用于删除数组的第一个元素，并返回该元素
 
+```js
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.shift();
+newArr // "a"
+arr // ["b", "c", "d"]
+```
+
 ### `unshift()`
 
 在数组第一个位置添加元素，返回新数组的长度
 
+```js
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.unshift('e');
+newArr // 5
+arr // ["e", "a", "b", "c", "d"]
+```
+
 ### `reverse()`
 
 用于颠倒排列数组元素，返回改变后的数组
+
+```js
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.reverse();
+newArr // ["d", "c", "b", "a"]
+arr // ["d", "c", "b", "a"]
+```
 
 ### `splice()`
 
@@ -76,8 +111,17 @@ Array.prototype.concat.apply([], arguments)
 // addEle1 被插入数组的新元素
 arr.splice(start, count, addEle1, ...);
 
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.splice(1, 2, 'e');
+newArr // ["b", "c"]
+arr // ["a", "e", "d"]
+
 // 如果插入元素，则splice的第二个参数设为0即可
-var a = [1, 1, 1]; a.splice(1, 0, 2)
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.splice(1, 0, 'e');
+newArr // []
+arr // ["a", "e", "b", "c", "d"]
+
 ```
 
 ### `sort()`
@@ -89,8 +133,18 @@ var a = [1, 1, 1]; a.splice(1, 0, 2)
 //小-大：
 function (a, b) {return a - b;}
 
+var arr = ['4', '2', '1', '3'];
+var newArr = arr.sort(function(a,b){return a-b;});
+newArr // ["1", "2", "3", "4"]
+arr // ["1", "2", "3", "4"]
+
 // 大-小：
 function (a, b) {return b - a;}
+
+var arr = [{id: 4}, {id: 2}, {id: 1}, {id: 3}];
+var newArr = arr.sort(function(a,b){return b.id-a.id;});
+newArr // [{id: 4}, {id: 3}, {id: 2}, {id: 1}]
+arr // [[{id: 4}, {id: 3}, {id: 2}, {id: 1}]
 ```
 
 ## 原数组不变
@@ -101,16 +155,104 @@ function (a, b) {return b - a;}
 - 如果数组成员包括对象，`concat`方法返回当前数组的一个浅拷贝
 - `“浅拷贝”`，指的是新数组拷贝的是对象的引用
 
+```js
+var arr1 = ['a', 2],
+  arr2 = [2, 'c'],
+  arr3 = [{"name": "a"}, {"name": "d"}];
+
+var newArr = arr1.concat(arr2, arr3);
+newArr //  ["a", 2, 2, "c", {"name": "a"}, {"name": "d"}]
+arr1 // ["a", 2]
+
+// 浅拷贝
+var newArr2 = arr3 ;
+newArr2[0].name = 'Hello'
+newArr2 // [{"name": "hello"}, {"name": "d"}];
+arr3 // [{"name": "hello"}, {"name": "d"}];
+
+// 浅拷贝
+var arr = [{"name": "a"}, {"name": "d"}]
+var copy = [].concat(arr)
+copy[0].name = 'world';
+copy // [{"name": "word"}, {"name": "d"}]
+arr // [{"name": "word"}, {"name": "d"}]
+
+// concat 深拷贝
+var arr1 = ["1","2","3"];
+var arr2 = arr1.concat();
+arr2[1] = "9";
+arr1 // ["1", "2", "3"]
+arr2 // ["1", "9", "3"]
+
+// slice 深拷贝
+var arr1 = ["1","2","3"];
+var arr2 = arr1.slice();
+arr2[1] = "9";
+arr1 // ["1", "2", "3"]
+arr2 // ["1", "9", "3"]
+```
+
 ### `slice(start, end)`
 
 - 用于提取目标数组的一部分，返回一个新数组
 
+```js
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.slice(1, 12);
+newArr // ["b"]
+arr // ["a", "b", "c", "d"]
+
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.slice(1, 12);
+newArr // ["b", "c", "d"]
+arr // ["a", "b", "c", "d"]
+
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.slice(-1, 4);
+newArr // ["d"]
+arr // ["a", "b", "c", "d"]
+
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.slice(-2, 3);
+newArr // ["c"]
+arr // ["a", "b", "c", "d"]
+
+```
+
 ### `join()`
 
 - 以指定参数作为分隔符，连接所有数组成员, 返回字符串
+
+```js
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.join('#');
+newArr // "a#b#c#d"
+arr // ["a", "b", "c", "d"]
+```
+
 - 如果不提供参数，默认用逗号分隔
+
+```js
+var arr = ['a', 'b', 'c', 'd'];
+var newArr = arr.join();
+newArr // "a,b,c,d"
+arr // ["a", "b", "c", "d"]
+```
+
 - 如果数组成员是undefined或null或空位，会被转成空字符串
-- 通过call方法，该方法可用于分隔字符串或类似数组的对象 `Array.prototype.join.call('hello', '-')`
+
+```js
+var arr = ['a', 'b', null,'c', undefined,'d', , 'e'];
+var newArr = arr.join('@');
+newArr // "a@b@@c@@d@@e"
+arr // ["a", "b", "c", "d"]
+```
+
+- 通过call方法，该方法可用于分隔字符串或类似数组的对象
+
+```js
+Array.prototype.join.call('hello', '-') // "h-e-l-l-o"
+```
 
 ## reduce
 
@@ -124,15 +266,48 @@ function (a, b) {return b - a;}
     - 用作第一次调用 callback函数时的第一个参数的值
     - 如果没有提供初始值，则将使用数组中的第一个元素
 
+```js
+var arr = [1, 2, 3, 4];
+var newArr = arr.reduce(function(pre, cur){
+  return pre + cur
+}, 10);
+newArr // 20
+```
+
 ## valueOf与toString
 
 - `toString()`方法返回数组的字符串形式
 - `valueOf()`方法返回数组本身
 
+```js
+var arr = ['a', 'b', 3, 4];
+arr.toString() // "a,b,3,4"
+arr.valueOf() // ['a', 'b', 3, 4]
+```
+
 ## map
 
 - `map(callback(options)[,thisArg])` 返回新数组
 - `options: (elem, index)`
+
+```js
+var arr = ['a', 'b', 3, 4];
+arr.map(function(item, index){
+  console.log(item, index)
+})
+
+// a 0
+// b 1
+// 3 2
+// 4 3
+
+var arr = [1, 2, 3, 4];
+var newArr = arr.map(function(item, index){
+  return item+1
+})
+newArr // [2, 3, 4, 5]
+arr // [1, 2, 3, 4]
+```
 
 ## indexOf与lastIndexOf
 
@@ -220,15 +395,18 @@ for(var i = 0 arrL=arr.length;i < arrL ; i++){
 ### while
 
 ```js
-// while循环
+// func1
+var arr = ['a', 'b', 'c', 'd']
 var i = 0;
-while (i < a.length) {
-  console.log(a[i]);
+while (i < arr.length) {
+  console.log(arr[i]); // a,b,c,d
   i++;
 }
 
-var l = a.length;
+// func2
+var arr = ['a', 'b', 'c', 'd']
+var l = arr.length;
 while (l--) {
-  console.log(a[l]);
+  console.log(arr[l]); // d,c,b,a
 }
 ```
