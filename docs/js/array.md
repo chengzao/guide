@@ -30,10 +30,43 @@ o.hasOwnProperty('toString') // false
 
 - `Array.isArray(option)` 返回一个布尔值，表示参数是否为数组
 
-## 类数组转数组
+```js
+Array.isArray([1, 2, 3]);  // true
+Array.isArray({foo: 123}); // false
+Array.isArray("foobar");   // false
+Array.isArray(undefined);  // false
+```
 
-- `Array.prototype.slice.call(arguments)`
-- `Array.from(arguments)`
+## Array.of
+
+- 创建一个具有可变数量参数的新数组实例，而不考虑参数的数量或类型
+- `Array.of(element0[, element1[, ...[, elementN]]])`
+
+```js
+Array.of(7);       // [7]
+Array.of(1, 2, 3); // [1, 2, 3]
+
+Array(7);          // [ , , , , , , ]
+Array(1, 2, 3);    // [1, 2, 3]
+```
+
+## include
+
+- `arr.includes(valueToFind[, fromIndex])`
+- 用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false
+
+```js
+[1, 2, 3].includes(2);     // true
+[1, 2, 3].includes(4);     // false
+[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+[1, 2, NaN].includes(NaN); // true
+```
+
+## Array.from
+
+- 类数组转数组`Array.prototype.slice.call(arguments)`
+- 类数组转数组`Array.from(arguments)`
 
 ``` js
 Array.prototype.slice.apply({0:1,length:1})
@@ -42,11 +75,20 @@ Array.prototype.slice.apply({0:1,length:2})
 Array.prototype.slice.apply({length:1})
 Array.prototype.slice.call(arguments)
 Array.prototype.concat.apply([], arguments)
+
+Array.from('foo') // ["f", "o", "o"]
+Array.from([1, 2, 3], x => x + x) // [2, 4, 6]
+
+var s = new Set(['foo', window]);
+Array.from(s); // ["foo", Window]
+
+var m = new Map([[1, 2], [2, 4], [4, 8]]);
+Array.from(m); // [[1, 2], [2, 4], [4, 8]]
 ```
 
 ## 会改变原数组
 
-### `pop()`
+### `pop`
 
 删除数组的最后一个元素, 并返回该元素
 
@@ -57,7 +99,7 @@ newArr // "d"
 arr // ["a", "b", "c"]
 ```
 
-### `push()`
+### `push`
 
 向数组最后添加一个或多个元素，返回新数组的长度
 
@@ -68,7 +110,7 @@ newArr // 5
 arr // ["a", "b", "c", "d", "e"]
 ```
 
-### `shift()`
+### `shift`
 
 用于删除数组的第一个元素，并返回该元素
 
@@ -79,7 +121,7 @@ newArr // "a"
 arr // ["b", "c", "d"]
 ```
 
-### `unshift()`
+### `unshift`
 
 在数组第一个位置添加元素，返回新数组的长度
 
@@ -90,7 +132,7 @@ newArr // 5
 arr // ["e", "a", "b", "c", "d"]
 ```
 
-### `reverse()`
+### `reverse`
 
 用于颠倒排列数组元素，返回改变后的数组
 
@@ -101,7 +143,7 @@ newArr // ["d", "c", "b", "a"]
 arr // ["d", "c", "b", "a"]
 ```
 
-### `splice()`
+### `splice`
 
 删除原数组部分成员, 并可以在删除的位置添加新成员,返回被删除的元素
 
@@ -124,7 +166,7 @@ arr // ["a", "e", "b", "c", "d"]
 
 ```
 
-### `sort()`
+### `sort`
 
 对数组成员进行排序 (`默认是按照字典顺序排序`)
 
@@ -147,9 +189,27 @@ newArr // [{id: 4}, {id: 3}, {id: 2}, {id: 1}]
 arr // [[{id: 4}, {id: 3}, {id: 2}, {id: 1}]
 ```
 
+### fill
+
+- `arr.fill(value[, start[, end]])`
+- 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素
+- 不包括终止索引
+
+```js
+var arr = ['a', 'b', 1, 2]
+var newArr = arr.fill(2)
+newArr // [2, 2, 2, 2]
+arr // [2, 2, 2, 2]
+
+var arr = ['a', 'b', 1, 2]
+var newArr = arr.fill('m', 0, 2)
+newArr // ["m", "m", 1, 2]
+arr // ["m", "m", 1, 2]
+```
+
 ## 原数组不变
 
-### `concat()`
+### `concat`
 
 - 用于多个数组的合并,返回一个新数组
 - 如果数组成员包括对象，`concat`方法返回当前数组的一个浅拷贝
@@ -192,9 +252,9 @@ arr1 // ["1", "2", "3"]
 arr2 // ["1", "9", "3"]
 ```
 
-### `slice(start, end)`
+### slice
 
-- 用于提取目标数组的一部分，返回一个新数组
+- `slice(start, end)`用于提取目标数组的一部分，返回一个新数组
 
 ```js
 var arr = ['a', 'b', 'c', 'd'];
@@ -219,7 +279,7 @@ arr // ["a", "b", "c", "d"]
 
 ```
 
-### `join()`
+### join
 
 - 以指定参数作为分隔符，连接所有数组成员, 返回字符串
 
@@ -242,8 +302,8 @@ arr // ["a", "b", "c", "d"]
 - 如果数组成员是undefined或null或空位，会被转成空字符串
 
 ```js
-var arr = ['a', 'b', null,'c', undefined,'d', , 'e'];
-var newArr = arr.join('@');
+var arr = ['a', 'b', null,'c', undefined,'d', , 'e']
+var newArr = arr.join('@')
 newArr // "a@b@@c@@d@@e"
 arr // ["a", "b", "c", "d"]
 ```
@@ -252,6 +312,44 @@ arr // ["a", "b", "c", "d"]
 
 ```js
 Array.prototype.join.call('hello', '-') // "h-e-l-l-o"
+```
+
+### flat
+
+- `arr.flat(depth)`
+- 会递归到指定深度将所有子数组连接，并返回一个新数组
+- 方法会移除数组中的空项
+
+```js
+var arr = [1, 2, [3, 4]]
+var newArr = arr.flat()
+newArr // [1, 2, 3, 4]
+arr // [1, 2, [3, 4]]
+
+var arr = [1, 2, [3, 4, [5, 6]]]
+var newArr = arr.flat(2)
+newArr // [1, 2, 3, 4, 5, 6]
+arr // [1, 2, [3, 4, [5, 6]]]
+```
+
+### flatMap
+
+- `arr.flatMap(function callback(currentValue[, index[, array]])`
+
+```js
+var arr = [1, 2, 3, 4]
+arr.map(x => [x * 2]) // [[2], [4], [6], [8]]
+
+var arr = [1, 2, 3, 4]
+arr.flatMap(x => [x * 2]) // [2, 4, 6, 8]
+
+var arr = ["今天天气不错", "", "早上好"]
+arr.map(s => s.split(""))
+// [["今", "天", "天", "气", "不", "错"],[""],["早", "上", "好"]]
+
+var arr = ["今天天气不错", "", "早上好"]
+arr.flatMap(s => s.split(""))
+// ["今", "天", "天", "气", "不", "错", "早", "上", "好"]
 ```
 
 ## reduce
@@ -312,29 +410,112 @@ arr // [1, 2, 3, 4]
 ## indexOf与lastIndexOf
 
 - `indexOf()`返回元素第一次出现的位置，没有则返回`-1`
+
+```js
+var arr = ['a', 'b', 3, 4];
+arr.indexOf('b') // 1
+arr.indexOf('c') // -1
+```
+
 - `indexOf()`方法接受第二个参数，表示搜索的开始位置
+
+```js
+var arr = ['a', 'b', 3, 4];
+arr.indexOf('b', 1) // 1
+arr.indexOf('b', 2) // -1
+```
+
 - `lastIndexOf()`返回元素最后一次出现的位置，没有则返回`-1`
+
+```js
+var arr = ['a', 3,'b', 3, 4];
+arr.lastIndexOf(3) // 3
+arr.lastIndexOf(3, 1) // 1
+```
+
 - 两个方法不能用来搜索NaN的位置
+
+```js
+var arr = ['a', NaN,'b', null, 'c', undefined, 'd']
+arr.indexOf(NaN) // -1 不能正确搜索到结果
+arr.indexOf(null) // 3
+arr.indexOf(undefined) // 5
+```
 
 ## filter
 
 - `filter(callback(element[, index[, array]])[, thisArg])`
 - 过滤数组成员，满足条件的成员组成一个新数组返回
 
+```js
+var arr = [1, 3, 9, 4, 2, 6];
+var newArr = arr.filter((element, index) => {
+  return element > 4;
+})
+newArr // [9, 6]
+arr // [1, 3, 9, 4, 2, 6]
+```
+
 ## forEach
 
-- `forEach(callback(options)[,thisArg])` 不返回值，只用来操作数据
-- `options: (elem, index)`
+- `forEach(callback(elem, index)[,thisArg])` 不返回值，只用来操作数据
+
+```js
+var array1 = ['a', 'b', 'c'];
+
+array1.forEach(function(element,index) {
+  console.log(element, index);
+});
+
+// a 0
+// b 1
+// c 2
+```
 
 ## every
 
 - `every(callback[, thisArg])`
 - 所有成员的返回值都是`true`，整个`every`方法才返回`true`，否则返回`false`
 
+```js
+var arr = [1, 30, 39, 29, 10, 13];
+var res = arr.every(function(ele){
+  return ele < 40;
+})
+
+res // true
+```
+
 ## some
 
 - `some(callback[, thisArg])`
 - 只要一个成员的返回值是`true`，则整个some方法的返回值就是`true`，否则返回`false`
+
+```js
+var array = [1, 2, 3, 4, 5];
+var res = array.some(function(ele){
+  return ele % 2 === 0;
+})
+
+res // true
+```
+
+## `[Symbol.iterator]()`
+
+```js
+var arr = ['w', 'y', 'k'];
+var eArr = arr[Symbol.iterator]();
+for (let letter of eArr) {
+  console.log(letter); // w , y , k
+}
+
+var arr = ['w', 'y', 'k'];
+var eArr = arr[Symbol.iterator]();
+eArr.next() // {value: "w", done: false}
+eArr.next() // {value: "y", done: false}
+eArr.next() // {value: "k", done: false}
+eArr.next() // {value: undefined, done: false}
+```
 
 ## 创建数组
 

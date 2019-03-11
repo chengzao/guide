@@ -2,6 +2,7 @@
 
 站点资源
 
+- [developer mozilla cn](https://developer.mozilla.org/zh-CN/)
 - [javascript.fun](http://www.javascript.fun/)
 - [Web前端导航](http://www.alloyteam.com/nav/)
 - [wangdoc/javascript-tutorial](https://github.com/wangdoc/javascript-tutorial)
@@ -13,44 +14,40 @@
 - [前端awesomes-trend](https://www.awesomes.cn/rank?sort=trend)
 - [stephentian/33-js-concepts](https://github.com/stephentian/33-js-concepts)
 - [javascriptweekly](https://javascriptweekly.com/)
+- [react.statuscode](https://react.statuscode.com/)
+- [statuscode](http://statuscode.com/)
 - [medium](https://medium.com/)
-- [zhangxinxu好文推荐](https://www.zhangxinxu.com/php/myRecomm)
-- [wesbos博客](https://wesbos.com/)
+- [css-tricks](https://css-tricks.com/)
 - [freecodecamp](https://www.freecodecamp.org/)
 - [socketio](https://github.com/socketio/socket.io/)
 - [yeoman](http://yeoman.io/)
-- [反击爬虫，前端工程师的脑洞可以有多大？](http://litten.me/2017/07/09/prevent-spiders/)
-- [教你从零开始搭建一款前端脚手架工具](https://segmentfault.com/a/1190000006190814)
 - [World Wide Web](http://info.cern.ch/hypertext/WWW/TheProject.html)
-- [centos server for web](https://segmentfault.com/a/1190000013242438)
-- [开发工具集](https://dodola.gitbooks.io/gitbook/content/)
-- [Web Worker 使用教程](http://www.ruanyifeng.com/blog/2018/07/web-worker.html)
 - [electronjs](https://electronjs.org/docs/faq)
 - [fundbug](https://www.fundebug.com/)
-- [how-i-became-a-confident-frontend-developer](https://lambda.academy/how-i-became-a-confident-frontend-developer/)
 - [webcomponents](https://www.webcomponents.org/introduction)
 - [codewars算法](https://www.codewars.com/)
 - [leetcode算法](https://leetcode.com/)
+- [BRENDAN EICH Blog](https://brendaneich.com)
+- [webcomponents](https://www.webcomponents.org/introduction)
+- [hellogithub](https://hellogithub.com/)
 
 js
 
 - [如何使用Tween.js各类原生动画运动缓动算法](http://www.zhangxinxu.com/wordpress/2016/12/how-use-tween-js-animation-easing/)
-- [读 Zepto 源码系列](https://github.com/yeyuqiudeng/reading-zepto/blob/master/README.md)
-- [原生JS中对象相关API合集](https://microzz.com/2017/04/20/jsobject)
-- [对象的拷贝](http://javascript.ruanyifeng.com/stdlib/attributes.html#toc10)
-- [对象的拷贝](http://javascript.ruanyifeng.com/oop/object.html#toc3)
-- [s笔记——call,apply,bind使用笔记](http://www.cnblogs.com/52fhy/p/5118877.html)
-- [JavaScript插入节点小结](http://www.cnblogs.com/longhx/p/5514443.html)
-- [JavaScript有用的代码片段和trick](https://segmentfault.com/a/1190000011557368)
-- [思路清奇：通过 JavaScript 获取移动设备的型号](https://segmentfault.com/a/1190000010157682)
-- [JavaScript判断当前客户端](https://segmentfault.com/a/1190000005783538)
-- [typing writer](https://codepen.io/bradtraversy/pen/jeNjwP)
-- [canvas](https://www.yuque.com/airing/canvas/readme)
+- [canvas中文文档](https://www.yuque.com/airing/canvas/readme)
 - [live2D看板娘](https://haremu.com/p/205)
+- [instant.page](https://github.com/instantpage/instant.page)
+- [quicklink](https://github.com/GoogleChromeLabs/quicklink)
+- [Workbox 3：Service Worker 可以如此简单](https://mp.weixin.qq.com/s?__biz=MzI5NjM5NDQxMg==&mid=2247483948&idx=1&sn=801a4ac325da1ae294ef5a255e1d7c74&chksm=ec4449efdb33c0f985d532cf5698dcf08ab22510fdc8cfa38d29cf3dd910c636eb40e1e70058&mpshare=1&scene=1&srcid=0128caxsWCrpaanthUdcxARr#rd)
+- [decrator（修饰器）的业务应用](https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651555774&idx=1&sn=46e774e811db7799e535a8e23e7c4165&chksm=8025507fb752d969ded010ca71c13bc1f3784ab097eb741da0686a0299ead71ddedadac9d6a2&mpshare=1&scene=1&srcid=0128F8igA6TosVihbPmdatcz#rd)
+- [2018年 JavaScript 明星项目](https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651555805&idx=1&sn=72d88ae4703d8aa87dd01b9aa949dd4d&chksm=8025501cb752d90ab3c231e8ef5932a2d5550d6e529087404b508a75a88e120c0cbb441db2e1&mpshare=1&scene=1&srcid=0128QiqpVFkDeWLEEmZLorzt#rd)
+- [从零搭建docker+jenkins+node.js自动化部署环境](https://juejin.im/post/5b8ddb70e51d45389153f288)
+- [通过vue-cli3构建一个SSR应用程序](https://juejin.im/post/5b98e5875188255c8320f88a)
+- [vue-cli3 项目从搭建优化到docker部署](https://juejin.im/post/5c4a6fcd518825469414e062?utm_source=gold_browser_extension)
+- [H5 notification浏览器桌面通知](https://juejin.im/post/5c6df433f265da2de80f5eda)
 
 正则regexp
 
-- [最全的表达式](http://www.toutiao.com/i6411296780985565698/)
 - [RegExp 对象](http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp)
 - [Javascript正则表达式](https://www.baidufe.com/item/eb10deb92f2c05ca32cf.html)
 - [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)
@@ -59,19 +56,12 @@ js
 es6
 
 - [Babel 入门教程](http://www.ruanyifeng.com/blog/2016/01/babel.html)
-- [import-export](http://www.jianshu.com/p/b7db6224a4aa)
-- [JavaScript中的可枚举属性与不可枚举属性](http://www.cnblogs.com/kongxy/p/4618173.html)
 - [babel](http://babeljs.io/)
-- [BRENDAN EICH Blog](https://brendaneich.com/2012/10/harmony-of-dreams-come-true/)
-- [Callback Promise Generator Async-Await 和异常处理的演进](https://www.jianshu.com/p/78dfb38ac3d7?winzoom=1)
 - [es6.ruanyifeng](http://es6.ruanyifeng.com/)
-
-插件
-
 - [原生JS实现最简单的图片懒加载](https://github.com/axuebin/react-blog/issues/1)
 - [阿里云 Aliplayer](https://player.alicdn.com/aliplayer/index.html)
 - [layui.layer](http://www.layui.com/doc/modules/layer.html)
-- [移动端滚动插件](https://github.com/ustbhuangyi/better-scroll)
+- [better-scroll移动端滚动插件](https://github.com/ustbhuangyi/better-scroll)
 - [select2](https://github.com/select2/select2)
 - [fullpage.js](http://www.dowebok.com/77.html)
 - [calendar js](http://shici.store/poetry-calendar/assets/js/calendar.js)
@@ -135,11 +125,6 @@ gh-pages ssl
 - [Custom domain redirects for GitHub Pages sites](https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/)
 - [Troubleshooting custom domains](https://help.github.com/articles/troubleshooting-custom-domains/)
 
-PERSION
-
-- [juejin/chenzao](https://juejin.im/user/592e24c60ce463006b4b8c23)
-- [segmentfault](https://segmentfault.com/u/chenio/bookmarks)
-
 代码注释规范
 
 - [usejsdoc](http://usejsdoc.org/index.html)
@@ -152,17 +137,14 @@ video
 - [frontendmasters](https://frontendmasters.com/)
 - [coursera](https://www.coursera.org)
 - [udemy](https://www.udemy.com)
+- [youtube](https://www.youtube.com/)
 
 html
 
 - [点击form只提交form中input的一部分](https://segmentfault.com/q/1010000005331233)
 - [H5 的复制操作](https://segmentfault.com/a/1190000007616673)
 - [阻止元素被选中及清除选中的方法](https://segmentfault.com/a/1190000000638651)
-- [nodeType](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType)
-- [Image 对象](http://www.w3school.com.cn/jsref/dom_obj_image.asp)
-- [面试的信心来源于过硬的基础](https://segmentfault.com/a/1190000013331105)
 - [基于HTML5 drag/drop模块拖动插入排序删除完整实例](https://www.zhangxinxu.com/wordpress/2016/11/html5-drag-drop-module-insert-sort-delete-demo/)
-- [webcomponents](https://www.webcomponents.org/introduction)
 
 css
 

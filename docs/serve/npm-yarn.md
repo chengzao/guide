@@ -300,6 +300,7 @@ commitizen husky lint-staged prettier eslint commitlint
 npm-run-all
 better-scripts
 quicklink
+instant.page
 
 rirmaf
 cross-env dotenv yargs commander
