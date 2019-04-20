@@ -471,3 +471,8 @@ greet('bob')
 // bob: 2
 // "hi bob"
 ```
+
+## 栈和队列
+
+- `栈`数据结构的访问规则是`LIFO(Last-in-First-Out,后进先出)`
+- `队列`数据结构的访问规则是`FIFO(First-In-First-Out, 先进先出)`
