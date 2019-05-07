@@ -302,13 +302,14 @@ better-scripts
 quicklink
 instant.page
 
-rirmaf
+rimraf
 cross-env dotenv yargs commander
 colors chalk
 Path-to-RegExp
 fs-extra memory-fs
 cors http-proxy-middleware
 serve
+express-history-api-fallback
 ```
 
 ## 参考链接
