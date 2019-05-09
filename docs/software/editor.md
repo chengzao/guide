@@ -86,40 +86,44 @@
 <details>
 <summary>view code</summary>
 
-```json
+```js
 {
-  //.vue文件template格式化支持，并使用prettyhtml插件
-  "vetur.format.defaultFormatter.html": "prettyhtml",
-  //prettyhtml格式化配置，属性强制换行
-  "vetur.format.defaultFormatterOptions": {
-    "prettyhtml": {
-      "printWidth": 100, // No line exceeds 100 characters
-      "singleQuote": false // Prefer double quotes over single quotes
-    }
-  },
-  //根据文件后缀名定义vue文件类型
-  "files.associations": {
-    "*.vue": "vue"
-  },
-  //配置 ESLint 检查的文件类型
+  // eslint
+  "eslint.enable": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     {
+      "language": "html",
+      "autoFix": true
+    },
+    {
       "language": "vue",
       "autoFix": true
-    }
+    },
+    "typescript",
+    "typescriptreact"
   ],
-  //保存时eslint自动修复错误
   "eslint.autoFixOnSave": true,
-  //保存自动格式化
-  "editor.formatOnSave": true,
-  //开启 eslint 支持
+  // vetur
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.postcss": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  // prettier
+  "prettier.requireConfig": true,
   "prettier.eslintIntegration": true,
-  //使用单引号
-  "prettier.singleQuote": true,
-  //结尾不加分号
-  "prettier.semi": false
+  // editor
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  // 配置文件关联
+  "files.associations": {
+    "*.vue": "vue"
+  }
 }
 ```
 
@@ -130,7 +134,7 @@
 <details>
 <summary>view code</summary>
 
-```json
+```js
 {
     "workbench.iconTheme": "material-icon-theme",
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
