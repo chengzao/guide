@@ -10,73 +10,73 @@
   <summary>view code</summary>
 
   ```bash
-  # html css
-  - HTML CSS Support
-  - HTML Snippets
-  - Mithril Emmet
-  - HTMLHint
-  - stylelint
-  - Autoprefixer  // css3兼容
-  - csscomb  // css书写顺序
-  - language-stylus
-  - sass
-  - px to rem
+  - Bookmarks
+  - Bracket Pair Colorizer
+  - Debugger for Chrome
+  - EditorConfig for VS Code
+  - Error Gutters
+  - ESLint
+  - TSLint
+  - filesize
+  - Add jsdoc comments
 
-  # js
-  - JavaScript (ES6) code snippets
-  - Import Cost  // js import插件包
+  - open in browser
+  - PicGo
 
-  # npm
-  - npm
-  - npm Intellisense
+  - Live Server
+  - Material Theme
+  - Material Icon Theme
+  - One Dark Pro
 
-  # 补全
-  - Path Autocomplete
-  - Path Intellisense
+  - WakaTime
+  - Terminal
+
+  - Docker
+  - Settings Sync
+
+  - Git History
+  - GitLens — Git supercharged
+
+
+
   - Auto Close Tag
   - Auto Rename Tag
+  - Mithril Emmet
+  - HTML CSS Support
+  - HTML Snippets
+  - HTMLHint
 
-  # 类型检测
-  - ESLint
-  - tslint
-  - EditorConfig for Visual Studio Code // 格式化插件
+  - Import Cost
+  - markdownlint
 
-  # vue
+  - Path Autocomplete
+  - Path Intellisense
+
+  - Prettier - Code formatter
+  - stylelint
+
+  - TODO Highlight
+
+  - Autoprefixer
+  - CSScomb
+  - language-stylus
+  - Sass
+
+  - REST Client
+
+  - Angular 1 JavaScript and TypeScript Snippets
+
   - Vetur
   - Vue 2 Snippets
 
-  # react
+  - JavaScript (ES6) code snippets
+  - ES7 React/Redux/GraphQL/React-Native snippets
   - Reactjs code snippets
-  - VS Code ES7 React/Redux/React-Native/JS snippets
 
-  # markdown
-  - markdownlint
-  - Markdown-TOC
+  - minapp
 
-  # git
-  - Git History
-  - gitlens
-
-  # 其他
-  - Bracket Pair Colorizer // 括号颜色
-  - Settings Sync // 配置同步
-  - Material Icon Theme // 图标
-  - Material Theme // 皮肤
-  - One Dark Pro // 皮肤
-  - Terminal // 命令行
-  - Prettier // 格式化
-  - Polacode  // 截图
-  - minapp // 微信小程序
-  - Live Server  // 服务
-  - open in Browser // 浏览器打开插件
-  - Chinese (Simplifiled) // 汉化包
-  - filesize // 显示文件大小
-  - bookmarks // 标记书签
-  - Codelf // 命名插件
-  - dash // dash搜索插件
-  - Error Gutters // 错误图标提醒
-  - rest client // api请求
-  - TODO Highlight // TODO颜色高亮
+  - npm
+  - npm Intellisense
   ```
 
   </details>
