@@ -34,8 +34,12 @@ lessc -x styles.less styles.css
  .bcss{
    color:#ccc;
  }
+```
 
- //编译后的css文件
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
+ //less编译后的对应css文件：
 @charset 'utf-8';
 .cless {
   color: #ff0000;
@@ -44,6 +48,8 @@ lessc -x styles.less styles.css
   color: #ccc;
 }
 ```
+
+</CodeBlock>
 
 - 变量
 
@@ -63,7 +69,11 @@ lessc -x styles.less styles.css
 .col2{
   color: @red;
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 @charset 'utf-8';
 /* 这是一个编译后看见的注释*/
@@ -74,6 +84,8 @@ lessc -x styles.less styles.css
   color: #ff0000;
 }
 ```
+
+</CodeBlock>
 
 - 混合
 
@@ -88,7 +100,11 @@ lessc -x styles.less styles.css
     background-color: @red;
     .bord;//混合
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 .bord {
   border: 1px solid #000;
@@ -100,6 +116,8 @@ lessc -x styles.less styles.css
   border: 1px solid #000;
 }
 ```
+
+</CodeBlock>
 
 - 混合-带参数
 
@@ -113,7 +131,11 @@ lessc -x styles.less styles.css
     height: @_width;
     .border_02(20px);
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 .border_hunhe {
   width: 300px;
@@ -121,6 +143,8 @@ lessc -x styles.less styles.css
   border: solid #ffff00 20px;
 }
 ```
+
+</CodeBlock>
 
 - 混合-默认值
 
@@ -136,7 +160,11 @@ lessc -x styles.less styles.css
 .border_hunhe21{
     .border_03(12px);
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 .border_hunhe2 {
   border: 10px solid #008000;
@@ -145,6 +173,8 @@ lessc -x styles.less styles.css
   border: 12px solid #008000;
 }
 ```
+
+</CodeBlock>
 
 - 混合用法:默认值为变量
 
@@ -161,7 +191,11 @@ lessc -x styles.less styles.css
 .border_hunhe31{
     .border_04(13px);
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 .border_hunhe3 {
   border: 10px solid #ff0000;
@@ -170,6 +204,8 @@ lessc -x styles.less styles.css
   border: 13px solid #ff0000;
 }
 ```
+
+</CodeBlock>
 
 - 匹配模式
 
@@ -215,7 +251,11 @@ lessc -x styles.less styles.css
 .sanjiao1{
     .trangle(dsa,20px);
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 /* 三角形 border */
 .sanjiao {
@@ -232,6 +272,8 @@ lessc -x styles.less styles.css
   overflow: hidden;
 }
 ```
+
+</CodeBlock>
 
 - 运算: 其中一个带单位即可.**注意:减法之间的格式;命名变量在运算中不可添加单位**
 
@@ -252,8 +294,11 @@ lessc -x styles.less styles.css
   width: @w10 + 10px;
   height: @h10/3*3px - 6+4;
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
 
+```less
 //less编译后的对应css文件：
 .add {
   width: 110px;
@@ -269,6 +314,8 @@ lessc -x styles.less styles.css
   height: 118px;
 }
 ```
+
+</CodeBlock>
 
 - 嵌套用法
 
@@ -304,7 +351,11 @@ ul{
   width: 100px;
  }
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 ul {
   width: 100px;
@@ -336,6 +387,8 @@ ul a span {
 }
 ```
 
+</CodeBlock>
+
 - argument用法
 
 ```less
@@ -349,7 +402,11 @@ ul a span {
 .bor21{
   .brd2(red);
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 .bor2 {
   border: #cccccc 10px solid;
@@ -359,18 +416,26 @@ ul a span {
 }
 ```
 
+</CodeBlock>
+
 - 避免编译
 
 ```less
  .wid{
    width:~'calc(100px - 20px)';
  }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 .wid {
   width: calc(100px - 20px);
 }
 ```
+
+</CodeBlock>
 
 - important用法
 
@@ -382,10 +447,16 @@ ul a span {
 .im_a{
   .impor()!important;
 }
+```
 
+<CodeBlock title="less编译后的对应css文件：">
+
+```less
 //less编译后的对应css文件：
 .im_a {
   width: 10px !important;
   height: 10px !important;
 }
 ```
+
+</CodeBlock>

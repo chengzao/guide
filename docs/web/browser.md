@@ -4,6 +4,8 @@
 
 ## 浏览器内核
 
+<CodeBlock>
+
 ```bash
 safari    Webkit
 chrome    Blink (current) / Webkit (pre)   -webkit-
@@ -14,9 +16,13 @@ edge      EdgeHTML
 Opera12.17及更早版本曾经采用的内核  Presto  -o-
 ```
 
+</CodeBlock>
+
 ## 浏览器端应用存储
 
 - application
+
+<CodeBlock>
 
 ```bash
 cache:
@@ -29,22 +35,30 @@ storage:
 localStorage / sessionStoage / indexDB / cookies / web sql
 ```
 
+</CodeBlock>
+
 ## Navigator对象
 
 - `navigator.userAgent`返回浏览器的`User-Agent`字符串，标示浏览器的厂商和版本信息
 - `navigator.geolocation` 返回一个`Geolocation`对象，包含用户地理位置的信息
 
-```js
-navigator.geolocation.getCurrentPosition(function(position) {
-  console.log(' latitude '+ position.coords.latitude  + " \n longitude " + position.coords.longitude)
-});
-```
+<CodeBlock>
+
+  ```js
+  navigator.geolocation.getCurrentPosition(function(position) {
+    console.log(' latitude '+ position.coords.latitude  + " \n longitude " + position.coords.longitude)
+  });
+  ```
+
+</CodeBlock>
 
 - `navigator.cookieEnabled`返回一个布尔值，表示浏览器是否能储存`Cookie`
 
 ## location对象
 
 - `location`属性返回location对象,提供了当前文档的URL信息
+
+<CodeBlock>
 
 ```js
 location.href // "http://user:passwd@www.example.com:4097/path/a.html?x=111#part1"
@@ -59,7 +73,11 @@ location.user // "user"
 location.password // "passwd"
 ```
 
+</CodeBlock>
+
 - location对象方法
+
+<CodeBlock>
 
 ```js
 // 跳转到另一个网址
@@ -84,6 +102,8 @@ location = '#top';
 //document.location属性与window.location属性等价
 document.location === window.location // true
 ```
+
+</CodeBlock>
 
 ## history对象
 
@@ -126,7 +146,8 @@ URI: 统一资源标识符,是用来标识互联网上的资源（例如，网�
 - `URLSearchParams.set()` 设置一个搜索参数的新值，假如原来有多个值将删除其他所有的值
 - `URLSearchParams.sort()` 按键名排序
 - `URLSearchParams.toString()` 返回搜索参数组成的字符串，可直接使用在URL上
-- 示例
+
+<CodeBlock>
 
 ```js
 var paramsString = "q=URLUtils.searchParams&topic=api"
@@ -150,11 +171,25 @@ for (let p of searchParams) {
 // ["topic", "api"]
 ```
 
+</CodeBlock>
+
 ### encodeURIComponent与decodeURIComponent
+
+<CodeBlock show>
+
+```js
+const url = "http://www.domain.com/abc?user=Alan&age=123&name=小明";
+console.log(encodeURIComponent(url));
+// http%3A%2F%2Fwww.domain.com%2Fabc%3Fuser%3DAlan%26age%3D123%26name%3D%E5%B0%8F%E6%98%8E
+console.log(decodeURIComponent(encodeURIComponent(url)));
+// http://www.domain.com/abc?user=Alan&age=123&name=小明
+```
+
+</CodeBlock>
 
 ### encodeURI与decodeURI
 
-### 参考示例
+<CodeBlock show>
 
 ```js
 const url = "http://www.domain.com/abc?user=Alan&age=123&name=小明";
@@ -162,8 +197,6 @@ console.log(encodeURI(url));
 // http://www.domain.com/abc?user=Alan&age=123&name=%E5%B0%8F%E6%98%8E
 console.log(decodeURI(encodeURI(url)));
 // http://www.domain.com/abc?user=Alan&age=123&name=小明
-console.log(encodeURIComponent(url));
-// http%3A%2F%2Fwww.domain.com%2Fabc%3Fuser%3DAlan%26age%3D123%26name%3D%E5%B0%8F%E6%98%8E
-console.log(decodeURIComponent(encodeURIComponent(url)));
-// http://www.domain.com/abc?user=Alan&age=123&name=小明
 ```
+
+</CodeBlock>

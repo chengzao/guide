@@ -53,6 +53,8 @@ divStyle.removeProperty('background-color');
 
 ### window.getComputedStyle
 
+<CodeBlock show>
+
 ```js
 var div = document.querySelector('div');
 window.getComputedStyle(div).backgroundColor
@@ -65,6 +67,8 @@ var elem = document.getElementById('elem-container');
 var hValue = window.getComputedStyle(elem, null)
   .getPropertyValue('height');
 ```
+
+</CodeBlock>
 
 ### StyleSheet对象
 

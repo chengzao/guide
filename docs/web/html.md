@@ -49,6 +49,8 @@ HTML是一种基本的WEB网页设计语言，XHTML是一个基于XML的置标�
 
 ## 页面基本组成
 
+<CodeBlock>
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -65,6 +67,8 @@ HTML是一种基本的WEB网页设计语言，XHTML是一个基于XML的置标�
 </body>
 </html>
 ```
+
+</CodeBlock>
 
 ## 页面加载事件
 

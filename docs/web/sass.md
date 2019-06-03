@@ -3,11 +3,14 @@
 - [sass-lang官方文档](http://sass-lang.com/guide)
 - [sass中文](https://www.sass.hk/)
 - [RubyGems镜像](https://gems.ruby-china.com/)
+- [sass转css](https://www.sassmeister.com/)
 
 ## 安装
 
 - 首先安装`ruby`
 - 安装sass
+
+<CodeBlock>
 
 ```bash
 # 1.删除原gem源
@@ -38,6 +41,8 @@ node-sass -w src --output dist --output-style expanded --source-map=true
 # 指定source-map路径为map
 node-sass -w src --output dist --output-style expanded --source-map=map
 ```
+
+</CodeBlock>
 
 ## 基本使用
 
@@ -80,7 +85,7 @@ sass --sourcemap # 表示开启sourcemap调试。
 
 ## 常用语法
 
-- 注释
+### 注释
 
 ```scss
 // 这种注释内容不会出现在生成的css文件中
@@ -88,7 +93,7 @@ sass --sourcemap # 表示开启sourcemap调试。
 /* 这种注释内容会出现在生成的css文件中 */
 ```
 
-- 使用 $ 声明变量
+### 使用 `$` 声明变量
 
 ```scss
 /* 1. 使用变量$ */
@@ -115,7 +120,11 @@ $highlight-border: 1px solid $highlight-color;
 .selected {
     border: $highlight-border;
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 html {
   font-family: "Myriad Pro", Myriad, "Helvetica Neue", Helvetica, "Liberation Sans", Arial, sans-serif;
@@ -127,7 +136,9 @@ html {
 }
 ```
 
-- 嵌套CSS 规则
+</CodeBlock>
+
+### 嵌套CSS 规则
 
 ```scss
 #content {
@@ -144,7 +155,11 @@ html {
     background-color: #eee;
   }
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 #content article h1 {
   color: #333;
@@ -159,7 +174,9 @@ html {
 }
 ```
 
-- 父选择器的标识符&
+</CodeBlock>
+
+### 父选择器的标识符&
 
 ```scss
 article a {
@@ -175,7 +192,11 @@ article a {
     color: green;
   }
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 article a {
   color: blue;
@@ -194,7 +215,9 @@ body.ie #content aside {
 }
 ```
 
-- 群组选择器的嵌套
+</CodeBlock>
+
+### 群组选择器的嵌套
 
 ```scss
 .container {
@@ -211,7 +234,11 @@ aside {
     color: blue;
   }
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 .container h1,
 .container h2,
@@ -225,7 +252,9 @@ aside a {
 }
 ```
 
-- 子组合选择器和同层组合选择器：`>、+和~`
+</CodeBlock>
+
+### 子组合选择器和同层组合选择器：`>、+ 和 ~`
 
 ```scss
 article {
@@ -247,6 +276,11 @@ article {
     margin-top: 0;
   }
 }
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 article ~ article {
   border-top: 1px dashed #ccc;
@@ -269,7 +303,9 @@ nav + article {
 }
 ```
 
-- 嵌套属性
+</CodeBlock>
+
+### 嵌套属性
 
 ```scss
 nav {
@@ -279,6 +315,11 @@ nav {
     color: #ccc;
   }
 }
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 nav {
   border-style: solid;
@@ -287,7 +328,11 @@ nav {
 }
 ```
 
-- 导入局部的SASS文件：sass局部文件的文件名以`下划线(_)`开头，sass就不会在编译时单独编译这个文件输出css
+</CodeBlock>
+
+### 导入局部的SASS文件
+
+sass局部文件的文件名以`下划线(_)`开头，sass就不会在编译时单独编译这个文件输出css
 
 ```scss
 // _blue-theme.scss
@@ -312,29 +357,36 @@ $fancybox-width: 400px !default;
 $fancybox-width: 500px;
 @import "./_tmp";
 
+/* 嵌套导入sass :局部文件会被直接插入到css规则内导入它的地方 */
+.blue-theme {
+  @import "./_blue-theme";
+}
+
+$family: unquote("Droid+Sans");
+@import url("http://fonts.googleapis.com/css?family=#{$family}");
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 .fancybox {
   width: 500px;
 }
 
-/* 嵌套导入sass :局部文件会被直接插入到css规则内导入它的地方 */
-.blue-theme {
-  @import "./_blue-theme";
-}
 // 编译后
 .blue-theme aside {
   background: blue;
   color: white;
 }
 
-$family: unquote("Droid+Sans");
-@import url("http://fonts.googleapis.com/css?family=#{$family}");
-
 // 编译后
 @import url("http://fonts.googleapis.com/css?family=Droid+Sans");
 ```
 
-- 混合器 mixin
+</CodeBlock>
+
+### 混合器 mixin
 
 ```scss
 @mixin rounded-corners {
@@ -348,7 +400,11 @@ $family: unquote("Droid+Sans");
   border: 2px solid #00aa00; // 使用混合器
   @include rounded-corners;
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 .notice {
   background-color: green;
@@ -357,8 +413,13 @@ $family: unquote("Droid+Sans");
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-/* 混合器中的CSS规则 */
+```
 
+</CodeBlock>
+
+- 混合器中的CSS规则
+
+```scss
 @mixin no-bullets {
   list-style: none;
   li {
@@ -372,7 +433,11 @@ ul.plain {
   color: #444;
   @include no-bullets;
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 ul.plain {
   color: #444;
@@ -384,8 +449,13 @@ ul.plain li {
   list-style-type: none;
   margin-left: 0px;
 }
-/* 给混合器传参 */
+```
 
+</CodeBlock>
+
+- 给混合器传参
+
+```scss
 @mixin link-colors($normal, $hover, $visited) {
   color: $normal;
   &:hover {
@@ -399,7 +469,11 @@ ul.plain li {
 a {
   @include link-colors(blue, red, green);
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 a {
   color: blue;
@@ -412,11 +486,30 @@ a:hover {
 a:visited {
   color: green;
 }
-/* 混合器传参: sass允许通过语法$name: value的形式指定每个参数的值 */
+```
 
+</CodeBlock>
+
+- 混合器传参: sass允许通过语法$name: value的形式指定每个参数的值
+
+```scss
+@mixin link-colors($normal, $hover, $visited) {
+  color: $normal;
+  &:hover {
+    color: $hover;
+  }
+  &:visited {
+    color: $visited;
+  }
+}
 a {
   @include link-colors($normal: blue, $visited: green, $hover: red);
 }
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 a {
   color: blue;
@@ -429,8 +522,13 @@ a:hover {
 a:visited {
   color: green;
 }
-/* 混合器传参:默认参数值 默认值使用$name: default-value的声明形式 */
+```
 
+</CodeBlock>
+
+- 混合器传参:默认参数值 默认值使用`$name: default-value`的声明形式
+
+```scss
 @mixin link-colors($normal, $hover: $normal, $visited: $normal) {
   color: $normal;
   &:hover {
@@ -444,6 +542,11 @@ a:visited {
 a {
   @include link-colors($normal: blue);
 }
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 a {
   color: blue;
@@ -456,9 +559,13 @@ a:hover {
 a:visited {
   color: blue;
 }
+```
 
-/* mixin向混合样式中导入内容 : @content */
+</CodeBlock>
 
+- mixin向混合样式中导入内容 : `@content`
+
+```scss
 $color: green;
 @mixin button($color: #fff) {
   color: $color;
@@ -471,6 +578,11 @@ $color: green;
     background: $color;
   }
 }
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 .button-green {
   color: red;
@@ -479,7 +591,9 @@ $color: green;
 }
 ```
 
-- 使用选择器继承来精简CSS extend
+</CodeBlock>
+
+### 使用选择器继承来精简`CSS Extend`
 
 ```scss
 //通过选择器继承继承样式
@@ -492,7 +606,11 @@ $color: green;
   @extend .error;
   border-width: 3px;
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 .error, .seriousError {
   border: 1px solid red;
@@ -503,7 +621,9 @@ $color: green;
 }
 ```
 
-- mixin and extend不同
+</CodeBlock>
+
+### mixin and extend不同
 
 ```scss
 /* extend */
@@ -531,7 +651,11 @@ $color: green;
 .button-2 {
   @include button;
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 
 /* extend */
@@ -548,7 +672,9 @@ $color: green;
 }
 ```
 
-- function 函数指令
+</CodeBlock>
+
+### function 函数指令
 
 ```scss
 $grid-width: 40px;
@@ -578,7 +704,11 @@ $base: 32;
 #box {
   width: p2r(160);
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 #sidebar {
   width: 240px;
@@ -593,11 +723,13 @@ $base: 32;
 }
 ```
 
-- 控制指令 (Control Directives)
+</CodeBlock>
+
+### 控制指令 (Control Directives)
+
+- `@if`
 
 ```scss
-/* @if */
-
 p {
   @if 1+1==2 {
     border: 1px solid;
@@ -622,36 +754,12 @@ p {
     color: black;
   }
 }
+```
 
-/* @for */
+<CodeBlock title="scss编译后">
 
-@for $i from 1 through 3 {
-  .item-#{$i} {
-    width: 2em * $i;
-  }
-}
-
-/* @each */
-
-@each $animal in puma, sea-slug, egret, salamander {
-  .#{$animal}-icon {
-    background-image: url("/images/#{$animal}.png");
-  }
-}
-
-/* @while */
-
-$i: 6;
-@while $i>0 {
-  .item-#{$i} {
-    width: 2em * $i;
-  }
-  $i: $i - 2;
-}
-
+```scss
 // 编译后
-
-/* @if */
 p {
   border: 1px solid;
 }
@@ -659,8 +767,24 @@ p {
 p {
   color: green;
 }
+```
 
-/* @for */
+</CodeBlock>
+
+- `@for`
+
+```scss
+@for $i from 1 through 3 {
+  .item-#{$i} {
+    width: 2em * $i;
+  }
+}
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
+// 编译后
 .item-1 {
   width: 2em;
 }
@@ -672,8 +796,24 @@ p {
 .item-3 {
   width: 6em;
 }
+```
 
-/* @each */
+</CodeBlock>
+
+- `@each`
+
+```scss
+@each $animal in puma, sea-slug, egret, salamander {
+  .#{$animal}-icon {
+    background-image: url("/images/#{$animal}.png");
+  }
+}
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
+// 编译后
 .puma-icon {
   background-image: url("/images/puma.png");
 }
@@ -689,8 +829,26 @@ p {
 .salamander-icon {
   background-image: url("/images/salamander.png");
 }
+```
 
-/* @while */
+</CodeBlock>
+
+- `@while`
+
+```scss
+$i: 6;
+@while $i>0 {
+  .item-#{$i} {
+    width: 2em * $i;
+  }
+  $i: $i - 2;
+}
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
+// 编译后
 .item-6 {
   width: 12em;
 }
@@ -704,7 +862,9 @@ p {
 }
 ```
 
-- @media
+</CodeBlock>
+
+- `@media`
 
 ```scss
 .sidebar {
@@ -722,6 +882,7 @@ p {
   }
 }
 
+// 2
 $media: screen;
 $feature: -webkit-min-device-pixel-ratio;
 $value: 1.5;
@@ -730,7 +891,11 @@ $value: 1.5;
     width: 500px;
   }
 }
+```
 
+<CodeBlock title="scss编译后">
+
+```scss
 // 编译后
 .sidebar {
   width: 300px;
@@ -748,6 +913,7 @@ $value: 1.5;
   }
 }
 
+// 2
 @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
   .sidebar {
     width: 500px;
@@ -755,7 +921,11 @@ $value: 1.5;
 }
 ```
 
-- 插值语句可以在选择器或属性名中使用变量
+</CodeBlock>
+
+### 插值语句
+
+可以在选择器或属性名中使用变量
 
 ```scss
 $name: foo;
@@ -769,8 +939,26 @@ p {
   $line-height: 30px;
   font: #{$font-size}/#{$line-height};
 }
+```
 
-/* 运算 Operations */
+<CodeBlock title="scss编译后">
+
+```scss
+// 编译后
+p.foo {
+  border-color: blue;
+}
+
+p {
+  font: 12px/30px;
+}
+```
+
+</CodeBlock>
+
+- 运算: 数字运算
+
+```scss
 /* 数字运算: 支持数字的加减乘除、取整等运算 (+, -, *, /, %)，如果必要会在不同单位间转换值 */
 
 p {
@@ -787,7 +975,37 @@ p {
   $line-height: 30px;
   font: #{$font-size}/#{$line-height};
 }
-/* 颜色值运算  */
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
+// 编译后
+/* 数字运算: 支持数字的加减乘除、取整等运算 (+, -, *, /, %)，如果必要会在不同单位间转换值 */
+p {
+  font: 10px/8px;
+  /* 纯 CSS，不是除法运算 */
+  width: 500px;
+  /* 使用了变量，是除法运算 */
+  width: 1;
+  /* 使用了函数，是除法运算 */
+  height: 250px;
+  /* 使用了圆括号，是除法运算 */
+  margin-left: 9px;
+  /* 使用了加（+）号，是除法运算 */
+}
+
+// 在纯 CSS 中使用变量和 /， 你可以用 #{} 包住变量
+p {
+  font: 12px/30px;
+}
+```
+
+</CodeBlock>
+
+- 运算: 颜色值运算
+
+```scss
 p {
   color: #010203 + #040506;
 }
@@ -808,60 +1026,12 @@ $green: #00ff00;
 div {
   filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr='#{ie-hex-str($green)}', endColorstr='#{ie-hex-str($translucent-red)}');
 }
+```
 
-/* 字符串运算 */
+<CodeBlock title="scss编译后">
 
-p {
-  cursor: e + -resize;
-}
-
-p:before {
-  content: "Foo " + Bar;
-  font-family: sans- + "serif";
-}
-
-p:before {
-  content: "I ate #{5 + 10} pies!";
-}
-
-/* @at-root */
-@media print {
-  .page {
-    width: 8in;
-    @at-root (without: media) {
-      color: red;
-    }
-  }
-}
-
+```scss
 // 编译后
-p.foo {
-  border-color: blue;
-}
-
-p {
-  font: 12px/30px;
-}
-
-/* 运算 Operations */
-/* 数字运算: 支持数字的加减乘除、取整等运算 (+, -, *, /, %)，如果必要会在不同单位间转换值 */
-p {
-  font: 10px/8px;
-  /* 纯 CSS，不是除法运算 */
-  width: 500px;
-  /* 使用了变量，是除法运算 */
-  width: 1;
-  /* 使用了函数，是除法运算 */
-  height: 250px;
-  /* 使用了圆括号，是除法运算 */
-  margin-left: 9px;
-  /* 使用了加（+）号，是除法运算 */
-}
-
-p {
-  font: 12px/30px;
-}
-
 /* 颜色值运算  */
 p {
   color: #050709;
@@ -879,7 +1049,31 @@ p {
 div {
   filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorstr='#FF00FF00', endColorstr='#80FF0000');
 }
+```
 
+</CodeBlock>
+
+- 字符串运算
+
+```scss
+p {
+  cursor: e + -resize;
+}
+
+p:before {
+  content: "Foo " + Bar;
+  font-family: sans- + "serif";
+}
+
+p:before {
+  content: "I ate #{5 + 10} pies!";
+}
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
+// 编译后
 /* 字符串运算 */
 p {
   cursor: e-resize;
@@ -893,7 +1087,27 @@ p:before {
 p:before {
   content: "I ate 15 pies!";
 }
+```
 
+</CodeBlock>
+
+- `@at-root`
+
+```scss
+@media print {
+  .page {
+    width: 8in;
+    @at-root (without: media) {
+      color: red;
+    }
+  }
+}
+```
+
+<CodeBlock title="scss编译后">
+
+```scss
+// 编译后
 /* @at-root */
 @media print {
   .page {
@@ -905,3 +1119,5 @@ p:before {
   color: red;
 }
 ```
+
+</CodeBlock>
