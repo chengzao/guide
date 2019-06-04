@@ -6,6 +6,7 @@
 - [hugo](https://github.com/stkevintan/canoe-blog)
 - [docsify](https://github.com/docsifyjs/docsify/)
 - [jekyll](https://www.jekyll.com.cn/)
+- [storybook](https://github.com/storybookjs/storybook)
 
 ## 代码托管
 
@@ -73,3 +74,14 @@
 - [certbot](https://certbot.eff.org/)
 - [Neilpang/acme.sh@github](https://github.com/Neilpang/acme.sh)
 - [freessl](https://freessl.cn/)
+
+## js在线编辑器
+
+- [codesandbox](https://codesandbox.io/)
+- [stackblitz](https://stackblitz.com)
+
+## 为gh-pages添加ssl
+
+- [github怎么绑定自己的域名？](https://www.zhihu.com/question/31377141)
+- [Custom domain redirects for GitHub Pages sites](https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/)
+- [Troubleshooting custom domains](https://help.github.com/articles/troubleshooting-custom-domains/)

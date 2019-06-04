@@ -2,6 +2,8 @@
 
 - 什么是Bom? `Bom是浏览器对象`
 
+[[toc]]
+
 ## 浏览器内核
 
 <CodeBlock>

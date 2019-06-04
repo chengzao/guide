@@ -119,12 +119,6 @@ graphql
 
 - [graphql koa apollo](https://www.apollographql.com/docs/)
 
-gh-pages ssl
-
-- [github怎么绑定自己的域名？](https://www.zhihu.com/question/31377141)
-- [Custom domain redirects for GitHub Pages sites](https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/)
-- [Troubleshooting custom domains](https://help.github.com/articles/troubleshooting-custom-domains/)
-
 代码注释规范
 
 - [usejsdoc](http://usejsdoc.org/index.html)
