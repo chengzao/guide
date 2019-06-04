@@ -37,6 +37,7 @@
 - [Valine](https://github.com/xCss/Valine)
 - [gitalk](https://github.com/gitalk/gitalk)
 - [isso](https://github.com/posativ/isso)
+- [Vssue](https://github.com/meteorlxy/vssue)
 
 ## 服务部署
 

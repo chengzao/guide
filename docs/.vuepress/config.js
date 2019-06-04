@@ -31,6 +31,11 @@ module.exports = {
   markdown: {
     lineNumbers: false
   },
+  locales: {
+    '/': {
+      lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
+    },
+  },
   evergreen: true,
   dest: "dist",
   head: [
