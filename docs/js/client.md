@@ -69,17 +69,35 @@ scrollTop = window.pageYOffset || document.documentElement.scrollTop || document
 // element.currentStyle.属性名 或 element.currentStyle["属性名"]
 demo.currentStyle.left
 demo.currentStyle["left"]
+```
 
-// w3c:
+- window.getComputedStyle
+
+```js
 //window.getComputedStyle(element,伪元素)["属性名"]
+// getComputedStyle方法还可以接受第二个参数，
+// 表示指定节点的伪元素（比如:before、:after、:first-line、:first-letter等）
+var result = window.getComputedStyle(div, ':before');
 // 一般情况下没有伪元素,我们用 null 来替代.
 window.getComputedStyle(demo,null)["left"]
+```
+
+- 兼容写法
+
+```js
+function getStyle(obj, attr) {
+    if (obj.currentStyle) {
+        return obj.currentStyle[attr]; //ie678
+    } else {
+        return getComputedStyle(obj, null)[attr]; //正常浏览器
+    }
+}
 ```
 
 ## pageX和pageY
 
 - `以当前文档的左上角为基准点`
-- 兼容写法：
+- 兼容写法
 
 ```js
 pageY = event.pageY || event.clientY + document.documentElement.scrollTop;

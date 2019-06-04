@@ -51,25 +51,6 @@ divStyle.getPropertyValue('background-color');
 divStyle.removeProperty('background-color');
 ```
 
-### window.getComputedStyle
-
-<CodeBlock show>
-
-```js
-var div = document.querySelector('div');
-window.getComputedStyle(div).backgroundColor
-
-// getComputedStyle方法还可以接受第二个参数，
-// 表示指定节点的伪元素（比如:before、:after、:first-line、:first-letter等）
-var result = window.getComputedStyle(div, ':before');
-
-var elem = document.getElementById('elem-container');
-var hValue = window.getComputedStyle(elem, null)
-  .getPropertyValue('height');
-```
-
-</CodeBlock>
-
 ### StyleSheet对象
 
 #### 获取样式表

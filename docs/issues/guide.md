@@ -146,7 +146,6 @@ css
 - [学习弹性布局flexbox](https://segmentfault.com/a/1190000006191050)
 - [一劳永逸的搞定 flex 布局](http://blog.csdn.net/magneto7/article/details/70854472)
 - [三种纯CSS实现三角形的方法](http://blog.csdn.net/huanghui8030/article/details/16984933)
-- [getComputedStyle方法熟悉](http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/)
 - [22个前端开发必备的CSS小技巧](https://www.oudahe.com/p/271/)
 - [PostCSS自学笔记（一）【安装使用篇】](https://segmentfault.com/a/1190000010926812)
 - [CSS效果篇--纯CSS+HTML实现checkbox的思路与实例](https://segmentfault.com/a/1190000012748027)
