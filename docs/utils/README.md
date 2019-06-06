@@ -4,8 +4,6 @@
 
 - [类型判断](./types.md)
 
-- [请求ajax和jsonp简易版](./ajax.md)
-
 - [移动端事件封装](./mobile.md)
 
 - [事件兼容封装](./event.md)

@@ -13,7 +13,7 @@ lessc -x styles.less styles.css
 
 ## 常用语法
 
-- import
+### import
 
 ```less
 // less 文件
@@ -51,7 +51,7 @@ lessc -x styles.less styles.css
 
 </CodeBlock>
 
-- 变量
+### 变量
 
 ```less
 //less文件：
@@ -87,7 +87,7 @@ lessc -x styles.less styles.css
 
 </CodeBlock>
 
-- 混合
+### 混合
 
 ```less
 .bord{
@@ -207,7 +207,7 @@ lessc -x styles.less styles.css
 
 </CodeBlock>
 
-- 匹配模式
+### 匹配模式
 
 ```less
 /* 三角形 border */
@@ -317,7 +317,7 @@ lessc -x styles.less styles.css
 
 </CodeBlock>
 
-- 嵌套用法
+### 嵌套用法
 
 ```less
 ul{
@@ -389,7 +389,7 @@ ul a span {
 
 </CodeBlock>
 
-- argument用法
+### argument用法
 
 ```less
 .brd2(@c:#ccc,@w:10px,@solid:solid){
@@ -418,7 +418,7 @@ ul a span {
 
 </CodeBlock>
 
-- 避免编译
+### 避免编译
 
 ```less
  .wid{
@@ -437,7 +437,7 @@ ul a span {
 
 </CodeBlock>
 
-- important用法
+### important用法
 
 ```less
 .impor(@w:10px,@h:10px){

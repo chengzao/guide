@@ -1,15 +1,23 @@
 var glob = require("glob")
 var path = require('path')
+var fs = require('fs')
 
 let result =  function(file) {
-  let str = path.join(__dirname,'../../',file,'/**/*.md');
+  let str = path.join(__dirname,'../../',file, '*');
   let res = glob.sync(str);
   let fileArr =  res.map(file => {
-    let fileName = path.basename(file, '.md');
-    if(fileName.toUpperCase() == 'README') {
-      fileName = '';
+    var isDir = fs.statSync(file).isDirectory();
+    var fileName = ''
+    if(isDir){
+      fileName = path.basename(file)
+      return fileName+'/'
+    }else{
+      fileName = path.basename(file, '.md');
+      if(fileName.toUpperCase() == 'README') {
+        fileName = '';
+      }
+      return fileName
     }
-    return fileName
   })
   return fileArr.sort()
 }

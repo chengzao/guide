@@ -4,38 +4,13 @@
 
 ### 实例化
 
-```js
-// 1.实例化
-  var xhr = new XMLHttpRequest();
-// 2.请求行
-  //第三个参数：true 为 异步 ; false 为同步
-  // GET传参
-  xhr.open('get','index.php?name=xiaoming&&age=10',true);
-  //POST
-  xhr.open('post', 'index.php',true);
-// 3.请求头:
-  //GET方式可以不设请求头
-  xhr.setRequestHeader('Content-Type', 'text/html');
-  // POST方式必须要设置请求头
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-// 4.请求主体
-  // GET方式
-  xhr.send(null);
-  // POST参数放到请求主体里
-  xhr.send('name=xiaoming&age=10');
-// 5.响应状态 ：request.responseText或者request.responseXML
-  // 事件的监听，来监听状态的变化
-  xhr.onreadystatechange = function () {
-    // console.log(xhr.readyState);
-    // console.log(xhr.status);
+<<< @/example/docs/js/XMLHttpRequest.js
 
-    // 此状态则为响应结果完成
-    if(xhr.readyState == 4 && xhr.status == 200) {
-      // 通过DOM操作将内容放到页面上
-      document.getElementById('result').innerHTML = xhr.responseText;
-    }
-  }
-```
+<CodeBlock title="ajax简易版">
+
+<<< @/example/docs/js/ajax.js
+
+</CodeBlock>
 
 ### API详解
 
@@ -91,7 +66,7 @@ if(XMLHttpRequest){
 
 - 同源策略是浏览器的一种安全策略，所谓同源是指，域名，协议，端口完全相同。
 
-### 跨域
+### 跨域CORS
 
 - 不同源则跨域
 
@@ -105,7 +80,6 @@ http://api.example.com:8080/detail.html 不同源  域名、端口不同
 https://api.example.com/detail.html 不同源  协议、域名不同
 https://www.example.com:8080/detail.html  不同源    端口、协议不同
 http://www.example.com/detail/index.html  同  源    只是目录不同
-
 ```
 
 ### 跨域方案
@@ -119,32 +93,7 @@ http://www.example.com/detail/index.html  同  源    只是目录不同
 - `jsonp`
 - `Fetch`
 
-#### jsonp
-
-- JSONP的优点是：它不像XMLHttpRequest对象实现的Ajax请求那样受到同源策略的限制；它的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支持；并且在请求完毕后可以通过调用callback的方式回传结果
-- JSONP的缺点则是：它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题
-- jsonp简易版
-
-```js
-function jsonp({ url, params, cb }) {
-  return new Promise((resolve, reject) => {
-    let script = document.createElement('script')
-    window[cb] = function (data) {
-      resolve(data);
-      document.body.removeChild(script)
-    }
-    params = { ...params, cb }
-    let arrs = [];
-    for (let key in params) {
-      arrs.push(`${key}=${params[key]}`)
-    }
-    script.src = `${url}?${arrs.join('&')}`
-    document.body.appendChild(script)
-  })
-}
-```
-
-#### CORS和JSONP对比
+### CORS和JSONP对比
 
 - JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求
 - 使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理
@@ -153,6 +102,17 @@ function jsonp({ url, params, cb }) {
 ## fetch发送2次请求的原因
 
 fetch的post请求的时候，导致fetch 第一次发送了一个Options请求，询问服务器是否支持修改的请求头，如果服务器支持，则在第二次中发送真正的请求
+
+## jsonp
+
+- JSONP的优点是：它不像XMLHttpRequest对象实现的Ajax请求那样受到同源策略的限制；它的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支持；并且在请求完毕后可以通过调用callback的方式回传结果
+- JSONP的缺点则是：它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题
+
+<CodeBlock title="jsonp简易版">
+
+<<< @/example/docs/js/jsonp.js
+
+</CodeBlock>
 
 ## 参考链接
 

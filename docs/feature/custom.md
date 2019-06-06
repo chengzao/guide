@@ -7,3 +7,5 @@ layout: SpecialLayout
 # SpecialLayout
 
 <<< @/docs/feature/gist.js
+
+<<< include(docs/feature/footer.md)

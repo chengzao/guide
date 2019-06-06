@@ -1,6 +1,6 @@
 <template>
   <div class="docs-demo-wrapper language-xxx">
-    <div v-if="title" @click="toggle" class="docs-f14">{{title}}</div>
+    <div v-if="title" @click="toggle" class="docs-demo-title">{{title}}</div>
     <div :style="{height: isExpand ? 'auto' : '0'}" class="docs-demo-container">
       <div class="docs-demo docs-demo__code">
         <slot></slot>
@@ -21,7 +21,7 @@ export default {
     },
     title: {
       type: String,
-      default: ""
+      default: "点击查看>>"
     }
   },
   data() {
@@ -57,7 +57,7 @@ export default {
   /* background-color: #f7f7f7; */
   border: 1px solid #e2ecf4;
   /* border-top: none; */
-  max-height: 500px;
+  /* max-height: 500px; */
 }
 
 .docs-demo-wrapper .docs-trans {
@@ -72,10 +72,13 @@ export default {
 }
 .docs-demo-wrapper .docs-demo__code {
   padding: 0 10px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
-.docs-demo-wrapper .docs-f14 {
+.docs-demo-wrapper .docs-demo-title {
   font-size: 14px;
+  margin-top: 15px;
+  color: #0c51de;
+  cursor: pointer;
 }
 </style>

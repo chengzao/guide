@@ -1,12 +1,4 @@
-# ajax和jsonp
-
-## ajax封装
-
-<details>
-<summary>view code</summary>
-
-```js
-var $ = {
+var Ajax = {
 	params: function (params) {
 		var data = '';
 		// 拼凑参数
@@ -100,27 +92,3 @@ var $ = {
 
 	}
 };
-```
-
-</details>
-
-## jsonp简易封装
-
-```js
-function jsonp({ url, params, cb }) {
-  return new Promise((resolve, reject) => {
-    let script = document.createElement('script')
-    window[cb] = function (data) {
-      resolve(data);
-      document.body.removeChild(script)
-    }
-    params = { ...params, cb }
-    let arrs = [];
-    for (let key in params) {
-      arrs.push(`${key}=${params[key]}`)
-    }
-    script.src = `${url}?${arrs.join('&')}`
-    document.body.appendChild(script)
-  })
-}
-```

@@ -191,20 +191,20 @@ document.querySelector('#linkElement').disabled = 'disabled';
 
 - IE 盒子模型: `IE的content部分包含了 border 和 padding;`
 
-  <img src="../assets/images/ie_boxModel.jpg" alt="" style="width:400px">
+  <img src="../../assets/images/ie_boxModel.jpg" alt="" style="width:400px">
 
 - 标准 W3C 盒子模型
   - `width：border-left + padding-left + width + padding-right + border-right`
   - `height: border-top + padding-top + height + padding-bottom + border-bottom`
 
-  <img src="../assets/images/_boxModel.jpg" alt="" style="width:400px">
+  <img src="../../assets/images/_boxModel.jpg" alt="" style="width:400px">
 
 ### css3盒模型属性
 
 - `box-sizing: border-box`: 计算方式为 `width = border + padding + content`
 - `box-sizing: content-box`: 计算方式为 `width = content`
 
-  <img src="../assets/images/boxModel.png"  alt="">
+  <img src="../../assets/images/boxModel.png"  alt="">
 
 ### content内容
 

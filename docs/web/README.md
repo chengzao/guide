@@ -1,15 +1,15 @@
 # 目录
 
-- [html](./html.md)
+- [html](./html/)
 
-- [html5](./html5.md)
+- [html5](./html5/)
 
-- [css](./css.md)
+- [css](./css/)
 
-- [less](./less.md)
+- [less](./less/)
 
-- [sass](./sass.md)
+- [sass](./sass/)
 
-- [emmet](./emmet.md)
+- [emmet](./emmet/)
 
-- [浏览器](./browser.md)
+- [浏览器](./browser/)

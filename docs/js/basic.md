@@ -2,12 +2,13 @@
 
 ## 基本类型
 
-- `number`
+- `number`: 最大数字是2<sup>25</sup>-1
 - `string`
 - `boolean`
 - `null`
 - `undefined`
 - `Symbol`
+- `BigInt`: 大于等于2<sup>25</sup>的所有数字
 
 ## 引用类型
 
