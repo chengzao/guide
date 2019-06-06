@@ -6,6 +6,8 @@
 
 - 工厂模式
 
+<CodeBlock>
+
 ```js
 function createPerson(name, age) {
     var obj = {};
@@ -24,7 +26,11 @@ var p2 = createPerson('iceman' , 25);
 p2.writeJs();
 ```
 
+</CodeBlock>
+
 - 构造函数模式
+
+<CodeBlock>
 
 ```js
 function CreateJsPerson(name, age) {
@@ -41,7 +47,11 @@ var p2 = new CreateJsPerson('mengzhe' , 26);
 p2.writeJs();
 ```
 
+</CodeBlock>
+
 - 单例模式,保证一个类仅有一个实例，并提供一个访问它的全局访问点
+
+<CodeBlock>
 
 ```js
 class CreateUser {
@@ -70,11 +80,15 @@ var b = new ProxyMode("bbb");
 console.log(a === b);    //true
 ```
 
+</CodeBlock>
+
 ### 结构型
 
 - `适配器模式 装饰器模式 代理模式 外观模式 桥接模式 组合模式 享元模式`
 
 - 代理模式, 为一个对象提供一个代用品或占位符，以便控制对它的访问或`(es6 Proxy)`
+
+<CodeBlock>
 
 ```js
 var imgFunc = (function() {
@@ -101,7 +115,11 @@ var proxyImage = (function() {
 proxyImage.setSrc('./pic.png');
 ```
 
+</CodeBlock>
+
 - 装饰者模式, 在不改变对象自身的基础上，在程序运行期间给对象动态地添加方法或`(es7 Decorator)`
+
+<CodeBlock>
 
 ```js
 Function.prototype.before = function(beforefn) {
@@ -133,14 +151,17 @@ func = func.before(func1).after(func3);
 func();
 ```
 
+</CodeBlock>
+
 ### 行为型
 
-```bash
 策略模式 模板方法模式 观察者模式 迭代模式 状态模式
+
 命令模式 备忘录模式 职责连模式 访问者模式 中介者模式 解释器模式
-```
 
 - 策略模式,定义一系列的算法，把他们一个个封装起来，并且使他们可以相互替换
+
+<CodeBlock>
 
 ```js
 var levelOBJ = {
@@ -161,7 +182,11 @@ var calculateBouns =function(level,money) {
 console.log(calculateBouns('A',10000)); // 40000
 ```
 
+</CodeBlock>
+
 - 中介者模式, 通过一个中介者对象，其他所有的相关对象都通过该中介者对象来通信,通过中介者模式可以解除对象与对象之间的紧耦合关系
+
+<CodeBlock>
 
 ```js
 var goods = {   //手机库存
@@ -202,12 +227,16 @@ numSelect.onchange = function() {
 };
 ```
 
+</CodeBlock>
+
 ## 面向对象
 
 - 封装 继承 多态  作用：复用
 - 继承：就是修改对象中的原型链的层次结构,
 
 ## 构造函数
+
+<CodeBlock>
 
 ```js
 function CreateObj(uName) {
@@ -221,6 +250,8 @@ var obj2 = new CreateObj('卫庄');
 console.log( obj1.showUserName === obj2.showUserName ); //true
 ```
 
+</CodeBlock>
+
 ## 构造函数new命令的原理
 
 - 当我们实例化的时候系统到底做了哪几件事情
@@ -228,6 +259,8 @@ console.log( obj1.showUserName === obj2.showUserName ); //true
 - 第二：拷贝构造函数中的方法和属性到这个空对象中
 - 第三：生成一个__proto__指针,指向构造函数的原型对象
 - 第四：this指向这个空对象
+
+<CodeBlock>
 
 ```js
 function Person(name){
@@ -263,6 +296,8 @@ var actor = _new(Person, '张三', 28);
 actor  // {name: "张三", age: 28}
 ```
 
+</CodeBlock>
+
 <img src="../assets/images/oop/oop.jpg?raw=true" width='70%' alt="">
 <img src="../assets/images/oop/oop2.png?raw=true" width='70%' alt="">
 <img src="../assets/images/oop/oop-1.png?raw=true" alt="">
@@ -270,6 +305,8 @@ actor  // {name: "张三", age: 28}
 ## 构造函数的继承
 
 - 拷贝继承
+
+<CodeBlock>
 
 ```js
 function extend2(Child, Parent) {
@@ -289,7 +326,11 @@ var cat1 = new Cat('po' 'orange');
 console.log(cat1.eat()); // animal eat
 ```
 
+</CodeBlock>
+
 - 寄生式组合继承
+
+<CodeBlock>
 
 ```js
 function Father(name){
@@ -324,7 +365,11 @@ c2.sayname();//小明
 console.log(c2.num)//12
 ```
 
+</CodeBlock>
+
 - 原型式继承Object.create()
+
+<CodeBlock>
 
 ```js
 function Super () {
@@ -344,7 +389,11 @@ Child.prototype.constructor = Child
 var child = new Child('cat')
 ```
 
+</CodeBlock>
+
 - 继承
+
+<CodeBlock>
 
 ```js
 // 链接：https://juejin.im/post/5a96d78ef265da4e9311b4d8
@@ -378,6 +427,8 @@ function inherit(child, parent) {
     parentPrototype.constructor = child
 }
 ```
+
+</CodeBlock>
 
 ## amd-requirejs
 

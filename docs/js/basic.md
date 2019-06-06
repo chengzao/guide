@@ -25,6 +25,8 @@
 - 类型转换：`!!undefined --> false`
 - 布尔转换
 
+<CodeBlock>
+
 ```bash
 undefined, null, false, 0, NaN , "" , ''  --> false
 
@@ -35,7 +37,11 @@ null是一个表示“空”的对象，转为数值时为0；
 undefined是一个表示”此处无定义”的原始值，转为数值时为NaN。
 ```
 
+</CodeBlock>
+
 ## 文档基本结构
+
+<CodeBlock>
 
 ```js
 document.head //文档的头标签
@@ -52,16 +58,14 @@ document.activeElement // 属性返回当前文档中获得焦点的那个元素
 document.defaultView
 ```
 
+</CodeBlock>
+
 ## 文档兼容模式
 
 - `document type`声明文档类型 DTD：`<!DOCTYPE html>`
 - `BackCompat`   未声明DTD(怪异模式)firefox
 - `CSS1Compat`  已经声明DTD(标准模式)chrome ,ie
 - `document.compatMode` 获取文档类型
-
-```js
-document.compatMode;
-```
 
 ## document节点
 
@@ -99,11 +103,15 @@ document.compatMode;
 - `document.implementation`属性返回一个对象,用来甄别当前环境部署了哪些DOM相关接口
 - `implementation`属性的`hasFeature`方法,可以判断当前环境是否部署了特定版本的特定接口
 
+<CodeBlock>
+
 ```js
 document.implementation.hasFeature('HTML', '2.0')// true
 
 document.implementation.hasFeature('MutationEvents','2.0')// true
 ```
+
+</CodeBlock>
 
 - `document.cookie`属性用来操作浏览器Cookie
 
@@ -136,6 +144,8 @@ document.implementation.hasFeature('MutationEvents','2.0')// true
 - `Element.getClientRects()`获取元素占据页面的所有矩形区域;里面是当前元素在页面上形成的所有矩形
   - 每个矩形都有`bottom、height、left、right、top、width`六个属性
 
+<CodeBlock>
+
 ```html
   <style media="screen">
     #box{
@@ -152,6 +162,8 @@ document.implementation.hasFeature('MutationEvents','2.0')// true
   </script>
 ```
 
+</CodeBlock>
+
 - `Element.insertAdjacentHTML方法解析HTML字符串;然后将生成的节点插入DOM树的指定位置`
   - `element.insertAdjacentHTML(position, text);`第一个是指定位置;第二个是待解析的字符串
   - `beforebegin`：在当前元素节点的前面
@@ -159,11 +171,14 @@ document.implementation.hasFeature('MutationEvents','2.0')// true
   - `beforeend`：在当前元素节点的里面;插在它的最后一个子元素之后
   - `afterend`：在当前元素节点的后面
 
-```js
+<CodeBlock title="insertAdjacentHTML >>">
 
+```js
 var d1 = document.getElementById('one');
 d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
 ```
+
+</CodeBlock>
 
 - `Element.remove方法用于将当前元素节点从DOM树删除`
 - `Element.focus方法用于将当前页面的焦点;转移到指定元素上`
@@ -185,6 +200,8 @@ d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
 - `data-`后面的属性名有限制;`只能包含字母、数字、连词线(-)、点(.)、冒号(:)和下划线(_)`
 - 属性名不应该使用A到Z的大写字母;比如不能有`data-helloWorld`这样的属性名;而要写成`data-hello-world`
 
+<CodeBlock title="dataset属性 >>">
+
 ```js
 // html
 <div id="mydiv" foo="bar"></div>
@@ -203,11 +220,15 @@ n2.dataset.foo = 'baz'
 delete n2.dataset.foo;
 ```
 
+</CodeBlock>
+
 ## DocumentFragment
 
 DocumentFragment节点代表一个文档的片段，本身就是一个完整的DOM树形结构。
 它没有父节点，parentNode返回null，但是可以插入任意数量的子节点。
 它不属于当前文档，操作DocumentFragment节点，要比直接操作DOM树快得多
+
+<CodeBlock>
 
 ```js
 //var docFrag = document.createDocumentFragment();
@@ -221,6 +242,8 @@ console.log(docFrag.textContent); //Hello World
 document.querySelector('ul').appendChild(docFrag);
 console.log(docFrag.textContent); // ''
 ```
+
+</CodeBlock>
 
 ## Number
 
@@ -298,7 +321,7 @@ console.log(docFrag.textContent); // ''
 - `Math.log()` 返回以`e`为底的自然对数值
 - `Math.exp()` 返回常数`e`的参数次方
 
-### 参考示例
+<CodeBlock title="Math示例>>">
 
 ```js
 Math.ceil(1.1)// 2
@@ -320,6 +343,8 @@ Math.max(1,3,"12")
 Math.max(1,3,null);
 ```
 
+</CodeBlock>
+
 ## JSON
 
 - `JSON.stringify({  }, null, 2)`
@@ -333,6 +358,8 @@ Math.max(1,3,null);
 - `用于将一个值转为字符串`
 - `一个成员的值是undefined、函数或 XML 对象，这个成员会被过滤`
 
+<CodeBlock>
+
 ```js
 var obj = {
   a: undefined,
@@ -340,15 +367,18 @@ var obj = {
 };
 
 JSON.stringify(obj) // "{}"
-
 ```
+
+</CodeBlock>
 
 - `数组的成员是undefined、函数或 XML 对象,则这些值被转成null`
 - `JSON.stringify方法会忽略对象的不可遍历属性`
 - `第二个参数`
 
+<CodeBlock>
+
 ```js
-接受一个数组,作为第二个参数,指定需要转成字符串的属性
+// 接受一个数组,作为第二个参数,指定需要转成字符串的属性
 var obj = {
   'prop1': 'value1',
   'prop2': 'value2',
@@ -359,14 +389,16 @@ var selectedProperties = ['prop1', 'prop2'];
 JSON.stringify(obj, selectedProperties)
 // "{"prop1":"value1","prop2":"value2"}"
 
-只对对象的属性有效,对数组无效
+// 只对对象的属性有效,对数组无效
 JSON.stringify(['a', 'b'], ['0'])
 // "["a","b"]"
 
 JSON.stringify({0: 'a', 1: 'b'}, ['0'])
 // "{"0":"a"}"
+```
 
-接受一个函数,用来更改JSON.stringify的默认行为
+```js
+// 接受一个函数,用来更改JSON.stringify的默认行为
 function f(key, value) {
   if (typeof value === "number") {
     value = 2 * value;
@@ -378,16 +410,24 @@ JSON.stringify({ a: 1, b: 2 }, f)
 // '{"a": 2,"b": 4}'
 ```
 
+</CodeBlock>
+
 - `第三个参数,用于增加返回的JSON字符串的可读性`
+
+<CodeBlock>
 
 ```js
  JSON.stringify({ p1: 1, p2: 2 }, null, 2);
  JSON.stringify({ p1:1, p2:2 }, null, '|-');
 ```
 
+</CodeBlock>
+
 ### JSON.parse
 
 - `用于将JSON字符串转化成对象`
+
+<CodeBlock>
 
 ```js
 JSON.parse('{}') // {}
@@ -400,7 +440,11 @@ var o = JSON.parse('{"name": "张三"}');
 o.name // 张三
 ```
 
+</CodeBlock>
+
 ## console
+
+<CodeBlock>
 
 ```js
 console.log()
@@ -423,7 +467,11 @@ console.dir()，console.dirxml()
 console.group()，console.groupEnd()，console.groupCollapsed()
 ```
 
+</CodeBlock>
+
 - `占位符`
+
+<CodeBlock>
 
 ```js
 %s 字符串
@@ -438,6 +486,10 @@ var color = 'red';
 console.log('%d %s balloons', number, color);
 // 99 red balloons
 ```
+
+</CodeBlock>
+
+<CodeBlock title="示例 >>">
 
 ```js
 debugger
@@ -473,7 +525,9 @@ greet('bob')
 // "hi bob"
 ```
 
-## 栈和队列
+</CodeBlock>
+
+## 栈和队列(LIFO/FIFO)
 
 - `栈`数据结构的访问规则是`LIFO(Last-in-First-Out,后进先出)`
 - `队列`数据结构的访问规则是`FIFO(First-In-First-Out, 先进先出)`

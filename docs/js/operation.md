@@ -12,6 +12,8 @@
 - `()	+ - * /  %(取余)`
 - `%` 运算结果的正负号由第一个运算值的正负号决定
 
+<CodeBlock>
+
 ```js
 true +1 //2
 flase+1 //1
@@ -21,11 +23,15 @@ flase+1 //1
 1 % -2 // 1
 ```
 
+</CodeBlock>
+
 - `注意:a++和++a  与 a--和--a 的区别`
   - `++a;`   先自增,后计算
   - `a++;`   先运算,后自增
   - `--a;`   先自减,后计算
   - `a--;`   先运算,后自减
+
+<CodeBlock>
 
 ```js
 var x=0.2-0.1;  // 0.1
@@ -49,9 +55,13 @@ var b=5;
 --b-1  //2
 ```
 
+</CodeBlock>
+
 ### 按位操作符
 
 - [按位操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
+
+<CodeBlock>
 
 ```bash
 按位与（ AND）	a & b	对于每一个比特位，只有两个操作数相应的比特位都是1时，结果才为1，否则为0
@@ -63,7 +73,11 @@ var b=5;
 无符号右移	a >>> b	将 a 的二进制表示向右移 b (< 32) 位，丢弃被移出的位，并使用 0 在左侧填充
 ```
 
+</CodeBlock>
+
 ### 运算符优先级
+
+<CodeBlock>
 
 ```bash
 1 ()
@@ -87,10 +101,14 @@ var b=5;
 10 =、+=、-=、*=、/=、%= (赋值运算)
 ```
 
+</CodeBlock>
+
 ### 逻辑运算符
 
 - `&& (并且) , || (或者)  , ! (取反)`
 - 逻辑运算符的优先级
+
+<CodeBlock>
 
 ```bash
 ! > && > ||
@@ -98,10 +116,14 @@ var b=5;
 ()>*,/ > +,-
 ```
 
+</CodeBlock>
+
 - `| 或运算   两个二进制位都为0,则结果为0,否则为1`
 - `& 与运算   两个二进制位都为1,则结果为1,否则为0`
 - `^ 异或运算 两个二进制位不相同,则结果为1,否则为0`
 - `~ 否运算   对一个二进制位取反`
+
+<CodeBlock>
 
 ```js
 0 | 3 ==> 00 | 11 ==> 11 ==> 3
@@ -114,12 +136,16 @@ a // 99
 b // 10
 ```
 
+</CodeBlock>
+
 ### 比较运算符
 
 - `>  >=   <  <=   ==   ===`
 - `注意： === 与 == 的区别.`
 - `==  值 相等`
 - `=== 值 和类型都相等`
+
+<CodeBlock>
 
 ```js
 var a=1 ;
@@ -128,9 +154,13 @@ a==b ;  // true
 a===b ;  // false
 ```
 
+</CodeBlock>
+
 - 在代码中没有这样的形式：`110>pj>100`; 如果一定要表达这种形式：使用`110 > pj && pj> 100`
 
 ## 赋值运算符
+
+<CodeBlock>
 
 ```js
 x += y // 等同于 x = x + y
@@ -146,9 +176,13 @@ x |= y // 等同于 x = x | y
 x ^= y // 等同于 x = x ^ y
 ```
 
+</CodeBlock>
+
 ## 逗号运算符
 
 - 逗号运算符用于对两个表达式求值,并返回后一个表达式的值
+
+<CodeBlock>
 
 ```js
 'a', 'b' // "b"
@@ -159,10 +193,14 @@ x // 1
 y // 10
 ```
 
+</CodeBlock>
+
 ## `void`
 
 `void`运算符的作用是执行一个表达式,然后不返回任何值,
 或者说返回`undefined`
+
+<CodeBlock>
 
 ```js
 var x = 3;
@@ -170,19 +208,24 @@ void (x = 5) //undefined
 x // 5
 ```
 
+</CodeBlock>
+
 ## 字符串的比较
 
 - 字符串按照字典顺序进行比较
 - 首先比较首字符的 Unicode 码点,如果相等;
 - 再比较第二个字符的 Unicode 码点,以此类推
 
-```js
+<CodeBlock>
 
+```js
 'cat' > 'dog' // false
 'cat' > 'catalog' // false
 'cat' > 'Cat' // true
 '大' > '小' // false
 ```
+
+</CodeBlock>
 
 ## escape与unescape
 
@@ -193,6 +236,8 @@ x // 5
 
 - `NaN是 JavaScript 的特殊值,表示"非数字"(Not a Number)`
 
+<CodeBlock>
+
 ```js
 typeof NaN // 'number'
 NaN == NaN // flase
@@ -201,8 +246,12 @@ NaN === NaN //false
 Boolean(NaN) // false
 ```
 
+</CodeBlock>
+
 - `NaN与任何数(包括它自己)的运算,得到的都是NaN`
 - 判断NaN的方法
+
+<CodeBlock>
 
 ```js
 //isNaN方法可以用来判断一个值是否为NaN
@@ -219,7 +268,11 @@ isNaN([123]) // false
 isNaN(['123']) // false
 ```
 
+</CodeBlock>
+
 ## if else
+
+<CodeBlock>
 
 ```js
   if (condition) {
@@ -233,7 +286,11 @@ isNaN(['123']) // false
   }
 ```
 
+</CodeBlock>
+
 ## switch case
+
+<CodeBlock>
 
 ```js
 switch (变量){
@@ -250,11 +307,15 @@ switch (变量){
 }
 ```
 
+</CodeBlock>
+
 ## 三元运算符/三目运算符
 
 - `boolean表达式 ? 操作一:操作二;`
 - `(condition) ? expr1 : expr2`
 - 如果condition为`true`,则返回expr1的值,否则返回expr2的值
+
+<CodeBlock>
 
 ```js
 var a = 16;
@@ -264,6 +325,8 @@ var c = 24;
 (a > b ? a : b)>c ? alert(a > b ? a : b):alert(c);
 ```
 
+</CodeBlock>
+
 ## 循环语句
 
 ### while循环
@@ -272,15 +335,21 @@ var c = 24;
 - 如果内容为true,会执行下面的代码,
 - 如果为内容为false,则不执行这段代码,跳过这段代码执行下面的内容.
 
+<CodeBlock>
+
 ```js
 while(条件语句/boolean)｛
 		//重复执行的代码块
 ｝
 ```
 
+</CodeBlock>
+
 - 如果在写循环的时候一定要有循环的结束条件,如果没有就是死循环,就是一Bug.
 - 终止循环：break
 - 立即结束本次循环,开始下一次循环：continue
+
+<CodeBlock>
 
 ```javascript
 	例：
@@ -292,6 +361,8 @@ while(条件语句/boolean)｛
 	console.log("over");
 ```
 
+</CodeBlock>
+
 ### do while
 
 代码从上到下执行的过程中如果遇到了do
@@ -299,15 +370,21 @@ while(条件语句/boolean)｛
 通过`while`来进行判断,如果判断通过那么再执行一次,
 如果判断不通过却结束循环.
 
+<CodeBlock>
+
 ```js
 do{
 	//要循环执行的代码块
 }while (条件语句/boolean)
 ```
 
+</CodeBlock>
+
 - 区别
 - `while`先判断再做,
 - `do-while`先做再判断；
+
+<CodeBlock>
 
 ```js
 var k = 0;
@@ -318,7 +395,11 @@ do{
 console.log(sum);
 ```
 
+</CodeBlock>
+
 ### for循环
+
+<CodeBlock>
 
 ```js
 for (initialize; test; increment) {
@@ -339,9 +420,13 @@ for(var i=0; i < 101 ; i++ ){
 alert(sum);
 ```
 
+</CodeBlock>
+
 - `for in`循环用来遍历一个对象的全部属性
 - `for in`它遍历的是对象所有可遍历(`enumerable`)的属性,会跳过不可遍历的属性
 - `for in`它不仅遍历对象自身的属性,还遍历继承的属性
+
+<CodeBlock>
 
 ```js
 // name 是 Person 本身的属性
@@ -373,10 +458,14 @@ for (var key in person) {
 // name
 ```
 
+</CodeBlock>
+
 ## break与continue
 
 - `break 终止循环`
 - `continue 跳出本次循环,进入下一次循环`
+
+<CodeBlock>
 
 ```js
 // break
@@ -390,7 +479,9 @@ while (a < 5) {
 }
 console.log("break is over");
 // 1 2 break is over
+```
 
+```js
 // continue
 var a = 0;
 while (a < 5) {
@@ -404,17 +495,22 @@ console.log("continue is over");
 // 1 3 4 5 continue is over
 ```
 
+</CodeBlock>
+
 ## js中的label标签
 
 - `语句的前面有标签(label)相当于定位符,用于跳转到程序的任意位置`
-- `格式`
+
+<CodeBlock title="格式 >>">
 
 ```js
 label:
   statement
 ```
 
-- use
+</CodeBlock>
+
+<CodeBlock title="label >>">
 
 ```js
 top:
@@ -432,3 +528,5 @@ lab1: for(var i =0 ; i<5;i++){
 	console.log('i ==> ',i)
 }
 ```
+
+</CodeBlock>

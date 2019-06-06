@@ -18,6 +18,8 @@
 
 ## 获取DOM元素
 
+<CodeBlock>
+
 ```js
 document.getElementById('demo'); // 返回单个标签dom
 document.getElementsByClassName('test'); //返回多个dom 在 IE 5,6,7,8 中无效
@@ -26,7 +28,9 @@ document.querySelector('#demo');   //只返回匹配的第一个元素dom  html5
 document.querySelectorAll('.test'); // html5
 ```
 
-## Node对象属性
+</CodeBlock>
+
+## 节点对象属性
 
 ### Node.nodeName与Node.nodeType
 
@@ -43,12 +47,16 @@ document.querySelectorAll('.test'); // html5
 | DOCUMENT_TYPE_NODE | `DocumentType.name` | 10 |
 | DOCUMENT_FRAGMENT_NODE | `#document-fragment` | 11 |
 
+<CodeBlock>
+
 ```js
 document.nodeName // "#document"
 document.nodeType // 9
 document.querySelector('a').nodeType === 1// true
 document.querySelector('a').nodeType === Node.ELEMENT_NODE// true
 ```
+
+</CodeBlock>
 
 ### Node.nodeValue
 
@@ -66,11 +74,11 @@ document.querySelector('a').nodeType === Node.ELEMENT_NODE// true
 - `浏览器根据这个属性(计算网页上的相对路径的URL.该属性为只读.`
 - `document.baseURI或element.baseURI`
 
-## 所有子节点
-
 ### Node.ownerDocument
 
 - `返回当前节点所在的顶层文档对象(即document对象`
+
+<CodeBlock>
 
 ```js
 var d = document.querySelector('p').ownerDocument;
@@ -79,6 +87,8 @@ d === document // true
 document.ownerDocument //null
 ```
 
+</CodeBlock>
+
 ### Node.sibling与Node.previousSibling
 
 - `Node.nextSibling属性返回紧跟在当前节点后面的第一个同级节点`
@@ -86,10 +96,11 @@ document.ownerDocument //null
 - `nextSibling` ：IE678  (下一个兄弟节点)
 - 在谷歌火狐中也有这个方法,只不过是得到换行.
 - `nextElementSibling` ：火狐谷歌 IE9-11  (下一个兄弟节点)
-- **兼容写法**：`b.nextElementSibling || b.nextSibling`
+- 兼容写法：`b.nextElementSibling || b.nextSibling`
+
+<CodeBlock>
 
 ```js
-
 <div class="box"></div>
 <div class="box" id="box"></div>
 <div class="box"></div>
@@ -101,10 +112,14 @@ var n = b.nextElementSibling || b.nextSibling;
 n.style.backgroundColor = "purple";
 ```
 
+</CodeBlock>
+
 - `previousSibling` ：IE678  (上一个兄弟节点)
 - 在谷歌火狐中也有这个方法,只不过是得到换行.
 - `previousElementSibling` ：火狐谷歌 IE9-11 (上一个兄弟节点)
-- **兼容写法**：`b.previousElementSibling || b.previousSibling`
+- 兼容写法：`b.previousElementSibling || b.previousSibling`
+
+<CodeBlock>
 
 ```js
 //1.获取id名为box的盒子.
@@ -127,10 +142,14 @@ function siblings(elm){
 }
 ```
 
+</CodeBlock>
+
 ### Node.parentNode
 
 - `返回当前节点的父节点`
 - 只可能是三种类型：`element、 document和documentfragment`
+
+<CodeBlock>
 
 ```js
 //从父节点移除指定节点
@@ -139,10 +158,14 @@ if (node.parentNode) {
 }
 ```
 
+</CodeBlock>
+
 ### Node.parentElement
 
 - 返回当前节点的父Element节点
 - 如果当前节点没有父节点,或者父节点类型不是Element节点,则返回`null`
+
+<CodeBlock>
 
 ```js
 //设置指定节点的父Element节点的CSS属性
@@ -151,6 +174,8 @@ if (node.parentElement) {
 }
 ```
 
+</CodeBlock>
+
 ### Node.childNodes
 
 - `火狐谷歌 IE9-11  (所有子节点)`
@@ -158,6 +183,8 @@ if (node.parentElement) {
 - `nodeType  ==  1`  表示的是元素节点
 - `nodeType  ==  2`  表示是属性节点
 - `nodeType  ==  3`  是文本节点
+
+<CodeBlock>
 
 ```html
 <div id="box">
@@ -187,6 +214,8 @@ console.log(arr.length)
 </script>
 ```
 
+</CodeBlock>
+
 ### Node.firstChild与Node.lastChild
 
 - `firstChild属性返回当前节点的第一个子节点,如果当前节点没有子节点,则返回null`
@@ -195,6 +224,8 @@ console.log(arr.length)
 - 在谷歌火狐中也有这个方法,只不过是得到第一个换行.
 - `firstElementChild` ：火狐谷歌 IE9-11  (第一个子节点)
 - 兼容写法：`b.firstElementChild || b.firstChild`
+
+<CodeBlock>
 
 ```html
 <div id="box">
@@ -212,10 +243,14 @@ fc.style.backgroundColor = "purple";
 </script>
 ```
 
+</CodeBlock>
+
 - `lastChild` ：IE678   (最后一个子节点)
 - 在谷歌火狐中也有这个方法,只不过是得到最后一个换行.
 - `lastElementChild`  ：火狐谷歌 IE9-11  (最后一个子节点)
 - 兼容写法：`b.lastElementChild || b.lastChild`
+
+<CodeBlock>
 
 ```js
 //1.获取父盒子
@@ -226,9 +261,13 @@ var lc = b.lastElementChild || b.lastChild;
 lc.style.backgroundColor = "purple";
 ```
 
+</CodeBlock>
+
 ### children
 
 - 在IE678中注释会被当做节点.解决方法：`注释写到父节点外部`
+
+<CodeBlock>
 
 ```html
 <div id="box">
@@ -248,6 +287,8 @@ console.log(bcArr.length)
 </script>
 ```
 
+</CodeBlock>
+
 ### 获取兄弟节点中的某一个
 
 - `someNode = node.parentNode.children[index]`,`index`是索引值
@@ -257,6 +298,8 @@ console.log(bcArr.length)
 ### createElement
 
 - `newNode = document.createElement(“标签名”)`
+
+<CodeBlock>
 
 ```js
 //demo
@@ -268,15 +311,19 @@ newtext=document.createTextNode('hello world');
 document.body.appendChild(newtext);
 ```
 
-### 节点的添加
+</CodeBlock>
 
-#### appendChild
+## 节点的添加
+
+### appendChild
 
 - `Node.appendChild()`:接受一个节点对象作为参数,将其作为`最后一个子节点`,插入当前节点
 
-#### Node.hasChildNodes
+### Node.hasChildNodes
 
 - `Node.hasChildNodes()`:返回一个布尔值,表示当前节点是否有子节点
+
+<CodeBlock>
 
 ```js
 function DOMComb(parent, callback) {
@@ -289,18 +336,22 @@ function DOMComb(parent, callback) {
 }
 ```
 
-#### InsertBefore
+</CodeBlock>
+
+### InsertBefore
 
 - `insertBefore(a,b)`用于将某个节点插入当前节点的指定位置
 - 该方法接受2个参数,第一个是`要插入的节点`,第二个是`参照节点`
 - `parentNode.insertBefore(newNode,targetNode)；`
 
-#### Node.cloneNode
+### Node.cloneNode
 
 - `cloneNode(参数) ；booblean类型的参数.`
 - `newNode = oldNode.cloneNode(boolean) ;`用于复制节点, 接受一个布尔值参数
   - `true` 表示深复制(复制节点及其所有子节点),
   - `false` 表示浅复制(复制节点本身,不复制子节点
+
+<CodeBlock>
 
 ```html
 <div id="box">
@@ -318,10 +369,14 @@ box.appendChild(newBox);
 </script>
 ```
 
-#### Node.removeChild
+</CodeBlock>
+
+### Node.removeChild
 
 - `父节点.removeChild(子节点)`
 - `自己节点.parentNode.removeChild(自己节点)` 不知道父级的情况下移除自身Node
+
+<CodeBlock>
 
 ```html
 <div id="box">
@@ -337,32 +392,36 @@ box.appendChild(newBox);
 </script>
 ```
 
-#### Node.replaceChild
+</CodeBlock>
+
+### Node.replaceChild
 
 - 用于将一个新的节点(替换当前节点的某一个子节点
 - `replacedNode = parentNode.replaceChild(newChild, oldChild);`
 
-#### Node.contains
+### Node.contains
 
 - 一个节点作为参数(返回一个布尔值(表示参数节点是否为当前节点的后代节点
 - `nodeA.contains(nodeB)`
 
-#### Node.isEqualNode
+### Node.isEqualNode
 
 - 返回一个布尔值,用于检查两个节点是否相等
 - 所谓相等的节点,指的是两个节点的类型相同、属性相同、子节点相同
 - `nodeA.isEqualNode(nodeB)`
 
-#### Node.normalize
+### Node.normalize
 
 - `Node.normalize()`用于清理当前节点内部的所有`Text`节点
 - 它会去除空的文本节点(并且将毗邻的文本节点合并成一个
 
-#### 节点的属性
+### 节点的属性
 
 - 获取：`getAttribute(名称)`
 - 设置：`setAttribute(名称, 值)`
 - 删除：`removeAttribute(名称)`
+
+<CodeBlock>
 
 ```js
 <img id="pic" width="100px" height="100px"/>
@@ -375,7 +434,9 @@ var a = pic.getAttribute("height");
 pic.removeAttribute("height");
 ```
 
-#### ParentNode
+</CodeBlock>
+
+### ParentNode
 
 - `HTMLCollection`节点的集合(返回一个类似数组的对象
 - `children`属性返回一个动态的`HTMLCollection`集合,由当前节点的所有Element子节点组成
@@ -383,7 +444,7 @@ pic.removeAttribute("height");
 - `lastElementChild`属性返回当前节点的最后一个Element子节点,如果不存在任何Element子节点,则返回`null`
 - `childElementCount`属性返回当前节点的所有Element子节点的数目
 
-#### ChildNode
+### ChildNode
 
 - `remove`方法用于移除当前节点
 - `before`方法用于在当前节点的前面,插入一个同级节点
@@ -391,6 +452,8 @@ pic.removeAttribute("height");
 - `replaceWith`方法使用参数指定的节点,替换当前节点
 
 ## 获取兄弟节点/元素的兼容性问题
+
+<CodeBlock>
 
 ```js
 // 获取下一个紧邻的兄弟元素
@@ -402,7 +465,9 @@ function getNextElement(element){
   }while(ele && ele.nodeType !== 1);
   return ele;
 }
+```
 
+```js
 // 获取上一个紧邻的兄弟元素
 function getPreviousElement(element){
   var ele = element;
@@ -412,7 +477,9 @@ function getPreviousElement(element){
   }while(ele && ele.nodeType !== 1);
   return ele;
 }
+```
 
+```js
 // 获取第一个子元素
 function getFirstElement(parent){
   if(parent.firstElementChild) return parent.firstElementChild;
@@ -420,7 +487,9 @@ function getFirstElement(parent){
   while(ele && ele.nodeType !== 1) ele = ele.nextSibling;
   return ele;
 }
+```
 
+```js
 // 获取最后一个子元素
 function getLastElement(parent){
   if(parent.LastElementChild) return parent.LastElementChild;
@@ -428,7 +497,9 @@ function getLastElement(parent){
   while(ele && ele.nodeType !== 1) ele = ele.perviousSibling;
   return ele;
 }
+```
 
+```js
 // 获取所有兄弟元素
 function sibling(ele){
   if(!ele) return null;
@@ -449,3 +520,5 @@ function sibling(ele){
   return elements;
 }
 ```
+
+</CodeBlock>

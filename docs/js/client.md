@@ -45,6 +45,8 @@
 
 - `兼容写法：`
 
+<CodeBlock>
+
 ```js
 // 正常浏览器（除了ie678之外的浏览器）
 window.pageYOffset
@@ -56,6 +58,8 @@ document.body.scrollTop
 scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 ```
 
+</CodeBlock>
+
 <img src="../assets/images/scroll.png" alt="">
 
 ## 样式获取
@@ -64,6 +68,8 @@ scrollTop = window.pageYOffset || document.documentElement.scrollTop || document
 - 另外一种写法: `div.style["width"]` 引号内写属性的名字
 - 计算后样式的获取:
 
+<CodeBlock>
+
 ```js
 // IE678:
 // element.currentStyle.属性名 或 element.currentStyle["属性名"]
@@ -71,7 +77,11 @@ demo.currentStyle.left
 demo.currentStyle["left"]
 ```
 
+</CodeBlock>
+
 - window.getComputedStyle
+
+<CodeBlock>
 
 ```js
 //window.getComputedStyle(element,伪元素)["属性名"]
@@ -82,7 +92,11 @@ var result = window.getComputedStyle(div, ':before');
 window.getComputedStyle(demo,null)["left"]
 ```
 
+</CodeBlock>
+
 - 兼容写法
+
+<CodeBlock>
 
 ```js
 function getStyle(obj, attr) {
@@ -94,16 +108,22 @@ function getStyle(obj, attr) {
 }
 ```
 
+</CodeBlock>
+
 ## pageX和pageY
 
 - `以当前文档的左上角为基准点`
 - 兼容写法
+
+<CodeBlock>
 
 ```js
 pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
 
 pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
 ```
+
+</CodeBlock>
 
 ## screenX和screenY
 
@@ -114,8 +134,9 @@ pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
 - `当前窗口的左上角为基准点`
 - 网页可视区宽高的兼容写法
 
-```js
+<CodeBlock>
 
+```js
 // 正常浏览器（包括IE9+）
 window.innerWidth
 // 标准模式
@@ -126,6 +147,8 @@ document.body.clientWidth
 // 兼容写法：
 clientWidth = window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth|| 0;
 ```
+
+</CodeBlock>
 
 ## IntersectionObserver
 

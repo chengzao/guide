@@ -17,6 +17,8 @@
 
 - `target.addEventListener(type, listener[, useCapture]);`
 
+<CodeBlock>
+
 ```js
 // type：事件名称，大小写敏感。
 // listener：监听函数。事件发生时，会调用该监听函数。
@@ -25,6 +27,8 @@
 window.addEventListener('load', function () {...}, false);
 request.addEventListener('readystatechange', function () {...}, false);
 ```
+
+</CodeBlock>
 
 ### removeEventListener
 
@@ -59,6 +63,8 @@ request.addEventListener('readystatechange', function () {...}, false);
   - `script(主程序代码)—>process.nextTick—>Promises...——>setTimeout——>setInterval——>setImmediate——> I/O——>UI rendering`
 - 在ES6中`macro-task`队列又称为`ScriptJobs`，而`micro-task`又称`PromiseJobs`
 
+<CodeBlock>
+
 ```bash
 假设：
 macro-task队列包含任务: a1, a2 , a3
@@ -66,6 +72,8 @@ micro-task队列包含任务: b1, b2 , b3
 
 执行顺序为，首先执行marco-task队列开头的任务，也就是 a1 任务，执行完毕后，在执行micro-task队列里的所有任务，也就是依次执行***b1, b2 , b3***，执行完后清空micro-task中的任务，接着执行marco-task中的第二个任务，依次循环。
 ```
+
+</CodeBlock>
 
 ## 事件的传播(事件流)
 
@@ -80,6 +88,8 @@ micro-task队列包含任务: b1, b2 , b3
 - 利用事件冒泡的原理,将事件绑定在父容器中,让父容器代为触发
 - 事件委托指的是，不在事件的发生地（直接dom）上设置监听函数，而是在其父元素上设置监听函数，通过事件冒泡，父元素可以监听到子元素上事件的触发，通过判断事件发生元素DOM的类型，来做出不同的响应
 - 好处：比较合适动态元素的绑定，新添加的子元素也会有监听函数，也可以有事件触发机制
+
+<CodeBlock>
 
 ```js
 var ul = document.querySelector('ul');
@@ -106,6 +116,8 @@ p.addEventListener('click', function(event) {
 });
 ```
 
+</CodeBlock>
+
 ## 事件如何先捕获后冒泡
 
 在DOM标准事件模型中，是先捕获后冒泡。但是如果要实现先冒泡后捕获的效果，对于同一个事件，监听捕获和冒泡，分别对应相应的处理函数，监听到捕获事件，先暂缓执行，直到冒泡事件被捕获后再执行捕获事件。
@@ -123,6 +135,8 @@ p.addEventListener('click', function(event) {
 - 第二个参数是一个对象，表示事件对象的配置
 - bubbles：布尔值，可选，默认为false，表示事件对象是否冒泡
 - cancelable：布尔值，可选，默认为false，表示事件是否可以被取消
+
+<CodeBlock>
 
 ```js
 var ev = new Event(
@@ -142,7 +156,11 @@ function myEventHandler(event) {
 }
 ```
 
+</CodeBlock>
+
 - `bubbles属性返回一个布尔值，表示当前事件是否会冒泡`
+
+<CodeBlock>
 
 ```js
 function goInput(e) {
@@ -154,7 +172,11 @@ function goInput(e) {
 }
 ```
 
+</CodeBlock>
+
 ### 自定义事件
+
+<CodeBlock>
 
 ```js
 // 新建事件实例
@@ -167,9 +189,13 @@ elem.addEventListener('build', function (e) { ... }, false);
 elem.dispatchEvent(event);
 ```
 
+</CodeBlock>
+
 ## 事件对象Event
 
 - 兼容性写法
+
+<CodeBlock>
 
 ```js
 event = event || window.event;
@@ -179,6 +205,8 @@ document.onclick=function(event){
 	console.log(event);//event 事件对象
 }
 ```
+
+</CodeBlock>
 
 <img src="../assets/images/event.png?raw=true" alt="">
 
@@ -191,6 +219,10 @@ document.onclick=function(event){
 
 - 兼容性写法
 
+<CodeBlock>
+
 ```js
 targetId = event.target ? event.target.id : event.srcElement.id;
 ```
+
+</CodeBlock>

@@ -124,6 +124,8 @@
 
 - `window.setInterval( 函数名,毫秒值 )`(通常省略`window`)
 
+<CodeBlock>
+
 ```js
 setInterval(fn,1000);
 setInterval("fn()",1000);
@@ -135,13 +137,15 @@ function fn(){
    console.log("setInterval"+num);
    num++;
 }
+```
+
+```js
 //第一种
 window.setInterval(fn,1000);
 
 //第二种
 setInterval("fn()",1000); //兼容问题. self.setInterval("fn()",1000)
-setInterval(fn,1000);
-// 错误：setInterval(fn(),1000); //兼容问题. self.setInterval("fn()",1000)
+setInterval(fn,1000); // 错误：setInterval(fn(),1000); //兼容问题. self.setInterval("fn()",1000)
 
 //第三种
 window.setInterval(function () {
@@ -150,14 +154,20 @@ window.setInterval(function () {
 },1000);
 ```
 
+</CodeBlock>
+
 ## setTimeout
 
 ### 设置定时器名称
+
+<CodeBlock>
 
 ```js
  var  timer =  setInterval(fn,1000);
  var  timer =  setTimeout(fn,1000);
 ```
+
+</CodeBlock>
 
 ### 清除定时器
 
@@ -165,15 +175,21 @@ window.setInterval(function () {
 - `clearInterval()`
 - 要用定时器,先清定时器！
 
+<CodeBlock>
+
 ```js
 clearInterval(定时器名)
 clearTimeout(定时器名)
 ```
 
+</CodeBlock>
+
 ### 递归与arguments.callee
 
 - 递归 : 函数自己调用自己.
 - 要设置跳出循环的条件,如果不设置,容易发生死循环.
+
+<CodeBlock>
 
 ```js
 var num = 0;
@@ -189,11 +205,13 @@ function fn1(){
 }
 ```
 
+</CodeBlock>
+
 - 返回正被执行的`Function`对调用时推荐使用函数递归`arguments.callee`代替函数名本身.
 - `this`: 触动或调用函数的调用者.
 - `arguments:callee` : 所在的函数体(等于直接调用函数名)
 
-### 参考示例
+<CodeBlock title="参考示例>>">
 
 ```js
 function User(login) {
@@ -214,3 +232,5 @@ setTimeout(function() {
 //1.1
 setTimeout(user.sayHi.bind(user), 1000); // John
 ```
+
+</CodeBlock>

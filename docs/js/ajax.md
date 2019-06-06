@@ -4,7 +4,11 @@
 
 ### 实例化
 
+<CodeBlock title="XMLHttpRequest >>">
+
 <<< @/example/docs/js/XMLHttpRequest.js
+
+</CodeBlock>
 
 <CodeBlock title="ajax简易版">
 
@@ -53,6 +57,8 @@
 
 - IE5、IE6中使用 `ActiveObject("Microsoft.XMLHTTP")`
 
+<CodeBlock title="XMLHttpRequest兼容性 >>">
+
 ```js
 var xhr;
 if(XMLHttpRequest){
@@ -62,6 +68,8 @@ if(XMLHttpRequest){
 }
 ```
 
+</CodeBlock>
+
 ### 同源
 
 - 同源策略是浏览器的一种安全策略，所谓同源是指，域名，协议，端口完全相同。
@@ -69,6 +77,8 @@ if(XMLHttpRequest){
 ### 跨域CORS
 
 - 不同源则跨域
+
+<CodeBlock>
 
 ```bash
 例如：http://www.example.com/
@@ -81,6 +91,8 @@ https://api.example.com/detail.html 不同源  协议、域名不同
 https://www.example.com:8080/detail.html  不同源    端口、协议不同
 http://www.example.com/detail/index.html  同  源    只是目录不同
 ```
+
+</CodeBlock>
 
 ### 跨域方案
 

@@ -37,6 +37,8 @@
 - 正则对象的`test`方法返回一个布尔值,表示当前模式是否能匹配参数字符串
 - 如果正则表达式带有`g`修饰符,则每一次test方法都从上一次结束的位置开始向后匹配
 
+<CodeBlock>
+
 ```js
 /cat/.test('cats and dogs') // true
 
@@ -50,6 +52,9 @@ r.lastIndex // 2
 r.test(s) // true
 ```
 
+</CodeBlock>
+
+
 ### `exec`
 
 - `RegExp.prototype.exec()`
@@ -57,6 +62,8 @@ r.test(s) // true
 - 正则对象的`exec`方法,可以返回匹配结果
 - 如果发现匹配,就返回一个数组,成员是每一个匹配成功的子字符串,否则返回`null`
 - `exec`方法,返回一个数组.第一个成员是整个匹配的结果,第二个成员是圆括号匹配的结果
+
+<CodeBlock>
 
 ```js
 var s = '_x_x';
@@ -67,9 +74,13 @@ r1.exec(s) // ["x"]
 r2.exec(s) // null
 ```
 
+</CodeBlock>
+
 - `exec`方法的返回数组还包含以下两个属性：
   - `input`：整个原字符串
   - `index`：整个模式匹配成功的开始位置(从0开始计数)
+
+<CodeBlock>
 
 ```js
 var r = /a(b+)a/;
@@ -81,10 +92,14 @@ arr.index // 1
 arr.input // "_abbba_aba_"
 ```
 
+</CodeBlock>
+
 ### match
 
 - `string.match(regex)`
 - 对字符串进行正则匹配,返回匹配结果
+
+<CodeBlock>
 
 ```js
 var s = 'abba';
@@ -94,9 +109,13 @@ s.match(r) // ["a", "a"]
 r.exec(s) // ["a"]
 ```
 
+</CodeBlock>
+
 ### search
 
 - 返回第一个满足条件的匹配结果在整个字符串中的位置,如果没有任何匹配,则返回`-1`
+
+<CodeBlock>
 
 ```js
 var r = /x/g;
@@ -104,9 +123,13 @@ r.lastIndex = 2; // 无效
 '_x_x'.search(r) // 1
 ```
 
+</CodeBlock>
+
 ### replace
 
 - `str.replace(search, replacement)`
+
+<CodeBlock>
 
 ```js
 'aaa'.replace('a', 'b') // "baa"
@@ -117,12 +140,16 @@ str.replace(/^\s+|\s+$/g, '')
 // "#id div.class"
 ```
 
+</CodeBlock>
+
 - replace方法的第二个参数可以使用美元符号`$`,用来指代所替换的内容
   - `$&` 指代匹配的子字符串
   - `$` 指代匹配结果前面的文本
   - `$'` 指代匹配结果后面的文本
   - `$n` 指代匹配成功的第n组内容,n是从`1`开始的自然数
   - `$$` 指代美元符号`$`
+
+<CodeBlock>
 
 ```js
 'hello world'.replace(/(\w+)\s(\w+)/, '$2 $1')
@@ -132,7 +159,11 @@ str.replace(/^\s+|\s+$/g, '')
 // "a[a-b-c]c"
 ```
 
+</CodeBlock>
+
 - replace方法的第二个参数还可以是一个函数,将每一个匹配内容替换为函数返回值
+
+<CodeBlock>
 
 ```js
 '3 and 5'.replace(/[0-9]+/g, function(match){
@@ -149,6 +180,8 @@ a.replace(pattern, function replacer(match) {
 // The QUICK BROWN fox jumped over the LAZY dog.
 ```
 
+</CodeBlock>
+
 ### `split`
 
 - `str.split(separator, [limit])`
@@ -159,12 +192,18 @@ a.replace(pattern, function replacer(match) {
 - 正则表达式的括号表示分组匹配
 - 括号中的模式可以用来匹配分组的内容
 
+<CodeBlock>
+
 ```js
 /fred+/.test('fredd') // true
 /(fred)+/.test('fredfred') // true
 ```
 
+</CodeBlock>
+
 - 用`\n`引用括号匹配的内容,n是从1开始的自然数,表示对应顺序的括号
+
+<CodeBlock>
 
 ```js
 // \1表示前一个括号匹配的内容("a"),\2表示第二个括号匹配的内容("b")
@@ -179,7 +218,11 @@ tagName.exec("<b>bold</b>")[1]
 // 'b'
 ```
 
+</CodeBlock>
+
 - 非捕获组 `(?:x)`称为非捕获组(Non-capturing group),表示不返回该组匹配的内容,即匹配的结果中不计入这个括号
+
+<CodeBlock>
 
 ```js
 // 正常匹配
@@ -193,7 +236,11 @@ url.exec('http://google.com/');
 // ["http://google.com/", "google.com", "/"]
 ```
 
+</CodeBlock>
+
 - 先行断言`x(?=y)`称为先行断言(Positive look-ahead), x只有在y前面才匹配,y不会被计入返回结果
+
+<CodeBlock>
 
 ```js
 var m = 'abc'.match(/b(?=c)/);
@@ -201,7 +248,11 @@ m // ["b"]
 /Jack (?=Sprat|Frost)/.test('Jack Frost') // true
 ```
 
+</CodeBlock>
+
 - 先行否定断言 `x(?!y)`称为先行否定断言(Negative look-ahead), x只有不在y前面才匹配,y不会被计入返回结果
+
+<CodeBlock>
 
 ```js
 /\d+(?!\.)/.exec('3.14')
@@ -211,12 +262,16 @@ var m = 'abd'.match(/abd(?!c)/);
 m // ['abd']
 ```
 
+</CodeBlock>
+
 ### 修饰符
 
 - `修饰符` 修饰符(modifier)表示模式的附加规则,放在正则模式的最尾部
 - `g` 修饰符, 全局匹配
 - `i` 修饰符, 忽略大小写
 - `m` 修饰符, 多行模式
+
+<CodeBlock>
 
 ```js
 var regex = /b/g;
@@ -234,12 +289,16 @@ regex.test(str); // false
 /^b/m.test('a\nb') // true
 ```
 
+</CodeBlock>
+
 ### 贪婪模式
 
 - 默认情况下都是最大可能匹配,即匹配直到下一个字符不满足匹配规则为止
 - `*?`：表示某个模式出现`0次或多次`，匹配时采用非贪婪模式
 - `+?`：表示某个模式出现`1次或多次`，匹配时采用非贪婪模式
 - 将贪婪模式改为非贪婪模式,可以在量词符后面加一个问号
+
+<CodeBlock>
 
 ```js
 var s = 'aaa';
@@ -248,6 +307,8 @@ s.match(/a+/) // ["aaa"]
 var s = 'aaa';
 s.match(/a+?/) // ["a"]
 ```
+
+</CodeBlock>
 
 ### 量词符
 
@@ -259,6 +320,8 @@ s.match(/a+?/) // ["a"]
   - 正则模式中,需要用斜杠转义的字符：`^、.、[、$、(、)、|、*、+、?、{、\\`
   - 使用RegExp方法生成正则对象,转义需要使用两个斜杠,因为字符串内部会先转义一次
 
+<CodeBlock>
+
 ```js
 /11|22/.test('911') // true
 
@@ -266,6 +329,8 @@ s.match(/a+?/) // ["a"]
 
 (new RegExp('1\\+1')).test('1+1')  // true
 ```
+
+</CodeBlock>
 
 ### 预定义模式
 
@@ -295,6 +360,8 @@ s.match(/a+?/) // ["a"]
   - `{n,}` 表示至少重复n次
   - `{n,m}`表示重复不少于n次,不多于m次
 
+<CodeBlock>
+
 ```js
 /lo{2}k/.test('look') // true
 /lo{2,5}k/.test('looook') // true
@@ -310,7 +377,11 @@ unescape('\u9fa5')  //"龥"
 http://tool.chinaz.com/Tools/Unicode.aspx
 ```
 
+</CodeBlock>
+
 - `特殊字符`
+
+<CodeBlock>
 
 ```bash
 \cX 表示Ctrl-[X],其中的X是A-Z之中任一个英文字母,用来匹配控制字符
@@ -325,29 +396,45 @@ http://tool.chinaz.com/Tools/Unicode.aspx
 \uhhhh 匹配一个以四位十六进制数(\u0000-\uFFFF)表示的unicode字符
 ```
 
+</CodeBlock>
+
 - `字符类` 表示有一系列字符可选择,只要匹配其中一个就可以
+
+<CodeBlock>
 
 ```js
 /[abc]/.test('hello world') // false
 /[abc]/.test('apple') // true
 ```
 
+</CodeBlock>
+
 - 脱字符(`^`)
   - 方括号内的第一个字符是`[^]`,表示除了字符类之中的字符,其他字符都可以匹配
   - 如果方括号内没有其他字符,即只有`[^]`,就表示匹配一切字符,其中包括换行符,而点号(`.`)是不包括换行符的
+
+<CodeBlock>
 
 ```js
 /[^abc]/.test('hello world') // true
 /[^abc]/.test('bbc') // false
 ```
 
+</CodeBlock>
+
 - 连字符(`-`) 连续序列的字符,连字符(`-`)用来提供简写形式,表示字符的连续范围
+
+<CodeBlock>
 
 ```js
 /[a-z]/.test('b') // true
 ```
 
+</CodeBlock>
+
 ## 正则表达式表达式收集
+
+<CodeBlock>
 
 ```js
 var exp = new RegExp("^[0-9]*$");
@@ -356,7 +443,11 @@ exp.test('1')  // true
 /^[0-9]*$/g.test('231') // true
 ```
 
+</CodeBlock>
+
 ## 校验数字的表达式
+
+<CodeBlock>
 
 ```bash
 数字：^[0-9]*$
@@ -388,10 +479,11 @@ m-n位的数字：^\d{m,n}$
 非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$
 ```
 
+</CodeBlock>
+
 ## 校验字符的表达式
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```bash
 汉字：^[\u4e00-\u9fa5]{0,}$
@@ -419,12 +511,11 @@ m-n位的数字：^\d{m,n}$
 禁止输入含有~的字符：[^~\x22]+
 ```
 
-</details>
+</CodeBlock>
 
 ## 特殊需求表达式
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```bash
 Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
@@ -478,4 +569,5 @@ IP地址：\d+\.\d+\.\d+\.\d+
 /^([a-z].*[A-Z])|([A-Z].*[a-z])/   有大小写的字母
 ```
 
-</details>
+</CodeBlock>
+
