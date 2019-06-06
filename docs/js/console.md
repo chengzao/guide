@@ -2,25 +2,42 @@
 
 ## log
 
-- 常见的占位符
-  - `%o` (这是字母o，不是0)，它接受对象，
-  - `%s` 接受字符串，
+- `占位符`
+
+  - `%s` 接受字符串
   - `%d` 表示小数或整数
+  - `%i` 整数
+  - `%f` 浮点数
+  - `%o` (这是字母o，不是0)，它接受对象
+  - `%c` CSS格式字符串
+
+<CodeBlock>
 
 ```js
+var number = 11 * 9;
+var color = 'red';
+console.log('%d %s balloons', number, color);
+// 99 red balloons
+
 console.log('I like %s but I do not like %s.', 'Skittles', 'pus');
 
 > I like Skittles but I do not like pus.
 ```
 
+</CodeBlock>
+
 ## dir
 
 - 查看 DOM 结构对象
+
+<CodeBlock>
 
 ```js
 let ele = document.body;
 console.dir(ele)
 ```
+
+</CodeBlock>
 
 ## warn
 
@@ -34,14 +51,20 @@ console.dir(ele)
 
 - 对输入的表达式进行断言，只有表达式为false时，才输出相应的信息到控制台
 
+<CodeBlock>
+
 ```js
 var arr = [1, 2, 3];
 console.assert(arr.length === 4);
 ```
 
+</CodeBlock>
+
 ## `count()`
 
 - 计数器
+
+<CodeBlock>
 
 ```js
 for(let i = 0; i < 10; i++) {
@@ -50,6 +73,8 @@ for(let i = 0; i < 10; i++) {
   }
 }
 ```
+
+</CodeBlock>
 
 ## `countReset()`
 
@@ -73,12 +98,16 @@ for(let i = 0; i < 10; i++) {
 
 - 需要查找 DOM 中某个元素的事件侦听器感时，谷歌控制台了 `getEventListeners`使找到这些事件更加容易且直观
 
+<CodeBlock>
+
 ```js
 getEventListeners($('.selector'))
 
 // 找到特定事件的侦听器
 getEventListeners($('selector')).eventName[0].listener
 ```
+
+</CodeBlock>
 
 ## 监控事件
 
@@ -103,3 +132,68 @@ getEventListeners($('selector')).eventName[0].listener
 ## 清除控制台和内存
 
 - `clear()`
+
+## console
+
+<CodeBlock>
+
+```js
+console.log()
+console.info()
+console.debug()
+
+console.warn()
+console.error()
+
+console.time() //用于计时开始
+console.timeEnd() //用于计时结束
+
+console.table() //某些复合类型的数据,可以将其转为表格显示
+console.count() //用于计数,输出它被调用了多少次
+
+console.trace() //显示当前执行的代码在堆栈中的调用路径
+console.clear() //清除当前控制台的所有输出
+
+console.dir()，console.dirxml()
+console.group()，console.groupEnd()，console.groupCollapsed()
+```
+
+</CodeBlock>
+
+<CodeBlock title="示例 >>">
+
+```js
+debugger
+// table
+var languages = [
+  { name: "JavaScript", fileExtension: ".js" },
+  { name: "TypeScript", fileExtension: ".ts" },
+  { name: "CoffeeScript", fileExtension: ".coffee" }
+];
+console.table(languages);
+// count
+function greet(user) {
+  console.count();
+  return 'hi ' + user;
+}
+greet('bob')
+//  : 1
+// "hi bob"
+
+greet('alice')
+//  : 2
+// "hi alice"
+
+console.count //可以接受一个字符串作为参数,作为标签,对执行次数进行分类
+greet('bob')
+// bob: 1
+// "hi bob"
+greet('alice')
+// alice: 1
+// "hi alice"
+greet('bob')
+// bob: 2
+// "hi bob"
+```
+
+</CodeBlock>

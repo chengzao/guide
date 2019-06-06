@@ -27,17 +27,15 @@
 - `sessionStorage`和`localStorage`不会自动把数据发给服务器，仅在本地保存
 - `Cookie`
 
-```bash
-cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递
+  - cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递
 
-cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下,存储的大小很小只有4K左右
+  - cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下,存储的大小很小只有4K左右
 
-key：可以在浏览器和服务器端来回传递，存储容量小，只有大约4K左右
+  - key：可以在浏览器和服务器端来回传递，存储容量小，只有大约4K左右
 
-cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭
+  - cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭
 
-cookie也是在所有同源窗口中都是共享的
-```
+  - cookie也是在所有同源窗口中都是共享的
 
 - `sessionStorage`仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持
 
@@ -83,21 +81,31 @@ cookie也是在所有同源窗口中都是共享的
 
 ## 解决 IE9 以下浏览器不能使用 opacity
 
+<CodeBlock>
+
 ```css
 opacity: 0.5;
 filter: alpha(opacity = 50);
 filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 ```
 
+</CodeBlock>
+
 ## 清除浮动的方式
 
 - 额外标签法
+
+<CodeBlock>
 
 ```css
 .clear{ clear:both; }
 ```
 
+</CodeBlock>
+
 - 伪元素
+
+<CodeBlock>
 
 ```css
 .clearfix:after{
@@ -113,7 +121,11 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 }
 ```
 
+</CodeBlock>
+
 - 双伪元素
+
+<CodeBlock>
 
 ```css
 .clearfix:after,
@@ -129,7 +141,11 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 }
 ```
 
+</CodeBlock>
+
 - BFC清除内部浮动:父级触发块级格式化上下文,形成独立渲染区域
+
+<CodeBlock>
 
 ```css
 /* fu */
@@ -154,6 +170,8 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 }
 ```
 
+</CodeBlock>
+
 ## a伪类的顺序
 
 - `link visited hover active`
@@ -161,6 +179,8 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
   - `visited`:被访问过之后
   - `hover`:鼠标放到链接上的时候
   - `active`:链接被按下的时候
+
+<CodeBlock>
 
 ```css
 a:link {
@@ -177,10 +197,11 @@ a:active {
 }
 ```
 
+</CodeBlock>
+
 ## 1pxborder(1像素问题)
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```html
 <style type="text/css">
@@ -245,9 +266,11 @@ a:active {
 <div class="box scale－single">scale single</div>
 ```
 
-</details>
+</CodeBlock>
 
 ## 将hello-world风格的转化为helloWorld风格
+
+<CodeBlock>
 
 ```js
 const camelizeRE = /-(\w)/g
@@ -258,3 +281,5 @@ const camelize = (str) => {
 camelize('hello-world')
 // "helloWorld"
 ```
+
+</CodeBlock>

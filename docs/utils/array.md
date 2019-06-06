@@ -1,6 +1,10 @@
 # Array常见算法
 
+[[toc]]
+
 ## 快速排序
+
+<CodeBlock>
 
 ```js
 function quickSort(arr) {
@@ -32,7 +36,11 @@ function quickSort(arr) {
     console.log('_arr', _arr);
 ```
 
+</CodeBlock>
+
 ## 冒泡
+
+<CodeBlock>
 
 ```js
 function bubbleSort(arr) {
@@ -55,7 +63,11 @@ var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log(bubbleSort(arr));
 ```
 
+</CodeBlock>
+
 ## currying
+
+<CodeBlock>
 
 ```js
   let log = console.log.bind(console);
@@ -105,7 +117,11 @@ add4 = function (x) {
 // console.log(add4(2)(3))
 ```
 
+</CodeBlock>
+
 ## 随机生成范围内不重复数字
+
+<CodeBlock>
 
 ```js
 // 随机生成范围内不重复数字
@@ -143,7 +159,11 @@ randomNub(arr2, 8, 1, 10);
 console.log(arr2);
 ```
 
+</CodeBlock>
+
 ## 查找1-9中缺少的数字
+
+<CodeBlock>
 
 ```js
 var str = '236489';
@@ -171,7 +191,11 @@ function fn(str) {
 }
 ```
 
+</CodeBlock>
+
 ## 升序算法
+
+<CodeBlock>
 
 ```js
 function AscOrder(arr) {
@@ -189,7 +213,11 @@ function AscOrder(arr) {
 console.log(AscOrder([23, 45, 18, 37, 92, 13, 24]));
 ```
 
+</CodeBlock>
+
 ## 降序排列
+
+<CodeBlock>
 
 ```js
 function DesOrder(arr) {
@@ -207,9 +235,13 @@ function DesOrder(arr) {
 console.log(DesOrder([13, 45, 18, 37, 9, 13, 24]));
 ```
 
+</CodeBlock>
+
 ## 数组去重
 
 - 方法1
+
+<CodeBlock>
 
 ```js
 function unique(arr) {
@@ -225,7 +257,11 @@ function unique(arr) {
 }
 ```
 
+</CodeBlock>
+
 - 方法2
+
+<CodeBlock>
 
 ```js
 function unique2(arr) {
@@ -246,7 +282,11 @@ function unique2(arr) {
 }
 ```
 
+</CodeBlock>
+
 - 方法3
+
+<CodeBlock>
 
 ```js
 function unique3(arr) {
@@ -264,7 +304,11 @@ function unique3(arr) {
 console.log(unique3([55, 1, 2, 2, 33, 44, 44]))
 ```
 
+</CodeBlock>
+
 - 方法4
+
+<CodeBlock>
 
 ```js
 function unique4(arr) {
@@ -292,7 +336,11 @@ function unique4(arr) {
 console.log(unique4([5, 2, 3, 6, 8, 6, 5, 4, 7, 1, 9]).toString());
 ```
 
+</CodeBlock>
+
 - 方法5
+
+<CodeBlock>
 
 ```js
 var array = [1, 1, '1', '1'];
@@ -317,7 +365,11 @@ function unique(array) {
 console.log(unique(array)); // [1, "1"]
 ```
 
+</CodeBlock>
+
 ## 找出字符串中重复次数最多
+
+<CodeBlock>
 
 ```js
 function deduplication(str) {
@@ -350,9 +402,13 @@ var str = 'asdfssmmmaaasasasasaa';
 deduplication(str);
 ```
 
+</CodeBlock>
+
 ## 最大值 / 最小值
 
 - 最小值
+
+<CodeBlock>
 
 ```js
 function MinNum(arr) {
@@ -370,7 +426,11 @@ console.log(MinNum([2, 3, -44, 555, 222]))
 Math.min.apply(Math,[32, 18, 38, 12, 43, 31, 17])
 ```
 
+</CodeBlock>
+
 - 最大值
+
+<CodeBlock>
 
 ```js
 function MaxNum(arr) {
@@ -393,7 +453,11 @@ console.log(Math.max.apply(null, ta)); //最大值
 console.log(Math.min.apply(null, ta)); //最小值
 ```
 
+</CodeBlock>
+
 ## toRMB形式
+
+<CodeBlock>
 
 ```js
 // 将数字12345678转化成 RMB形式
@@ -418,7 +482,11 @@ var num1 = 12345789;
 console.log(toRMB(num1));
 ```
 
+</CodeBlock>
+
 ## 字符串反转
+
+<CodeBlock>
 
 ```js
 // 字符串反转，如将 '12345678' 变成 '87654321'
@@ -427,3 +495,5 @@ var str = '123456789';
 str = str.split('').reverse().join('');
 console.log(str);
 ```
+
+</CodeBlock>

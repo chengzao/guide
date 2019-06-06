@@ -7,9 +7,6 @@
 - [create-react-app](https://github.com/facebook/create-react-app)
 - [react-router](https://github.com/ReactTraining/react-router)
 
-
-
-
 - [react-transition-group](https://github.com/reactjs/react-transition-group)
 - [styled-components](https://github.com/styled-components/styled-components)
 
@@ -33,18 +30,19 @@
 
 - mobx:
 
-```bash
-https://github.com/mobxjs/mobx
-awesome-mobx: https://github.com/mobxjs/awesome-mobx
-```
+  - https://github.com/mobxjs/mobx
+
+  - awesome-mobx: https://github.com/mobxjs/awesome-mobx
 
 - handleFunction:
 
-```bash
-ramda: http://ramda.cn/docs/
-lodash: https://www.lodashjs.com/
-RxJS: https://cn.rx.js.org/
-```
+
+  - ramda: http://ramda.cn/docs/
+
+  - lodash: https://www.lodashjs.com/
+
+  - RxJS: https://cn.rx.js.org/
+
 
 - hoc `hoist-non-react-statics`
 - className `classnames`
@@ -55,23 +53,23 @@ RxJS: https://cn.rx.js.org/
 
 - React-select
 
-```bash
-https://www.npmjs.com/package/react-pinyin-select-2
+  - https://www.npmjs.com/package/react-pinyin-select-2
 
-https://github.com/xcatliu/react-select-pinyin
+  - https://github.com/xcatliu/react-select-pinyin
 
-https://github.com/react-component/select
+  - https://github.com/react-component/select
 
-https://github.com/jedwatson/react-select
+  - https://github.com/jedwatson/react-select
 
-https://github.com/enkidevs/react-search-input
+  - https://github.com/enkidevs/react-search-input
 
-https://github.com/hotoo/pinyin
+  - https://github.com/hotoo/pinyin
 
-https://github.com/ctq123/rcSearchSelect
-```
+  - https://github.com/ctq123/rcSearchSelect
 
 - pinyin
+
+<CodeBlock>
 
 ```bash
 npm i pinyin pinyinlite string_score
@@ -94,25 +92,18 @@ option.pinyin = pinyin(option.label, {
       return option;
 ```
 
+</CodeBlock>
+
 - 移动端页面输入底部被软键盘遮挡问题
 
-```bash
-https://www.cnblogs.com/dongcanliang/p/7383508.html
-https://www.cnblogs.com/wx1993/p/6059668.html
-
-* 通过 window.onresize 监听页面大小变化，然后通过 window.scrollTo 使页面滚动到所需位置
-* 通过 Element.scrollIntoView()
-* 通过 Element.scrollIntoViewIfNeeded()
-
-移动端软键盘监听（弹出，收起），及影响定位布局的问题
-https://www.cnblogs.com/wangyihong/p/7514304.html
-
-input光标位置设置至行末端
-https://blog.csdn.net/shuanger112/article/details/81704208
-
-JedWatson/react-select Mobile support
-https://github.com/JedWatson/react-select/issues/2692
-```
+  - [移动端页面输入底部被软键盘遮挡问题](https://www.cnblogs.com/dongcanliang/p/7383508.html)
+  - [iOS下Html页面中input获取焦点弹出键盘时挡住input解决方案—scrollIntoView()](https://www.cnblogs.com/wx1993/p/6059668.html)
+  - 通过 window.onresize 监听页面大小变化，然后通过 window.scrollTo 使页面滚动到所需位置
+  - 通过 Element.scrollIntoView()
+  - 通过 Element.scrollIntoViewIfNeeded()
+  - [移动端软键盘监听（弹出，收起），及影响定位布局的问题](https://www.cnblogs.com/wangyihong/p/7514304.html)
+  - [input光标位置设置至行末端](https://blog.csdn.net/shuanger112/article/details/81704208)
+  - [JedWatson/react-select Mobile support](https://github.com/JedWatson/react-select/issues/2692)
 
 - `this.setState`异步执行, `(callback[, callback2])` ,return object
 - `this.state({})`, return object

@@ -1,6 +1,10 @@
 # 事件兼容
 
+[[toc]]
+
 ## 获取键盘事件的键值
+
+<CodeBlock>
 
 ```js
 function getKeyCode(e) {
@@ -9,7 +13,11 @@ function getKeyCode(e) {
 }
 ```
 
+</CodeBlock>
+
 ## 兼容onmousewheel
+
+<CodeBlock>
 
 ```js
 // 兼容onmousewheel
@@ -32,7 +40,11 @@ function addMouseWheelEvent(element, func) {
 
 ```
 
+</CodeBlock>
+
 ## 禁止选中
+
+<CodeBlock>
 
 ```js
 // 禁止选中
@@ -54,7 +66,11 @@ function disabledSel() {
 }
 ```
 
+</CodeBlock>
+
 ## 事件的监听与移除
+
+<CodeBlock>
 
 ```js
 
@@ -105,7 +121,11 @@ var addEvent = (function(){
 })();
 ```
 
+</CodeBlock>
+
 ## requestAnimationFrame兼容
+
+<CodeBlock>
 
 ```js
 (function () {
@@ -137,7 +157,11 @@ var addEvent = (function(){
 }());
 ```
 
+</CodeBlock>
+
 ## 封装DOMContentLoaded事件
+
+<CodeBlock>
 
 ```js
 // Javascript封装DOMContentLoaded事件
@@ -175,7 +199,11 @@ function ready(callback){
 
 ```
 
+</CodeBlock>
+
 ## 冒泡和阻止默认事件封装
+
+<CodeBlock>
 
 ```js
 var util = {
@@ -226,7 +254,11 @@ var util = {
 
 ```
 
+</CodeBlock>
+
 ## bind兼容
+
+<CodeBlock>
 
 ```js
 if(!('bind' in Function.prototype)){
@@ -256,7 +288,11 @@ Function.prototype.bind=function(obj,arg){
 }
 ```
 
+</CodeBlock>
+
 ## 用setTimeout来实现setInterval
+
+<CodeBlock>
 
 ```js
 function callback(){
@@ -266,10 +302,13 @@ function callback(){
 setTimeout(callback,200)
 ```
 
+</CodeBlock>
+
 ## new关键字演示
 
-```js
+<CodeBlock>
 
+```js
 /**
  * new2 new关键字的代码实现演示
  * @param {function} func 被new的类 (构造函数)
@@ -295,7 +334,11 @@ console.log(m instanceof Object);
 console.log(m.__proto__.constructor === M);
 ```
 
+</CodeBlock>
+
 ## `Object.create兼容`
+
+<CodeBlock>
 
 ```js
 Object._create = function(o){
@@ -308,3 +351,5 @@ Object._create = function(o){
     }
 }
 ```
+
+</CodeBlock>

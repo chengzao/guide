@@ -1,9 +1,10 @@
 # 移动端
 
+[[toc]]
+
 ## 点击事件
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 var touch = {
@@ -35,12 +36,11 @@ var touch = {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## 长按事件
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 var touch = {
@@ -73,12 +73,11 @@ var touch = {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## 双击事件
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 var touch = {
@@ -166,12 +165,11 @@ var touch = {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## 向上滑动事件
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 var touch = {
@@ -212,12 +210,11 @@ var touch = {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## 向下滑动事件
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 var touch = {
@@ -258,12 +255,11 @@ var touch = {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## 向左滑动事件
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 var touch = {
@@ -304,12 +300,11 @@ var touch = {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## 向右滑动事件
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 var touch = {
@@ -350,4 +345,4 @@ var touch = {
 }
 ```
 
-</details>
+</CodeBlock>

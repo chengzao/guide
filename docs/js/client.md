@@ -6,12 +6,24 @@
 - `clientTop`：表示边框border的厚度，在未指定的情况下一般为0
 - `scrollTop`：滚动后被隐藏的高度，获取对象相对于由offsetParent属性指定的父坐标(css定位的元素或body元素)距离顶端的高度
 
+<CodeBlock title="client兼容 >>">
+
+<<< @/example/docs/client/default.js
+
+</CodeBlock>
+
 ## offsetHeight和offsetWidth
 
 - offsetHeight和style.height的区别: `style.height是字符串,offsetHeight是数值`
 - `demo.style.height`是用来获取和设置行内样式的,`offsetHeight`是只读属性
 - `demo.style.height`只能获取和设置行内样式,如果样式写到了其他地方,甚至根本就没写,便无法获取.因此,工作中一般用`demo.offsetHeight`来获取某元素的真实宽度/高度,用`style.height`来设置宽度/高度
 - `offsetHeight`的构成`offsetHeight = height+padding+border`,`包括 自身高度 内边距 边框 不包括 外边距`
+
+<CodeBlock title="offsetHeight和offsetWidth兼容 >>">
+
+<<< @/example/docs/client/offsetWidthAndHeight.js
+
+</CodeBlock>
 
 ## offsetLeft和offsetTop
 
@@ -41,28 +53,24 @@
 - `window.onscroll = function () { 语句 }`
 - 页面滚动座标: `window.scrollTo(xpos,ypos)`窗体（左上角）滚动到页面这个座标`position`
 - `scrollHeight`和`scrollWidth: content+padding` 对象内部实际内容的高度/宽度
+
+<CodeBlock title="scrollHeight兼容 >>">
+
+<<< @/example/docs/client/scrollHeight.js
+
+</CodeBlock>
+
 - `scrollTop`和`scrollLeft` 被卷去部分的 `顶部/左侧` 到可视区域 `顶部/左侧` 的距离
 
-- `兼容写法：`
+<CodeBlock title="scrollTop兼容 >>">
 
-<CodeBlock>
-
-```js
-// 正常浏览器（除了ie678之外的浏览器）
-window.pageYOffset
-// 已经声明DTD（标准模式）
-document.documentElement.scrollTop
-// 未声明 DTD（怪异模式）
-document.body.scrollTop
-
-scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-```
+<<< @/example/docs/client/scrollTop.js
 
 </CodeBlock>
 
 <img src="../assets/images/scroll.png" alt="">
 
-## 样式获取
+## 样式获取getComputedStyle
 
 - 访问属性的两种方式: `div.style.width`, 只能得到行内样式
 - 另外一种写法: `div.style["width"]` 引号内写属性的名字
@@ -79,49 +87,19 @@ demo.currentStyle["left"]
 
 </CodeBlock>
 
-- window.getComputedStyle
+<CodeBlock title="兼容写法">
 
-<CodeBlock>
-
-```js
-//window.getComputedStyle(element,伪元素)["属性名"]
-// getComputedStyle方法还可以接受第二个参数，
-// 表示指定节点的伪元素（比如:before、:after、:first-line、:first-letter等）
-var result = window.getComputedStyle(div, ':before');
-// 一般情况下没有伪元素,我们用 null 来替代.
-window.getComputedStyle(demo,null)["left"]
-```
-
-</CodeBlock>
-
-- 兼容写法
-
-<CodeBlock>
-
-```js
-function getStyle(obj, attr) {
-    if (obj.currentStyle) {
-        return obj.currentStyle[attr]; //ie678
-    } else {
-        return getComputedStyle(obj, null)[attr]; //正常浏览器
-    }
-}
-```
+<<< @/example/docs/client/getStyle.js
 
 </CodeBlock>
 
 ## pageX和pageY
 
 - `以当前文档的左上角为基准点`
-- 兼容写法
 
 <CodeBlock>
 
-```js
-pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
-
-pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
-```
+<<< @/example/docs/client/pageXY.js
 
 </CodeBlock>
 
@@ -134,19 +112,9 @@ pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
 - `当前窗口的左上角为基准点`
 - 网页可视区宽高的兼容写法
 
-<CodeBlock>
+<CodeBlock title="clientWidth兼容 >>">
 
-```js
-// 正常浏览器（包括IE9+）
-window.innerWidth
-// 标准模式
-document.documentElement.clientWidth
-// 怪异模式
-document.body.clientWidth
-
-// 兼容写法：
-clientWidth = window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth|| 0;
-```
+<<< @/example/docs/client/clientWidthAndHeight.js
 
 </CodeBlock>
 

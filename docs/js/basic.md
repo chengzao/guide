@@ -60,7 +60,7 @@ document.defaultView
 
 </CodeBlock>
 
-## 文档兼容模式
+## 文档兼容模式CSS1Compat
 
 - `document type`声明文档类型 DTD：`<!DOCTYPE html>`
 - `BackCompat`   未声明DTD(怪异模式)firefox
@@ -438,91 +438,6 @@ JSON.parse('null') // null
 
 var o = JSON.parse('{"name": "张三"}');
 o.name // 张三
-```
-
-</CodeBlock>
-
-## console
-
-<CodeBlock>
-
-```js
-console.log()
-console.info()
-console.debug()
-
-console.warn()
-console.error()
-
-console.time() //用于计时开始
-console.timeEnd() //用于计时结束
-
-console.table() //某些复合类型的数据,可以将其转为表格显示
-console.count() //用于计数,输出它被调用了多少次
-
-console.trace() //显示当前执行的代码在堆栈中的调用路径
-console.clear() //清除当前控制台的所有输出
-
-console.dir()，console.dirxml()
-console.group()，console.groupEnd()，console.groupCollapsed()
-```
-
-</CodeBlock>
-
-- `占位符`
-
-<CodeBlock>
-
-```js
-%s 字符串
-%d 整数
-%i 整数
-%f 浮点数
-%o 对象的链接
-%c CSS格式字符串
-
-var number = 11 * 9;
-var color = 'red';
-console.log('%d %s balloons', number, color);
-// 99 red balloons
-```
-
-</CodeBlock>
-
-<CodeBlock title="示例 >>">
-
-```js
-debugger
-// table
-var languages = [
-  { name: "JavaScript", fileExtension: ".js" },
-  { name: "TypeScript", fileExtension: ".ts" },
-  { name: "CoffeeScript", fileExtension: ".coffee" }
-];
-console.table(languages);
-// count
-function greet(user) {
-  console.count();
-  return 'hi ' + user;
-}
-greet('bob')
-//  : 1
-// "hi bob"
-
-greet('alice')
-//  : 2
-// "hi alice"
-
-console.count //可以接受一个字符串作为参数,作为标签,对执行次数进行分类
-greet('bob')
-// bob: 1
-// "hi bob"
-greet('alice')
-// alice: 1
-// "hi alice"
-greet('bob')
-// bob: 2
-// "hi bob"
 ```
 
 </CodeBlock>

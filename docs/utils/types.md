@@ -1,5 +1,7 @@
 # 判断类型标识
 
+[[toc]]
+
 ## typeof 类型判断
 
 - `typeof undefined` --> `return undefined`
@@ -33,6 +35,8 @@
 - `object instanceof constructor` 检测 `constructor.prototype` 是否存在于参数 `object` 的原型链
 - `obj.hasOwnProperty(prop)` 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性
 
+<CodeBlock>
+
 ```js
 // 判断类型
 var arr = [];
@@ -47,9 +51,13 @@ Object.prototype.toString.call(obj).slice(8, -1);
 obj.constructor.name.toString().toLowerCase();
 ```
 
+</CodeBlock>
+
 ## toRawType
 
 - Object.prototype.toString.call(arg) 和 String(arg) 的区别？
+
+<CodeBlock>
 
 ```js
   const _toString = Object.prototype.toString
@@ -68,7 +76,11 @@ obj.constructor.name.toString().toLowerCase();
   _toString.call(/hello/) // [object RegExp]
 ```
 
+</CodeBlock>
+
 - toRawType
+
+<CodeBlock>
 
 ```js
 function toRawType(value) {
@@ -79,10 +91,11 @@ toRawType(null); // "Null"
 toRawType(/sdfsd/); //"RegExp"
 ```
 
+</CodeBlock>
+
 ## 浏览器标识
 
-<details>
-<summary>详情</summary>
+<CodeBlock>
 
 ```js
 // 判断浏览器标识
@@ -132,9 +145,11 @@ if (url.indexOf("15b202") > -1) {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## 判断浏览器平台
+
+<CodeBlock>
 
 ```js
 isMobile() {
@@ -183,7 +198,11 @@ checkPlatform() {
 },
 ```
 
+</CodeBlock>
+
 ## BrowserInfo
+
+<CodeBlock>
 
 ```js
 var BrowserInfo = function() {
@@ -221,3 +240,5 @@ window.location.href = /Android|webOS|iPhone|iPod|BlackBerry/i.test(
   ? "https://www.baidu.com/"
   : "http://news.baidu.com/";
 ```
+
+</CodeBlock>

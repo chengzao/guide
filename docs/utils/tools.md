@@ -1,6 +1,10 @@
 # 常用方法
 
+[[toc]]
+
 ## 简易克隆对象
+
+<CodeBlock>
 
 ```js
 //简易克隆对象
@@ -15,7 +19,11 @@ JSON.parse(JSON.stringify(obj))
 Object.create({},obj)
 ```
 
+</CodeBlock>
+
 ## 获取类名ClassName
+
+<CodeBlock>
 
 ```js
 
@@ -58,9 +66,13 @@ function siblings(elm) {
 
 ```
 
+</CodeBlock>
+
 ## 动画animate
 
 - 简易版
+
+<CodeBlock>
 
 ```js
 //动画animate
@@ -99,7 +111,11 @@ function animate(obj, target) {
 }
 ```
 
+</CodeBlock>
+
 - animate
+
+<CodeBlock>
 
 ```js
 //animate fn回调
@@ -129,7 +145,11 @@ function animateTwo(obj, json, fn) {
 }
 ```
 
+</CodeBlock>
+
 - animate多属性动画
+
+<CodeBlock>
 
 ```js
 //fn为回调函数
@@ -181,20 +201,11 @@ function animate(obj, json, fn) {
 
 ```
 
-## getStyle
-
-```js
-// 获取计算后的样式
-function getStyle(obj, attr) {
-    if (obj.currentStyle) {
-        return obj.currentStyle[attr]; //ie678
-    } else {
-        return getComputedStyle(obj, null)[attr]; //正常浏览器
-    }
-}
-```
+</CodeBlock>
 
 ## `__proto__`兼容
+
+<CodeBlock>
 
 ```js
 // __proto__ 兼容
@@ -217,7 +228,11 @@ function getProto(attr) {
  */
 ```
 
+</CodeBlock>
+
 ## 根据属性得到具体元素
+
+<CodeBlock>
 
 ```js
 // 根据属性得到具体元素
@@ -232,7 +247,11 @@ function atrGetEle(ele, attr, value) {
 }
 ```
 
+</CodeBlock>
+
 ## 对象深度克隆
+
+<CodeBlock>
 
 ```js
 // 对象数组的深拷贝
@@ -299,7 +318,11 @@ const deepClone = function (target) {
 }
 ```
 
+</CodeBlock>
+
 ## 横竖屏
+
+<CodeBlock>
 
 ```js
 /**
@@ -351,7 +374,11 @@ function changeOrientation($print) {
 }
 ```
 
+</CodeBlock>
+
 ## other
+
+<CodeBlock>
 
 ```js
 /**
@@ -449,11 +476,19 @@ func();
 // ===after===
 ```
 
+</CodeBlock>
+
 ## log
 
-- log `const log = (type) => console.log.bind(console, type);`
+<CodeBlock>
+
+`const log = (type) => console.log.bind(console, type);`
+
+</CodeBlock>
 
 ## cached
+
+<CodeBlock>
 
 ```js
 function cached(fn){
@@ -473,7 +508,11 @@ cachedComputed('ss')
 // 不再打印
 ```
 
+</CodeBlock>
+
 ## UrlToObject
+
+<CodeBlock>
 
 ```js
   serilizeUrl(url) {
@@ -500,3 +539,5 @@ cachedComputed('ss')
     return {}
   },
 ```
+
+</CodeBlock>
