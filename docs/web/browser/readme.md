@@ -177,7 +177,7 @@ for (let p of searchParams) {
 
 ### encodeURIComponent与decodeURIComponent
 
-<CodeBlock show>
+<CodeBlock>
 
 ```js
 const url = "http://www.domain.com/abc?user=Alan&age=123&name=小明";
@@ -191,7 +191,7 @@ console.log(decodeURIComponent(encodeURIComponent(url)));
 
 ### encodeURI与decodeURI
 
-<CodeBlock show>
+<CodeBlock>
 
 ```js
 const url = "http://www.domain.com/abc?user=Alan&age=123&name=小明";
