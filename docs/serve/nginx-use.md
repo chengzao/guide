@@ -9,6 +9,8 @@
 
 - centos7下安装nginx
 
+<CodeBlock>
+
 ```bash
 yum install epel-release -y
 yum install nginx -y
@@ -21,6 +23,8 @@ systemctl stop firewalld.service #关闭firewalld防火墙
 systemctl disable firewalld.service #禁止firewalld开机启动
 ```
 
+</CodeBlock>
+
 - 进入/etc/nginx/找到nginx.conf ，编辑nginx.conf文件在其中找到 http模块，添加你需要额外配置文件`例如：include /etc/nginx/vhost/*.conf`
 
 - 这里本地测试情况可忽略第2步骤.因为在`nginx.conf`文件中已经为一般情况做好了配置.如下图36行处在这里可以进行多域名的配置的文件夹
@@ -31,15 +35,21 @@ systemctl disable firewalld.service #禁止firewalld开机启动
 
 - 进入`/etc/nginx/default.d/` 文件中， 新建文件以`.conf` 结尾
 
+<CodeBlock>
+
 ```bash
 # 例： 这里新建两个配置文件
 touch a_com.conf
 touch b_com.conf
 ```
 
+</CodeBlock>
+
 #### 编辑conf
 
 - `a_com.conf`配置文件内容如下：
+
+<CodeBlock>
 
 ```nginx
 server {
@@ -52,7 +62,11 @@ server {
 }
 ```
 
+</CodeBlock>
+
 - `b_com.conf`配置文件内容如下：
+
+<CodeBlock>
 
 ```nginx
 server {
@@ -65,6 +79,8 @@ server {
 }
 ```
 
+</CodeBlock>
+
 #### 新建目录
 
 - 进入 `/usr/share/nginx/`  目录中新建 demo1 和 demo2 两个文件夹
@@ -75,10 +91,14 @@ server {
 
 - 进入 `/etc/` 中编辑 centos7 的hosts 。或直接  `vim  /etc/hosts` 打开编辑 在其中添加
 
+<CodeBlock>
+
 ```bash
 127.0.0.1    www.a.com
 127.0.0.1    www.b.com
 ```
+
+</CodeBlock>
 
 添加完毕后,需要重新启动network服务: `systenctl restart network.service`
 
@@ -92,11 +112,15 @@ server {
 
 - 在其中添加 添加  centos7的ip地址 （在centos7命令行中输入：  `ip addr show` 查看ip）
 
+<CodeBlock>
+
 ```bash
 # 例如：在其中输入如下  192.168.241.20  是我本地centos7的地址 ，替换成你的centos7的ip即可
 192.168.241.20  www.a.com
 192.168.241.20  www.b.com
 ```
+
+</CodeBlock>
 
 #### 访问浏览器
 
@@ -111,6 +135,8 @@ server {
 ![nginx-windows](../assets/images/nginx-windows.png?raw=true)
 
 - 在nginx-1.12.1目录下`conf/nginx.conf` 内容
+
+<CodeBlock>
 
 ```nginx
 #user  nobody;
@@ -135,7 +161,11 @@ http {
 }
 ```
 
+</CodeBlock>
+
 - vhost 目录下 `a_com.conf` 内容：
+
+<CodeBlock>
 
 ```nginx
 server {
@@ -148,7 +178,11 @@ server {
 }
 ```
 
+</CodeBlock>
+
 - vhost 目录下 `b_com.conf` 内容：
+
+<CodeBlock>
 
 ```nginx
 server {
@@ -161,16 +195,24 @@ server {
 }
 ```
 
+</CodeBlock>
+
 - 在本地磁盘D盘下 新建 test 和 test2目录，并新建 index.html文件
 
 - 在本地磁盘C盘中 `C:\Windows\System32\drivers\etc` 下修改 `hosts` 如下
+
+<CodeBlock>
 
 ```bash
 127.0.0.1       www.a.com
 127.0.0.1       www.b.com
 ```
 
+</CodeBlock>
+
 - 用cmd进入nginx安装目录下执行
+
+<CodeBlock>
 
 ```bash
 nginx.exe  # 开始
@@ -178,6 +220,8 @@ nginx -t  # 检测语法
 nginx -s reload  # 重新启动
 nginx -s stop  # 停止
 ```
+
+</CodeBlock>
 
 - 打开浏览器输入网址
 
@@ -191,13 +235,19 @@ nginx -s stop  # 停止
 
 - hosts
 
+<CodeBlock>
+
 ```bash
 127.0.0.1       jenkins.chenio.com
 127.0.0.1       gitlab.chenio.com
 127.0.0.1       www.chenio.com
 ```
 
+</CodeBlock>
+
 - `brew install wget`
+
+<CodeBlock>
 
 ```bash
 # nginx下载页: http://nginx.org/en/download.html
@@ -215,7 +265,11 @@ make
 sudo make install
 ```
 
+</CodeBlock>
+
 - start nginx
+
+<CodeBlock>
 
 ```bash
 # 进入nginx文件夹
@@ -234,7 +288,11 @@ sudo sbin/nginx -s stop
 sudo sbin/nginx -t
 ```
 
+</CodeBlock>
+
 - nginx config
+
+<CodeBlock>
 
 ```bash
 # nginx.conf, http里添加
@@ -292,3 +350,5 @@ server {
     }
 }
 ```
+
+</CodeBlock>

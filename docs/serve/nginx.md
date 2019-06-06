@@ -4,8 +4,7 @@
 
 - 主要结构
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```nginx
 ##定义Nginx运行的用户和用户组用user指令
@@ -98,9 +97,11 @@ http {
  }
 ```
 
-</details>
+</CodeBlock>
 
 ## upstream
+
+<CodeBlock>
 
 ```nginx
 # nginx的upstream目前支持4种方式的分配
@@ -125,7 +126,11 @@ upstream mysvr{
 }
 ```
 
+</CodeBlock>
+
 ## location配置
+
+<CodeBlock>
 
 ```nginx
 # 语法规则： location [=|~|~*|^~] /uri/ { … }
@@ -159,10 +164,14 @@ location ~ \.(gif|jpg|png|js|css)$ {
 # 访问 http://localhost/a.gif, http://localhost/b.jpg 将匹配规则D
 ```
 
+</CodeBlock>
+
 ## Nginx Rewrite
 
 - 规则相关指令有if,rewrite,set,return,break
 - 全局变量
+
+<CodeBlock>
 
 ```bash
 $args ： 这个变量等于请求行中的参数，同$query_string
@@ -188,7 +197,11 @@ $uri ： 不带请求参数的当前URI，$uri不包含主机名，如"/foo/bar.
 $document_uri ： 与$uri相同
 ```
 
+</CodeBlock>
+
 - 常用正则
+
+<CodeBlock>
 
 ```bash
 . ： 匹配除换行符以外的任意字符
@@ -216,7 +229,11 @@ $ ： 匹配字符串的介绍
 -x和!-x用来判断文件是否可执行
 ```
 
+</CodeBlock>
+
 - flag标记有
+
+<CodeBlock>
 
 ```bash
 last    相当于Apache里的[L]标记，表示完成rewrite
@@ -232,10 +249,11 @@ location /baidu {
 }
 ```
 
+</CodeBlock>
+
 ## demo
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```nginx
 # 直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理
@@ -265,9 +283,11 @@ location / {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## nginx安装
+
+<CodeBlock title="yum安装 >>">
 
 ```bash
 # cd /etc/yum.repos.d
@@ -289,6 +309,10 @@ enabled=1
 
 ```
 
+</CodeBlock>
+
+<CodeBlock title="安装包安装 >>">
+
 ```bash
 yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel
 nginx url: http://nginx.org/en/download.html
@@ -308,6 +332,8 @@ nginx -V #查看版本
 # server nginx: https://github.com/chengzao/note/blob/master/others/linux/nginx.txt
 ```
 
+</CodeBlock>
+
 [nginx server lib](/libs/nginx.txt)
 
 ## ssl
@@ -315,6 +341,8 @@ nginx -V #查看版本
 - `https://freessl.org`
 - `https://certbot.eff.org/`
 - `https://github.com/Neilpang/acme.sh`
+
+<CodeBlock>
 
 ```bash
 安装： curl  https://get.acme.sh | sh
@@ -328,12 +356,13 @@ nginx -V #查看版本
 自动更新 acme.sh： acme.sh  --upgrade  --auto-upgrade
 ```
 
+</CodeBlock>
+
 ## DEMO
 
 - nginx.conf
 
-<details>
-<summary>详情</summary>
+<CodeBlock>
 
 ```nginx
 #user  nobody;
@@ -459,12 +488,11 @@ http {
 }
 ```
 
-</details>
+</CodeBlock>
 
 - server
 
-<details>
-<summary>详情</summary>
+<CodeBlock>
 
 ```nginx
 server {
@@ -502,7 +530,7 @@ server {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## 参考链接
 

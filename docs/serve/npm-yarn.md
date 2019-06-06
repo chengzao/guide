@@ -4,6 +4,8 @@
 
 - `window常用DOS命令`
 
+<CodeBlock>
+
 ```bash
 (1)cd..                         cd..       退到次一级目录
    cd\                          cd\        退到根目录下的意思
@@ -25,7 +27,11 @@ dir/p 分页查看
 (10)cls  清屏
 ```
 
+</CodeBlock>
+
 - `常用网络DOS命令`
+
+<CodeBlock>
 
 ```bash
 (1)fport                         查看系统端口和端口上运行的程序
@@ -39,6 +45,8 @@ dir/p 分页查看
    net localgroup administrators 用户名 /del   把用户从管理员组删除
 ```
 
+</CodeBlock>
+
 - 查找所有运行的端口`netstat -ano`
 - 查看被占用的端口对应的PID `netstat -ano | findstr "8081"`
 - 查看指定PID进程 `tasklist | findstr "9088"`
@@ -48,6 +56,8 @@ dir/p 分页查看
 
 - `Node.js是一个在浏览器之外可以解析和执行JavaScript代码的运行时环境`
 
+<CodeBlock>
+
 ```bash
 a) Node.js基于哪个JavaScript引擎？
    Chrome 的 V8引擎
@@ -56,6 +66,8 @@ b) 谁创建了Node.js？
 c) Node.js的特性是什么？
    事件驱动、非阻塞IO模型
 ```
+
+</CodeBlock>
 
 - `https://github.com/nodejs/node`
 - `https://nodejs.org/en/`
@@ -88,6 +100,8 @@ c) Node.js的特性是什么？
 
 - [package.json介绍](https://yarnpkg.com/zh-Hans/docs/package-json)
 
+<CodeBlock>
+
 ```bash
 package.json   包描述文件，说明文件
 bin 		   存放可执行二进制文件的目录
@@ -110,6 +124,8 @@ scripts		指定了运行脚本命令的npmm命令行缩写，例如start
 ^ 会匹配最新的大版本依赖包，比如^1.2.3会匹配所有1.x.x的包，包括1.3.0，但是不包括2.0.0
 ```
 
+</CodeBlock>
+
 ## npm
 
 - [npmjs](https://www.npmjs.com/)
@@ -119,6 +135,8 @@ scripts		指定了运行脚本命令的npmm命令行缩写，例如start
 
 - config
 
+<CodeBlock>
+
 ```bash
 npm config set prefix "C:\dev\nvm\npm"
 npm config set python python2.7
@@ -126,18 +144,26 @@ npm config set registry " https://registry.npm.taobao.org "
 npm install phantomjs-prebuilt@2.1.14 --save-dev  --ignore-scripts
 ```
 
+</CodeBlock>
+
 - publish
+
+<CodeBlock>
 
 ```bash
 npm login / npm adduser  # 登录npm账号
 npm publish --access=public # 发布一个公开的package
 ```
 
+</CodeBlock>
+
 - [shields.io徽章](https://shields.io/#/ )
 - [packagephobia](https://packagephobia.now.sh/)
 - [unpkg在线查看package包](https://unpkg.com/#/)
 
 - use
+
+<CodeBlock>
 
 ```bash
 ** 注意：package.json的 name 不要与npm install的包名一致 **
@@ -229,11 +255,15 @@ npm whoami # 显示 npm 用户名
 npm bin [-g|--global] #列出 npm 安装可执行文件的文件夹
 ```
 
+</CodeBlock>
+
 ## yarn
 
 - [yarn](https://yarnpkg.com)
 - [yarn bootcss](https://yarn.bootcss.com/docs/usage.html)
 - 常见命令
+
+<CodeBlock>
 
 ```bash
 # 初始化包：
@@ -268,6 +298,8 @@ yarn install --force
 yarn install --production
 ```
 
+</CodeBlock>
+
 ## 私有的npm仓库
 
 - 私有的npm仓库: sinopia, cpm, cnpmjs.org, verdaccio
@@ -293,6 +325,8 @@ yarn install --production
 
 ## 常用包
 
+<CodeBlock>
+
 ```bash
 crypto-js
 child_process  shelljs  spawn-shell
@@ -311,6 +345,8 @@ cors http-proxy-middleware
 serve
 express-history-api-fallback
 ```
+
+</CodeBlock>
 
 ## 参考链接
 

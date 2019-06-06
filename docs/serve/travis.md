@@ -11,6 +11,8 @@
 
 ## 配置
 
+<CodeBlock>
+
 ```bash
 # https://docs.travis-ci.com/user/job-lifecycle/
 
@@ -38,7 +40,11 @@ branches # https://docs.travis-ci.com/user/customizing-the-build/#safelisting-or
 notifications # https://docs.travis-ci.com/user/notifications/
 ```
 
+</CodeBlock>
+
 ## 参考示例
+
+<CodeBlock>
 
 ```bash
 sudo: false
@@ -68,3 +74,5 @@ env:
     global:
         - GH_REF: github.com/chengzao/guide.git
 ```
+
+</CodeBlock>

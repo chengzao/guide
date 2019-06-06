@@ -1,5 +1,7 @@
 # centos7配置nginx
 
+<CodeBlock>
+
 ```bash
 sudo yum update -y
 sudo yum install wget -y
@@ -10,22 +12,34 @@ sudo yum install net-tools -y
 sudo yum upgrade -y
 ```
 
+</CodeBlock>
+
 ## nginx安装
 
 - 当前nginx版本: `nginx -V`
+
+<CodeBlock>
 
 ```bash
 nginx version: nginx/1.15.12
 ...
 ```
 
+</CodeBlock>
+
 - step1: [nginx](http://nginx.org/en/linux_packages.html#RHEL-CentOS)
+
+<CodeBlock>
 
 ```bash
 sudo yum install yum-utils
 ```
 
+</CodeBlock>
+
 - step2: 编辑`vim /etc/yum.repos.d/nginx.repo`
+
+<CodeBlock>
 
 ```bash
 [nginx-stable]
@@ -43,6 +57,8 @@ enabled=0
 gpgkey=https://nginx.org/keys/nginx_signing.key
 ```
 
+</CodeBlock>
+
 - step3: `sudo yum-config-manager --enable nginx-mainline`
 - step4: `sudo yum install nginx`
 - 查看安装nginx信息: `rpm -ql nginx`
@@ -55,6 +71,8 @@ gpgkey=https://nginx.org/keys/nginx_signing.key
 ### nginx
 
 - `vim /etc/nginx/nginx.conf`
+
+<CodeBlock>
 
 ```bash
 user  nginx;
@@ -111,7 +129,11 @@ http {
 }
 ```
 
+</CodeBlock>
+
 - `vim /etc/nginx/conf.d/default.conf`
+
+<CodeBlock>
 
 ```bash
 server {
@@ -159,6 +181,8 @@ server {
 }
 ```
 
+</CodeBlock>
+
 - 检查nginx配置文件: `nginx -t`
 - 重启nginx服务: `service nginx restart`
 - 购买域名, 配置dns后， 访问域名网址
@@ -167,6 +191,8 @@ server {
 
 - [Neilpang/acme.sh](https://github.com/Neilpang/acme.sh)
 - 安装 acme.sh
+
+<CodeBlock>
 
 ```bash
 curl  https://get.acme.sh | sh
@@ -178,7 +204,11 @@ curl  https://get.acme.sh | sh
 alias acme.sh=~/.acme.sh/acme.sh
 ```
 
+</CodeBlock>
+
 - 生成证书
+
+<CodeBlock>
 
 ```bash
 # 方式1
@@ -187,7 +217,11 @@ acme.sh  --issue  -d domain.cn -d www.domain.cn  --webroot  /usr/share/nginx/htm
 acme.sh --issue  -d domain.cn   --nginx
 ```
 
+</CodeBlock>
+
 - 安装证书
+
+<CodeBlock>
 
 ```bash
 mkdir /etc/nginx/ssl
@@ -198,17 +232,25 @@ acme.sh  --installcert  -d  domain.cn   \
         --reloadcmd  "service nginx force-reload"
 ```
 
+</CodeBlock>
+
 - 更新 acme.sh
+
+<CodeBlock>
 
 ```bash
 # 开启自动升级
 acme.sh  --upgrade  --auto-upgrade
 ```
 
+</CodeBlock>
+
 ## 配置nginx
 
 - step1: `cp default.conf chenio_cn.conf` 和 `mv default.conf default.conf.bak`
 - step2: `vim /etc/nginx/conf.d/chenio_cn.conf`
+
+<CodeBlock>
 
 ```bash
 server {
@@ -250,6 +292,8 @@ server {
     }
 }
 ```
+
+</CodeBlock>
 
 - step3: `nginx -t`
 - step4: `service nginx restart`

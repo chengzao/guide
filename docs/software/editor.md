@@ -6,8 +6,7 @@
 
 - pulgin
 
-  <details>
-  <summary>view code</summary>
+<CodeBlock>
 
   ```bash
   - Bookmarks
@@ -79,12 +78,11 @@
   - npm Intellisense
   ```
 
-  </details>
+</CodeBlock>
 
 ### vue config
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 {
@@ -127,12 +125,11 @@
 }
 ```
 
-</details>
+</CodeBlock>
 
 ### user config
 
-<details>
-<summary>view code</summary>
+<CodeBlock>
 
 ```js
 {
@@ -186,13 +183,15 @@
 }
 ```
 
-</details>
+</CodeBlock>
 
 ## atom
 
 - sync gist `aec52c655ed4abf64bcfd95f473afe88`
 
 - plugins
+
+<CodeBlock>
 
 ```bash
 - atom-prettify
@@ -225,3 +224,5 @@
 - sync-settings
 - bookmarks
 ```
+
+</CodeBlock>
