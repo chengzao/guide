@@ -49,6 +49,8 @@ boxName # 添加之后的box 名称
   - `providers.name`：虚拟主机类型
   - `providers.url`：box地址
 
+<CodeBlock>
+
 ```json
 {
     "name": "centos/7",
@@ -61,6 +63,8 @@ boxName # 添加之后的box 名称
     }]
 }
 ```
+
+</CodeBlock>
 
 - 运行创建: `vagrant box add metadata.json`
 
@@ -76,6 +80,8 @@ ssh: 127.0.0.1
 ## vagrant init
 
 - 初始化项目：`vagrant init centos/7`
+
+<CodeBlock>
 
 ```ruby
 # -*- mode: ruby -*-
@@ -129,7 +135,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "E:/boxs/centos7/data", "/vagrant_data"
+  config.vm.synced_folder "E:/boxs/centos7/data", "/vagrant_data",
     create: true, owner: "root", group: "root"
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -156,6 +162,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+</CodeBlock>
+
 ## plugin
 
 - 列出插件: `vagrant plugin list`
@@ -174,6 +182,8 @@ end
 - 卸载: `vagrant plugin uninstall my-plugin`
 
 - Vagrantfile
+
+<CodeBlock>
 
 ```ruby
 Vagrant.config(2) do |config|
@@ -197,11 +207,15 @@ Vagrant.config(2) do |config|
 end
 ```
 
+</CodeBlock>
+
 ### [vagrant-vbguest](https://rubygems.org/search?utf8=%E2%9C%93&query=vbguest)
 
 - `vagrant plugin install vagrant-vbguest`
 - `vagrant vbguest --status`
 - `vagrant vbguest --do install node1`
+
+<CodeBlock>
 
 ```ruby
 Vagrant.config(2) do |config|
@@ -228,10 +242,14 @@ Vagrant.config(2) do |config|
 end
 ```
 
+</CodeBlock>
+
 ### [vagrant-hostmanager](https://rubygems.org/gems/vagrant-hostmanager)
 
 - `vagrant plugin install vagrant-hostmanager`
 - `vagrant hostmanager`
+
+<CodeBlock>
 
 ```ruby
 Vagrant.config(2) do |config|
@@ -262,9 +280,13 @@ Vagrant.config(2) do |config|
 end
 ```
 
+</CodeBlock>
+
 ### [vagrant-bindfs](https://rubygems.org/gems/vagrant-bindfs)
 
 - `vagrant plugin install vagrant-bindfs`
+
+<CodeBlock>
 
 ```ruby
 Vagrant.config(2) do |config|
@@ -303,6 +325,8 @@ Vagrant.config(2) do |config|
 end
 ```
 
+</CodeBlock>
+
 ## packge
 
 ```ruby
@@ -317,6 +341,8 @@ vagrant package
 - 初始化: `vagrant init centos/7`
 
 - Vagrantfile
+
+<CodeBlock>
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -349,6 +375,8 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+
+</CodeBlock>
 
 - ssh
 
