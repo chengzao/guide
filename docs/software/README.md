@@ -15,5 +15,3 @@
 - [eslint类型检测](./eslint.md)
 
 - [commitizen提交规范](./commitizen.md)
-
-- [其他软件](./other.md)

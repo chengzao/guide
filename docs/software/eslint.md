@@ -16,9 +16,9 @@
 
 ```bash
 eslint [options] [file|dir|glob]*
- file : eslint file1.js file2.js
- dir :  eslint lib/**
- glob : eslint "lib/**"
+  # file : eslint file1.js file2.js
+  # dir :  eslint lib/**
+  # glob : eslint "lib/**"
 ```
 
 - 修复会保存到文件系统中 `eslnt *.js --fix`
@@ -72,17 +72,17 @@ eslint [options] [file|dir|glob]*
 - 如果同一个目录下有多个配置文件，ESLint 只会使用一个。优先级顺序如下:
 
 ```bash
+# 从上往下依次递减
 1. .eslintrc.js
 2. .eslintrc.yaml
 3. .eslintrc.yml
 4. .eslintrc.json
-package.json 创建一个 eslintConfig属性，在那里定义你的配置
+5. package.json 创建一个 eslintConfig属性，在那里定义你的配置
 ```
 
 ## 配置示例
 
-<details>
-<summary> .eslintrc.js </summary>
+<CodeBlock title="代码如下 >>">
 
 ```js
 // 作者：chenhongdong
@@ -1010,4 +1010,4 @@ module.exports = {
 };
 ```
 
-</details>
+</CodeBlock>

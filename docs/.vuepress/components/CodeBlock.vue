@@ -21,7 +21,7 @@ export default {
     },
     title: {
       type: String,
-      default: "点击查看>>"
+      default: ""
     }
   },
   data() {

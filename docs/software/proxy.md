@@ -1,9 +1,11 @@
-# 软件代理
+# 代理调试
 
 - fiddler: `http://www.telerik.com/fiddler`
 - fiddler/add-ons: `http://www.telerik.com/fiddler/add-ons`
 
 - fiddler显示server的ip
+
+<CodeBlock>
 
 ```bash
 - 首先 我们打开 `fiddler`
@@ -19,6 +21,8 @@
       FiddlerObject.UI.lvSessions.AddBoundColumn("Server IP", 120, "X-HostIP");
   }
 ```
+
+</CodeBlock>
 
 - fiddler使用 mac
 

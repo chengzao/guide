@@ -2,24 +2,11 @@
 
 ## centos7的yum安装
 
-- `https://www.mongodb.com/download-center?jmp=nav#community`
-- `https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat/`
-- `vim /etc/yum.repos.d/mongodb-org-3.4.repo`
+- [mongodb download](https://www.mongodb.com/download-center?jmp=nav#community)
+- [mongodb document](https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat/)
 
-```bash
-[mongodb-org-3.4]
-name = MongoDB Repository
-baseurl = https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
-gpgcheck = 1
-enabled = 1
-gpgkey = https://www.mongodb.org/static/pgp/server-3.4.asc
-```
-
-- sudo yum install -y mongodb-org
-- vim /etc/mongod.conf
-- service mongod start|stop|restart
-
-- mongo your pc ip:27017
+- `service mongod start|stop|restart`
+- mongo默认端口: `ip:27017`
 
 ## tgz安装
 
@@ -31,14 +18,18 @@ gpgkey = https://www.mongodb.org/static/pgp/server-3.4.asc
 - `sudo mv mongodb /usr/local/`
 - `vim /usr/local/mongodb/conf/mongodb.conf`
 
-```bash
-dbpath=/usr/local/mongodb/db
-logpath=/usr/local/mongodb/logs/mongodb.log
-bind_ip=0.0.0.0
-port=27018
-fork=true
-nohttpinterface=true
-```
+<CodeBlock>
+
+  ```bash
+  dbpath=/usr/local/mongodb/db
+  logpath=/usr/local/mongodb/logs/mongodb.log
+  bind_ip=0.0.0.0
+  port=27018
+  fork=true
+  nohttpinterface=true
+  ```
+
+</CodeBlock>
 
 - `cp /usr/local/mongodb/bin/mongo /bin/`
 - `/usr/local/mongodb/bin/mongo -f /usr/local/mongodb/conf/mongodb.conf`
@@ -46,7 +37,9 @@ nohttpinterface=true
 
 ## 基本使用
 
-- auth
+### auth
+
+<CodeBlock>
 
 ```bash
 docker pull mongo
@@ -74,7 +67,11 @@ use admin
 db.dropUser('czh') # true
 ```
 
-- base
+</CodeBlock>
+
+### base
+
+<CodeBlock>
 
 ```bash
 - https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update
@@ -96,7 +93,11 @@ db.dropUser('czh') # true
 - db.dropDatabase() # 删除相应的数据库
 ```
 
-- insert
+</CodeBlock>
+
+### insert
+
+<CodeBlock>
 
 ```bash
 # 插入文档/ 一个写入对象，多个写入包含多个对象的数组
@@ -107,7 +108,11 @@ db.dropUser('czh') # true
 - db.<collection>.insertMany([{},{}]) # 插入多个文档
 ```
 
-- find
+</CodeBlock>
+
+### find
+
+<CodeBlock>
 
 ```bash
 # https:#docs.mongodb.com/manual/reference/operator/query/
@@ -136,10 +141,13 @@ db.dropUser('czh') # true
 
 # 内嵌文档： 集合中嵌套集合为内嵌 ， 查找方式需要key值带 引号。
 # 例： db.user.find({"hor.arr":"hero"})方式查找
-
 ```
 
-- update
+</CodeBlock>
+
+### update
+
+<CodeBlock>
 
 ```bash
 # https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update
@@ -168,7 +176,11 @@ db.dropUser('czh') # true
 - db.<collection>.replaceOne(obj,newObj) # 替换
 ```
 
-- delete
+</CodeBlock>
+
+### delete
+
+<CodeBlock>
 
 ```bash
 - https://docs.mongodb.com/manual/reference/method/db.collection.remove/#db.collection.remove
@@ -180,6 +192,8 @@ db.dropUser('czh') # true
 - db.<collection>.deleteMany({})
 ```
 
+</CodeBlock>
+
 ## mongoose
 
 - `npm install mongoose`
@@ -190,19 +204,23 @@ db.dropUser('czh') # true
 - Document 集合中具体的文档， 即 docs 数据
 ```
 
-- `use api`
+### mongoose api
+
+- [connect](https://mongoosejs.com/docs/index.html)
 
 ```bash
-# https://mongoosejs.com/docs/index.html
+var mongoose = require('mongoose'); # 引入mongoose库
+mongoose.connect(url,{useMongoClient: true}) # 连接mongodb
+mongoose.disconnect() # 断开连接
+mongoose.connection.once('open',()=>{}) # 监听数据库连接成功的事件
+mongoose.connection.once('close',()=>{}) # 监听数据库断开连接的事件
+```
 
-- var mongoose = require('mongoose'); # 引入mongoose库
-- mongoose.connect(url,{useMongoClient: true}) # 连接mongodb
-- mongoose.disconnect() # 断开连接
-- mongoose.connection.once('open',()=>{}) # 监听数据库连接成功的事件
-- mongoose.connection.once('close',()=>{}) # 监听数据库断开连接的事件
+- [Schema](https://mongoosejs.com/docs/api.html#Schema)
 
-- Model 类似mongodb中的Collection
-- Document 是 Model 的实例， 与mongodb中的Document一致
+```bash
+# Model 类似mongodb中的Collection
+# Document 是 Model 的实例， 与mongodb中的Document一致
 
 var schema = new Schema({
   name: String,
@@ -214,44 +232,61 @@ var schema = new Schema({
 })
 
 # 创建模型, 需要在填入数据文档时才会在mongodb中创建, (use)
-- var MyModel = mongoose.model(ModelName, schema)
-
-
-# 插入数据
-- MyModel.create({}, (err, res) => {}) # {} : 集合内的内容对象
-- MyModel.create([{},{},...], (err, res) => {}) # {} : 集合内的内容对象
-
-
-# 查询
-- MyModel.find(condition, [projection],[option],callback) # 返回文档数组
-  - condition # 查询条件
-  - projection # 投影 , 即需要获取到的数据
-  - option # 查询选项 (skip , limit ...)
-  - callback(err, doc) # doc对象是当前model的实例
-    doc可以执行 doc.save() # https://mongoosejs.com/docs/api.html#Document
-- MyModel.findOne(condition, [projection],[option],callback) # 返回具体文档
-- MyModel.findById(condition, [projection],[option],callback) # 返回具体文档
-
-
-# update
-- https://mongoosejs.com/docs/api.html#model_Model.update
-- MyModel.update(confitions,doc,[options],[callback])
-- MyModel.updateMany(confitions,doc,[options],[callback])
-- MyModel.updateOne(confitions,doc,[options],[callback])
-
-
-# delete
-- https://mongoosejs.com/docs/api.html#model_Model.deleteMany
-- MyModel.deleteMany(confitions,[options],[callback])
-- MyModel.deleteOne(confitions,[options],[callback])
-
-# https://mongoosejs.com/docs/api.html#model_Model.remove
-- MyModel.remove(confitions,[callback])
-
-- Model.count(filter, [callback]) # 统计文档数量 filter: Object
+var MyModel = mongoose.model(ModelName, schema)
 ```
 
-- `use`
+- [create](https://mongoosejs.com/docs/api.html#model_Model.create)
+
+```bash
+# {} : 集合内的内容对象
+MyModel.create({}, (err, res) => {})
+# {} : 集合内的内容对象
+MyModel.create([{},{},...], (err, res) => {})
+```
+
+- [find](https://mongoosejs.com/docs/api.html#query_Query-find)
+
+```bash
+MyModel.find(condition, [projection],[option],callback) # 返回文档数组
+  condition # 查询条件
+  projection # 投影 , 即需要获取到的数据
+  option # 查询选项 (skip , limit ...)
+  callback(err, doc) # doc对象是当前model的实例
+  doc.save() # 保存 https://mongoosejs.com/docs/api.html#Document
+MyModel.findOne(condition, [projection],[option],callback) # 返回具体文档
+MyModel.findById(condition, [projection],[option],callback) # 返回具体文档
+```
+
+- [update](https://mongoosejs.com/docs/api.html#model_Model.update)
+
+```bash
+MyModel.update(confitions,doc,[options],[callback])
+MyModel.updateMany(confitions,doc,[options],[callback])
+MyModel.updateOne(confitions,doc,[options],[callback])
+```
+
+- [delete](https://mongoosejs.com/docs/api.html#model_Model.deleteMany)
+
+```bash
+MyModel.deleteMany(confitions,[options],[callback])
+MyModel.deleteOne(confitions,[options],[callback])
+```
+
+- [remove](https://mongoosejs.com/docs/api.html#model_Model.remove)
+
+```bash
+MyModel.remove(confitions,[callback])
+```
+
+- [count](https://mongoosejs.com/docs/api.html#model_Model.count)
+
+```bash
+Model.count(filter, [callback]) # 统计文档数量 filter: Object
+```
+
+### mongoose example
+
+<CodeBlock title="mongoose js >>">
 
 ```js
 var mongoose = require('mongoose');
@@ -295,10 +330,11 @@ var doc = new Todos({"name": "li si","age": 22, "gender": "man"});
 doc.save((err) => {})
 
 // TODO
-
 ```
 
-- createUser
+</CodeBlock>
+
+<CodeBlock  title="mongoose settings >>">
 
 ```bash
 - use admin
@@ -344,3 +380,9 @@ doc.save((err) => {})
   use test
   show tables
 ```
+
+</CodeBlock>
+
+## 资料
+
+- [mongoosejs](http://mongoosejs.net/docs/guide.html)

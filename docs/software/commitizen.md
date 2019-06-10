@@ -5,31 +5,36 @@
 
 ## commitizen
 
-- Commitizen: 替代你的 git commit
+### Adapter
+
+- [Commitizen](https://github.com/commitizen/cz-cli): 替代你的 git commit
 
 ```bash
-# https://github.com/commitizen/cz-cli
-
 npm install -g commitizen
 ```
 
 - 方式一：在全局安装适配器（Adapter)
 
+<CodeBlock>
+
 ```bash
-- npm install -g cz-conventional-changelog
+npm install -g cz-conventional-changelog
 
 # 项目根目录下添加 .czrc 配置文件
-  { "path": "cz-conventional-changelog" }
-
+{ "path": "cz-conventional-changelog" }
 
 # 使用 git commit 替换为 git cz
-- git cz
+git cz
 ```
+
+</CodeBlock>
 
 - 方式二：在项目安装适配器（Adapter)
 
+<CodeBlock>
+
 ```bash
-- commitizen init cz-conventional-changelog --save-dev --save-exact --force
+commitizen init cz-conventional-changelog --save-dev --save-exact --force
 
 # commitizen 工具会自动在package.json中添加配置相应的配置
 
@@ -51,10 +56,14 @@ npm install -g commitizen
   }
 
 # 命令运行
-- npm run commit
+npm run commit
 ```
 
+</CodeBlock>
+
 - Adapter options
+
+<CodeBlock>
 
 ```bash
 feat    # 新功能
@@ -70,6 +79,8 @@ chore   # 非 src 或者 测试文件的更新
 revert  # commit 回退
 ```
 
+</CodeBlock>
+
 ### 自定义 Adapter
 
 - 安装cz-customizable
@@ -79,6 +90,8 @@ npm i -g cz-customizable / npm i -D cz-customizable
 ```
 
 - 修改 `.czrc` 或 `package.json` 中的 config 为
+
+<CodeBlock>
 
 ```bash
 # .czrc
@@ -92,7 +105,11 @@ npm i -g cz-customizable / npm i -D cz-customizable
 }
 ```
 
+</CodeBlock>
+
 - 同时在`~/` 或项目目录下创建 `.cz-config.js` 文件
+
+<CodeBlock>
 
 ```js
 'use strict';
@@ -140,6 +157,8 @@ module.exports = {
   allowBreakingChanges: ["feat", "fix"]
 };
 ```
+
+</CodeBlock>
 
 ## changelog
 
@@ -226,6 +245,8 @@ $ standard-version --tag-prefix "stable-"
 
 - `release.sh`
 
+<CodeBlock>
+
 ```shell
 #!/bin/bash
 
@@ -245,6 +266,8 @@ echo "Git push origin $master"
 echo "Release finished."
 ```
 
+</CodeBlock>
+
 ## Commitlint
 
 - [Commitlint: 校验你的 message](https://github.com/marionebl/commitlint)
@@ -255,6 +278,8 @@ npm i -D @commitlint/config-conventional @commitlint/cli
 ```
 
 - 在项目目录下创建配置文件 `.commitlintrc.js`
+
+<CodeBlock>
 
 ```js
 module.exports = {
@@ -294,7 +319,11 @@ module.exports = {
 }
 ```
 
+</CodeBlock>
+
 - 针对自定义的 Adapter 进行 Lint
+
+<CodeBlock>
 
 ```bash
 npm i -D @commitlint/cli
@@ -324,11 +353,15 @@ module.exports = {
 }
 ```
 
+</CodeBlock>
+
 ## husky
 
 - [husky](https://github.com/typicode/husky)
 - 安装 `npm install husky --save-dev`
 - 使用
+
+<CodeBlock>
 
 ```json
 // package.json
@@ -350,11 +383,15 @@ module.exports = {
 }
 ```
 
+</CodeBlock>
+
 ## EditorConfig
 
 - [editorconfig](https://editorconfig.org/)
 - vscode配合插件[EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)一起使用
 - `.editorconfig`文件配置
+
+<CodeBlock>
 
 ```bash
 root = true
@@ -374,14 +411,15 @@ indent_style = space
 trim_trailing_whitespace = false
 ```
 
+</CodeBlock>
+
 ## 参考示例
 
 ### 默认Adapter
 
-<details>
-<summary>点击展开内容</summary>
-
 - package.json
+
+<CodeBlock>
 
 ```json
 {
@@ -434,7 +472,11 @@ trim_trailing_whitespace = false
 }
 ```
 
+</CodeBlock>
+
 - .commitlintrc.js
+
+<CodeBlock>
 
 ```js
 module.exports = {
@@ -474,14 +516,13 @@ module.exports = {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ### 自定义Adapter
 
-<details>
-<summary>点击展开内容</summary>
-
 - package.json
+
+<CodeBlock>
 
 ```json
 {
@@ -531,7 +572,11 @@ module.exports = {
 }
 ```
 
+</CodeBlock>
+
 - .cz-config.js
+
+<CodeBlock>
 
 ```js
 'use strict'
@@ -578,7 +623,11 @@ module.exports = {
 }
 ```
 
+</CodeBlock>
+
 - .commitlintrc.js
+
+<CodeBlock>
 
 ```js
 module.exports = {
@@ -605,11 +654,13 @@ module.exports = {
 }
 ```
 
-</details>
+</CodeBlock>
 
 ### 其他配置
 
 - .eslintrc.js
+
+<CodeBlock>
 
 ```js
 module.exports = {
@@ -632,6 +683,8 @@ module.exports = {
 }
 ```
 
+</CodeBlock>
+
 - .eslintignore
 
 ```bash
@@ -641,6 +694,8 @@ node_modules
 ```
 
 - .editorconfig
+
+<CodeBlock>
 
 ```bash
 root = true
@@ -660,7 +715,11 @@ indent_size = 2
 trim_trailing_whitespace = false
 ```
 
+</CodeBlock>
+
 - prettier.config.js
+
+<CodeBlock>
 
 ```js
 module.exports = {
@@ -673,3 +732,5 @@ module.exports = {
 	useTabs: true,
 }
 ```
+
+</CodeBlock>
