@@ -8,4 +8,4 @@ layout: SpecialLayout
 
 <<< @/docs/feature/gist.js
 
-<<< include(docs/feature/footer.md)
+!!! include(docs/feature/footer.md) !!!

@@ -42,13 +42,12 @@ module.exports = {
     nav,
     sidebar
   },
-  configureWebpack: {},
+  configureWebpack: {
+  },
   markdown: {
     config: md => {
       // 使用更多的 markdown-it 插件!
-      md.use(require('markdown-it-include'), {
-        includeRe: /\<{3}\s*include\s*\(\s*(.+?)\s*\)\s*/i
-      })
-    }
+      md.use(require('markdown-it-include'))
+    },
   }
 }

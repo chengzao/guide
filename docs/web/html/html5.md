@@ -1,6 +1,6 @@
-# Html5
-
 ## 新语义标签
+
+<CodeBlock>
 
 ```html
 <nav> 表示导航
@@ -18,6 +18,8 @@
 <summary>
 ```
 
+</CodeBlock>
+
 - 兼容
 
 ```html
@@ -30,6 +32,8 @@
 ## input标签
 
 - type
+
+<CodeBlock>
 
 ```html
 email     输入email格式
@@ -45,6 +49,8 @@ datetime  时间日期
 month     月份
 week      星期
 ```
+
+</CodeBlock>
 
 - `property`
 
@@ -66,7 +72,7 @@ oninput       用户输入内容时触发，可用于移动端输入字数统计
 oninvalid     验证不通过时触发
 ```
 
-## 多媒体标签
+## h5多媒体标签
 
 ### 音频
 
@@ -131,6 +137,8 @@ Node.classList.contains('class') //检测是否存在class
 
 - 设置自定义属性格式:`data-*=""`
 
+<CodeBlock>
+
 ```js
 /*
 data-info="我是自定义属性"
@@ -150,9 +158,13 @@ Node.setAttribute(`name`, value) //设置
 Node.removeAttribute(`name`) // 方法删除指定的属性
 ```
 
+</CodeBlock>
+
 ## drag拖拽
 
 - 我们可以通过为元素增加`draggable="true"`来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启的
+
+<CodeBlock>
 
 ```js
 // 拖拽元素
@@ -174,7 +186,11 @@ ev.dataTransfer.setData() // 设置数据
 ev.dataTransfer.getData() // 读取数据
 ```
 
+</CodeBlock>
+
 ## History Api
+
+<CodeBlock>
 
 ```js
 history.back() // 回退
@@ -194,6 +210,8 @@ replaceState(data, title, url)
 window.addEventListener('popState', (stat)=>{},false)
 ```
 
+</CodeBlock>
+
 ## h5本地存储
 
 - localStorage与sessionStorage
@@ -205,7 +223,7 @@ window.addEventListener('popState', (stat)=>{},false)
 - `localStorage.clear()`  清空所有存储内容
 - `localStorage.key(n)`  以索引值来获取存储内容
 
-## 地理定位
+## h5地理定位
 
 - 获取当前地理信息`navigator.getCurrentPosition(successCallback, errorCallback, options)`
 - 当成功获取地理信息后，会调用`succssCallback`，并返回一个包含位置信息的对象`position`
@@ -230,6 +248,8 @@ window.addEventListener('popState', (stat)=>{},false)
 - 不同浏览器需要添加前缀 `document.webkitIsFullScreen、document.mozFullScreen`
 - 全屏伪类 `:full-screen .box {}、:-webkit-full-screen {}、:moz-full-screen {}`
 
+<CodeBlock>
+
 ```html
 <style>
 .box {
@@ -251,6 +271,8 @@ btn.addEventListener('click', function () {
 });
 </script>
 ```
+
+</CodeBlock>
 
 ## 应用缓存
 

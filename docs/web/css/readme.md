@@ -457,6 +457,6 @@ a{display:block}
   - 固定定位会改变元素的显示方式
 - z-index：用来设置当前盒子所在的层次 `z-index：12；`
 
-## 其他
+## 参考资源
 
-- [css-doodle](https://css-doodle.com/)
+!!! include(docs/web/css/urls.md) !!!

@@ -76,3 +76,5 @@ HTML是一种基本的WEB网页设计语言，XHTML是一个基于XML的置标�
 - `onload` 页面上所有的资源（图片，音频，视频等）被加载以后才会触发`load`事件
 - `$(document).ready()` 监听`DOMContentLoaded`事件
 - `$(document).load()` 监听的是 `load` 事件
+
+!!! include(docs/web/html/html5.md) !!!
