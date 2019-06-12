@@ -1,5 +1,3 @@
-<Hitokoto />
-
 # 目录
 
 - [html](./html/)
