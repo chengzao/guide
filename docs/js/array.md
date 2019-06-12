@@ -110,6 +110,13 @@ Array.from(m); // [[1, 2], [2, 4], [4, 8]]
 
 </CodeBlock>
 
+### 类数组转数组
+
+``` js
+Array.prototype.slice.call(arguments)
+Array.prototype.concat.apply([], arguments)
+```
+
 ## 会改变原数组
 
 ### `pop`

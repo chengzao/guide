@@ -54,6 +54,8 @@ week      星期
 
 - `property`
 
+<CodeBlock>
+
 ```html
 placeholder     占位符
 autofocus       获取焦点
@@ -65,12 +67,18 @@ required        验证条件，必填项
 pattern         正则表达式 验证表单
 ```
 
+</CodeBlock>
+
 - 表单事件
+
+<CodeBlock>
 
 ```html
 oninput       用户输入内容时触发，可用于移动端输入字数统计
 oninvalid     验证不通过时触发
 ```
+
+</CodeBlock>
 
 ## h5多媒体标签
 
@@ -82,6 +90,8 @@ oninvalid     验证不通过时触发
 - `preload` 预加载 同时设置`autoplay`时些属性失效
 - 多浏览器支持的方案:
 
+<CodeBlock>
+
 ```html
 <audio controls class="audio">
 	<!-- 通过source标签指定多格式音频文件 -->
@@ -91,6 +101,8 @@ oninvalid     验证不通过时触发
 	您的浏览器不支持HTML音频播放功能
 </audio>
 ```
+
+</CodeBlock>
 
 ### 视频
 
@@ -102,6 +114,8 @@ oninvalid     验证不通过时触发
 - `height` 设置播放窗口的高度
 - 多浏览器支持的方案
 
+<CodeBlock>
+
 ```html
 <video controls="controls">
 	<!-- 通过source标签指定多格式视频文件 -->
@@ -111,9 +125,13 @@ oninvalid     验证不通过时触发
 </video>
 ```
 
+</CodeBlock>
+
 ## DOM扩展
 
 ### 获取元素
+
+<CodeBlock>
 
 ```js
 document.getElementById('id') //通过id获取
@@ -123,7 +141,11 @@ document.querySelector('selector') //通过CSS选择器获取元素，符合匹�
 document.querySelectorAll('selector') //通过CSS选择器获取元素，以类数组形式存在。
 ```
 
+</CodeBlock>
+
 ### classNme操作
+
+<CodeBlock>
 
 ```js
 // Node指一个有效的DOM节点
@@ -132,6 +154,8 @@ Node.classList.remove('class') //移除class
 Node.classList.toggle('class') //切换class，有则移除，无则添加
 Node.classList.contains('class') //检测是否存在class
 ```
+
+</CodeBlock>
 
 ### 自定义属性data-*
 
@@ -286,7 +310,7 @@ btn.addEventListener('click', function () {
 
 - [HTML 5 视频/音频参考手册](http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp)
 
-## 其他
+## 其他设置
 
 - a链接`noopener noreferrer nofollow`
 

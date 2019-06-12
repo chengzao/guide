@@ -10,7 +10,11 @@ let result =  function(file) {
     var fileName = ''
     if(isDir){
       fileName = path.basename(file)
-      return fileName+'/'
+      if(fileName != 'urls'){
+        return fileName+'/'
+      }else{
+        return ''
+      }
     }else{
       fileName = path.basename(file, '.md');
       if(fileName.toUpperCase() == 'README') {
@@ -19,7 +23,8 @@ let result =  function(file) {
       return fileName
     }
   })
-  return fileArr.sort()
+
+  return [...new Set(fileArr)].sort()
 }
 
 function genSidebarConfig (title,file) {

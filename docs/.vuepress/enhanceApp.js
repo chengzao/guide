@@ -1,6 +1,7 @@
 // 全局注册 Element 组件库
 // import Element from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
+import VueTyperPlugin from 'vue-typer'
 
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
@@ -11,6 +12,9 @@ export default ({
   // ...做一些其他的应用级别的优化
   // Vue.use(Element)
   // console.log(siteData)
+
+  Vue.use(VueTyperPlugin)
+
   router.addRoutes([
     {
       path: '/todo',

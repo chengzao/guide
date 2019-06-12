@@ -315,11 +315,11 @@ document.body.appendChild(newtext);
 
 ## 节点的添加
 
-### appendChild
+### 插入当前节点
 
 - `Node.appendChild()`:接受一个节点对象作为参数,将其作为`最后一个子节点`,插入当前节点
 
-### Node.hasChildNodes
+### 是否有子节点
 
 - `Node.hasChildNodes()`:返回一个布尔值,表示当前节点是否有子节点
 
@@ -338,13 +338,13 @@ function DOMComb(parent, callback) {
 
 </CodeBlock>
 
-### InsertBefore
+### 将节点插入指定位置
 
 - `insertBefore(a,b)`用于将某个节点插入当前节点的指定位置
 - 该方法接受2个参数,第一个是`要插入的节点`,第二个是`参照节点`
 - `parentNode.insertBefore(newNode,targetNode)；`
 
-### Node.cloneNode
+### 复制节点
 
 - `cloneNode(参数) ；booblean类型的参数.`
 - `newNode = oldNode.cloneNode(boolean) ;`用于复制节点, 接受一个布尔值参数
@@ -371,7 +371,7 @@ box.appendChild(newBox);
 
 </CodeBlock>
 
-### Node.removeChild
+### 移除节点
 
 - `父节点.removeChild(子节点)`
 - `自己节点.parentNode.removeChild(自己节点)` 不知道父级的情况下移除自身Node
@@ -394,7 +394,7 @@ box.appendChild(newBox);
 
 </CodeBlock>
 
-### Node.replaceChild
+### 替换节点
 
 - 用于将一个新的节点(替换当前节点的某一个子节点
 - `replacedNode = parentNode.replaceChild(newChild, oldChild);`
@@ -404,7 +404,7 @@ box.appendChild(newBox);
 - 一个节点作为参数(返回一个布尔值(表示参数节点是否为当前节点的后代节点
 - `nodeA.contains(nodeB)`
 
-### Node.isEqualNode
+### 节点是否相等
 
 - 返回一个布尔值,用于检查两个节点是否相等
 - 所谓相等的节点,指的是两个节点的类型相同、属性相同、子节点相同
@@ -451,74 +451,18 @@ pic.removeAttribute("height");
 - `after`方法用于在当前节点的后面,插入一个同级节点
 - `replaceWith`方法使用参数指定的节点,替换当前节点
 
-## 获取兄弟节点/元素的兼容性问题
+## 兼容节点
 
 <CodeBlock>
 
-```js
-// 获取下一个紧邻的兄弟元素
-function getNextElement(element){
-  var ele = element;
-  if(ele.nextElementSibling) return ele.nextElementSibling;
-  do{
-    ele = ele.nextSibling;
-  }while(ele && ele.nodeType !== 1);
-  return ele;
-}
-```
+<<< @/example/docs/dom/getNextElement.js
 
-```js
-// 获取上一个紧邻的兄弟元素
-function getPreviousElement(element){
-  var ele = element;
-  if(ele.perviousElementSibling) return ele.perviousElementSibling;
-  do{
-    ele = ele.perviousSibling;
-  }while(ele && ele.nodeType !== 1);
-  return ele;
-}
-```
+<<< @/example/docs/dom/getPreviousElement.js
 
-```js
-// 获取第一个子元素
-function getFirstElement(parent){
-  if(parent.firstElementChild) return parent.firstElementChild;
-  var ele = parent.firstChild;
-  while(ele && ele.nodeType !== 1) ele = ele.nextSibling;
-  return ele;
-}
-```
+<<< @/example/docs/dom/getFirstElement.js
 
-```js
-// 获取最后一个子元素
-function getLastElement(parent){
-  if(parent.LastElementChild) return parent.LastElementChild;
-  var ele = parent.lastChild;
-  while(ele && ele.nodeType !== 1) ele = ele.perviousSibling;
-  return ele;
-}
-```
+<<< @/example/docs/dom/getLastElement.js
 
-```js
-// 获取所有兄弟元素
-function sibling(ele){
-  if(!ele) return null;
-
-  var elements = [ ];
-  var el = ele.previousSibling;
-  while(el){
-  if(el.nodeType === 1)
-    elements.push(el);
-  el = el.previousSibling;
-  }
-  el = element.nextSibling;
-  while(el){
-  if(el.nodeType === 1)
-    elements.push(el);
-  el = el.nextSibling;
-  }
-  return elements;
-}
-```
+<<< @/example/docs/dom/getAllSibling.js
 
 </CodeBlock>

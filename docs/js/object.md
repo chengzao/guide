@@ -7,6 +7,22 @@
 - `Object.create()`
 - 该方法可以指定原型对象和属性，返回一个新的对象
 
+<CodeBlock>
+
+```js
+Object._create = function(o){
+    if(!Object.create){
+        Object.prototype.create =function(o){
+           var F =  function() {};
+            F.prototype = o;
+            return new F();
+        }
+    }
+}
+```
+
+</CodeBlock>
+
 ### `getPrototypeOf`
 
 - `Object.getPrototypeOf()`
@@ -54,6 +70,13 @@
 
 - `Object.prototype.__proto__`
 - 返回该对象的原型。该属性可读写
+- `__proto__`兼容
+
+<CodeBlock>
+
+<<< @/example/docs/object/proto.js
+
+</CodeBlock>
 
 ## 控制对象状态的方法
 

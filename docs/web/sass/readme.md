@@ -48,6 +48,8 @@ node-sass -w src --output dist --output-style expanded --source-map=map
 
 - `命令行编译`
 
+<CodeBlock>
+
 ```bash
 # 单文件转换命令
 sass input.scss output.css
@@ -61,7 +63,11 @@ sass --watch app/sass:public/stylesheets
 # 例: sass --watch src:dist --style expanded
 ```
 
+</CodeBlock>
+
 - `命令行编译配置选项`
+
+<CodeBlock>
 
 ```bash
 # 编译格式
@@ -82,6 +88,8 @@ sass --style [option] # 表示解析后的css是什么排版格式
 # 开启sourcemap调试后，会生成一个后缀名为.css.map文件
 sass --sourcemap # 表示开启sourcemap调试。
 ```
+
+</CodeBlock>
 
 ## 常用语法
 

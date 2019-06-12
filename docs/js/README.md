@@ -25,3 +25,11 @@
 - [client,offet,scroll,page](./client.md)
 
 - [设计模式](./oop.md)
+
+---
+
+代码注释规范
+
+- [usejsdoc](http://usejsdoc.org/index.html)
+- [zhaotoday/esdoc](https://github.com/zhaotoday/esdoc)
+- [jsdoc](https://www.css88.com/doc/jsdoc/index.html)

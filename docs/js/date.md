@@ -184,6 +184,20 @@ clearTimeout(定时器名)
 
 </CodeBlock>
 
+### 用setTimeout来实现setInterval
+
+<CodeBlock>
+
+```js
+function callback(){
+  //doSomething
+  setTimeout(callback,200);
+}
+setTimeout(callback,200)
+```
+
+</CodeBlock>
+
 ### 递归与arguments.callee
 
 - 递归 : 函数自己调用自己.
@@ -232,5 +246,13 @@ setTimeout(function() {
 //1.1
 setTimeout(user.sayHi.bind(user), 1000); // John
 ```
+
+</CodeBlock>
+
+## formateTime
+
+<CodeBlock>
+
+<<< @/example/docs/date/formate.js
 
 </CodeBlock>
