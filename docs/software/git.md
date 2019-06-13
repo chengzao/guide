@@ -512,7 +512,7 @@ git cat-file -t commitid # 显示对象的类型
 git cat-file -p commitid # 根据对象的类型显示其内容
 ```
 
-## 参考链接
+## 相关链接
 
 - [git install](https://github.com/git/git/blob/master/INSTALL)
 - [.gitignore](https://git-scm.com/docs/gitignore)

@@ -383,6 +383,6 @@ doc.save((err) => {})
 
 </CodeBlock>
 
-## 资料
+## 相关链接
 
 - [mongoosejs](http://mongoosejs.net/docs/guide.html)

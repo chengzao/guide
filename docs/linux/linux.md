@@ -1073,7 +1073,7 @@ find /home -size +20k -a -100k -exec ls -lh {} \;
 grep -i 'size' text.txt  # 查找text.txt中包含size的行
 ```
 
-## 参考资料
+## 相关链接
 
 - [Linux命令大全](http://man.linuxde.net/)
 - [Linux rpm 命令参数使用详解［介绍和应用］](http://www.cnblogs.com/xiaochaohuashengmi/archive/2011/10/08/2203153.html)

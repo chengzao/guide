@@ -126,7 +126,7 @@ fetch的post请求的时候，导致fetch 第一次发送了一个Options请求�
 
 </CodeBlock>
 
-## 参考链接
+## 相关链接
 
 - [前端跨域整理](https://juejin.im/post/5815f4abbf22ec006893b431)
 - [Ajax 知识体系大梳理](https://juejin.im/post/58c883ecb123db005311861a)

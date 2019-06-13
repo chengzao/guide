@@ -135,7 +135,7 @@ git remote -v
 </CodeBlock>
 
 ---
-参考链接
+相关链接
 
 - [CentOS7 搭建Git服务器](https://segmentfault.com/a/1190000008403740)
 - [How to install GIT on CentOS](https://blacksaildivision.com/git-latest-version-centos)

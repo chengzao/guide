@@ -422,6 +422,6 @@ CREATE TABLE IF NOT EXISTS table_name [(create_definition,...)] select_statement
 
 </CodeBlock>
 
-## 参考链接
+## 相关链接
 
 - [21分钟 MySQL 入门教程](http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html)

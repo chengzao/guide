@@ -96,7 +96,7 @@ hi MatchParen ctermbg=blue ctermfg=white   # 匹配的括号颜色修改
 - [vim-plug插件管理工具](https://github.com/junegunn/vim-plug)
 - [vim-scripts](http://vim-scripts.org/vim/scripts.html)
 
-## 参考链接
+## 相关链接
 
 - [vim](https://github.com/judasn/Linux-Tutorial/)
 - [Vim YouCompleteMe](https://www.jianshu.com/p/d908ce81017a)

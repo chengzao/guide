@@ -113,7 +113,7 @@ option.pinyin = pinyin(option.label, {
 - 无状态组件: 无生命周期函数
 - 有状态组件: 有生命周期
 
----
+## 相关链接
 
 - [reactnative doc](http://reactnative.cn/docs/0.40/getting-started.html#content)
 - [Ant Design](https://ant.design/index-cn)

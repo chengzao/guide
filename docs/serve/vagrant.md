@@ -386,6 +386,6 @@ vagrant status # 查看状态
 vagrant ssh web # ssh连接web主机
 ```
 
-## 资源
+## 参考资料
 
 - [使用 Vagrant 打造跨平台开发环境](https://segmentfault.com/a/1190000000264347)

@@ -195,7 +195,7 @@ print()
 
 </CodeBlock>
 
-## 参考链接
+## 相关链接
 
 - [Javascript 的 this 用法](http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html)
 - [this、apply、call、bind](https://juejin.im/post/59bfe84351882531b730bac2)

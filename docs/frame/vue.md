@@ -14,7 +14,7 @@
 
 - [vuepress](https://github.com/vuejs/vuepress)
 
----
+## 相关链接
 
 - [vue-chat demo](https://github.com/microzz/vue-chat)
 - [vue2.0生态的后台管理系统模板](https://github.com/lss5270/vue-admin-spa)

@@ -532,7 +532,7 @@ server {
 
 </CodeBlock>
 
-## 参考链接
+## 相关链接
 
 - [Nginx proxy_set_header 理解](http://www.jianshu.com/p/cc5167032525)
 - [Nginx配置upstream实现负载均衡](http://www.linuxidc.com/Linux/2015-03/115207.htm)

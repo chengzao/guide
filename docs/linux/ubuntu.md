@@ -35,7 +35,7 @@
 - sudo apt-get install google-chrome-stable
 ```
 
-## 参考链接
+## 相关链接
 
 - [apt-get指令的autoclean,clean,autoremove的区别](http://blog.csdn.net/flydream0/article/details/8620396)
 - [ubuntu12.04destdrop删除不必要的软件](http://www.cnblogs.com/YangJieCheng/p/5931175.html)

@@ -1391,7 +1391,7 @@ myApp.controller('ctrl',['$scope','CustomService',function($scope,CustomService)
 
 </CodeBlock>
 
-## 参考链接
+## 相关链接
 
 - [docs angularjs](http://docs.angularjs.org)
 - [angularjs1.6.x 实例教程](https://blog.csdn.net/zeping891103/article/details/77446544?locationNum=9&fps=1)

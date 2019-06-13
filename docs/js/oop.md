@@ -503,7 +503,7 @@ function inherit(child, parent) {
 [mvp]:../assets/images/o_mvp.png?raw=true
 [mvvm]:../assets/images/o_mvvm.png?raw=true
 
-## 参考链接
+## 相关链接
 
 - [JS模块规范：AMD、UMD、CMD、commonJS、ES6 module](https://segmentfault.com/a/1190000012419990)
 - [JavaScript设计模式](https://juejin.im/post/59df4f74f265da430f311909)

@@ -348,7 +348,7 @@ express-history-api-fallback
 
 </CodeBlock>
 
-## 参考链接
+## 相关链接
 
 - [nvm](https://github.com/creationix/nvm/blob/master/README.md#install-script)
 - [nodejs中文](http://nodejs.cn/)

@@ -44,7 +44,7 @@ Babel是一个JavaScript编译器@babel/polyfill
 
 ## browserify
 
-## other
+## 相关链接
 
 - [webpack 插件总结归类](https://segmentfault.com/a/1190000016816813)
 - [poetries/mywiki@github](https://github.com/poetries/mywiki/wiki/webpack)
