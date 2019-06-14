@@ -1,43 +1,545 @@
 # mongodb
 
-## centos7的yum安装
-
+- [docs.mongodb](https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update)
 - [mongodb download](https://www.mongodb.com/download-center?jmp=nav#community)
 - [mongodb document](https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat/)
+
+## 安装
+
+<CodeBlock>
 
 - `service mongod start|stop|restart`
 - mongo默认端口: `ip:27017`
 
-## tgz安装
+- tgz安装
 
-- `wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.4.7.tgz`
-- `tar zxvf mongodb-linux-x86_64-rhel70-3.4.7.tgz`
-- `mv mongodb-linux-x86_64-rhel70-3.4.7 mongodb`
-- `cd mongodb`
-- `mkdir conf logs db`
-- `sudo mv mongodb /usr/local/`
-- `vim /usr/local/mongodb/conf/mongodb.conf`
+```bash
+$ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.4.7.tgz
+$ tar zxvf mongodb-linux-x86_64-rhel70-3.4.7.tgz
+$ mv mongodb-linux-x86_64-rhel70-3.4.7 mongodb
+$ cd mongodb
+$ mkdir conf logs db
+$ sudo mv mongodb /usr/local/
+$ vim /usr/local/mongodb/conf/mongodb.conf
 
-<CodeBlock>
-
-  ```bash
   dbpath=/usr/local/mongodb/db
   logpath=/usr/local/mongodb/logs/mongodb.log
   bind_ip=0.0.0.0
   port=27018
   fork=true
   nohttpinterface=true
-  ```
+
+$ cp /usr/local/mongodb/bin/mongo /bin/
+$ /usr/local/mongodb/bin/mongo -f /usr/local/mongodb/conf/mongodb.conf
+$ /bin/mongo 127.0.0.1:27018 -u -p
+```
+
+- docker
+
+```bash
+docker pull mongo
+# 创建数据卷
+docker volume create my-mongo-db
+docker volume create my-mongo-configdb
+# 运行容器
+docker run -d -p 27017:27017 --name mymongo -v my-mongo-db:/data/db  -v my-mongo-configdb:/data/configdb mongo
+# 进入容器
+docker exec -it mymongo mongo
+```
 
 </CodeBlock>
 
-- `cp /usr/local/mongodb/bin/mongo /bin/`
-- `/usr/local/mongodb/bin/mongo -f /usr/local/mongodb/conf/mongodb.conf`
-- `/bin/mongo 127.0.0.1:27018 -u -p`
+## 基础命令
 
-## 基本使用
+- `show dbs / show databases` # 显示当前的所有的数据库
 
-### auth
+- `db`  # 查看当前所处的数据库
+
+- `show collections / show tables` # 显示当前的所有的集合
+
+- `use todos`  # 进入指定的数据库中, 可以不存在 数据库和集合， mongodb会在写入docs中自动创建
+
+- `CRUD` # 增删改查 `insert / find / update / delete`
+
+- `<collection>` 内为具体的集合名称，例： `db.user.insert({"name":"zhangsan"})`
+
+- `db.<collection>.drop()` # 删除相应的集合
+
+  <CodeBlock>
+
+  ```bash
+  # 创建使用
+  use del_database
+
+  # 在当前数据库中的item集合中写入数据
+  db.items.insertOne({"aaa":"bbb"})
+
+  # 查看集合
+  show collections
+
+  # 删除
+  db.items.drop()
+
+  # 查看是否删除成功
+  show collections
+  ```
+
+  </CodeBlock>
+
+- `db.dropDatabase()` # 删除相应的数据库
+
+## 创建数据库
+
+- `use todos`
+
+```bash
+# 查看所有数据库
+show dbs
+# 进入指定的数据库中, 可以不存在 数据库和集合， mongodb会在写入docs中自动创建
+use todos
+
+# 用show dbs 查看是否创建成功
+# 由于todos中没有任何数据，显示不存在
+
+# 在todos中的items中插入数据
+db.items.insert({"name":"xiao ming"})
+# 用show dbs 查看是否创建成功
+```
+
+## 删除数据库
+
+- `db.dropDatabase()`
+
+```bash
+# 创建使用
+use del_database
+
+# 查看当前正在使用的数据库
+db
+
+# 删除
+db.dropDatabase()
+
+# 查看是否删除成功
+show dbs
+```
+
+## 创建集合
+
+- `db.createCollection(name, options)`
+
+  - `name`: 要创建的集合名称
+  - `options`: 可选参数, 指定有关内存大小及索引的选项
+
+<CodeBlock>
+
+```bash
+# optins:
+#   capped:（可选）如果为 true，则创建固定集合。固定集合是指有着固定大小的集合，
+#           当达到最大值时，它会自动覆盖最早的文档
+#           当该值为 true 时，必须指定 size 参数
+
+#   autoIndexId: (可选）如为 true，自动在 _id 字段创建索引。默认为 false
+
+#   size:  (可选）为固定集合指定一个最大值（以字节计）
+#          如果 capped 为 true，也需要指定该字段
+
+#   max:  (可选）指定固定集合中包含文档的最大数量
+
+# 方式一
+db.createCollection("item1")
+
+# 方式二
+db.createCollection("item2", { capped : true, autoIndexId : true, size :
+   6142800, max : 10000 } )
+
+# 方式三
+db.item3.insert({"name":"hello"})
+```
+
+</CodeBlock>
+
+## 插入文档
+
+- 插入文档： 一个写入对象： `db.<collection>.insert({})`
+
+<CodeBlock>
+
+```bash
+# 写入数据
+db.items.insert({"name":"xiao ming"})
+
+# 使用以下命令查看是否成功插入数据
+db.items.find({})
+```
+
+- 插入文档： 多个写入包含多个对象的数组： `db.<collection>.insert([{},{}])`
+
+```bash
+# 写入数据
+db.items.insert([{"name":"abc"},{"name":"efg"}])
+
+# 使用以下命令查看是否成功插入数据
+db.items.find({})
+```
+
+</CodeBlock>
+
+- `db.<collection>.insertOne({})`  # 插入一个文档
+
+```bash
+# 写入数据
+db.items.insertOne({"name":"aaa"})
+
+# 使用以下命令查看是否成功插入数据
+db.items.find({})
+```
+
+- `db.<collection>.insertMany([{},{}])` # 插入多个文档
+
+```bash
+# 写入数据
+db.items.insertMany([{"name":"bbb"},{"name":"ccc"}])
+
+# 使用以下命令查看是否成功插入数据
+db.items.find({})
+```
+
+- 数据定义为一个变量插入
+
+```bash
+# 定义变量
+document=({"name": 'MongoDB'});
+# 插入数据
+db.items.insert(document)
+
+# 使用以下命令查看是否成功插入数据
+db.items.find()
+```
+
+## 查询文档
+
+- 语法格式: `db.collection.find(query, projection)`
+
+  - query ：可选，使用查询操作符指定查询条件
+  - projection ：可选，使用投影操作符指定返回的键。查询时返回文档中所有键值， 只需省略该参数即可（默认省略）
+
+- `$lt, $lte, $gt, $gte, $eq, $inc, $or ...`
+
+```bash
+# 写入数据
+db.items.insert([
+  {"count": 1},
+  {"count": 2},
+  {"count": 3},
+  {"count": 4},
+  {"count": 5}
+])
+
+# 等于 $eq
+db.items.find({"count":{$eq:3}}).pretty()
+
+# 小于 $lt
+db.items.find({"count":{$lt:3}}).pretty()
+
+# 小于或等于 $lte
+db.items.find({"count":{$lte:3}}).pretty()
+
+# 大于 $gt
+db.items.find({"count":{$gt:3}}).pretty()
+
+# 大于或等于 $gte
+db.items.find({"count":{$gte:3}}).pretty()
+
+# 不等于 $ne
+db.items.find({"count":{$ne:3}}).pretty()
+```
+
+- AND 条件 和 OR 条件
+
+```bash
+# 写入数据
+db.items.insert([
+  {"count": 1, "name":"a"},
+  {"count": 2, "name":"b"},
+  {"count": 3, "name":"c"},
+  {"count": 4, "name":"b"},
+])
+
+# AND 条件
+db.items.find({"count": 1, "name":"a"}).pretty()
+
+# OR 条件
+db.items.find({$or:[{"count":1},{"name":"b"}]}).pretty()
+
+# AND 和 OR 联合使用
+db.items.find({"name": "b", $or: [{"count": 2},{"count": 4}]}).pretty()
+```
+
+- `db.<collection>.find().pretty()` 格式化的方式来显示所有文档
+
+- `db.<collection>.find({})`  如果传递空对象查找该集合中的所有docs
+
+- `db.<collection>.find({},options)`
+
+- `db.<collection>.find({}).sort({})`  按{key:1}排序 (1 正序排序 ， -1 降序排序)
+
+```bash
+# 写入数据
+db.items.insert([
+  {"count": 5, "name":"a"},
+  {"count": 2, "name":"b"},
+  {"count": 7, "name":"c"},
+  {"count": 8, "name":"b"},
+  {"count": 1, "name":"d"},
+  {"count": 4, "name":"e"},
+])
+
+# 按照 count 升序排列
+db.items.find({}).sort({"count": 1})
+
+# 按照 count 降序排列
+db.items.find({}).sort({"count": -1})
+```
+
+- `db.<collection>.find({}).limit(number)`  限制显示number条
+
+```bash
+# 写入数据
+db.items.insert([
+  {"count": 1, "name":"a"},
+  {"count": 2, "name":"b"},
+  {"count": 3, "name":"c"},
+  {"count": 4, "name":"b"},
+  {"count": 5, "name":"d"},
+  {"count": 6, "name":"e"},
+])
+
+db.items.find({}).limit(3)
+```
+
+- `db.<collection>.find({}).skip(number1).limit(number2)`  限制显示number2条, 从number1+条数据
+
+```bash
+# 写入数据
+db.items.insert([
+  {"count": 1, "name":"a"},
+  {"count": 2, "name":"b"},
+  {"count": 3, "name":"c"},
+  {"count": 4, "name":"b"},
+  {"count": 5, "name":"d"},
+  {"count": 6, "name":"e"},
+])
+
+db.items.find({}).skip(3).limit(3)
+```
+
+- `db.<collection>.find({}).skip((pageIndex -1)* pageNum).limit(pageNum)`  分页查询
+
+- `db.<collection>.findOne({})` 查找符合条件的第一个
+
+- `db.<collection>.find({}).count()` 查找集合中符合内容的条数
+
+- 内嵌文档： 集合中嵌套集合为内嵌 ， 查找方式需要`key`值带 引号
+
+  - 例： `db.user.find({"hor.arr":"hero"})`方式查找
+
+## 更新文档
+
+- update语法格式
+
+```bash
+db.collection.update(
+   <query>,
+   <update>,
+   {
+     upsert: <boolean>,
+     multi: <boolean>,
+     writeConcern: <document>
+   }
+)
+
+
+`query` : update的查询条件
+
+`update` : update的对象和一些更新的操作符（如$,$inc...)
+
+`upsert` : 可选，这个参数的意思是，如果不存在update的记录，
+          是否插入objNew,true为插入，默认是false，不插入
+
+`multi` : 可选，mongodb 默认是false,只更新找到的第一条记录，
+          如果这个参数为true,就把按条件查出来多条记录全部更新
+
+`writeConcern` :可选，抛出异常的级别
+```
+
+- [一些更新的操作符（如$,$inc...](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
+
+- `db.<collection>.update(obj,newObj,options)`
+
+  - `options: { multi: true }` 修改多个 ， 默认为false只有该一个
+  - 如果`obj`中内容不存在，会添加`newObj`中的新内容到原`obj`的属性和内容
+  - `$set`: 根据`newObj`中的内容替换`obj`中的指定想项；
+  - `$push`: 向数组中添加元素
+  - `$addToSet`: 向数组中添加元素，如果已存在则不添加
+
+- `db.<collection>.update(obj,newObj,options)` newObj完全替换obj的内容
+
+```bash
+db.col.update({'title':'MongoDB 教程'},{'name':'MongoDB'})
+
+# 使用以下命令查看数据
+db.col.find().pretty()
+```
+
+- `db.<collection>.update(obj,newObj,options)` 更新找到的第一条记录
+
+```bash
+# 写入数据
+db.col.insert({
+  title: 'MongoDB 教程',
+  description: 'MongoDB 是一个 Nosql 数据库'
+})
+# 通过 update() 方法来更新标题(title)
+db.col.update({'title':'MongoDB 教程'},{$set:{'title':'MongoDB'}})
+
+# 使用以下命令查看是否成功插入数据
+db.col.find().pretty()
+```
+
+- `db.<collection>.update(obj,{$set: newObj},{multi:true})` 修改多条相同的文档内容
+
+  ```bash
+  # 修改多条相同的文档，则需要设置 multi 参数为 true
+  db.col.update({'title':'MongoDB 教程'},{$set:{'title':'MongoDB'}},{multi:true})
+
+  # 使用以下命令查看是否成功插入数据
+  db.col.find().pretty()
+  ```
+
+- `db.<collection>.update(obj,{$set: newObj},{upsert:true})` 插入
+
+```bash
+db.items.insert([{"name": "a", "count": 1},{"name": "b", "count": 2},{"name": "c", "count": 1}])
+db.items.update( { "count" : { $gt : 1 } } , { $set : { "test2" : "OK"} }, {upsert:true} )
+db.items.find().pretty()
+db.items.drop()
+```
+
+- `db.<collection>.update(obj,{$unset: newObj})`
+
+  - `$unset`: 根据newObj中的key，删除Obj中的指定内容的属性
+
+```bash
+db.col.update({"_id": ObjectId("5d0324c217b15f47649bb209")}, {$unset: {description:""}})
+```
+
+- `db.<collection>.updateOne(obj,newObj)` # 更改一个
+
+```bash
+db.col.update({"title": "MongoDB 教程"},{$set:{"description":"aaa"}})
+```
+
+- `db.<collection>.updateMany(obj,newObj)` # 更改多个
+
+```bash
+db.col.updateMany({"title": "MongoDB 教程"},{$set:{"description":"aaa"}})
+```
+
+- save通过传入的文档来替换已有文档
+
+```bash
+db.collection.save(
+   <document>,
+   {
+     writeConcern: <document>
+   }
+)
+
+`document` : 文档数据。
+`writeConcern` :可选，抛出异常的级别。
+```
+
+- save实例
+
+```bash
+# 替换 5d032b652161e2f9a5baded5的内容
+db.col.save({
+  "_id" : ObjectId("5d032b652161e2f9a5baded5"),
+  "title" : "MongoDB 教程",
+  "description" : "bbb"
+})
+# 通过 find() 命令来查看替换后的数据
+db.col.find().pretty()
+```
+
+## 删除文档
+
+- 2.6 版本以后的，语法格式
+
+```bash
+db.collection.remove(
+   <query>,
+   {
+     justOne: <boolean>,
+     writeConcern: <document>
+   }
+)
+
+`query` :（可选）删除的文档的条件
+
+`justOne` : （可选）如果设为 true 或 1，则只删除一个文档，
+如果不设置该参数，或使用默认值 false，则删除所有匹配条件的文档
+
+`writeConcern` :（可选）抛出异常的级别
+```
+
+- `db.<collection>.remove({})`  # 如果传递空对象则删除全部
+
+```bash
+db.items.insert([{"name": "a", "count": 1},{"name": "b", "count": 2}])
+
+db.items.remove({})
+
+db.items.find().pretty()
+
+db.items.drop()
+
+# remove() 方法 并不会真正释放空间
+# db.repairDatabase() 来回收磁盘空间
+db.repairDatabase()
+db.runCommand({ repairDatabase: 1 })
+```
+
+- `db.<collection>.deleteOne({})`
+
+```bash
+db.items.insert([{"name": "a", "count": 1},{"name": "a", "count": 2}])
+
+db.items.deleteOne({"name": "a"})
+
+db.items.find().pretty()
+
+db.items.drop()
+```
+
+- `db.<collection>.deleteMany({})`
+
+```bash
+db.items.insert([{"name": "a", "count": 1},{"name": "a", "count": 2}])
+
+# 删除全部符合条件的
+db.items.deleteMany({"name": "a"})
+
+# 删除集合下全部文档
+db.items.deleteMany({})
+
+db.items.find().pretty()
+
+db.items.drop()
+```
+
+## 授权登录
 
 <CodeBlock>
 
@@ -68,321 +570,3 @@ db.dropUser('czh') # true
 ```
 
 </CodeBlock>
-
-### base
-
-<CodeBlock>
-
-```bash
-- https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update
-
-- show dbs / show databases # 显示当前的所有的数据库
-
-- db  # 查看当前所处的数据库
-
-- show collections # 显示当前的所有的集合
-
-- use todos  # 进入指定的数据库中, 可以不存在 数据库和集合， mongodb会在写入docs中自动创建
-
-- CRUD # 增删改查 insert / find / update / delete
-
-- <collection> 内为具体的集合名称，例： db.user.insert({"name":"zhangsan"})
-
-- db.<collection>.drop() # 删除相应的集合
-
-- db.dropDatabase() # 删除相应的数据库
-```
-
-</CodeBlock>
-
-### insert
-
-<CodeBlock>
-
-```bash
-# 插入文档/ 一个写入对象，多个写入包含多个对象的数组
-- db.<collection>.insert({}) / db.<collection>.insert([{},{}])
-
-- db.<collection>.insertOne({})  # 插入一个文档
-
-- db.<collection>.insertMany([{},{}]) # 插入多个文档
-```
-
-</CodeBlock>
-
-### find
-
-<CodeBlock>
-
-```bash
-# https:#docs.mongodb.com/manual/reference/operator/query/
-
-# 例：$gt / $gte / $eq / $inc / $or ...
-
-- db.<collection>.find({})  # 如果传递空对象查找该集合中的所有docs
-
-# 如果传递空对象查找该集合中的所有docs;
-# options: { _id: 0, uname: 1 } : 查找过滤/ 投影需要显示的内容， 1表示显示， 0 表示不显示
-- db.<collection>.find({},options)
-
-- db.<collection>.find({num:{$gt: 10}})  # 查询大于10的
-
-- db.<collection>.find({}).sort({})  # 按{key:1}排序 (1 正序排序 ， -1 降序排序)
-
-- db.<collection>.find({}).limit(10)  # 限制显示10条， 从1-10条数据
-
-- db.<collection>.find({}).skip(10).limit(10)  # 限制显示10条, 从10-20条数据
-
-- db.<collection>.find({}).skip((pageIndex -1)* pageNum).limit(pageNum)  # 分页查询
-
-- db.<collection>.findOne({}) # 查找符合条件的第一个
-
-- db.<collection>.find({}).count() # 查找集合中符合内容的条数
-
-# 内嵌文档： 集合中嵌套集合为内嵌 ， 查找方式需要key值带 引号。
-# 例： db.user.find({"hor.arr":"hero"})方式查找
-```
-
-</CodeBlock>
-
-### update
-
-<CodeBlock>
-
-```bash
-# https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update
-
-- db.<collection>.update(obj,newObj,options)  # newObj会替换所有obj中的内容
-  options: { multi: true } // 修改多个 ， 默认为false只有该一个
-
-# https://docs.mongodb.com/manual/reference/operator/update/
-
-# $set: 根据newObj中的内容替换obj中的指定想项；
-# 如果obj中内容不存在，会添加newObj中的新内容到原obj的属性和内容
-# 默认只修改一个
-
-# $push: 向数组中添加元素
-# $addToSet: 向数组中添加元素，如果已存在则不添加
-
-- db.<collection>.update(obj,{$set: newObj})
-
-# $unset: 根据newObj中的key，删除Obj中的指定内容的属性
-- db.<collection>.update(obj,{$unset: newObj})
-
-- db.<collection>.updateOne(obj,newObj) # 更改一个
-
-- db.<collection>.updateMany(obj,newObj) # 更改多个
-
-- db.<collection>.replaceOne(obj,newObj) # 替换
-```
-
-</CodeBlock>
-
-### delete
-
-<CodeBlock>
-
-```bash
-- https://docs.mongodb.com/manual/reference/method/db.collection.remove/#db.collection.remove
-
-- db.<collection>.remove({})  # 如果传递空对象则删除全部
-
-- db.<collection>.deleteOne({})
-
-- db.<collection>.deleteMany({})
-```
-
-</CodeBlock>
-
-## mongoose
-
-- `npm install mongoose`
-
-```bash
-- Schema 约束文档结构
-- Model 集合中所有文档的对象， 即 collection
-- Document 集合中具体的文档， 即 docs 数据
-```
-
-### mongoose api
-
-- [connect](https://mongoosejs.com/docs/index.html)
-
-```bash
-var mongoose = require('mongoose'); # 引入mongoose库
-mongoose.connect(url,{useMongoClient: true}) # 连接mongodb
-mongoose.disconnect() # 断开连接
-mongoose.connection.once('open',()=>{}) # 监听数据库连接成功的事件
-mongoose.connection.once('close',()=>{}) # 监听数据库断开连接的事件
-```
-
-- [Schema](https://mongoosejs.com/docs/api.html#Schema)
-
-```bash
-# Model 类似mongodb中的Collection
-# Document 是 Model 的实例， 与mongodb中的Document一致
-
-var schema = new Schema({
-  name: String,
-  age: Number,
-  gender: {
-    type: String,
-    default: 'female' # 默认值
-  }
-})
-
-# 创建模型, 需要在填入数据文档时才会在mongodb中创建, (use)
-var MyModel = mongoose.model(ModelName, schema)
-```
-
-- [create](https://mongoosejs.com/docs/api.html#model_Model.create)
-
-```bash
-# {} : 集合内的内容对象
-MyModel.create({}, (err, res) => {})
-# {} : 集合内的内容对象
-MyModel.create([{},{},...], (err, res) => {})
-```
-
-- [find](https://mongoosejs.com/docs/api.html#query_Query-find)
-
-```bash
-MyModel.find(condition, [projection],[option],callback) # 返回文档数组
-  condition # 查询条件
-  projection # 投影 , 即需要获取到的数据
-  option # 查询选项 (skip , limit ...)
-  callback(err, doc) # doc对象是当前model的实例
-  doc.save() # 保存 https://mongoosejs.com/docs/api.html#Document
-MyModel.findOne(condition, [projection],[option],callback) # 返回具体文档
-MyModel.findById(condition, [projection],[option],callback) # 返回具体文档
-```
-
-- [update](https://mongoosejs.com/docs/api.html#model_Model.update)
-
-```bash
-MyModel.update(confitions,doc,[options],[callback])
-MyModel.updateMany(confitions,doc,[options],[callback])
-MyModel.updateOne(confitions,doc,[options],[callback])
-```
-
-- [delete](https://mongoosejs.com/docs/api.html#model_Model.deleteMany)
-
-```bash
-MyModel.deleteMany(confitions,[options],[callback])
-MyModel.deleteOne(confitions,[options],[callback])
-```
-
-- [remove](https://mongoosejs.com/docs/api.html#model_Model.remove)
-
-```bash
-MyModel.remove(confitions,[callback])
-```
-
-- [count](https://mongoosejs.com/docs/api.html#model_Model.count)
-
-```bash
-Model.count(filter, [callback]) # 统计文档数量 filter: Object
-```
-
-### mongoose example
-
-<CodeBlock title="mongoose js >>">
-
-```js
-var mongoose = require('mongoose');
-var url = 'mongodb://localhost/test';
-mongoose.connect(url,{useMongoClient: true})
-mongoose.connection.once('open',()=>{
-  console.log('数据库连接成功')
-})
-mongoose.connection.once('close',()=>{
-  console.log('数据库已断开连接')
-})
-
-// 创建 Schema
-var Schema = mongoose.Schema;
-
-var user = new Schema({
-  name: String,
-  age: Number,
-  gender: {
-    type: String,
-    default: 'female' // 默认值
-  }
-})
-
-// mongoose.model(ModelName, schema)
-// ModelName 即需要映射的集合名
-var Todos = mongoose.Model('users', user);
-
-// 插入数据
-Todos.create({"name": "zhangsan","age": 12, "gender": "man"}, (err, doc) => {
-  if(err) }{
-    console.log('error',error)
-  }else{
-    console.log('success')
-  }
-})
-
-// 创建文档Document
-var doc = new Todos({"name": "li si","age": 22, "gender": "man"});
-// Model#save([options], callback) 保存文档到数据模型中
-doc.save((err) => {})
-
-// TODO
-```
-
-</CodeBlock>
-
-<CodeBlock  title="mongoose settings >>">
-
-```bash
-- use admin
-- 添加管理员用户
-  db.createUser({
-    user:"admin",
-    pwd:"123",
-    roles:["userAdminAnyDatabase"]
-  })
-
-  db.createUser({user:"root",pwd:"123",roles:["root"]})
-
-- vim /etc/mongod.conf 添加修改如下
-  # ip
-  bindIp: 0.0.0.0
-  # 认证
-  security:
-    authorization: enabled
-
-- service mongod restart
-- service mongod status
-- 进入mongo
-  # 方式1
-  mongo --port 27017 -u admin -p 123 --authenticationDatabase "admin"
-  # 方式2
-  mongo
-  use admin
-  db.auth("admin","123")
-  db.system.users.find()
-  show users
-
-  # 添加远程用户
-  use test
-  db.createUser({
-    user:"test",
-    pwd:"123",
-    roles:[{role:"readWrite",db:"test"}]
-  })
-  exit # 退出
-
-  # 进入mongo
-  mongo --port 27017 -u test -p 123 --authenticationDatabase "test"
-  use test
-  show tables
-```
-
-</CodeBlock>
-
-## 相关链接
-
-- [mongoosejs](http://mongoosejs.net/docs/guide.html)

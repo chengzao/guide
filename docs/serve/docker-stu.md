@@ -189,7 +189,7 @@ docker volume create my-mongo-configdb
 
 docker run -d -p 27017:27017 --name mymongo -v my-mongo-db:/data/db  -v my-mongo-configdb:/data/configdb mongo:latest
 
-docker exec -it some-mongo mongo
+docker exec -it mymongo mongo
 
 use admin
 db.createUser({user: "root", pwd: "root", roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
@@ -258,10 +258,10 @@ docker pull redis
 
 docker volume create my-vol-redis
 
-# docker run -p 6379:6379 -v $PWD/data:/data  -d redis:3.2 redis-server --appendonly yes
-docker run -p 6379:6379 --name myredis  -v my-vol-redis:/data  -d redis:3.2 redis-server --appendonly yes
+# docker run -p 6379:6379 -v $PWD/data:/data  -d redis redis-server --appendonly yes
+docker run -p 6379:6379 --name myredis  -v my-vol-redis:/data  -d redis redis-server --appendonly yes
 
-docker exec -it my-vol-redis redis-cli
+docker exec -it myredis redis-cli
 
 info
 ```
