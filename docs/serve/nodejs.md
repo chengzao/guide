@@ -132,6 +132,8 @@ scripts		指定了运行脚本命令的npmm命令行缩写，例如start
 - [npm淘宝国内镜像](http://npm.taobao.org/)
 - [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
 - [mac上管理不同node版本](http://blog.csdn.net/zly9923218/article/details/53420065)
+- [shields.io徽章](https://shields.io/#/ )
+- [packagephobia](https://packagephobia.now.sh/)
 
 - config
 
@@ -156,10 +158,6 @@ npm publish --access=public # 发布一个公开的package
 ```
 
 </CodeBlock>
-
-- [shields.io徽章](https://shields.io/#/ )
-- [packagephobia](https://packagephobia.now.sh/)
-- [unpkg在线查看package包](https://unpkg.com/#/)
 
 - use
 

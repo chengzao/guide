@@ -23,6 +23,7 @@
 - [gitlab-runner](https://docs.gitlab.com/runner/install/)
 - [flow.ci](https://github.com/FlowCI/docs/blob/master/intro_base.md)
 - [strider](https://github.com/Strider-CD/strider)
+- [atlassian](https://www.atlassian.com/zh)
 
 ## mock api
 
@@ -79,6 +80,15 @@
 
 - [codesandbox](https://codesandbox.io/)
 - [stackblitz](https://stackblitz.com)
+- [npm.runkit](https://npm.runkit.com)
+
+## cdn
+
+- [unpkg](https://unpkg.com/#/)
+- [jsdelivr](https://www.jsdelivr.com/)
+- [bootcdn](https://www.bootcdn.cn/)
+- [cdnjs](https://cdnjs.com/)
+- [cloudflare](https://www.cloudflare.com/)
 
 ## 为gh-pages添加ssl
 
