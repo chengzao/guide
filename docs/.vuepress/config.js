@@ -29,7 +29,6 @@ module.exports = {
     editLinkText: '在 GitHub 上编辑此页',
     docsDir: 'docs',
     editLinks: true,
-    searchMaxSuggestions: 10,
     lastUpdated: '上次更新',
     nav,
     sidebar
@@ -52,7 +51,11 @@ module.exports = {
         buttonText: "刷新"
       }
     }],
+    ['@vuepress/search', {
+      searchMaxSuggestions: 10
+    }],
     '@vuepress/back-to-top',
-    '@vuepress/nprogress'
+    '@vuepress/nprogress',
+    '@vuepress/medium-zoom'
   ]
 }
