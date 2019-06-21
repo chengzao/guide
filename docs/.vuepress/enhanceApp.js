@@ -18,38 +18,6 @@ export default ({
     }
   ])
 
-  var initConfig = {}
-
-  Vue.mixin({
-    methods: {
-      appendDom(dom) {
-        dom.innerHTML = 'Top';
-        dom.className = 'backTop';
-        dom.onclick = function () {
-          window.scrollTo(0, 0)
-        }
-        document.body.append(dom)
-        initConfig.dom = true
-      }
-    },
-    mounted() {
-      var dom = document.createElement('div');
-      if (initConfig.dom) {
-        return false
-      }
-      this.appendDom(dom)
-      var doc = document.documentElement || document.body
-      var scrollTop = doc.scrollTop;
-      var clientHeight = doc.clientHeight;
-      dom.className = scrollTop < clientHeight / 2 ? 'backTop hide' : 'backTop'
-      window.addEventListener('scroll', function () {
-        scrollTop = doc.scrollTop;
-        clientHeight = doc.clientHeight;
-        dom.className = scrollTop < clientHeight / 2 ? 'backTop hide' : 'backTop'
-      })
-    },
-  })
-
   // 自动跳转到web页面
   router.beforeEach((to, from, next) => {
     if (to.path === '/') {

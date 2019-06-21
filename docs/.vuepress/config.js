@@ -22,8 +22,8 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
-  ga: 'UA-126651722-1',
-  serviceWorker: true,
+  // ga: 'UA-126651722-1',
+  // serviceWorker: true,
   themeConfig: {
     sidebarDepth: 2,
     navbar: true,
@@ -33,21 +33,40 @@ module.exports = {
     editLinks: true,
     searchMaxSuggestions: 10,
     lastUpdated: '上次更新',
-    serviceWorker: {
-      updatePopup: {
-        message: "发现新内容",
-        buttonText: "刷新"
-      }
-    },
+    // serviceWorker: {
+    //   updatePopup: {
+    //     message: "发现新内容",
+    //     buttonText: "刷新"
+    //   }
+    // },
     nav,
     sidebar
   },
   configureWebpack: {
   },
+  // markdown: {
+  //   config: md => {
+  //     // 使用更多的 markdown-it 插件!
+  //     md.use(require('markdown-it-include'))
+  //   },
+  // },
   markdown: {
-    config: md => {
-      // 使用更多的 markdown-it 插件!
+    extendMarkdown: md => {
       md.use(require('markdown-it-include'))
-    },
-  }
+    }
+  },
+  plugins: [
+    ['@vuepress/google-analytics', {
+      ga: 'UA-126651722-1'
+    }],
+    ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: {
+        message: "发现新内容",
+        buttonText: "刷新"
+      }
+    }],
+    '@vuepress/back-to-top',
+    '@vuepress/nprogress'
+  ]
 }
