@@ -9,7 +9,7 @@ module.exports = {
   },
   locales: {
     '/': {
-      lang: 'zh-CN', // 将会被设置为 <html> 的 lang 属性
+      lang: 'zh-CN',
     },
   },
   evergreen: true,
@@ -22,8 +22,6 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
-  // ga: 'UA-126651722-1',
-  // serviceWorker: true,
   themeConfig: {
     sidebarDepth: 2,
     navbar: true,
@@ -33,23 +31,11 @@ module.exports = {
     editLinks: true,
     searchMaxSuggestions: 10,
     lastUpdated: '上次更新',
-    // serviceWorker: {
-    //   updatePopup: {
-    //     message: "发现新内容",
-    //     buttonText: "刷新"
-    //   }
-    // },
     nav,
     sidebar
   },
   configureWebpack: {
   },
-  // markdown: {
-  //   config: md => {
-  //     // 使用更多的 markdown-it 插件!
-  //     md.use(require('markdown-it-include'))
-  //   },
-  // },
   markdown: {
     extendMarkdown: md => {
       md.use(require('markdown-it-include'))
