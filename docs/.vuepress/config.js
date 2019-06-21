@@ -13,7 +13,6 @@ module.exports = {
     },
   },
   evergreen: true,
-  permalink: "/:regular",
   dest: "dist",
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],
@@ -57,8 +56,6 @@ module.exports = {
     }],
     '@vuepress/back-to-top',
     '@vuepress/nprogress',
-    '@vuepress/medium-zoom',
-    'tabs',
-    'demo-code'
+    '@vuepress/medium-zoom'
   ]
 }

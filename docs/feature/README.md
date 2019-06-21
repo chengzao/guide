@@ -63,5 +63,3 @@
 ```
 
 </CodeBlock>
-
-- [Intro to VuePress 1.x](https://ulivz.com/2019/06/09/intro-to-vuepress-1-x/)

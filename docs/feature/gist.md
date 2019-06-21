@@ -49,22 +49,6 @@ sidebar: auto
 
 </CodeBlock>
 
-## markdown slot
-
-::: slot left
-
-- slot left
-
-:::
-
-::: slot right
-
-- solt right
-
-:::
-
-<CodeSplitDemo />
-
 ## `import()`动态引入js
 
 <template>
@@ -174,12 +158,6 @@ sidebar: auto
 
 </CodeBlock>
 
-## css
-
-```
-asdad
-```
-
 ## Escaping
 
 ::: v-pre
@@ -215,29 +193,3 @@ asdad
 ```
 
 </CodeBlock>
-
-## vuepress-plugin-tabs
-
-:::: tabs :options="{ useUrlFragment: false }"
-
-::: tab css
-
-``` css
-html,body{
-  color: red;
-}
-```
-
-:::
-
-::: tab javascript
-
-``` javascript
-() => {
-  console.log('Javascript code example')
-}
-```
-
-:::
-
-::::
