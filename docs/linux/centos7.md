@@ -194,6 +194,12 @@ systemctl restart sshd.service
   <CodeBlock>
 
   ```bash
+  # 启动 systemctl
+  systemctl start firewalld.service
+  # 开机时启用服务
+  systemctl enable firewalld.service
+
+  # 添加允许新端口号
   firewall-cmd --permanent --add-port=5000/tcp
 
   # 用该命令查询
@@ -202,6 +208,14 @@ systemctl restart sshd.service
 
   # 成功后重载防火墙
   firewall-cmd --reload
+
+  # 配置iptable
+
+  iptables -A INPUT -p tcp --dport 5000 -j ACCEPT
+
+  # 重启 iptable
+  service iptables restart
+
   ```
 
   </CodeBlock>
@@ -225,14 +239,14 @@ systemctl restart sshd.service
 
   </CodeBlock>
 
-## 通过软件源在线安装：
+## 通过软件源在线安装
 
 ```bash
 sudo yum -y install 软件名
 # 其中参数-y为所有选项均选则yes，不加-y则要手动确认
 ```
 
-## 通过本地rpm包安装：
+## 通过本地rpm包安装
 
 ```bash
 sudo rpm -ivh 软件名
@@ -280,6 +294,127 @@ source ~/git/nvm/nvm.sh
 ```
 
 </CodeBlock>
+
+## firewall-cmd
+
+- firewalld
+
+```bash
+# 启动：
+systemctl start firewalld
+# 查状态：
+systemctl status firewalld
+# 停止：
+systemctl disable firewalld
+# 禁用：
+systemctl stop firewalld
+# 在开机时启用一个服务：
+systemctl enable firewalld.service
+# 在开机时禁用一个服务：
+systemctl disable firewalld.service
+# 查看服务是否开机启动：
+systemctl is-enabled firewalld.service
+# 查看已启动的服务列表：
+systemctl list-unit-files|grep enabled
+# 查看启动失败的服务列表：
+systemctl --failed
+```
+
+- 配置firewalld-cmd
+
+```bash
+# 查看版本：
+firewall-cmd --version
+# 查看帮助：
+firewall-cmd --help
+# 显示状态：
+firewall-cmd --state
+
+# 查看所有打开的端口：
+firewall-cmd --zone=public --list-ports
+firewall-cmd --permanent --zone=public --list-ports
+# 查看开启的服务
+firewall-cmd --permanent --zone=public --list-services
+
+# 更新防火墙规则：
+firewall-cmd --reload
+# 查看区域信息:
+firewall-cmd --get-active-zones
+# 查看指定接口所属区域：
+firewall-cmd --get-zone-of-interface=eth0
+# 拒绝所有包：
+firewall-cmd --panic-on
+# 取消拒绝状态：
+firewall-cmd --panic-off
+# 查看是否拒绝：
+firewall-cmd --query-panic
+```
+
+- 开启端口
+
+```bash
+# /etc/firewalld/zones/public.xml
+
+firewall-cmd --zone=public(作用域) --add-port=80/tcp(端口和访问类型) --permanent(永久生效)
+
+firewall-cmd --zone=public --add-service=http --permanent
+
+firewall-cmd --zone=public --query-port=80/tcp  #查看
+firewall-cmd --zone=public --remove-port=80/tcp --permanent  # 删除
+
+firewall-cmd --list-services
+firewall-cmd --get-services
+firewall-cmd --add-service=<service>
+firewall-cmd --delete-service=<service>
+
+# 参数解释
+--add-service #添加的服务
+--zone #作用域
+--add-port=80/tcp #添加端口，格式为：端口/通讯协议
+--permanent #永久生效，没有此参数重启后失效
+
+# 开启某个端口
+firewall-cmd --permanent --zone=public --add-port=8080-8081/tcp # 永久
+firewall-cmd --zone=public --add-port=8080-8081/tcp # 临时
+
+# 启用某个服务
+firewall-cmd --zone=public --add-service=https # 临时
+firewall-cmd --permanent --zone=public --add-service=https # 永久
+
+# 查看开启的端口和服务
+firewall-cmd --permanent --zone=public --list-services # 服务空格隔开 例如 dhcpv6-client https ss
+firewall-cmd --permanent --zone=public --list-ports # 端口空格隔开 例如 8080-8081/tcp 8388/tcp 80/tcp
+
+# 重新载入，更新防火墙规则
+firewall-cmd --reload
+```
+
+- 详细使用
+
+```bash
+# 设置某个ip访问某个服务
+firewall-cmd --permanent --zone=public --add-rich-rule='rule family="ipv4" source address="192.168.0.4/24" service name="http" accept'
+# 删除配置
+firewall-cmd --permanent --zone=public --remove-rich-rule='rule family="ipv4" source address="192.168.0.4/24" service name="http" accept'
+# 设置某个ip访问某个端口
+firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=192.168.0.1/2 port port=80 protocol=tcp accept'
+# 删除配置
+firewall-cmd --permanent --remove-rich-rule 'rule family=ipv4 source address=192.168.0.1/2 port port=80 protocol=tcp accept'
+
+# 检查是否允许伪装IP
+firewall-cmd --query-masquerade
+# 允许防火墙伪装IP
+firewall-cmd --add-masquerade
+# 禁止防火墙伪装IP
+firewall-cmd --remove-masquerade
+
+# 将80端口的流量转发至8080
+firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080
+# 将80端口的流量转发至192.168.0.1
+firewall-cmd --add-forward-port=proto=80:proto=tcp:toaddr=192.168.1.0.1
+# 将80端口的流量转发至192.168.0.1的8080端口
+firewall-cmd --add-forward-port=proto=80:proto=tcp:toaddr=192.168.0.1:toport=8080
+```
 
 ## Yum命令
 
