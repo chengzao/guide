@@ -269,7 +269,7 @@ git checkout -b [branch] [tag]  # 新建一个分支，指向某个tag
 
 ## 文件恢复
 
-### `文件恢复（未commit）git checkout`
+- `文件恢复（未commit）git checkout`
 
 <CodeBlock>
 
@@ -298,14 +298,14 @@ git checkout -- 文件名
 
 </CodeBlock>
 
-### 文件恢复（已add未commit）git reset HEAD
+- 文件恢复（已add未commit）git reset HEAD
 
 ```bash
 git reset HEAD -- filename # 暂存区恢复成HEAD
 git checkout -- filename # 工作区恢复成暂存区
 ```
 
-### 版本回退（已commit）git reset –hard
+- 版本回退（已commit）git reset –hard
 
 <CodeBlock>
 

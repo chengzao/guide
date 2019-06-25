@@ -41,6 +41,15 @@ module.exports = {
     }
   },
   plugins: [
+    ['container', {
+      type: 'right',
+      defaultTitle: '',
+    }],
+    ['container', {
+      type: 'theorem',
+      before: info => `<div class="theorem"><p class="title">${info}</p>`,
+      after: '</div>',
+    }],
     ['@vuepress/google-analytics', {
       ga: 'UA-126651722-1'
     }],
@@ -56,6 +65,7 @@ module.exports = {
     }],
     '@vuepress/back-to-top',
     '@vuepress/nprogress',
-    '@vuepress/medium-zoom'
+    '@vuepress/medium-zoom',
+    'named-chunks'
   ]
 }
