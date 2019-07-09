@@ -9,12 +9,12 @@
 
 - import md file
 
-<<< @/docs/feature/gist.md
+<<< @/docs/feature/footer.md
 
 <CodeBlock>
 
 ```bash
-<<< @/docs/feature/gist.md
+<<< @/docs/feature/footer.md
 ```
 
 </CodeBlock>
