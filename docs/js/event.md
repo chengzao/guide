@@ -216,7 +216,7 @@ document.onclick=function(event){
 
 </CodeBlock>
 
-<img src="../assets/images/event.png?raw=true" alt="">
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/dom-event.png)
 
 ## 事件监听
 

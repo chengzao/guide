@@ -324,11 +324,11 @@ console.log(m.__proto__.constructor === M);
 
 </CodeBlock>
 
-<img src="../assets/images/oop/oop.jpg?raw=true" width='70%' alt="">
-<img src="../assets/images/oop/oop2.png?raw=true" width='70%' alt="">
-<img src="../assets/images/oop/oop-1.png?raw=true" alt="">
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop.jpg)
 
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop2.png)
 
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop3.png)
 
 ## 构造函数的继承
 
@@ -472,7 +472,7 @@ function inherit(child, parent) {
 
 ## MVC模式
 
-![mvc][mvc]
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop_mvc.png)
 
 - 将应用程序的组成划分为三个部分：Model View Controller
 - 控制器(Controller):初始化模型用的,处理业务逻辑
@@ -481,7 +481,7 @@ function inherit(child, parent) {
 
 ## MVP
 
-![mvp][mvp]
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop_mvp.png)
 
 - MVP: Model-View-Presenter
 - 各部分之间的通信是双向的
@@ -491,17 +491,11 @@ function inherit(child, parent) {
 
 ## MVVM模式
 
-![mvvm][mvvm]
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop_mvvm.png)
 
 - MVVM模式将Presenter变为ViewModel,基本与MVP一致.区别是,它是双向绑定(data-binding),view的变动,自动反映在ViewModel,反之亦然
 
 - MVVM模式是Model-View-ViewMode(模型-视图-视图模型)模式的简称
-
-<!-- url -->
-[call-apply-url]:http://a.chenio.top/note/javascript/this/
-[mvc]:../assets/images/o_mvc.png?raw=true
-[mvp]:../assets/images/o_mvp.png?raw=true
-[mvvm]:../assets/images/o_mvvm.png?raw=true
 
 ## 相关链接
 

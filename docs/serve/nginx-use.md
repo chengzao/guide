@@ -2,10 +2,6 @@
 
 ## windows
 
-- windows下安装nginx的目录结构如下：
-
-![nginx-windows](../assets/images/nginx-windows.png?raw=true)
-
 - 在nginx-1.12.1目录下`conf/nginx.conf` 内容
 
 <CodeBlock>

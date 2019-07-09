@@ -123,6 +123,8 @@ document.querySelector('#linkElement').disabled = 'disabled';
 
 ### transition（过渡）
 
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/css-transition.png)
+
 - `transition: property duration timing-function delay;`
 - `transition-property` 过渡效果的 CSS 属性的名称 width...
 - `transition-duration` 完成过渡效果需要多少秒或毫秒 time
@@ -164,6 +166,8 @@ document.querySelector('#linkElement').disabled = 'disabled';
 
 ### animation
 
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/css-animation.png)
+
 - `animation: name duration timing-function delay iteration-count direction;`
 - `animation-name` 需要绑定到选择器的 keyframe 名称
 - `animation-duration` 完成动画所花费的时间，以秒或毫秒计
@@ -191,20 +195,20 @@ document.querySelector('#linkElement').disabled = 'disabled';
 
 - IE 盒子模型: `IE的content部分包含了 border 和 padding;`
 
-  <img src="../../assets/images/ie_boxModel.jpg" alt="" style="width:400px">
+  ![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/ie_boxModel.jpg)
 
 - 标准 W3C 盒子模型
   - `width：border-left + padding-left + width + padding-right + border-right`
   - `height: border-top + padding-top + height + padding-bottom + border-bottom`
 
-  <img src="../../assets/images/_boxModel.jpg" alt="" style="width:400px">
+  ![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/_boxModel.jpg)
 
 ### css3盒模型属性
 
 - `box-sizing: border-box`: 计算方式为 `width = border + padding + content`
 - `box-sizing: content-box`: 计算方式为 `width = content`
 
-  <img src="../../assets/images/boxModel.png"  alt="">
+  ![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/boxModel.png)
 
 ### content内容
 
