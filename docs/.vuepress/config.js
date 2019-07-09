@@ -2,7 +2,7 @@ const { nav, sidebar } = require('./config/navAndsidebar')
 
 module.exports = {
   title: 'Guide',
-  description: 'a front-end api guide website',
+  description: 'a front-end docs guide website',
   base: "/",
   markdown: {
     lineNumbers: false
