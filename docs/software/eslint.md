@@ -80,6 +80,97 @@ eslint [options] [file|dir|glob]*
 5. package.json 创建一个 eslintConfig属性，在那里定义你的配置
 ```
 
+## example
+
+
+- .eslintrc.js
+
+```js
+module.exports = {
+  root: true,
+	extends: ['standard', 'prettier'],
+	env: {
+		es6: true,
+		browser: true,
+		node: true,
+	},
+	plugins: ['prettier'],
+	parserOptions: {
+    parser: 'babel-eslint',
+		sourceType: 'module',
+		ecmaFeatures: {
+			jsx: true,
+		},
+	},
+	rules: {
+		'prettier/prettier': 'error',
+	},
+}
+```
+
+- .eslintignore
+
+```bash
+.vscode
+.git
+node_modules
+```
+
+- `webpack.config.js`
+
+```js
+const path = require('path')
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|vue)$/,
+    	loader: 'eslint-loader',
+    	enforce: 'pre',
+    	include: [path.join(__dirname, 'src')],
+    	options: {
+          fix: true
+    	}
+      }
+    ]
+}
+```
+
+- vue-cli3 eslint
+
+```js
+module.exports = {
+  root: true,
+  parserOptions: {
+    parser: 'babel-eslint'
+  },
+  env: {
+    browser: true,
+    es6: true
+  },
+  extends: [
+    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+    'standard',
+    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+    'plugin:vue/essential',
+    "plugin:prettier/recommended",
+  ],
+  // required to lint *.vue files
+  plugins: [
+    'vue'
+  ],
+  // add your custom rules here
+  rules: {
+    "prettier/prettier": "error",
+    // allow async-await
+    'generator-star-spacing': 'off',
+    // allow debugger during development
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+  }
+}
+```
+
 ## 配置示例
 
 <CodeBlock title="代码如下 >>">

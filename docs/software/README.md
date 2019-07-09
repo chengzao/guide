@@ -1,17 +1,21 @@
 # 目录
 
-- [git常见命令](./git.md)
+- [Atom编辑器](./atom.md)
 
-- [git裸仓库](./git-bare.md)
+- [VScode](./vscode/)
 
-- [git常见用法](./git-use.md)
+- [Git常见命令](./git.md)
 
-- [代码编辑器](./editor.md)
+- [Git bare](./git-bare.md)
 
-- [代码类型检测](./check.md)
+- [Git常见用法](./git-example.md)
 
-- [前端软件代理介绍](./proxy.md)
+- [prettier](./prettier.md)
 
-- [eslint类型检测](./eslint.md)
+- [fiddler](./fiddler.md)
 
-- [commitizen提交规范](./commitizen.md)
+- [eslint](./eslint.md)
+
+- [commitizen](./commitizen.md)
+
+- [editorConfig.md](./editorConfig.md)

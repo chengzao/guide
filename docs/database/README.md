@@ -1,10 +1,12 @@
 # 目录
 
-- [mongodb介绍](./mongodb.md)
+- [mongoDB](./mongodb.md)
 
 - [mongoose](./mongoose.md)
 
-- [mysql基础](./mysql.md)
+- [mysql](./mysql.md)
+
+---
 
 - [docker/redis](https://yeasy.gitbooks.io/docker_practice/appendix/repo/redis.html)
 

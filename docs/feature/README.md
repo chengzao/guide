@@ -1,5 +1,12 @@
 # feature
 
+- [SpecialLayout](./custom.md)
+
+- [Jump](./Jump/)
+
+- [Gist](./gist.md)
+
+
 - import md file
 
 <<< @/docs/feature/gist.md

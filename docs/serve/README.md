@@ -1,21 +1,25 @@
 # 目录
 
----
-
-- [docker使用](./docker.md)
+- [docker](./docker.md)
 
 - [docker示例](./docker-stu.md)
 
-- [nginx文档](./nginx.md)
+- [docker-compose](./docker-compose.md)
 
-- [nginx使用](./nginx-use.md)
+- [nginx](./nginx.md)
 
-- [网络协议](./network.md)
+- [nginx示例](./nginx-use.md)
 
-- [npm和yarn介绍](./npm-yarn.md)
+- [centos7配置nginx](./nginx-centos.md)
 
-- [docker-compose介绍](./docker-compose.md)
+- [HTTP/TCP](./http.md)
 
-- [gitlab使用](./gitlab.md)
+- [Nodejs](./nodejs.md)
 
-- [travis ci介绍](./travis.md)
+- [Gitlab](./gitlab.md)
+
+- [Travis CI](./travis.md)
+
+- [Vagrant](./vagrant.md)
+
+- [PM2](./pm2.md)

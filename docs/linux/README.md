@@ -1,11 +1,11 @@
 # 目录
 
-- [linux基础](./linux.md)
+- [linux](./linux.md)
 
-- [ubuntu介绍](./ubuntu.md)
+- [ubuntu](./ubuntu.md)
 
-- [centos7使用](./centos7.md)
+- [centos7](./centos7.md)
 
-- [vim使用](./vim.md)
+- [vim](./vim.md)
 
-- [manjaro使用](./manjaro.md)
+- [manjaro](./manjaro.md)

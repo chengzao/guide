@@ -1,4 +1,4 @@
-# Git提交规范
+# commitizen
 
 - [git commit 、CHANGELOG 和版本发布的标准自动化](https://zhuanlan.zhihu.com/p/51894196)
 - [优雅的提交你的 Git Commit Message](https://juejin.im/post/5afc5242f265da0b7f44bee4)
@@ -385,33 +385,6 @@ module.exports = {
 
 </CodeBlock>
 
-## EditorConfig
-
-- [editorconfig](https://editorconfig.org/)
-- vscode配合插件[EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)一起使用
-- `.editorconfig`文件配置
-
-<CodeBlock>
-
-```bash
-root = true
-
-[*]
-indent_style = tab
-indent_size = 2
-end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
-
-[{.*rc,*.yml,*.md,package.json,lerna.json,*.svg}]
-indent_style = space
-
-[*.md]
-trim_trailing_whitespace = false
-```
-
-</CodeBlock>
 
 ## 参考示例
 
@@ -651,85 +624,6 @@ module.exports = {
 			['feat', 'fix', 'refactor', 'docs', 'test', 'chore', 'style', 'revert'],
 		],
 	},
-}
-```
-
-</CodeBlock>
-
-### 其他配置
-
-- .eslintrc.js
-
-<CodeBlock>
-
-```js
-module.exports = {
-	extends: ['standard', 'prettier'],
-	env: {
-		es6: true,
-		browser: true,
-		node: true,
-	},
-	plugins: ['prettier'],
-	parserOptions: {
-		sourceType: 'module',
-		ecmaFeatures: {
-			jsx: true,
-		},
-	},
-	rules: {
-		'prettier/prettier': 'error',
-	},
-}
-```
-
-</CodeBlock>
-
-- .eslintignore
-
-```bash
-/.vscode
-/.git
-node_modules
-```
-
-- .editorconfig
-
-<CodeBlock>
-
-```bash
-root = true
-
-[*]
-indent_style = tab
-indent_size = 2
-end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
-
-[*.{json,yml}]
-indent_size = 2
-
-[*.md]
-trim_trailing_whitespace = false
-```
-
-</CodeBlock>
-
-- prettier.config.js
-
-<CodeBlock>
-
-```js
-module.exports = {
-	trailingComma: 'all',
-	tabWidth: 2,
-	semi: false,
-	bracketSpacing: true,
-	singleQuote: true,
-	jsxBracketSameLine: true,
-	useTabs: true,
 }
 ```
 
