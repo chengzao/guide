@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { formatDateTime } from "../utils/tools";
+import { formatDateTime } from "../libs/tools";
 import Hitokoto from "./Hitokoto";
 export default {
   data() {
