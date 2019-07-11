@@ -12,10 +12,12 @@
 
 - [prettier](./prettier.md)
 
-- [fiddler](./fiddler.md)
-
 - [eslint](./eslint.md)
 
 - [commitizen](./commitizen.md)
 
-- [editorConfig.md](./editorConfig.md)
+- [editorConfig](./editorConfig.md)
+
+- [sentry](./sentry.md)
+
+- [fiddler](./fiddler.md)

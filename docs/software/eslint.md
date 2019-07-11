@@ -63,8 +63,8 @@ eslint [options] [file|dir|glob]*
 - `.eslintignore`文件来避免检测处理
 
 ```bash
-- touch .eslintignore && vi .eslintignore
-- node_modules/**
+$ touch .eslintignore && vi .eslintignore
+$ node_modules/**
 ```
 
 ## 配置文件

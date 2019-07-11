@@ -4,8 +4,6 @@
 - vscode配合插件[EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)一起使用
 - `.editorconfig`文件配置
 
-<CodeBlock>
-
 ```bash
 # 最顶层的配置文件
 root = true
@@ -31,8 +29,6 @@ indent_style = space
 [*.md]
 trim_trailing_whitespace = false
 ```
-
-</CodeBlock>
 
 - 通配符模式
 

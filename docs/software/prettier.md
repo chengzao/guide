@@ -88,3 +88,13 @@ module.exports = {
   "alwaysParens": "always", // 为单行箭头函数的参数添加圆括号, 默认值"avoid"; 可选值"< avoid | always >", 示例： (x) => x
 }
 ```
+
+- `.prettierignore`
+
+```bash
+package-lock.json
+.next
+node_modules/
+dist
+build
+```
