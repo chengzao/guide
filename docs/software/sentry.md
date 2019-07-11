@@ -74,9 +74,146 @@ import * as Sentry from '@sentry/browser';
 
 Sentry.init({
   dsn: "http://PUBLIC_KEY:SECRET_KEY@localhost:9000/PROJECT_ID" ,
-  release: 'sentry_app@20190710'
+  release: 'sentry_app@20190710',
+  environment: process.env.NODE_ENV
 });
 ```
+
+## example
+
+- 工程目录部分文件 [示例](https://github.com/chengzao/react-demo/tree/master/sentry-react)
+
+```bash
+.
+├── .gitignore
+├── .sentryclirc # sentry配置文件
+├── config-overrides.js # react-app-rewired配置文件
+├── README.md
+├── build # 打包后的文件
+│   └── static
+│       ├── js
+│       │   ├── main.28cb07aa.chunk.js
+│       │   └── main.28cb07aa.chunk.js.map
+├── package.json
+├── public
+│   └── index.html
+├── src
+│   ├── App.js
+│   ├── Button.js
+│   ├── index.js
+│   └── serviceWorker.js
+└── yarn.lock
+```
+
+- `package.json`部分配置
+
+```json
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build"
+  },
+  "devDependencies": {
+    "@sentry/webpack-plugin": "^1.7.0",
+    "react-app-rewired": "^2.1.3"
+  }
+```
+
+- `npx create-react-app react-sentry`
+- `.sentryclirc`
+
+```bash
+[defaults]
+url = http://localhost:9000
+org = sentry
+project = react-sentry
+
+[auth]
+token = 9210xxxxxxxx42b5823d8b0f6ebfdbb4
+```
+
+- `Button.js`
+
+```js
+import React, {Component} from 'react'
+class Button extends Component{
+  constructor(){
+    this.methodDoesNotExist = this.methodDoesNotExist.bind(this)
+  }
+  methodDoesNotExist(){
+    throw new Error(`我是一个抛出的错误日志: ${new Date()}`)
+  }
+  render(){
+    return (<button onClick = { this.methodDoesNotExist } > Break the world</button>)
+  }
+}
+export default Button
+```
+
+- `App.js`
+
+```js
+import React from 'react';
+import * as Sentry from '@sentry/browser';
+import Button from './Button'
+
+// 自建sentry服务的dsn组成部分
+// dsn: PROTOCOL://PUBLIC_KEY:SECRET_KEY@localhost:9000/PROJECT_ID
+Sentry.init({
+  dsn: "http://05bdfb2xxxx77:00a40ae1bxxxxf0@localhost:9000/4" ,
+  release: 'react-sentry@20190711',
+  environment: process.env.NODE_ENV
+});
+function App() {
+  return (
+    <div className="App">
+      <Button />
+    </div>
+  );
+}
+export default App;
+```
+
+
+- 上传sourcemap文件：`sentry-cli`
+
+```bash
+# sentry-cli releases -o 组织 -p 项目 files staging@1.0.1 upload-sourcemaps js文件所在目录 --url-prefix 线上资源URI
+
+# 运行如下命令
+sentry-cli releases files react-sentry@20190711 upload-sourcemaps ./build/ --url-prefix '~/static/js/'
+```
+
+- 上传sourcemap文件：`@sentry/webpack-plugin`
+
+```bash
+# 通过配置webpack： config-overrides.js
+# 安装：react-app-rewired
+$ `npm install react-app-rewired --save-dev`
+```
+
+- 配置`config-overrides.js`
+
+```js
+const SentryCliPlugin = require('@sentry/webpack-plugin');
+
+module.exports = function override(config, env) {
+  //do stuff with the webpack config...
+  if(process.env.NODE_ENV === 'production'){
+    config.plugins.push(
+      new SentryCliPlugin({
+        include: './build',
+        urlPrefix: '~/static/js/',
+        ignoreFile: '.sentrycliignore',
+        ignore: ['node_modules', 'webpack.config.js'],
+        configFile: 'sentry.properties',
+      })
+    )
+  }
+  return config;
+}
+```
+
+- 运行`npm run build`上传sourcemap
 
 ## 相关链接
 
