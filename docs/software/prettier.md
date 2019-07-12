@@ -35,7 +35,6 @@ module.exports = {
 }
 ```
 
-
 - `webpack.config.js`
 
 ```js
@@ -57,8 +56,6 @@ module.exports = {
 ```
 
 - `prettier.config.js`
-
-<CodeBlock>
 
 ```js
 module.exports = {

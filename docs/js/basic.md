@@ -25,34 +25,39 @@
 - 类型转换：`!!undefined --> false`
 - 布尔转换
 
-<CodeBlock>
-
 ```bash
 undefined, null, false, 0, NaN , "" , ''  --> false
+# 过滤数组中的这些值
+[undefined, null, false, 0, NaN , "" , '', 'hello'].filter(item => item) // ['hello']
 
 typeof null # 返回object
 
-null是一个表示“空”的对象，转为数值时为0；
+null是一个表示“空”的对象，转为数值时为0
 
-undefined是一个表示”此处无定义”的原始值，转为数值时为NaN。
+undefined是一个表示”此处无定义”的原始值，转为数值时为NaN
+
 ```
 
-</CodeBlock>
 
 ## 文档基本结构
 
 <CodeBlock>
 
 ```js
-document.head //文档的头标签
-typeof document.head  //object
-document.title //文档标题
-typeof document.title //string
-document.body  //文档的body标签
-typeof document.body  //object
-document.documentElement//文档的根节点 注意：没有document.html这个东西
-typeof document.documentElement //object
-document.html//这个是错的!!!
+document.head // 文档的头标签
+typeof document.head  // object
+
+document.title // 文档标题
+typeof document.title // string
+
+document.body  // 文档的body标签
+typeof document.body  // object
+
+document.documentElement // 文档的根节点 注意：没有document.html这个东西
+typeof document.documentElement // object
+
+document.html // 这个是错的!!!
+
 document.defaultView === window // true
 document.activeElement // 属性返回当前文档中获得焦点的那个元素
 document.defaultView
@@ -60,14 +65,14 @@ document.defaultView
 
 </CodeBlock>
 
-## 文档兼容模式CSS1Compat
+## 文档兼容模式
 
 - `document type`声明文档类型 DTD：`<!DOCTYPE html>`
 - `BackCompat`   未声明DTD(怪异模式)firefox
 - `CSS1Compat`  已经声明DTD(标准模式)chrome ,ie
 - `document.compatMode` 获取文档类型
 
-## document节点
+## document
 
 ### 节点获取
 
@@ -115,7 +120,7 @@ document.implementation.hasFeature('MutationEvents','2.0')// true
 
 - `document.cookie`属性用来操作浏览器Cookie
 
-## Element
+## Element DOM
 
 ### 属性相关的方法
 
@@ -188,7 +193,7 @@ d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
 - `Element.attributes` 返回一个类似数组的动态对象
 - 属性节点对象有`name`和`value`属性;对应该属性的属性名和属性值;等同于`nodeName`属性和`nodeValue`属性
 
-### 属性操作的标准方法
+### 属性操作的方法
 
 - `Element.getAttribute`方法返回当前元素节点的指定属性.如果指定属性不存在;则返回`null`
 - `Element.setAttribute`方法用于为当前元素节点新增属性.如果同名属性已存在;则相当于编辑已存在的属性
@@ -286,20 +291,67 @@ console.log(docFrag.textContent); // ''
 ### 比较大小
 
 - `Math.max()` 返回最大值
+
+```js
+Math.max(1,3,"12ab");//NaN
+Math.max(1,2,NaN);//NaN
+Math.max(1,2,undefined);//NaN
+Math.max(1,3,"12")
+Math.max(1,3,null);
+```
+
 - `Math.min()` 返回最小值
 
 ### 取整
 
 - `Math.floor()` 返回小于参数值的最大整数 (向下取整)
+
+  ```js
+  Math.floor(1.9)// 1
+  Math.floor(1.1)// 1
+  Math.floor(-1.9)// -2
+  Math.floor(-1.1)// -2
+  ```
+
 - `Math.ceil()` 返回大于参数值的最小整数 (向上取整)
+
+```js
+Math.ceil(1.1)// 2
+Math.ceil(1.9)// 2
+Math.ceil(-1.1)// -1
+Math.ceil(-1.9)// -1
+```
 
 ### `Math.random()`
 
 - 返回`[0,1)`之间的一个伪随机数
 
+```js
+function randomColor(){
+  return '#'+('00000'+ (Math.random()*0x1000000<<0).toString(16)).substr(-6)
+}
+function randomRbga(a){
+  var r = Math.floor(Math.random()*255);
+  var g = Math.floor(Math.random()*255);
+  var b = Math.floor(Math.random()*255);
+  return 'rgba('+ r +','+ g +','+ b +','+ a +')'
+}
+function randomHsla(){
+  var colorAngle = Math.floor(Math.random()*360);
+  return 'hsla('+ colorAngle +',100%,50%,1)'
+}
+```
+
 ### `Math.round()`
 
 - 四舍五入
+
+```js
+Math.round(1.1) // 1
+Math.round(1.9)  // 2
+Math.round(-1.1) // -1
+Math.round(-1.9) // -2
+```
 
 ### `Math.sqrt()`
 
@@ -315,43 +367,13 @@ console.log(docFrag.textContent); // ''
 - `Math.acos()`  返回参数的反余弦（弧度值）
 - `Math.atan()` 返回参数的反正切（弧度值）
 
-### other
+### 其他
 
 - `Math.pow()` 第一个参数为底数、第二个参数为幂的指数值
 - `Math.log()` 返回以`e`为底的自然对数值
 - `Math.exp()` 返回常数`e`的参数次方
 
-<CodeBlock title="Math示例>>">
-
-```js
-Math.ceil(1.1)// 2
-Math.ceil(1.9)// 2
-Math.ceil(-1.1)// -1
-Math.ceil(-1.9)// -1
-Math.floor(1.9)// 1
-Math.floor(1.1)// 1
-Math.floor(-1.9)// -2
-Math.floor(-1.1)// -2
-Math.round(1.1) // 1
-Math.round(1.9)  // 2
-Math.round(-1.1) // -1
-Math.round(-1.9) // -2
-Math.max(1,3,"12ab");//NaN
-Math.max(1,2,NaN);//NaN
-Math.max(1,2,undefined);//NaN
-Math.max(1,3,"12")
-Math.max(1,3,null);
-```
-
-</CodeBlock>
-
 ## JSON
-
-- `JSON.stringify({  }, null, 2)`
-- `JSON.stringify(string)` JSON对象转为 JSON 字符串
-- `JSON.parse(obj)` JSON 字符串转换为JSON对象
-
-### json格式
 
 ### JSON.stringify
 
