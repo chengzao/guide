@@ -49,3 +49,4 @@ Babel是一个JavaScript编译器@babel/polyfill
 - [webpack 插件总结归类](https://segmentfault.com/a/1190000016816813)
 - [poetries/mywiki@github](https://github.com/poetries/mywiki/wiki/webpack)
 - [babel@juejin](https://juejin.im/post/5c20e870e51d4548ac6f6956)
+- [使用 webpack 的各种插件提升你的开发效率](https://juejin.im/post/5c8852f95188257a323f5cee)

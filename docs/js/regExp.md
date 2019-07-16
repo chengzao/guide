@@ -570,3 +570,8 @@ IP地址：\d+\.\d+\.\d+\.\d+
 ```
 
 </CodeBlock>
+
+## 相关资料
+
+- [JS正则表达式完整教程（略长）](https://juejin.im/post/5965943ff265da6c30653879#heading-0)
+- [2019年JS正则大全(常用)](https://juejin.im/post/5d245d4151882555300feb77)

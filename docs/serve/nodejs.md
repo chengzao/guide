@@ -342,6 +342,11 @@ fs-extra memory-fs
 cors http-proxy-middleware
 serve
 express-history-api-fallback
+
+bcrypt
+jsonwebtoken
+passport
+passport-jwt
 ```
 
 </CodeBlock>
@@ -357,3 +362,6 @@ express-history-api-fallback
 - [npm模块管理器](http://javascript.ruanyifeng.com/nodejs/npm.html)
 - [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
 - [开源许可证](http://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html)
+- [node-sso redis](https://github.com/lyh2668/node-sso)
+- [Sequelize mysql](https://demopark.github.io/sequelize-docs-Zh-CN/)
+- [一个基于Vue.js开发的个人博客](https://github.com/XNAL/don-blog)

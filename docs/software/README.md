@@ -21,3 +21,10 @@
 - [sentry](./sentry.md)
 
 - [fiddler](./fiddler.md)
+
+---
+
+传输数据
+
+- [https://cowtransfer.com/](https://cowtransfer.com/)
+- [https://send.firefox.com/](https://send.firefox.com/)

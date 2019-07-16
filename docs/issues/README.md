@@ -43,6 +43,8 @@
 - [webcomponents](https://www.webcomponents.org/introduction)
 - [hellogithub](https://hellogithub.com/)
 
+---
+
 js
 
 - [如何使用Tween.js各类原生动画运动缓动算法](http://www.zhangxinxu.com/wordpress/2016/12/how-use-tween-js-animation-easing/)
@@ -58,6 +60,8 @@ js
 - [vue-cli3 项目从搭建优化到docker部署](https://juejin.im/post/5c4a6fcd518825469414e062?utm_source=gold_browser_extension)
 - [H5 notification浏览器桌面通知](https://juejin.im/post/5c6df433f265da2de80f5eda)
 
+---
+
 es6
 
 - [babel](http://babeljs.io/)
@@ -69,6 +73,8 @@ es6
 - [fullpage.js](http://www.dowebok.com/77.html)
 - [calendar js](http://shici.store/poetry-calendar/assets/js/calendar.js)
 
+---
+
 cors
 
 - [ajax跨域，这应该是最全的解决方案了](https://segmentfault.com/a/1190000012469713)
@@ -77,8 +83,20 @@ cors
 - [fetch-jsonp](https://github.com/camsong/fetch-jsonp)
 - [前端常见跨域解决方案（全）](https://segmentfault.com/a/1190000011145364)
 
+---
+
 github登录授权
 
 - [AnDongCai@back-login](https://github.com/AnDongCai/back-login)
 - [linwalker@node-login](https://github.com/linwalker/node-login)
 - [第三方登入例子-GitHub授权登入（node-koa）](https://segmentfault.com/a/1190000009722474)
+- [GitHub OAuth 第三方登录示例教程](http://www.ruanyifeng.com/blog/2019/04/github-oauth.html)
+- [基于 Github API 的图床 Chrome 插件开发全纪录](https://juejin.im/post/5cd38990e51d453a543f9e3e)
+
+---
+
+- [前端常用插件、工具类库汇总](https://juejin.im/post/5ba7d5dd5188255c6140cc9d)
+- [前端必备自定义滚动库——iScroll](https://juejin.im/post/5bc57e616fb9a05d396f3fc9)
+- [ast](https://astexplorer.net/)
+- [elasticsearch 全文搜索](https://www.elastic.co/cn/)
+- [分享 8 个有趣且实用的 API](https://juejin.im/post/5c92446b6fb9a070c022f0e2)

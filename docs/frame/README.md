@@ -33,6 +33,7 @@
 - [WePY](https://github.com/Tencent/wepy)
 - [看大神如何玩转微信小程序日历插件？](https://juejin.im/entry/5b0de07f6fb9a00a251923b6)
 - [taro](https://taro.js.org/)
+- [小程序如何生成海报分享朋友圈](https://juejin.im/post/5cd385e2f265da03a22f7ddb)
 
 ---
 

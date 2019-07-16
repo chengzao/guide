@@ -18,3 +18,5 @@
 - [移动端布局方案](https://github.com/PolluxLee/blog/issues/86)
 - [CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewport #21](https://github.com/jawil/blog/issues/21)
 - [css-doodle](https://css-doodle.com/)
+- [css3 loading](https://www.cnblogs.com/shihaiming/p/7047870.html)
+- [十分钟实现灭霸打响指灰飞烟灭的效果](https://juejin.im/post/5cd2b57ef265da039f0f292c)

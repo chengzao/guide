@@ -67,33 +67,6 @@
 
   - https://github.com/ctq123/rcSearchSelect
 
-- pinyin
-
-<CodeBlock>
-
-```bash
-npm i pinyin pinyinlite string_score
-
-option.pinyin = pinyinlite(option.label)
-        .join('')
-        .toLowerCase()
-      option.py = pinyinlite(option.label)
-        .map(label => label.toString().substr(0, 1))
-        .join('')
-        .toLowerCase()
-      return option
-
-option.pinyin = pinyin(option.label, {
-        style: pinyin.STYLE_NORMAL
-      }).join('').toLowerCase();
-      option.py = pinyin(option.label, {
-        style: pinyin.STYLE_FIRST_LETTER
-      }).join('').toLowerCase();
-      return option;
-```
-
-</CodeBlock>
-
 - 移动端页面输入底部被软键盘遮挡问题
 
   - [移动端页面输入底部被软键盘遮挡问题](https://www.cnblogs.com/dongcanliang/p/7383508.html)
@@ -126,3 +99,10 @@ option.pinyin = pinyin(option.label, {
 - [react-redux connect](https://www.cnblogs.com/isLiu/p/8119861.html)
 - [async component / react-loadable](https://github.com/jamiebuilds/react-loadable)
 - [Reselect](https://github.com/reduxjs/reselect)
+- [React 源码解析](https://react.jokcy.me/)
+- [8年前端开发的知识点沉淀](https://juejin.im/post/5d0878aaf265da1b83338f74)
+- [webpack4 的30个步骤打造优化到极致的 react 开发环境，如约而至](https://juejin.im/post/5cfe4b13f265da1bb13f26a8#heading-12)
+- [从零开始搭建一个 React + Mobx + React Router 脚手架](https://juejin.im/post/5caee4266fb9a0688144ec68)
+- [十个案例学会 React Hooks](https://juejin.im/post/5ce53c636fb9a07eba2c1439)
+- [你要的 React 面试知识点，都在这了](https://juejin.im/post/5cf0733de51d4510803ce34e)
+- [从头开始，彻底理解服务端渲染原理(8千字汇总长文)](https://juejin.im/post/5d1fe6be51882579db031a6d)
