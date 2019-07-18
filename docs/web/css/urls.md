@@ -20,3 +20,5 @@
 - [css-doodle](https://css-doodle.com/)
 - [css3 loading](https://www.cnblogs.com/shihaiming/p/7047870.html)
 - [十分钟实现灭霸打响指灰飞烟灭的效果](https://juejin.im/post/5cd2b57ef265da039f0f292c)
+- [You-Dont-Need-jQuery](https://github.com/nefe/You-Dont-Need-jQuery/blob/master/README.zh-TW.md)
+- [30-seconds-of-css中文版](http://caibaojian.com/30-seconds-of-css/)

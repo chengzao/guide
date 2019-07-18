@@ -1,17 +1,11 @@
 # vue
 
 - [官方文档](https://cn.vuejs.org/index.html)
-
 - [vue-cli](https://github.com/vuejs/vue-cli)
-
 - [vue-router](https://github.com/vuejs/vue-router)
-
 - [vuex](https://github.com/vuejs/vuex)
-
 - [nuxt.js](https://zh.nuxtjs.org/)
-
 - [awesome-vue](https://github.com/vuejs/awesome-vue)
-
 - [vuepress](https://github.com/vuejs/vuepress)
 
 ## 插件

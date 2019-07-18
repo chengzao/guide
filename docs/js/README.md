@@ -28,6 +28,10 @@
 
 ---
 
+- [30-seconds-of-code中文版](https://github.com/kujian/30-seconds-of-code)
+
+---
+
 代码注释规范
 
 - [usejsdoc](http://usejsdoc.org/index.html)

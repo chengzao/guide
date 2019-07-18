@@ -4,19 +4,37 @@
 - [reactjs英文官网](https://reactjs.org/)
 - [reactjs中文文档](https://react.docschina.org/)
 - [react 中文论坛](http://react-china.org/)
+
+---
+
 - [create-react-app](https://github.com/facebook/create-react-app)
+- [react-app-rewired](https://github.com/timarney/react-app-rewired)
+
+---
+
 - [react-router](https://github.com/ReactTraining/react-router)
+
+---
 
 - [react-transition-group](https://github.com/reactjs/react-transition-group)
 - [styled-components](https://github.com/styled-components/styled-components)
+- [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics)
+- [classnames](https://github.com/JedWatson/classnames)
+
+---
 
 - [snabbdom](https://github.com/snabbdom/snabbdom)
 - [preact](https://github.com/developit/preact/)
 - [iceworks](https://alibaba.github.io/ice/iceworks)
 
+---
+
 - [DvaJS](https://dvajs.com/)
 - [umiJS](https://umijs.org/zh/)
 - [nextjs](https://nextjs.org/)
+
+---
+
 - [redux](https://github.com/reduxjs/redux)
 - [awesome-redux](https://github.com/xgrommx/awesome-redux)
 - [redux-actions](https://github.com/redux-utilities/redux-actions)
@@ -28,65 +46,39 @@
 - [redux-saga](https://github.com/redux-saga/redux-saga)
 - [redux-immutable](https://github.com/facebook/immutable-js)
 
-- mobx:
+---
 
-  - https://github.com/mobxjs/mobx
+- [30-seconds-of-react](https://github.com/30-seconds/30-seconds-of-react)
 
-  - awesome-mobx: https://github.com/mobxjs/awesome-mobx
+---
 
-- handleFunction:
+- [mobx](https://github.com/mobxjs/mobx)
+- [awesome-mobx](https://github.com/mobxjs/awesome-mobx)
+
+---
+
+- [ramda](http://ramda.cn/docs/)
+- [lodash](https://www.lodashjs.com/)
+- [RxJS](https://cn.rx.js.org/)
 
 
-  - ramda: http://ramda.cn/docs/
-
-  - lodash: https://www.lodashjs.com/
-
-  - RxJS: https://cn.rx.js.org/
-
-
-- hoc `hoist-non-react-statics`
-- className `classnames`
-- react-app-rewired
+---
 
 - [React模态框设计思想](https://www.vq0599.com/article/2017/1111.html)
 - [异步组件](https://segmentfault.com/a/1190000009820646)
 
-- React-select
+---
 
-  - https://www.npmjs.com/package/react-pinyin-select-2
+- [移动端页面输入底部被软键盘遮挡问题](https://www.cnblogs.com/dongcanliang/p/7383508.html)
+- [iOS下Html页面中input获取焦点弹出键盘时挡住input解决方案—scrollIntoView()](https://www.cnblogs.com/wx1993/p/6059668.html)
+- 通过 window.onresize 监听页面大小变化，然后通过 window.scrollTo 使页面滚动到所需位置
+- 通过 Element.scrollIntoView()
+- 通过 Element.scrollIntoViewIfNeeded()
+- [移动端软键盘监听（弹出，收起），及影响定位布局的问题](https://www.cnblogs.com/wangyihong/p/7514304.html)
+- [input光标位置设置至行末端](https://blog.csdn.net/shuanger112/article/details/81704208)
+- [JedWatson/react-select Mobile support](https://github.com/JedWatson/react-select/issues/2692)
 
-  - https://github.com/xcatliu/react-select-pinyin
-
-  - https://github.com/react-component/select
-
-  - https://github.com/jedwatson/react-select
-
-  - https://github.com/enkidevs/react-search-input
-
-  - https://github.com/hotoo/pinyin
-
-  - https://github.com/ctq123/rcSearchSelect
-
-- 移动端页面输入底部被软键盘遮挡问题
-
-  - [移动端页面输入底部被软键盘遮挡问题](https://www.cnblogs.com/dongcanliang/p/7383508.html)
-  - [iOS下Html页面中input获取焦点弹出键盘时挡住input解决方案—scrollIntoView()](https://www.cnblogs.com/wx1993/p/6059668.html)
-  - 通过 window.onresize 监听页面大小变化，然后通过 window.scrollTo 使页面滚动到所需位置
-  - 通过 Element.scrollIntoView()
-  - 通过 Element.scrollIntoViewIfNeeded()
-  - [移动端软键盘监听（弹出，收起），及影响定位布局的问题](https://www.cnblogs.com/wangyihong/p/7514304.html)
-  - [input光标位置设置至行末端](https://blog.csdn.net/shuanger112/article/details/81704208)
-  - [JedWatson/react-select Mobile support](https://github.com/JedWatson/react-select/issues/2692)
-
-- `this.setState`异步执行, `(callback[, callback2])` ,return object
-- `this.state({})`, return object
-- `return: jsx`
-- `constructor(props context)`
-- 事件的 this 指向问题 `this.hander = this.hander.bind(this)`
-- 无状态组件: 无生命周期函数
-- 有状态组件: 有生命周期
-
-## 相关链接
+---
 
 - [reactnative doc](http://reactnative.cn/docs/0.40/getting-started.html#content)
 - [Ant Design](https://ant.design/index-cn)
