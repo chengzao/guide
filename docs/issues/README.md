@@ -100,3 +100,5 @@ github登录授权
 - [ast](https://astexplorer.net/)
 - [elasticsearch 全文搜索](https://www.elastic.co/cn/)
 - [分享 8 个有趣且实用的 API](https://juejin.im/post/5c92446b6fb9a070c022f0e2)
+- [hacksplaining](https://www.hacksplaining.com/lessons)
+- [awesome-bookmarks](https://panjiachen.github.io/awesome-bookmarks/website)

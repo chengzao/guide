@@ -187,6 +187,14 @@ print()
 - `obj.bind(thisObj, arg1, arg2, ...);` 通过`bind`改变this作用域会返回一个新的函数，这个函数`不会马上执行`
 - `call,apply`和`bind`如果第一个参数是指定为 `null` 或 `undefined` 时会自动指向`全局对象`
 
+- 实现call
+
+<<< @/example/docs/event/call.js
+
+- 实现apply
+
+<<< @/example/docs/event/apply.js
+
 ### bind兼容
 
 <CodeBlock>

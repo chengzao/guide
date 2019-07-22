@@ -215,6 +215,24 @@ x // 4
 ```js
 escape("大")  // "%u5927"
 unescape("%u5927") // "大"
+
+const escapeHTML = str =>
+  str.replace(/[&<>'"]/g, tag => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    "'": '&#39;',
+    '"': '&quot;'
+  }[tag] || tag));
+
+const unescapeHTML = str =>
+  str.replace(/&amp;|&lt;|&gt;|&#39;|&quot;/g,tag => ({
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&#39;': "'",
+    '&quot;': '"'
+  }[tag] || tag));
 ```
 
 ## NaN

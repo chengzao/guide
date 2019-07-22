@@ -356,7 +356,7 @@ console.log(cat1.eat()); // animal eat
 
 </CodeBlock>
 
-- 寄生式组合继承
+- 寄生组合式继承
 
 <CodeBlock>
 
@@ -373,7 +373,15 @@ function Child(age,name){
   Father.call(this,name);//继承属性
   this.age = age;
 }
-Child.prototype = new Father();//继承方法
+
+// 用一个 F 空的构造函数去取代执行了 Parent 这个构造函数
+function create(proto) {
+    function F(){}
+    F.prototype = proto;
+    return new F();
+}
+
+Child.prototype = create(Parent.prototype);//继承方法
 Child.prototype.constructor = Child;
 
 // Child原型方法

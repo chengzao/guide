@@ -18,7 +18,7 @@
 
 </CodeBlock>
 
-## currying
+## currying柯里化
 
 <CodeBlock>
 
