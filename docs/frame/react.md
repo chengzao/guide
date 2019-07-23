@@ -4,6 +4,7 @@
 - [reactjs英文官网](https://reactjs.org/)
 - [reactjs中文文档](https://react.docschina.org/)
 - [react 中文论坛](http://react-china.org/)
+- [react生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
 ---
 
