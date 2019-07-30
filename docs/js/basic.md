@@ -38,6 +38,91 @@ undefined是一个表示”此处无定义”的原始值，转为数值时为Na
 
 ```
 
+## BigInt
+
+- [bigint@caniuse](https://caniuse.com/#search=bigint)
+- [jsbi@github](https://github.com/GoogleChromeLabs/jsbi)
+- 使用
+
+```js
+BigInt(10) // 10n
+```
+
+- typeof
+
+```js
+console.log(10n === 10);    // → false
+console.log(10n == 10);    // → true
+
+console.log(typeof 10n);    // → bigint
+console.log(typeof 10);     // → number
+```
+
+- 运算
+
+```js
+10n + 20n;    // → 30n
+10n - 20n;    // → -10n
++10n;         // → TypeError: Cannot convert a BigInt value to a number
+-10n;         // → -10n
+10n * 20n;    // → 200n
+20n / 10n;    // → 2n
+23n % 10n;    // → 3n
+10n ** 3n;    // → 1000n
+
+const x = 10n;
+++x;          // → 11n
+--x;          // → 9n
+
+// 注意区别：
+25 / 10;      // → 2.5
+25n / 10n;    // → 2n
+```
+
+- 隐式类型转换
+
+```js
+10 + 10n;    // → TypeError
+Math.max(2n, 4n, 6n);    // → TypeError
+
+BigInt(10) + 10n;    // → 20n
+10 + Number(10n);    // → 20
+
+// 请注意，关系运算符不遵循此规则
+10n > 5;    // → true
+
+!0n // true
+!1n // false
+
+// 排序BigInts和Numbers数组时，不会发生隐式类型转换
+const arr = [3n, 4, 2, 1n, 0, -1n, 2n];
+arr.sort();    // → [-1n, 0, 1n, 2, 2n, 3n, 4]
+```
+
+- 位操作符
+
+```js
+// |、&、<<、>>和^对Bigint的操作方式与Number类似
+90 | 115;      // → 123
+90n | 115n;    // → 123n
+90n | 115;     // → TypeError
+```
+
+- BigInt构造函数
+
+```js
+BigInt("10");    // → 10n
+BigInt(10);      // → 10n
+BigInt(true);    // → 1n
+
+BigInt(10) * 10n;    // → 100n
+BigInt(true) === 1n;    // → true
+
+// 无法转换的数据类型和值会引发异常:
+BigInt(10.2);     // → RangeError
+BigInt(null);     // → TypeError
+BigInt("abc");    // → SyntaxError
+```
 
 ## 文档基本结构
 
