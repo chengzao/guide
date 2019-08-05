@@ -220,3 +220,4 @@ module.exports = function override(config, env) {
 - [异常监控服务 Sentry 的部署](https://juejin.im/post/5d12b99cf265da1bb77677c5)
 - [前端异常监控之 Sentry的部署和使用](https://juejin.im/post/5b55c33ae51d45198f5c7a91)
 - [给你的项目装个探头 — Sentry](https://juejin.im/post/5d1461e1f265da1bbb03ecc2)
+- [webfunny](https://www.webfunny.cn/webfunny/createProject)

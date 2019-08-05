@@ -18,8 +18,6 @@
 
 - [editorConfig](./editorConfig.md)
 
-- [sentry](./sentry.md)
-
 - [fiddler](./fiddler.md)
 
 ---
