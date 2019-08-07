@@ -75,16 +75,6 @@ es6
 
 ---
 
-cors
-
-- [ajax跨域，这应该是最全的解决方案了](https://segmentfault.com/a/1190000012469713)
-- [XMLHttpRequest2 新技巧](https://www.html5rocks.com/zh/tutorials/file/xhr2/)
-- [浏览器跨域方法与基于Fetch的Web请求最佳实践](https://segmentfault.com/a/1190000006095018)
-- [fetch-jsonp](https://github.com/camsong/fetch-jsonp)
-- [前端常见跨域解决方案（全）](https://segmentfault.com/a/1190000011145364)
-
----
-
 github登录授权
 
 - [AnDongCai@back-login](https://github.com/AnDongCai/back-login)
