@@ -59,13 +59,13 @@ request.addEventListener('readystatechange', function () {...}, false);
     进入执行栈,开始执行
   - 主线程不断重复上面的第三步
 
-## Job queue中的执行顺序(Event Loop)
+## 事件循环(Event Loop)
 
 - 原地址：[从promise、process.nextTick、setTimeout出发，谈谈Event Loop中的Job queue #5](https://github.com/forthealllight/blog/issues/5)
-- `同步代码—>microTask—>macroTask :`
-- `macro-task`队列真实包含任务：
+- 执行顺序`同步代码—>microTask—>macroTask :`
+- macrotask宏任务：
   - `script(主程序代码),setTimeout, setInterval, setImmediate(Node.js 环境), I/O, UI rendering`
-- `micro-task`队列真实包含任务：
+- microtask微任务：
   - `process.nextTick(Node.js 环境), Promises, Object.observe, MutationObserver`
 - 执行顺序应该为：
   - `script(主程序代码)—>process.nextTick—>Promises...——>setTimeout——>setInterval——>setImmediate——> I/O——>UI rendering`
