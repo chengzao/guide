@@ -6,6 +6,12 @@
 - [react 中文论坛](http://react-china.org/)
 - [react生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
+  ![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/wojtekmaj-pl-react-lifecycle-methods-diagram-1576117898899.png)
+
+- [Redux 关系图解](https://segmentfault.com/a/1190000011473973)
+
+  ![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/react-redux-01.png)
+
 ---
 
 - [create-react-app](https://github.com/facebook/create-react-app)

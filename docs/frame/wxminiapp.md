@@ -14,6 +14,10 @@
 - [小程序与普通网页开发的区别](https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8E%E6%99%AE%E9%80%9A%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91%E7%9A%84%E5%8C%BA%E5%88%AB)
 - [聊聊Web App、Hybrid App与Native App的设计差异](http://www.woshipm.com/pd/123646.html)
 
+- 生命周期图-微信官方原图
+
+  ![](https://res.wx.qq.com/wxdoc/dist/assets/img/page-lifecycle.2e646c86.png)
+
 ## 相关资料
 
 - [小程序开发指南](https://developers.weixin.qq.com/ebook?action=get_post_info&docid=0008aeea9a8978ab0086a685851c0a)

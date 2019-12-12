@@ -7,6 +7,13 @@
 - [nuxt.js](https://zh.nuxtjs.org/)
 - [awesome-vue](https://github.com/vuejs/awesome-vue)
 - [vuepress](https://github.com/vuejs/vuepress)
+- vue生命周期-图来源官网
+
+  ![](https://cn.vuejs.org/images/lifecycle.png)
+
+- vuex工作流程-图来源官网
+
+  ![](https://vuex.vuejs.org/vuex.png)
 
 ## 插件
 
