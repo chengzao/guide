@@ -34,3 +34,19 @@
 - [vue-bulma/vue-admin](https://github.com/vue-bulma/vue-admin)
 - [iview/iview-admin](https://github.com/iview/iview-admin)
 - [creativetimofficial/material-dashboard](https://github.com/creativetimofficial/material-dashboard)
+
+## CSR & SSR
+
+[以下图片来源](https://juejin.im/post/5def0816f265da33aa6aa7fe)
+
+- 客户端渲染CSR（Client Side Rendering）
+
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/Client-Side-Rendering.png)
+
+- 服务端渲染SSR（Server Side Rendering）
+
+指将单页应用（SPA）在服务器端渲染成 HTML 片段，发送到浏览器，然后交由浏览器为其绑定状态与事件，成为完全可交互页面的过程
+
+
+![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/Server-Side-Rendering.jpeg)
+
