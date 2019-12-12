@@ -48,7 +48,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/object/atrGetEle.js
+<<< @/example/docs/dom/atrGetEle.js
 
 </CodeBlock>
 
