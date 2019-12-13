@@ -54,19 +54,3 @@
 ```
 
 </CodeBlock>
-
-- ClientOnly: Todo vue 组件
-
-<ClientOnly>
-  <Todo />
-</ClientOnly>
-
-<CodeBlock>
-
-```vue
-<ClientOnly>
-  <Todo />
-</ClientOnly>
-```
-
-</CodeBlock>
