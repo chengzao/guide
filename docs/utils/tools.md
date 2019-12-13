@@ -10,6 +10,40 @@
 
 </CodeBlock>
 
+## formatNumber
+
+```js
+const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+```
+
+## formateMoney
+
+```js
+const formatMoney = function (num) {
+  if (num == '0') {
+    return "0.00";
+  }
+  if (num == undefined || num == '' || num == null) {
+    return '-';
+  }
+  return parseFloat(num).toFixed(2).replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
+}
+```
+
 ## 获取类名ClassName
 
 <CodeBlock>
