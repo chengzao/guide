@@ -7,9 +7,12 @@ var objDeepCopy = function (source) {
   return sourceCopy;
 }
 
+function isObject(obj) {
+  return Object.prototype.toString.call(obj) == "[object Object]"
+}
 
 var objDeepCopy = function (obj) {
-  if (typeof obj !== 'object') return obj;
+  if (!isObject(obj)) return obj;
   if (typeof window !== 'undefined' && window.JSON) { // 浏览器环境下 并支持window.JSON 则使用 JSON
     return JSON.parse(JSON.stringify(obj));
   } else {
@@ -20,7 +23,6 @@ var objDeepCopy = function (obj) {
     return newObj;
   }
 }
-
 
 const deepClone = function (target) {
   if (typeof target !== 'object') {

@@ -121,6 +121,12 @@ raw-loader
 iScroll better-scroll
 ```
 
+## 其他
+
+```js
+component: { render: h => h("router-view") }
+```
+
 ## 相关链接
 
 - [vue 源码解析](https://ustbhuangyi.github.io/vue-analysis/)

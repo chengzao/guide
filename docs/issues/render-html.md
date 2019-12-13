@@ -25,26 +25,32 @@
 
 ## 渲染
 
-- `1.` 计算CSS样式
-- `2.` 构建渲染树
-- `3.` 布局，主要定位坐标和大小，是否换行，各种position overflow z-index属性
-- `4.` 绘制，将图像绘制出来
+- 计算CSS样式
+- 构建渲染树
+- 布局，主要定位坐标和大小，是否换行，各种position overflow z-index属性
+- 绘制，将图像绘制出来
 
 ## Reflow 回流
 
-- `1.`页面渲染初始化
-- `2.`DOM结构改变，比如删除了某个节点
-- `3.`render树变化，比如减少了padding
-- `4.`窗口resize
-- `5.`获取某些属性，引发回流
-  - `(1)` offset(Top/Left/Width/Height)
-  - `(2)` scroll(Top/Left/Width/Height)
-  - `(3)` cilent(Top/Left/Width/Height)
-  - `(4)` width,height
-  - `(5)` 调用了getComputedStyle()或者IE的currentStyle
-- `6.`改变字体大小会引发回流
+当渲染树中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建, 这就称为回流(reflow)
 
-## Repaint 重绘
+- 页面渲染初始化
+- DOM结构改变，比如删除了某个节点
+- render树变化，比如减少了padding
+- 窗口resize
+- 获取某些属性，引发回流
+  - `offset(Top/Left/Width/Height)`
+  - `scroll(Top/Left/Width/Height)`
+  - `cilent(Top/Left/Width/Height)`
+  - `width, height`
+  - 调用了`getComputedStyle()`或者IE的`currentStyle`
+- 改变字体大小会引发回流
+- 元素尺寸的改变——大小，外边距，边框
+
+## 重绘（repaint或redraw）
+
+重绘发生在元素的可见的外观被改变，但并没有影响到布局的时候。
+例，仅修改DOM元素的字体颜色（只有Repaint，因为不需要调整布局）
 
 ## 回流一定伴随着重绘，重绘却可以单独出现
 
@@ -61,3 +67,25 @@
 - `2.` 对词元进行语法分析（parsing），然后将代码整理成语法树（syntax tree）
 - `3.` 使用翻译器（translator），将代码转为字节码（bytecode）
 - `4.` 使用字节码解释器（bytecode interpreter），将字节码转为机器码
+
+## 缓存
+
+- 强缓存
+
+```
+Expires: 值是服务器告诉浏览器的缓存过期时间
+cache-control: 值是相对时间内直接使用浏览器缓存
+```
+
+- 协商缓存
+
+```
+Last-Modified 和 If-Modified-Since : 文件在服务器上最近的修改时间
+Etag 和 If-None-Match : 只有当文件内容改变时，ETag才改变
+```
+
+- 缓存的优先级
+
+```
+Cache-Control > Expires > ETag > Last-Modified
+```

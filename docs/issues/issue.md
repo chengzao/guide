@@ -23,36 +23,37 @@
 
 ## `Cookie、sessionStorage、localStorage的区别`
 
-- 共同点：都是保存在浏览器端，并且是同源的
+- cookie大小限制4k, sessionStorage/localStorage大小限制在5MB
 - `sessionStorage`和`localStorage`不会自动把数据发给服务器，仅在本地保存
 - `Cookie`
-
   - cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递
-
   - cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下,存储的大小很小只有4K左右
-
   - key：可以在浏览器和服务器端来回传递，存储容量小，只有大约4K左右
-
   - cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭
-
-  - cookie也是在所有同源窗口中都是共享的
+  - cookie也是在所有同源中都是共享的
 
 - `sessionStorage`仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持
-
 - `localStorage`始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；localStorage 在所有同源窗口中都是共享的
+- Cookie如何防范XSS攻击
+  - XSS（跨站脚本攻击）是指攻击者在返回的HTML中嵌入javascript脚本，为了减轻这些攻击，需要在HTTP头部配上`，set-cookie：`
+  - `httponly`这个属性可以防止XSS,它会禁止javascript脚本来访问cookie
+  - `secure`这个属性告诉浏览器仅在请求为https的时候发送cookie
+
+## XSS和CSRF
+
+- 跨站脚本攻击（Cross Site Scripting)
+- 跨站请求伪造（Cross-site request forgery），是伪造请求，冒充用户在站内的正常操作
+- 区别：
+  - CSRF是利用网站A本身的漏洞，去请求网站A的api；XSS是向目标网站注入JS代码，然后执行JS里的代码
+  - CSRF需要用户先登录目标网站获取cookie，而XSS不需要登录
+  - CSRF的目标是用户，XSS的目标是服务器
+  - XSS是利用合法用户获取其信息，而CSRF是伪造成合法用户发起请求
+
 
 ## transition和animation的区别
 
 - transition需要触发一个事件才能改变属性,transition为2帧，从`from .... to`;
 - animation不需要触发任何事件的情况下才会随时间改变属性值,animation可以一帧一帧的
-
-## Cookie和session的区别
-
-- HTTP是一个无状态协议，因此Cookie的最大的作用就是存储sessionId用来唯一标识用户
-- Cookie如何防范XSS攻击
-  - XSS（跨站脚本攻击）是指攻击者在返回的HTML中嵌入javascript脚本，为了减轻这些攻击，需要在HTTP头部配上`，set-cookie：`
-  - `httponly`这个属性可以防止XSS,它会禁止javascript脚本来访问cookie
-  - `secure`这个属性告诉浏览器仅在请求为https的时候发送cookie
 
 ## mouseover和mouseenter的区别
 
@@ -78,6 +79,17 @@
 - get要支持IE，则最大长度为2083byte，若只支持Chrome，则最大长度 8182byte
 - get请求类似于查找的过程，用户获取数据，可以不用每次都与数据库连接，所以可以使用缓存
 - post不同，post做的一般是修改和删除的工作，所以必须与数据库交互，所以不能使用缓存。因此get请求适合于请求缓存
+
+## 性能优化
+
+- 使用CDN
+- gzip压缩
+- 文本压缩
+- 合并请求
+- 雪碧图
+- 图片懒加载
+- 缓存资源
+- 减少DOM操作
 
 ## 解决 IE9 以下浏览器不能使用 opacity
 
