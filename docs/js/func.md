@@ -1,32 +1,36 @@
 # 函数
 
-## 函数声明
 
-<CodeBlock>
+## 定义函数的方法
+
+- 函数声明
 
 ```js
-//1. 关键字语句声明
-function fn(){}
-//2. 函数表达式形式
-var fn1=function(){}
-//3. Function构造函数
-var fn = new Function(参数1,参数2,...,函数体);
-
-var foo = new Function(
-  'return "hello world"'
-);
-
-// 等同于
-
-function foo() {
-  return 'hello world';
-}
-
-// 自调用
-(function(){})()
+//ES5
+function getSum(){}
+(function (){})()//匿名函数
+//ES6
+()=>{}
 ```
 
-</CodeBlock>
+- 函数表达式
+
+```js
+//ES5
+var getSum=function(){}
+//ES6
+let getSum=()=>{}
+```
+
+- 构造函数
+
+```js
+const getSum = new Function('a', 'b' , 'return a + b')
+// 等同于es5
+function getSum(a,b) {
+  return a+b;
+}
+```
 
 ## 函数的重复声明
 
@@ -69,6 +73,19 @@ function fn(){
 	var a=10;
 }
 fn();
+
+// 注：函数声明优先于变量声明
+var a;
+function a(){}
+typeof a // function
+
+function a(){}
+var a;
+typeof a // function
+
+function a(){}
+var a='xyf';
+console.log(typeof a); //string
 ```
 
 </CodeBlock>

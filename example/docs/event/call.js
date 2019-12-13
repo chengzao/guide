@@ -1,8 +1,8 @@
-Function.prototype.call2 = function (content = window) {
-  content.fn = this;
+Function.prototype.call2 = function (context = {}) {
+  context.fn = this;
   let args = [...arguments].slice(1);
-  let result = content.fn(...args);
-  delete content.fn;
+  let result = context.fn(...args);
+  delete context.fn;
   return result;
 }
 var foo = {

@@ -1,3 +1,12 @@
+console.log(2 instanceof Number);                    // false
+console.log(true instanceof Boolean);                // false
+console.log('str' instanceof String);                // false
+console.log([] instanceof Array);                    // true
+console.log(function () { } instanceof Function);       // true
+console.log({} instanceof Object);                   // true
+// 优点：能够区分Array、Object和Function
+// 缺点：Number，Boolean，String基本数据类型不能判断
+
 //object instanceof constructor
 function C() { }
 function D() { }
@@ -42,4 +51,4 @@ console.log(instanceOf2(dog, Car))
 console.log(instanceOf2(car, Car));
 // expected output: true
 console.log(instanceOf2(car, Object));
-    // expected output: true
+// expected output: true
