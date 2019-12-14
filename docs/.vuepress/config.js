@@ -35,6 +35,11 @@ module.exports = {
     sidebar
   },
   configureWebpack: {
+    resolve: {
+      alias: {
+        '@assets': '../../assets'
+      }
+    }
   },
   markdown: {
     extendMarkdown: md => {
