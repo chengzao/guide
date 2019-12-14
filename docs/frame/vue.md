@@ -15,6 +15,8 @@
 
   ![](https://vuex.vuejs.org/vuex.png)
 
+- `store` ➡️ `dispatch` ➡️ `action` ➡️ `mutation` ➡️ `state`
+
 ## 插件
 
 ```bash

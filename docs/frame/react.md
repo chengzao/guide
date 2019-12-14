@@ -12,6 +12,9 @@
 
   ![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/react-redux-01.png)
 
+
+- `store` ➡️ `dispatch` ➡️ `action` ➡️ `reducer` ➡️ `state`
+
 ---
 
 - [create-react-app](https://github.com/facebook/create-react-app)
@@ -108,3 +111,4 @@
 - [overreacted](https://overreacted.io/)
 - [react-as-a-ui-runtime](https://overreacted.io/zh-hans/react-as-a-ui-runtime/)
 - [走进React Fiber 架构](https://juejin.im/post/5df21c895188251260743972)
+- [React SSR 详解【近 1W 字】+ 2个项目实战](https://juejin.im/post/5def0816f265da33aa6aa7fe)
