@@ -37,11 +37,11 @@
   - 如果所有父级都没有定位则以body 为准
   - `offsetLeft` 是到父亲的`padding`左侧的距离（不是`border`更不是`margin`）
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/dom-offsetLeft.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-offsetLeft.png)
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/dom-offsetleft2.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-offsetleft2.png)
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/dom-offset.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-offset.png)
 
 ## offsetParent
 
@@ -70,7 +70,7 @@
 
 </CodeBlock>
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/dom-scroll.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-scroll.png)
 
 ## 样式获取getComputedStyle
 
@@ -124,4 +124,4 @@ demo.currentStyle["left"]
 
 - [IntersectionObserver](http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html)
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/client.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/client.png)

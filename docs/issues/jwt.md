@@ -6,7 +6,7 @@ https://juejin.im/post/5b3b870a5188251ac85826b8
 
 - Token
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/20190613_Token.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/20190613_Token.png)
 
 注意在第三步通过 code 兑换 access token 的过程中，Google 并不会仅仅返回 access token，
 还会返回额外的信息，这其中和之后更新相关的就是 refresh token
@@ -15,7 +15,7 @@ https://juejin.im/post/5b3b870a5188251ac85826b8
 
 - SMAL 2.0
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/20190613_SMAL2.0.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/20190613_SMAL2.0.png)
 
 还未登陆的用户打开浏览器访问你的网站（SP，以下都简称 SP），网站提供服务但是并不负责用户认证。
 
@@ -32,7 +32,7 @@ SP 对拿到的 token 进行验证，并从中解析出用户信息，例如他�
 
 - OAuth 2.0
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/20190613_OAuth2.0.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/20190613_OAuth2.0.png)
 
 用户通过客户端（可以是浏览器也可以是手机应用）想要访问 SP 上的资源，
 但是 SP 告诉用户需要进行认证，将用户重定向至 IdP
@@ -67,7 +67,7 @@ SP 接受到请求之后拿着附带 token 向 IdP 验证用户的身份
 - refresh token 负责身份认证
 - access token 负责请求资源
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/20190613_Refresh_Token.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/20190613_Refresh_Token.png)
 
 ## JWT
 

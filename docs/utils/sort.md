@@ -9,7 +9,7 @@
   - 每次冒泡操作都会对相邻的两个元素进行比较，看是否满足大小关系要求。如果不满足就让它俩互换;
   - 一次冒泡会让至少一个元素移动到它应该在的位置，重复 n 次，就完成了 n 个数据的排序工作.
 
-![bubbleSort](https://raw.githubusercontent.com/chengzao/imgbed/img/img/bubbleSortArray.gif)
+![bubbleSort](https://gitee.com/cxyz/imgbed/raw/img/img/bubbleSortArray.gif)
 
 - 代码
 
@@ -28,7 +28,7 @@
   - 左右分别用一个空数组去存储比较后的数据。
   - 最后递归执行上述操作，直到`数组长度 <= 1`
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/quickSort.gif)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/quickSort.gif)
 
 - 代码
 
@@ -38,7 +38,7 @@
 
 </CodeBlock>
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/1566284985210.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/1566284985210.png)
 
 ## 选择排序
 
@@ -47,7 +47,7 @@
   - 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾
   - 重复第二步，直到所有元素均排序完毕
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/selectionSort.gif)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/selectionSort.gif)
 
 - 代码
 
@@ -63,7 +63,7 @@
 
 排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/mergeSort.gif)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort.gif)
 
 - 代码
 
@@ -75,11 +75,13 @@
 
 - 归并排序的流程
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/mergeSort20190819151306.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort20190819151306.png)
 
 - 合并两个有序数组的流程
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/mergeSort20190819151517.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort20190819151517.png)
+
+
 
 ## 插入排序
 
@@ -94,7 +96,7 @@
   - 将新元素插入到该位置后；
   - 重复步骤 2 ~ 5
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/insertionSort.gif)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/insertionSort.gif)
 
 - 代码
 

@@ -324,11 +324,11 @@ console.log(m.__proto__.constructor === M);
 
 </CodeBlock>
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop.jpg)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/oop.jpg)
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop2.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/oop2.png)
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop3.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/oop3.png)
 
 ## 构造函数的继承
 
@@ -480,7 +480,7 @@ function inherit(child, parent) {
 
 ## MVC模式
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop_mvc.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/oop_mvc.png)
 
 - 将应用程序的组成划分为三个部分：Model View Controller
 - 控制器(Controller):初始化模型用的,处理业务逻辑
@@ -489,7 +489,7 @@ function inherit(child, parent) {
 
 ## MVP
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop_mvp.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/oop_mvp.png)
 
 - MVP: Model-View-Presenter
 - 各部分之间的通信是双向的
@@ -499,7 +499,7 @@ function inherit(child, parent) {
 
 ## MVVM模式
 
-![](https://raw.githubusercontent.com/chengzao/imgbed/img/img/oop_mvvm.png)
+![](https://gitee.com/cxyz/imgbed/raw/img/img/oop_mvvm.png)
 
 - MVVM模式将Presenter变为ViewModel,基本与MVP一致.区别是,它是双向绑定(data-binding),view的变动,自动反映在ViewModel,反之亦然
 
