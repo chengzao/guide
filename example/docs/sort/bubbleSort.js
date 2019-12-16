@@ -48,3 +48,30 @@ const bubbleSort2 = arr => {
 
 var arr = [10, 3, 7, 1, 23, 4, 3]
 bubbleSort2(arr)
+
+// 冒泡排序（优化3）
+function bubbleSort(arr) {
+  //记录最后一次交换的位置
+  var pos = 0;
+  for (var i = 0; i < arr.length; i++) {
+    //有序标记，每一轮的初始是true
+    var hasChange = false;
+    for (var j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        var temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+        //有元素交换，所以不是有序，标记变为false
+        hasChange = true;
+        //把无序数列的边界更新为最后一次交换元素的位置
+        pos = j
+      }
+    }
+    i = pos
+    if (!hasChange) break;
+  }
+  return arr
+}
+
+var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
+console.log(bubbleSort(arr));
