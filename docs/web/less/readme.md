@@ -464,3 +464,7 @@ ul a span {
 ## utils
 
 <<< @/docs/web/less/util.less
+
+<CodeBlock show="false" title="1pxborder">
+<<< @/docs/web/less/border.less
+</CodeBlock>

@@ -16,8 +16,8 @@ import Vue from "vue";
 export default {
   props: {
     show: {
-      type: Boolean,
-      default: true
+      type: String,
+      default: "true"
     },
     title: {
       type: String,
@@ -35,7 +35,7 @@ export default {
     }
   },
   mounted() {
-    this.isExpand = this.show;
+    this.isExpand = this.show == "false" ? false : true;
   }
 };
 </script>
