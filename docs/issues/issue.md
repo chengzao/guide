@@ -106,7 +106,7 @@ camelize('hello-world')
 - 解决相关此问题的类库：[bignumber.js](https://github.com/MikeMcl/bignumber.js)
 - 简单解决方案：将小数转成整数来运算，之后再转回小数
 
-<CodeBlock>
+<CodeBlock title="浮点数计算精度" show="false">
 
 <<< @/example/docs/issue/numberfixed.js
 
@@ -115,3 +115,13 @@ camelize('hello-world')
 ## 斐波那契数
 
 <<< @/example/docs/issue/fib.js
+
+## Promise
+
+- [原文：从零一步一步实现一个完整版的Promise](https://juejin.im/post/5d59757f6fb9a06ae76405c6)
+
+<CodeBlock title="点击展开" show="false">
+
+<<< @/example/docs/issue/fib.js
+
+</CodeBlock>
