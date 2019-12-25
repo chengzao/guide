@@ -173,10 +173,14 @@ console.log(binarySearch(67, arr));
 
 - 16进制颜色值转RGB值
 
-<<< @/example/docs/js/hexToRGB.js
+<<< @/example/docs/issue/hexToRGB.js
 
 ## toCamelCaseVar
 
 - 转换驼峰命名
 
-<<< @/example/docs/js/hexToRGB.js
+<<< @/example/docs/issue/toCamelCaseVar.js
+
+## toChineseNum
+
+<<< @/example/docs/issue/toChineseNum.js
