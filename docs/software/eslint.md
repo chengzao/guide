@@ -56,6 +56,16 @@ eslint [options] [file|dir|glob]*
 # 例：用注释指定全局变量 在js文件中写入如下
 /* global var 1, var2 */
 /* globael var1:false, var2:false */
+
+# 行内禁用
+console.log // eslint-disable-line
+
+# 代码块禁用
+/* eslint-disable */
+export function func(a,b) {
+  return a+b
+}
+/* eslint-enable */
 ```
 
 ## eslintignore
