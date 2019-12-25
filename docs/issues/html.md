@@ -2,38 +2,113 @@
 
 ## 布局
 
+### Flex 布局
+
+```html
+<style>
+.container{
+  display:flex;
+  justify-content: center;
+  height: 200px;
+  background: #eee;
+}
+.left {
+   width: 200px;
+   background-color: red;
+   height: 100%;
+ }
+.main {
+    background-color: yellow;
+    flex: 1;
+}
+.right {
+    width: 200px;
+    background-color: green;
+}
+</style>
+
+<div class="container">
+  <div class="left">1</div>
+  <div class="main">2</div>
+  <div class="right">3</div>
+</div>
+```
+
+### 绝对定位布局
+
+```html
+<style>
+.container {
+  position: relative;
+  background:#eee;
+  height:200px;
+	}
+.main {
+  height: 200px;
+  margin: 0 120px;
+  background-color: yellow;
+	}
+.left {
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  left: 0;
+  top: 0;
+  background-color: red;
+	}
+.right {
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  background-color: green;
+  right: 0;
+  top: 0;
+}
+</style>
+<div class="container">
+  <div class="left">1</div>
+  <div class="main">2</div>
+  <div class="right">3</div>
+</div>
+```
+
 ### 圣杯布局
 
 ```html
 <style>
-body{
-    min-width: 550px;
+.container {
+  margin-left: 120px;
+  margin-right: 220px;
 }
-#container{
-    padding-left: 200px;
-    padding-right: 150px;
+.main {
+  float: left;
+  width: 100%;
+  height: 300px;
+  background-color: yellow;
 }
-#container .column{
-    float: left;
+.left {
+  float: left;
+  width: 100px;
+  height: 300px;
+  margin-left: -100%;
+  position: relative;
+  left: -120px;
+  background-color: blue;
 }
-#center{
-    width: 100%;
-}
-#left{
-    width: 200px;
-    margin-left: -100%;
-    position: relative;
-    right: 200px;
-}
-#right{
-    width: 150px;
-    margin-right: -150px;
+.right {
+  float: left;
+  width: 200px;
+  height: 300px;
+  margin-left: -200px;
+  position: relative;
+  right: -220px;
+  background-color: green;
 }
 </style>
-<div id="container">
-    <div id="center" class="column">center</div>
-    <div id="left" class="column">left</div>
-    <div id="right" class="column">right</div>
+<div class="container">
+  <div class="main"></div>
+  <div class="left"></div>
+  <div class="right"></div>
 </div>
 ```
 
@@ -41,31 +116,35 @@ body{
 
 ```html
 <style>
-body {
-    min-width: 500px;
+.content {
+  float: left;
+  width: 100%;
 }
-#container {
-    width: 100%;
+.main {
+  height: 200px;
+  margin-left: 110px;
+  margin-right: 220px;
+  background-color: yellow;
 }
-.column {
-    float: left;
+.left {
+  float: left;
+  height: 200px;
+  width: 100px;
+  margin-left: -100%;
+  background-color: red;
 }
-#center {
-    margin-left: 200px;
-    margin-right: 150px;
+.right {
+  width: 200px;
+  height: 200px;
+  float: right;
+  margin-left: -200px;
+  background-color: green;
 }
-#left {
-    width: 200px;
-    margin-left: -100%;
-}
-#right {
-    width: 150px;
-    margin-left: -150px;
-}
+
 </style>
-<div id="container" class="column">
-    <div id="center">center</div>
+<div class="content">
+  <div class="main"></div>
 </div>
-<div id="left" class="column">left</div>
-<div id="right" class="column">right</div>
+<div class="left"></div>
+<div class="right"></div>
 ```
