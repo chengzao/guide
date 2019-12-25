@@ -172,3 +172,4 @@ component: { render: h => h("router-view") }
 - [vue中8种组件通信方式](https://juejin.im/post/5d267dcdf265da1b957081a3)
 - [Vue 组件间通信六种方式（完整版）](https://juejin.im/post/5cde0b43f265da03867e78d3)
 - [vue 2.6 中 slot 的新用法](https://juejin.im/post/5d23d9ddf265da1bbf6941c9)
+- [vue性能优化9点建议](https://juejin.im/post/5da2c5fb6fb9a04de237a996)

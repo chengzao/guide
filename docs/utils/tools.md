@@ -44,6 +44,21 @@ const formatMoney = function (num) {
 }
 ```
 
+## formateNumber
+
+```js
+function formatNumber (num) {
+    let numStr = num + '';
+    let arr = num < 0 ? numStr.slice(1).split('.') : numStr.split('.');
+    let a = arr[0].split('');
+    for(let i = a.length - 3; i > 0; i=i-3) {
+      a.splice(i, 0, ',')
+    }
+    let res = arr[1] ? a.join('') + '.' + arr[1] : a.join('')
+    return num < 0 ? '-' + res : res;
+}
+```
+
 ## 二分查找
 
 ```js
@@ -153,3 +168,15 @@ console.log(binarySearch(67, arr));
 <<< @/example/docs/js/urlToObject.js
 
 </CodeBlock>
+
+## hexToRGB
+
+- 16进制颜色值转RGB值
+
+<<< @/example/docs/js/hexToRGB.js
+
+## toCamelCaseVar
+
+- 转换驼峰命名
+
+<<< @/example/docs/js/hexToRGB.js
