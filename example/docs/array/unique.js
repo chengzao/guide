@@ -10,63 +10,39 @@ function unique(arr) {
   return result;
 }
 
-function unique2(arr) {
-  var result = [];
-  for (var i = 0, len = arr.length; i < len; i++) {
-    var arri = arr[i];
-    var isExist = false;
-    for (var j = i + 1, len2 = arr.length; j < len2; j++) {
-      if (arr[j] == arri) {
-        isExist = true;
-      }
-    }
-    if (!isExist) {
-      result.push(arri);
-    }
-  }
-  return result;
-}
-
-function unique3(arr) {
-  var tmp = {},
-    newArr = [];
-  for (var i = 0; i < arr.length; i++) {
-    if (!tmp[arr[i]]) {
-      tmp[arr[i]] = 1;
-      newArr.push(arr[i]);
-    }
-  }
-  return newArr;
-}
-console.log(unique3([55, 1, 2, 2, 33, 44, 44]))
-
-function unique4(arr) {
-  for (var i = 0; i < arr.length - 1; i++) {
-    for (var j = 0; j < arr.length - 1 - i; j++) {
-      if (arr[j] < arr[j + 1]) {
-        var temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
+function unique(arr) {
+  for (let i = 0, len = arr.length; i < len; i++) {
+    for (let j = i + 1; j < len; j++) {
+      if (arr[i] == arr[j]) {
+        arr.splice(j, 1)
+        len--;
+        j--
       }
     }
   }
-  for (i = 0; i < arr.length; i++) {
-    var c = arr[i];
-    for (var s = i + 1; s < arr.length; s++) {
-      if (arr[s] == c) {
-        //debugger;
-        arr.splice(s, 1);
-        s--;
-      }
-    }
-  }
-  return arr;
+  return arr
 }
-console.log(unique4([5, 2, 3, 6, 8, 6, 5, 4, 7, 1, 9]).toString());
 
+function unique(arr) {
+  return arr.filter((item, index) => {
+    return arr.indexOf(item) === index
+  })
+}
 
-var array = [1, 1, '1', '1'];
-function unique5(array) {
+function unique(arr) {
+  return [...new Set(arr)]
+}
+
+function unique(arr) {
+  var obj = []
+  return arr.filter(item => {
+    console.log(obj);
+    return obj.hasOwnProperty(typeof item + item) ?
+      false : (obj[typeof item + item] = true)
+  })
+}
+
+function unique(array) {
   // res用来存储结果
   var res = [];
   for (var i = 0, arrayLen = array.length; i < arrayLen; i++) {
@@ -83,4 +59,3 @@ function unique5(array) {
   return res;
 }
 
-console.log(unique5(array)); // [1, "1"]
