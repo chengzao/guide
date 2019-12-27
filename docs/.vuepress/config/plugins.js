@@ -25,7 +25,7 @@ module.exports = [
   '@vuepress/nprogress',
   '@vuepress/medium-zoom',
   'named-chunks',
-  'tabs',
+  require('../mdTabs/index'),
   'reading-progress',
   'img-lazy'
 ]
