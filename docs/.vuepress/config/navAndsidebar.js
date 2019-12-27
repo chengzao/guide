@@ -26,72 +26,88 @@ let result = function (file) {
 
 function genSidebarConfig(title, file) {
   return [
-    {
-      title,
-      collapsable: false,
-      children: result(file)
-    }
+    // {
+    //   title,
+    //   collapsable: false,
+    //   children: result(file)
+    // }
+    ...result(file)
   ]
 }
 
 module.exports = {
   nav: [
     {
-      text: 'HTML',
+      text: 'HTML/CSS',
       link: '/web/'
     },
     {
-      text: 'JS基础',
+      text: 'JavaScript',
       link: '/js/'
     },
     {
-      text: '常见问题',
+      text: 'Frame',
       items: [
         {
-          text: '问答',
+          text: 'Guide',
+          link: '/frame/'
+        },
+        {
+          text: 'Vue',
+          link: '/vueJs/'
+        },
+        {
+          text: 'React',
+          link: '/reactJs/'
+        },
+      ]
+    },
+    {
+      text: 'Helper',
+      items: [
+        {
+          text: 'Issue',
           link: '/issues/'
         },
         {
-          text: '工具',
+          text: 'Util',
           link: '/utils/'
+        },
+        {
+          text: 'Tool',
+          link: '/tools/'
         }
       ]
     },
     {
-      text: 'web框架',
-      link: '/frame/'
-    },
-    {
-      text: "软件工具",
+      text: "Server",
       items: [
         {
-          text: '后端服务',
+          text: 'serve',
           link: '/serve/'
         },
         {
-          text: '数据库',
+          text: 'db',
           link: '/database/'
         },
         {
-          text: 'linux使用',
+          text: 'linux',
           link: '/linux/'
         },
-        {
-          text: '其他工具',
-          link: '/software/'
-        }
       ]
     }
   ],
   sidebar: {
-    '/web/': genSidebarConfig('web基础', 'web'),
-    '/js/': genSidebarConfig('Js介绍', 'js'),
-    '/issues/': genSidebarConfig('常见问题', 'issues'),
-    '/utils/': genSidebarConfig('常用函数', 'utils'),
+    '/web/': genSidebarConfig('HTML/CSS', 'web'),
+    '/js/': genSidebarConfig('JavaScript', 'js'),
+    '/issues/': genSidebarConfig('issues', 'issues'),
+    '/utils/': genSidebarConfig('utils', 'utils'),
     '/linux/': genSidebarConfig('linux', 'linux'),
-    '/serve/': genSidebarConfig('服务', 'serve'),
-    '/database/': genSidebarConfig('数据库', 'database'),
-    '/software/': genSidebarConfig('其他工具', 'software'),
-    '/frame/': genSidebarConfig('框架', 'frame'),
+    '/serve/': genSidebarConfig('serve', 'serve'),
+    '/database/': genSidebarConfig('database', 'database'),
+    '/tools/': genSidebarConfig('tools', 'tools'),
+    '/frame/': genSidebarConfig('frame', 'frame'),
+    '/vueJs/': genSidebarConfig('vue.js', 'vueJs'),
+    '/reactJs/': genSidebarConfig('react.js', 'reactJs'),
   }
 };

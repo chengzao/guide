@@ -2,8 +2,8 @@ const { nav, sidebar } = require('./config/navAndsidebar')
 const plugins = require('./config/plugins')
 
 module.exports = {
-  title: 'Guide',
-  description: 'a front-end docs guide website',
+  title: 'FE Note',
+  description: 'about front-end docs notes website',
   base: "/",
   markdown: {
     lineNumbers: false

@@ -26,5 +26,6 @@ module.exports = [
   '@vuepress/medium-zoom',
   'named-chunks',
   'tabs',
-  'reading-progress'
+  'reading-progress',
+  'img-lazy'
 ]

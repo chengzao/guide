@@ -455,14 +455,14 @@ pic.removeAttribute("height");
 
 <CodeBlock>
 
-<<< @/example/docs/dom/getNextElement.js
+<<< @/utils/docs/dom/getNextElement.js
 
-<<< @/example/docs/dom/getPreviousElement.js
+<<< @/utils/docs/dom/getPreviousElement.js
 
-<<< @/example/docs/dom/getFirstElement.js
+<<< @/utils/docs/dom/getFirstElement.js
 
-<<< @/example/docs/dom/getLastElement.js
+<<< @/utils/docs/dom/getLastElement.js
 
-<<< @/example/docs/dom/getAllSibling.js
+<<< @/utils/docs/dom/getAllSibling.js
 
 </CodeBlock>

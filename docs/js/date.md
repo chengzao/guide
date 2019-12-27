@@ -253,6 +253,6 @@ setTimeout(user.sayHi.bind(user), 1000); // John
 
 <CodeBlock>
 
-<<< @/example/docs/date/formate.js
+<<< @/utils/docs/date/formate.js
 
 </CodeBlock>

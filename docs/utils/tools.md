@@ -6,7 +6,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/object/cloneObject.js
+<<< @/utils/docs/object/cloneObject.js
 
 </CodeBlock>
 
@@ -87,7 +87,7 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/dom/getClassName.js
+<<< @/utils/docs/dom/getClassName.js
 
 </CodeBlock>
 
@@ -97,7 +97,7 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/animate/animate01.js
+<<< @/utils/docs/animate/animate01.js
 
 </CodeBlock>
 
@@ -105,7 +105,7 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/animate/animate02.js
+<<< @/utils/docs/animate/animate02.js
 
 </CodeBlock>
 
@@ -113,7 +113,7 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/animate/animate03.js
+<<< @/utils/docs/animate/animate03.js
 
 </CodeBlock>
 
@@ -121,7 +121,7 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/dom/atrGetEle.js
+<<< @/utils/docs/dom/atrGetEle.js
 
 </CodeBlock>
 
@@ -129,7 +129,7 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/object/cloneDeep.js
+<<< @/utils/docs/object/cloneDeep.js
 
 </CodeBlock>
 
@@ -137,7 +137,7 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/client/changeOrientation.js
+<<< @/utils/docs/client/changeOrientation.js
 
 </CodeBlock>
 
@@ -145,19 +145,19 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/js/createScript.js
+<<< @/utils/docs/js/createScript.js
 
 </CodeBlock>
 
 ## log
 
-<<< @/example/docs/js/log.js
+<<< @/utils/docs/js/log.js
 
 ## cached
 
 <CodeBlock>
 
-<<< @/example/docs/js/cached.js
+<<< @/utils/docs/js/cached.js
 
 </CodeBlock>
 
@@ -165,7 +165,7 @@ console.log(binarySearch(67, arr));
 
 <CodeBlock>
 
-<<< @/example/docs/js/urlToObject.js
+<<< @/utils/docs/js/urlToObject.js
 
 </CodeBlock>
 
@@ -173,14 +173,14 @@ console.log(binarySearch(67, arr));
 
 - 16进制颜色值转RGB值
 
-<<< @/example/docs/issue/hexToRGB.js
+<<< @/utils/docs/issue/hexToRGB.js
 
 ## toCamelCaseVar
 
 - 转换驼峰命名
 
-<<< @/example/docs/issue/toCamelCaseVar.js
+<<< @/utils/docs/issue/toCamelCaseVar.js
 
 ## toChineseNum
 
-<<< @/example/docs/issue/toChineseNum.js
+<<< @/utils/docs/issue/toChineseNum.js

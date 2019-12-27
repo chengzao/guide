@@ -6,7 +6,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/quickSort.js
+<<< @/utils/docs/array/quickSort.js
 
 </CodeBlock>
 
@@ -14,7 +14,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/bubbleSort.js
+<<< @/utils/docs/array/bubbleSort.js
 
 </CodeBlock>
 
@@ -22,7 +22,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/currying.js
+<<< @/utils/docs/array/currying.js
 
 </CodeBlock>
 
@@ -30,7 +30,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/randomNumber.js
+<<< @/utils/docs/array/randomNumber.js
 
 </CodeBlock>
 
@@ -38,7 +38,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/findOneOfNumber.js
+<<< @/utils/docs/array/findOneOfNumber.js
 
 </CodeBlock>
 
@@ -46,7 +46,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/ascOrder.js
+<<< @/utils/docs/array/ascOrder.js
 
 </CodeBlock>
 
@@ -54,7 +54,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/desOrder.js
+<<< @/utils/docs/array/desOrder.js
 
 </CodeBlock>
 
@@ -62,7 +62,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/unique.js
+<<< @/utils/docs/array/unique.js
 
 </CodeBlock>
 
@@ -70,7 +70,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/deduplication.js
+<<< @/utils/docs/array/deduplication.js
 
 </CodeBlock>
 
@@ -80,7 +80,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/minNum.js
+<<< @/utils/docs/array/minNum.js
 
 </CodeBlock>
 
@@ -88,7 +88,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/maxNum.js
+<<< @/utils/docs/array/maxNum.js
 
 </CodeBlock>
 
@@ -96,7 +96,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/toRMB.js
+<<< @/utils/docs/array/toRMB.js
 
 </CodeBlock>
 
@@ -104,6 +104,6 @@
 
 <CodeBlock>
 
-<<< @/example/docs/array/reverseString.js
+<<< @/utils/docs/array/reverseString.js
 
 </CodeBlock>

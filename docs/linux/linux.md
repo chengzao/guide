@@ -1,6 +1,6 @@
-# linux基础
+# linux
 
-## linux简介
+## 简介
 
 - `https://www.kernel.org`  内核发布网址
 - `uname -r`  内核版本

@@ -6,7 +6,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/event/getKeyCode.js
+<<< @/utils/docs/event/getKeyCode.js
 
 </CodeBlock>
 
@@ -14,7 +14,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/event/onmousewheel.js
+<<< @/utils/docs/event/onmousewheel.js
 
 </CodeBlock>
 
@@ -22,7 +22,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/event/disabledSelect.js
+<<< @/utils/docs/event/disabledSelect.js
 
 </CodeBlock>
 
@@ -30,7 +30,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/event/requestAnimationFrame.js
+<<< @/utils/docs/event/requestAnimationFrame.js
 
 </CodeBlock>
 
@@ -38,7 +38,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/event/DOMContentLoaded.js
+<<< @/utils/docs/event/DOMContentLoaded.js
 
 </CodeBlock>
 
@@ -46,7 +46,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/event/stopPropagation.js
+<<< @/utils/docs/event/stopPropagation.js
 
 </CodeBlock>
 
@@ -54,7 +54,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/event/preventDefault.js
+<<< @/utils/docs/event/preventDefault.js
 
 </CodeBlock>
 
@@ -62,6 +62,6 @@
 
 <CodeBlock>
 
-<<< @/example/docs/event/targetEl.js
+<<< @/utils/docs/event/targetEl.js
 
 </CodeBlock>
