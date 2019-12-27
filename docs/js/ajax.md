@@ -6,13 +6,13 @@
 
 <CodeBlock title="XMLHttpRequest >>">
 
-<<< @/example/docs/js/XMLHttpRequest.js
+<<< @/utils/docs/js/XMLHttpRequest.js
 
 </CodeBlock>
 
 <CodeBlock title="ajax简易版">
 
-<<< @/example/docs/js/ajax.js
+<<< @/utils/docs/js/ajax.js
 
 </CodeBlock>
 
@@ -122,7 +122,7 @@ fetch的post请求的时候，导致fetch 第一次发送了一个Options请求�
 
 <CodeBlock title="jsonp简易版">
 
-<<< @/example/docs/js/jsonp.js
+<<< @/utils/docs/js/jsonp.js
 
 </CodeBlock>
 

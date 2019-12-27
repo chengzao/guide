@@ -15,7 +15,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/bubbleSort.js
+<<< @/utils/docs/sort/bubbleSort.js
 
 </CodeBlock>
 
@@ -34,7 +34,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/quickSort.js
+<<< @/utils/docs/sort/quickSort.js
 
 </CodeBlock>
 
@@ -53,7 +53,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/selectionSort.js
+<<< @/utils/docs/sort/selectionSort.js
 
 </CodeBlock>
 
@@ -69,7 +69,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/mergeSort.js
+<<< @/utils/docs/sort/mergeSort.js
 
 </CodeBlock>
 
@@ -102,7 +102,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/insertionSort.js
+<<< @/utils/docs/sort/insertionSort.js
 
 </CodeBlock>
 
@@ -121,7 +121,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/binaryInsertionSort.js
+<<< @/utils/docs/sort/binaryInsertionSort.js
 
 </CodeBlock>
 
@@ -138,7 +138,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/shellSort.js
+<<< @/utils/docs/sort/shellSort.js
 
 </CodeBlock>
 
@@ -148,7 +148,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/heapSort.js
+<<< @/utils/docs/sort/heapSort.js
 
 </CodeBlock>
 
@@ -158,7 +158,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/bucketSort.js
+<<< @/utils/docs/sort/bucketSort.js
 
 </CodeBlock>
 
@@ -168,7 +168,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/countingSort.js
+<<< @/utils/docs/sort/countingSort.js
 
 </CodeBlock>
 
@@ -178,7 +178,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/sort/radixSort.js
+<<< @/utils/docs/sort/radixSort.js
 
 </CodeBlock>
 

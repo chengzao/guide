@@ -108,13 +108,13 @@ camelize('hello-world')
 
 <CodeBlock title="浮点数计算精度" show="false">
 
-<<< @/example/docs/issue/numberfixed.js
+<<< @/utils/docs/issue/numberfixed.js
 
 </CodeBlock>
 
 ## 斐波那契数
 
-<<< @/example/docs/issue/fib.js
+<<< @/utils/docs/issue/fib.js
 
 ## Promise
 
@@ -122,7 +122,7 @@ camelize('hello-world')
 
 <CodeBlock title="点击展开" show="false">
 
-<<< @/example/docs/issue/fib.js
+<<< @/utils/docs/issue/fib.js
 
 </CodeBlock>
 
@@ -156,7 +156,7 @@ console.log(isPrime(31));  // true
 
 ## 监听数组变化
 
-<<< @/example/docs/issue/observerableArray.js
+<<< @/utils/docs/issue/observerableArray.js
 
 ## 最大公约数&最小公倍数
 
@@ -192,4 +192,4 @@ console.log(minDivisor(6, 8)); // 24
 
 ## 验证是否为回文
 
-<<< @/example/docs/issue/isPalindrome.js
+<<< @/utils/docs/issue/isPalindrome.js

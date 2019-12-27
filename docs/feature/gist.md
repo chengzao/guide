@@ -196,8 +196,8 @@ sidebar: auto
 
 ## tab
 
-:::: tabs cache-lifetime="10" :options="{ useUrlFragment: false }"
-::: tab "template" id="first-tab"
+:::: tabs cache-lifetime="10"
+::: tab template
 
 ```html
 <template>
@@ -210,7 +210,7 @@ sidebar: auto
 ```
 
 :::
-::: tab javascript id="second-tab"
+::: tab javascript
 
 ```js
 <script>
@@ -236,7 +236,7 @@ export default {
 ```
 
 :::
-::: tab style id="third-tab"
+::: tab style
 
 ```css
 <style scope>
@@ -247,41 +247,10 @@ export default {
 ```
 
 :::
-::: tab preview id="four-tab"
-<template>
-  <div class="feature-gist">
-    <p>vue template in markdown : {{ ver }}</p>
-    <h1>Click Button : {{count}}</h1>
-    <button @click="AddCount">Click Me Add Count</button>
-  </div>
-</template>
+::: tab preview
 
-<script>
-export default {
-  data(){
-    return {
-      ver: '',
-      count: 0
-    }
-  },
-  methods:{
-    AddCount(){
-      this.count++
-    }
-  },
-  mounted () {
-    import('./gist.js').then(module => {
-      this.ver = module.version
-    })
-  }
-}
-</script>
+!!! include(docs/feature/count.vue) !!!
 
-<style scope>
-.feature-gist p{
-  color: red;
-}
-</style>
 :::
 ::::
 

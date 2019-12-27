@@ -4,6 +4,7 @@
   "license": "MIT",
   "homepage": "https://chengzao.github.io/guide",
   "scripts": {
+    "debug": "vuepress dev --no-clear-screen --no-cache docs",
     "serve": "vuepress dev docs",
     "build": "vuepress build docs",
     "deploy": "npm run build && gh-pages -d dist"
@@ -25,8 +26,8 @@
     "axios": "^0.19.0",
     "vue-tabs-component": "^1.5.0",
     "vuepress-plugin-container": "^2.0.1",
+    "vuepress-plugin-img-lazy": "^1.0.1",
     "vuepress-plugin-named-chunks": "^1.0.2",
-    "vuepress-plugin-reading-progress": "^1.0.7",
-    "vuepress-plugin-tabs": "^0.2.2"
+    "vuepress-plugin-reading-progress": "^1.0.7"
   }
 }

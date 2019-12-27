@@ -6,7 +6,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/touch/tap.js
+<<< @/utils/docs/touch/tap.js
 
 </CodeBlock>
 
@@ -14,7 +14,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/touch/longTap.js
+<<< @/utils/docs/touch/longTap.js
 
 </CodeBlock>
 
@@ -22,7 +22,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/touch/doubleTap.js
+<<< @/utils/docs/touch/doubleTap.js
 
 </CodeBlock>
 
@@ -30,7 +30,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/touch/swipeUp.js
+<<< @/utils/docs/touch/swipeUp.js
 
 </CodeBlock>
 
@@ -38,7 +38,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/touch/swipeDown.js
+<<< @/utils/docs/touch/swipeDown.js
 
 </CodeBlock>
 
@@ -46,7 +46,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/touch/swipeLeft.js
+<<< @/utils/docs/touch/swipeLeft.js
 
 </CodeBlock>
 
@@ -54,6 +54,6 @@
 
 <CodeBlock>
 
-<<< @/example/docs/touch/swipeRight.js
+<<< @/utils/docs/touch/swipeRight.js
 
 </CodeBlock>

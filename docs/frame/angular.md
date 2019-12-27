@@ -1,4 +1,4 @@
-# angular1.x
+# angularJS
 
 ## ng 指令
 

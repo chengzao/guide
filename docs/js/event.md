@@ -42,7 +42,7 @@ request.addEventListener('readystatechange', function () {...}, false);
 
 <CodeBlock title="事件的监听与移除 >>">
 
-<<< @/example/docs/event/addEventListener.js
+<<< @/utils/docs/event/addEventListener.js
 
 </CodeBlock>
 
@@ -88,7 +88,7 @@ micro-task队列包含任务: b1, b2 , b3
 
 <CodeBlock>
 
-<<< @/example/docs/js/eventloop.js
+<<< @/utils/docs/js/eventloop.js
 
 </CodeBlock>
 
@@ -96,7 +96,7 @@ micro-task队列包含任务: b1, b2 , b3
 
 <CodeBlock>
 
-<<< @/example/docs/js/eventloop-01.js
+<<< @/utils/docs/js/eventloop-01.js
 
 </CodeBlock>
 
@@ -104,7 +104,7 @@ micro-task队列包含任务: b1, b2 , b3
 
 <CodeBlock>
 
-<<< @/example/docs/js/eventloop-02.js
+<<< @/utils/docs/js/eventloop-02.js
 
 </CodeBlock>
 

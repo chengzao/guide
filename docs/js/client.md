@@ -8,7 +8,7 @@
 
 <CodeBlock title="client兼容 >>">
 
-<<< @/example/docs/client/default.js
+<<< @/utils/docs/client/default.js
 
 </CodeBlock>
 
@@ -21,7 +21,7 @@
 
 <CodeBlock title="offsetHeight和offsetWidth兼容 >>">
 
-<<< @/example/docs/client/offsetWidthAndHeight.js
+<<< @/utils/docs/client/offsetWidthAndHeight.js
 
 </CodeBlock>
 
@@ -58,7 +58,7 @@
 
 <CodeBlock title="scrollHeight兼容 >>">
 
-<<< @/example/docs/client/scrollHeight.js
+<<< @/utils/docs/client/scrollHeight.js
 
 </CodeBlock>
 
@@ -66,7 +66,7 @@
 
 <CodeBlock title="scrollTop兼容 >>">
 
-<<< @/example/docs/client/scrollTop.js
+<<< @/utils/docs/client/scrollTop.js
 
 </CodeBlock>
 
@@ -91,7 +91,7 @@ demo.currentStyle["left"]
 
 <CodeBlock title="兼容写法">
 
-<<< @/example/docs/client/getStyle.js
+<<< @/utils/docs/client/getStyle.js
 
 </CodeBlock>
 
@@ -101,7 +101,7 @@ demo.currentStyle["left"]
 
 <CodeBlock>
 
-<<< @/example/docs/client/pageXY.js
+<<< @/utils/docs/client/pageXY.js
 
 </CodeBlock>
 
@@ -116,7 +116,7 @@ demo.currentStyle["left"]
 
 <CodeBlock title="clientWidth兼容 >>">
 
-<<< @/example/docs/client/clientWidthAndHeight.js
+<<< @/utils/docs/client/clientWidthAndHeight.js
 
 </CodeBlock>
 

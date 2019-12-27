@@ -4,11 +4,11 @@
 
 ## typeof 类型判断
 
-<<< @/example/docs/type/typeOf.js
+<<< @/utils/docs/type/typeOf.js
 
 ## eqeqeq
 
-<<< @/example/docs/type/eqeqeq.js
+<<< @/utils/docs/type/eqeqeq.js
 
 ## 判断类型
 
@@ -22,7 +22,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/type/instanceof.js
+<<< @/utils/docs/type/instanceof.js
 
 </CodeBlock>
 
@@ -30,13 +30,13 @@
 
 <CodeBlock>
 
-<<< @/example/docs/type/hasOwnProperty.js
+<<< @/utils/docs/type/hasOwnProperty.js
 
 </CodeBlock>
 
 <CodeBlock title="Object.prototype.toString.call >>">
 
-<<< @/example/docs/type/Object.prototype.toString.call.js
+<<< @/utils/docs/type/Object.prototype.toString.call.js
 
 </CodeBlock>
 
@@ -46,7 +46,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/type/toString.js
+<<< @/utils/docs/type/toString.js
 
 </CodeBlock>
 
@@ -54,7 +54,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/type/toRawType.js
+<<< @/utils/docs/type/toRawType.js
 
 </CodeBlock>
 
@@ -62,7 +62,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/type/getMobileDevice.js
+<<< @/utils/docs/type/getMobileDevice.js
 
 </CodeBlock>
 
@@ -70,7 +70,7 @@
 
 <CodeBlock>
 
-<<< @/example/docs/type/checkPlatform.js
+<<< @/utils/docs/type/checkPlatform.js
 
 </CodeBlock>
 
@@ -78,6 +78,6 @@
 
 <CodeBlock>
 
-<<< @/example/docs/type/browserInfo.js
+<<< @/utils/docs/type/browserInfo.js
 
 </CodeBlock>

@@ -74,7 +74,7 @@ Object._create = function(o){
 
 <CodeBlock>
 
-<<< @/example/docs/object/proto.js
+<<< @/utils/docs/object/proto.js
 
 </CodeBlock>
 

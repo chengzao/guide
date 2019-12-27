@@ -189,17 +189,17 @@ print()
 
 - 实现call
 
-<<< @/example/docs/event/call.js
+<<< @/utils/docs/event/call.js
 
 - 实现apply
 
-<<< @/example/docs/event/apply.js
+<<< @/utils/docs/event/apply.js
 
 ### bind兼容
 
 <CodeBlock>
 
-<<< @/example/docs/event/bind.js
+<<< @/utils/docs/event/bind.js
 
 </CodeBlock>
 
