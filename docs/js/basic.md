@@ -337,6 +337,18 @@ console.log(docFrag.textContent); // ''
 
 ## Number
 
+```js
+Number('123')     // 123
+Number('12.3')    // 12.3
+Number('12.00')   // 12
+Number('123e-1')  // 12.3
+Number('')        // 0
+Number(null)      // 0
+Number('foo')     // NaN
+Number('100a')    // NaN
+Number('-Infinity') //-Infinity
+```
+
 ### `toString()`
 
 - `Number.prototype.toString()`
@@ -366,6 +378,24 @@ console.log(docFrag.textContent); // ''
 - `Number.MIN_VALUE` 最小的正数,最接近0的负数为`-Number.MIN_VALUE`
 - `Number.MAX_SAFE_INTEGER` 能够精确表示的最大整数，即`9007199254740991`
 - `Number.MIN_SAFE_INTEGER` 能够精确表示的最小整数，即`-9007199254740991`
+
+### 进制转换
+
+- `toString(radix)`
+
+```js
+15..toString(2).padStart(8, '0')  // 00001111
+15..toString(8).padStart(8, '0')  // 00000017
+15..toString(16).padStart(8, '0') // 0000000f
+```
+
+- `Number()`
+
+```js
+Number('0x11')    // 17  十六进制
+Number('0b11')    // 3   二进制
+Number('0o11')    // 9   八进制
+```
 
 ## Math
 
