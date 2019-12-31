@@ -1,12 +1,11 @@
 # 浏览器
 
-- 什么是Bom? `Bom是浏览器对象`
+- 什么是BOM? BOM 是 Browser Object Model，浏览器对象模型，提供与浏览器交互的方法和接口
+- 什么是DOM? DOM 是 Document Object Model，文档对象模型，提供操作页面元素的方法和属性
 
 [[toc]]
 
 ## 浏览器内核
-
-<CodeBlock>
 
 ```bash
 safari    Webkit
@@ -17,27 +16,6 @@ ie        Trident -ms-
 edge      EdgeHTML
 Opera12.17及更早版本曾经采用的内核  Presto  -o-
 ```
-
-</CodeBlock>
-
-## 浏览器端应用存储
-
-- application
-
-<CodeBlock>
-
-```bash
-cache:
-cache storage / application cache
-
-application:
-manifest / service workers / clear storage
-
-storage:
-localStorage / sessionStoage / indexDB / cookies / web sql
-```
-
-</CodeBlock>
 
 ## Navigator对象
 

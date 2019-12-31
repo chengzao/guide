@@ -321,6 +321,31 @@ yarn install --production
 - LGPL: `如果项目采用动态链接调用该许可证的库，项目可以不用开源`
 - Mozilla（MPL）: `只要该许可证的代码在单独的文件中，新增的其他文件可以不用开源`
 
+## express
+
+- express cors
+
+```js
+/**
+ *  处理跨域请求，有点重要喔
+ *  如果不涉及跨域，请忽略
+ **/
+app.all('*', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-with, X_Requested_With');
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    res.header('X-Powered-By', '3.2.1');
+    res.header('Content-Type', 'application/json; charset=utf-8');
+
+    if (req.method === 'OPTIONS') {
+        res.end('options ok');
+    } else {
+        next();
+    }
+});
+```
+
 ## 常用包
 
 <CodeBlock>

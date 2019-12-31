@@ -2,28 +2,25 @@
 
 ## 设计模式
 
-### 创建型
-
 - 工厂模式
 
 <CodeBlock>
 
 ```js
-function createPerson(name, age) {
-    var obj = {};
-    obj.name = name;
-    obj.age = age;
-    obj.writeJs = function () {
-        console.log(this.name + 'write js');
-    }
-    return obj;
+function Persion(name) {
+  var obj = {};
+  obj.name = name;
+  obj.say = function () {
+    console.log('Hello,',this.name);
+  }
+  return obj;
 }
 
-var p1 = createPerson('mengzhe' , 26);
-p1.writeJs();
+var p1 = Persion('js');
+p1.say(); // => Hello, js
 
-var p2 = createPerson('iceman' , 25);
-p2.writeJs();
+var p2 = Persion('css');
+p2.say(); // => Hello, css
 ```
 
 </CodeBlock>
@@ -33,198 +30,185 @@ p2.writeJs();
 <CodeBlock>
 
 ```js
-function CreateJsPerson(name, age) {
-    this.name = name;
-    this.age = age;
-    this.writeJs = function () {
-        console.log(this.name + 'write js');
-    }
-    // 浏览器再把创建的实例默认的进行返回
+function Persion(name, age) {
+  this.name = name;
+  this.age = age;
+  this.say = function() {
+    console.log('hello ',this.name);
+  };
 }
-var p1 = new CreateJsPerson('iceman' , 25);
-p1.writeJs();
-var p2 = new CreateJsPerson('mengzhe' , 26);
-p2.writeJs();
+var p1 = new Persion("js", 12);
+p1.say();
+var p2 = new Persion("node", 16);
+p2.say();
 ```
 
 </CodeBlock>
 
-- 单例模式,保证一个类仅有一个实例，并提供一个访问它的全局访问点
+- 单例模式
 
 <CodeBlock>
 
 ```js
-class CreateUser {
-    constructor(name) {
-        this.name = name;
-        this.getName();
-    }
-    getName() {
-         return this.name;
-    }
+class User {
+  constructor(name) {
+    this.name = name;
+    this.getName();
+  }
+  getName() {
+    return this.name;
+  }
 }
 // 代理实现单例模式
 var ProxyMode = (function() {
-    var instance = null;
-    return function(name) {
-        if(!instance) {
-            instance = new CreateUser(name);
-        }
-        return instance;
+  var instance = null;
+  return function(name) {
+    if (!instance) {
+      instance = new User(name);
     }
+    return instance;
+  };
 })();
-// 测试单体模式的实例
+
 var a = new ProxyMode("aaa");
 var b = new ProxyMode("bbb");
-// 因为单体模式是只实例化一次，所以下面的实例是相等的
-console.log(a === b);    //true
+console.log(a === b); // true
 ```
 
 </CodeBlock>
 
-### 结构型
-
-- `适配器模式 装饰器模式 代理模式 外观模式 桥接模式 组合模式 享元模式`
-
-- 代理模式, 为一个对象提供一个代用品或占位符，以便控制对它的访问或`(es6 Proxy)`
+- 适配器模式
 
 <CodeBlock>
 
 ```js
-var imgFunc = (function() {
-    var imgNode = document.createElement('img');
-    document.body.appendChild(imgNode);
-    return {
-        setSrc: function(src) {
-            imgNode.src = src;
-        }
-    }
-})();
-var proxyImage = (function() {
-    var img = new Image();
-    img.onload = function() {
-        imgFunc.setSrc(this.src);
-    }
-    return {
-        setSrc: function(src) {
-            imgFunc.setSrc('./loading,gif');
-            img.src = src;
-        }
-    }
-})();
-proxyImage.setSrc('./pic.png');
+class Plug {
+  getName() {
+    return 'html';
+  }
+}
+
+class Target {
+  constructor() {
+    this.plug = new Plug();
+  }
+  getName() {
+    return this.plug.getName() + ' css';
+  }
+}
+
+let target = new Target();
+target.getName(); // html css
 ```
 
 </CodeBlock>
 
-- 装饰者模式, 在不改变对象自身的基础上，在程序运行期间给对象动态地添加方法或`(es7 Decorator)`
+- 代理模式
+
+```js
+let M = {
+  send: function(target, gif) {
+    target.receive(gif)
+  }
+}
+let B = {
+  receive: function(gif) {
+    A.obs(function() {
+      A.receive(gif)
+    })
+  }
+}
+let A = {
+  receive: function(gif) {
+    console.log('get '+ gif)
+  },
+  obs: function(fn) {
+    setTimeout(function() {
+      fn()
+    }, 1000)
+  }
+}
+
+M.send(B, 'flower') // => get flower
+```
+
+- 装饰者模式
 
 <CodeBlock>
 
 ```js
-Function.prototype.before = function(beforefn) {
-    var self = this;    //保存原函数引用
-    return function(){  //返回包含了原函数和新函数的 '代理函数'
-        beforefn.apply(this, arguments);    //执行新函数，修正this
-        return self.apply(this,arguments);  //执行原函数
+class Cellphone {
+    create() {
+        console.log('生成一个手机')
     }
 }
-Function.prototype.after = function(afterfn) {
-    var self = this;
-    return function(){
-        var ret = self.apply(this,arguments);
-        afterfn.apply(this, arguments);
-        return ret;
+class Decorator {
+    constructor(cellphone) {
+        this.cellphone = cellphone
+    }
+    create() {
+        this.cellphone.create()
+        this.createShell()
+    }
+    createShell() {
+        console.log('生成手机壳')
     }
 }
-var func = function() {
-    console.log('2');
-}
-//func1和func3为挂载函数
-var func1 = function() {
-    console.log('1');
-}
-var func3 = function() {
-    console.log('3');
-}
-func = func.before(func1).after(func3);
-func();
+
+let cellphone = new Cellphone()
+cellphone.create() // 生成一个手机
+console.log('------------')
+let dec = new Decorator(cellphone)
+dec.create() // 生成一个手机 生成手机壳
 ```
 
 </CodeBlock>
 
-### 行为型
-
-策略模式 模板方法模式 观察者模式 迭代模式 状态模式
-
-命令模式 备忘录模式 职责连模式 访问者模式 中介者模式 解释器模式
-
-- 策略模式,定义一系列的算法，把他们一个个封装起来，并且使他们可以相互替换
+- 观察者模式
 
 <CodeBlock>
 
 ```js
-var levelOBJ = {
-    "A": function(money) {
-        return money * 4;
-    },
-    "B" : function(money) {
-        return money * 3;
-    },
-    "C" : function(money) {
-        return money * 2;
-    }
-};
-/*环境类*/
-var calculateBouns =function(level,money) {
-    return levelOBJ[level](money);
-};
-console.log(calculateBouns('A',10000)); // 40000
-```
+class Sub {
+  constructor() {
+    this.state = 0
+    this.observers = []
+  }
+  getState() {
+    return this.state
+  }
+  setState(state) {
+    this.state = state
+    this.notify()
+  }
+  notify() {
+    this.observers.forEach(observer => {
+      observer.update()
+    })
+  }
+  add(observer) {
+    this.observers.push(observer)
+  }
+}
 
-</CodeBlock>
-
-- 中介者模式, 通过一个中介者对象，其他所有的相关对象都通过该中介者对象来通信,通过中介者模式可以解除对象与对象之间的紧耦合关系
-
-<CodeBlock>
-
-```js
-var goods = {   //手机库存
-    'red|32G': 3,
-    'red|64G': 1,
-    'blue|32G': 7,
-    'blue|32G': 6,
-};
-//中介者
-var mediator = (function() {
-    var colorSelect = document.getElementById('colorSelect');
-    var memorySelect = document.getElementById('memorySelect');
-    var numSelect = document.getElementById('numSelect');
-    return {
-        changed: function(obj) {
-            switch(obj){
-                case colorSelect:
-                    //TODO
-                    break;
-                case memorySelect:
-                    //TODO
-                    break;
-                case numSelect:
-                    //TODO
-                    break;
-            }
-        }
-    }
-})();
-colorSelect.onchange = function() {
-    mediator.changed(this);
-};
-memorySelect.onchange = function() {
-    mediator.changed(this);
-};
-numSelect.onchange = function() {
-    mediator.changed(this);
-};
+class Observer {
+  constructor(name, subject) {
+    this.name = name
+    this.subject = subject
+    this.subject.add(this)
+  }
+  update() {
+    console.log(`${this.name} update, state: ${this.subject.getState()}`)
+  }
+}
+// add obs
+let sub = new Sub()
+let o1 = new Observer('o1', sub)
+let o2 = new Observer('02', sub)
+// update state
+sub.setState(12)
+// => o1 update, state: 12
+// => 02 update, state: 12
 ```
 
 </CodeBlock>
@@ -239,14 +223,14 @@ numSelect.onchange = function() {
 <CodeBlock>
 
 ```js
-function CreateObj(uName) {
+function Func(uName) {
     this.userName = uName;
 }
-CreateObj.prototype.showUserName = function(){
+Func.prototype.showUserName = function(){
     return this.userName;
 }
-var obj1 = new CreateObj('ghostwu');
-var obj2 = new CreateObj('卫庄');
+var obj1 = new Func('hello');
+var obj2 = new Func('xiao ming');
 console.log( obj1.showUserName === obj2.showUserName ); //true
 ```
 
@@ -254,20 +238,21 @@ console.log( obj1.showUserName === obj2.showUserName ); //true
 
 ## 构造函数new命令的原理
 
-- 当我们实例化的时候系统到底做了哪几件事情
-- 第一：创建一个空对象,作为将要返回的对象实例
-- 第二：拷贝构造函数中的方法和属性到这个空对象中
-- 第三：生成一个__proto__指针,指向构造函数的原型对象
-- 第四：this指向这个空对象
+### js的new操作符做了哪些事情
+
+1. 创建一个空对象,作为将要返回的对象实例
+2. 拷贝构造函数中的方法和属性到这个空对象中
+3. 生成一个__proto__指针,指向构造函数的原型对象
+4. this指向这个空对象
 
 <CodeBlock>
 
 ```js
 function Person(name){
-   var  obj = new Object();//新建对象
-   obj.name = name;//赋值属性
-   obj.__proto__ = Person.prototype;//指定对象中的指针
-   return obj;//返回对象
+   var  obj = new Object();
+   obj.name = name;
+   obj.__proto__ = Person.prototype;
+   return obj;
 }
 Person.prototype.getName = function(){
    console.log(this.name);
@@ -275,7 +260,7 @@ Person.prototype.getName = function(){
 var person = new Person("hainan");
 person.getName();
 
-//2.0
+// 1
 function _new() {
   // 将 arguments 对象转为数组
   var args = [].slice.call(arguments);
@@ -293,42 +278,27 @@ function Person(name,age){
 	this.age = age;
 }
 var actor = _new(Person, '张三', 28);
-actor  // {name: "张三", age: 28}
-```
+actor  // => {name: "张三", age: 28}
 
-```js
-/**
- * new2 new关键字的代码实现演示
- * @param {function} func 被new的类 (构造函数)
- */
-function new2(func) {
-    // 创建了一个实例对象 o，并且这个对象__proto__指向func这个类的原型对象
+// 2
+function _new(func) {
     let o = Object.create(func.prototype);
-    // (在构造函数中this指向当前实例)让这个类作为普通函数值行 并且里面this为实例对象
     let k = func.call(o);
-    // 最后再将实例对象返回 如果你在类中显示指定返回值k，
-    // 注意如果返回的是引用类型则将默认返回的实例对象o替代掉
     return typeof k === 'object' ? k : o;
 }
 
-// 实验
-function M() { // 即将被new的类
+function M() {
     this.name = 'liwenli';
 }
 
-let m = new2(M); // 等价于 new M 这里只是模拟
+let m = _new(M);
 console.log(m instanceof M); // instanceof 检测实例
-console.log(m instanceof Object);
 console.log(m.__proto__.constructor === M);
 ```
 
 </CodeBlock>
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/oop.jpg)
-
-![](https://gitee.com/cxyz/imgbed/raw/img/img/oop2.png)
-
-![](https://gitee.com/cxyz/imgbed/raw/img/img/oop3.png)
+![oop](https://gitee.com/cxyz/imgbed/raw/img/img/.jpg)
 
 ## 构造函数的继承
 
@@ -403,7 +373,7 @@ console.log(c2.num)//12
 
 </CodeBlock>
 
-- 原型式继承Object.create()
+- 原型式继承`Object.create`
 
 <CodeBlock>
 
@@ -469,43 +439,88 @@ function inherit(child, parent) {
 ## amd-requirejs
 
 - 异步加载模块,依赖前置,提前执行
-- define定义模块define(['require','foo'],function(){return foo;});
+- define定义模块`define(['require','foo'],function(){return foo;})`;
 - require加载模块(依赖前置) require(['foo','bar'],function(foo,bar){});
+
+```js
+// a.js
+define(function (){
+　　return {
+　　　a:'hello world'
+　　}
+});
+// b.js
+require(['./a.js'], function (moduleA){
+    console.log(moduleA.a); // 打印出：hello world
+});
+```
 
 ## cmd-seajs
 
-- define定义exports导出 define(function(require,exports,module){});moduel上存储了当前模块上的一些对象。
+- define定义exports导出 `define(function(require,exports,module){})`;moduel上存储了当前模块上的一些对象。
 - requre(./a)直接导入。require.async异步导入。
 - 同步加载,依赖就近,延迟执行。
 
-## MVC模式
+```js
+// a.js
+define(function (require, exports, module){
+　　exports.a = 'hello world';
+});
+// b.js
+define(function (require, exports, module){
+    var moduleA = require('./a.js');
+    console.log(moduleA.a); // 打印出：hello world
+});
+```
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/oop_mvc.png)
+## UMD
 
-- 将应用程序的组成划分为三个部分：Model View Controller
-- 控制器(Controller):初始化模型用的,处理业务逻辑
-- 模型(Model):用于存储数据的
-- 视图(View):用于展现数据
+- 兼容AMD和commonJS规范的同时
 
-## MVP
+```js
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        //AMD
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        //Node, CommonJS之类的
+        module.exports = factory(require('jquery'));
+    } else {
+        //浏览器全局变量(root 即 window)
+        root.returnExports = factory(root.jQuery);
+    }
+}(this, function ($) {
+    //方法
+    function myFunc(){};
+    //暴露公共方法
+    return myFunc;
+}));
+```
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/oop_mvp.png)
+## ES6 module
 
-- MVP: Model-View-Presenter
-- 各部分之间的通信是双向的
-- View 与 Model 不发生联系,通过Presenter传递
-- View非常薄,不部署任何业务逻辑；
-- Presenter非常厚,所有逻辑部署在这里
+```js
+// a.js
+export var m = 1;
+export {};
+export {n as m};
+export default n;
 
-## MVVM模式
+// b.js
+import './a.js'
+import * as m from './a.js'
+import {n as v} from './a.js'
+import {n} from './a.js'
+```
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/oop_mvvm.png)
+## commonJS
 
-- MVVM模式将Presenter变为ViewModel,基本与MVP一致.区别是,它是双向绑定(data-binding),view的变动,自动反映在ViewModel,反之亦然
+```js
+module.export = {}
 
-- MVVM模式是Model-View-ViewMode(模型-视图-视图模型)模式的简称
+let fn = reqiure('')
+```
 
 ## 相关链接
 
-- [JS模块规范：AMD、UMD、CMD、commonJS、ES6 module](https://segmentfault.com/a/1190000012419990)
-- [JavaScript设计模式](https://juejin.im/post/59df4f74f265da430f311909)
+- [JavaScript设计模式es6](https://juejin.im/post/5e021eb96fb9a01628014095)
