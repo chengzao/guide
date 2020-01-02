@@ -436,6 +436,40 @@ function inherit(child, parent) {
 
 </CodeBlock>
 
+## define module
+
+- [原文](http://houdunren.gitee.io/note/js/13%20%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1.html#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+
+```js
+let module = (function() {
+  //模块列表集合
+  const moduleLists = {};
+  function define(name, modules, action) {
+    modules.map((m, i) => {
+      modules[i] = moduleLists[m];
+    });
+    //执行并保存模块
+    moduleLists[name] = action.apply(null, modules);
+  }
+
+  return { define };
+})();
+
+//声明模块不依赖其它模块
+module.define("a", [], function() {
+  return {
+    show() {
+      console.log("A module func");
+    }
+  };
+});
+
+//声明模块时依赖其它模块
+module.define("b", ["a"], function(f) {
+  f.show();
+});
+```
+
 ## amd-requirejs
 
 - 异步加载模块,依赖前置,提前执行
