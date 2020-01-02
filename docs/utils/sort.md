@@ -1,4 +1,4 @@
-# 常见算法
+# 常见十种算法
 
 - [原文: JavaScript 数据结构与算法之美 - 十大经典排序算法](https://juejin.im/post/5d3ea9a4e51d4561f060cd2d)
 
@@ -28,7 +28,7 @@
   - 左右分别用一个空数组去存储比较后的数据。
   - 最后递归执行上述操作，直到`数组长度 <= 1`
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/quickSort.gif)
+![quickSort](https://gitee.com/cxyz/imgbed/raw/img/img/quickSort.gif)
 
 - 代码
 
@@ -38,7 +38,7 @@
 
 </CodeBlock>
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/1566284985210.png)
+![quickSort](https://gitee.com/cxyz/imgbed/raw/img/img/1566284985210.png)
 
 ## 选择排序
 
@@ -47,7 +47,7 @@
   - 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾
   - 重复第二步，直到所有元素均排序完毕
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/selectionSort.gif)
+![selectionSort](https://gitee.com/cxyz/imgbed/raw/img/img/selectionSort.gif)
 
 - 代码
 
@@ -63,7 +63,7 @@
 
 排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort.gif)
+![mergeSort](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort.gif)
 
 - 代码
 
@@ -75,13 +75,11 @@
 
 - 归并排序的流程
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort20190819151306.png)
+![mergeSort](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort20190819151306.png)
 
 - 合并两个有序数组的流程
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort20190819151517.png)
-
-
+![mergeSort](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort20190819151517.png)
 
 ## 插入排序
 
@@ -96,7 +94,7 @@
   - 将新元素插入到该位置后；
   - 重复步骤 2 ~ 5
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/insertionSort.gif)
+![insertionSort](https://gitee.com/cxyz/imgbed/raw/img/img/insertionSort.gif)
 
 - 代码
 
@@ -110,7 +108,7 @@
 
 - 步骤
 
-  - 取`0 ~ i-1` 的中间点 `( m = (i-1) >> 1 )`，`array[i]` 与` array[m]` 进行比较，若 `array[i]  <  array[m]`，则说明待插入的元素 `array[i]`应该处于数组的 `0 ~ m`索引之间；反之，则说明它应该处于数组的 `m ~ i-1` 索引之间。
+  - 取`0 ~ i-1` 的中间点 `( m = (i-1) >> 1 )`，`array[i]` 与`array[m]` 进行比较，若 `array[i]  <  array[m]`，则说明待插入的元素 `array[i]`应该处于数组的 `0 ~ m`索引之间；反之，则说明它应该处于数组的 `m ~ i-1` 索引之间。
   - 重复步骤 1，每次缩小一半的查找范围，直至找到插入的位置。
   - 将数组中插入位置之后的元素全部后移一位。
   - 在指定位置插入第 i 个元素。
@@ -132,7 +130,7 @@
   - 分别进行直接插入排序。
   - 待整个序列中的记录基本有序时，再对全体记录进行依次直接插入排序。
 
-![](~@assets/image/shellSort.gif)
+![shellSort](~@assets/image/shellSort.gif)
 
 - 代码
 
