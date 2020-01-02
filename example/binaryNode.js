@@ -1,5 +1,3 @@
-// 原文：https://mp.weixin.qq.com/s?__biz=MzI0MTUxOTE5NQ==&mid=2247483941&idx=1&sn=bd18647cb580da4e5aadf72ee1f0f7b8&chksm=e90b1d11de7c9407cde027c43ab43323fa07702ff4855745163e8f3ebbf682c95b33987d6210&mpshare=1&scene=1&srcid=&sharer_sharetime=1572521393442&sharer_shareid=6d5a36aa649f337987f3518aaba03999#rd
-
 function NodeTree(data, left, right) {
   this.data = data;
   this.left = left;
@@ -42,24 +40,24 @@ BST.prototype.insert = function (data) {
 // 二叉树前序遍历
 BST.prototype.perOrder = function (node) {
   if (node) {
-     console.log(node.show() + " ");
-     this.perOrder(node.left);
-     this.perOrder(node.right);
-   }
+    console.log(node.show() + " ");
+    this.perOrder(node.left);
+    this.perOrder(node.right);
+  }
 }
 
 // 二叉树中序遍历
-BST.prototype.inOrder = function(node){
-  if(node){
-     this.inOrder(node.left);
-     console.log(node.show() + " ");
-     this.inOrder(node.right);
-   }
+BST.prototype.inOrder = function (node) {
+  if (node) {
+    this.inOrder(node.left);
+    console.log(node.show() + " ");
+    this.inOrder(node.right);
+  }
 }
 
 // 二叉树后序遍历
-BST.prototype.postOrder = function(node){
-  if(node){
+BST.prototype.postOrder = function (node) {
+  if (node) {
     this.postOrder(node.left);
     this.postOrder(node.right);
     console.log(node.show() + " ");
@@ -205,7 +203,7 @@ for (var i = 0; i < nums.length; i++) {
 
 // bst.search(3, bst.root)
 
-// bst.sizeOfTree(bst.root)
+console.log(bst.sizeOfTree(bst.root));
 
 // bst.heightOfTree(bst.root)
 
