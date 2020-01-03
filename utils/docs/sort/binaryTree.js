@@ -1,4 +1,5 @@
-function NodeTree(data, left, right) {
+// node节点
+function BinaryTree(data, left, right) {
   this.data = data; // 节点的值
   this.left = left; // 左节点
   this.right = right; // 右节点
@@ -13,7 +14,7 @@ function BST() {
  * @param key int|float 要插入的值
  */
 BST.prototype.insert = function (data) {
-  var newNode = new NodeTree(data, null, null);
+  var newNode = new BinaryTree(data, null, null);
   // 如果没有root节点
   if (this.root === null) {
     this.root = newNode;
@@ -263,6 +264,48 @@ BST.prototype.removeNode = function (node, data) {
   }
 };
 
+// 求二叉树节点个数
+BST.prototype.sizeOfNode = function (node) {
+  if (!node) {
+    return 0
+  }
+  return 1 + this.sizeOfNode(node.left) + this.sizeOfNode(node.right);
+}
+
+// 求二叉树层级
+BST.prototype.levelOfNode = function (node) {
+  if (!node) {
+    return 0
+  }
+  return Math.max(this.levelOfNode(node.left), this.levelOfNode(node.right)) + 1
+}
+
+// 求二叉树第K层的节点个数
+BST.prototype.numKLevel = function (node, k) {
+  if (k < 0) {
+    return 0
+  }
+  if (node === null) {
+    return 0
+  }
+  if (node !== null && k === 1) {
+    return 1
+  }
+  return this.numKLevel(node.left, k - 1) + this.numKLevel(node.right, k - 1)
+}
+
+// 比较二叉树是否相同
+BST.prototype.compareNodes = function (node1, node2) {
+  if (node1 === null && node2 === null) {
+    return true
+  }
+  if ((node1 !== null && node2 === null) || (node1 === null && node2 !== null)) {
+    return false
+  }
+  return (this.compareNodes(node1.left, node2.left) && this.compareNodes(node1.right, node2.right))
+}
+
+
 //测试数据
 var bst = new BST();
 var nums = [10, 3, 18, 2, 4, 13, 21, 9, 8, 9];
@@ -273,7 +316,7 @@ for (var i = 0; i < nums.length; i++) {
 // console.log(bst);
 
 // console.log("inOrder-Asc: ", bst.inOrder());
-// console.log("inOrder-Asc: ", bst.inOrder('DESC'));
+// console.log("inOrder-Desc: ", bst.inOrder('DESC'));
 
 // console.log('preOrder: ', bst.preOrder());
 
@@ -289,4 +332,19 @@ for (var i = 0; i < nums.length; i++) {
 // console.log('remove: ', bst.remove(9));
 // console.log('remove: ', bst.remove(18));
 
+// console.log('sizeOfNode: ', bst.sizeOfNode(bst.root));
 
+// console.log('levelOfNode: ', bst.levelOfNode(bst.root));
+
+// console.log('numKLevel: ', bst.numKLevel(bst.root, 3));
+
+var bst1 =  {
+  data: 10,
+  left:  {
+    data: 3,
+    left:  { data: 2, left: null, right: null },
+    right: { data: 21, left: null, right: null }
+  },
+  right:  null
+}
+console.log('compareNodes: ', bst.compareNodes(bst.root, bst1));
