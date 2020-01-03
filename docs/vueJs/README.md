@@ -111,3 +111,6 @@ component: { render: h => h("router-view") }
 - [vue 2.6 中 slot 的新用法](https://juejin.im/post/5d23d9ddf265da1bbf6941c9)
 - [vue性能优化9点建议](https://juejin.im/post/5da2c5fb6fb9a04de237a996)
 - [30 道 Vue 面试题，内含详细讲解](https://juejin.im/post/5d59f2a451882549be53b170)
+- [通过vue-cli3构建一个SSR应用程序](https://juejin.im/post/5b98e5875188255c8320f88a)
+- [vue-cli3 项目从搭建优化到docker部署](https://juejin.im/post/5c4a6fcd518825469414e062)
+- [从零开发一套完整的vue项目开发环境](https://juejin.im/post/5e0cba76f265da5d4e27480c)

@@ -53,11 +53,7 @@ js
 - [instant.page](https://github.com/instantpage/instant.page)
 - [quicklink](https://github.com/GoogleChromeLabs/quicklink)
 - [Workbox 3：Service Worker 可以如此简单](https://mp.weixin.qq.com/s?__biz=MzI5NjM5NDQxMg==&mid=2247483948&idx=1&sn=801a4ac325da1ae294ef5a255e1d7c74&chksm=ec4449efdb33c0f985d532cf5698dcf08ab22510fdc8cfa38d29cf3dd910c636eb40e1e70058&mpshare=1&scene=1&srcid=0128caxsWCrpaanthUdcxARr#rd)
-- [decrator（修饰器）的业务应用](https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651555774&idx=1&sn=46e774e811db7799e535a8e23e7c4165&chksm=8025507fb752d969ded010ca71c13bc1f3784ab097eb741da0686a0299ead71ddedadac9d6a2&mpshare=1&scene=1&srcid=0128F8igA6TosVihbPmdatcz#rd)
-- [2018年 JavaScript 明星项目](https://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651555805&idx=1&sn=72d88ae4703d8aa87dd01b9aa949dd4d&chksm=8025501cb752d90ab3c231e8ef5932a2d5550d6e529087404b508a75a88e120c0cbb441db2e1&mpshare=1&scene=1&srcid=0128QiqpVFkDeWLEEmZLorzt#rd)
 - [从零搭建docker+jenkins+node.js自动化部署环境](https://juejin.im/post/5b8ddb70e51d45389153f288)
-- [通过vue-cli3构建一个SSR应用程序](https://juejin.im/post/5b98e5875188255c8320f88a)
-- [vue-cli3 项目从搭建优化到docker部署](https://juejin.im/post/5c4a6fcd518825469414e062?utm_source=gold_browser_extension)
 - [H5 notification浏览器桌面通知](https://juejin.im/post/5c6df433f265da2de80f5eda)
 
 ---
@@ -88,9 +84,6 @@ github登录授权
 - [前端常用插件、工具类库汇总](https://juejin.im/post/5ba7d5dd5188255c6140cc9d)
 - [前端必备自定义滚动库——iScroll](https://juejin.im/post/5bc57e616fb9a05d396f3fc9)
 - [ast](https://astexplorer.net/)
-- [elasticsearch 全文搜索](https://www.elastic.co/cn/)
 - [分享 8 个有趣且实用的 API](https://juejin.im/post/5c92446b6fb9a070c022f0e2)
 - [hacksplaining](https://www.hacksplaining.com/lessons)
 - [awesome-bookmarks](https://panjiachen.github.io/awesome-bookmarks/website)
-- [JavaScript 数据结构与算法之美 - 时间和空间复杂度](https://juejin.im/post/5cf37b6d6fb9a07eb15d3e88)
-- [JavaScript 数据结构与算法之美 - 十大经典排序算法汇总](https://juejin.im/post/5d3ea9a4e51d4561f060cd2d)
