@@ -95,7 +95,7 @@ o.m() // "Hello World!"
 
 ## 使用
 
-- 纯粹的函数调用,`this就代表全局对象`
+- 函数调用,`this就代表全局对象`
 
 <CodeBlock>
 
@@ -127,7 +127,7 @@ obj.m(); //
 
 </CodeBlock>
 
-- 作为构造函数调用, 所谓构造函数，就是通过这个函数，可以生成一个新对象。这时，`this就指这个新对象`
+- 作为构造函数调用, `this就指这个新对象`
 
 <CodeBlock>
 
@@ -164,64 +164,115 @@ obj.m.apply(obj); //1
 
 ## 绑定 this 的方法
 
-- `function.prototype.call()`
-- `call() 参数为空、null和undefined,则默认传入全局对象`
+```js
+function Fn(name){
+  this.name = name
+}
 
-<CodeBlock>
+Fn.prototype.say = function(){
+  console.log('Fn,', this.name)
+}
+
+Sub.prototype = Object.create(Fn.prototype)
+Sub.prototype.constructor = Sub
+
+function Sub(name){
+  console.log(this)
+  Fn.call(this, name)
+}
+
+// Sub.prototype.say = function(){
+//   console.log('sub,', this.name)
+// }
+
+var sub = new Sub('js')
+sub.say() // Fn,js
+```
+
+### 参数为空、`null`和 `undefined`
+
+- call `参数为空、null和undefined,则默认传入全局对象`
 
 ```js
 var n = 123;
 var obj = { n: 456 };
 function a() {
-  console.log(this.n);
+  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n)
 }
 
-a.call(); // 123
-a.call(null); // 123
-a.call(undefined); // 123
-a.call(window); // 123
-a.call(obj); // 456
+a.call(); // Window , 123
+a.call(null); // Window , 123
+a.call(undefined); // Window , 123
+a.call(window); // Window , 123
+a.call(obj); // Object , 456
 ```
 
-</CodeBlock>
+- apply `参数为空、null和undefined,则默认传入全局对象`
+
+```js
+var n = 123;
+var obj = { n: 456 };
+function a() {
+  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n)
+}
+
+a.apply(); // Window , 123
+a.apply(null); // Window , 123
+a.apply(undefined); // Window , 123
+a.apply(window); // Window , 123
+a.apply(obj); // Object , 456
+```
+
+- bind `参数为空、null和undefined,则默认传入全局对象`
+
+```js
+var n = 123;
+var obj = { n: 456 };
+function a() {
+  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n)
+}
+
+a.bind()(); // Window , 123
+a.bind(null)(); // Window , 123
+a.bind(undefined)(); // Window , 123
+a.bind(window)(); // Window , 123
+a.bind(obj)(); // Object , 456
+```
+
+### call、apply
 
 - `func.call(thisValue, arg1, arg2, ...)`
 - `func.apply(thisValue, [arg1, arg2, ...])`
-- `apply方法(call方法)不仅会绑定函数执行时所在的对象,还会立即执行函数`
-
-<CodeBlock>
+- `apply/call方法: 不仅会绑定函数执行时所在的对象,还会立即执行函数`
 
 ```js
 function add(a, b) {
-  console.log(a + b);
+  console.log('add: ',a + b);
 }
-function sub(a, b) {
-  console.log(a - b);
-}
-add(5, 3); //8
-add.call(this, 5, 3); //8
-add.call(sub, 5, 3); //8
-add.apply(sub, [5, 3]); //8
 
-sub(5, 3); //2
-sub.apply(this, [5, 3]); //2
-sub.apply(null, [5, 3]); //2
-sub.call(add, 5, 3); //2
-sub.apply(add, [5, 3]); //2
+function fn(){}
+
+add(5, 3); //8
+
+add.call(this, 5, 3); //8
+add.call(null, 5, 3); //8
+
+add.call(fn, 5, 3); //8
+add.apply(fn, [5, 3]); //8
+
+add.bind(fn, 5, 3)(); //8
 
 //找出数组最大元素
 var a = [10, 2, 4, 15, 9];
 Math.max.apply(null, a); //15
 ```
 
-</CodeBlock>
+### bind
 
 - `function.prototype.bind()`
-- `bind将函数体内的this绑定到某个对象,然后返回一个新函数`
-- `bind方法的第一个参数是null或undefined,等于将this绑定到全局对象`
-- `bind`这个函数`不会马上执行`
-
-<CodeBlock>
+- `将函数体内的this绑定到某个对象,然后返回一个新函数`
+- `第一个参数是null或undefined,等于将this绑定到全局对象`
+- `bind这个函数不会马上执行`
 
 ```js
 var d = new Date();
@@ -233,14 +284,7 @@ var print = d.getTime.bind(d);
 print();
 ```
 
-</CodeBlock>
-
-## call,apply,bind
-
-- `obj.call(thisObj, arg1, arg2, ...);`
-- `obj.apply(thisObj, [arg1, arg2, ...]);`
-- `obj.bind(thisObj, arg1, arg2, ...);` 通过`bind`改变 this 作用域会返回一个新的函数，这个函数`不会马上执行`
-- `call,apply`和`bind`如果第一个参数是指定为 `null` 或 `undefined` 时会自动指向`全局对象`
+## 实现call,apply,bind
 
 - 实现 call
 

@@ -1,5 +1,7 @@
 # 数组
 
+[MDN/Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
 ## in运算符
 
 - `in`运算符用于检查对象是否包含某个属性(注意:检查的是键名,不是键值),
@@ -66,7 +68,7 @@ Array(1, 2, 3);    // [1, 2, 3]
 
 </CodeBlock>
 
-## include
+## includes
 
 - `arr.includes(valueToFind[, fromIndex])`
 - 用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false

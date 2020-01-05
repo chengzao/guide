@@ -245,7 +245,7 @@ console.log(obj1.showUserName === obj2.showUserName); //true
 3. 生成一个**proto**指针,指向构造函数的原型对象
 4. this 指向这个空对象
 
-<CodeBlock>
+- 代码1
 
 ```js
 function Person(name) {
@@ -259,8 +259,11 @@ Person.prototype.getName = function() {
 };
 var person = new Person("hainan");
 person.getName();
+```
 
-// 1
+- 代码2
+
+```js
 function _new() {
   // 将 arguments 对象转为数组
   var args = [].slice.call(arguments);
@@ -279,8 +282,11 @@ function Person(name, age) {
 }
 var actor = _new(Person, "张三", 28);
 actor; // => {name: "张三", age: 28}
+```
 
-// 2
+- 代码3
+
+```js
 function _new(func) {
   let o = Object.create(func.prototype);
   let k = func.call(o);
@@ -296,9 +302,9 @@ console.log(m instanceof M); // instanceof 检测实例
 console.log(m.__proto__.constructor === M);
 ```
 
-</CodeBlock>
+## prototype示意图
 
-![oop](https://gitee.com/cxyz/imgbed/raw/img/img/.jpg)
+![oop](https://gitee.com/cxyz/imgbed/raw/img/img/oop.jpg)
 
 ## 构造函数的继承
 
