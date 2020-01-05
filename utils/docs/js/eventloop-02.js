@@ -1,20 +1,21 @@
 const p1 = new Promise((resolve, reject) => {
-  console.log('promise1'); // 1
+  console.log('1'); // 1
   resolve();
 })
   .then(() => {
-    console.log('then11'); // 2
+    console.log('2'); // 2
     return new Promise((resolve, reject) => {
-      console.log('promise2'); // 3
+      console.log('3'); // 3
       resolve();
     })
       .then(() => {
-        console.log('then21'); // 4
+        console.log('4'); // 4
       })
       .then(() => {
-        console.log('then23'); // 5
+        console.log('5'); // 5
       });
   })
   .then(() => {
-    console.log('then12'); //6
+    console.log('6'); //6
   });
+// 1 2 3 4 5 6

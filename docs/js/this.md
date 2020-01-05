@@ -1,5 +1,7 @@
 # this
 
+- `this 指向最后调用它的那个对象`
+
 ## 全局环境
 
 - `函数在全局环境中运行,那么this就是指顶层对象`
@@ -7,7 +9,7 @@
 <CodeBlock>
 
 ```js
-this === window // true
+this === window; // true
 
 function f() {
   console.log(this === window); // true
@@ -15,6 +17,56 @@ function f() {
 ```
 
 </CodeBlock>
+
+## 箭头函数中的 this
+
+箭头函数的 this 始终指向函数定义时的 this，而非执行时
+
+箭头函数中没有 this 绑定，必须通过查找作用域链来决定其值，
+如果箭头函数被非箭头函数包含，则 this 绑定的是最近一层非箭头函数的 this，
+否则，this 为 undefined
+
+- 代码1
+
+```js
+var name = "windows";
+
+var a = {
+  name: "Cherry",
+
+  func1: function() {
+    console.log(this.name);
+  },
+
+  func2: function() {
+    setTimeout(() => {
+      this.func1();
+    }, 100);
+  }
+};
+
+a.func2(); // Cherry
+```
+
+- 代码2
+
+```js
+var name = "aaa";
+
+var a = {
+  name: "Cherry",
+  func1: () => {
+    console.log(this.name); // aaa
+  },
+  func2: () => {
+    console.log(this) // widnow
+    this.func1() // this.func1 is not a function
+  }
+};
+
+a.func1();
+a.func2();
+```
 
 ## 构造函数
 
@@ -28,6 +80,9 @@ var Obj = function (p) {
 };
 
 Obj.prototype.m = function() {
+  console.log(this.constructor === Obj) // true
+  console.log(this instanceof Obj ) // true
+  console.log(Obj.prototype.isPrototypeOf(this))
   return this.p;
 };
 var o = new Obj('Hello World!');
@@ -47,9 +102,9 @@ o.m() // "Hello World!"
 ```js
 var x = 1;
 function test() {
-   console.log(this.x);
+  console.log(this.x);
 }
-test();  // 1
+test(); // 1
 ```
 
 </CodeBlock>
@@ -78,11 +133,11 @@ obj.m(); //
 
 ```js
 function test() {
-　this.x = 1;
+  this.x = 1;
 }
 
 var obj = new test();
-obj.x // 1
+obj.x; // 1
 ```
 
 </CodeBlock>
@@ -94,20 +149,20 @@ obj.x // 1
 ```js
 var x = 0;
 function test() {
-　console.log(this.x);
+  console.log(this.x);
 }
 
 var obj = {};
 obj.x = 1;
 obj.m = test;
-obj.m.apply() // 0
+obj.m.apply(); // 0
 
-obj.m.apply(obj) //1
+obj.m.apply(obj); //1
 ```
 
 </CodeBlock>
 
-## 绑定this的方法
+## 绑定 this 的方法
 
 - `function.prototype.call()`
 - `call() 参数为空、null和undefined,则默认传入全局对象`
@@ -121,11 +176,11 @@ function a() {
   console.log(this.n);
 }
 
-a.call() // 123
-a.call(null) // 123
-a.call(undefined) // 123
-a.call(window) // 123
-a.call(obj) // 456
+a.call(); // 123
+a.call(null); // 123
+a.call(undefined); // 123
+a.call(window); // 123
+a.call(obj); // 456
 ```
 
 </CodeBlock>
@@ -138,25 +193,25 @@ a.call(obj) // 456
 
 ```js
 function add(a, b) {
-	console.log(a + b)
+  console.log(a + b);
 }
 function sub(a, b) {
-	console.log(a - b)
+  console.log(a - b);
 }
-add(5, 3) //8
-add.call(this, 5, 3) //8
-add.call(sub, 5, 3) //8
-add.apply(sub, [5, 3]) //8
+add(5, 3); //8
+add.call(this, 5, 3); //8
+add.call(sub, 5, 3); //8
+add.apply(sub, [5, 3]); //8
 
 sub(5, 3); //2
-sub.apply(this, [5, 3]) //2
-sub.apply(null, [5, 3]) //2
+sub.apply(this, [5, 3]); //2
+sub.apply(null, [5, 3]); //2
 sub.call(add, 5, 3); //2
 sub.apply(add, [5, 3]); //2
 
 //找出数组最大元素
 var a = [10, 2, 4, 15, 9];
-Math.max.apply(null, a)  //15
+Math.max.apply(null, a); //15
 ```
 
 </CodeBlock>
@@ -170,12 +225,12 @@ Math.max.apply(null, a)  //15
 
 ```js
 var d = new Date();
-d.getTime()
+d.getTime();
 var print = d.getTime;
-print() // Uncaught TypeError: this is not a Date object.
+print(); // Uncaught TypeError: this is not a Date object.
 
 var print = d.getTime.bind(d);
-print()
+print();
 ```
 
 </CodeBlock>
@@ -184,18 +239,18 @@ print()
 
 - `obj.call(thisObj, arg1, arg2, ...);`
 - `obj.apply(thisObj, [arg1, arg2, ...]);`
-- `obj.bind(thisObj, arg1, arg2, ...);` 通过`bind`改变this作用域会返回一个新的函数，这个函数`不会马上执行`
+- `obj.bind(thisObj, arg1, arg2, ...);` 通过`bind`改变 this 作用域会返回一个新的函数，这个函数`不会马上执行`
 - `call,apply`和`bind`如果第一个参数是指定为 `null` 或 `undefined` 时会自动指向`全局对象`
 
-- 实现call
+- 实现 call
 
 <<< @/utils/docs/event/call.js
 
-- 实现apply
+- 实现 apply
 
 <<< @/utils/docs/event/apply.js
 
-### bind兼容
+### bind 兼容
 
 <CodeBlock>
 

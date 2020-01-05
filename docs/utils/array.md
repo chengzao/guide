@@ -18,14 +18,6 @@
 
 </CodeBlock>
 
-## currying柯里化
-
-<CodeBlock>
-
-<<< @/utils/docs/array/currying.js
-
-</CodeBlock>
-
 ## 随机生成范围内不重复数字
 
 <CodeBlock>

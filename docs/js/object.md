@@ -61,6 +61,33 @@ Object._create = function(o){
 - `Object.prototype.isPrototypeOf()`
 - 判断当前对象是否为另一个对象的原型
 
+- 代码1
+
+```js
+function Foo() {}
+function Bar() {}
+function Baz() {}
+
+Bar.prototype = Object.create(Foo.prototype);
+Baz.prototype = Object.create(Bar.prototype);
+
+var baz = new Baz();
+
+console.log(Baz.prototype.isPrototypeOf(baz)); // true
+console.log(Bar.prototype.isPrototypeOf(baz)); // true
+console.log(Foo.prototype.isPrototypeOf(baz)); // true
+console.log(Object.prototype.isPrototypeOf(baz)); // true
+```
+
+- 代码2
+
+```js
+var human = {mortal: true}
+var socrates = Object.create(human);
+human.isPrototypeOf(socrates); //=> true
+socrates instanceof human; //=> ER
+```
+
 ### `propertyIsEnumerable`
 
 - `Object.prototype.propertyIsEnumerable()`

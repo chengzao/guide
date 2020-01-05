@@ -1,27 +1,28 @@
 const p1 = new Promise((resolve, reject) => {
-  console.log('promise1'); // 1
+  console.log('1'); // 1
   resolve();
 })
   .then(() => {
-    console.log('then11'); // 3
+    console.log('2'); // 3
     new Promise((resolve, reject) => {
-      console.log('promise2'); // 4
+      console.log('3'); // 4
       resolve();
     })
       .then(() => {
-        console.log('then21'); // 6
+        console.log('4'); // 6
       })
       .then(() => {
-        console.log('then23'); // 8
+        console.log('5'); // 8
       });
   })
   .then(() => {
-    console.log('then12'); // 7
+    console.log('6'); // 7
   });
 
 const p2 = new Promise((resolve, reject) => {
-  console.log('promise3'); // 2
+  console.log('7'); // 2
   resolve();
 }).then(() => {
-  console.log('then31'); // 5
+  console.log('8'); // 5
 });
+// 1 7 2 3 8 4 6 5

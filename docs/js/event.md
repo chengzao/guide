@@ -241,13 +241,6 @@ document.onclick=function(event){
 
 </CodeBlock>
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-event.png)
-
-## 事件监听
-
-- detachEvent() 和 removeEventListener()  //解除事件
-- attachEvent()和addEventListener()   //绑定事件
-
 ## 事件目标target
 
 - 兼容性写法

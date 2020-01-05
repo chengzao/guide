@@ -5,7 +5,6 @@ Function.prototype.apply2 = function (context = {}) {
   if (arguments[1]) {
     result = context.fn(...arguments[1])
   } else {
-    console
     result = context.fn()
   }
   delete context.fn

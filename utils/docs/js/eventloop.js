@@ -1,7 +1,7 @@
 async function async1() {
   console.log('async1 start') // 2
   await async2();
-  console.log('async1 end'); // 7
+  console.log('async1 end'); // 6
 }
 /* async/await 等同于
 function async1() {
@@ -28,7 +28,7 @@ new Promise(function (resolve) {
   console.log('promise1'); // 4
   resolve()
 }).then(function () {
-  console.log('promise2'); // 6
+  console.log('promise2'); // 7
 })
 
 console.log('script end'); // 5

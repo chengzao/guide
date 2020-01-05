@@ -86,6 +86,15 @@ typeof a // function
 function a(){}
 var a='xyf';
 console.log(typeof a); //string
+
+// -----------------
+var a,b
+function fn(a){
+  a = 123
+  b = 555
+}
+fn('aaa', 666)
+console.log(a, b) // undefined, 555
 ```
 
 </CodeBlock>
