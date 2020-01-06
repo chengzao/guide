@@ -295,3 +295,150 @@ console.log(minDivisor(6, 8)); // 24
 ## 验证是否为回文
 
 <<< @/utils/docs/issue/isPalindrome.js
+
+## FIFO
+
+- 一种缓存算法，设置缓存上限，当达到了缓存上限的时候，按照先进先出的策略进行淘汰，再增加进新的 k-v
+
+```js
+class FIFOCache {
+  constructor(limit) {
+    this.limit = limit || 10
+    this.map = {}
+    this.keys = []
+  }
+  set(key, value) {
+    let map = this.map
+    let keys = this.keys
+    if (!Object.prototype.hasOwnProperty.call(map, key)) {
+      if (keys.length === this.limit) {
+        delete map[keys.shift()]//先进先出，删除队列第一个元素
+      }
+      keys.push(key)
+    }
+    map[key] = value//无论存在与否都对map中的key赋值
+  }
+  get(key) {
+    return this.map[key]
+  }
+}
+
+let fifo = new FIFOCache(10)
+
+for (let i = 0; i < 10; i++) {
+  fifo.set(`name-${i}`, i)
+}
+fifo.set('name-10', 10)
+console.log(fifo);
+```
+
+## LRU
+
+- LRU（Least recently used，最近最少使用）算法。最近被访问的数据那么它将来访问的概率就大，缓存满的时候，优先淘汰最无人问津者
+
+- 实现逻辑 Map : [原文：146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/solution/146-lruhuan-cun-ji-zhi-by-alexer-660/)
+
+```bash
+Map 中的键值是有序的，而添加到对象中的键则不是。因此，当对它进行遍历时，Map 对象是按插入的顺序返回键值
+Map.prototype.keys()
+  返回一个新的 Iterator对象， 它按插入顺序包含了Map对象中每个元素的键 。
+
+1、尾部元素一直是最新set的，对应于LRU的最近使用原则
+  Map.set()
+2、头部元素是最远使用的，用于LRU容量满载时删除最远使用的元素，可获取其key
+  Map.keys().next().value
+
+解题步骤
+get
+  元素存在 delete、set
+  元素不存在 return -1
+put
+  元素存在  delete、set
+  元素不存在
+  容量超载 delete map头部元素(map.keys().next().value)、set
+  不超载   set
+```
+
+```js
+let myMap = new Map();
+
+// 添加键
+myMap.set('1', "a");
+myMap.set('2', "b");
+myMap.set('3', "c");
+myMap.set('4', "d");
+
+console.log(myMap.get('2')); // b
+
+console.log(myMap.delete('4')); // true
+
+console.log(myMap);
+
+let val = myMap.keys();
+console.log(val.next());
+console.log(val.next());
+```
+
+- 代码
+
+```js
+/**
+ * @param {number} capacity 容量
+ */
+var LRUCache = function (capacity) {
+  this.cap = capacity;
+  this.cache = new Map();
+};
+
+/**
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function (key) {
+  let cache = this.cache;
+  if (cache.has(key)) {
+    let val = cache.get(key);
+    // 删除元素
+    cache.delete(key);
+    // 重新插入到map结构最后
+    cache.set(key, val);
+    return val;
+  } else {
+    return -1;
+  }
+};
+
+/**
+ * @param {number} key
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function (key, value) {
+  let cache = this.cache;
+  if (cache.has(key)) {
+    // 删除元素
+    cache.delete(key);
+  } else {
+    if (cache.size == this.cap) {
+      // 删除map中第一个元素
+      cache.delete(cache.keys().next().value);
+    }
+  }
+  // 重新赋值插入
+  cache.set(key, value);
+};
+
+//  Your LRUCache object will be instantiated and called as such:
+var cache = new LRUCache(2)
+cache.put(1, 1);
+cache.put(2, 2);
+cache.get(1);       // 返回  1
+cache.put(3, 3);    // 该操作会使得密钥 2 作废
+cache.get(2);       // 返回 -1 (未找到)
+cache.put(4, 4);    // 该操作会使得密钥 1 作废
+cache.get(1);       // 返回 -1 (未找到)
+cache.get(3);       // 返回  3
+cache.get(4);       // 返回  4
+
+console.log(cache);
+```
