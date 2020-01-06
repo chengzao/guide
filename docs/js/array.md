@@ -1,4 +1,4 @@
-# 数组
+# Array
 
 [MDN/Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
 

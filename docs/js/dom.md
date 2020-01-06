@@ -1,4 +1,6 @@
-# 节点
+# Element DOM
+
+[MDN/Element](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)
 
 ## 类型
 
@@ -313,6 +315,19 @@ document.body.appendChild(newtext);
 
 </CodeBlock>
 
+### 查找相关的方法
+
+- `Element.querySelector()`
+- `Element.querySelectorAll()`
+- `Element.getElementsByTagName()`
+- `Element.getElementsByClassName()`
+
+### 事件相关的方法
+
+- `Element.addEventListener()`：添加事件的回调函数
+- `Element.removeEventListener()`：移除事件监听函数
+- `Element.dispatchEvent()`：触发事件
+
 ## 节点的添加
 
 ### 插入当前节点
@@ -344,14 +359,29 @@ function DOMComb(parent, callback) {
 - 该方法接受2个参数,第一个是`要插入的节点`,第二个是`参照节点`
 - `parentNode.insertBefore(newNode,targetNode)；`
 
+### insertAdjacentHTML
+
+- `Element.insertAdjacentHTML方法解析HTML字符串;然后将生成的节点插入DOM树的指定位置`
+  - `element.insertAdjacentHTML(position, text);`第一个是指定位置;第二个是待解析的字符串
+  - `beforebegin`：在当前元素节点的前面
+  - `afterbegin`：在当前元素节点的里面;插在它的第一个子元素之前
+  - `beforeend`：在当前元素节点的里面;插在它的最后一个子元素之后
+  - `afterend`：在当前元素节点的后面
+
+```js
+var d1 = document.getElementById('one');
+d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
+```
+
+- `Element.remove方法用于将当前元素节点从DOM树删除`
+- `Element.focus方法用于将当前页面的焦点`
+
 ### 复制节点
 
 - `cloneNode(参数) ；booblean类型的参数.`
 - `newNode = oldNode.cloneNode(boolean) ;`用于复制节点, 接受一个布尔值参数
   - `true` 表示深复制(复制节点及其所有子节点),
   - `false` 表示浅复制(复制节点本身,不复制子节点
-
-<CodeBlock>
 
 ```html
 <div id="box">
@@ -368,8 +398,6 @@ var newBox = box1.cloneNode(true);
 box.appendChild(newBox);
 </script>
 ```
-
-</CodeBlock>
 
 ### 移除节点
 
@@ -417,11 +445,10 @@ box.appendChild(newBox);
 
 ### 节点的属性
 
-- 获取：`getAttribute(名称)`
-- 设置：`setAttribute(名称, 值)`
-- 删除：`removeAttribute(名称)`
-
-<CodeBlock>
+- `Element.getAttribute` 返回当前元素节点的指定属性.如果指定属性不存在;则返回`null`
+- `Element.setAttribute` 用于为当前元素节点新增属性.如果同名属性已存在;则相当于编辑已存在的属性
+- `Element.hasAttribute` 返回一个布尔值;表示当前元素节点是否包含指定属性
+- `Element.removeAttribute` 用于从当前元素节点移除属性
 
 ```js
 <img id="pic" width="100px" height="100px"/>
@@ -434,7 +461,33 @@ var a = pic.getAttribute("height");
 pic.removeAttribute("height");
 ```
 
-</CodeBlock>
+### 属性的操作
+
+- `Element.attributes` 返回一个类似数组的动态对象
+- 属性节点对象有`name`和`value`属性;对应该属性的属性名和属性值;等同于`nodeName`属性和`nodeValue`属性
+
+### dataset属性
+
+- `data-`后面的属性名有限制;`只能包含字母、数字、连词线(-)、点(.)、冒号(:)和下划线(_)`
+- 属性名不应该使用A到Z的大写字母;比如不能有`data-helloWorld`这样的属性名;而要写成`data-hello-world`
+
+```js
+// html
+<div id="mydiv" foo="bar"></div>
+// js
+var n = document.getElementById('mydiv');
+n.getAttribute('foo') // bar
+n.setAttribute('foo', 'baz')
+n.removeAttribute('baz')
+
+// html
+<div id="mydiv2" data-foo="bar"></div>
+// js
+var n2 = document.getElementById('mydiv2');
+n2.dataset.foo // bar
+n2.dataset.foo = 'baz'
+delete n2.dataset.foo;
+```
 
 ### ParentNode
 
@@ -450,6 +503,44 @@ pic.removeAttribute("height");
 - `before`方法用于在当前节点的前面,插入一个同级节点
 - `after`方法用于在当前节点的后面,插入一个同级节点
 - `replaceWith`方法使用参数指定的节点,替换当前节点
+
+## Element DOM
+
+## 获取DOM
+
+- `Element.querySelector()`
+- `Element.querySelectorAll()`
+- `Element.getElementsByTagName()`
+- `Element.getElementsByClassName()`
+
+## DOM事件
+
+- `Element.addEventListener()`：添加事件的回调函数
+- `Element.removeEventListener()`：移除事件监听函数
+- `Element.dispatchEvent()`：触发事件
+
+## DocumentFragment
+
+DocumentFragment节点代表一个文档的片段，本身就是一个完整的DOM树形结构。
+它没有父节点，parentNode返回null，但是可以插入任意数量的子节点。
+它不属于当前文档，操作DocumentFragment节点，要比直接操作DOM树快得多
+
+<CodeBlock>
+
+```js
+//var docFrag = document.createDocumentFragment();
+// or
+var docFrag = new DocumentFragment();
+
+var li = document.createElement('li');
+li.textContent = 'Hello World';
+docFrag.appendChild(li);
+console.log(docFrag.textContent); //Hello World
+document.querySelector('ul').appendChild(docFrag);
+console.log(docFrag.textContent); // ''
+```
+
+</CodeBlock>
 
 ## 兼容节点
 

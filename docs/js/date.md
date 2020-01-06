@@ -1,4 +1,6 @@
-# 日期
+# Date
+
+[MDN/Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
 ## 静态方法
 

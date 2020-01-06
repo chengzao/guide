@@ -445,7 +445,7 @@ div,p,h1,ul,li,ol,dl
 a{display:block}
 ```
 
-## position
+## position定位
 
 -	静态定位(标准流) : `position:static`
 

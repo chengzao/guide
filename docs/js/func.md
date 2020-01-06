@@ -1,5 +1,6 @@
-# 函数
+# Function
 
+[MDN/Function](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
 ## 定义函数的方法
 
