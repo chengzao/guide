@@ -579,6 +579,45 @@ o.name // 张三
 
 </CodeBlock>
 
+- 实现一个JSON.stringify
+
+```js
+function jsonStringify(obj) {
+  let type = typeof obj;
+  if (type !== "object") {
+    if (/string|undefined|function/.test(type)) {
+      obj = '"' + obj + '"';
+    }
+    return String(obj);
+  } else {
+    let json = []
+    let arr = Array.isArray(obj)
+    for (let k in obj) {
+      let v = obj[k];
+      let type = typeof v;
+      if (/string|undefined|function/.test(type)) {
+        v = '"' + v + '"';
+      } else if (type === "object") {
+        v = jsonStringify(v);
+      }
+      json.push((arr ? "" : '"' + k + '":') + String(v));
+    }
+    return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}")
+  }
+}
+console.log(jsonStringify({ x: 5 })); // "{"x":5}"
+console.log(jsonStringify([1, "false", false])); // "[1,"false",false]"
+console.log(jsonStringify({ b: undefined })); // "{"b":"undefined"}"
+```
+
+- 实现一个JSON.parse
+
+```js
+var jsonStr = '{ "age": 20, "name": "jack" }'
+var json = (new Function('return ' + jsonStr))();
+console.log(json);
+```
+
 ## 栈和队列(LIFO/FIFO)
 
 - `栈`数据结构的访问规则是`LIFO(Last-in-First-Out,后进先出)`

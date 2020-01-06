@@ -238,8 +238,6 @@ console.log(obj1.showUserName === obj2.showUserName); //true
 
 ## 构造函数 new 命令的原理
 
-### js 的 new 操作符做了哪些事情
-
 1. 创建一个空对象,作为将要返回的对象实例
 2. 拷贝构造函数中的方法和属性到这个空对象中
 3. 生成一个**proto**指针,指向构造函数的原型对象

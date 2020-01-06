@@ -27,6 +27,21 @@ setInterval(debounce(fn, 500, '参数1', '参数2'), 1000);
 setInterval(debounce(fn, 2000), 1000); // 不会执行
 ```
 
+- 用途
+
+```js
+// 简单的防抖动函数
+// 实际想绑定在 scroll 事件上的 handler
+function realFunc(){
+    console.log("Success");
+}
+
+// 采用了防抖动
+window.addEventListener('scroll',debounce(realFunc,500));
+// 没采用防抖动
+window.addEventListener('scroll',realFunc);
+```
+
 ## 节流函数throttle
 
 单位时间内有事件被多次触发则，只生效一次

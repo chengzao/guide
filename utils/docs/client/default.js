@@ -1,19 +1,18 @@
 // 网页元素左上角的视口横坐标
 Element.getBoundingClientRect().left
-//Element.offsetLeft
+// Element.offsetLeft
 
 // 网页元素左上角的视口纵坐标
 Element.getBoundingClientRect().top
-//Element.offsetTop
+// Element.offsetTop
 
 // 网页元素左上角的网页横坐标
 Element.getBoundingClientRect().left + document.documentElement.scrollLeft
-//Element.offsetLeft + document.documentElement.scrollLeft
+// Element.offsetLeft + document.documentElement.scrollLeft
 
 // 网页元素左上角的网页纵坐标
 Element.getBoundingClientRect().top + document.documentElement.scrollTop
-//Element.offsetTop + document.documentElement.scrollTop
-
+// Element.offsetTop + document.documentElement.scrollTop
 
 // 视口高度
 window.innerHeight // 包括滚动条

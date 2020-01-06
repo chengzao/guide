@@ -10,26 +10,6 @@
 
 </CodeBlock>
 
-## formatNumber
-
-```js
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
-```
-
 ## formateMoney
 
 ```js
@@ -133,14 +113,6 @@ console.log(binarySearch(67, arr));
 
 </CodeBlock>
 
-## 横竖屏
-
-<CodeBlock>
-
-<<< @/utils/docs/client/changeOrientation.js
-
-</CodeBlock>
-
 ## other
 
 <CodeBlock>
@@ -185,21 +157,31 @@ console.log(binarySearch(67, arr));
 
 <<< @/utils/docs/issue/toChineseNum.js
 
-## 将hello-world风格的转化为helloWorld风格
-
-<CodeBlock>
+## randomString
 
 ```js
-const camelizeRE = /-(\w)/g
-const camelize = (str) => {
-  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '')
+const randomString = function (boolean, min, max) {
+  var str = "",
+    range = min,
+    arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+      'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+      'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
+      'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+      'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  // 随机产生
+  if (boolean) {
+    range = Math.round(Math.random() * (max - min)) + min;
+  }
+  for (var i = 0; i < range; i++) {
+    pos = Math.round(Math.random() * (arr.length - 1));
+    str += arr[pos];
+  }
+  return str;
 }
-
-camelize('hello-world')
-// "helloWorld"
+// demo
+console.log(randomString(true, 1, 4));
 ```
-
-</CodeBlock>
 
 ## 如何避开JavaScript浮点数计算精度问题
 
@@ -222,9 +204,55 @@ camelize('hello-world')
 
 - [原文：从零一步一步实现一个完整版的Promise](https://juejin.im/post/5d59757f6fb9a06ae76405c6)
 
+- 简易版
+
+```js
+function myPromise(constructor){
+    let self=this;
+    self.status="pending" //定义状态改变前的初始状态
+    self.value=undefined;//定义状态为resolved的时候的状态
+    self.reason=undefined;//定义状态为rejected的时候的状态
+    function resolve(value){
+       if(self.status==="pending"){
+          self.value=value;
+          self.status="resolved";
+       }
+    }
+    function reject(reason){
+       if(self.status==="pending"){
+          self.reason=reason;
+          self.status="rejected";
+       }
+    }
+    //捕获构造异常
+    try{
+       constructor(resolve,reject);
+    }catch(e){
+       reject(e);
+    }
+}
+myPromise.prototype.then=function(onFullfilled,onRejected){
+   let self=this;
+   switch(self.status){
+      case "resolved":
+        onFullfilled(self.value);
+        break;
+      case "rejected":
+        onRejected(self.reason);
+        break;
+      default:
+   }
+}
+// demo
+var p=new myPromise(function(resolve,reject){resolve(1)});
+p.then(function(x){console.log(x)})
+```
+
+- 完整版
+
 <CodeBlock title="点击展开" show="false">
 
-<<< @/utils/docs/issue/fib.js
+<<< @/utils/docs/issue/promise.js
 
 </CodeBlock>
 
@@ -441,4 +469,15 @@ cache.get(3);       // 返回  3
 cache.get(4);       // 返回  4
 
 console.log(cache);
+```
+
+## 字符串正则去重
+
+```js
+var str = "adaaasfjjjbkk";
+
+var res = str.replace(/(.).*(\1)/g, function ($1, $2, $3) {
+  $1 = $2 + $1.substring(1).replace(new RegExp($2, 'g'), '');
+  return $1;
+})
 ```

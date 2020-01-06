@@ -5,6 +5,7 @@
 - [eslint 中文网](http://eslint.cn/docs/user-guide/configuring)
 - [Eslint 从入门到放弃](https://www.jianshu.com/p/22e6197e5cff)
 - [ESLint里的规则教会我，无规矩 不编程](https://juejin.im/post/5afede99f265da0b82630af8)
+- [【AST篇】教你如何编写 Eslint 插件](https://juejin.im/post/5d91be23f265da5ba532a07e)
 
 - install `npm install -g eslint`
 

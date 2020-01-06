@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .target {
+      width: 100px;
+      height: 50px;
+      border: 10px solid #ccc;
+      margin-top: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <div class="target"></div>
+  <script src="./index.js"></script>
+  <script>
+
+    // var music = document.querySelector('#music');
+
+    // document.addEventListener('visibilitychange', function () {
+    //   visibilitychange();
+    // }, false);
+
+    // function visibilitychange() {
+    //   console.log(document.visibilityState + ' ' + new Date().getTime());
+    //   if (document.hidden) {
+    //     music.pause();
+    //   } else {
+    //     music.play();
+    //   }
+    // }
+
+    // console.log(document.visibilityState + ' ' + new Date().getTime());
+
+
+    // // ios
+    // var lastFired = new Date().getTime();
+    // setInterval(function () {
+    //   now = new Date().getTime();
+    //   if (now - lastFired > 5000) { // if it's been more than 5 seconds
+    //     alert("onfocus");
+    //   }
+    //   lastFired = now;
+    // }, 500);
+
+
+
+    // 各种浏览器兼容
+    var hidden, state, visibilityChange;
+    if (typeof document.hidden !== "undefined") {
+      hidden = "hidden";
+      visibilityChange = "visibilitychange";
+      state = "visibilityState";
+    } else if (typeof document.mozHidden !== "undefined") {
+      hidden = "mozHidden";
+      visibilityChange = "mozvisibilitychange";
+      state = "mozVisibilityState";
+    } else if (typeof document.msHidden !== "undefined") {
+      hidden = "msHidden";
+      visibilityChange = "msvisibilitychange";
+      state = "msVisibilityState";
+    } else if (typeof document.webkitHidden !== "undefined") {
+      hidden = "webkitHidden";
+      visibilityChange = "webkitvisibilitychange";
+      state = "webkitVisibilityState";
+    }
+
+    // 添加监听器，在title里显示状态变化
+    document.addEventListener(visibilityChange, function () {
+      document.title = document[state];
+    }, false);
+
+    // 初始化
+    document.title = document[state];
+
+  </script>
+</body>
+</html>
