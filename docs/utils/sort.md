@@ -130,7 +130,7 @@
   - 分别进行直接插入排序。
   - 待整个序列中的记录基本有序时，再对全体记录进行依次直接插入排序。
 
-![shellSort](~@assets/image/shellSort.gif)
+![shellSort](https://gitee.com/cxyz/imgbed/raw/img/img/shellSort.gif)
 
 - 代码
 
