@@ -1,4 +1,4 @@
-# client和event
+# client
 
 - `clientHeight`：表示的是可视区域的高度，`不包含border和滚动条`
 - `offsetHeight`：表示可视区域的高度，包含了`border和滚动条`
