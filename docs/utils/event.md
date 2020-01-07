@@ -34,7 +34,7 @@
 
 </CodeBlock>
 
-## 封装DOMContentLoaded事件
+## DOMContentLoaded
 
 <CodeBlock>
 
