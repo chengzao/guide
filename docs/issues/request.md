@@ -33,6 +33,44 @@
   - GET效率更好
   - GET大小限制约4K，POST则没有限制
 
+## GET请求
+
+```js
+var xhr = new XMLHttpRequest();
+// 请求行
+xhr.open('get', '/get');
+// 请求头
+xhr.setRequestHeader('Content-Type', 'text/html');
+// 请求主体
+xhr.send(null);
+// 事件的监听，来监听状态的变化
+xhr.onreadystatechange = function () {
+  //console.log(xhr.status);
+  if (xhr.readyState == 4 && xhr.status === 200) {
+    console.log(xhr.responseText)
+  }
+}
+```
+
+## POST请求
+
+```js
+var xhr = new XMLHttpRequest();
+// 请求行
+xhr.open('post', '/post');
+// 请求头  POST
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+// 请求主体
+xhr.send('name=xiaowang&age=30');
+
+// 事件的监听，来监听状态的变化
+xhr.onreadystatechange = function () {
+  if (xhr.readyState == 4 && xhr.status === 200) {
+    console.log(xhr.responseText)
+  }
+}
+```
+
 ## XML
 
 - XML是一种标记语言，很类似HTML，其宗旨是用来传输数据，具有自我描述性（固定的格式的数据）
