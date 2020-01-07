@@ -38,13 +38,9 @@ request.addEventListener('readystatechange', function () {...}, false);
 
 - `target.dispatchEvent(event)`
 
-### 监听事件兼容
-
-<CodeBlock title="事件的监听与移除 >>">
+### addEventListener
 
 <<< @/utils/docs/event/addEventListener.js
-
-</CodeBlock>
 
 ## 事件队列
 

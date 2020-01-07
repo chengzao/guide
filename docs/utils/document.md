@@ -1,4 +1,4 @@
-# document的一些方法
+# 一些页面方法
 
 ## visibilityChange判断页面可见状态
 

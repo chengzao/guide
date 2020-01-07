@@ -70,6 +70,8 @@
 
 ## 缓存
 
+[juejin/浅谈HTTP缓存](https://juejin.im/post/5bdeabbbe51d4505466cd741)
+
 - 强缓存
 
 ```
@@ -89,3 +91,4 @@ Etag 和 If-None-Match : 只有当文件内容改变时，ETag才改变
 ```
 Cache-Control > Expires > ETag > Last-Modified
 ```
+

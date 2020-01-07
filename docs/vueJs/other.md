@@ -1,4 +1,4 @@
-# 其他
+# other
 
 - [vuepress](https://github.com/vuejs/vuepress)
 - [nuxt.js](https://zh.nuxtjs.org/)

@@ -1,22 +1,14 @@
-# AJAX
+# XMLHttpRequest
 
-## XMLHttpRequest
-
-### 实例化
-
-<CodeBlock title="XMLHttpRequest >>">
+- 简易版1
 
 <<< @/utils/docs/js/XMLHttpRequest.js
 
-</CodeBlock>
-
-<CodeBlock title="ajax简易版">
+- 简易版2
 
 <<< @/utils/docs/js/ajax.js
 
-</CodeBlock>
-
-### API详解
+## API详解
 
 - `xhr.open()` 发起请求，可以是get、post方式
 - `xhr.setRequestHeader()` 设置请求头
@@ -57,8 +49,6 @@
 
 - IE5、IE6中使用 `ActiveObject("Microsoft.XMLHTTP")`
 
-<CodeBlock title="XMLHttpRequest兼容性 >>">
-
 ```js
 var xhr;
 if(XMLHttpRequest){
@@ -68,48 +58,41 @@ if(XMLHttpRequest){
 }
 ```
 
-</CodeBlock>
-
-### 同源
+## 同源
 
 - 同源策略是浏览器的一种安全策略，所谓同源是指，域名，协议，端口完全相同。
 
-### 跨域CORS
-
-- 不同源则跨域
-
-<CodeBlock>
+## 跨域场景
 
 ```bash
-例如：http://www.example.com/
+主域名： http://www.example.com/
 
-http://api.example.com/detail.html    不同源  域名不同
-https//www.example.com/detail.htm   不同源  协议不同
-http://www.example.com:8080/detail.html 不同源  端口不同
-http://api.example.com:8080/detail.html 不同源  域名、端口不同
-https://api.example.com/detail.html 不同源  协议、域名不同
-https://www.example.com:8080/detail.html  不同源    端口、协议不同
-http://www.example.com/detail/index.html  同  源    只是目录不同
+http://api.example.com/index.html    不同源  域名不同
+
+https//www.example.com/index.htm    不同源  协议不同
+
+http://www.example.com:8080/index.html  不同源  端口不同
+
+http://api.example.com:8080/index.html  不同源  域名、端口不同
+
+https://api.example.com/index.html  不同源  协议、域名不同
+
+https://www.example.com:8080/index.html   不同源    端口、协议不同
+
+http://www.example.com/detail/index.html    同  源    只是目录不同
 ```
 
-</CodeBlock>
+## 跨域方案
 
-### 跨域方案
-
-- 顶级域名相同的可以通过`domain.name`来解决，即同时设置 `domain.name = 顶级域名`（如example.com）
-- `document.domain + iframe`
-- `window.name + iframe`
-- `location.hash + iframe`
-- `window.postMessage()`
-- 服务器端解决`cors`
-- `jsonp`
-- `Fetch`
-
-### CORS和JSONP对比
-
-- JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求
-- 使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理
-- JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS）
+- 通过jsonp跨域
+- document.domain + iframe跨域
+- location.hash + iframe
+- window.name + iframe跨域
+- postMessage跨域
+- 跨域资源共享（CORS）
+- nginx代理跨域
+- nodejs中间件代理跨域
+- WebSocket协议跨域
 
 ## fetch发送2次请求的原因
 
@@ -120,19 +103,19 @@ fetch的post请求的时候，导致fetch 第一次发送了一个Options请求�
 - JSONP的优点是：它不像XMLHttpRequest对象实现的Ajax请求那样受到同源策略的限制；它的兼容性更好，在更加古老的浏览器中都可以运行，不需要XMLHttpRequest或ActiveX的支持；并且在请求完毕后可以通过调用callback的方式回传结果
 - JSONP的缺点则是：它只支持GET请求而不支持POST等其它类型的HTTP请求；它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题
 
-<CodeBlock title="jsonp简易版">
-
 <<< @/utils/docs/js/jsonp.js
 
-</CodeBlock>
+## [CORS](./cors.md)和JSONP对比
+
+- JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求
+- 使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理
+- JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS）
 
 ## 相关链接
 
-- [前端跨域整理](https://juejin.im/post/5815f4abbf22ec006893b431)
 - [Ajax 知识体系大梳理](https://juejin.im/post/58c883ecb123db005311861a)
 - [Nginx通过CORS实现跨域](https://mp.weixin.qq.com/s?__biz=MzI3MTI2NzkxMA==&mid=2247484408&idx=1&sn=5c64dd43ff2060e1c4a22d93e4e887c9&scene=1&srcid=0901vPdwJR0crm8vJmjboYzI#rd)
 - [Fetch进阶指南](http://louiszhai.github.io/2016/11/02/fetch/)
-- [ajax跨域，这应该是最全的解决方案了](https://segmentfault.com/a/1190000012469713)
 - [XMLHttpRequest2 新技巧](https://www.html5rocks.com/zh/tutorials/file/xhr2/)
 - [浏览器跨域方法与基于Fetch的Web请求最佳实践](https://segmentfault.com/a/1190000006095018)
 - [fetch-jsonp](https://github.com/camsong/fetch-jsonp)

@@ -115,9 +115,49 @@ document.querySelector('#linkElement').disabled = 'disabled';
 <link rel="stylesheet" href="a.css" />
 ```
 
+## css使用变量
+
+- Sass 和 Less
+
+```css
+// sass
+$direction: left;
+// less
+@direction: left;
+```
+
+- CSS原生变量var()
+
+```css
+/*
+变量定义的语法是： --*
+变量使用的语法是：var()
+*/
+:root {
+    --blue_color: #3388ff;
+    --main_bgcolor: #fafafa;
+    --font_size_12: 12px;
+    --font_size_14: 14px;
+    --color: 20px;
+}
+.box{
+    background-color: var(--main_bgcolor);
+    font-size: var(--font_size_12);
+}
+```
+
 ## BEM
 
 - `Block块, Element元素, Modifier修饰符`
+
+```css
+.block {}
+.block__element {}
+.block--modifier {}
+
+.sub-block__element {}
+.sub-block--modifier {}
+```
 
 ## 变形与动画
 
@@ -428,7 +468,10 @@ font-family：字体系列
 - 行内元素: `display:inline;`可以多个标签放在同一行，但是给标签设置宽高没有作用。
 
 ```html
-a,span,b,u,i,s,ins,del,strong,em
+b, big, i, small, tt
+abbr, acronym, cite, code, dfn, em, kbd, strong, samp, var
+a, bdo, br, img, map, object, q, script, span, sub, sup
+button, input, label, select, textarea
 ```
 
 - 行内块级元素: `display:inline-block;`可以多个标签放在同一行，并且可以标签设置宽高。
@@ -436,6 +479,7 @@ a,span,b,u,i,s,ins,del,strong,em
 
 ```html
 div,p,h1,ul,li,ol,dl
+
 ```
 
 - 标签可以通过修改 `display` 的值来改变显示方式
@@ -446,25 +490,102 @@ a{display:block}
 ```
 
 ## position定位
-
+- [MDN/position](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)
 -	静态定位(标准流) : `position:static`
+
+```css
+position: static;
+```
 
 - 绝对定位 ：`position：absolute`
   - 绝对定位的盒子不占页面上的位置（脱离标准流）
   - 绝对定位以后会影响元素的显示方式：display：inline-block
 
-- 相对定位 ：`position:relative.`相对定位是占据标准流的位置
+```css
+position: absolute;
+top: 40px; left: 40px;
+```
+
+- 相对定位 ：`position:relative`
+  - 相对定位是占据标准流的位置
+  - 相对自身的位置进行定位
+
+```css
+position: relative;
+top: 40px; left: 40px;
+```
 
 - 固定定位 ： `position:fixed;`
   - 使用盒子显示浏览器的固定位置
   - 固定定位会脱离标准流
   - 固定定位会改变元素的显示方式
+- 粘性定位元素 ：`position:stickily`
+
+```css
+position: -webkit-sticky;
+position: sticky;
+top: 20px;
+```
+
 - z-index：用来设置当前盒子所在的层次 `z-index：12；`
+
+
+## 文字超出省略、文字两端对齐
+
+- 单行
+
+```css
+.div{
+  width: 300px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+```
+
+- 多行超出省略
+
+```css
+.line-camp( @clamp:2 ) {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @clamp;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+}
+```
+
+- 两端对齐
+
+```css
+// html
+<div>姓名</div>
+<div>手机号码</div>
+<div>账号</div>
+<div>密码</div>
+
+// css
+div {
+  margin: 10px 0;
+  width: 100px;
+  border: 1px solid red;
+  text-align: justify;
+  text-align-last:justify
+}
+div:after{
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+```
 
 ## 参考资源
 
 !!! include(docs/web/css/urls.md) !!!
 
-## ie兼容
+## IE兼容
 
 !!! include(docs/web/css/ie.md) !!!

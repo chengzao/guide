@@ -1,4 +1,4 @@
-# 基本结构
+# 基础介绍
 
 ## 基本类型
 
@@ -12,13 +12,7 @@
 
 ## 引用类型
 
-- `Object`
-- `Array`
-- `Function`
-- `Date`
-- `Math`
-- `Regexp`
-- `JSON`
+- `Object 、Array 、Function 、Date 、Math 、Regexp 、JSON`
 
 ## Boolean布尔
 

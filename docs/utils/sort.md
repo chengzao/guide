@@ -30,15 +30,21 @@
 
 ![quickSort](https://gitee.com/cxyz/imgbed/raw/img/img/quickSort.gif)
 
-- 代码
+- 代码1
+
+<CodeBlock>
+
+<<< @/utils/docs/sort/quickSort1.js
+
+</CodeBlock>
+
+- 原地分区版快速排序实现
 
 <CodeBlock>
 
 <<< @/utils/docs/sort/quickSort.js
 
 </CodeBlock>
-
-![quickSort](https://gitee.com/cxyz/imgbed/raw/img/img/1566284985210.png)
 
 ## 选择排序
 
@@ -72,14 +78,6 @@
 <<< @/utils/docs/sort/mergeSort.js
 
 </CodeBlock>
-
-- 归并排序的流程
-
-![mergeSort](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort20190819151306.png)
-
-- 合并两个有序数组的流程
-
-![mergeSort](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort20190819151517.png)
 
 ## 插入排序
 

@@ -1,16 +1,4 @@
-# 介绍
-
-- [angularJS](./angular.md)
-
-- [roadmap](./roadmap.md)
-
-- [微信小程序](./wxminiapp.md)
-
-- [后台管理系统](./admin-ui.md)
-
----
-
-## CSR & SSR
+# CSR & SSR
 
 [以下图片来源](https://juejin.im/post/5def0816f265da33aa6aa7fe)
 
@@ -26,8 +14,6 @@
 ![](https://gitee.com/cxyz/imgbed/raw/img/img/Server-Side-Rendering.jpeg)
 
 ---
-
-## ionic
 
 - [ionicframework](https://ionicframework.com/)
 - [androiddevtools.cn](http://www.androiddevtools.cn/)

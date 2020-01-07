@@ -541,5 +541,4 @@ server {
 - [nginx服务器详细安装过程](https://segmentfault.com/a/1190000007116797)
 - [Mac OS下安装及配置nginx](https://gist.github.com/Mioke/ae35fa333dee3b2ac137)
 - [acme.sh](https://github.com/Neilpang/acme.sh)
-- [Nginx通过CORS实现跨域](https://mp.weixin.qq.com/s?__biz=MzI3MTI2NzkxMA==&mid=2247484408&idx=1&sn=5c64dd43ff2060e1c4a22d93e4e887c9&scene=1&srcid=0901vPdwJR0crm8vJmjboYzI#rd)
 - [Nginx基本配置备忘](https://zhuanlan.zhihu.com/p/24524057)

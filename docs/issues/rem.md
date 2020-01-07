@@ -215,7 +215,7 @@ $design-dpr: 2;
 
 ## dpr设置容器大小
 
-```
+```scss
 /* 缩放所支持的设备最小宽度 */
 $min-device-width: 320px;
 /* 缩放所支持的设备最大宽度 */
@@ -255,3 +255,13 @@ $max-device-width: 540px;
 ## vw和vh
 
 [如何在Vue项目中使用vw实现移动端适配](https://www.w3cplus.com/mobile/vw-layout-in-vue.html)
+
+## 相关链接
+
+- [移动web适配之rem](https://www.nihaoshijie.com.cn/index.php/archives/593/)
+- [使用Flexible实现手淘H5页面的终端适配](https://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html)
+- [响应式布局的常用解决方案对比(媒体查询、百分比、rem和vw/vh） #13](https://github.com/forthealllight/blog/issues/13)
+- [物理像素Device-Viewport-and-Pixel-Introduction](https://github.com/hijiangtao/hijiangtao.github.io/blob/master/_posts/2017-07-08-Device-Viewport-and-Pixel-Introduction.md)
+- [如何在Vue项目中使用vw实现移动端适配](https://www.w3cplus.com/mobile/vw-layout-in-vue.html)
+- [物理像素与css像素](https://github.com/hijiangtao/hijiangtao.github.io/blob/master/_posts/2017-07-08-Device-Viewport-and-Pixel-Introduction.md)
+- [CSS像素、物理像素、逻辑像素、设备像素比、PPI、Viewport #21](https://github.com/jawil/blog/issues/21)

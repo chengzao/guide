@@ -91,9 +91,7 @@ sass --sourcemap # 表示开启sourcemap调试。
 
 </CodeBlock>
 
-## 常用语法
-
-### 注释
+## 注释
 
 ```scss
 // 这种注释内容不会出现在生成的css文件中
@@ -101,7 +99,7 @@ sass --sourcemap # 表示开启sourcemap调试。
 /* 这种注释内容会出现在生成的css文件中 */
 ```
 
-### 使用 `$` 声明变量
+## 使用 `$` 声明变量
 
 ```scss
 /* 1. 使用变量$ */
@@ -146,7 +144,7 @@ html {
 
 </CodeBlock>
 
-### 嵌套CSS 规则
+## 嵌套CSS 规则
 
 ```scss
 #content {
@@ -184,7 +182,7 @@ html {
 
 </CodeBlock>
 
-### 父选择器的标识符&
+## 父选择器的标识符&
 
 ```scss
 article a {
@@ -225,7 +223,7 @@ body.ie #content aside {
 
 </CodeBlock>
 
-### 群组选择器的嵌套
+## 群组选择器的嵌套
 
 ```scss
 .container {
@@ -262,7 +260,7 @@ aside a {
 
 </CodeBlock>
 
-### 子组合选择器和同层组合选择器：`>、+ 和 ~`
+## 子组合选择器和同层组合选择器：`>、+ 和 ~`
 
 ```scss
 article {
@@ -313,7 +311,7 @@ nav + article {
 
 </CodeBlock>
 
-### 嵌套属性
+## 嵌套属性
 
 ```scss
 nav {
@@ -338,7 +336,7 @@ nav {
 
 </CodeBlock>
 
-### 导入局部的SASS文件
+## 导入局部的SASS文件
 
 sass局部文件的文件名以`下划线(_)`开头，sass就不会在编译时单独编译这个文件输出css
 
@@ -394,7 +392,7 @@ $family: unquote("Droid+Sans");
 
 </CodeBlock>
 
-### 混合器 mixin
+## 混合器 mixin
 
 ```scss
 @mixin rounded-corners {
@@ -601,7 +599,7 @@ $color: green;
 
 </CodeBlock>
 
-### 使用选择器继承来精简`CSS Extend`
+## 使用选择器继承来精简`CSS Extend`
 
 ```scss
 //通过选择器继承继承样式
@@ -631,7 +629,7 @@ $color: green;
 
 </CodeBlock>
 
-### mixin and extend不同
+## mixin and extend不同
 
 ```scss
 /* extend */
@@ -682,7 +680,7 @@ $color: green;
 
 </CodeBlock>
 
-### function 函数指令
+## function 函数指令
 
 ```scss
 $grid-width: 40px;
@@ -733,7 +731,7 @@ $base: 32;
 
 </CodeBlock>
 
-### 控制指令 (Control Directives)
+## 控制指令 (Control Directives)
 
 - `@if`
 
@@ -931,7 +929,7 @@ $value: 1.5;
 
 </CodeBlock>
 
-### 插值语句
+## 插值语句
 
 可以在选择器或属性名中使用变量
 
