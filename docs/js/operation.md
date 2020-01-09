@@ -337,15 +337,11 @@ var c = 24;
 - 如果内容为true,会执行下面的代码,
 - 如果为内容为false,则不执行这段代码,跳过这段代码执行下面的内容.
 
-<CodeBlock>
-
 ```js
 while(条件语句/boolean)｛
 		//重复执行的代码块
 ｝
 ```
-
-</CodeBlock>
 
 - 如果在写循环的时候一定要有循环的结束条件,如果没有就是死循环,就是一Bug.
 - 终止循环：break
@@ -354,13 +350,23 @@ while(条件语句/boolean)｛
 <CodeBlock>
 
 ```javascript
-	例：
-	var a = 1;
-	while(a <= 100) {
-		console.log(a);
-		a ++;//a = a + 1;
-	}
-	console.log("over");
+var a = 1;
+while(a <= 100) {
+  console.log(a);
+  a ++;//a = a + 1;
+}
+console.log("over");
+
+// el : element dom
+function node2Fragment(el) {
+  var fragment = document.createDocumentFragment(),
+      child;
+  // 将原生节点拷贝到fragment
+  while (child = el.firstChild) {
+      fragment.appendChild(child);
+  }
+  return fragment;
+},
 ```
 
 </CodeBlock>
