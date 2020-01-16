@@ -37,7 +37,7 @@ x==y;  // false
 
 ## 位操作符
 
-- `按位与（ AND）`
+- `按位与（AND）`
 
 对于每一个比特位，只有两个操作数相应的比特位都是1时，结果才为1，否则为0
 
@@ -80,12 +80,25 @@ x==y;  // false
 
 ```js
 1 ^ 2 // 3 => 0001 ^ 0010
+```
 
-var a = 10;
-var b = 99;
-a ^= b, b ^= a, a ^= b;
-a // 99
-b // 10
+- 使用`^`来完成值交换
+
+```js
+// --- before ---
+let temp = a; a = b; b = temp; // 传统，但需要借助临时变量
+b = [a, a = b][0] // 借助数组
+
+// --- after ---
+let a = 7
+let b = 1
+a ^= b
+b ^= a
+a ^= b
+console.log(a)   // 1
+console.log(b)   // 7
+
+[a, b] = [b, a]; // ES6，解构赋值
 ```
 
 - `按位非（NOT）`
@@ -505,36 +518,18 @@ console.log("continue is over");
 
 </CodeBlock>
 
-## js中的label标签
-
-- `语句的前面有标签(label)相当于定位符,用于跳转到程序的任意位置`
-
-<CodeBlock title="格式 >>">
+## 使用 `&` 判断奇偶性
 
 ```js
-label:
-  statement
+7 & 1   // 1
+8 & 1   // 0
 ```
 
-</CodeBlock>
-
-<CodeBlock title="label >>">
+## 使用 `!!` 将数字转为布尔值
 
 ```js
-top:
-  for (var i = 0; i < 3; i++){
-    for (var j = 0; j < 3; j++){
-      if (i === 1 && j === 1) break top;
-      console.log('i=' + i + ', j=' + j);
-    }
-  }
-
-lab1: for(var i =0 ; i<5;i++){
-	if(i===3){
-		continue lab1
-	}
-	console.log('i ==> ',i)
-}
+console.log(!!7);       // true
+console.log(!!0);       // false
+console.log(!!-1);      // true
+console.log(!!0.71);    // true
 ```
-
-</CodeBlock>

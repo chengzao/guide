@@ -6,6 +6,6 @@ layout: SpecialLayout
 
 # SpecialLayout
 
-<<< @/docs/feature/gist.js
+<<< @/docs/suport/gist.js
 
-!!! include(docs/feature/footer.md) !!!
+!!! include(docs/suport/footer.md) !!!

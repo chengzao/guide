@@ -249,7 +249,7 @@ export default {
 :::
 ::: tab preview
 
-!!! include(docs/feature/count.vue) !!!
+!!! include(docs/suport/count.vue) !!!
 
 :::
 ::::

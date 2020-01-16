@@ -19,18 +19,19 @@
 - 类型转换：`!!undefined --> false`
 - 布尔转换
 
-```bash
-undefined, null, false, 0, NaN , "" , ''  --> false
-# 过滤数组中的这些值
+```js
+undefined, null, false, 0, NaN , "" , ''  // false
+
+// 过滤数组中的这些值
 [undefined, null, false, 0, NaN , "" , '', 'hello'].filter(item => item) // ['hello']
 
-typeof null # 返回object
+typeof null // 返回object
 
-null是一个表示“空”的对象，转为数值时为0
-
-undefined是一个表示”此处无定义”的原始值，转为数值时为NaN
 
 ```
+- `null`是一个表示“空”的对象，转为数值时为0
+- `undefined`是一个表示”此处无定义”的原始值，转为数值时为`NaN`
+- `void 0`
 
 ## BigInt
 
@@ -292,6 +293,15 @@ Math.max(1,3,null);
   Math.floor(-1.1)// -2
   ```
 
+- 使用`~、>>、<<、|`来取整
+
+```js
+console.log(~~11.71)     // 11
+console.log(11.71 >> 0)  // 11
+console.log(11.71 << 0)  // 11
+console.log(11.71 | 0)   // 11
+```
+
 - `Math.ceil()` 返回大于参数值的最小整数 (向上取整)
 
 ```js
@@ -326,10 +336,26 @@ function randomHsla(){
 - 四舍五入
 
 ```js
-Math.round(1.1) // 1
-Math.round(1.9)  // 2
-Math.round(-1.1) // -1
-Math.round(-1.9) // -2
+Math.round(21.7) // 22
+Math.round(21.1)  // 21
+Math.round(-21.7) // -22
+Math.round(-21.1) // -21
+```
+
+- 使用 `A +/- 0.5 | 0` 来替代 `Math.round()`
+
+```js
+var a = 21.7
+a + 0.5 | 0  // 22
+
+var a = 21.1
+a + 0.5 | 0  // 21
+
+var a = -21.7
+a - 0.5 | 0  // -22
+
+var a = -21.1
+a - 0.5 | 0  // -21
 ```
 
 ### `Math.sqrt()`

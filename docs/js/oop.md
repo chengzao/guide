@@ -300,10 +300,6 @@ console.log(m instanceof M); // instanceof 检测实例
 console.log(m.__proto__.constructor === M);
 ```
 
-## prototype示意图
-
-![oop](https://gitee.com/cxyz/imgbed/raw/img/img/oop.jpg)
-
 ## 构造函数的继承
 
 - 拷贝继承

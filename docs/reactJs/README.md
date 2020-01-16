@@ -116,7 +116,7 @@ class SubCounter extends Component{
 
 ![父子组件触发示意图](https://gitee.com/cxyz/imgbed/raw/img/img/20200101234008.png)
 
-### `static getDerivedStateFromProps`
+## `static getDerivedStateFromProps`
 
 - 接收父组件传递过来的 props 和组件之前的状态，返回一个对象来更新 state 或者返回 null 来表示接收到的 props 没有变化，不需要更新 state
 - 该生命周期钩子的作用： 将父组件传递过来的 props 映射 到子组件的 state 上面，这样组件内部就不用再通过 this.props.xxx 获取属性值了，统一通过 this.state.xxx 获取。映射就相当于拷贝了一份父组件传过来的 props ，作为子组件自己的状态。注意：子组件通过 setState 更新自身状态时，不会改变父组件的 props

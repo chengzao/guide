@@ -481,3 +481,21 @@ var res = str.replace(/(.).*(\1)/g, function ($1, $2, $3) {
   return $1;
 })
 ```
+
+## 使用 Array 来重复字符
+
+```js
+for (let a = "", i = 7; i--;) a+= 0;
+
+let b = Array(7).join(0); // "0000000"
+let c = Array(7).join('La') // "LaLaLaLaLaLa"
+
+let d = "0".repeat(7); // "0000000"
+let e = Array(7).fill('Ab').join('') // AbAbAbAbAbAbAb
+```
+
+## 使用toString(16)取随机字符串
+
+```js
+Math.random().toString(16).substring(2, 15);
+```
