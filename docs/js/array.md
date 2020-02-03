@@ -267,6 +267,8 @@ var arr = ['a', 'b', 1, 2]
 var newArr = arr.fill('m', 0, 2)
 newArr // ["m", "m", 1, 2]
 arr // ["m", "m", 1, 2]
+
+Array(3).fill('Ab') // ["Ab", "Ab", "Ab"]
 ```
 
 </CodeBlock>
@@ -346,6 +348,10 @@ var arr = ['a', 'b', 'c', 'd'];
 var newArr = arr.slice(-2, 3);
 newArr // ["c"]
 arr // ["a", "b", "c", "d"]
+
+// 使用 Array.slice(0) 实现数组浅拷贝
+var arr = [1,2,3,4]
+var arr2 = arr.slice(0)
 ```
 
 </CodeBlock>

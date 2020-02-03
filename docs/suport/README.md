@@ -1,4 +1,4 @@
-# feature
+# suport
 
 - [SpecialLayout](./custom.md)
 
@@ -9,24 +9,24 @@
 
 - import md file
 
-<<< @/docs/feature/footer.md
+<<< @/docs/suport/footer.md
 
 <CodeBlock>
 
 ```bash
-<<< @/docs/feature/footer.md
+<<< @/docs/suport/footer.md
 ```
 
 </CodeBlock>
 
 - import js file
 
-<<< @/docs/feature/gist.js{2}
+<<< @/docs/suport/gist.js{2}
 
 <CodeBlock>
 
 ```bash
-<<< @/docs/feature/gist.js{2}
+<<< @/docs/suport/gist.js{2}
 ```
 
 </CodeBlock>

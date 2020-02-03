@@ -365,10 +365,9 @@ console.log(str.includes('To be', 1));    // false
 console.log(str.includes('TO BE'));       // false
 ```
 
-## normalize
-
-- 返回字符串的指定Unicode规范化形式
+## 使用`.link()`创建链接
 
 ```js
-
+let l = 'google'.link('www.google.com');
+// "<a href="www.google.com">google</a>"
 ```

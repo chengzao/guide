@@ -1,75 +1,106 @@
 # guide
 
-- [developer mozilla cn](https://developer.mozilla.org/zh-CN/)
-- [javascript.fun](http://www.javascript.fun/)
-- [Web前端导航](http://www.alloyteam.com/nav/)
-- [wangdoc/javascript-tutorial](https://github.com/wangdoc/javascript-tutorial)
-- [css88 文档](http://www.css88.com/nav/)
-- [印记中文](https://www.docschina.org/)
-- [30-seconds-of-code中文版](https://github.com/kujian/30-seconds-of-code)
-- [30-seconds-of-css中文版](http://caibaojian.com/30-seconds-of-css/)
-- [前端开发haorooms](http://www.haorooms.com/nav)
-- [前端awesomes-trend](https://www.awesomes.cn/rank?sort=trend)
-- [stephentian/33-js-concepts](https://github.com/stephentian/33-js-concepts)
-- [javascriptweekly](https://javascriptweekly.com/)
-- [react.statuscode](https://react.statuscode.com/)
-- [statuscode](http://statuscode.com/)
-- [medium](https://medium.com/)
-- [css-tricks](https://css-tricks.com/)
-- [freecodecamp](https://www.freecodecamp.org/)
-- [socketio](https://github.com/socketio/socket.io/)
-- [yeoman](http://yeoman.io/)
-- [World Wide Web](http://info.cern.ch/hypertext/WWW/TheProject.html)
-- [electronjs](https://electronjs.org/docs/faq)
-- [fundbug](https://www.fundebug.com/)
-- [webcomponents](https://www.webcomponents.org/introduction)
-- [codewars算法](https://www.codewars.com/)
-- [leetcode算法](https://leetcode.com/)
-- [BRENDAN EICH Blog](https://brendaneich.com)
-- [webcomponents](https://www.webcomponents.org/introduction)
-- [hellogithub](https://hellogithub.com/)
+## 博客生成器
 
----
+- [gatsby](https://www.gatsbyjs.org/)
+- [vuepress](https://github.com/vuejs/vuepress)
+- [hexo](https://hexo.io/zh-cn/index.html)
+- [hugo](https://github.com/stkevintan/canoe-blog)
+- [docsify](https://github.com/docsifyjs/docsify/)
+- [jekyll](https://www.jekyll.com.cn/)
+- [storybook](https://github.com/storybookjs/storybook)
+- [docz](https://www.docz.site/)
 
-js
+## 代码托管
 
-- [如何使用Tween.js各类原生动画运动缓动算法](http://www.zhangxinxu.com/wordpress/2016/12/how-use-tween-js-animation-easing/)
-- [canvas中文文档](https://www.yuque.com/airing/canvas/readme)
-- [live2D看板娘](https://haremu.com/p/205)
-- [instant.page](https://github.com/instantpage/instant.page)
-- [quicklink](https://github.com/GoogleChromeLabs/quicklink)
-- [Workbox 3：Service Worker 可以如此简单](https://mp.weixin.qq.com/s?__biz=MzI5NjM5NDQxMg==&mid=2247483948&idx=1&sn=801a4ac325da1ae294ef5a255e1d7c74&chksm=ec4449efdb33c0f985d532cf5698dcf08ab22510fdc8cfa38d29cf3dd910c636eb40e1e70058&mpshare=1&scene=1&srcid=0128caxsWCrpaanthUdcxARr#rd)
-- [从零搭建docker+jenkins+node.js自动化部署环境](https://juejin.im/post/5b8ddb70e51d45389153f288)
-- [H5 notification浏览器桌面通知](https://juejin.im/post/5c6df433f265da2de80f5eda)
+- [github](https://github.com/)
+- [gitlab](https://gitlab.com/)
+- [gitee](https://gitee.com/)
 
----
+## 集成ci
 
-es6
+- [禅道](https://www.zentao.net/)
+- [walle-web](https://github.com/meolu/walle-web)
+- [jenkins](https://jenkins.io/)
+- [travis-ci](https://github.com/travis-ci/travis-ci)
+- [gitlab-runner](https://docs.gitlab.com/runner/install/)
+- [flow.ci](https://github.com/FlowCI/docs/blob/master/intro_base.md)
+- [strider](https://github.com/Strider-CD/strider)
+- [atlassian](https://www.atlassian.com/zh)
 
-- [babel](http://babeljs.io/)
-- [es6.ruanyifeng](http://es6.ruanyifeng.com/)
-- [原生JS实现最简单的图片懒加载](https://github.com/axuebin/react-blog/issues/1)
-- [layui.layer](http://www.layui.com/doc/modules/layer.html)
-- [better-scroll移动端滚动插件](https://github.com/ustbhuangyi/better-scroll)
-- [select2](https://github.com/select2/select2)
-- [fullpage.js](http://www.dowebok.com/77.html)
-- [calendar js](http://shici.store/poetry-calendar/assets/js/calendar.js)
+## mock api
 
----
+- [YApi](https://github.com/YMFE/yapi)
+- [mockjs](http://mockjs.com/)
+- [easy-mock](https://www.easy-mock.com/)
 
-github登录授权
+## 评论系统
 
-- [AnDongCai@back-login](https://github.com/AnDongCai/back-login)
-- [linwalker@node-login](https://github.com/linwalker/node-login)
-- [第三方登入例子-GitHub授权登入（node-koa）](https://segmentfault.com/a/1190000009722474)
-- [GitHub OAuth 第三方登录示例教程](http://www.ruanyifeng.com/blog/2019/04/github-oauth.html)
-- [基于 Github API 的图床 Chrome 插件开发全纪录](https://juejin.im/post/5cd38990e51d453a543f9e3e)
+- [Disqus](https://disqus.com/)
+- [Facebook](https://developers.facebook.com/docs/plugins/comments?locale=zh_CN)
+- [Gitment](https://github.com/imsun/gitment)
+- [Valine](https://github.com/xCss/Valine)
+- [gitalk](https://github.com/gitalk/gitalk)
+- [isso](https://github.com/posativ/isso)
+- [Vssue](https://github.com/meteorlxy/vssue)
 
----
+## 服务部署
 
-- [前端常用插件、工具类库汇总](https://juejin.im/post/5ba7d5dd5188255c6140cc9d)
-- [前端必备自定义滚动库——iScroll](https://juejin.im/post/5bc57e616fb9a05d396f3fc9)
-- [ast](https://astexplorer.net/)
-- [分享 8 个有趣且实用的 API](https://juejin.im/post/5c92446b6fb9a070c022f0e2)
-- [hacksplaining](https://www.hacksplaining.com/lessons)
-- [awesome-bookmarks](https://panjiachen.github.io/awesome-bookmarks/website)
+- [netlify](https://www.netlify.com/)
+- [gh-pages@github](https://pages.github.com/)
+- [zeit.co/now](https://zeit.co/now)
+- [surge.sh](https://surge.sh/)
+
+## 线上服务
+
+- [mlab](https://mlab.com/)
+- [firebase](https://firebase.google.com/?hl=zh-cn)
+- [Parse](https://parseplatform.org/)
+- [contentful](https://www.contentful.com/)
+- [语雀](https://www.yuque.com/)
+- [leancloud](https://leancloud.cn/)
+- [daocloud](https://www.daocloud.io/)
+- [wilddog](https://www.wilddog.com/)
+- [Heroku](https://www.heroku.com/)
+- [digitalocean](https://www.digitalocean.com/)
+
+## 流程图
+
+- [processOn](https://www.processon.com/)
+- [百度脑图](http://naotu.baidu.com/)
+
+## 图床
+
+- [又拍云](https://www.upyun.com/)
+- [sm.ms图床](https://sm.ms/)
+- [七牛云](https://www.qiniu.com)
+- [PicGo@图床工具](https://github.com/Molunerfinn/PicGo)
+- [ipic@图床工具](https://itunes.apple.com/cn/app/id1101244278?mt=12)
+- [mpic@图床工具](http://mpic.lzhaofu.cn/)
+
+## free ssl
+
+- [letsencrypt](https://letsencrypt.org/)
+- [certbot](https://certbot.eff.org/)
+- [Neilpang/acme.sh@github](https://github.com/Neilpang/acme.sh)
+- [freessl](https://freessl.cn/)
+
+## js在线编辑器
+
+- [codesandbox](https://codesandbox.io/)
+- [stackblitz](https://stackblitz.com)
+- [npm.runkit](https://npm.runkit.com)
+
+## cdn
+
+- [unpkg](https://unpkg.com/#/)
+- [jsdelivr](https://www.jsdelivr.com/)
+- [bootcdn](https://www.bootcdn.cn/)
+- [cdnjs](https://cdnjs.com/)
+- [cloudflare](https://www.cloudflare.com/)
+
+## 为gh-pages添加ssl
+
+- [github怎么绑定自己的域名？](https://www.zhihu.com/question/31377141)
+- [Custom domain redirects for GitHub Pages sites](https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/)
+- [Troubleshooting custom domains](https://help.github.com/articles/troubleshooting-custom-domains/)
