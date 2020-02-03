@@ -372,6 +372,8 @@ bcrypt
 jsonwebtoken
 passport
 passport-jwt
+
+npm-check -u -g
 ```
 
 </CodeBlock>
