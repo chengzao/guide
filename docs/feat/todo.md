@@ -1,1 +1,3 @@
-<Todo />
+<ClientOnly>
+  <todo-index />
+</ClientOnly>
