@@ -26,12 +26,12 @@ module.exports = [
   "reading-progress",
   "img-lazy",
   "@vuepress-reco/extract-code",
-  ["vuepress-plugin-code-copy", true],
   [
     "run",
     {
       row: false,
       reverse: false
     }
-  ]
+  ],
+  "copy-code"
 ];
