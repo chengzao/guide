@@ -1,7 +1,6 @@
 ---
 title: dev-proxy
-date: 2020-07-20
-sidebar: "auto"
+date: 2020-07-22
 tags:
   - proxy
 categories:
@@ -50,6 +49,41 @@ ngrok.cc
 ngrok.com
 ```
 
-- [lightproxy](https://lightproxy.org/zh-CN/doc/getting-started)
+- [lightproxy: 代理开发接口](https://lightproxy.org/zh-CN/doc/getting-started)
 
-- [whistle](https://github.com/avwo/whistle)
+- [whistle: 代理开发接口](https://github.com/avwo/whistle)
+
+- proxy dev terminal
+
+```bash
+https://gist.github.com/moenn/2db47589724cf6c06ad9316ac57e2144
+
+https://gist.github.com/laispace/666dd7b27e9116faece6
+
+https://github.com/haad/proxychains
+
+# git config proxy
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1086
+
+git config --global --unset http.proxy
+
+git config --global --unset https.proxy
+
+# socks5
+export http_proxy="socks5://127.0.0.1:1080"
+
+export https_proxy="socks5://127.0.0.1:1080"
+
+# http/https
+export http_proxy="http://127.0.0.1:1080"
+
+export https_proxy="http://127.0.0.1:1080"
+
+# proxychains
+apt-get install proxychains
+vim /etc/proxychains.conf
+```

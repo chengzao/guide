@@ -10,13 +10,6 @@ export default ({
 }) => {
   // Vue.use(Element)
   // console.log(siteData)
-  router.addRoutes([
-    {
-      path: "/todo",
-      component: () => import("./components/Todo.vue")
-    }
-  ]);
-
   // 自动跳转到web页面
   // router.beforeEach((to, from, next) => {
   //   if (to.path === "/") {

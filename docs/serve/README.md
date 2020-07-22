@@ -139,38 +139,6 @@ sudo ln -s /node-v10.8.0-linux-x64/bin/npm /usr/bin/npm
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$PATH
 ```
 
-- proxy dev terminal
-
-```bash
-https://gist.github.com/moenn/2db47589724cf6c06ad9316ac57e2144
-
-https://gist.github.com/laispace/666dd7b27e9116faece6
-
-https://github.com/haad/proxychains
-
-git config --global http.proxy 'socks5://127.0.0.1:1080'
-
-git config --global https.proxy 'socks5://127.0.0.1:1080'
-
-git config --global http.https://github.com.proxy socks5://127.0.0.1:1086
-
-git config --global --unset http.proxy
-
-git config --global --unset https.proxy
-
-
-export http_proxy="socks5://127.0.0.1:1080"
-
-export https_proxy="socks5://127.0.0.1:1080"
-
-export http_proxy="http://localhost:port"
-
-export https_proxy="http://localhost:port"
-
-apt-get install proxychains
-vim /etc/proxychains.conf
-```
-
 - mirrors
 
 ```bash
