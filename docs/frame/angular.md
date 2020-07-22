@@ -1,4 +1,10 @@
-# angularJS
+---
+title: angular.js
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - angular.js
+---
 
 ## ng 指令
 
@@ -54,17 +60,17 @@ ng-srcset # 指定 <img> 元素的 srcset 属性。H5的新属性，允许输入
 <CodeBlock>
 
 ```js
-var myFilterModule = angular.module('myFilterApp', []);
+var myFilterModule = angular.module("myFilterApp", []);
 
 // configure the module.
 // in this example we will create a greeting filter
-myFilterModule.filter('greet', function() {
- return function(name) {
-    return 'Hello, ' + name + '!';
+myFilterModule.filter("greet", function() {
+  return function(name) {
+    return "Hello, " + name + "!";
   };
 });
 
-var myApp = angular.module('myApp', ['myFilterApp']);
+var myApp = angular.module("myApp", ["myFilterApp"]);
 ```
 
 ```html
@@ -81,41 +87,48 @@ var myApp = angular.module('myApp', ['myFilterApp']);
 </div>
 
 <script>
-  angular.module('xmpl.service', [])
+  angular
+    .module("xmpl.service", [])
 
-    .value('greeter', {
-      salutation: 'Hello',
+    .value("greeter", {
+      salutation: "Hello",
       localize: function(localization) {
         this.salutation = localization.salutation;
       },
       greet: function(name) {
-        return this.salutation + ' ' + name + '!';
+        return this.salutation + " " + name + "!";
       }
     })
 
-    .value('user', {
+    .value("user", {
       load: function(name) {
         this.name = name;
       }
     });
 
-  angular.module('xmpl.directive', []);
+  angular.module("xmpl.directive", []);
 
-  angular.module('xmpl.filter', []);
+  angular.module("xmpl.filter", []);
 
-  angular.module('xmpl', ['xmpl.service', 'xmpl.directive', 'xmpl.filter'])
+  angular
+    .module("xmpl", ["xmpl.service", "xmpl.directive", "xmpl.filter"])
 
     .run(function(greeter, user) {
       // This is effectively part of the main method initialization code
       greeter.localize({
-        salutation: 'Bonjour'
+        salutation: "Bonjour"
       });
-      user.load('World');
+      user.load("World");
     })
 
-    .controller('XmplController',['$scope','greeter', 'user' ,function($scope, greeter, user) {
-      $scope.greeting = greeter.greet(user.name);
-    }]);
+    .controller("XmplController", [
+      "$scope",
+      "greeter",
+      "user",
+      function($scope, greeter, user) {
+        $scope.greeting = greeter.greet(user.name);
+      }
+    ]);
 </script>
 ```
 
@@ -828,7 +841,7 @@ angular
         function MyTabsController($scope) {
           var panes = ($scope.panes = []);
           // title在多个实例中公用
-          $scope.title = 'controller tab panel'
+          $scope.title = "controller tab panel";
           $scope.select = function(pane) {
             angular.forEach(panes, function(pane) {
               pane.selected = false;
@@ -965,56 +978,59 @@ angular
 ```js
 // script.js
 (function(angular) {
-  'use strict';
-angular.module('docsIsolationExample', [])
-  .controller('Controller', ['$scope', function($scope) {
-    $scope.naomi = { name: 'Naomi', address: '1600 Amphitheatre' };
-    $scope.vojta = { name: 'Vojta', address: '3456 Somewhere Else' };
-  }])
-  .directive('myCustomer', function() {
-    return {
-      restrict: 'E',
-      scope: {
-        customerInfo: '=info',
-        customVajta: '@info'
-      },
-      templateUrl: 'my-customer-plus-vojta.html'
-    };
-  });
+  "use strict";
+  angular
+    .module("docsIsolationExample", [])
+    .controller("Controller", [
+      "$scope",
+      function($scope) {
+        $scope.naomi = { name: "Naomi", address: "1600 Amphitheatre" };
+        $scope.vojta = { name: "Vojta", address: "3456 Somewhere Else" };
+      }
+    ])
+    .directive("myCustomer", function() {
+      return {
+        restrict: "E",
+        scope: {
+          customerInfo: "=info",
+          customVajta: "@info"
+        },
+        templateUrl: "my-customer-plus-vojta.html"
+      };
+    });
 })(window.angular);
 ```
 
 ```html
 <!-- my-customer-plus-vojta.html -->
 Name: {{customerInfo.name}} Address: {{customerInfo.address}}
-<hr>
+<hr />
 Name: {{vojta.name}} Address: {{vojta.address}}
-<hr>
+<hr />
 Name: {{customerInfo}}
 
-<hr>
+<hr />
 Name: {{customVajta}}
 ```
 
 ```html
 <!-- index.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Example - example-directive-isolate-2-production</title>
-  <script src="//code.angularjs.org/1.7.7/angular.min.js"></script>
-  <script src="script.js"></script>
-
-</head>
-<body ng-app="docsIsolationExample">
-  <div ng-controller="Controller">
-  <p>--------------naomi---------------</p>
-  <my-customer info="naomi"></my-customer>
-  <p>--------------vojta---------------</p>
-  <my-customer info="aaaa"></my-customer>
-</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Example - example-directive-isolate-2-production</title>
+    <script src="//code.angularjs.org/1.7.7/angular.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body ng-app="docsIsolationExample">
+    <div ng-controller="Controller">
+      <p>--------------naomi---------------</p>
+      <my-customer info="naomi"></my-customer>
+      <p>--------------vojta---------------</p>
+      <my-customer info="aaaa"></my-customer>
+    </div>
+  </body>
 </html>
 ```
 

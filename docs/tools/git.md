@@ -1,4 +1,12 @@
-# git常见命令
+---
+title: git常见命令
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - git
+categories:
+  - tools
+---
 
 ## config
 
@@ -135,7 +143,7 @@ doc/**/*.pdf
 
 ## `.gitkeep`
 
-git默认会忽略空的文件夹, 使用.gitkeep来追踪空的文件夹
+git 默认会忽略空的文件夹, 使用.gitkeep 来追踪空的文件夹
 
 ## commit
 
@@ -298,14 +306,14 @@ git checkout -- 文件名
 
 </CodeBlock>
 
-- 文件恢复（已add未commit）git reset HEAD
+- 文件恢复（已 add 未 commit）git reset HEAD
 
 ```bash
 git reset HEAD -- filename # 暂存区恢复成HEAD
 git checkout -- filename # 工作区恢复成暂存区
 ```
 
-- 版本回退（已commit）git reset –hard
+- 版本回退（已 commit）git reset –hard
 
 <CodeBlock>
 
@@ -421,7 +429,7 @@ git merge [branch_name] --no-ff #合并指定分支到当前分支master
 
 ## stash
 
-- 切换分支时暂存未commit的更改
+- 切换分支时暂存未 commit 的更改
 
 <CodeBlock>
 
@@ -452,7 +460,7 @@ git remote prune origin
 
 </CodeBlock>
 
-## pull和push
+## pull 和 push
 
 <CodeBlock>
 
@@ -517,10 +525,12 @@ git cat-file -p commitid # 根据对象的类型显示其内容
 - [git install](https://github.com/git/git/blob/master/INSTALL)
 - [.gitignore](https://git-scm.com/docs/gitignore)
 - [为 git 设置 http https 代理](http://blog.csdn.net/sankoshine/article/details/50602754)
-- [Git的奇技淫巧](https://mp.weixin.qq.com/s/nbQzmDXYSuOnfzy7tuY_Xw)
-- [error while loading shared libraries的解決方法](https://blog.csdn.net/dumeifang/article/details/2963223)
+- [Git 的奇技淫巧](https://mp.weixin.qq.com/s/nbQzmDXYSuOnfzy7tuY_Xw)
+- [error while loading shared libraries 的解決方法](https://blog.csdn.net/dumeifang/article/details/2963223)
 - [如何从 GitHub 上下载单个文件夹](https://www.zhihu.com/question/25369412)
 - [优雅的提交你的 Git Commit Message](https://juejin.im/post/5afc5242f265da0b7f44bee4)
 - [git moji](https://gitmoji.carloscuesta.me/)
 - [git.plugin.zsh](https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh)
 - [learngitbranching](https://learngitbranching.js.org/)
+- [三年 Git 使用心得 & 常见问题整理](https://juejin.im/post/5ee649ff51882542ea2b5108)
+- [一份值得收藏的 Git 异常处理清单](https://juejin.im/post/5edcf3a36fb9a047fa04fbc3)

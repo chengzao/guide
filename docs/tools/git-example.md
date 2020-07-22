@@ -1,4 +1,12 @@
-# git常见用法
+---
+title: git常见用法
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - git
+categories:
+  - tools
+---
 
 ## 如何使用分支
 
@@ -36,7 +44,7 @@ git log --graph --pretty=oneline --abbrev-commit    # 合并后，我们用git l
 
 </CodeBlock>
 
-## Bug分支
+## Bug 分支
 
 <CodeBlock>
 
@@ -80,7 +88,7 @@ git branch -d b_tmp # 删除b_tmp分支
 
 </CodeBlock>
 
-## rebase合并多个commit
+## rebase 合并多个 commit
 
 <CodeBlock>
 
@@ -132,7 +140,7 @@ ba3849c add readme.md
 
 </CodeBlock>
 
-## rebase修改commit
+## rebase 修改 commit
 
 <CodeBlock>
 
@@ -164,7 +172,7 @@ git log --oneline
 
 </CodeBlock>
 
-## rebase合并非连续commit
+## rebase 合并非连续 commit
 
 <CodeBlock>
 
@@ -206,7 +214,7 @@ c5a0c7a 合并非连续的commit
 
 </CodeBlock>
 
-## 使用cherry-pick合并dev分支的commit到master中
+## 使用 cherry-pick 合并 dev 分支的 commit 到 master 中
 
 <CodeBlock>
 
@@ -269,3 +277,9 @@ git reset --hard HEAD~1
 ```
 
 </CodeBlock>
+
+## 快速下载 github
+
+```bash
+git clone  https://github.com.cnpmjs.org/reactjs/zh-hans.reactjs.org.git
+```

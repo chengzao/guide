@@ -1,4 +1,12 @@
-# gitlab
+---
+title: gitlab
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - gitlab
+categories:
+  - server
+---
 
 - hosts
 
@@ -386,56 +394,56 @@ services:
 - Job: YAML 文件定义了一系列带有约束说明的 job, job **至少**需要要包含 script
   - script 可以直接执行系统命令(如：./configure;make;make install)或者直接执行脚本(test.sh)
   - 任务是由 CI 接管并且在服务器执行, 并且**每一个任务的执行都是独立的**
-- job 的名称具有**唯一性**在文件中只能出现一次; 下列词汇是**保留字段，不能被使用**命名为job名称
-- 关键字: 不可以被用于 Job名 的保留字
+- job 的名称具有**唯一性**在文件中只能出现一次; 下列词汇是**保留字段，不能被使用**命名为 job 名称
+- 关键字: 不可以被用于 Job 名 的保留字
 
-| 关键字 |是否必须 |	描述 |
-| --| :--: | --|
-|image | no | 用于docker镜像|
-|services| no | 用于docker服务|
-|stages| no|定义构建阶段|
-|types| no|stages 的别名(已废除)|
-|before_script| no | 定义在每个job之前运行的命令 |
-|after_script| no | 定义在每个job之后运行的命令 |
-|variables| no | 定义构建变量 |
-|cache| no | 定义一组文件列表，可在后续运行中使用 |
+| 关键字        | 是否必须 | 描述                                 |
+| ------------- | :------: | ------------------------------------ |
+| image         |    no    | 用于 docker 镜像                     |
+| services      |    no    | 用于 docker 服务                     |
+| stages        |    no    | 定义构建阶段                         |
+| types         |    no    | stages 的别名(已废除)                |
+| before_script |    no    | 定义在每个 job 之前运行的命令        |
+| after_script  |    no    | 定义在每个 job 之后运行的命令        |
+| variables     |    no    | 定义构建变量                         |
+| cache         |    no    | 定义一组文件列表，可在后续运行中使用 |
 
 - only and except 保留字
 
-| 关键字 |	描述  |
-| ----- |  ---- |
-| branches | 当一个分支被push上来 |
-| tags | 当一个打了tag的分支被push上来 |
-| api | 当一个pipline被piplines api所触发调起 |
-| external | 当使用了GitLab以外的CI服务 |
-| pipelines | 针对多项目触发器而言，当使用CI_JOB_TOKEN并使用gitlab所提供的api创建多个pipelines的时候 |
-| pushes | 当pipeline被用户的git push操作所触发的时候 |
-| schedules | 针对预定好的pipline而言（每日构建一类）|
-|triggers| 用token创建piplines的时候 |
-| web | 在GitLab页面上Pipelines标签页下，你按了run pipline的时候 |
+| 关键字    | 描述                                                                                           |
+| --------- | ---------------------------------------------------------------------------------------------- |
+| branches  | 当一个分支被 push 上来                                                                         |
+| tags      | 当一个打了 tag 的分支被 push 上来                                                              |
+| api       | 当一个 pipline 被 piplines api 所触发调起                                                      |
+| external  | 当使用了 GitLab 以外的 CI 服务                                                                 |
+| pipelines | 针对多项目触发器而言，当使用 CI_JOB_TOKEN 并使用 gitlab 所提供的 api 创建多个 pipelines 的时候 |
+| pushes    | 当 pipeline 被用户的 git push 操作所触发的时候                                                 |
+| schedules | 针对预定好的 pipline 而言（每日构建一类）                                                      |
+| triggers  | 用 token 创建 piplines 的时候                                                                  |
+| web       | 在 GitLab 页面上 Pipelines 标签页下，你按了 run pipline 的时候                                 |
 
 - job 可以配置的参数列表
 
-| 参数名称	 | 是否必须	 | 参数说明 |
-| :------ | :-----: | :------ |
-| script | yes | 需要在 docker 容器中运行的脚本 |
-| image | no | 所使用的docker镜像 |
-| services | no | 需要关联的 docker 服务 |
-| stage | no | 定义当前 job 运行在那个阶段 (默认: test) |
-| variables | no | 定义job级别的变量 |
-| only | no | 定义一列git分支，并为其创建job |
-| except | no | 定义一列git分支，不创建job |
-| tags | no | 通过 tags 确定使用指定还是使用通用部署程序 |
-| allow_failure | no | 允许 job 失败， job 失败不会影响最终结果 |
-| when | no | 定义 job 在什么时候运行， 支持参数 on_success, on_failure, always或者manual |
-| dependencies | no | 定义job依赖关系，这样他们就可以互相传递artifacts |
-| artifacts | no | Define list of job artifacts |
-| cache | no | 定义应在后续运行之间缓存的文件列表 |
-| before_script	 | no | 覆盖 job 执行前需要执行的脚本设置 |
-| after_script | no | 覆盖 job 执行后需要执行的脚本设置 |
-| environment | no | 定义此作业完成部署的环境名称 |
-| coverage | no | 定义给定作业的代码覆盖率设置 |
-| retry | no | job 执行发生故障时自动重试次数 |
+| 参数名称      | 是否必须 | 参数说明                                                                      |
+| :------------ | :------: | :---------------------------------------------------------------------------- |
+| script        |   yes    | 需要在 docker 容器中运行的脚本                                                |
+| image         |    no    | 所使用的 docker 镜像                                                          |
+| services      |    no    | 需要关联的 docker 服务                                                        |
+| stage         |    no    | 定义当前 job 运行在那个阶段 (默认: test)                                      |
+| variables     |    no    | 定义 job 级别的变量                                                           |
+| only          |    no    | 定义一列 git 分支，并为其创建 job                                             |
+| except        |    no    | 定义一列 git 分支，不创建 job                                                 |
+| tags          |    no    | 通过 tags 确定使用指定还是使用通用部署程序                                    |
+| allow_failure |    no    | 允许 job 失败， job 失败不会影响最终结果                                      |
+| when          |    no    | 定义 job 在什么时候运行， 支持参数 on_success, on_failure, always 或者 manual |
+| dependencies  |    no    | 定义 job 依赖关系，这样他们就可以互相传递 artifacts                           |
+| artifacts     |    no    | Define list of job artifacts                                                  |
+| cache         |    no    | 定义应在后续运行之间缓存的文件列表                                            |
+| before_script |    no    | 覆盖 job 执行前需要执行的脚本设置                                             |
+| after_script  |    no    | 覆盖 job 执行后需要执行的脚本设置                                             |
+| environment   |    no    | 定义此作业完成部署的环境名称                                                  |
+| coverage      |    no    | 定义给定作业的代码覆盖率设置                                                  |
+| retry         |    no    | job 执行发生故障时自动重试次数                                                |
 
 <CodeBlock>
 
@@ -469,11 +477,11 @@ job1:
 
 </CodeBlock>
 
-- image and services: 这两个关键字允许使用一个自定义的Docker镜像和一系列的服务，并且可以用于整个job周期
+- image and services: 这两个关键字允许使用一个自定义的 Docker 镜像和一系列的服务，并且可以用于整个 job 周期
 - before_script:
   - 必须是数组或多行字符串
   - 支持定义为 global 和 job 类型， job 类型会覆盖掉 global 类型的值
-  - 定义在所有 job（包括deploy job）之前运行的命令。（在 _artifacts_ 运行之后）
+  - 定义在所有 job（包括 deploy job）之前运行的命令。（在 _artifacts_ 运行之后）
 - after_script
   - 必须是数组或多行字符串
   - 支持定义为 global 和 job 类型， job 类型会覆盖掉 global 类型的值
@@ -501,7 +509,7 @@ job:
 - stages
   - 只支持 global 类型
   - 定义了 job 支持的执行阶段和顺序
-  - stages中的元素顺序决定了对应 job 的执行顺序
+  - stages 中的元素顺序决定了对应 job 的执行顺序
   - 下一个 阶段 的 job 只会在前一个 阶段 的 job 执行成功后开始执行
 
 <CodeBlock>
@@ -586,12 +594,13 @@ script:
 </CodeBlock>
 
 - YAML 中的特殊字符:
-  `:` 、 `{` 、 `}` 、 `[` 、 `]` 、`,`  、 `&` 、 `*` 、 `#` 、 `?` 、 `|` 、 `-` 、 `<` 、 `>` 、 `=` 、 `!` 、 `%` 、`@` 、` ` ` 。
+  `:` 、 `{` 、 `}` 、 `[` 、 `]` 、`,` 、 `&` 、 `*` 、 `#` 、 `?` 、 `|` 、 `-` 、 `<` 、 `>` 、 `=` 、 `!` 、 `%` 、`@` 、`` ` 。
 - only and except
+
   - 只有满足 only 条件的 branches 和 tags 才会被运行
   - except 和 only 相反, 满足 except 条件的 branches 和 tags 将 不会 被运行
 
-- refs策略的使用规则:
+- refs 策略的使用规则:
   - only 和 except 支持使用正则表达式.
   - only 和 except 支持使用特殊的关键字.
   - only 和 except 支持同时设置, 当同时设置时 only 和 except 将会同时起作用.
@@ -631,9 +640,9 @@ job:
 </CodeBlock>
 
 - artifacts:
-  - 用于指定成功后应附加到job的文件和目录的列表
+  - 用于指定成功后应附加到 job 的文件和目录的列表
   - 只能使用项目工作间内的文件或目录路径
-  - 定义一个空的dependencies数组可以禁用artifact传递
+  - 定义一个空的 dependencies 数组可以禁用 artifact 传递
 
 <CodeBlock>
 
@@ -647,7 +656,7 @@ job:
 
 </CodeBlock>
 
-- variables: GitLab CI允许你为.gitlab-ci.yml增加变量，该变量将会被设置入任务环境
+- variables: GitLab CI 允许你为.gitlab-ci.yml 增加变量，该变量将会被设置入任务环境
 
 <CodeBlock>
 
@@ -753,4 +762,4 @@ cleanup_job:
 
 </CodeBlock>
 
-- [GitLab-CI中的artifacts使用研究](https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/)
+- [GitLab-CI 中的 artifacts 使用研究](https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/)

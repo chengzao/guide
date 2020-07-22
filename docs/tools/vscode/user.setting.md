@@ -5,36 +5,47 @@
 ```json
 ...
 {
-    "files.associations": {
-        "*.js": "javascript",
-        "*.cjson": "jsonc",
-        "*.wxss": "css",
-        "*.wxs": "javascript",
-        "*.vue": "vue"
-    },
-    "emmet.triggerExpansionOnTab": true,
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact",
-        "wxml": "html"
-    },
-    "files.autoSave": "off",
-    "editor.tabSize": 2,
-    "editor.mouseWheelZoom": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "autoprefixer.formatOnSave": true,
-    "csscomb.formatOnSave": true,
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact"
-    ],
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
-    "html.format.extraLiners": "",
-    "prettier.requireConfig": true,
-    "prettier.semi": false,
-    "prettier.singleQuote": true,
-    "prettier.eslintIntegration": true,
-    "eslint.autoFixOnSave": true
+  "workbench.iconTheme": "material-icon-theme",
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "workbench.settings.useSplitJSON": true,
+  "editor.tabSize": 4,
+  "files.associations": {
+    "*.js": "javascript",
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.vue": "vue",
+    "*.tpl": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "wxml": "html"
+  },
+  "eslint.enable": true,
+  "eslint.validate": [
+    "vue",
+    "vue-html",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.codeActionsOnSave.mode": "all",
+  "html.format.extraLiners": "",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "vscode.typescript-language-features"
+  // },
 }
 ```

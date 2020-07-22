@@ -1,4 +1,12 @@
-# docker-compose
+---
+title: docker-compose
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - docker
+categories:
+  - server
+---
 
 ## Compose 命令说明
 

@@ -1,5 +1,6 @@
 ## plugins
 
+```bash
 - Bookmarks
 - Bracket Pair Colorizer
 - Debugger for Chrome
@@ -67,3 +68,4 @@
 
 - npm
 - npm Intellisense
+```

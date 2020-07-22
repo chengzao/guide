@@ -1,8 +1,16 @@
-# vim
+---
+title: vim
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - vim
+categories:
+  - server
+---
 
-## vim模式
+## vim 模式
 
-- 使用vi编辑器:vi编辑器提供了3种模式: 分别是命令模式、插入模式、底行模式
+- 使用 vi 编辑器:vi 编辑器提供了 3 种模式: 分别是命令模式、插入模式、底行模式
 
 ## 命令模式
 
@@ -17,7 +25,7 @@ vim +5 /home/xyz/test.txt  # 打开文件后定位到第5行
 <CodeBlock>
 
 ```bash
-:w      # 保存，:w filenme另存为
+:w      # 保存，:w fileName另存为
 :q      # 退出
 :wq     # 保存并退出
 :e!     # 撤销更改，返回到上一次保存的状态
@@ -92,13 +100,13 @@ hi MatchParen ctermbg=blue ctermfg=white   # 匹配的括号颜色修改
 
 ## vim plugin
 
-- [vundle插件管理工具](https://github.com/VundleVim/Vundle.vim)
-- [vim-plug插件管理工具](https://github.com/junegunn/vim-plug)
+- [vundle 插件管理工具](https://github.com/VundleVim/Vundle.vim)
+- [vim-plug 插件管理工具](https://github.com/junegunn/vim-plug)
 - [vim-scripts](http://vim-scripts.org/vim/scripts.html)
 
 ## 相关链接
 
 - [vim](https://github.com/judasn/Linux-Tutorial/)
 - [Vim YouCompleteMe](https://www.jianshu.com/p/d908ce81017a)
-- [利用vundle工具来管理vim插件](https://www.cnblogs.com/aaronLinux/p/6798898.html)
+- [利用 vundle 工具来管理 vim 插件](https://www.cnblogs.com/aaronLinux/p/6798898.html)
 - [spaceVim](https://github.com/SpaceVim/SpaceVim)

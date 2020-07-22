@@ -1,12 +1,18 @@
-# Element DOM
+---
+title: Element DOM
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - element
+---
 
 [MDN/Element](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)
 
 ## 类型
 
 - `Document`：整个文档树的顶层节点
-- `DocumentType`：doctype标签(比如`<!DOCTYPE html>`)
-- `Element`：网页的各种HTML标签(比如`<body>、<a>`等)
+- `DocumentType`：doctype 标签(比如`<!DOCTYPE html>`)
+- `Element`：网页的各种 HTML 标签(比如`<body>、<a>`等)
 - `Attribute`：网页元素的属性(比如`class="right"`)
 - `Text`：标签之间或标签包含的文本
 - `Comment`：注释
@@ -18,44 +24,44 @@
 - 子节点关系(`childNodes`)：直接的下级节点
 - 同级节点关系(`sibling`)：拥有同一个父节点的节点
 
-## 获取DOM元素
+## 获取 DOM 元素
 
 <CodeBlock>
 
 ```js
-document.getElementById('demo'); // 返回单个标签dom
-document.getElementsByClassName('test'); //返回多个dom 在 IE 5,6,7,8 中无效
-document.getElementsByTagName('div');   // 返回多个dom
-document.querySelector('#demo');   //只返回匹配的第一个元素dom  html5
-document.querySelectorAll('.test'); // html5
+document.getElementById("demo"); // 返回单个标签dom
+document.getElementsByClassName("test"); //返回多个dom 在 IE 5,6,7,8 中无效
+document.getElementsByTagName("div"); // 返回多个dom
+document.querySelector("#demo"); //只返回匹配的第一个元素dom  html5
+document.querySelectorAll(".test"); // html5
 ```
 
 </CodeBlock>
 
 ## 节点对象属性
 
-### Node.nodeName与Node.nodeType
+### Node.nodeName 与 Node.nodeType
 
 - `nodeName属性返回节点的名称`
 - `nodeType属性返回节点类型的常数值`
 
-| 类型 | nodeName | nodeType |
-| ------ | ------ | :------: |
-| ELEMENT_NODE | 大写的HTML元素名 | 1 |
-| ATTRIBUTE_NODE |`Attr.name` | 2 |
-| TEXT_NODE | `#text` | 3 |
-| COMMENT_NODE | `#comment` | 8 |
-| DOCUMENT_NODE | `#document` | 9 |
-| DOCUMENT_TYPE_NODE | `DocumentType.name` | 10 |
-| DOCUMENT_FRAGMENT_NODE | `#document-fragment` | 11 |
+| 类型                   | nodeName             | nodeType |
+| ---------------------- | -------------------- | :------: |
+| ELEMENT_NODE           | 大写的 HTML 元素名   |    1     |
+| ATTRIBUTE_NODE         | `Attr.name`          |    2     |
+| TEXT_NODE              | `#text`              |    3     |
+| COMMENT_NODE           | `#comment`           |    8     |
+| DOCUMENT_NODE          | `#document`          |    9     |
+| DOCUMENT_TYPE_NODE     | `DocumentType.name`  |    10    |
+| DOCUMENT_FRAGMENT_NODE | `#document-fragment` |    11    |
 
 <CodeBlock>
 
 ```js
-document.nodeName // "#document"
-document.nodeType // 9
-document.querySelector('a').nodeType === 1// true
-document.querySelector('a').nodeType === Node.ELEMENT_NODE// true
+document.nodeName; // "#document"
+document.nodeType; // 9
+document.querySelector("a").nodeType === 1; // true
+document.querySelector("a").nodeType === Node.ELEMENT_NODE; // true
 ```
 
 </CodeBlock>
@@ -83,21 +89,21 @@ document.querySelector('a').nodeType === Node.ELEMENT_NODE// true
 <CodeBlock>
 
 ```js
-var d = document.querySelector('p').ownerDocument;
-d === document // true
+var d = document.querySelector("p").ownerDocument;
+d === document; // true
 //document对象本身的ownerDocument属性,返回null
-document.ownerDocument //null
+document.ownerDocument; //null
 ```
 
 </CodeBlock>
 
-### Node.sibling与Node.previousSibling
+### Node.sibling 与 Node.previousSibling
 
 - `Node.nextSibling属性返回紧跟在当前节点后面的第一个同级节点`
 - `Node.previousSibling属性返回当前节点前面的、距离最近的一个同级节点`
-- `nextSibling` ：IE678  (下一个兄弟节点)
+- `nextSibling` ：IE678 (下一个兄弟节点)
 - 在谷歌火狐中也有这个方法,只不过是得到换行.
-- `nextElementSibling` ：火狐谷歌 IE9-11  (下一个兄弟节点)
+- `nextElementSibling` ：火狐谷歌 IE9-11 (下一个兄弟节点)
 - 兼容写法：`b.nextElementSibling || b.nextSibling`
 
 <CodeBlock>
@@ -116,7 +122,7 @@ n.style.backgroundColor = "purple";
 
 </CodeBlock>
 
-- `previousSibling` ：IE678  (上一个兄弟节点)
+- `previousSibling` ：IE678 (上一个兄弟节点)
 - 在谷歌火狐中也有这个方法,只不过是得到换行.
 - `previousElementSibling` ：火狐谷歌 IE9-11 (上一个兄弟节点)
 - 兼容写法：`b.previousElementSibling || b.previousSibling`
@@ -132,11 +138,11 @@ var m = b.previousElementSibling || b.previousSibling;
 m.style.backgroundColor = "purple";
 
 // 获取所有的兄弟节点
-function siblings(elm){
-  var a=[];
-  var p= elm.parentNode.children;
-  for (var i=0,pl=p.length;i<pl;i++){
-    if(p[i] !== elm){
+function siblings(elm) {
+  var a = [];
+  var p = elm.parentNode.children;
+  for (var i = 0, pl = p.length; i < pl; i++) {
+    if (p[i] !== elm) {
       a.push(p[i]);
     }
     return a;
@@ -164,8 +170,8 @@ if (node.parentNode) {
 
 ### Node.parentElement
 
-- 返回当前节点的父Element节点
-- 如果当前节点没有父节点,或者父节点类型不是Element节点,则返回`null`
+- 返回当前节点的父 Element 节点
+- 如果当前节点没有父节点,或者父节点类型不是 Element 节点,则返回`null`
 
 <CodeBlock>
 
@@ -180,76 +186,76 @@ if (node.parentElement) {
 
 ### Node.childNodes
 
-- `火狐谷歌 IE9-11  (所有子节点)`
-- `nodeType`  每一个标签都一个这个属性(有个三个值)
-- `nodeType  ==  1`  表示的是元素节点
-- `nodeType  ==  2`  表示是属性节点
-- `nodeType  ==  3`  是文本节点
+- `火狐谷歌 IE9-11 (所有子节点)`
+- `nodeType` 每一个标签都一个这个属性(有个三个值)
+- `nodeType == 1` 表示的是元素节点
+- `nodeType == 2` 表示是属性节点
+- `nodeType == 3` 是文本节点
 
 <CodeBlock>
 
 ```html
 <div id="box">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
 </div>
 <script>
-//1.获取父盒子
-var b = document.getElementById("box");
-//2.通过父盒子获取所有子盒子
-var bcArr = b.childNodes;
-var arr = [];
-//for循环遍历得到的所有自盒子数组
-for(var i = 0; i<bcArr.length ;i++){
+  //1.获取父盒子
+  var b = document.getElementById("box");
+  //2.通过父盒子获取所有子盒子
+  var bcArr = b.childNodes;
+  var arr = [];
+  //for循环遍历得到的所有自盒子数组
+  for (var i = 0; i < bcArr.length; i++) {
     //如果自盒子的nodeType的值 == 1 ,说明他的是元素节点(标签)
-    if(bcArr[i].nodeType == 1){
-        //把这个标签放入arr 这个数组.
-        arr.push(bcArr[i]);
+    if (bcArr[i].nodeType == 1) {
+      //把这个标签放入arr 这个数组.
+      arr.push(bcArr[i]);
     }
-}
-//3.打印长度.()
-console.log(bcArr)
-console.log(bcArr.length)
-console.log(arr)
-console.log(arr.length)
+  }
+  //3.打印长度.()
+  console.log(bcArr);
+  console.log(bcArr.length);
+  console.log(arr);
+  console.log(arr.length);
 </script>
 ```
 
 </CodeBlock>
 
-### Node.firstChild与Node.lastChild
+### Node.firstChild 与 Node.lastChild
 
 - `firstChild属性返回当前节点的第一个子节点,如果当前节点没有子节点,则返回null`
 - `Node.lastChild属性返回当前节点的最后一个子节点,如果当前节点没有子节点,则返回null`
-- `firstChild` ：IE678  (第一个子节点)
+- `firstChild` ：IE678 (第一个子节点)
 - 在谷歌火狐中也有这个方法,只不过是得到第一个换行.
-- `firstElementChild` ：火狐谷歌 IE9-11  (第一个子节点)
+- `firstElementChild` ：火狐谷歌 IE9-11 (第一个子节点)
 - 兼容写法：`b.firstElementChild || b.firstChild`
 
 <CodeBlock>
 
 ```html
 <div id="box">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
 </div>
 <script>
-//1.获取父盒子
-var b = document.getElementById("box");
-//2.通过父盒子获取第一个子盒子
-var fc = b.firstElementChild || b.firstChild;
-//3.更改背景色.
-fc.style.backgroundColor = "purple";
+  //1.获取父盒子
+  var b = document.getElementById("box");
+  //2.通过父盒子获取第一个子盒子
+  var fc = b.firstElementChild || b.firstChild;
+  //3.更改背景色.
+  fc.style.backgroundColor = "purple";
 </script>
 ```
 
 </CodeBlock>
 
-- `lastChild` ：IE678   (最后一个子节点)
+- `lastChild` ：IE678 (最后一个子节点)
 - 在谷歌火狐中也有这个方法,只不过是得到最后一个换行.
-- `lastElementChild`  ：火狐谷歌 IE9-11  (最后一个子节点)
+- `lastElementChild` ：火狐谷歌 IE9-11 (最后一个子节点)
 - 兼容写法：`b.lastElementChild || b.lastChild`
 
 <CodeBlock>
@@ -267,25 +273,25 @@ lc.style.backgroundColor = "purple";
 
 ### children
 
-- 在IE678中注释会被当做节点.解决方法：`注释写到父节点外部`
+- 在 IE678 中注释会被当做节点.解决方法：`注释写到父节点外部`
 
 <CodeBlock>
 
 ```html
 <div id="box">
-    <div class="box"></div>
-    <div class="box"></div>
-    <!--这个是第三个盒子-->
-    <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <!--这个是第三个盒子-->
+  <div class="box"></div>
 </div>
 <script>
-//1.获取父盒子
-var b = document.getElementById("box");
-//2.通过父盒子获取所有子盒子
-var bcArr = b.children;
-//3.打印长度
-console.log(bcArr)
-console.log(bcArr.length)
+  //1.获取父盒子
+  var b = document.getElementById("box");
+  //2.通过父盒子获取所有子盒子
+  var bcArr = b.children;
+  //3.打印长度
+  console.log(bcArr);
+  console.log(bcArr.length);
 </script>
 ```
 
@@ -295,7 +301,7 @@ console.log(bcArr.length)
 
 - `someNode = node.parentNode.children[index]`,`index`是索引值
 
-## DOM节点对象的方法
+## DOM 节点对象的方法
 
 ### createElement
 
@@ -305,11 +311,11 @@ console.log(bcArr.length)
 
 ```js
 //demo
-newel=document.createElement('h1');
-newel.innerHTML='<p>hello</p>';  //innerText不能转换HTML标签
+newel = document.createElement("h1");
+newel.innerHTML = "<p>hello</p>"; //innerText不能转换HTML标签
 document.body.appendChild(newel);
 //demo2
-newtext=document.createTextNode('hello world');
+newtext = document.createTextNode("hello world");
 document.body.appendChild(newtext);
 ```
 
@@ -356,7 +362,7 @@ function DOMComb(parent, callback) {
 ### 将节点插入指定位置
 
 - `insertBefore(a,b)`用于将某个节点插入当前节点的指定位置
-- 该方法接受2个参数,第一个是`要插入的节点`,第二个是`参照节点`
+- 该方法接受 2 个参数,第一个是`要插入的节点`,第二个是`参照节点`
 - `parentNode.insertBefore(newNode,targetNode)；`
 
 ### insertAdjacentHTML
@@ -369,8 +375,8 @@ function DOMComb(parent, callback) {
   - `afterend`：在当前元素节点的后面
 
 ```js
-var d1 = document.getElementById('one');
-d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
+var d1 = document.getElementById("one");
+d1.insertAdjacentHTML("afterend", '<div id="two">two</div>');
 ```
 
 - `Element.remove方法用于将当前元素节点从DOM树删除`
@@ -386,30 +392,30 @@ d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
 ```html
 <div id="box">
   <div id="box1">
-      <div>1</div>
-      <div>2</div>
+    <div>1</div>
+    <div>2</div>
   </div>
 </div>
 <script>
-var box = document.getElementById("box");
-var box1 = document.getElementById("box1");
-var newBox = box1.cloneNode(true);
-// var newBox = box1.cloneNode(false);
-box.appendChild(newBox);
+  var box = document.getElementById("box");
+  var box1 = document.getElementById("box1");
+  var newBox = box1.cloneNode(true);
+  // var newBox = box1.cloneNode(false);
+  box.appendChild(newBox);
 </script>
 ```
 
 ### 移除节点
 
 - `父节点.removeChild(子节点)`
-- `自己节点.parentNode.removeChild(自己节点)` 不知道父级的情况下移除自身Node
+- `自己节点.parentNode.removeChild(自己节点)` 不知道父级的情况下移除自身 Node
 
 <CodeBlock>
 
 ```html
 <div id="box">
-    <div id="box1"></div>
-    <div id="box2"></div>
+  <div id="box1"></div>
+  <div id="box2"></div>
 </div>
 <script>
   var box = document.getElementById("box");
@@ -451,11 +457,11 @@ box.appendChild(newBox);
 - `Element.removeAttribute` 用于从当前元素节点移除属性
 
 ```js
-<img id="pic" width="100px" height="100px"/>
+<img id="pic" width="100px" height="100px" />;
 //1.获取节点.
 var pic = document.getElementById("pic");
 //2.修改属性.
-pic.setAttribute("width","500px");
+pic.setAttribute("width", "500px");
 var a = pic.getAttribute("height");
 //3.删除属性
 pic.removeAttribute("height");
@@ -466,10 +472,10 @@ pic.removeAttribute("height");
 - `Element.attributes` 返回一个类似数组的动态对象
 - 属性节点对象有`name`和`value`属性;对应该属性的属性名和属性值;等同于`nodeName`属性和`nodeValue`属性
 
-### dataset属性
+### dataset 属性
 
 - `data-`后面的属性名有限制;`只能包含字母、数字、连词线(-)、点(.)、冒号(:)和下划线(_)`
-- 属性名不应该使用A到Z的大写字母;比如不能有`data-helloWorld`这样的属性名;而要写成`data-hello-world`
+- 属性名不应该使用 A 到 Z 的大写字母;比如不能有`data-helloWorld`这样的属性名;而要写成`data-hello-world`
 
 ```js
 // html
@@ -492,10 +498,10 @@ delete n2.dataset.foo;
 ### ParentNode
 
 - `HTMLCollection`节点的集合(返回一个类似数组的对象
-- `children`属性返回一个动态的`HTMLCollection`集合,由当前节点的所有Element子节点组成
-- `firstElementChild`属性返回当前节点的第一个Element子节点,如果不存在任何Element子节点,则返回`null`
-- `lastElementChild`属性返回当前节点的最后一个Element子节点,如果不存在任何Element子节点,则返回`null`
-- `childElementCount`属性返回当前节点的所有Element子节点的数目
+- `children`属性返回一个动态的`HTMLCollection`集合,由当前节点的所有 Element 子节点组成
+- `firstElementChild`属性返回当前节点的第一个 Element 子节点,如果不存在任何 Element 子节点,则返回`null`
+- `lastElementChild`属性返回当前节点的最后一个 Element 子节点,如果不存在任何 Element 子节点,则返回`null`
+- `childElementCount`属性返回当前节点的所有 Element 子节点的数目
 
 ### ChildNode
 
@@ -506,14 +512,14 @@ delete n2.dataset.foo;
 
 ## Element DOM
 
-## 获取DOM
+## 获取 DOM
 
 - `Element.querySelector()`
 - `Element.querySelectorAll()`
 - `Element.getElementsByTagName()`
 - `Element.getElementsByClassName()`
 
-## DOM事件
+## DOM 事件
 
 - `Element.addEventListener()`：添加事件的回调函数
 - `Element.removeEventListener()`：移除事件监听函数
@@ -521,9 +527,9 @@ delete n2.dataset.foo;
 
 ## DocumentFragment
 
-DocumentFragment节点代表一个文档的片段，本身就是一个完整的DOM树形结构。
-它没有父节点，parentNode返回null，但是可以插入任意数量的子节点。
-它不属于当前文档，操作DocumentFragment节点，要比直接操作DOM树快得多
+DocumentFragment 节点代表一个文档的片段，本身就是一个完整的 DOM 树形结构。
+它没有父节点，parentNode 返回 null，但是可以插入任意数量的子节点。
+它不属于当前文档，操作 DocumentFragment 节点，要比直接操作 DOM 树快得多
 
 <CodeBlock>
 
@@ -532,11 +538,11 @@ DocumentFragment节点代表一个文档的片段，本身就是一个完整的D
 // or
 var docFrag = new DocumentFragment();
 
-var li = document.createElement('li');
-li.textContent = 'Hello World';
+var li = document.createElement("li");
+li.textContent = "Hello World";
 docFrag.appendChild(li);
 console.log(docFrag.textContent); //Hello World
-document.querySelector('ul').appendChild(docFrag);
+document.querySelector("ul").appendChild(docFrag);
 console.log(docFrag.textContent); // ''
 ```
 
@@ -546,14 +552,14 @@ console.log(docFrag.textContent); // ''
 
 <CodeBlock>
 
-<<< @/utils/docs/dom/getNextElement.js
+<<< @/utils/libs/dom/getNextElement.js
 
-<<< @/utils/docs/dom/getPreviousElement.js
+<<< @/utils/libs/dom/getPreviousElement.js
 
-<<< @/utils/docs/dom/getFirstElement.js
+<<< @/utils/libs/dom/getFirstElement.js
 
-<<< @/utils/docs/dom/getLastElement.js
+<<< @/utils/libs/dom/getLastElement.js
 
-<<< @/utils/docs/dom/getAllSibling.js
+<<< @/utils/libs/dom/getAllSibling.js
 
 </CodeBlock>

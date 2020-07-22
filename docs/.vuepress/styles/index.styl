@@ -2,8 +2,6 @@
 // html,body
 //   font-family "Fira Code"
 
-@require './tabs.styl'
-
 .content:not(.custom)
   overflow hidden
   ul li
@@ -44,16 +42,6 @@ details summary:hover
 .hide
   display none
 
-// div[class*="language-"]
-//   &.extra-class
-//     max-height: 500px
-//     overflow: auto
-//     margin: 10px 0
-
-// div[class*="language-"] pre, div[class*="language-"] pre[class*="language-"]
-//   margin: 0
-
-
 @keyframes rocking {
   0%,
   100% {
@@ -85,20 +73,6 @@ details summary:hover
   background-color: #e91e63;
 }
 
-.theorem
-  margin 1rem 0
-  padding .1rem 1.5rem
-  border-radius 0.4rem
-  background-color #f0f4f8
-  .title
-    font-weight bold
-
-.custom-block
-  &.right
-    color transparentify($textColor, 0.4)
-    font-size 0.9rem
-    text-align right
-
 .sidebar > .sidebar-links > li:not(:first-child)
   margin-top 0.2rem
 
@@ -106,3 +80,16 @@ details summary:hover
   font-size 1em !important
   line-height 1 !important
   font-weight 600 !important
+
+.tag-item
+    cursor: pointer
+
+.preview-code .editor pre
+  flex: 1
+
+.theme-reco-content .icon.outbound
+  color: #0fa6e2
+
+.custom-reco-pages
+  .home-blog .home-blog-wrapper .info-wrapper
+    overflow: visible

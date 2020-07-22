@@ -1,6 +1,15 @@
-# centos7配置nginx
+---
+title: nginx/centos7
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - centos7
+  - nginx
+categories:
+  - server
+---
 
-<CodeBlock>
+- centos7
 
 ```bash
 sudo yum update -y
@@ -12,34 +21,21 @@ sudo yum install net-tools -y
 sudo yum upgrade -y
 ```
 
-</CodeBlock>
+## nginx 安装
 
-## nginx安装
-
-- 当前nginx版本: `nginx -V`
-
-<CodeBlock>
+- 当前 nginx 版本: `nginx -V`
 
 ```bash
 nginx version: nginx/1.15.12
-...
 ```
 
-</CodeBlock>
-
 - step1: [nginx](http://nginx.org/en/linux_packages.html#RHEL-CentOS)
-
-<CodeBlock>
 
 ```bash
 sudo yum install yum-utils
 ```
 
-</CodeBlock>
-
 - step2: 编辑`vim /etc/yum.repos.d/nginx.repo`
-
-<CodeBlock>
 
 ```bash
 [nginx-stable]
@@ -57,16 +53,14 @@ enabled=0
 gpgkey=https://nginx.org/keys/nginx_signing.key
 ```
 
-</CodeBlock>
-
 - step3: `sudo yum-config-manager --enable nginx-mainline`
 - step4: `sudo yum install nginx`
-- 查看安装nginx信息: `rpm -ql nginx`
+- 查看安装 nginx 信息: `rpm -ql nginx`
 - step5: `systemctl enable nginx.service`
 - nginx service: `servce nginx start|stop|restart`
-- yum安装的nginx目录位置: `/etc/nginx/`
-- yum安装的nginx后html文件位置: `/usr/share/nginx/html`
-- nginx配置conf: `/etc/nginx/nginx.conf`和`/etc/nginx/conf/`
+- yum 安装的 nginx 目录位置: `/etc/nginx/`
+- yum 安装的 nginx 后 html 文件位置: `/usr/share/nginx/html`
+- nginx 配置 conf: `/etc/nginx/nginx.conf`和`/etc/nginx/conf/`
 
 ### nginx
 
@@ -183,16 +177,14 @@ server {
 
 </CodeBlock>
 
-- 检查nginx配置文件: `nginx -t`
-- 重启nginx服务: `service nginx restart`
-- 购买域名, 配置dns后， 访问域名网址
+- 检查 nginx 配置文件: `nginx -t`
+- 重启 nginx 服务: `service nginx restart`
+- 购买域名, 配置 dns 后， 访问域名网址
 
-## 配置ssl
+## 配置 ssl
 
 - [Neilpang/acme.sh](https://github.com/Neilpang/acme.sh)
 - 安装 acme.sh
-
-<CodeBlock>
 
 ```bash
 curl  https://get.acme.sh | sh
@@ -204,11 +196,7 @@ curl  https://get.acme.sh | sh
 alias acme.sh=~/.acme.sh/acme.sh
 ```
 
-</CodeBlock>
-
 - 生成证书
-
-<CodeBlock>
 
 ```bash
 # 方式1
@@ -217,11 +205,7 @@ acme.sh  --issue  -d domain.cn -d www.domain.cn  --webroot  /usr/share/nginx/htm
 acme.sh --issue  -d domain.cn   --nginx
 ```
 
-</CodeBlock>
-
 - 安装证书
-
-<CodeBlock>
 
 ```bash
 mkdir /etc/nginx/ssl
@@ -232,20 +216,14 @@ acme.sh  --installcert  -d  domain.cn   \
         --reloadcmd  "service nginx force-reload"
 ```
 
-</CodeBlock>
-
 - 更新 acme.sh
-
-<CodeBlock>
 
 ```bash
 # 开启自动升级
 acme.sh  --upgrade  --auto-upgrade
 ```
 
-</CodeBlock>
-
-## 配置nginx
+## 配置 nginx
 
 - step1: `cp default.conf chenio_cn.conf` 和 `mv default.conf default.conf.bak`
 - step2: `vim /etc/nginx/conf.d/chenio_cn.conf`

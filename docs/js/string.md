@@ -1,4 +1,10 @@
-# String
+---
+title: string
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - string
+---
 
 [MDN/String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)
 
@@ -9,20 +15,20 @@
 - 返回值是这些码点组成的字符串
 
 ```js
-String.fromCharCode(65,66,67) // "ABC"
+String.fromCharCode(65, 66, 67); // "ABC"
 ```
 
 ## charAt
 
 - `String.prototype.charAt()`
-- 一个介于0 和字符串长度减1之间的整数, 如果没有提供索引，`charAt()` 将使用0
-- 从0开始编号的位置, 返回指定位置的字符
-- 参数为负数，或大于等于字符串的长度，charAt返回空字符串
+- 一个介于 0 和字符串长度减 1 之间的整数, 如果没有提供索引，`charAt()` 将使用 0
+- 从 0 开始编号的位置, 返回指定位置的字符
+- 参数为负数，或大于等于字符串的长度，charAt 返回空字符串
 
 ```js
 var anyString = "Brave new world";
-anyString.charAt() // "B"
-anyString.charAt(0) // "B"
+anyString.charAt(); // "B"
+anyString.charAt(0); // "B"
 ```
 
 ## charCodeAt
@@ -31,25 +37,25 @@ anyString.charAt(0) // "B"
 - 返回字符串指定位置的 Unicode 码点（十进制表示）
 
 ```js
-"ABC".charCodeAt(0) // 65
-"ABC".charCodeAt(1) // 66
-"ABC".charCodeAt(2) // 67
-"ABC".charCodeAt(3) // NaN
+"ABC".charCodeAt(0); // 65
+"ABC".charCodeAt(1); // 66
+"ABC".charCodeAt(2); // 67
+"ABC".charCodeAt(3); // NaN
 ```
 
 ## concat
 
 - `str.concat(string2, string3[, ..., stringN])`
 - 连接两个字符串，返回一个新字符串，不改变原字符串
-- 参数不是字符串，concat方法会将其先转为字符串，然后再连接
+- 参数不是字符串，concat 方法会将其先转为字符串，然后再连接
 
 ```js
 var hello = "Hello, ";
-hello.concat("Kevin", " have a nice day.")
+hello.concat("Kevin", " have a nice day.");
 // "Hello, Kevin have a nice day."
 
 var hello = "Hello, ";
-hello.concat("Kevin", " have a nice day.", ['A', 'C'])
+hello.concat("Kevin", " have a nice day.", ["A", "C"]);
 // "Hello, Kevin have a nice day.A,C"
 ```
 
@@ -59,18 +65,18 @@ hello.concat("Kevin", " have a nice day.", ['A', 'C'])
 - 截取字符串, 不改变原字符串
 - 省略第二个参数，则表示子字符串一直到原字符串结束
 - 参数是负值，表示从结尾开始倒数计算的位置
-- 第一个参数大于第二个参数，slice方法返回一个空字符串
+- 第一个参数大于第二个参数，slice 方法返回一个空字符串
 
 ```js
-var str1 = 'The morning is upon us.';
+var str1 = "The morning is upon us.";
 var str2 = str1.slice(4, -2);
-str2 // "morning is upon u"
-str1 // "The morning is upon us."
+str2; // "morning is upon u"
+str1; // "The morning is upon us."
 
-var str = 'The morning is upon us.';
-str.slice(-3);     //'us.'
+var str = "The morning is upon us.";
+str.slice(-3); //'us.'
 str.slice(-3, -1); //'us'
-str.slice(0, -1);  //'The morning is upon us'
+str.slice(0, -1); //'The morning is upon us'
 ```
 
 ## trim
@@ -79,14 +85,14 @@ str.slice(0, -1);  //'The morning is upon us'
 - 除字符串两端的空格，返回一个新字符串，不改变原字符串
 
 ```js
-var orig = '   foo  ';
-orig.trim() // 'foo'
+var orig = "   foo  ";
+orig.trim(); // 'foo'
 ```
 
 - `trimEnd()` 方法从一个字符串的末端移除空白字符, `trimRight()` 是这个方法的别名
 
 ```js
-var greeting = '   Hello world!   ';
+var greeting = "   Hello world!   ";
 
 console.log(greeting);
 //"   Hello world!   ";
@@ -98,7 +104,7 @@ console.log(greeting.trimEnd());
 - `trimStart()` 方法从字符串的开头删除空格。`trimLeft()`是此方法的别名
 
 ```js
-var greeting = '   Hello world!   ';
+var greeting = "   Hello world!   ";
 
 console.log(greeting);
 //"   Hello world!   ";
@@ -114,13 +120,13 @@ console.log(greeting.trimStart());
 - 没有, 则返回`null`
 
 ```js
-var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 var regexp = /[A-E]/gi;
 var matches_array = str.match(regexp);
 // ["A", "B", "C", "D", "E", "a", "b", "c", "d", "e"]
 
-var str = "Hello, world!"
-var res = str.match('!')
+var str = "Hello, world!";
+var res = str.match("!");
 // ["!", index: 12, input: "Hello, world!", groups: undefined]
 ```
 
@@ -131,9 +137,9 @@ var res = str.match('!')
 - 没有, 则返回-1
 
 ```js
-var str = "Hello, world!"
-var res = str.search('!')
-res // 12
+var str = "Hello, world!";
+var res = str.search("!");
+res; // 12
 ```
 
 ## replace
@@ -142,10 +148,10 @@ res // 12
 - 匹配替换匹配到的第一个字符串
 
 ```js
-var p = 'Hello, world!';
+var p = "Hello, world!";
 var regex = /Hello/gi;
 
-p.replace(regex, 'Hi') // "Hi, world!"
+p.replace(regex, "Hi"); // "Hi, world!"
 ```
 
 ## split
@@ -155,13 +161,13 @@ p.replace(regex, 'Hi') // "Hi, world!"
 - 第二个参数，决定了返回数组的成员数
 
 ```js
-var p = 'Hello, world!';
-var res = p.split(' ')
-res // ["Hello,", "world!"]
+var p = "Hello, world!";
+var res = p.split(" ");
+res; // ["Hello,", "world!"]
 
 var myString = "Hello World. How are you doing?";
 var splits = myString.split(" ", 3);
-splits // ["Hello", "World.", "How"]
+splits; // ["Hello", "World.", "How"]
 ```
 
 ## toLowerCase
@@ -170,7 +176,7 @@ splits // ["Hello", "World.", "How"]
 - 字符串全部转为小写，不改变原字符串
 
 ```js
-'中文简体 zh-CN || zh-Hans'.toLowerCase() // "中文简体 zh-cn || zh-hans"
+"中文简体 zh-CN || zh-Hans".toLowerCase(); // "中文简体 zh-cn || zh-hans"
 ```
 
 ## toUpperCase
@@ -179,13 +185,13 @@ splits // ["Hello", "World.", "How"]
 - 字符串全部转为大写，不改变原字符串
 
 ```js
-'中文简体 zh-CN || zh-Hans'.toUpperCase() // "中文简体 ZH-CN || ZH-HANS"
+"中文简体 zh-CN || zh-Hans".toUpperCase(); // "中文简体 ZH-CN || ZH-HANS"
 ```
 
 ## indexOf
 
 - `String.prototype.indexOf()`
-- 返回字符第一次出现的位置，返回-1表示不匹配
+- 返回字符第一次出现的位置，返回-1 表示不匹配
 
 ```js
 "Blue Whale".indexOf("Blue"); // 0
@@ -195,7 +201,7 @@ splits // ["Hello", "World.", "How"]
 ## lastIndexOf
 
 - `String.prototype.lastIndexOf()`
-- 返回字符最后一次出现的位置，返回-1表示不匹配
+- 返回字符最后一次出现的位置，返回-1 表示不匹配
 
 ```js
 "Blue Whale".lastIndexOf("Blue"); // 0
@@ -208,21 +214,21 @@ splits // ["Hello", "World.", "How"]
 - 返回字符串的长度
 
 ```js
-("Blue Whale").length; // 10
+"Blue Whale".length; // 10
 ```
 
 ## Symbol.iterator
 
-- `[@@iterator]()` 方法返回一个新的Iterator对象
+- `[@@iterator]()` 方法返回一个新的 Iterator 对象
 
 ```js
-var string = 'A\uD835\uDC68';
+var string = "A\uD835\uDC68";
 var strIter = string[Symbol.iterator]();
-strIter.next() // {value: "A", done: false}
-strIter.next() // {value: "𝑨", done: false}
-strIter.next() // {value: undefined, done: true}
+strIter.next(); // {value: "A", done: false}
+strIter.next(); // {value: "𝑨", done: false}
+strIter.next(); // {value: undefined, done: true}
 
-var string = 'A\uD835\uDC68B\uD835\uDC69C\uD835\uDC6A';
+var string = "A\uD835\uDC68B\uD835\uDC69C\uD835\uDC6A";
 for (var v of string) {
   console.log(v); // A, 𝑨, B, 𝑩, C, 𝑪
 }
@@ -233,9 +239,9 @@ for (var v of string) {
 - 字符的 Unicode 表示法 (将码点放入大括号)
 
 ```js
-"\u0061" // "a"
-"\u20BB7" // "₻7"
-"\u{20BB7}" // "𠮷"
+"\u0061"; // "a"
+"\u20BB7"; // "₻7"
+"\u{20BB7}"; // "𠮷"
 ```
 
 ## substr
@@ -246,12 +252,12 @@ for (var v of string) {
 ```js
 var str = "abcdefghij";
 
-console.log("(1,2): "    + str.substr(1,2));   // (1,2): bc
-console.log("(-3,2): "   + str.substr(-3,2));  // (-3,2): hi
-console.log("(-3): "     + str.substr(-3));    // (-3): hij
-console.log("(1): "      + str.substr(1));     // (1): bcdefghij
-console.log("(-20, 2): " + str.substr(-20,2)); // (-20, 2): ab
-console.log("(20, 2): "  + str.substr(20,2));  // (20, 2):
+console.log("(1,2): " + str.substr(1, 2)); // (1,2): bc
+console.log("(-3,2): " + str.substr(-3, 2)); // (-3,2): hi
+console.log("(-3): " + str.substr(-3)); // (-3): hij
+console.log("(1): " + str.substr(1)); // (1): bcdefghij
+console.log("(-20, 2): " + str.substr(-20, 2)); // (-20, 2): ab
+console.log("(20, 2): " + str.substr(20, 2)); // (20, 2):
 ```
 
 ## substring
@@ -266,26 +272,26 @@ console.log("(20, 2): "  + str.substr(20,2));  // (20, 2):
 var anyString = "Mozilla";
 
 // 输出 "Moz"
-console.log(anyString.substring(0,3));
-console.log(anyString.substring(3,0));
-console.log(anyString.substring(3,-3));
-console.log(anyString.substring(3,NaN));
-console.log(anyString.substring(-2,3));
-console.log(anyString.substring(NaN,3));
+console.log(anyString.substring(0, 3));
+console.log(anyString.substring(3, 0));
+console.log(anyString.substring(3, -3));
+console.log(anyString.substring(3, NaN));
+console.log(anyString.substring(-2, 3));
+console.log(anyString.substring(NaN, 3));
 
 // 输出 "lla"
-console.log(anyString.substring(4,7));
-console.log(anyString.substring(7,4));
+console.log(anyString.substring(4, 7));
+console.log(anyString.substring(7, 4));
 
 // 输出 ""
-console.log(anyString.substring(4,4));
+console.log(anyString.substring(4, 4));
 
 // 输出 "Mozill"
-console.log(anyString.substring(0,6));
+console.log(anyString.substring(0, 6));
 
 // 输出 "Mozilla"
-console.log(anyString.substring(0,7));
-console.log(anyString.substring(0,10));
+console.log(anyString.substring(0, 7));
+console.log(anyString.substring(0, 10));
 ```
 
 ## padStart
@@ -294,11 +300,11 @@ console.log(anyString.substring(0,10));
 - 另一个字符串填充当前字符串
 
 ```js
-'abc'.padStart(10);         // "       abc"
-'abc'.padStart(10, "foo");  // "foofoofabc"
-'abc'.padStart(6,"123465"); // "123abc"
-'abc'.padStart(8, "0");     // "00000abc"
-'abc'.padStart(1);          // "abc"
+"abc".padStart(10); // "       abc"
+"abc".padStart(10, "foo"); // "foofoofabc"
+"abc".padStart(6, "123465"); // "123abc"
+"abc".padStart(8, "0"); // "00000abc"
+"abc".padStart(1); // "abc"
 ```
 
 ## padEnd
@@ -307,10 +313,10 @@ console.log(anyString.substring(0,10));
 - 用一个字符串填充当前字符串
 
 ```js
-'abc'.padEnd(10);          // "abc       "
-'abc'.padEnd(10, "foo");   // "abcfoofoof"
-'abc'.padEnd(6, "123456"); // "abc123"
-'abc'.padEnd(1);           // "abc"
+"abc".padEnd(10); // "abc       "
+"abc".padEnd(10, "foo"); // "abcfoofoof"
+"abc".padEnd(6, "123456"); // "abc123"
+"abc".padEnd(1); // "abc"
 ```
 
 ## startsWith
@@ -321,9 +327,9 @@ console.log(anyString.substring(0,10));
 ```js
 var str = "To be, or not to be, that is the question.";
 
-str.startsWith("To be")        // true
-str.startsWith("not to be")    // false
-str.startsWith("not to be", 10) // true
+str.startsWith("To be"); // true
+str.startsWith("not to be"); // false
+str.startsWith("not to be", 10); // true
 ```
 
 ## endsWith
@@ -334,9 +340,9 @@ str.startsWith("not to be", 10) // true
 ```js
 var str = "To be, or not to be, that is the question.";
 
-str.endsWith("question.")  // true
-str.endsWith("to be")      // false
-str.endsWith("to be", 19)  // true
+str.endsWith("question."); // true
+str.endsWith("to be"); // false
+str.endsWith("to be", 19); // true
 ```
 
 ## repeat
@@ -344,10 +350,10 @@ str.endsWith("to be", 19)  // true
 - `str.repeat(count)`返回一个新字符串
 
 ```js
-"abc".repeat(0)      // ""
-"abc".repeat(1)      // "abc"
-"abc".repeat(2)      // "abcabc"
-"abc".repeat(3.5)    // "abcabcabc" 参数count将会被自动转换成整数.
+"abc".repeat(0); // ""
+"abc".repeat(1); // "abc"
+"abc".repeat(2); // "abcabc"
+"abc".repeat(3.5); // "abcabcabc" 参数count将会被自动转换成整数.
 ```
 
 ## includes
@@ -356,18 +362,18 @@ str.endsWith("to be", 19)  // true
 - 区分大小写
 
 ```js
-var str = 'To be, or not to be, that is the question.';
+var str = "To be, or not to be, that is the question.";
 
-console.log(str.includes('To be'));       // true
-console.log(str.includes('question'));    // true
-console.log(str.includes('nonexistent')); // false
-console.log(str.includes('To be', 1));    // false
-console.log(str.includes('TO BE'));       // false
+console.log(str.includes("To be")); // true
+console.log(str.includes("question")); // true
+console.log(str.includes("nonexistent")); // false
+console.log(str.includes("To be", 1)); // false
+console.log(str.includes("TO BE")); // false
 ```
 
 ## 使用`.link()`创建链接
 
 ```js
-let l = 'google'.link('www.google.com');
+let l = "google".link("www.google.com");
 // "<a href="www.google.com">google</a>"
 ```

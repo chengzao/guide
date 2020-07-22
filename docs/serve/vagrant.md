@@ -1,4 +1,12 @@
-# vagrant
+---
+title: vagrant
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - vagrant
+categories:
+  - server
+---
 
 - [vagrant](https://www.vagrantup.com/)
 - [app.vagrantup](https://app.vagrantup.com/boxes/search)
@@ -7,25 +15,25 @@
 
 ## command
 
-| Tables        | Are           |
-| ------------- |:-------------|
-|vagrant init | 初始化box的操作，会生成vagrant的配置文件Vagrantfile|
-|vagrant up	 |启动本地环境 |
-|vagrant ssh	|通过 ssh 登录本地环境所在虚拟机|
-|vagrant halt	|关闭本地环境|
-|vagrant suspend	|暂停本地环境|
-|vagrant resume	|恢复本地环境|
-|vagrant reload	|修改了 Vagrantfile 后，使之生效（相当于先 halt，再 up）|
-|vagrant destroy	|彻底移除本地环境|
-|vagrant box list	|显示当前已经添加的box列表|
-|vagrant box add  |添加box到列表|
-|vagrant box remove	|删除相应的box|
-|vagrant package	|打包命令，可以把当前的运行的虚拟机环境进行打包|
-|vagrant plugin	|用于安装卸载插件|
-|vagrant status	|获取当前虚拟机的状态|
-|vagrant global-status	|显示当前用户Vagrant的所有环境状态|
+| Tables                | Are                                                      |
+| --------------------- | :------------------------------------------------------- |
+| vagrant init          | 初始化 box 的操作，会生成 vagrant 的配置文件 Vagrantfile |
+| vagrant up            | 启动本地环境                                             |
+| vagrant ssh           | 通过 ssh 登录本地环境所在虚拟机                          |
+| vagrant halt          | 关闭本地环境                                             |
+| vagrant suspend       | 暂停本地环境                                             |
+| vagrant resume        | 恢复本地环境                                             |
+| vagrant reload        | 修改了 Vagrantfile 后，使之生效（相当于先 halt，再 up）  |
+| vagrant destroy       | 彻底移除本地环境                                         |
+| vagrant box list      | 显示当前已经添加的 box 列表                              |
+| vagrant box add       | 添加 box 到列表                                          |
+| vagrant box remove    | 删除相应的 box                                           |
+| vagrant package       | 打包命令，可以把当前的运行的虚拟机环境进行打包           |
+| vagrant plugin        | 用于安装卸载插件                                         |
+| vagrant status        | 获取当前虚拟机的状态                                     |
+| vagrant global-status | 显示当前用户 Vagrant 的所有环境状态                      |
 
-## vagrant 添加无版本号的box
+## vagrant 添加无版本号的 box
 
 - `vagrant box add centos/7`
 
@@ -44,31 +52,31 @@ boxName # 添加之后的box 名称
 
 - 创建：`metadata.json`
 
-  - `name`：添加的box名字
+  - `name`：添加的 box 名字
   - `version`：版本号
   - `providers.name`：虚拟主机类型
-  - `providers.url`：box地址
-
-<CodeBlock>
+  - `providers.url`：box 地址
 
 ```json
 {
-    "name": "centos/7",
-    "versions": [{
-        "version": "1809.01",
-        "providers": [{
-            "name": "virtualbox",
-            "url": "./virtualbox.box"
-        }]
-    }]
+  "name": "centos/7",
+  "versions": [
+    {
+      "version": "1809.01",
+      "providers": [
+        {
+          "name": "virtualbox",
+          "url": "./virtualbox.box"
+        }
+      ]
+    }
+  ]
 }
 ```
 
-</CodeBlock>
-
 - 运行创建: `vagrant box add metadata.json`
 
-## SSH登录linux
+## SSH 登录 linux
 
 ```bash
 ssh: 127.0.0.1
@@ -183,8 +191,6 @@ end
 
 - Vagrantfile
 
-<CodeBlock>
-
 ```ruby
 Vagrant.config(2) do |config|
     config.vm.box = "centos/7"
@@ -207,15 +213,11 @@ Vagrant.config(2) do |config|
 end
 ```
 
-</CodeBlock>
-
 ### [vagrant-vbguest](https://rubygems.org/search?utf8=%E2%9C%93&query=vbguest)
 
 - `vagrant plugin install vagrant-vbguest`
 - `vagrant vbguest --status`
 - `vagrant vbguest --do install node1`
-
-<CodeBlock>
 
 ```ruby
 Vagrant.config(2) do |config|
@@ -242,14 +244,10 @@ Vagrant.config(2) do |config|
 end
 ```
 
-</CodeBlock>
-
 ### [vagrant-hostmanager](https://rubygems.org/gems/vagrant-hostmanager)
 
 - `vagrant plugin install vagrant-hostmanager`
 - `vagrant hostmanager`
-
-<CodeBlock>
 
 ```ruby
 Vagrant.config(2) do |config|
@@ -279,8 +277,6 @@ Vagrant.config(2) do |config|
 
 end
 ```
-
-</CodeBlock>
 
 ### [vagrant-bindfs](https://rubygems.org/gems/vagrant-bindfs)
 

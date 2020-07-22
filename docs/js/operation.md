@@ -1,10 +1,14 @@
-# 运算符
+---
+title: 运算符
+date: 2020-07-20
+sidebar: "auto"
+---
 
-- `一元操作符` `++, --  +  -`
+- `一元操作符` `++, -- + -`
 - `逻辑操作符` `! && ||`
-- `基本运算符` `+, -, *, /,  %(取余)`
+- `基本运算符` `+, -, *, /, %(取余)`
 - `关系操作符` `>, <, >=, <=, ===, ==, !=, !==`
-- `条件操作符` `(三元运算符)  ? :`
+- `条件操作符` `(三元运算符) ? :`
 - `赋值运算符` `+=, -=, *=, /=, %= ,=`
 - `逗号运算符` `,`
 - `圆括号运算符` `()`
@@ -21,131 +25,136 @@
   3%5;  //3
   ```
 
-- `注意:a++和++a  与 a--和--a 的区别`
-  - `++a;`   先自增,后计算 `var a=1; ++a // 2`
-  - `a++;`   先运算,后自增 `var b=1; b++ // 1`
-  - `--a;`   先自减,后计算 `var c=1; --c // 0`
-  - `a--;`   先运算,后自减 `var d=1; d-- // 1`
+- `注意:a++和++a 与 a--和--a 的区别`
 
-- js浮点运算`0.1`
+  - `++a;` 先自增,后计算 `var a=1; ++a // 2`
+  - `a++;` 先运算,后自增 `var b=1; b++ // 1`
+  - `--a;` 先自减,后计算 `var c=1; --c // 0`
+  - `a--;` 先运算,后自减 `var d=1; d-- // 1`
+
+- js 浮点运算`0.1`
 
 ```js
-var x=0.2-0.1;  // 0.1
-var y=0.3-0.2;  // 0.09999999999999998不等于0.1
-x==y;  // false
+var x = 0.2 - 0.1; // 0.1
+var y = 0.3 - 0.2; // 0.09999999999999998不等于0.1
+x == y; // false
 ```
 
 ## 位操作符
 
 - `按位与（AND）`
 
-对于每一个比特位，只有两个操作数相应的比特位都是1时，结果才为1，否则为0
+对于每一个比特位，只有两个操作数相应的比特位都是 1 时，结果才为 1，否则为 0
 
-| `a`  | `b`  | `a & b` |
-| :---: | :---:| :---: |
-| 0 | 0	| 0 |
-| 0 | 1	| 0 |
-| 1 | 0	| 0 |
-| 1 | 1	| 1 |
+| `a` | `b` | `a & b` |
+| :-: | :-: | :-----: |
+|  0  |  0  |    0    |
+|  0  |  1  |    0    |
+|  1  |  0  |    0    |
+|  1  |  1  |    1    |
 
 ```js
-1 & 2 // 0  => 0001 & 0010
+1 & 2; // 0  => 0001 & 0010
 ```
 
 - `按位或（OR）`
 
-对于每一个比特位，当两个操作数相应的比特位至少有一个1时，结果为1，否则为0
+对于每一个比特位，当两个操作数相应的比特位至少有一个 1 时，结果为 1，否则为 0
 
-| `a`  | `b`   | ` a | b ` |
-| :---: | :---:| :---: |
-| 0 | 0	| 0 |
-| 0 | 1	| 1 |
-| 1 | 0	| 1 |
-| 1 | 1	| 1 |
+| `a` | `b` | `a | b` |
+| :-: | :-: | :-----: |
+|  0  |  0  |    0    |
+|  0  |  1  |    1    |
+|  1  |  0  |    1    |
+|  1  |  1  |    1    |
 
 ```js
-1 | 2 // 3 => 0001 | 0010
+1 | 2; // 3 => 0001 | 0010
 ```
 
 - `按位异或（XOR）`
 
-对于每一个比特位，当两个操作数相应的比特位有且只有一个1时，结果为1，否则为0
+对于每一个比特位，当两个操作数相应的比特位有且只有一个 1 时，结果为 1，否则为 0
 
-| `a`  | `b`   | ` a ^ b ` |
-| :---: | :---:| :---: |
-| 0 | 0	| 0 |
-| 0 | 1	| 1 |
-| 1 | 0	| 1 |
-| 1 | 1	| 0 |
+| `a` | `b` | `a ^ b` |
+| :-: | :-: | :-----: |
+|  0  |  0  |    0    |
+|  0  |  1  |    1    |
+|  1  |  0  |    1    |
+|  1  |  1  |    0    |
 
 ```js
-1 ^ 2 // 3 => 0001 ^ 0010
+1 ^ 2; // 3 => 0001 ^ 0010
 ```
 
 - 使用`^`来完成值交换
 
 ```js
 // --- before ---
-let temp = a; a = b; b = temp; // 传统，但需要借助临时变量
-b = [a, a = b][0] // 借助数组
+let temp = a;
+a = b;
+b = temp; // 传统，但需要借助临时变量
+b = [a, (a = b)][0]; // 借助数组
 
 // --- after ---
-let a = 7
-let b = 1
-a ^= b
-b ^= a
-a ^= b
-console.log(a)   // 1
-console.log(b)   // 7
-
-[a, b] = [b, a]; // ES6，解构赋值
+let a = 7;
+let b = 1;
+a ^= b;
+b ^= a;
+a ^= b;
+console.log(a); // 1
+console.log(b)[(a, b)] = [b, a]; // 7 // ES6，解构赋值
 ```
 
 - `按位非（NOT）`
 
-反转操作数的比特位，即0变成1，1变成0
+反转操作数的比特位，即 0 变成 1，1 变成 0
 
-| `a`  | `~a` |
-| :---:| :---:|
-|   0  |   1  |
-|   1  |   0	|
+| `a` | `~a` |
+| :-: | :--: |
+|  0  |  1   |
+|  1  |  0   |
 
 ```js
 // 整数： ~x = -(x+1)
-~4   // -5
-~-10 // 9
+~4; // -5
+~-10; // 9
 ```
 
 - 左移（<<）
 
-`a << b`	将 a 的二进制形式向左移 b (< 32) 比特位，右边用0填充
+`a << b` 将 a 的二进制形式向左移 b (< 32) 比特位，右边用 0 填充
 
 ```js
-1 << 2 // 4   => 0001 << 000100
-5 << 2 // 20  => 0101 << 010100
+1 << 2; // 4   => 0001 << 000100
+5 << 2; // 20  => 0101 << 010100
 ```
 
 - 有符号右移（>>）
 
-`a >> b`	将 a 的二进制表示向右移 b (< 32) 位，丢弃被移出的位
+`a >> b` 将 a 的二进制表示向右移 b (< 32) 位，丢弃被移出的位
 
 ```js
- 4 >> 2 // 1
--4 >> 2 // -1
+(4 >>
+  (2 - // 1
+    4)) >>
+  2; // -1
 ```
 
 - 无符号右移（>>>）
 
-`a >>> b`	将 a 的二进制表示向右移 b (< 32) 位，丢弃被移出的位，并使用 0 在左侧填充
+`a >>> b` 将 a 的二进制表示向右移 b (< 32) 位，丢弃被移出的位，并使用 0 在左侧填充
 
 ```js
-4 >>> 2 // 1
--4 >>> 2 // 1073741823
+(4 >>>
+  (2 - // 1
+    4)) >>>
+  2; // 1073741823
 ```
 
 ## 逻辑运算符
 
-- `&& (并且) , || (或者)  , ! (取反)`
+- `&& (并且) , || (或者) , ! (取反)`
 - 逻辑运算符的优先级
 
 ```bash
@@ -156,16 +165,16 @@ console.log(b)   // 7
 
 ## 比较运算符
 
-- `>  >=   <  <=   ==   ===`
+- `> >= < <= == ===`
 - `注意： === 与 == 的区别.`
-  - `==  值 相等`
+  - `== 值 相等`
   - `=== 值 和类型都相等`
 
 ```js
-var a=1 ;
-var b='1';
-a==b ;  // true
-a===b ;  // false
+var a = 1;
+var b = "1";
+a == b; // true
+a === b; // false
 ```
 
 - 在代码中没有这样的形式：`110>pj>100`; 如果一定要表达这种形式：使用`110 > pj && pj> 100`
@@ -173,17 +182,17 @@ a===b ;  // false
 ## 赋值运算符
 
 ```js
-x += y // 等同于 x = x + y
-x -= y // 等同于 x = x - y
-x *= y // 等同于 x = x * y
-x /= y // 等同于 x = x / y
-x %= y // 等同于 x = x % y
-x >>= y // 等同于 x = x >> y
-x <<= y // 等同于 x = x << y
-x >>>= y // 等同于 x = x >>> y
-x &= y // 等同于 x = x & y
-x |= y // 等同于 x = x | y
-x ^= y // 等同于 x = x ^ y
+x += y; // 等同于 x = x + y
+x -= y; // 等同于 x = x - y
+x *= y; // 等同于 x = x * y
+x /= y; // 等同于 x = x / y
+x %= y; // 等同于 x = x % y
+x >>= y; // 等同于 x = x >> y
+x <<= y; // 等同于 x = x << y
+x >>>= y; // 等同于 x = x >>> y
+x &= y; // 等同于 x = x & y
+x |= y; // 等同于 x = x | y
+x ^= y; // 等同于 x = x ^ y
 ```
 
 ## 逗号操作符
@@ -191,11 +200,11 @@ x ^= y // 等同于 x = x ^ y
 - 对它的每个操作数求值（从左到右），并返回最后一个操作数的值
 
 ```js
-'a', 'b' // "b"
+"a", "b"; // "b"
 
 var x = 10;
-var y = (++x, 20)
-console.log(y, x) // 20 11
+var y = (++x, 20);
+console.log(y, x); // 20 11
 ```
 
 ## `void`
@@ -204,8 +213,8 @@ console.log(y, x) // 20 11
 
 ```js
 var x = 3;
-void (x++) //undefined
-x // 4
+void x++; //undefined
+x; // 4
 ```
 
 ## 字符串的比较
@@ -215,35 +224,43 @@ x // 4
 - 再比较第二个字符的 Unicode 码点,以此类推
 
 ```js
-'cat' > 'dog' // false
-'cat' > 'catalog' // false
-'cat' > 'Cat' // true
-'大' > '小' // false
+"cat" > "dog"; // false
+"cat" > "catalog"; // false
+"cat" > "Cat"; // true
+"大" > "小"; // false
 ```
 
-## escape与unescape
+## escape 与 unescape
 
 ```js
-escape("大")  // "%u5927"
-unescape("%u5927") // "大"
+escape("大"); // "%u5927"
+unescape("%u5927"); // "大"
 
 const escapeHTML = str =>
-  str.replace(/[&<>'"]/g, tag => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    "'": '&#39;',
-    '"': '&quot;'
-  }[tag] || tag));
+  str.replace(
+    /[&<>'"]/g,
+    tag =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&#39;",
+        '"': "&quot;"
+      }[tag] || tag)
+  );
 
 const unescapeHTML = str =>
-  str.replace(/&amp;|&lt;|&gt;|&#39;|&quot;/g,tag => ({
-    '&amp;': '&',
-    '&lt;': '<',
-    '&gt;': '>',
-    '&#39;': "'",
-    '&quot;': '"'
-  }[tag] || tag));
+  str.replace(
+    /&amp;|&lt;|&gt;|&#39;|&quot;/g,
+    tag =>
+      ({
+        "&amp;": "&",
+        "&lt;": "<",
+        "&gt;": ">",
+        "&#39;": "'",
+        "&quot;": '"'
+      }[tag] || tag)
+  );
 ```
 
 ## NaN
@@ -253,34 +270,34 @@ const unescapeHTML = str =>
 <CodeBlock>
 
 ```js
-typeof NaN // 'number'
-NaN == NaN // flase
-NaN === NaN //false
-[NaN].indexOf(NaN) // -1
-Boolean(NaN) // false
-Number.isNaN(NaN) // true
+typeof NaN; // 'number'
+NaN == NaN; // flase
+NaN ===
+  NaN[NaN].indexOf(NaN); //false // -1
+Boolean(NaN); // false
+Number.isNaN(NaN); // true
 ```
 
 </CodeBlock>
 
 - `NaN与任何数(包括它自己)的运算,得到的都是NaN`
-- 判断NaN的方法
+- 判断 NaN 的方法
 
 <CodeBlock>
 
 ```js
 //isNaN方法可以用来判断一个值是否为NaN
 //isNaN只对数值有效,如果传入其他值,会被先转成数值
-isNaN(NaN) // true
-isNaN(123) // false
-isNaN({}) // true
-isNaN('Hello') // true
-isNaN(['xzy']) // true
+isNaN(NaN); // true
+isNaN(123); // false
+isNaN({}); // true
+isNaN("Hello"); // true
+isNaN(["xzy"]); // true
 
 //对于空数组和只有一个数值成员的数组,isNaN返回false
-isNaN([]) // false
-isNaN([123]) // false
-isNaN(['123']) // false
+isNaN([]); // false
+isNaN([123]); // false
+isNaN(["123"]); // false
 ```
 
 </CodeBlock>
@@ -290,15 +307,15 @@ isNaN(['123']) // false
 <CodeBlock>
 
 ```js
-  if (condition) {
-  } else {
-  }
+if (condition) {
+} else {
+}
 
-  if (条件/boolean){
-    代码块1
-  }else if (条件/boolean){
-    代码块2
-  }
+if (条件 / boolean) {
+  代码块1;
+} else if (条件 / boolean) {
+  代码块2;
+}
 ```
 
 </CodeBlock>
@@ -328,7 +345,7 @@ switch (变量){
 
 - `boolean表达式 ? 操作一:操作二;`
 - `(condition) ? expr1 : expr2`
-- 如果condition为`true`,则返回expr1的值,否则返回expr2的值
+- 如果 condition 为`true`,则返回 expr1 的值,否则返回 expr2 的值
 
 <CodeBlock>
 
@@ -337,18 +354,18 @@ var a = 16;
 var b = 15;
 var c = 24;
 //让a和b进行比较,找出大的,再用大的跟c比较
-(a > b ? a : b)>c ? alert(a > b ? a : b):alert(c);
+(a > b ? a : b) > c ? alert(a > b ? a : b) : alert(c);
 ```
 
 </CodeBlock>
 
 ## 循环语句
 
-### while循环
+### while 循环
 
-- 当程序运行到while的时候,会判断while后面括号中的内容,
-- 如果内容为true,会执行下面的代码,
-- 如果为内容为false,则不执行这段代码,跳过这段代码执行下面的内容.
+- 当程序运行到 while 的时候,会判断 while 后面括号中的内容,
+- 如果内容为 true,会执行下面的代码,
+- 如果为内容为 false,则不执行这段代码,跳过这段代码执行下面的内容.
 
 ```js
 while(条件语句/boolean)｛
@@ -356,7 +373,7 @@ while(条件语句/boolean)｛
 ｝
 ```
 
-- 如果在写循环的时候一定要有循环的结束条件,如果没有就是死循环,就是一Bug.
+- 如果在写循环的时候一定要有循环的结束条件,如果没有就是死循环,就是一 Bug.
 - 终止循环：break
 - 立即结束本次循环,开始下一次循环：continue
 
@@ -386,17 +403,17 @@ function node2Fragment(el) {
 
 ### do while
 
-代码从上到下执行的过程中如果遇到了do
-就会先执行一次do后面的代码,执行之后再
+代码从上到下执行的过程中如果遇到了 do
+就会先执行一次 do 后面的代码,执行之后再
 通过`while`来进行判断,如果判断通过那么再执行一次,
 如果判断不通过却结束循环.
 
 <CodeBlock>
 
 ```js
-do{
-	//要循环执行的代码块
-}while (条件语句/boolean)
+do {
+  //要循环执行的代码块
+} while (条件语句 / boolean);
 ```
 
 </CodeBlock>
@@ -409,16 +426,16 @@ do{
 
 ```js
 var k = 0;
-do{
-    sum += k;
-    k++;
-}while(k<101);
+do {
+  sum += k;
+  k++;
+} while (k < 101);
 console.log(sum);
 ```
 
 </CodeBlock>
 
-### for循环
+### for 循环
 
 <CodeBlock>
 
@@ -456,11 +473,11 @@ function Person(name) {
 }
 
 // describe是Person.prototype的属性
-Person.prototype.describe = function () {
-  return 'Name: '+this.name;
+Person.prototype.describe = function() {
+  return "Name: " + this.name;
 };
 
-var person = new Person('Jane');
+var person = new Person("Jane");
 
 // for...in循环会遍历实例自身的属性(name),
 // 以及继承的属性(describe)
@@ -481,7 +498,7 @@ for (var key in person) {
 
 </CodeBlock>
 
-## break与continue
+## break 与 continue
 
 - `break 终止循环`
 - `continue 跳出本次循环,进入下一次循环`
@@ -492,11 +509,11 @@ for (var key in person) {
 // break
 var a = 0;
 while (a < 5) {
-	a++; //a = a + 1;
-	if(a==3){
-	break;  //终止循环
-	}
-	console.log(a);
+  a++; //a = a + 1;
+  if (a == 3) {
+    break; //终止循环
+  }
+  console.log(a);
 }
 console.log("break is over");
 // 1 2 break is over
@@ -506,11 +523,11 @@ console.log("break is over");
 // continue
 var a = 0;
 while (a < 5) {
-	a++; //a = a + 1;
-	if(a==2){
-	continue;//跳出本次循环,进入下一次循环
-	}
-	console.log(a);
+  a++; //a = a + 1;
+  if (a == 2) {
+    continue; //跳出本次循环,进入下一次循环
+  }
+  console.log(a);
 }
 console.log("continue is over");
 // 1 3 4 5 continue is over
@@ -521,15 +538,15 @@ console.log("continue is over");
 ## 使用 `&` 判断奇偶性
 
 ```js
-7 & 1   // 1
-8 & 1   // 0
+7 & 1; // 1
+8 & 1; // 0
 ```
 
 ## 使用 `!!` 将数字转为布尔值
 
 ```js
-console.log(!!7);       // true
-console.log(!!0);       // false
-console.log(!!-1);      // true
-console.log(!!0.71);    // true
+console.log(!!7); // true
+console.log(!!0); // false
+console.log(!!-1); // true
+console.log(!!0.71); // true
 ```

@@ -1,6 +1,14 @@
-# nginx
+---
+title: nginx
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - nginx
+categories:
+  - server
+---
 
-## nginx结构
+## nginx 结构
 
 - 主要结构
 
@@ -101,8 +109,6 @@ http {
 
 ## upstream
 
-<CodeBlock>
-
 ```nginx
 # nginx的upstream目前支持4种方式的分配
 
@@ -126,11 +132,7 @@ upstream mysvr{
 }
 ```
 
-</CodeBlock>
-
-## location配置
-
-<CodeBlock>
+## location 配置
 
 ```nginx
 # 语法规则： location [=|~|~*|^~] /uri/ { … }
@@ -164,14 +166,10 @@ location ~ \.(gif|jpg|png|js|css)$ {
 # 访问 http://localhost/a.gif, http://localhost/b.jpg 将匹配规则D
 ```
 
-</CodeBlock>
-
 ## Nginx Rewrite
 
-- 规则相关指令有if,rewrite,set,return,break
+- 规则相关指令有 if,rewrite,set,return,break
 - 全局变量
-
-<CodeBlock>
 
 ```bash
 $args ： 这个变量等于请求行中的参数，同$query_string
@@ -197,11 +195,7 @@ $uri ： 不带请求参数的当前URI，$uri不包含主机名，如"/foo/bar.
 $document_uri ： 与$uri相同
 ```
 
-</CodeBlock>
-
 - 常用正则
-
-<CodeBlock>
 
 ```bash
 . ： 匹配除换行符以外的任意字符
@@ -229,11 +223,7 @@ $ ： 匹配字符串的介绍
 -x和!-x用来判断文件是否可执行
 ```
 
-</CodeBlock>
-
-- flag标记有
-
-<CodeBlock>
+- flag 标记有
 
 ```bash
 last    相当于Apache里的[L]标记，表示完成rewrite
@@ -249,11 +239,7 @@ location /baidu {
 }
 ```
 
-</CodeBlock>
-
 ## demo
-
-<CodeBlock>
 
 ```nginx
 # 直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理
@@ -283,9 +269,7 @@ location / {
 }
 ```
 
-</CodeBlock>
-
-## nginx安装
+## nginx 安装
 
 <CodeBlock title="yum安装 >>">
 
@@ -342,8 +326,6 @@ nginx -V #查看版本
 - `https://certbot.eff.org/`
 - `https://github.com/Neilpang/acme.sh`
 
-<CodeBlock>
-
 ```bash
 安装： curl  https://get.acme.sh | sh
 
@@ -355,8 +337,6 @@ nginx -V #查看版本
 
 自动更新 acme.sh： acme.sh  --upgrade  --auto-upgrade
 ```
-
-</CodeBlock>
 
 ## DEMO
 
@@ -492,8 +472,6 @@ http {
 
 - server
 
-<CodeBlock>
-
 ```nginx
 server {
     listen 80;
@@ -530,15 +508,13 @@ server {
 }
 ```
 
-</CodeBlock>
-
 ## 相关链接
 
 - [Nginx proxy_set_header 理解](http://www.jianshu.com/p/cc5167032525)
-- [Nginx配置upstream实现负载均衡](http://www.linuxidc.com/Linux/2015-03/115207.htm)
-- [nginx配置location总结及rewrite规则写法](https://segmentfault.com/a/1190000002797606#articleHeader5)
+- [Nginx 配置 upstream 实现负载均衡](http://www.linuxidc.com/Linux/2015-03/115207.htm)
+- [nginx 配置 location 总结及 rewrite 规则写法](https://segmentfault.com/a/1190000002797606#articleHeader5)
 - [tengine](http://tengine.taobao.org/book/chapter_02.html)
-- [nginx服务器详细安装过程](https://segmentfault.com/a/1190000007116797)
-- [Mac OS下安装及配置nginx](https://gist.github.com/Mioke/ae35fa333dee3b2ac137)
+- [nginx 服务器详细安装过程](https://segmentfault.com/a/1190000007116797)
+- [Mac OS 下安装及配置 nginx](https://gist.github.com/Mioke/ae35fa333dee3b2ac137)
 - [acme.sh](https://github.com/Neilpang/acme.sh)
-- [Nginx基本配置备忘](https://zhuanlan.zhihu.com/p/24524057)
+- [Nginx 基本配置备忘](https://zhuanlan.zhihu.com/p/24524057)

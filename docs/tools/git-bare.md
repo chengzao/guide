@@ -1,7 +1,15 @@
-# git裸仓库
+---
+title: git裸仓库
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - git
+categories:
+  - tools
+---
 
 - 安装: [INSTALL](https://github.com/git/git/blob/master/INSTALL)
-- [git的源码包下载地址](https://github.com/git/git/releases)
+- [git 的源码包下载地址](https://github.com/git/git/releases)
 
 <CodeBlock>
 
@@ -135,7 +143,8 @@ git remote -v
 </CodeBlock>
 
 ---
+
 相关链接
 
-- [CentOS7 搭建Git服务器](https://segmentfault.com/a/1190000008403740)
+- [CentOS7 搭建 Git 服务器](https://segmentfault.com/a/1190000008403740)
 - [How to install GIT on CentOS](https://blacksaildivision.com/git-latest-version-centos)

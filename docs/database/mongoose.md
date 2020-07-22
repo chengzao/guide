@@ -1,7 +1,13 @@
-# mongoose
+---
+title: mongoose
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - mongodb
+---
 
 - [mongoose](https://www.npmjs.com/package/mongoose): `npm install mongoose`
-- [mongoose中文](https://cn.mongoosedoc.top/docs/index.html)
+- [mongoose 中文](https://cn.mongoosedoc.top/docs/index.html)
 
 - [Mongoose(mongoDB) functions for CRUD Application](https://medium.com/@yugagrawal95/mongoose-mongodb-functions-for-crud-application-1f54d74f1b34)
 
@@ -62,21 +68,21 @@ Mongoose.connect('MongoDB://username:password@host:port/database?options...');
 
 ```js
 // 引入mongoose库
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 // 连接mongodb
-mongoose.connect('mongodb://localhost/nodejs_user', { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/nodejs_user", { useNewUrlParser: true });
 
 // 将 mongooose.Schema 赋值给一个变量
 var db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on("error", console.error.bind(console, "connection error:"));
 // 监听数据库连接成功的事件
-db.once('open',()=>{})
+db.once("open", () => {});
 // 监听数据库断开连接的事件
-db.once('close',()=>{})
+db.once("close", () => {});
 
 // 断开连接
-mongoose.disconnect()
+mongoose.disconnect();
 ```
 
 ## [Schema](https://mongoosejs.com/docs/api.html#Schema)
@@ -165,19 +171,25 @@ var stuModel = mongoose.model('students', schema)
 
 ```js
 // 单个
-stuModel.create({
-  name:"小明",
-  age:21,
-},function(err){
-  if(!err){
-    console.log("创建文档成功")
+stuModel.create(
+  {
+    name: "小明",
+    age: 21
+  },
+  function(err) {
+    if (!err) {
+      console.log("创建文档成功");
+    }
   }
-})
+);
 
 // 多个
-let arrlist = [{"name":"aaa",age:12},{"name":"bbb",age:14}]
-stuModel.create(array,function(err,docs){
-  if(err){
+let arrlist = [
+  { name: "aaa", age: 12 },
+  { name: "bbb", age: 14 }
+];
+stuModel.create(array, function(err, docs) {
+  if (err) {
     return console.error(err);
   }
   console.log(docs);
@@ -200,37 +212,45 @@ conditions «Object» : 查询条件
 ```
 
 - `Modle.find(conditions, [projection], [options], [callback] )`
-  - 查询文档  参数分别为：条件、选择字段、操作、回调
+
+  - 查询文档 参数分别为：条件、选择字段、操作、回调
   - 查询符合条件的文档
   - 总会返回一个数组
 
 - `Model.findOne([conditions],[projection],[options],[callback])`
-  - 查询一个文档  参数分别为：条件、选择字段、操作、回调
+
+  - 查询一个文档 参数分别为：条件、选择字段、操作、回调
   - 查询符合条件的第一个文档
   - 返回第一个具体的文档对象
 
 - `Model.findOneAndDelete()`
-  - 查询一个匹配的文档并删除  参数分别为：条件、操作、回调
+
+  - 查询一个匹配的文档并删除 参数分别为：条件、操作、回调
 
 - `Model.findOneAndRemove()`
-  - 查询一个匹配的文档并移除  参数分别为：条件、操作、回调
+
+  - 查询一个匹配的文档并移除 参数分别为：条件、操作、回调
 
 - `Model.findOneAndUpdate()`
-  - 查询一个匹配的文档并更新  参数分别为：条件、更新字段、操作、回调
-  - 通过_id字段查询文档并更新
-  - 相当于findOneAndUpdate({ _id: id }, ...) 参数分别为：id、更新字段、操作、回调
+
+  - 查询一个匹配的文档并更新 参数分别为：条件、更新字段、操作、回调
+  - 通过\_id 字段查询文档并更新
+  - 相当于 findOneAndUpdate({ \_id: id }, ...) 参数分别为：id、更新字段、操作、回调
 
 - `Model.findById(id,[projection],[options],[callback])`
-  - 通过_id字段查询文档  相当于findOne({ _id: id }) 参数分别为：id、选择字段、操作、回调
-  - 根据文档的id属性查询文档
+
+  - 通过\_id 字段查询文档 相当于 findOne({ \_id: id }) 参数分别为：id、选择字段、操作、回调
+  - 根据文档的 id 属性查询文档
 
 - `Model.findByIdAndDelete()`
-  - 大多数情况使用它  通过_id字段查询文档并删除
-  - 相当于findOneAndDelete({ _id: id })的快捷方式  参数分别为：id、操作、回调
+
+  - 大多数情况使用它 通过\_id 字段查询文档并删除
+  - 相当于 findOneAndDelete({ \_id: id })的快捷方式 参数分别为：id、操作、回调
 
 - `Model.findByIdAndRemove()`
-  - 通过_id字段查询文档并移除
-  - 相当于findOneAndRemove({ _id: id })的快捷方式  参数分别为：id、操作、回调
+
+  - 通过\_id 字段查询文档并移除
+  - 相当于 findOneAndRemove({ \_id: id })的快捷方式 参数分别为：id、操作、回调
 
 - 实例
 
@@ -278,16 +298,20 @@ callback # 回调函数
 ```
 
 - `Model.replaceOne(conditions, doc, [options], [callback] )`
-  - 覆盖一个已经存在的文档  相当于update() 参数分别为：条件、更新字段、操作、回调
+
+  - 覆盖一个已经存在的文档 相当于 update() 参数分别为：条件、更新字段、操作、回调
 
 - `Model.updateMany(conditions, doc, [options], [callback] )`
-  - 更新多个已经存在的文档  相当于update() 参数分别为：条件、更新字段、操作、回调
+
+  - 更新多个已经存在的文档 相当于 update() 参数分别为：条件、更新字段、操作、回调
 
 - `Model.updateOne(conditions, doc, [options], [callback] )`
-  - 更新一个已经存在的文档  相当于update() 参数分别为：条件、更新字段、操作、回调
+
+  - 更新一个已经存在的文档 相当于 update() 参数分别为：条件、更新字段、操作、回调
 
 - `Model.update()`
-  - 更新一个文档  参数分别为：条件、更新字段、操作、回调
+
+  - 更新一个文档 参数分别为：条件、更新字段、操作、回调
 
 - 实例
 
@@ -302,15 +326,17 @@ stuModel.update({name:"小明"}，{$set:{age:20}},function(err){
 ## [delete](https://mongoosejs.com/docs/api.html#model_Model.deleteMany)
 
 - `Model.deleteMany(confitions,[options],[callback])`
-  - 删除所有文档集合的匹配条件  相当于remove() 参数分别为：条件、操作、回调
+
+  - 删除所有文档集合的匹配条件 相当于 remove() 参数分别为：条件、操作、回调
 
 - `Model.deleteOne(confitions,[options],[callback])`
-  - 删除匹配条件的文档集合的第一个文档  想当于remove() 参数分别为：条件、回调
+  - 删除匹配条件的文档集合的第一个文档 想当于 remove() 参数分别为：条件、回调
 
 ## [remove](https://mongoosejs.com/docs/api.html#model_Model.remove)
 
 - `Model.remove(confitions,[callback])`
-  - 移除所有匹配的文档  参数分别为：条件、回调
+
+  - 移除所有匹配的文档 参数分别为：条件、回调
 
 - 实例
 
@@ -327,15 +353,15 @@ Model.remove(condition，function(err, data){
 ```js
 let Schema = mongoose.Schema;
 let schema = new Schema({
-    name: String,
-    age: Number,
+  name: String,
+  age: Number
 });
-let Person = mongoose.model('Person', schema);
-Person.count({name:'noshower'},function(err,count){
-    if(err){
-        return console.error(err);
-    }
-    console.log(count);
+let Person = mongoose.model("Person", schema);
+Person.count({ name: "noshower" }, function(err, count) {
+  if (err) {
+    return console.error(err);
+  }
+  console.log(count);
 });
 ```
 
@@ -344,14 +370,14 @@ Person.count({name:'noshower'},function(err,count){
 ```js
 let Schema = mongoose.Schema;
 let schema = new Schema({
-    name: String,
-    age: Number,
+  name: String,
+  age: Number
 });
-let Person = mongoose.model('Person', schema);
+let Person = mongoose.model("Person", schema);
 
 let person = new Person({
-    name:'小明',
-    age:24,
+  name: "小明",
+  age: 24
 });
 //	此时还没有插入数据库中
 
@@ -359,11 +385,11 @@ let person = new Person({
 	document的方法
 		Model#save([option],[callback])
 */
-person.save(function(err,product){
-    if(err){
-        return console.error(err);
-    }
-    console.log(product); //1
+person.save(function(err, product) {
+  if (err) {
+    return console.error(err);
+  }
+  console.log(product); //1
 });
 /*
 	doc.update(update,[options],[callback] )
@@ -385,17 +411,17 @@ person.save(function(err,product){
 - 建立约束模型式，指定关联字段
 
 ```js
-var mongoose = require("mongoose")
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var article = new Schema({
-      //关联字段 - 内容分类的id
-    category: {
-        //类型
-        type: mongoose.Schema.Types.ObjectId,
-        //引用
-        ref: 'Category'//数据库中集合的名字
-    },
-})
+  //关联字段 - 内容分类的id
+  category: {
+    //类型
+    type: mongoose.Schema.Types.ObjectId,
+    //引用
+    ref: "Category" //数据库中集合的名字
+  }
+});
 // - ref 表示要关联的集合名字
 // - type 表示通过 ObjectId 关联该集合
 ```
@@ -420,17 +446,21 @@ content.findOne()
 })
 ```
 
-## 支持Promise
+## 支持 Promise
 
 ```js
-content.find()
-	.count()
-  .then(function(data){
-		return content.find().skip(data/2).limit(10)
+content
+  .find()
+  .count()
+  .then(function(data) {
+    return content
+      .find()
+      .skip(data / 2)
+      .limit(10);
   })
-  .then(function(data){
-		console.log(data)
-	})
+  .then(function(data) {
+    console.log(data);
+  });
 ```
 
 ## example

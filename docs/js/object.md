@@ -1,4 +1,10 @@
-# Object
+---
+title: object
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - object
+---
 
 [MDN/Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -40,7 +46,7 @@ function Shape() {
 Shape.prototype.move = function(x, y) {
   this.x += x;
   this.y += y;
-  console.info('Shape moved.');
+  console.info("Shape moved.");
 };
 
 // 子类(subclass)
@@ -63,8 +69,8 @@ rect.move(1, 1); // 'Shape moved.'
 - 继承多个对象
 
 ```js
-function SuperClass(){}
-function OtherSuperClass(){}
+function SuperClass() {}
+function OtherSuperClass() {}
 
 function MyClass() {
   SuperClass.call(this);
@@ -132,48 +138,48 @@ console.log(returnedTarget);
 
 - 返回当前对象对应的值
 
-| 对象        | 返回值|
-| :-- | :-- |
-|Array|	返回数组对象本身|
-|Boolean|	布尔值|
-|Date|	时间是从 1970 年 1 月 1 日午夜开始计的毫秒数 UTC|
-|Function|	函数本身|
-|Number|	数字值|
-|Object|	对象本身|
-|String|	字符串值|
-| 	|Math 和 Error 对象没有 valueOf 方法|
+| 对象     | 返回值                                           |
+| :------- | :----------------------------------------------- |
+| Array    | 返回数组对象本身                                 |
+| Boolean  | 布尔值                                           |
+| Date     | 时间是从 1970 年 1 月 1 日午夜开始计的毫秒数 UTC |
+| Function | 函数本身                                         |
+| Number   | 数字值                                           |
+| Object   | 对象本身                                         |
+| String   | 字符串值                                         |
+|          | Math 和 Error 对象没有 valueOf 方法              |
 
 - 代码
 
 ```js
 // Array：返回数组对象本身
 var array = ["ABC", true, 12, -5];
-console.log(array.valueOf() === array);   // true
+console.log(array.valueOf() === array); // true
 
 // Date：当前时间距1970年1月1日午夜的毫秒数
 var date = new Date(2013, 7, 18, 23, 11, 59, 230);
-console.log(date.valueOf());   // 1376838719230
+console.log(date.valueOf()); // 1376838719230
 
 // Number：返回数字值
-var num =  15.26540;
-console.log(num.valueOf());   // 15.2654
+var num = 15.2654;
+console.log(num.valueOf()); // 15.2654
 
 // 布尔：返回布尔值true或false
 var bool = true;
-console.log(bool.valueOf() === bool);   // true
+console.log(bool.valueOf() === bool); // true
 
 // new一个Boolean对象
 var newBool = new Boolean(true);
 // valueOf()返回的是true，两者的值相等
-console.log(newBool.valueOf() == newBool);   // true
+console.log(newBool.valueOf() == newBool); // true
 // 但是不全等，两者类型不相等，前者是boolean类型，后者是object类型
-console.log(newBool.valueOf() === newBool);   // false
+console.log(newBool.valueOf() === newBool); // false
 
 // Function：返回函数本身
-function foo(){}
-console.log( foo.valueOf() === foo );   // true
-var foo2 =  new Function("x", "y", "return x + y;");
-console.log( foo2.valueOf() );
+function foo() {}
+console.log(foo.valueOf() === foo); // true
+var foo2 = new Function("x", "y", "return x + y;");
+console.log(foo2.valueOf());
 /*
 ƒ anonymous(x,y
 ) {
@@ -182,17 +188,17 @@ return x + y;
 */
 
 // Object：返回对象本身
-var obj = {name: "张三", age: 18};
-console.log( obj.valueOf() === obj );   // true
+var obj = { name: "张三", age: 18 };
+console.log(obj.valueOf() === obj); // true
 
 // String：返回字符串值
 var str = "http://www.xyz.com";
-console.log( str.valueOf() === str );   // true
+console.log(str.valueOf() === str); // true
 
 // new一个字符串对象
 var str2 = new String("http://www.xyz.com");
 // 两者的值相等，但不全等，因为类型不同，前者为string类型，后者为object类型
-console.log( str2.valueOf() === str2 );   // false
+console.log(str2.valueOf() === str2); // false
 ```
 
 ## Object.prototype.toString
@@ -200,7 +206,7 @@ console.log( str2.valueOf() === str2 );   // false
 - 返回对象的类型字符串，因此可以用来判断一个值的类型
 
 ```js
-Object.prototype.toString.call(arg)
+Object.prototype.toString.call(arg);
 ```
 
 ## Object.prototype.hasOwnProperty
@@ -211,9 +217,9 @@ Object.prototype.toString.call(arg)
 const object1 = new Object();
 object1.property1 = 42;
 
-console.log(object1.hasOwnProperty('property1')); //true
-console.log(object1.hasOwnProperty('toString')); //false
-console.log(object1.hasOwnProperty('hasOwnProperty')); //false
+console.log(object1.hasOwnProperty("property1")); //true
+console.log(object1.hasOwnProperty("toString")); //false
+console.log(object1.hasOwnProperty("hasOwnProperty")); //false
 ```
 
 ## Object.prototype.isPrototypeOf
@@ -256,26 +262,26 @@ socrates instanceof human; //=> ER
 ```js
 var o = {};
 var a = [];
-o.prop = 'is enumerable';
-a[0] = 'is enumerable';
+o.prop = "is enumerable";
+a[0] = "is enumerable";
 
-o.propertyIsEnumerable('prop'); // 返回 true
-a.propertyIsEnumerable(0);      // 返回 true
+o.propertyIsEnumerable("prop"); // 返回 true
+a.propertyIsEnumerable(0); // 返回 true
 ```
 
 - 用户自定义对象和内置对象
 
 ```js
-var a = ['is enumerable'];
+var a = ["is enumerable"];
 
-a.propertyIsEnumerable(0);        // 返回 true
-a.propertyIsEnumerable('length'); // 返回 false
+a.propertyIsEnumerable(0); // 返回 true
+a.propertyIsEnumerable("length"); // 返回 false
 
-Math.propertyIsEnumerable('random'); // 返回 false
-this.propertyIsEnumerable('Math');   // 返回 false
+Math.propertyIsEnumerable("random"); // 返回 false
+this.propertyIsEnumerable("Math"); // 返回 false
 ```
 
-## Object.prototype.__proto__
+## Object.prototype.**proto**
 
 - `Object.prototype.__proto__`
 - 返回该对象的原型。该属性可读写
@@ -283,7 +289,7 @@ this.propertyIsEnumerable('Math');   // 返回 false
 
 <CodeBlock>
 
-<<< @/utils/docs/object/proto.js
+<<< @/utils/libs/object/proto.js
 
 </CodeBlock>
 
@@ -295,13 +301,13 @@ this.propertyIsEnumerable('Math');   // 返回 false
 // Object.preventExtensions将原对象变的不可扩展,并且返回原对象.
 var obj = {};
 var obj2 = Object.preventExtensions(obj);
-obj === obj2;  // true
-obj2.name = 'js'
-console.log(obj2, obj) // {} {}
+obj === obj2; // true
+obj2.name = "js";
+console.log(obj2, obj); // {} {}
 
 // 字面量方式定义的对象默认是可扩展的.
 var empty = {};
-Object.isExtensible(empty) //=== true
+Object.isExtensible(empty); //=== true
 ```
 
 ## Object.seal
@@ -339,14 +345,14 @@ console.log(obj.prop); // 42
 
 ## Object.getOwnPropertyNames
 
-- 返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性但不包括Symbol值作为名称的属性）组成的数组
+- 返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性但不包括 Symbol 值作为名称的属性）组成的数组
 
 ```js
 var arr = ["a", "b", "c"];
 console.log(Object.getOwnPropertyNames(arr).sort()); // ["0", "1", "2", "length"]
 
 // 类数组对象
-var obj = { 0: "a", 1: "b", 2: "c"};
+var obj = { 0: "a", 1: "b", 2: "c" };
 console.log(Object.getOwnPropertyNames(obj).sort()); // ["0", "1", "2"]
 
 // 使用Array.forEach输出属性名和属性值
@@ -359,12 +365,17 @@ Object.getOwnPropertyNames(obj).forEach(function(val, idx, array) {
 // 2 -> c
 
 //不可枚举属性
-var my_obj = Object.create({}, {
-  getFoo: {
-    value: function() { return this.foo; },
-    enumerable: false
+var my_obj = Object.create(
+  {},
+  {
+    getFoo: {
+      value: function() {
+        return this.foo;
+      },
+      enumerable: false
+    }
   }
-});
+);
 my_obj.foo = 1;
 
 console.log(Object.getOwnPropertyNames(my_obj).sort()); // ["foo", "getFoo"]
@@ -377,23 +388,28 @@ console.log(Object.getOwnPropertyNames(my_obj).sort()); // ["foo", "getFoo"]
 
 ```js
 // simple array
-var arr = ['a', 'b', 'c'];
+var arr = ["a", "b", "c"];
 console.log(Object.keys(arr)); // console: ['0', '1', '2']
 
 // array like object
-var obj = { 0: 'a', 1: 'b', 2: 'c' };
+var obj = { 0: "a", 1: "b", 2: "c" };
 console.log(Object.keys(obj)); // console: ['0', '1', '2']
 
 // array like object with random key ordering
-var anObj = { 100: 'a', 2: 'b', 7: 'c' };
+var anObj = { 100: "a", 2: "b", 7: "c" };
 console.log(Object.keys(anObj)); // console: ['2', '7', '100']
 
 // getFoo is a property which isn't enumerable
-var myObj = Object.create({}, {
-  getFoo: {
-    value: function () { return this.foo; }
+var myObj = Object.create(
+  {},
+  {
+    getFoo: {
+      value: function() {
+        return this.foo;
+      }
+    }
   }
-});
+);
 myObj.foo = 1;
 console.log(Object.keys(myObj)); // console: ['foo']
 ```
@@ -406,8 +422,8 @@ console.log(Object.keys(myObj)); // console: ['foo']
 
 ```js
 const entries = new Map([
-  ['foo', 'bar'],
-  ['baz', 42]
+  ["foo", "bar"],
+  ["baz", 42]
 ]);
 
 const obj = Object.fromEntries(entries);
@@ -423,7 +439,7 @@ console.log(obj);
 
 ```js
 const object1 = {
-  a: 'somestring',
+  a: "somestring",
   b: 42
 };
 
@@ -437,25 +453,34 @@ for (let [key, value] of Object.entries(object1)) {
 - 返回一个给定对象自身的所有可枚举属性值的数组
 
 ```js
-var obj = { foo: 'bar', baz: 42 };
+var obj = { foo: "bar", baz: 42 };
 console.log(Object.values(obj)); // ['bar', 42]
 
 // array like object
-var obj = { 0: 'a', 1: 'b', 2: 'c' };
+var obj = { 0: "a", 1: "b", 2: "c" };
 console.log(Object.values(obj)); // ['a', 'b', 'c']
 
 // array like object with random key ordering
 // when we use numeric keys, the value returned in a numerical order according to the keys
-var an_obj = { 100: 'a', 2: 'b', 7: 'c' };
+var an_obj = { 100: "a", 2: "b", 7: "c" };
 console.log(Object.values(an_obj)); // ['b', 'c', 'a']
 
 // getFoo is property which isn't enumerable
-var my_obj = Object.create({}, { getFoo: { value: function() { return this.foo; } } });
-my_obj.foo = 'bar';
+var my_obj = Object.create(
+  {},
+  {
+    getFoo: {
+      value: function() {
+        return this.foo;
+      }
+    }
+  }
+);
+my_obj.foo = "bar";
 console.log(Object.values(my_obj)); // ['bar']
 
 // non-object argument will be coerced to an object
-console.log(Object.values('foo')); // ['f', 'o', 'o']
+console.log(Object.values("foo")); // ['f', 'o', 'o']
 ```
 
 ## Object.is
@@ -463,24 +488,24 @@ console.log(Object.values('foo')); // ['f', 'o', 'o']
 - 判断两个值是否是相同的值
 
 ```js
-Object.is('foo', 'foo');     // true
-Object.is(window, window);   // true
+Object.is("foo", "foo"); // true
+Object.is(window, window); // true
 
-Object.is('foo', 'bar');     // false
-Object.is([], []);           // false
+Object.is("foo", "bar"); // false
+Object.is([], []); // false
 
 var foo = { a: 1 };
 var bar = { a: 1 };
-Object.is(foo, foo);         // true
-Object.is(foo, bar);         // false
+Object.is(foo, foo); // true
+Object.is(foo, bar); // false
 
-Object.is(null, null);       // true
+Object.is(null, null); // true
 
 // 特例
-Object.is(0, -0);            // false
-Object.is(0, +0);            // true
-Object.is(-0, -0);           // true
-Object.is(NaN, 0/0);         // true
+Object.is(0, -0); // false
+Object.is(0, +0); // true
+Object.is(-0, -0); // true
+Object.is(NaN, 0 / 0); // true
 ```
 
 ## Object.getOwnPropertyDescriptor
@@ -490,9 +515,13 @@ Object.is(NaN, 0/0);         // true
 ```js
 var o, d;
 
-o = { get foo() { return 17; } };
+o = {
+  get foo() {
+    return 17;
+  }
+};
 d = Object.getOwnPropertyDescriptor(o, "foo");
-console.log(d)
+console.log(d);
 // {
 //   configurable: true,
 //   enumerable: true,
@@ -502,7 +531,7 @@ console.log(d)
 
 o = { bar: 42 };
 d = Object.getOwnPropertyDescriptor(o, "bar");
-console.log(d)
+console.log(d);
 // {
 //   configurable: true,
 //   enumerable: true,
@@ -517,7 +546,7 @@ Object.defineProperty(o, "baz", {
   enumerable: false
 });
 d = Object.getOwnPropertyDescriptor(o, "baz");
-console.log(d)
+console.log(d);
 // {
 //   value: 8675309,
 //   writable: false,
@@ -537,10 +566,10 @@ console.log(d)
 
 - 描述符可同时具有的键值
 
-| | configurable| enumerable| value| writable| get| set|
-|- | - | - | - | - | -|-|
-|数据描述符	|Yes|Yes|Yes|Yes|No|No|
-|存取描述符	|Yes|Yes|No|No|Yes|Yes|
+|            | configurable | enumerable | value | writable | get | set |
+| ---------- | ------------ | ---------- | ----- | -------- | --- | --- |
+| 数据描述符 | Yes          | Yes        | Yes   | Yes      | No  | No  |
+| 存取描述符 | Yes          | Yes        | No    | No       | Yes | Yes |
 
 - 添加多个属性和默认值
 
@@ -550,21 +579,20 @@ var o = {};
 o.a = 1;
 // 等同于 :
 Object.defineProperty(o, "a", {
-  value : 1,
-  writable : true,
-  configurable : true,
-  enumerable : true
+  value: 1,
+  writable: true,
+  configurable: true,
+  enumerable: true
 });
 
-
 // 另一方面，
-Object.defineProperty(o, "a", { value : 1 });
+Object.defineProperty(o, "a", { value: 1 });
 // 等同于 :
 Object.defineProperty(o, "a", {
-  value : 1,
-  writable : false,
-  configurable : false,
-  enumerable : false
+  value: 1,
+  writable: false,
+  configurable: false,
+  enumerable: false
 });
 ```
 
@@ -579,12 +607,12 @@ var o = {}; // 创建一个新对象
 
 // 在对象中添加一个属性与数据描述符的示例
 Object.defineProperty(o, "a", {
-  value : 37,
-  writable : true,
-  enumerable : true,
-  configurable : true
+  value: 37,
+  writable: true,
+  enumerable: true,
+  configurable: true
 });
-console.log(o)
+console.log(o);
 // 对象o拥有了属性a，值为37
 ```
 
@@ -595,7 +623,7 @@ console.log(o)
 ```js
 var o = {}; // Creates a new object
 
-Object.defineProperty(o, 'a', {
+Object.defineProperty(o, "a", {
   value: 37,
   writable: false
 });
@@ -606,15 +634,15 @@ console.log(o.a); // 37
 
 // strict mode
 (function() {
-  'use strict';
+  "use strict";
   var o = {};
-  Object.defineProperty(o, 'b', {
+  Object.defineProperty(o, "b", {
     value: 2,
     writable: false
   });
   o.b = 3; // throws TypeError
-  console.log(o)
-}());
+  console.log(o);
+})();
 ```
 
 #### `enumerable`
@@ -625,9 +653,9 @@ console.log(o.a); // 37
 
 ```js
 var o = {};
-Object.defineProperty(o, "a", { value : 1, enumerable:true });
-Object.defineProperty(o, "b", { value : 2, enumerable:false });
-Object.defineProperty(o, "c", { value : 3 }); // enumerable defaults to false
+Object.defineProperty(o, "a", { value: 1, enumerable: true });
+Object.defineProperty(o, "b", { value: 2, enumerable: false });
+Object.defineProperty(o, "c", { value: 3 }); // enumerable defaults to false
 o.d = 4; // 如果使用直接赋值的方式创建对象的属性，则这个属性的enumerable为true
 
 for (var i in o) {
@@ -637,9 +665,9 @@ for (var i in o) {
 
 Object.keys(o); // ["a", "d"]
 
-o.propertyIsEnumerable('a'); // true
-o.propertyIsEnumerable('b'); // false
-o.propertyIsEnumerable('c'); // false
+o.propertyIsEnumerable("a"); // true
+o.propertyIsEnumerable("b"); // false
+o.propertyIsEnumerable("c"); // false
 ```
 
 #### `configurable`
@@ -679,17 +707,17 @@ console.log(o.a); // 1
 
 #### `set/get`
 
-- get函数，表示该属性的取值函数（`getter`），默认为`undefined`
-- set函数，表示该属性的存值函数（`setter`），默认为`undefined`
+- get 函数，表示该属性的取值函数（`getter`），默认为`undefined`
+- set 函数，表示该属性的存值函数（`setter`），默认为`undefined`
 
 ```js
 function Archiver() {
   var temperature = null;
   var archive = [];
 
-  Object.defineProperty(this, 'temperature', {
+  Object.defineProperty(this, "temperature", {
     get: function() {
-      console.log('get!');
+      console.log("get!");
       return temperature;
     },
     set: function(value) {
@@ -698,7 +726,9 @@ function Archiver() {
     }
   });
 
-  this.getArchive = function() { return archive; };
+  this.getArchive = function() {
+    return archive;
+  };
 }
 
 var arc = new Archiver();
@@ -713,37 +743,36 @@ arc.getArchive(); // [{ val: 11 }, { val: 13 }]
 ### `in`
 
 - `prop in object`运算符常用于检查一个属性是否存在
-- in右操作数必须是一个对象值
+- in 右操作数必须是一个对象值
 
 ```js
 // 数组
 var trees = new Array("redwood", "bay", "cedar", "oak", "maple");
-console.log(0 in trees)        // 返回true
-console.log(3 in trees)        // 返回true
-console.log(6 in trees)        // 返回false
-console.log("bay" in trees)    // 返回false (必须使用索引号,而不是数组元素的值)
+console.log(0 in trees); // 返回true
+console.log(3 in trees); // 返回true
+console.log(6 in trees); // 返回false
+console.log("bay" in trees); // 返回false (必须使用索引号,而不是数组元素的值)
 
-console.log("length" in trees) // 返回true (length是一个数组属性)
+console.log("length" in trees); // 返回true (length是一个数组属性)
 
-console.log(Symbol.iterator in trees) // 返回true
+console.log(Symbol.iterator in trees); // 返回true
 
 // 内置对象
-console.log("PI" in Math)          // 返回true
+console.log("PI" in Math); // 返回true
 
 // 自定义对象
-var mycar = {make: "Honda", model: "Accord", year: 1998};
-console.log("make" in mycar)  // 返回true
-console.log("model" in mycar) // 返回true
+var mycar = { make: "Honda", model: "Accord", year: 1998 };
+console.log("make" in mycar); // 返回true
+console.log("model" in mycar); // 返回true
 
-var mycar = {make: "Honda", model: "Accord", year: 1998};
+var mycar = { make: "Honda", model: "Accord", year: 1998 };
 delete mycar.make;
-console.log("make" in mycar);  // 返回false
-
+console.log("make" in mycar); // 返回false
 
 // 值赋值为undefined
-var mycar = {make: "Honda", model: "Accord", year: 1998};
+var mycar = { make: "Honda", model: "Accord", year: 1998 };
 mycar.make = undefined;
-console.log("make" in mycar);  // 返回true
+console.log("make" in mycar); // 返回true
 ```
 
 ### `for..in`
@@ -751,7 +780,7 @@ console.log("make" in mycar);  // 返回true
 - 以任意顺序遍历一个对象的除`Symbol`以外的可枚举属性
 
 ```js
-var obj = {a:1, b:2, c:3};
+var obj = { a: 1, b: 2, c: 3 };
 
 for (var prop in obj) {
   console.log("obj." + prop + " = " + obj[prop]);
@@ -773,7 +802,7 @@ Object.prototype.objCustom = function() {};
 Array.prototype.arrCustom = function() {};
 
 let iterable = [3, 5, 7];
-iterable.foo = 'hello';
+iterable.foo = "hello";
 
 for (let i in iterable) {
   console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"

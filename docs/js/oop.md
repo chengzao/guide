@@ -1,10 +1,16 @@
-# 设计模式/构造函数
+---
+title: 设计模式/构造函数
+date: 2020-07-20
+sidebar: "auto"
+---
 
-## 设计模式
+## 工厂模式
 
-- 工厂模式
+:::tip
 
-<CodeBlock>
+原地址： [JavaScript 设计模式 es6](https://juejin.im/post/5e021eb96fb9a01628014095)
+
+:::
 
 ```js
 function Persion(name) {
@@ -23,11 +29,7 @@ var p2 = Persion("css");
 p2.say(); // => Hello, css
 ```
 
-</CodeBlock>
-
-- 构造函数模式
-
-<CodeBlock>
+## 构造函数模式
 
 ```js
 function Persion(name, age) {
@@ -43,11 +45,7 @@ var p2 = new Persion("node", 16);
 p2.say();
 ```
 
-</CodeBlock>
-
-- 单例模式
-
-<CodeBlock>
+## 单例模式
 
 ```js
 class User {
@@ -75,11 +73,7 @@ var b = new ProxyMode("bbb");
 console.log(a === b); // true
 ```
 
-</CodeBlock>
-
-- 适配器模式
-
-<CodeBlock>
+## 适配器模式
 
 ```js
 class Plug {
@@ -101,9 +95,7 @@ let target = new Target();
 target.getName(); // html css
 ```
 
-</CodeBlock>
-
-- 代理模式
+## 代理模式
 
 ```js
 let M = {
@@ -132,9 +124,7 @@ let A = {
 M.send(B, "flower"); // => get flower
 ```
 
-- 装饰者模式
-
-<CodeBlock>
+## 装饰者模式
 
 ```js
 class Cellphone {
@@ -162,11 +152,7 @@ let dec = new Decorator(cellphone);
 dec.create(); // 生成一个手机 生成手机壳
 ```
 
-</CodeBlock>
-
-- 观察者模式
-
-<CodeBlock>
+## 观察者模式
 
 ```js
 class Sub {
@@ -211,16 +197,12 @@ sub.setState(12);
 // => 02 update, state: 12
 ```
 
-</CodeBlock>
-
 ## 面向对象
 
 - 封装 继承 多态 作用：复用
 - 继承：就是修改对象中的原型链的层次结构
 
 ## 构造函数
-
-<CodeBlock>
 
 ```js
 function Func(uName) {
@@ -234,8 +216,6 @@ var obj2 = new Func("xiao ming");
 console.log(obj1.showUserName === obj2.showUserName); //true
 ```
 
-</CodeBlock>
-
 ## 构造函数 new 命令的原理
 
 1. 创建一个空对象,作为将要返回的对象实例
@@ -243,7 +223,7 @@ console.log(obj1.showUserName === obj2.showUserName); //true
 3. 生成一个**proto**指针,指向构造函数的原型对象
 4. this 指向这个空对象
 
-- 代码1
+- 代码 1
 
 ```js
 function Person(name) {
@@ -259,7 +239,7 @@ var person = new Person("hainan");
 person.getName();
 ```
 
-- 代码2
+- 代码 2
 
 ```js
 function _new() {
@@ -282,7 +262,7 @@ var actor = _new(Person, "张三", 28);
 actor; // => {name: "张三", age: 28}
 ```
 
-- 代码3
+- 代码 3
 
 ```js
 function _new(func) {
@@ -304,8 +284,6 @@ console.log(m.__proto__.constructor === M);
 
 - 拷贝继承
 
-<CodeBlock>
-
 ```js
 function extend2(Child, Parent) {
     var p = Parent.prototype;
@@ -324,11 +302,7 @@ var cat1 = new Cat('po' 'orange');
 console.log(cat1.eat()); // animal eat
 ```
 
-</CodeBlock>
-
 - 寄生组合式继承
-
-<CodeBlock>
 
 ```js
 function Father(name) {
@@ -371,11 +345,7 @@ c2.sayname(); //小明
 console.log(c2.num); //12
 ```
 
-</CodeBlock>
-
 - 原型式继承`Object.create`
-
-<CodeBlock>
 
 ```js
 function Super() {
@@ -395,11 +365,7 @@ Child.prototype.constructor = Child;
 var child = new Child("cat");
 ```
 
-</CodeBlock>
-
 - 继承
-
-<CodeBlock>
 
 ```js
 // 链接：https://juejin.im/post/5a96d78ef265da4e9311b4d8
@@ -437,8 +403,6 @@ function inherit(child, parent) {
   parentPrototype.constructor = child;
 }
 ```
-
-</CodeBlock>
 
 ## define module
 
@@ -562,7 +526,3 @@ let fn = reqiure("");
 ## 原型链示意图
 
 ![oop](https://gitee.com/cxyz/imgbed/raw/img/img/oop.jpg)
-
-## 相关链接
-
-- [JavaScript 设计模式 es6](https://juejin.im/post/5e021eb96fb9a01628014095)

@@ -1,8 +1,16 @@
-# docker示例
+---
+title: docker示例
+date: 2020-07-22
+sidebar: "auto"
+tags:
+  - docker
+categories:
+  - server
+---
 
 ## centos ssh
 
-### 方式1
+### 方式一
 
 - Dockerfile
 
@@ -73,7 +81,7 @@ services:
 
 </CodeBlock>
 
-- ssh连接centos: `ssh root@127.0.0.1 -p 10020`
+- ssh 连接 centos: `ssh root@127.0.0.1 -p 10020`
 
 ### 方式二
 

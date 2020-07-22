@@ -1,4 +1,12 @@
-# sentry
+---
+title: sentry
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - sentry
+categories:
+  - tools
+---
 
 [sentry](https://sentry.io/welcome/)
 
@@ -14,8 +22,7 @@ git clone git@github.com:getsentry/onpremise.git
 
 - Step2: `cd onpremise`
 
-
-- Step3: 创建 name volume，持久化
+* Step3: 创建 name volume，持久化
 
 ```bash
 docker volume create --name=sentry-data && docker volume create --name=sentry-postgres
@@ -45,7 +52,7 @@ docker-compose run --rm web config generate-secret-key
 docker-compose run --rm web upgrade
 ```
 
-- Step8: 开启sentry服务
+- Step8: 开启 sentry 服务
 
 ```bash
 docker-compose up -d
@@ -70,11 +77,11 @@ PROJECT_ID 验证用户绑定的项目id
 - 客户端中使用
 
 ```js
-import * as Sentry from '@sentry/browser';
+import * as Sentry from "@sentry/browser";
 
 Sentry.init({
-  dsn: "http://PUBLIC_KEY:SECRET_KEY@localhost:9000/PROJECT_ID" ,
-  release: 'sentry_app@20190710',
+  dsn: "http://PUBLIC_KEY:SECRET_KEY@localhost:9000/PROJECT_ID",
+  release: "sentry_app@20190710",
   environment: process.env.NODE_ENV
 });
 ```
@@ -134,33 +141,33 @@ token = 9210xxxxxxxx42b5823d8b0f6ebfdbb4
 - `Button.js`
 
 ```js
-import React, {Component} from 'react'
-class Button extends Component{
-  constructor(){
-    this.methodDoesNotExist = this.methodDoesNotExist.bind(this)
+import React, { Component } from "react";
+class Button extends Component {
+  constructor() {
+    this.methodDoesNotExist = this.methodDoesNotExist.bind(this);
   }
-  methodDoesNotExist(){
-    throw new Error(`我是一个抛出的错误日志: ${new Date()}`)
+  methodDoesNotExist() {
+    throw new Error(`我是一个抛出的错误日志: ${new Date()}`);
   }
-  render(){
-    return (<button onClick = { this.methodDoesNotExist } > Break the world</button>)
+  render() {
+    return <button onClick={this.methodDoesNotExist}> Break the world</button>;
   }
 }
-export default Button
+export default Button;
 ```
 
 - `App.js`
 
 ```js
-import React from 'react';
-import * as Sentry from '@sentry/browser';
-import Button from './Button'
+import React from "react";
+import * as Sentry from "@sentry/browser";
+import Button from "./Button";
 
 // 自建sentry服务的dsn组成部分
 // dsn: PROTOCOL://PUBLIC_KEY:SECRET_KEY@localhost:9000/PROJECT_ID
 Sentry.init({
-  dsn: "http://05bdfb2xxxx77:00a40ae1bxxxxf0@localhost:9000/4" ,
-  release: 'react-sentry@20190711',
+  dsn: "http://05bdfb2xxxx77:00a40ae1bxxxxf0@localhost:9000/4",
+  release: "react-sentry@20190711",
   environment: process.env.NODE_ENV
 });
 function App() {
@@ -173,8 +180,7 @@ function App() {
 export default App;
 ```
 
-
-- 上传sourcemap文件：`sentry-cli`
+- 上传 sourcemap 文件：`sentry-cli`
 
 ```bash
 # sentry-cli releases -o 组织 -p 项目 files staging@1.0.1 upload-sourcemaps js文件所在目录 --url-prefix 线上资源URI
@@ -183,7 +189,7 @@ export default App;
 sentry-cli releases files react-sentry@20190711 upload-sourcemaps ./build/ --url-prefix '~/static/js/'
 ```
 
-- 上传sourcemap文件：`@sentry/webpack-plugin`
+- 上传 sourcemap 文件：`@sentry/webpack-plugin`
 
 ```bash
 # 通过配置webpack： config-overrides.js
@@ -194,30 +200,30 @@ $ `npm install react-app-rewired --save-dev`
 - 配置`config-overrides.js`
 
 ```js
-const SentryCliPlugin = require('@sentry/webpack-plugin');
+const SentryCliPlugin = require("@sentry/webpack-plugin");
 
 module.exports = function override(config, env) {
   //do stuff with the webpack config...
-  if(process.env.NODE_ENV === 'production'){
+  if (process.env.NODE_ENV === "production") {
     config.plugins.push(
       new SentryCliPlugin({
-        include: './build',
-        urlPrefix: '~/static/js/',
-        ignoreFile: '.sentrycliignore',
-        ignore: ['node_modules', 'webpack.config.js'],
-        configFile: 'sentry.properties',
+        include: "./build",
+        urlPrefix: "~/static/js/",
+        ignoreFile: ".sentrycliignore",
+        ignore: ["node_modules", "webpack.config.js"],
+        configFile: "sentry.properties"
       })
-    )
+    );
   }
   return config;
-}
+};
 ```
 
-- 运行`npm run build`上传sourcemap
+- 运行`npm run build`上传 sourcemap
 
 ## 相关链接
 
 - [异常监控服务 Sentry 的部署](https://juejin.im/post/5d12b99cf265da1bb77677c5)
-- [前端异常监控之 Sentry的部署和使用](https://juejin.im/post/5b55c33ae51d45198f5c7a91)
+- [前端异常监控之 Sentry 的部署和使用](https://juejin.im/post/5b55c33ae51d45198f5c7a91)
 - [给你的项目装个探头 — Sentry](https://juejin.im/post/5d1461e1f265da1bbb03ecc2)
 - [webfunny](https://www.webfunny.cn/webfunny/createProject)

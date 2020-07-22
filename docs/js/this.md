@@ -1,4 +1,10 @@
-# This
+---
+title: this
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - this
+---
 
 - `this 指向最后调用它的那个对象`
 
@@ -26,7 +32,7 @@ function f() {
 如果箭头函数被非箭头函数包含，则 this 绑定的是最近一层非箭头函数的 this，
 否则，this 为 undefined
 
-- 代码1
+- 代码 1
 
 ```js
 var name = "windows";
@@ -48,7 +54,7 @@ var a = {
 a.func2(); // Cherry
 ```
 
-- 代码2
+- 代码 2
 
 ```js
 var name = "aaa";
@@ -59,8 +65,8 @@ var a = {
     console.log(this.name); // aaa
   },
   func2: () => {
-    console.log(this) // widnow
-    this.func1() // this.func1 is not a function
+    console.log(this); // widnow
+    this.func1(); // this.func1 is not a function
   }
 };
 
@@ -75,20 +81,20 @@ a.func2();
 <CodeBlock>
 
 ```js
-var Obj = function (p) {
+var Obj = function(p) {
   this.p = p;
 };
 
 Obj.prototype.m = function() {
-  console.log(this.constructor === Obj) // true
-  console.log(this instanceof Obj ) // true
-  console.log(Obj.prototype.isPrototypeOf(this))
+  console.log(this.constructor === Obj); // true
+  console.log(this instanceof Obj); // true
+  console.log(Obj.prototype.isPrototypeOf(this));
   return this.p;
 };
-var o = new Obj('Hello World!');
+var o = new Obj("Hello World!");
 
-o.p // "Hello World!"
-o.m() // "Hello World!"
+o.p; // "Hello World!"
+o.m(); // "Hello World!"
 ```
 
 </CodeBlock>
@@ -165,28 +171,28 @@ obj.m.apply(obj); //1
 ## 绑定 this 的方法
 
 ```js
-function Fn(name){
-  this.name = name
+function Fn(name) {
+  this.name = name;
 }
 
-Fn.prototype.say = function(){
-  console.log('Fn,', this.name)
-}
+Fn.prototype.say = function() {
+  console.log("Fn,", this.name);
+};
 
-Sub.prototype = Object.create(Fn.prototype)
-Sub.prototype.constructor = Sub
+Sub.prototype = Object.create(Fn.prototype);
+Sub.prototype.constructor = Sub;
 
-function Sub(name){
-  console.log(this)
-  Fn.call(this, name)
+function Sub(name) {
+  console.log(this);
+  Fn.call(this, name);
 }
 
 // Sub.prototype.say = function(){
 //   console.log('sub,', this.name)
 // }
 
-var sub = new Sub('js')
-sub.say() // Fn,js
+var sub = new Sub("js");
+sub.say(); // Fn,js
 ```
 
 ### 参数为空、`null`和 `undefined`
@@ -197,7 +203,7 @@ sub.say() // Fn,js
 var n = 123;
 var obj = { n: 456 };
 function a() {
-  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n)
+  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n);
 }
 
 a.call(); // Window , 123
@@ -213,7 +219,7 @@ a.call(obj); // Object , 456
 var n = 123;
 var obj = { n: 456 };
 function a() {
-  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n)
+  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n);
 }
 
 a.apply(); // Window , 123
@@ -229,7 +235,7 @@ a.apply(obj); // Object , 456
 var n = 123;
 var obj = { n: 456 };
 function a() {
-  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n)
+  console.log(Object.prototype.toString.call(this).slice(8, -1), this.n);
 }
 
 a.bind()(); // Window , 123
@@ -247,10 +253,10 @@ a.bind(obj)(); // Object , 456
 
 ```js
 function add(a, b) {
-  console.log('add: ',a + b);
+  console.log("add: ", a + b);
 }
 
-function fn(){}
+function fn() {}
 
 add(5, 3); //8
 
@@ -284,21 +290,21 @@ var print = d.getTime.bind(d);
 print();
 ```
 
-## 实现call,apply,bind
+## 实现 call,apply,bind
 
 - 实现 call
 
-<<< @/utils/docs/event/call.js
+<<< @/utils/libs/event/call.js
 
 - 实现 apply
 
-<<< @/utils/docs/event/apply.js
+<<< @/utils/libs/event/apply.js
 
 ### bind 兼容
 
 <CodeBlock>
 
-<<< @/utils/docs/event/bind.js
+<<< @/utils/libs/event/bind.js
 
 </CodeBlock>
 

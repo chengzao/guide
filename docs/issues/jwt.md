@@ -1,29 +1,41 @@
-# Cookie、JWT、Token
+---
+title: Cookie、JWT、Token
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - Cookie
+  - jwt
+  - token
+categories:
+  - web
+---
 
 ## Cookie、sessionStorage、localStorage
 
-- cookie大小限制4k, sessionStorage/localStorage大小限制在5MB
+- cookie 大小限制 4k, sessionStorage/localStorage 大小限制在 5MB
 - `sessionStorage`和`localStorage`不会自动把数据发给服务器，仅在本地保存
 - `sessionStorage`仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持
 - `localStorage`始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；localStorage 在所有同源窗口中都是共享的
 
-## XSS和CSRF
+## XSS 和 CSRF
 
 - 跨站脚本攻击（Cross Site Scripting)
 - 跨站请求伪造（Cross-site request forgery），是伪造请求，冒充用户在站内的正常操作
 - 区别：
-  - CSRF是利用网站A本身的漏洞，去请求网站A的api；XSS是向目标网站注入JS代码，然后执行JS里的代码
-  - CSRF需要用户先登录目标网站获取cookie，而XSS不需要登录
-  - CSRF的目标是用户，XSS的目标是服务器
-  - XSS是利用合法用户获取其信息，而CSRF是伪造成合法用户发起请求
 
-- CSRF防御措施: [来源](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0)
-  - 检查Referer字段
-  - 添加校验token
+  - CSRF 是利用网站 A 本身的漏洞，去请求网站 A 的 api；XSS 是向目标网站注入 JS 代码，然后执行 JS 里的代码
+  - CSRF 需要用户先登录目标网站获取 cookie，而 XSS 不需要登录
+  - CSRF 的目标是用户，XSS 的目标是服务器
+  - XSS 是利用合法用户获取其信息，而 CSRF 是伪造成合法用户发起请求
 
-- XSS防御措施: [来源](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC)
+- CSRF 防御措施: [来源](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0)
+
+  - 检查 Referer 字段
+  - 添加校验 token
+
+- XSS 防御措施: [来源](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC)
   - 过滤特殊字符
-  - 使用HTTP头指定类型,使输出的内容避免被作为HTML解析
+  - 使用 HTTP 头指定类型,使输出的内容避免被作为 HTML 解析
 
 ## Cookie、Session、Token、JWT
 
@@ -37,7 +49,7 @@
 
 - HTTP 是无状态的协议
 - cookie 存储在客户端
-- cookie 不可跨域, 设置domain属性，一级域名和二级域名之间是允许共享使用
+- cookie 不可跨域, 设置 domain 属性，一级域名和二级域名之间是允许共享使用
 - 属性
 
 ```bash
@@ -63,7 +75,7 @@ cookie 无法跨域, 设置domain属性，一级域名和二级域名之间是�
 ## Session
 
 - session 是另一种记录服务器和客户端会话状态的机制
-- session 是基于 cookie 实现的，session 存储在服务器端，sessionId 会被存储到客户端的cookie 中
+- session 是基于 cookie 实现的，session 存储在服务器端，sessionId 会被存储到客户端的 cookie 中
 
 ![session](https://gitee.com/cxyz/imgbed/raw/img/img/20200101224144.png)
 
@@ -137,7 +149,3 @@ JWT 适合一次性的命令认证，颁发一个有效期极短的 JWT
 - 区别
   - Token：服务端验证客户端发送过来的 Token 时，还需要查询数据库获取用户信息，然后验证 Token 是否有效
   - JWT：将 Token 和 Payload 加密后存储于客户端，服务端只需要使用密钥解密进行校验，不需要查询或者减少查询数据库
-
-## 相关链接
-
-- [廖雪峰 Node 教程之 crypto](https://www.liaoxuefeng.com/wiki/1022910821149312/1023025778520640)

@@ -1,6 +1,14 @@
-# centos7
+---
+title: centos7
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - centos7
+categories:
+  - server
+---
 
-## ip查看
+## ip 查看
 
 - `ip addr`
 
@@ -8,7 +16,7 @@
 
 - `nmtui`
 
-## 修改hosts
+## 修改 hosts
 
 ```bash
 vi /etc/hosts
@@ -16,7 +24,7 @@ vi /etc/hosts
 sudo /etc/init.d/networking restart
 ```
 
-## systemctl服务
+## systemctl 服务
 
 <CodeBlock>
 
@@ -57,7 +65,7 @@ curl -O https://raw.githubusercontent.com/amix/vimrc/master/README.md
 
 </CodeBlock>
 
-## rsync同步
+## rsync 同步
 
 <CodeBlock>
 
@@ -86,7 +94,7 @@ rsync -a -P 用户@主机:源 目标
 
 </CodeBlock>
 
-## ssh root禁用
+## ssh root 禁用
 
 <CodeBlock>
 
@@ -103,7 +111,7 @@ systemctl restart sshd.service
 
 </CodeBlock>
 
-## 禁止root本地登录
+## 禁止 root 本地登录
 
 ```bash
 # 修改配置 /etc/pam.d/login ，增加如下一行
@@ -112,7 +120,7 @@ auth required pam_succeed_if.so user != root quiet
 
 ## vmware-tools
 
-- vmware虚拟机工具
+- vmware 虚拟机工具
 
 <CodeBlock>
 
@@ -125,7 +133,7 @@ ls
 
 </CodeBlock>
 
-## port修改
+## port 修改
 
 <CodeBlock>
 
@@ -143,7 +151,7 @@ systemctl restart sshd.service
 
 ## SELINUX
 
-## 关闭SELINUX
+## 关闭 SELINUX
 
 <CodeBlock>
 
@@ -159,10 +167,10 @@ systemctl restart sshd.service
 
 </CodeBlock>
 
-## 不关SELINUX
+## 不关 SELINUX
 
-- 但是需要添加一下SELINUX的端口, 使用semanage工具
-- 安装semanage
+- 但是需要添加一下 SELINUX 的端口, 使用 semanage 工具
+- 安装 semanage
 
 <CodeBlock>
 
@@ -189,7 +197,7 @@ systemctl restart sshd.service
 
 - 防火墙中放行新加入端口
 
-  - 方法1
+  - 方法 1
 
   <CodeBlock>
 
@@ -220,7 +228,7 @@ systemctl restart sshd.service
 
   </CodeBlock>
 
-  - 方法2
+  - 方法 2
 
   <CodeBlock>
 
@@ -246,14 +254,14 @@ sudo yum -y install 软件名
 # 其中参数-y为所有选项均选则yes，不加-y则要手动确认
 ```
 
-## 通过本地rpm包安装
+## 通过本地 rpm 包安装
 
 ```bash
 sudo rpm -ivh 软件名
 # 其中参数-i为安装，-vh为列出安装过程
 ```
 
-## 安装nginx
+## 安装 nginx
 
 <CodeBlock>
 
@@ -320,7 +328,7 @@ systemctl list-unit-files|grep enabled
 systemctl --failed
 ```
 
-- 配置firewalld-cmd
+- 配置 firewalld-cmd
 
 ```bash
 # 查看版本：
@@ -416,7 +424,7 @@ firewall-cmd --add-forward-port=proto=80:proto=tcp:toaddr=192.168.1.0.1
 firewall-cmd --add-forward-port=proto=80:proto=tcp:toaddr=192.168.0.1:toport=8080
 ```
 
-## Yum命令
+## Yum 命令
 
 <CodeBlock>
 
@@ -530,10 +538,10 @@ ssserver -c /etc/shadowsocks.json -d start
 
 ## 相关链接
 
-- [centos7开机界面出现多个选项](http://www.cnblogs.com/jcblog/p/6431252.html)
-- [Centos7 修改SSH 端口](http://www.cnblogs.com/waslost/p/4459664.html)
+- [centos7 开机界面出现多个选项](http://www.cnblogs.com/jcblog/p/6431252.html)
+- [Centos7 修改 SSH 端口](http://www.cnblogs.com/waslost/p/4459664.html)
 - [judasn/Linux-Tutorial](https://github.com/judasn/Linux-Tutorial)
 - [amix/vimrc](https://github.com/amix/vimrc)
-- [systemctl命令](http://man.linuxde.net/systemctl)
-- [linux基础命令介绍](https://segmentfault.com/a/1190000007946958)
-- [firewall防火墙](http://www.sa-log.com/282.html)
+- [systemctl 命令](http://man.linuxde.net/systemctl)
+- [linux 基础命令介绍](https://segmentfault.com/a/1190000007946958)
+- [firewall 防火墙](http://www.sa-log.com/282.html)

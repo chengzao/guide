@@ -1,4 +1,10 @@
-# Admin UI
+---
+title: admin ui
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - admin-ui
+---
 
 - [almasaeed2010/AdminLTE](https://github.com/almasaeed2010/AdminLTE)
 - [PanJiaChen/vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)

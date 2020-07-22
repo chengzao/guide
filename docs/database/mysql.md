@@ -1,6 +1,12 @@
-# mysql
+---
+title: mysql
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - mysql
+---
 
-## centos7安装mysql
+## mysql
 
 - [mysql download](https://dev.mysql.com/downloads/repo/yum/)
 - [mysql-yum-repo-quick-guide](https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/)
@@ -8,18 +14,18 @@
 - `sudo rpm -Uvh mysql57-community-release-el7-11.noarch.rpm`
 - `yum update`
 - `sudo yum install mysql-community-server -y`
-- 启动mysqld服务: `sudo service mysqld start`
-- 开启mysqld开机启动服务: `sudo systemctl enable mysqld.service`
-- 检测mysqld服务状态: `sudo service mysqld status`
-- 检测mysqld服务状态: `sudo systemctl status mysqld.service`
-- 获取mysql-root密码: `sudo grep 'temporary password' /var/log/mysqld.log`
-- 进入mysql: `mysql -uroot -p`
-- 修改mysql-root密码: `ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';`
+- 启动 mysqld 服务: `sudo service mysqld start`
+- 开启 mysqld 开机启动服务: `sudo systemctl enable mysqld.service`
+- 检测 mysqld 服务状态: `sudo service mysqld status`
+- 检测 mysqld 服务状态: `sudo systemctl status mysqld.service`
+- 获取 mysql-root 密码: `sudo grep 'temporary password' /var/log/mysqld.log`
+- 进入 mysql: `mysql -uroot -p`
+- 修改 mysql-root 密码: `ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';`
 - 添加远程登录用户: `GRANT ALL PRIVILEGES ON *.* TO 'user1'@'%' IDENTIFIED BY 'UserName123!' WITH GRANT OPTION;`
 
 ## 登录与退出
 
-- mysql登录命令
+- mysql 登录命令
 
 <CodeBlock>
 
@@ -71,20 +77,20 @@ ps : prompt mysql \h>
 - `mediumint` : 有符号值 => (-2<sup>23</sup> ~ 2<sup>23</sup>-1) | 无符号值 => (0 ~ 2<sup>24</sup>-1)
 - `int` : 有符号值 => (-2<sup>31</sup> ~ 2<sup>31</sup>-1) | 无符号值 => (0 ~ 2<sup>32</sup>-1)
 - `bigint` : 有符号值 => (-2<sup>63</sup> ~ 2<sup>63</sup>-1) | 无符号值 => (0 ~ 2<sup>64</sup>-1)
-- `float[(M,D)]`: M 表示数字总位数  D表示小数点后面的位数  即 `M ≥ D`
-- `double[(M,D)]`: M 表示数字总位数  D表示小数点后面的位数  即 `M ≥ D`
-- `year|time|date|datetime|timestamp`: 日期时间类型   `timestamp -> 1970-01-01 00:00:00`
+- `float[(M,D)]`: M 表示数字总位数 D 表示小数点后面的位数 即 `M ≥ D`
+- `double[(M,D)]`: M 表示数字总位数 D 表示小数点后面的位数 即 `M ≥ D`
+- `year|time|date|datetime|timestamp`: 日期时间类型 `timestamp -> 1970-01-01 00:00:00`
 - `一个字节是8位,一个汉字编码两个字节是十六位`
-- `char`: M个字节,( 0 <=  M <= 2<sup>8</sup>-1 )
-- `varchar`: L+1个字节,( L<=M 且 0 <=  M <= 2<sup>16</sup>-1 )
-- `tingtext`: L+1个字节,( L<=M 且 0 <=  M <= 2<sup>8</sup> )
-- `text`: L+2个字节,( L<=M 且 0 <=  M <= 2<sup>16</sup> )
-- `mediumtext`: L+3个字节,( L<=M 且 0 <=  M <= 2<sup>24</sup> )
-- `longtext`: L+4个字节,( L<=M 且 0 <=  M <= 2<sup>32</sup> )
-- `enum('value1','value2',...)` : 字节取决于枚举值的个数,最多( 2<sup>16</sup>-1 ) 个值   (选择其中一种情况)
-- `set('value1','value2',...)` : 字节取决于set成员的个数,最多 2<sup>8</sup> 个值  (排列组合所有的情况)
+- `char`: M 个字节,( 0 <= M <= 2<sup>8</sup>-1 )
+- `varchar`: L+1 个字节,( L<=M 且 0 <= M <= 2<sup>16</sup>-1 )
+- `tingtext`: L+1 个字节,( L<=M 且 0 <= M <= 2<sup>8</sup> )
+- `text`: L+2 个字节,( L<=M 且 0 <= M <= 2<sup>16</sup> )
+- `mediumtext`: L+3 个字节,( L<=M 且 0 <= M <= 2<sup>24</sup> )
+- `longtext`: L+4 个字节,( L<=M 且 0 <= M <= 2<sup>32</sup> )
+- `enum('value1','value2',...)` : 字节取决于枚举值的个数,最多( 2<sup>16</sup>-1 ) 个值 (选择其中一种情况)
+- `set('value1','value2',...)` : 字节取决于 set 成员的个数,最多 2<sup>8</sup> 个值 (排列组合所有的情况)
 
-## mysql数据库
+## mysql 数据库
 
 - 创建数据库`CREATE DATABASE 数据库名;`
 
@@ -95,6 +101,7 @@ ps : prompt mysql \h>
 - 查看所有数据库`SHOW DATABASES;`
 - 显示数据库创建语句 `SHOW CREATE DATABASE db_name;`
 - 选择数据库
+
   - 选择数据库`USE db_name;`
   - 查看当前使用的数据库`SELECT database();`
 
@@ -424,4 +431,4 @@ CREATE TABLE IF NOT EXISTS table_name [(create_definition,...)] select_statement
 
 ## 相关链接
 
-- [21分钟 MySQL 入门教程](http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html)
+- [21 分钟 MySQL 入门教程](http://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html)

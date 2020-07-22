@@ -1,4 +1,10 @@
-# Event
+---
+title: event
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - event
+---
 
 ## 介绍
 
@@ -40,7 +46,7 @@ request.addEventListener('readystatechange', function () {...}, false);
 
 ### addEventListener
 
-<<< @/utils/docs/event/addEventListener.js
+<<< @/utils/libs/event/addEventListener.js
 
 ## 事件队列
 
@@ -49,7 +55,7 @@ request.addEventListener('readystatechange', function () {...}, false);
 - 异步运行机制
   - 所有同步任务都在主线程上执行,形成一个执行栈(execution context stack)
   - 主线程之外,还存在一个"任务队列" (task queue)
-     只要异步任务有了运行结果,就在"任务队列"之中放置一个事件.
+    只要异步任务有了运行结果,就在"任务队列"之中放置一个事件.
   - 一旦"执行栈"中的所有同步任务执行完毕,系统就会读取"任务队列",
     查看队列中的事件任务.那些对应的异步任务,于是结束等待状态,
     进入执行栈,开始执行
@@ -58,15 +64,15 @@ request.addEventListener('readystatechange', function () {...}, false);
 ## 事件循环(Event Loop)
 
 - [最后一次搞懂 Event Loop](https://juejin.im/post/5cbc0a9cf265da03b11f3505)
-- 原地址：[从promise、process.nextTick、setTimeout出发，谈谈Event Loop中的Job queue #5](https://github.com/forthealllight/blog/issues/5)
+- 原地址：[从 promise、process.nextTick、setTimeout 出发，谈谈 Event Loop 中的 Job queue #5](https://github.com/forthealllight/blog/issues/5)
 - 执行顺序`同步代码—>microTask—>macroTask :`
-- macrotask宏任务：
+- macrotask 宏任务：
   - `script(主程序代码),setTimeout, setInterval, setImmediate(Node.js 环境), I/O, UI rendering`
-- microtask微任务：
+- microtask 微任务：
   - `process.nextTick(Node.js 环境), Promises, Object.observe, MutationObserver`
 - 执行顺序应该为：
   - `script(主程序代码)—>process.nextTick—>Promises...——>setTimeout——>setInterval——>setImmediate——> I/O——>UI rendering`
-- 在ES6中`macro-task`队列又称为`ScriptJobs`，而`micro-task`又称`PromiseJobs`
+- 在 ES6 中`macro-task`队列又称为`ScriptJobs`，而`micro-task`又称`PromiseJobs`
 
 <CodeBlock>
 
@@ -84,46 +90,46 @@ micro-task队列包含任务: b1, b2 , b3
 
 <CodeBlock>
 
-<<< @/utils/docs/js/eventloop.js
+<<< @/utils/libs/js/eventloop.js
 
 </CodeBlock>
 
-- 示例2
+- 示例 2
 
 <CodeBlock>
 
-<<< @/utils/docs/js/eventloop-01.js
+<<< @/utils/libs/js/eventloop-01.js
 
 </CodeBlock>
 
-- 示例2
+- 示例 2
 
 <CodeBlock>
 
-<<< @/utils/docs/js/eventloop-02.js
+<<< @/utils/libs/js/eventloop-02.js
 
 </CodeBlock>
 
 ## 事件的传播(事件流)
 
-- 什么是事件流：事件流描述的是从页面中接收事件的顺序,DOM2级事件流包括下面几个阶段的三个阶段:
-- 第一阶段：从window对象传导到目标节点,称为"`捕获阶段`"(capture phase)
+- 什么是事件流：事件流描述的是从页面中接收事件的顺序,DOM2 级事件流包括下面几个阶段的三个阶段:
+- 第一阶段：从 window 对象传导到目标节点,称为"`捕获阶段`"(capture phase)
 - 第二阶段：在目标节点上触发,称为"`目标阶段`"(target phase)
-- 第三阶段：从目标节点传导回window对象,称为"`冒泡阶段`"(bubbling phase)
+- 第三阶段：从目标节点传导回 window 对象,称为"`冒泡阶段`"(bubbling phase)
 - `IE只支持事件冒泡`
 
 ## 事件委托
 
 - 利用事件冒泡的原理,将事件绑定在父容器中,让父容器代为触发
-- 事件委托指的是，不在事件的发生地（直接dom）上设置监听函数，而是在其父元素上设置监听函数，通过事件冒泡，父元素可以监听到子元素上事件的触发，通过判断事件发生元素DOM的类型，来做出不同的响应
+- 事件委托指的是，不在事件的发生地（直接 dom）上设置监听函数，而是在其父元素上设置监听函数，通过事件冒泡，父元素可以监听到子元素上事件的触发，通过判断事件发生元素 DOM 的类型，来做出不同的响应
 - 好处：比较合适动态元素的绑定，新添加的子元素也会有监听函数，也可以有事件触发机制
 
 <CodeBlock>
 
 ```js
-var ul = document.querySelector('ul');
-ul.addEventListener('click', function(event) {
-  if (event.target.tagName.toLowerCase() === 'li') {
+var ul = document.querySelector("ul");
+ul.addEventListener("click", function(event) {
+  if (event.target.tagName.toLowerCase() === "li") {
     // some code
   }
 });
@@ -131,17 +137,17 @@ ul.addEventListener('click', function(event) {
 // 阻止当前监听函数的传播
 //stopPropagation方法只会阻止当前监听函数的传播，
 //不会阻止<p>节点上的其他click事件的监听函数
-p.addEventListener('click', function(event) {
+p.addEventListener("click", function(event) {
   event.stopPropagation();
 });
 
 //如果想要不再触发那些监听函数，可以使用stopImmediatePropagation方法
-p.addEventListener('click', function(event) {
- event.stopImmediatePropagation();
+p.addEventListener("click", function(event) {
+  event.stopImmediatePropagation();
 });
 
-p.addEventListener('click', function(event) {
- // 不会被触发
+p.addEventListener("click", function(event) {
+  // 不会被触发
 });
 ```
 
@@ -149,32 +155,29 @@ p.addEventListener('click', function(event) {
 
 ## 事件如何先捕获后冒泡
 
-在DOM标准事件模型中，是先捕获后冒泡。但是如果要实现先冒泡后捕获的效果，对于同一个事件，监听捕获和冒泡，分别对应相应的处理函数，监听到捕获事件，先暂缓执行，直到冒泡事件被捕获后再执行捕获事件。
+在 DOM 标准事件模型中，是先捕获后冒泡。但是如果要实现先冒泡后捕获的效果，对于同一个事件，监听捕获和冒泡，分别对应相应的处理函数，监听到捕获事件，先暂缓执行，直到冒泡事件被捕获后再执行捕获事件。
 
 ## 哪些事件不支持冒泡事件
 
-- 鼠标事件：`mouserleave  mouseenter`
+- 鼠标事件：`mouserleave mouseenter`
 - 焦点事件：`blur focus`
-- UI事件：`scroll resize`
+- UI 事件：`scroll resize`
 
-### Event对象
+### Event 对象
 
 - `event = new Event(typeArg, eventInit);`
 - 第一个参数是字符串，表示事件的名称
 - 第二个参数是一个对象，表示事件对象的配置
-- bubbles：布尔值，可选，默认为false，表示事件对象是否冒泡
-- cancelable：布尔值，可选，默认为false，表示事件是否可以被取消
+- bubbles：布尔值，可选，默认为 false，表示事件对象是否冒泡
+- cancelable：布尔值，可选，默认为 false，表示事件是否可以被取消
 
 <CodeBlock>
 
 ```js
-var ev = new Event(
-  'look',
-  {
-    'bubbles': true,
-    'cancelable': false
-  }
-);
+var ev = new Event("look", {
+  bubbles: true,
+  cancelable: false
+});
 document.dispatchEvent(ev);
 
 // 兼容写法
@@ -220,7 +223,7 @@ elem.dispatchEvent(event);
 
 </CodeBlock>
 
-## 事件对象Event
+## 事件对象 Event
 
 - 兼容性写法
 
@@ -229,15 +232,15 @@ elem.dispatchEvent(event);
 ```js
 event = event || window.event;
 //demo
-document.onclick=function(event){
-	event = event || window.event;
-	console.log(event);//event 事件对象
-}
+document.onclick = function(event) {
+  event = event || window.event;
+  console.log(event); //event 事件对象
+};
 ```
 
 </CodeBlock>
 
-## 事件目标target
+## 事件目标 target
 
 - 兼容性写法
 

@@ -1,9 +1,8 @@
 ---
 home: true
-heroImage: /logo.png
-actionText: 点击开始 =>
-actionLink: /web/
-footer: MIT Licensed | Copyright © 2018-present chengzao
+heroText: "@chengzao"
+tagline: A Contented mind is a perpetual feast.
+bgImageStyle: { height: "450px" }
+isShowTitleInHome: false
+pageClass: custom-reco-pages
 ---
-
-<Hitokoto />

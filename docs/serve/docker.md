@@ -1,4 +1,12 @@
-# docker
+---
+title: docker命令
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - docker
+categories:
+  - server
+---
 
 ## commands
 
@@ -291,8 +299,8 @@ docker run -d -P \
 - [Get Docker CE for CentOS](https://docs.docker.com/engine/installation/linux/centos/)
 - [daocloud/Docker 入门](http://guide.daocloud.io/dcs/docker-9152673.html)
 - [基于 Docker 打造前端持续集成开发环境](https://juejin.im/post/5a142d7b6fb9a0451170c2c7)
-- [Windows下使用docker部署gitlab CI服务](https://www.jianshu.com/p/0abe441d5d3c)
-- [Centos7创建支持ssh服务器的docker容器](https://blog.csdn.net/xizaihui/article/details/52960604)
+- [Windows 下使用 docker 部署 gitlab CI 服务](https://www.jianshu.com/p/0abe441d5d3c)
+- [Centos7 创建支持 ssh 服务器的 docker 容器](https://blog.csdn.net/xizaihui/article/details/52960604)
 - [cr.console.aliyun](https://cr.console.aliyun.com/#/accelerator)
 - [mirrors.aliyun](http://mirrors.aliyun.com/docker-toolbox/)
 - [Play with Docker](https://labs.play-with-docker.com/)

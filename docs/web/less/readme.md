@@ -1,7 +1,16 @@
-# less
+---
+title: less
+date: 2020-07-20
+sidebar: "auto"
+categories:
+  - web
+tags:
+  - less
+  - 1PX
+---
 
 - [lesscss](http://lesscss.org/#)
-- [koala-app编译器](http://koala-app.com/index-zh.html)
+- [koala-app 编译器](http://koala-app.com/index-zh.html)
 - [online-less-compilers](http://lesscss.org/tools/#online-less-compilers)
 
 ## 基本使用
@@ -23,21 +32,21 @@ lessc -x styles.less styles.css
 @import (less) "b.css";
 
 //m.less
-.cless{
-    @red:red;
-    color:@red;
+.cless {
+  @red: red;
+  color: @red;
 }
 
 //b.css
- .bcss{
-   color:#ccc;
- }
+.bcss {
+  color: #ccc;
+}
 ```
 
 <CodeBlock title="less编译后的对应css文件：">
 
 ```less
- //less编译后的对应css文件：
+//less编译后的对应css文件：
 @charset 'utf-8';
 .cless {
   color: #ff0000;
@@ -56,15 +65,15 @@ lessc -x styles.less styles.css
 @charset 'utf-8';
 /* 这是一个编译后看见的注释*/
 //这是一个编译后看不见的注释
-@_width:300px;
-@red:red;
+@_width: 300px;
+@red: red;
 
-.col{
+.col {
   //可重复声明使用不影响外调用
-  @red:#ccc;
+  @red: #ccc;
   color: @red;
 }
-.col2{
+.col2 {
   color: @red;
 }
 ```
@@ -88,15 +97,15 @@ lessc -x styles.less styles.css
 ## 混合
 
 ```less
-.bord{
+.bord {
   border: 1px solid #000;
 }
 //例：
-.box{
-    width: @_width;
-    height: @_width;
-    background-color: @red;
-    .bord;//混合
+.box {
+  width: @_width;
+  height: @_width;
+  background-color: @red;
+  .bord; //混合
 }
 ```
 
@@ -120,14 +129,14 @@ lessc -x styles.less styles.css
 - 混合-带参数
 
 ```less
-.border_02(@border_width){
-    border: solid yellow @border_width;
+.border_02(@border_width) {
+  border: solid yellow @border_width;
 }
 //例：
-.border_hunhe{
-    width: @_width;
-    height: @_width;
-    .border_02(20px);
+.border_hunhe {
+  width: @_width;
+  height: @_width;
+  .border_02(20px);
 }
 ```
 
@@ -147,16 +156,16 @@ lessc -x styles.less styles.css
 - 混合-默认值
 
 ```less
-.border_03(@border_width:10px){
-    border: @border_width solid green;
+.border_03(@border_width:10px) {
+  border: @border_width solid green;
 }
 //例： 混合 不传值
-.border_hunhe2{
-    .border_03();
+.border_hunhe2 {
+  .border_03();
 }
 //例： 混合 传值
-.border_hunhe21{
-    .border_03(12px);
+.border_hunhe21 {
+  .border_03(12px);
 }
 ```
 
@@ -177,17 +186,17 @@ lessc -x styles.less styles.css
 - 混合用法:默认值为变量
 
 ```less
-@bdr:10px;
-.border_04(@border_width:@bdr){
-    border: @border_width solid @red;
+@bdr: 10px;
+.border_04(@border_width:@bdr) {
+  border: @border_width solid @red;
 }
 //例： 混合 不传值
-.border_hunhe3{
-    .border_04();
+.border_hunhe3 {
+  .border_04();
 }
 //例： 混合 传值
-.border_hunhe31{
-    .border_04(13px);
+.border_hunhe31 {
+  .border_04(13px);
 }
 ```
 
@@ -211,43 +220,43 @@ lessc -x styles.less styles.css
 /* 三角形 border */
 // 原文url:http://www.cnblogs.com/blosaa/p/3823695.html
 //上
-.trangle(top,@w:5px,@c:#ccc){
-    border-width: @w;
-    border-color: transparent transparent @c transparent ;
-    border-style: dashed dashed solid dashed ;
+.trangle(top,@w:5px,@c:#ccc) {
+  border-width: @w;
+  border-color: transparent transparent @c transparent;
+  border-style: dashed dashed solid dashed;
 }
 //右
-.trangle(right,@w:5px,@c:#ccc){
-    border-width: @w;
-    border-color: transparent transparent transparent @c;
-    border-style: dashed dashed dashed solid;
+.trangle(right,@w:5px,@c:#ccc) {
+  border-width: @w;
+  border-color: transparent transparent transparent @c;
+  border-style: dashed dashed dashed solid;
 }
 //下
-.trangle(bottom,@w:5px,@c:#ccc){
-    border-width: @w;
-    border-color:@c transparent transparent transparent;
-    border-style:solid dashed dashed dashed;
+.trangle(bottom,@w:5px,@c:#ccc) {
+  border-width: @w;
+  border-color: @c transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
 }
 //左
-.trangle(left,@w:5px,@c:#ccc){
-    border-width: @w;
-    border-color: transparent @c transparent transparent;
-    border-style: dashed solid dashed dashed ;
+.trangle(left,@w:5px,@c:#ccc) {
+  border-width: @w;
+  border-color: transparent @c transparent transparent;
+  border-style: dashed solid dashed dashed;
 }
 //匹配通用格式
-.trangle(@_,@w:5px,@c:#ccc){
-    width: 0;
-    height: 0;
-    overflow: hidden;
+.trangle(@_,@w:5px,@c:#ccc) {
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 //例：
-.sanjiao{
-  .trangle(right,50px);
+.sanjiao {
+  .trangle(right, 50px);
 }
 
 //例：传入错误值
-.sanjiao1{
-    .trangle(dsa,20px);
+.sanjiao1 {
+  .trangle(dsa, 20px);
 }
 ```
 
@@ -276,21 +285,21 @@ lessc -x styles.less styles.css
 - 运算: 其中一个带单位即可.**注意:减法之间的格式;命名变量在运算中不可添加单位**
 
 ```less
-@w10:100px;
-@h10:120;
-.add{
+@w10: 100px;
+@h10: 120;
+.add {
   width: @w10 + 10;
-  height:@h10 - 10px;
-  color: #666 / 2;  //可用,不建议
+  height: @h10 - 10px;
+  color: #666 / 2; //可用,不建议
 }
-.add2{
+.add2 {
   width: @w10 + 12/2;
-  height:(@h10 - 10)*2px;
+  height: (@h10 - 10) * 2px;
 }
 
-.add3{
+.add3 {
   width: @w10 + 10px;
-  height: @h10/3*3px - 6+4;
+  height: @h10 / 3 * 3px - 6+4;
 }
 ```
 
@@ -318,23 +327,23 @@ lessc -x styles.less styles.css
 ## 嵌套用法
 
 ```less
-ul{
+ul {
   width: 100px;
   //margin: 10px auto;
-  li{
+  li {
     width: 100px;
     float: left;
-    border-bottom: 1px solid #ccc /2;
+    border-bottom: 1px solid #ccc / 2;
   }
-  a{
+  a {
     width: 100px;
     color: red;
     display: block;
     //& 上一层选择器的名
-    &:hover{
+    &:hover {
       color: blue;
     }
-    span{
+    span {
       font-weight: bold;
       font-size: 18px;
       float: right;
@@ -342,12 +351,12 @@ ul{
     }
   }
 }
- // $的用法
-.tit{
+// $的用法
+.tit {
   width: 100px;
-  &_n{
-  width: 100px;
- }
+  &_n {
+    width: 100px;
+  }
 }
 ```
 
@@ -387,17 +396,17 @@ ul a span {
 
 </CodeBlock>
 
-## argument用法
+## argument 用法
 
 ```less
-.brd2(@c:#ccc,@w:10px,@solid:solid){
-  border:@arguments;
+.brd2(@c:#ccc,@w:10px,@solid:solid) {
+  border: @arguments;
 }
-.bor2{
+.bor2 {
   .brd2();
 }
 //注意参数对应
-.bor21{
+.bor21 {
   .brd2(red);
 }
 ```
@@ -419,9 +428,9 @@ ul a span {
 ## 避免编译
 
 ```less
- .wid{
-   width:~'calc(100px - 20px)';
- }
+.wid {
+  width: ~"calc(100px - 20px)";
+}
 ```
 
 <CodeBlock title="less编译后的对应css文件：">
@@ -435,15 +444,15 @@ ul a span {
 
 </CodeBlock>
 
-## important用法
+## important 用法
 
 ```less
-.impor(@w:10px,@h:10px){
-  width:@w;
-  height:@h;
+.impor(@w:10px,@h:10px) {
+  width: @w;
+  height: @h;
 }
-.im_a{
-  .impor()!important;
+.im_a {
+  .impor() !important;
 }
 ```
 
@@ -464,5 +473,7 @@ ul a span {
 <<< @/docs/web/less/util.less
 
 <CodeBlock show="false" title="1pxborder">
+
 <<< @/docs/web/less/border.less
+
 </CodeBlock>

@@ -1,4 +1,10 @@
-# Regexp
+---
+title: regexp
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - regexp
+---
 
 - [MDN/RegExp](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 - 构造函数定义 `var regex = new RegExp(/表达式/);`
@@ -9,9 +15,9 @@
 
 ## 正则对象的属性和方法
 
-- `ignoreCase`：返回一个布尔值,表示是否设置了i修饰符,该属性只读
-- `global`：返回一个布尔值,表示是否设置了g修饰符,该属性只读
-- `multiline`：返回一个布尔值,表示是否设置了m修饰符,该属性只读
+- `ignoreCase`：返回一个布尔值,表示是否设置了 i 修饰符,该属性只读
+- `global`：返回一个布尔值,表示是否设置了 g 修饰符,该属性只读
+- `multiline`：返回一个布尔值,表示是否设置了 m 修饰符,该属性只读
 - `lastIndex`：返回下一次开始搜索的位置,该属性可读写,但是只在设置了`g`修饰符时有意义
 - `source`：返回正则表达式的字符串形式(不包括反斜杠),该属性只读
 
@@ -36,25 +42,24 @@
 - 返回一个布尔值，表示当前模式是否能匹配参数字符串
 - `regex.test(string)`
 - 正则对象的`test`方法返回一个布尔值,表示当前模式是否能匹配参数字符串
-- 如果正则表达式带有`g`修饰符,则每一次test方法都从上一次结束的位置开始向后匹配
+- 如果正则表达式带有`g`修饰符,则每一次 test 方法都从上一次结束的位置开始向后匹配
 
 <CodeBlock>
 
 ```js
-/cat/.test('cats and dogs') // true
+/cat/.test("cats and dogs"); // true
 
 var r = /x/g;
-var s = '_x_x';
+var s = "_x_x";
 
-r.lastIndex // 0
-r.test(s) // true
+r.lastIndex; // 0
+r.test(s); // true
 
-r.lastIndex // 2
-r.test(s) // true
+r.lastIndex; // 2
+r.test(s); // true
 ```
 
 </CodeBlock>
-
 
 ### `exec`
 
@@ -67,30 +72,30 @@ r.test(s) // true
 <CodeBlock>
 
 ```js
-var s = '_x_x';
+var s = "_x_x";
 var r1 = /x/;
 var r2 = /y/;
 
-r1.exec(s) // ["x"]
-r2.exec(s) // null
+r1.exec(s); // ["x"]
+r2.exec(s); // null
 ```
 
 </CodeBlock>
 
 - `exec`方法的返回数组还包含以下两个属性：
   - `input`：整个原字符串
-  - `index`：整个模式匹配成功的开始位置(从0开始计数)
+  - `index`：整个模式匹配成功的开始位置(从 0 开始计数)
 
 <CodeBlock>
 
 ```js
 var r = /a(b+)a/;
-var arr = r.exec('_abbba_aba_');
+var arr = r.exec("_abbba_aba_");
 
-arr // ["abbba", "bbb"]
+arr; // ["abbba", "bbb"]
 
-arr.index // 1
-arr.input // "_abbba_aba_"
+arr.index; // 1
+arr.input; // "_abbba_aba_"
 ```
 
 </CodeBlock>
@@ -103,11 +108,11 @@ arr.input // "_abbba_aba_"
 <CodeBlock>
 
 ```js
-var s = 'abba';
+var s = "abba";
 var r = /a/g;
 
-s.match(r) // ["a", "a"]
-r.exec(s) // ["a"]
+s.match(r); // ["a", "a"]
+r.exec(s); // ["a"]
 ```
 
 </CodeBlock>
@@ -121,7 +126,7 @@ r.exec(s) // ["a"]
 ```js
 var r = /x/g;
 r.lastIndex = 2; // 无效
-'_x_x'.search(r) // 1
+"_x_x".search(r); // 1
 ```
 
 </CodeBlock>
@@ -133,47 +138,47 @@ r.lastIndex = 2; // 无效
 <CodeBlock>
 
 ```js
-'aaa'.replace('a', 'b') // "baa"
-'aaa'.replace(/a/g, 'b') // "bbb"
-var str = '  #id div.class  ';
+"aaa".replace("a", "b"); // "baa"
+"aaa".replace(/a/g, "b"); // "bbb"
+var str = "  #id div.class  ";
 
-str.replace(/^\s+|\s+$/g, '')
+str.replace(/^\s+|\s+$/g, "");
 // "#id div.class"
 ```
 
 </CodeBlock>
 
-- replace方法的第二个参数可以使用美元符号`$`,用来指代所替换的内容
+- replace 方法的第二个参数可以使用美元符号`$`,用来指代所替换的内容
   - `$&` 指代匹配的子字符串
   - `$` 指代匹配结果前面的文本
   - `$'` 指代匹配结果后面的文本
-  - `$n` 指代匹配成功的第n组内容,n是从`1`开始的自然数
+  - `$n` 指代匹配成功的第 n 组内容,n 是从`1`开始的自然数
   - `$$` 指代美元符号`$`
 
 <CodeBlock>
 
 ```js
-'hello world'.replace(/(\w+)\s(\w+)/, '$2 $1')
+"hello world".replace(/(\w+)\s(\w+)/, "$2 $1");
 // "world hello"
 
-'abc'.replace('b', '[$`-$&-$\']')
+"abc".replace("b", "[$`-$&-$']");
 // "a[a-b-c]c"
 ```
 
 </CodeBlock>
 
-- replace方法的第二个参数还可以是一个函数,将每一个匹配内容替换为函数返回值
+- replace 方法的第二个参数还可以是一个函数,将每一个匹配内容替换为函数返回值
 
 <CodeBlock>
 
 ```js
-'3 and 5'.replace(/[0-9]+/g, function(match){
+"3 and 5".replace(/[0-9]+/g, function(match) {
   return 2 * match;
-})
+});
 // "6 and 10"
 
-var a = 'The quick brown fox jumped over the lazy dog.';
-var pattern = /quick|brown|lazy/ig;
+var a = "The quick brown fox jumped over the lazy dog.";
+var pattern = /quick|brown|lazy/gi;
 
 a.replace(pattern, function replacer(match) {
   return match.toUpperCase();
@@ -196,13 +201,14 @@ a.replace(pattern, function replacer(match) {
 <CodeBlock>
 
 ```js
-/fred+/.test('fredd') // true
-/(fred)+/.test('fredfred') // true
+/fred+/.test("fredd") / // true
+  fred +
+  /.test('fredfred') / / true;
 ```
 
 </CodeBlock>
 
-- 用`\n`引用括号匹配的内容,n是从1开始的自然数,表示对应顺序的括号
+- 用`\n`引用括号匹配的内容,n 是从 1 开始的自然数,表示对应顺序的括号
 
 <CodeBlock>
 
@@ -228,18 +234,18 @@ tagName.exec("<b>bold</b>")[1]
 ```js
 // 正常匹配
 var url = /(http|ftp):\/\/([^/\r\n]+)(\/[^\r\n]*)?/;
-url.exec('http://google.com/');
+url.exec("http://google.com/");
 // ["http://google.com/", "http", "google.com", "/"]
 
 // 非捕获组匹配
 var url = /(?:http|ftp):\/\/([^/\r\n]+)(\/[^\r\n]*)?/;
-url.exec('http://google.com/');
+url.exec("http://google.com/");
 // ["http://google.com/", "google.com", "/"]
 ```
 
 </CodeBlock>
 
-- 先行断言`x(?=y)`称为先行断言(Positive look-ahead), x只有在y前面才匹配,y不会被计入返回结果
+- 先行断言`x(?=y)`称为先行断言(Positive look-ahead), x 只有在 y 前面才匹配,y 不会被计入返回结果
 
 <CodeBlock>
 
@@ -251,16 +257,16 @@ m // ["b"]
 
 </CodeBlock>
 
-- 先行否定断言 `x(?!y)`称为先行否定断言(Negative look-ahead), x只有不在y前面才匹配,y不会被计入返回结果
+- 先行否定断言 `x(?!y)`称为先行否定断言(Negative look-ahead), x 只有不在 y 前面才匹配,y 不会被计入返回结果
 
 <CodeBlock>
 
 ```js
-/\d+(?!\.)/.exec('3.14')
+/\d+(?!\.)/.exec("3.14");
 // ["14"]
 
-var m = 'abd'.match(/abd(?!c)/);
-m // ['abd']
+var m = "abd".match(/abd(?!c)/);
+m; // ['abd']
 ```
 
 </CodeBlock>
@@ -302,11 +308,11 @@ regex.test(str); // false
 <CodeBlock>
 
 ```js
-var s = 'aaa';
-s.match(/a+/) // ["aaa"]
+var s = "aaa";
+s.match(/a+/); // ["aaa"]
 
-var s = 'aaa';
-s.match(/a+?/) // ["a"]
+var s = "aaa";
+s.match(/a+?/); // ["a"]
 ```
 
 </CodeBlock>
@@ -317,9 +323,9 @@ s.match(/a+?/) // ["a"]
 - `?` 问号表示某个模式出现`0次或1次`，等同于`{0, 1}`
 - `*` 星号表示某个模式出现`0次或多次`，等同于`{0,}`
 - `+` 加号表示某个模式出现`1次或多次`，等同于`{1,}`
-- `\`  转义符
+- `\` 转义符
   - 正则模式中,需要用斜杠转义的字符：`^、.、[、$、(、)、|、*、+、?、{、\\`
-  - 使用RegExp方法生成正则对象,转义需要使用两个斜杠,因为字符串内部会先转义一次
+  - 使用 RegExp 方法生成正则对象,转义需要使用两个斜杠,因为字符串内部会先转义一次
 
 <CodeBlock>
 
@@ -335,7 +341,7 @@ s.match(/a+?/) // ["a"]
 
 ### 预定义模式
 
-- `·` `[^\n\r]`	除了换行,回车,行分隔符(`\u2028`)和段分隔符(`\u2029`)之外的任意字符
+- `·` `[^\n\r]` 除了换行,回车,行分隔符(`\u2028`)和段分隔符(`\u2029`)之外的任意字符
 - `\d`, 匹配`0-9`之间的任一数字 相当于`[0-9]`
 - `\D`, 匹配所有`0-9`以外的字符 相当于`[^0-9]`
 - `\w`, 匹配任意的字母、数字和下划线 相当于`[A-Za-z0-9_]`
@@ -351,15 +357,15 @@ s.match(/a+?/) // ["a"]
 - `$` 表示字符串的结束位置
 - `|` 表示“或关系”（`OR）`
 
-## 正则regExp
+## 正则 regExp
 
 ### 匹配规则
 
 - `定义模式`
   - 精确匹配次数,使用大括号`{}`表示
-  - `{n}`  表示恰好重复n次
-  - `{n,}` 表示至少重复n次
-  - `{n,m}`表示重复不少于n次,不多于m次
+  - `{n}` 表示恰好重复 n 次
+  - `{n,}` 表示至少重复 n 次
+  - `{n,m}`表示重复不少于 n 次,不多于 m 次
 
 <CodeBlock>
 
@@ -428,7 +434,7 @@ http://tool.chinaz.com/Tools/Unicode.aspx
 <CodeBlock>
 
 ```js
-/[a-z]/.test('b') // true
+/[a-z]/.test("b"); // true
 ```
 
 </CodeBlock>
@@ -574,5 +580,5 @@ IP地址：\d+\.\d+\.\d+\.\d+
 
 ## 相关资料
 
-- [JS正则表达式完整教程（略长）](https://juejin.im/post/5965943ff265da6c30653879#heading-0)
-- [2019年JS正则大全(常用)](https://juejin.im/post/5d245d4151882555300feb77)
+- [JS 正则表达式完整教程（略长）](https://juejin.im/post/5965943ff265da6c30653879#heading-0)
+- [2019 年 JS 正则大全(常用)](https://juejin.im/post/5d245d4151882555300feb77)

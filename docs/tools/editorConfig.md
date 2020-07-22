@@ -1,7 +1,15 @@
-# EditorConfig
+---
+title: EditorConfig
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - editorConfig
+categories:
+  - tools
+---
 
 - [editorconfig](https://editorconfig.org/)
-- vscode配合插件[EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)一起使用
+- vscode 配合插件[EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)一起使用
 - `.editorconfig`文件配置
 
 ```bash
@@ -32,15 +40,15 @@ trim_trailing_whitespace = false
 
 - 通配符模式
 
-| 通配符        | Are           |
-| :----------: |:-------------|
-| *     | 匹配任意数量string类型的字符，' / ' 除外 |
-| **     | 匹配任意数量string类型的字符 |
-| ？    | 匹配任意单个字符 |
-| [a-z]    | 匹配方括号规定范围内的任意单个字符 |
-| [!a-z]    | 匹配不在方括号规定范围内的任意单个字符 |
-| {s1,s2,s3}  | 匹配任意一个大括号内部美剧的字符(','分隔) |
-| {num1..num2}  | 匹配num1和num2之间的任意一个整数，num1和num2正负都可以 |
+|    通配符    | Are                                                           |
+| :----------: | :------------------------------------------------------------ |
+|      \*      | 匹配任意数量 string 类型的字符，' / ' 除外                    |
+|     \*\*     | 匹配任意数量 string 类型的字符                                |
+|      ？      | 匹配任意单个字符                                              |
+|    [a-z]     | 匹配方括号规定范围内的任意单个字符                            |
+|    [!a-z]    | 匹配不在方括号规定范围内的任意单个字符                        |
+|  {s1,s2,s3}  | 匹配任意一个大括号内部美剧的字符(','分隔)                     |
+| {num1..num2} | 匹配 num1 和 num2 之间的任意一个整数，num1 和 num2 正负都可以 |
 
 - example
 

@@ -1,4 +1,14 @@
-# vscode
+---
+title: vscode
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - editor
+categories:
+  - tools
+---
+
+- [vscode-generator-code](https://github.com/Microsoft/vscode-generator-code)
 
 !!! include(docs/tools/vscode/plugins.md) !!!
 

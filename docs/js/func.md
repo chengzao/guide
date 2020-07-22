@@ -1,4 +1,10 @@
-# Function
+---
+title: function
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - function
+---
 
 [MDN/Function](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
@@ -18,18 +24,18 @@ function getSum(){}
 
 ```js
 //ES5
-var getSum=function(){}
+var getSum = function() {};
 //ES6
-let getSum=()=>{}
+let getSum = () => {};
 ```
 
 - 构造函数
 
 ```js
-const getSum = new Function('a', 'b' , 'return a + b')
+const getSum = new Function("a", "b", "return a + b");
 // 等同于es5
-function getSum(a,b) {
-  return a+b;
+function getSum(a, b) {
+  return a + b;
 }
 ```
 
@@ -42,12 +48,12 @@ function getSum(a,b) {
 function f() {
   console.log(1);
 }
-f() // 2
+f(); // 2
 
 function f() {
   console.log(2);
 }
-f() // 2
+f(); // 2
 ```
 
 </CodeBlock>
@@ -57,8 +63,8 @@ f() // 2
 <CodeBlock>
 
 ```js
-function fn(){}
-fn() // 调用
+function fn() {}
+fn(); // 调用
 ```
 
 </CodeBlock>
@@ -68,34 +74,34 @@ fn() // 调用
 <CodeBlock>
 
 ```js
-function fn(){
-    console.log(b); //b is not defined
-	console.log(a); //undefined
-	var a=10;
+function fn() {
+  console.log(b); //b is not defined
+  console.log(a); //undefined
+  var a = 10;
 }
 fn();
 
 // 注：函数声明优先于变量声明
 var a;
-function a(){}
-typeof a // function
+function a() {}
+typeof a; // function
 
-function a(){}
+function a() {}
 var a;
-typeof a // function
+typeof a; // function
 
-function a(){}
-var a='xyf';
+function a() {}
+var a = "xyf";
 console.log(typeof a); //string
 
 // -----------------
-var a,b
-function fn(a){
-  a = 123
-  b = 555
+var a, b;
+function fn(a) {
+  a = 123;
+  b = 555;
 }
-fn('aaa', 666)
-console.log(a, b) // undefined, 555
+fn("aaa", 666);
+console.log(a, b); // undefined, 555
 ```
 
 </CodeBlock>
@@ -112,24 +118,26 @@ console.log(a, b) // undefined, 555
 Array.prototype.slice.call(arguments);
 Array.prototype.concat.apply([], arguments);
 // ------------------------------------------
-function fn(x,y){return x+y};
+function fn(x, y) {
+  return x + y;
+}
 fn.length; //2
-fn(1,2);   //3
-fn(1);     //NaN
-fn(1,2,3)  //3
+fn(1, 2); //3
+fn(1); //NaN
+fn(1, 2, 3); //3
 ```
 
 </CodeBlock>
 
 ## return
 
-在函数内部用return来设置返回值,一个函数只能有一个返回值.
+在函数内部用 return 来设置返回值,一个函数只能有一个返回值.
 同时,终止代码的执行.
 
 所有的自定义函数默认没有返回值
 
-return语句不是必需的,如果没有的话;
-该函数就不返回任何值,或者说返回undefined
+return 语句不是必需的,如果没有的话;
+该函数就不返回任何值,或者说返回 undefined
 
 ## 函数自调用
 
@@ -143,7 +151,7 @@ function fib(num) {
   if (num === 1) return 1;
   return fib(num - 2) + fib(num - 1);
 }
-fib(6) // 8
+fib(6); // 8
 ```
 
 </CodeBlock>
@@ -156,13 +164,13 @@ fib(6) // 8
 
 ```js
 function f1() {}
-f1.name // 'f1'
+f1.name; // 'f1'
 
-var f2 = function () {};
-f2.name // ''
+var f2 = function() {};
+f2.name; // ''
 
 var f3 = function myName() {};
-f3.name // 'myName'
+f3.name; // 'myName'
 ```
 
 </CodeBlock>
@@ -173,7 +181,7 @@ f3.name // 'myName'
 
 ```js
 function f(a, b) {}
-f.length // 2
+f.length; // 2
 ```
 
 </CodeBlock>
@@ -188,7 +196,7 @@ function f() {
   b();
   c();
 }
-f.toString()
+f.toString();
 ```
 
 </CodeBlock>
@@ -198,11 +206,13 @@ f.toString()
 <CodeBlock>
 
 ```js
-function f() {/*
+function f() {
+  /*
   这是一个
   多行注释
-*/}
-f.toString()
+*/
+}
+f.toString();
 // "function f(){/*
 //   这是一个
 //   多行注释
@@ -221,7 +231,7 @@ f.toString()
 
 ```js
 var a = 1;
-var x = function () {
+var x = function() {
   console.log(a);
 };
 
@@ -230,7 +240,7 @@ function f() {
   x();
 }
 
-f() // 1
+f(); // 1
 ```
 
 </CodeBlock>
@@ -244,16 +254,16 @@ function f(a, b) {
   return a;
 }
 
-f(1, 2, 3) // 1
-f(1) // 1
-f() // undefined
+f(1, 2, 3); // 1
+f(1); // 1
+f(); // undefined
 
-f.length // 2
+f.length; // 2
 ```
 
 </CodeBlock>
 
-## callee属性
+## callee 属性
 
 - `arguments对象带有一个callee属性,返回它所对应的原函数`
 
@@ -262,9 +272,9 @@ f.length // 2
 ```js
 var f = function() {
   console.log(arguments.callee === f);
-}
+};
 
-f() // true
+f(); // true
 ```
 
 </CodeBlock>
@@ -277,25 +287,25 @@ f() // true
 <CodeBlock>
 
 ```js
- var str="this is +'hello'+demo"; //this is +'hello'+demo
- var num=2;
- var str2="my age is "+num+".";	//my age is 2.
+var str = "this is +'hello'+demo"; //this is +'hello'+demo
+var num = 2;
+var str2 = "my age is " + num + "."; //my age is 2.
 ```
 
 </CodeBlock>
 
-## fn与`fn()`的区别
+## fn 与`fn()`的区别
 
 <CodeBlock>
 
 ```js
-<div id="demo">点击</div>
-	var demo=document.getElementById('demo');
-	function fn(){
-		alert(1)
-	}
-  demo.onclick=fn;   // 点击执行
-  demo.onclick=fn();  // 直接执行
+<div id="demo">点击</div>;
+var demo = document.getElementById("demo");
+function fn() {
+  alert(1);
+}
+demo.onclick = fn; // 点击执行
+demo.onclick = fn(); // 直接执行
 ```
 
 </CodeBlock>
@@ -314,7 +324,7 @@ function f(p) {
 }
 f(p);
 
-p // 2
+p; // 2
 ```
 
 </CodeBlock>
@@ -324,25 +334,25 @@ p // 2
 <CodeBlock>
 
 ```js
-var obj = {p: 1};
+var obj = { p: 1 };
 
 function f(o) {
   o.p = 2;
 }
 f(obj);
 
-obj.p // 2
+obj.p; // 2
 
 //如果函数内部修改的,不是参数对象的某个属性,
 //而是替换掉整个参数,这时不会影响到原始值.
 var obj = [1, 2, 3];
 
-function f(o){
+function f(o) {
   o = [2, 3, 4];
 }
 f(obj);
 
-obj // [1, 2, 3]
+obj; // [1, 2, 3]
 ```
 
 </CodeBlock>
@@ -357,9 +367,9 @@ var a = 1;
 function f(p) {
   window[p] = 2;
 }
-f('a');
+f("a");
 
-a // 2
+a; // 2
 ```
 
 </CodeBlock>
@@ -378,14 +388,14 @@ a // 2
 
 ```js
 function createIncrementor(start) {
-  return function () {
+  return function() {
     return start++;
   };
 }
 var inc = createIncrementor(5);
-inc() // 5
-inc() // 6
-inc() // 7
+inc(); // 5
+inc(); // 6
+inc(); // 7
 ```
 
 </CodeBlock>
@@ -409,9 +419,9 @@ function Person(name) {
     setAge: setAge
   };
 }
-var p1 = Person('张三');
+var p1 = Person("张三");
 p1.setAge(25);
-p1.getAge() // 25
+p1.getAge(); // 25
 ```
 
 </CodeBlock>
@@ -434,9 +444,13 @@ function(){ /* code */ }();  //error
 <CodeBlock>
 
 ```js
-(function(){ /* code */ }());
+(function() {
+  /* code */
+})();
 // 或者
-(function(){ /* code */ })();
+(function() {
+  /* code */
+})();
 ```
 
 </CodeBlock>
@@ -446,17 +460,37 @@ function(){ /* code */ }();  //error
 <CodeBlock>
 
 ```js
-var i = function(){ return 10; }();
-true && function(){ /* code */ }();
-0, function(){ /* code */ }();
-!function(){ /* code */ }();
-~function(){ /* code */ }();
--function(){ /* code */ }();
-+function(){ /* code */ }();
+var i = (function() {
+  return 10;
+})();
+true &&
+  (function() {
+    /* code */
+  })();
+0,
+  (function() {
+    /* code */
+  })();
+!(function() {
+  /* code */
+})();
+~(function() {
+  /* code */
+})();
+-(function() {
+  /* code */
+})();
++(function() {
+  /* code */
+})();
 
-new function(){ /* code */ }
+new (function() {
+  /* code */
+})();
 // 只有传递参数时,才需要最后那个圆括号
-new function(){ /* code */ }()
+new (function() {
+  /* code */
+})();
 ```
 
 </CodeBlock>
@@ -467,7 +501,7 @@ new function(){ /* code */ }()
 
 ```js
 var str = "{'a':'c'}";
-var f = new Function("return "+str);
+var f = new Function("return " + str);
 ```
 
 </CodeBlock>
@@ -480,9 +514,9 @@ var f = new Function("return "+str);
 
 ```js
 var a = 1;
-eval('a = 2');
+eval("a = 2");
 
-a // 2
+a; // 2
 ```
 
 </CodeBlock>
@@ -493,10 +527,10 @@ a // 2
 
 ```js
 (function f() {
-  'use strict';
-  eval('var foo = 123');
-  console.log(foo);  // ReferenceError: foo is not defined
-})()
+  "use strict";
+  eval("var foo = 123");
+  console.log(foo); // ReferenceError: foo is not defined
+})();
 ```
 
 </CodeBlock>

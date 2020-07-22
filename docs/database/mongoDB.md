@@ -1,4 +1,10 @@
-# mongodb
+---
+title: mongodb
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - mongodb
+---
 
 - [docs.mongodb](https://docs.mongodb.com/manual/reference/method/db.collection.update/#db.collection.update)
 - [mongodb download](https://www.mongodb.com/download-center?jmp=nav#community)
@@ -9,9 +15,9 @@
 <CodeBlock>
 
 - `service mongod start|stop|restart`
-- mongo默认端口: `ip:27017`
+- mongo 默认端口: `ip:27017`
 
-- tgz安装
+- tgz 安装
 
 ```bash
 $ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.4.7.tgz
@@ -53,11 +59,11 @@ docker exec -it mymongo mongo
 
 - `show dbs / show databases` # 显示当前的所有的数据库
 
-- `db`  # 查看当前所处的数据库
+- `db` # 查看当前所处的数据库
 
 - `show collections / show tables` # 显示当前的所有的集合
 
-- `use todos`  # 进入指定的数据库中, 可以不存在 数据库和集合， mongodb会在写入docs中自动创建
+- `use todos` # 进入指定的数据库中, 可以不存在 数据库和集合， mongodb 会在写入 docs 中自动创建
 
 - `CRUD` # 增删改查 `insert / find / update / delete`
 
@@ -185,7 +191,7 @@ db.items.find({})
 
 </CodeBlock>
 
-- `db.<collection>.insertOne({})`  # 插入一个文档
+- `db.<collection>.insertOne({})` # 插入一个文档
 
 ```bash
 # 写入数据
@@ -278,11 +284,11 @@ db.items.find({"name": "b", $or: [{"count": 2},{"count": 4}]}).pretty()
 
 - `db.<collection>.find().pretty()` 格式化的方式来显示所有文档
 
-- `db.<collection>.find({})`  如果传递空对象查找该集合中的所有docs
+- `db.<collection>.find({})` 如果传递空对象查找该集合中的所有 docs
 
 - `db.<collection>.find({},options)`
 
-- `db.<collection>.find({}).sort({})`  按{key:1}排序 (1 正序排序 ， -1 降序排序)
+- `db.<collection>.find({}).sort({})` 按{key:1}排序 (1 正序排序 ， -1 降序排序)
 
 ```bash
 # 写入数据
@@ -302,7 +308,7 @@ db.items.find({}).sort({"count": 1})
 db.items.find({}).sort({"count": -1})
 ```
 
-- `db.<collection>.find({}).limit(number)`  限制显示number条
+- `db.<collection>.find({}).limit(number)` 限制显示 number 条
 
 ```bash
 # 写入数据
@@ -318,7 +324,7 @@ db.items.insert([
 db.items.find({}).limit(3)
 ```
 
-- `db.<collection>.find({}).skip(number1).limit(number2)`  限制显示number2条, 从number1+条数据
+- `db.<collection>.find({}).skip(number1).limit(number2)` 限制显示 number2 条, 从 number1+条数据
 
 ```bash
 # 写入数据
@@ -334,7 +340,7 @@ db.items.insert([
 db.items.find({}).skip(3).limit(3)
 ```
 
-- `db.<collection>.find({}).skip((pageIndex -1)* pageNum).limit(pageNum)`  分页查询
+- `db.<collection>.find({}).skip((pageIndex -1)* pageNum).limit(pageNum)` 分页查询
 
 - `db.<collection>.findOne({})` 查找符合条件的第一个
 
@@ -346,7 +352,7 @@ db.items.find({}).skip(3).limit(3)
 
 ## 更新文档
 
-- update语法格式
+- update 语法格式
 
 ```bash
 db.collection.update(
@@ -377,13 +383,13 @@ db.collection.update(
 
 - `db.<collection>.update(obj,newObj,options)`
 
-  - `options: { multi: true }` 修改多个 ， 默认为false只有该一个
+  - `options: { multi: true }` 修改多个 ， 默认为 false 只有该一个
   - 如果`obj`中内容不存在，会添加`newObj`中的新内容到原`obj`的属性和内容
   - `$set`: 根据`newObj`中的内容替换`obj`中的指定想项；
   - `$push`: 向数组中添加元素
   - `$addToSet`: 向数组中添加元素，如果已存在则不添加
 
-- `db.<collection>.update(obj,newObj,options)` newObj完全替换obj的内容
+- `db.<collection>.update(obj,newObj,options)` newObj 完全替换 obj 的内容
 
 ```bash
 db.col.update({'title':'MongoDB 教程'},{'name':'MongoDB'})
@@ -428,7 +434,7 @@ db.items.drop()
 
 - `db.<collection>.update(obj,{$unset: newObj})`
 
-  - `$unset`: 根据newObj中的key，删除Obj中的指定内容的属性
+  - `$unset`: 根据 newObj 中的 key，删除 Obj 中的指定内容的属性
 
 ```bash
 db.col.update({"_id": ObjectId("5d0324c217b15f47649bb209")}, {$unset: {description:""}})
@@ -446,7 +452,7 @@ db.col.update({"title": "MongoDB 教程"},{$set:{"description":"aaa"}})
 db.col.updateMany({"title": "MongoDB 教程"},{$set:{"description":"aaa"}})
 ```
 
-- save通过传入的文档来替换已有文档
+- save 通过传入的文档来替换已有文档
 
 ```bash
 db.collection.save(
@@ -460,7 +466,7 @@ db.collection.save(
 `writeConcern` :可选，抛出异常的级别。
 ```
 
-- save实例
+- save 实例
 
 ```bash
 # 替换 5d032b652161e2f9a5baded5的内容
@@ -494,7 +500,7 @@ db.collection.remove(
 `writeConcern` :（可选）抛出异常的级别
 ```
 
-- `db.<collection>.remove({})`  # 如果传递空对象则删除全部
+- `db.<collection>.remove({})` # 如果传递空对象则删除全部
 
 ```bash
 db.items.insert([{"name": "a", "count": 1},{"name": "b", "count": 2}])

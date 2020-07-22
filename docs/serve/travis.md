@@ -1,13 +1,21 @@
-# travis-ci
+---
+title: travis-ci
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - travis-ci
+categories:
+  - server
+---
 
 - [travis-ci 社区版](https://travis-ci.org/)
 - [travis-ci: javascript-with-nodejs](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/)
-- [使用Travis CI自动部署Hexo到GitHub](https://www.cnblogs.com/dmego/p/7664877.html)
-- [使用Travis CI自动部署博客到github pages和coding pages](http://hacktech.cn/2018/09/07/use-travis-ci-update-hexo-to-github-and-coding.html)
+- [使用 Travis CI 自动部署 Hexo 到 GitHub](https://www.cnblogs.com/dmego/p/7664877.html)
+- [使用 Travis CI 自动部署博客到 github pages 和 coding pages](http://hacktech.cn/2018/09/07/use-travis-ci-update-hexo-to-github-and-coding.html)
 - [使用 Travis 自动部署 Hexo 到 Github 与 自己的服务器](https://segmentfault.com/a/1190000009054888)
 - [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)
 - [前端持续集成解决方案](https://www.jianshu.com/p/f9aa74d3066d)
-- [在github中使用travis CI](http://onetracy.com/2017/01/01/travis/)
+- [在 github 中使用 travis CI](http://onetracy.com/2017/01/01/travis/)
 
 ## 配置
 

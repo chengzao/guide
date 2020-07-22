@@ -1,31 +1,37 @@
 module.exports = [
-  ['container', {
-    type: 'right',
-    defaultTitle: '',
-  }],
-  ['container', {
-    type: 'theorem',
-    before: info => `<div class="theorem"><p class="title">${info}</p>`,
-    after: '</div>',
-  }],
-  ['@vuepress/google-analytics', {
-    ga: 'UA-126651722-1'
-  }],
-  ['@vuepress/pwa', {
-    serviceWorker: true,
-    updatePopup: {
-      message: "发现新内容",
-      buttonText: "刷新"
+  [
+    "@vuepress/google-analytics",
+    {
+      ga: "UA-126651722-1"
     }
-  }],
-  ['@vuepress/search', {
-    searchMaxSuggestions: 10
-  }],
-  '@vuepress/back-to-top',
-  '@vuepress/nprogress',
-  '@vuepress/medium-zoom',
-  'named-chunks',
-  require('../mdTabs/index'),
-  'reading-progress',
-  'img-lazy'
-]
+  ],
+  [
+    "@vuepress/pwa",
+    {
+      serviceWorker: true,
+      updatePopup: {
+        message: "发现新内容",
+        buttonText: "刷新"
+      }
+    }
+  ],
+  "@vuepress/medium-zoom",
+  [
+    "named-chunks",
+    {
+      pageChunkName: page => "page" + page.key.slice(1),
+      layoutChunkName: layout => "layout-" + layout.componentName
+    }
+  ],
+  "reading-progress",
+  "img-lazy",
+  "@vuepress-reco/extract-code",
+  ["vuepress-plugin-code-copy", true],
+  [
+    "run",
+    {
+      row: false,
+      reverse: false
+    }
+  ]
+];

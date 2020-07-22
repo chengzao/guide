@@ -1,4 +1,12 @@
-# guide
+---
+title: guide
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - blog
+categories:
+  - web
+---
 
 ## 博客生成器
 
@@ -17,7 +25,7 @@
 - [gitlab](https://gitlab.com/)
 - [gitee](https://gitee.com/)
 
-## 集成ci
+## 集成 ci
 
 - [禅道](https://www.zentao.net/)
 - [walle-web](https://github.com/meolu/walle-web)
@@ -72,7 +80,7 @@
 ## 图床
 
 - [又拍云](https://www.upyun.com/)
-- [sm.ms图床](https://sm.ms/)
+- [sm.ms 图床](https://sm.ms/)
 - [七牛云](https://www.qiniu.com)
 - [PicGo@图床工具](https://github.com/Molunerfinn/PicGo)
 - [ipic@图床工具](https://itunes.apple.com/cn/app/id1101244278?mt=12)
@@ -85,7 +93,7 @@
 - [Neilpang/acme.sh@github](https://github.com/Neilpang/acme.sh)
 - [freessl](https://freessl.cn/)
 
-## js在线编辑器
+## js 在线编辑器
 
 - [codesandbox](https://codesandbox.io/)
 - [stackblitz](https://stackblitz.com)
@@ -99,8 +107,8 @@
 - [cdnjs](https://cdnjs.com/)
 - [cloudflare](https://www.cloudflare.com/)
 
-## 为gh-pages添加ssl
+## 为 gh-pages 添加 ssl
 
-- [github怎么绑定自己的域名？](https://www.zhihu.com/question/31377141)
+- [github 怎么绑定自己的域名？](https://www.zhihu.com/question/31377141)
 - [Custom domain redirects for GitHub Pages sites](https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/)
 - [Troubleshooting custom domains](https://help.github.com/articles/troubleshooting-custom-domains/)

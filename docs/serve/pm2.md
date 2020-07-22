@@ -1,15 +1,23 @@
-# pm2
+---
+title: pm2
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - node.js
+categories:
+  - server
+---
 
 - `npm install express`
 
 ```js
 // app.js
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get("/", (req, res) => res.send("Hello World!"));
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000, () => console.log("Example app listening on port 3000!"));
 ```
 
 ## 安装
@@ -41,7 +49,7 @@ pm2 show id
 pm2 show 0
 ```
 
-## 监控CPU/内存
+## 监控 CPU/内存
 
 ```bash
 pm2 monit
@@ -71,32 +79,35 @@ pm2 start app.js --watch
 
 ```js
 module.exports = {
-  apps : [{
-    name: 'API',
-    script: 'app.js',
+  apps: [
+    {
+      name: "API",
+      script: "app.js",
 
-    // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
-    args: 'one two',
-    instances: 1,
-    autorestart: true,
-    watch: false,
-    max_memory_restart: '1G',
-    env: {
-      NODE_ENV: 'development'
-    },
-    env_production: {
-      NODE_ENV: 'production'
+      // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
+      args: "one two",
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: "1G",
+      env: {
+        NODE_ENV: "development"
+      },
+      env_production: {
+        NODE_ENV: "production"
+      }
     }
-  }],
+  ],
 
-  deploy : {
-    production : {
-      user : 'node',
-      host : '0.0.0.0',
-      ref  : 'origin/master',
-      repo : 'git@github.com:repo.git',
-      path : '/var/www/production',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
+  deploy: {
+    production: {
+      user: "node",
+      host: "0.0.0.0",
+      ref: "origin/master",
+      repo: "git@github.com:repo.git",
+      path: "/var/www/production",
+      "post-deploy":
+        "npm install && pm2 reload ecosystem.config.js --env production"
     }
   }
 };
@@ -106,36 +117,41 @@ module.exports = {
 
 ```js
 module.exports = {
-  apps : [{
-    name: "app",
-    script: "./app.js",
-    env: {
-      NODE_ENV: "development",
-    },
-    env_production: {
-      NODE_ENV: "production",
+  apps: [
+    {
+      name: "app",
+      script: "./app.js",
+      env: {
+        NODE_ENV: "development"
+      },
+      env_production: {
+        NODE_ENV: "production"
+      }
     }
-  }]
-}
+  ]
+};
 // multiple application
 module.exports = {
-  apps : [{
-    name        : "worker",
-    script      : "./worker.js",
-    watch       : true,
-    env: {
-      "NODE_ENV": "development",
+  apps: [
+    {
+      name: "worker",
+      script: "./worker.js",
+      watch: true,
+      env: {
+        NODE_ENV: "development"
+      },
+      env_production: {
+        NODE_ENV: "production"
+      }
     },
-    env_production : {
-       "NODE_ENV": "production"
+    {
+      name: "api-app",
+      script: "./api.js",
+      instances: 4,
+      exec_mode: "cluster"
     }
-  },{
-    name       : "api-app",
-    script     : "./api.js",
-    instances  : 4,
-    exec_mode  : "cluster"
-  }]
-}
+  ]
+};
 ```
 
 - `pm2 [start|restart|reload|stop|delete] ecosystem.config.js`
@@ -234,13 +250,13 @@ pm2 gracefulReload all
 pm2 logs server --format
 ```
 
-- 以JSON格式查看日志
+- 以 JSON 格式查看日志
 
 ```bash
 pm2 logs server --json
 ```
 
-- 查看近3行日志
+- 查看近 3 行日志
 
 ```bash
 pm2 logs server --lines 3

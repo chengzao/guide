@@ -3,27 +3,26 @@
 // import 'element-ui/lib/theme-chalk/index.css'
 
 export default ({
-  Vue, // VuePress 正在使用的 Vue 构造函数
+  Vue,
   options, // 附加到根实例的一些选项
-  router, // 当前应用的路由实例
+  router,
   siteData // 站点元数据
 }) => {
-  // ...做一些其他的应用级别的优化
   // Vue.use(Element)
   // console.log(siteData)
   router.addRoutes([
     {
-      path: '/todo',
-      component: () => import('./components/Todo.vue')
+      path: "/todo",
+      component: () => import("./components/Todo.vue")
     }
-  ])
+  ]);
 
   // 自动跳转到web页面
-  router.beforeEach((to, from, next) => {
-    if (to.path === '/') {
-      router.push('/web/')
-    } else {
-      next()
-    }
-  })
-}
+  // router.beforeEach((to, from, next) => {
+  //   if (to.path === "/") {
+  //     router.push("/web/");
+  //   } else {
+  //     next();
+  //   }
+  // });
+};

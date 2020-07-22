@@ -1,10 +1,17 @@
-# 使用nginx
+---
+title: nginx/win/mac
+date: 2020-07-21
+sidebar: "auto"
+tags:
+  - centos7
+  - nginx
+categories:
+  - server
+---
 
 ## windows
 
-- 在nginx-1.12.1目录下`conf/nginx.conf` 内容
-
-<CodeBlock>
+- 在 nginx-1.12.1 目录下`conf/nginx.conf` 内容
 
 ```nginx
 #user  nobody;
@@ -29,11 +36,7 @@ http {
 }
 ```
 
-</CodeBlock>
-
 - vhost 目录下 `a_com.conf` 内容：
-
-<CodeBlock>
 
 ```nginx
 server {
@@ -46,11 +49,7 @@ server {
 }
 ```
 
-</CodeBlock>
-
 - vhost 目录下 `b_com.conf` 内容：
-
-<CodeBlock>
 
 ```nginx
 server {
@@ -63,24 +62,16 @@ server {
 }
 ```
 
-</CodeBlock>
+- 在本地磁盘 D 盘下 新建 test 和 test2 目录，并新建 index.html 文件
 
-- 在本地磁盘D盘下 新建 test 和 test2目录，并新建 index.html文件
-
-- 在本地磁盘C盘中 `C:\Windows\System32\drivers\etc` 下修改 `hosts` 如下
-
-<CodeBlock>
+- 在本地磁盘 C 盘中 `C:\Windows\System32\drivers\etc` 下修改 `hosts` 如下
 
 ```bash
 127.0.0.1       www.a.com
 127.0.0.1       www.b.com
 ```
 
-</CodeBlock>
-
-- 用cmd进入nginx安装目录下执行
-
-<CodeBlock>
+- 用 cmd 进入 nginx 安装目录下执行
 
 ```bash
 nginx.exe  # 开始
@@ -88,8 +79,6 @@ nginx -t  # 检测语法
 nginx -s reload  # 重新启动
 nginx -s stop  # 停止
 ```
-
-</CodeBlock>
 
 - 打开浏览器输入网址
 
@@ -103,19 +92,13 @@ nginx -s stop  # 停止
 
 - hosts
 
-<CodeBlock>
-
 ```bash
 127.0.0.1       jenkins.chenio.com
 127.0.0.1       gitlab.chenio.com
 127.0.0.1       www.chenio.com
 ```
 
-</CodeBlock>
-
 - `brew install wget`
-
-<CodeBlock>
 
 ```bash
 # nginx下载页: http://nginx.org/en/download.html
@@ -133,11 +116,7 @@ make
 sudo make install
 ```
 
-</CodeBlock>
-
 - start nginx
-
-<CodeBlock>
 
 ```bash
 # 进入nginx文件夹
@@ -156,11 +135,7 @@ sudo sbin/nginx -s stop
 sudo sbin/nginx -t
 ```
 
-</CodeBlock>
-
 - nginx config
-
-<CodeBlock>
 
 ```bash
 # nginx.conf, http里添加
@@ -218,5 +193,3 @@ server {
     }
 }
 ```
-
-</CodeBlock>

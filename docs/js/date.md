@@ -1,4 +1,10 @@
-# Date
+---
+title: Date
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - Date
+---
 
 [MDN/Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
 
@@ -23,15 +29,15 @@
 - `Date.UTC(year, month[, date[, hrs[, min[, sec[, ms]]]]])`
 - 接受参数，返回该时间距离时间零点的毫秒数
 
-## get类方法
+## get 类方法
 
 ### `getTime()`
 
-- 返回实例距离1970年1月1日00:00:00的毫秒数
+- 返回实例距离 1970 年 1 月 1 日 00:00:00 的毫秒数
 
 ### `getDay()`
 
-- 返回星期几，星期日为0，星期一为1
+- 返回星期几，星期日为 0，星期一为 1
 
 ### `getFullYear()`
 
@@ -39,11 +45,11 @@
 
 ### `getMonth()`
 
-- 返回月份（0表示1月，11表示12月）
+- 返回月份（0 表示 1 月，11 表示 12 月）
 
 ### `getDate()`
 
-- 返回实例对象对应每个月的几号（从1开始）
+- 返回实例对象对应每个月的几号（从 1 开始）
 
 ### `getHours()`
 
@@ -61,7 +67,7 @@
 
 - 返回秒（0-59）
 
-## set类方法
+## set 类方法
 
 ### `setFullYear(year [, month, date])`
 
@@ -89,7 +95,7 @@
 
 ### `setYear(year)`
 
-- 设置距离1900年的年数
+- 设置距离 1900 年的年数
 
 ### `setTime(milliseconds)`
 
@@ -99,12 +105,12 @@
 
 - 设置毫秒（0-999）
 
-## to类方法
+## to 类方法
 
 ### `Date.prototype.valueOf()`
 
 - 返回实例对象距离时间零点的毫秒数
--	该方法等同于getTime方法
+- 该方法等同于 getTime 方法
 
 ### `Date.prototype.toString()`
 
@@ -112,7 +118,7 @@
 
 ### `Date.prototype.toUTCString()`
 
-- 返回对应的 UTC 时间，也就是比北京时间晚8个小时
+- 返回对应的 UTC 时间，也就是比北京时间晚 8 个小时
 
 ### `Date.prototype.toLocaleDateString()`
 
@@ -143,17 +149,17 @@ function fn(){
 
 ```js
 //第一种
-window.setInterval(fn,1000);
+window.setInterval(fn, 1000);
 
 //第二种
-setInterval("fn()",1000); //兼容问题. self.setInterval("fn()",1000)
-setInterval(fn,1000); // 错误：setInterval(fn(),1000); //兼容问题. self.setInterval("fn()",1000)
+setInterval("fn()", 1000); //兼容问题. self.setInterval("fn()",1000)
+setInterval(fn, 1000); // 错误：setInterval(fn(),1000); //兼容问题. self.setInterval("fn()",1000)
 
 //第三种
-window.setInterval(function () {
-  console.log("setInterval"+num);
+window.setInterval(function() {
+  console.log("setInterval" + num);
   num++;
-},1000);
+}, 1000);
 ```
 
 </CodeBlock>
@@ -165,8 +171,8 @@ window.setInterval(function () {
 <CodeBlock>
 
 ```js
- var  timer =  setInterval(fn,1000);
- var  timer =  setTimeout(fn,1000);
+var timer = setInterval(fn, 1000);
+var timer = setTimeout(fn, 1000);
 ```
 
 </CodeBlock>
@@ -180,27 +186,27 @@ window.setInterval(function () {
 <CodeBlock>
 
 ```js
-clearInterval(定时器名)
-clearTimeout(定时器名)
+clearInterval(定时器名);
+clearTimeout(定时器名);
 ```
 
 </CodeBlock>
 
-### 用setTimeout来实现setInterval
+### 用 setTimeout 来实现 setInterval
 
 <CodeBlock>
 
 ```js
-function callback(){
+function callback() {
   //doSomething
-  setTimeout(callback,200);
+  setTimeout(callback, 200);
 }
-setTimeout(callback,200)
+setTimeout(callback, 200);
 ```
 
 </CodeBlock>
 
-### 递归与arguments.callee
+### 递归与 arguments.callee
 
 - 递归 : 函数自己调用自己.
 - 要设置跳出循环的条件,如果不设置,容易发生死循环.
@@ -210,13 +216,13 @@ setTimeout(callback,200)
 ```js
 var num = 0;
 fn1();
-function fn1(){
+function fn1() {
   num++;
   console.log(num);
   //递归：函数自己调用自己.
-  if(num<5){
-      setTimeout(fn1,1000);
-      //setTimeout(arguments.callee,1000);
+  if (num < 5) {
+    setTimeout(fn1, 1000);
+    //setTimeout(arguments.callee,1000);
   }
 }
 ```
@@ -234,11 +240,11 @@ function User(login) {
   this.login = login;
   this.sayHi = function() {
     console.log(this.login);
-  }
+  };
 }
 
-var user = new User('John');
-setTimeout(user.sayHi, 1000);  //undefined
+var user = new User("John");
+setTimeout(user.sayHi, 1000); //undefined
 
 // 1.0
 setTimeout(function() {
@@ -255,7 +261,7 @@ setTimeout(user.sayHi.bind(user), 1000); // John
 
 <CodeBlock>
 
-<<< @/utils/docs/date/formate.js
+<<< @/utils/libs/date/formate.js
 
 </CodeBlock>
 
@@ -263,18 +269,22 @@ setTimeout(user.sayHi.bind(user), 1000); // John
 
 ```js
 const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
+  return (
+    [year, month, day].map(formatNumber).join("/") +
+    " " +
+    [hour, minute, second].map(formatNumber).join(":")
+  );
+};
 
 const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
+  n = n.toString();
+  return n[1] ? n : "0" + n;
+};
 ```

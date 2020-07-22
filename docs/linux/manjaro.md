@@ -1,12 +1,18 @@
-# manjaro
+---
+title: manjaro
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - manjaro
+categories:
+  - server
+---
 
-## 安装
-
-- [manjaro官网](https://manjaro.org/)
+- [manjaro 官网](https://manjaro.org/)
 - [中科大镜像](https://mirrors.ustc.edu.cn/)
 - [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/)
 
-## manjaro命令
+## manjaro 命令
 
 <CodeBlock>
 
@@ -28,8 +34,8 @@ pacman -Syyu  # 更新系统
 
 ## Manjaro 配置
 
-- 配置中国的mirrors `sudo pacman-mirrors -i -c China -m rank`
-- 安装gedit`sudo pacman -S gedit`
+- 配置中国的 mirrors `sudo pacman-mirrors -i -c China -m rank`
+- 安装 gedit`sudo pacman -S gedit`
 - 在 `/etc/pacman.conf`中添加`archlinuxcn`源 `sudo gedit /etc/pacman.conf`
 
 <CodeBlock>
@@ -46,14 +52,14 @@ Server = http://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
 </CodeBlock>
 
 - 更新源列表 `sudo pacman -Syyu`
-- 安装yaourt,使用AUR源里的软件 `sudo pacman -S yaourt pacaur`
+- 安装 yaourt,使用 AUR 源里的软件 `sudo pacman -S yaourt pacaur`
 - 修改配置文件后，执行命令`sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring`
 - 将本地数据包与远程数据包同步 `sudo pacman -Syy`
-- 安装vim `sudo pacman -S vim`
-- 安装git`sudo pacman -S git`
-- 安装ZSH `sudo pacman -S zsh`
-- 配置oh-my-zsh `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
-- 更换默认的shell `chsh -s /bin/zsh`
+- 安装 vim `sudo pacman -S vim`
+- 安装 git`sudo pacman -S git`
+- 安装 ZSH `sudo pacman -S zsh`
+- 配置 oh-my-zsh `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+- 更换默认的 shell `chsh -s /bin/zsh`
 - 安装搜狗输入法
 
 <CodeBlock>
@@ -86,4 +92,4 @@ export XMODIFIERS="@im=fcitx"
 
 ## 相关链接
 
-- [Manjaro安装以及美化教程](https://juejin.im/post/5a6b1b3651882573443cea61)
+- [Manjaro 安装以及美化教程](https://juejin.im/post/5a6b1b3651882573443cea61)

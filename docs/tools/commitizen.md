@@ -1,4 +1,12 @@
-# commitizen
+---
+title: commitizen
+date: 2020-07-20
+sidebar: "auto"
+tags:
+  - commitizen
+categories:
+  - tools
+---
 
 - [git commit 、CHANGELOG 和版本发布的标准自动化](https://zhuanlan.zhihu.com/p/51894196)
 - [优雅的提交你的 Git Commit Message](https://juejin.im/post/5afc5242f265da0b7f44bee4)
@@ -83,7 +91,7 @@ revert  # commit 回退
 
 ### 自定义 Adapter
 
-- 安装cz-customizable
+- 安装 cz-customizable
 
 ```bash
 npm i -g cz-customizable / npm i -D cz-customizable
@@ -112,46 +120,46 @@ npm i -g cz-customizable / npm i -D cz-customizable
 <CodeBlock>
 
 ```js
-'use strict';
+"use strict";
 
 module.exports = {
   types: [
-		{
-			value: 'feat',
-			name: '✨  feat:     A new feature',
-		},
-		{
-			value: 'fix',
-			name: '🐞  fix:      A bug fix',
-		},
-		{
-			value: 'refactor',
-			name:
-				'🛠  refactor: A code change that neither fixes a bug nor adds a feature',
-		},
-		{
-			value: 'docs',
-			name: '📚  docs:     Documentation only changes',
-		},
-		{
-			value: 'test',
-			name: '🏁  test:     Add missing tests or correcting existing tests',
-		},
-		{
-			value: 'chore',
-			name:
-				"🗯  chore:    Changes that don't modify src or test files. Such as updating build tasks, package manager",
-		},
-		{
-			value: 'style',
-			name:
-				'💅  style:    Code Style, Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
-		},
-		{
-			value: 'revert',
-			name: '⏪  revert:   Revert to a commit',
-		},
-	],
+    {
+      value: "feat",
+      name: "✨  feat:     A new feature"
+    },
+    {
+      value: "fix",
+      name: "🐞  fix:      A bug fix"
+    },
+    {
+      value: "refactor",
+      name:
+        "🛠  refactor: A code change that neither fixes a bug nor adds a feature"
+    },
+    {
+      value: "docs",
+      name: "📚  docs:     Documentation only changes"
+    },
+    {
+      value: "test",
+      name: "🏁  test:     Add missing tests or correcting existing tests"
+    },
+    {
+      value: "chore",
+      name:
+        "🗯  chore:    Changes that don't modify src or test files. Such as updating build tasks, package manager"
+    },
+    {
+      value: "style",
+      name:
+        "💅  style:    Code Style, Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
+    },
+    {
+      value: "revert",
+      name: "⏪  revert:   Revert to a commit"
+    }
+  ],
   scopes: [],
   allowCustomScopes: true,
   allowBreakingChanges: ["feat", "fix"]
@@ -231,7 +239,7 @@ $ standard-version --tag-prefix "stable-"
 # output tag: stable-v2.0.0
 ```
 
-## 集成npm
+## 集成 npm
 
 - package
 
@@ -283,40 +291,40 @@ npm i -D @commitlint/config-conventional @commitlint/cli
 
 ```js
 module.exports = {
-	extends: ['@commitlint/config-conventional'],
-	rules: {
-		'body-leading-blank': [1, 'always'],
-		'footer-leading-blank': [1, 'always'],
-		'header-max-length': [2, 'always', 72],
-		'scope-case': [2, 'always', 'lower-case'],
-		'subject-case': [
-			2,
-			'never',
-			['sentence-case', 'start-case', 'pascal-case', 'upper-case'],
-		],
-		'subject-empty': [2, 'never'],
-		'subject-full-stop': [2, 'never', '.'],
-		'type-case': [2, 'always', 'lower-case'],
-		'type-empty': [2, 'never'],
-		'type-enum': [
-			2,
-			'always',
-			[
-				'build',
-				'chore',
-				'ci',
-				'docs',
-				'feat',
-				'fix',
-				'perf',
-				'refactor',
-				'revert',
-				'style',
-				'test',
-			],
-		],
-	},
-}
+  extends: ["@commitlint/config-conventional"],
+  rules: {
+    "body-leading-blank": [1, "always"],
+    "footer-leading-blank": [1, "always"],
+    "header-max-length": [2, "always", 72],
+    "scope-case": [2, "always", "lower-case"],
+    "subject-case": [
+      2,
+      "never",
+      ["sentence-case", "start-case", "pascal-case", "upper-case"]
+    ],
+    "subject-empty": [2, "never"],
+    "subject-full-stop": [2, "never", "."],
+    "type-case": [2, "always", "lower-case"],
+    "type-empty": [2, "never"],
+    "type-enum": [
+      2,
+      "always",
+      [
+        "build",
+        "chore",
+        "ci",
+        "docs",
+        "feat",
+        "fix",
+        "perf",
+        "refactor",
+        "revert",
+        "style",
+        "test"
+      ]
+    ]
+  }
+};
 ```
 
 </CodeBlock>
@@ -385,10 +393,9 @@ module.exports = {
 
 </CodeBlock>
 
-
 ## 参考示例
 
-### 默认Adapter
+### 默认 Adapter
 
 - package.json
 
@@ -396,52 +403,49 @@ module.exports = {
 
 ```json
 {
-	"name": "demo",
-	"version": "1.0.1",
-	"main": "index.js",
-	"scripts": {
-		"lint": "eslint --debug src/**/*.js",
-		"lint:write": "eslint src/**/*.js --fix",
-		"prettier": "prettier --write src/**/*.js",
-		"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-		"release": "standard-version",
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^7.2.1",
-		"@commitlint/config-conventional": "^7.1.2",
-		"cz-conventional-changelog": "^2.1.0",
-		"eslint": "^5.12.0",
-		"eslint-config-standard": "^12.0.0",
-		"eslint-plugin-import": "^2.14.0",
-		"eslint-plugin-node": "^8.0.1",
-		"eslint-plugin-promise": "^4.0.1",
-		"eslint-plugin-standard": "^4.0.0",
-		"prettier": "^1.15.3",
-		"eslint-plugin-prettier": "^3.0.1",
-		"eslint-config-prettier": "^3.5.0",
-		"husky": "^1.3.1",
-		"lint-staged": "^8.1.0"
-	},
-	"config": {
-		"commitizen": {
-			"path": "./node_modules/cz-conventional-changelog"
-		}
-	},
-	"lint-staged": {
-		"*.(js|jsx)": [
-			"npm run lint:write",
-			"git add"
-		]
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged",
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-		}
-	},
-	"dependencies": {
-		"standard-version": "^4.4.0"
-	}
+  "name": "demo",
+  "version": "1.0.1",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --debug src/**/*.js",
+    "lint:write": "eslint src/**/*.js --fix",
+    "prettier": "prettier --write src/**/*.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "release": "standard-version"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^5.12.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "prettier": "^1.15.3",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-config-prettier": "^3.5.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.(js|jsx)": ["npm run lint:write", "git add"]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "standard-version": "^4.4.0"
+  }
 }
 ```
 
@@ -453,45 +457,45 @@ module.exports = {
 
 ```js
 module.exports = {
-	extends: ['@commitlint/config-conventional'],
-	rules: {
-		'body-leading-blank': [1, 'always'],
-		'footer-leading-blank': [1, 'always'],
-		'header-max-length': [2, 'always', 72],
-		'scope-case': [2, 'always', 'lower-case'],
-		'subject-case': [
-			2,
-			'never',
-			['sentence-case', 'start-case', 'pascal-case', 'upper-case'],
-		],
-		'subject-empty': [2, 'never'],
-		'subject-full-stop': [2, 'never', '.'],
-		'type-case': [2, 'always', 'lower-case'],
-		'type-empty': [2, 'never'],
-		'type-enum': [
-			2,
-			'always',
-			[
-				'build',
-				'chore',
-				'ci',
-				'docs',
-				'feat',
-				'fix',
-				'perf',
-				'refactor',
-				'revert',
-				'style',
-				'test',
-			],
-		],
-	},
-}
+  extends: ["@commitlint/config-conventional"],
+  rules: {
+    "body-leading-blank": [1, "always"],
+    "footer-leading-blank": [1, "always"],
+    "header-max-length": [2, "always", 72],
+    "scope-case": [2, "always", "lower-case"],
+    "subject-case": [
+      2,
+      "never",
+      ["sentence-case", "start-case", "pascal-case", "upper-case"]
+    ],
+    "subject-empty": [2, "never"],
+    "subject-full-stop": [2, "never", "."],
+    "type-case": [2, "always", "lower-case"],
+    "type-empty": [2, "never"],
+    "type-enum": [
+      2,
+      "always",
+      [
+        "build",
+        "chore",
+        "ci",
+        "docs",
+        "feat",
+        "fix",
+        "perf",
+        "refactor",
+        "revert",
+        "style",
+        "test"
+      ]
+    ]
+  }
+};
 ```
 
 </CodeBlock>
 
-### 自定义Adapter
+### 自定义 Adapter
 
 - package.json
 
@@ -531,10 +535,7 @@ module.exports = {
     }
   },
   "lint-staged": {
-    "*.(js|jsx)": [
-      "npm run lint:write",
-      "git add"
-    ]
+    "*.(js|jsx)": ["npm run lint:write", "git add"]
   },
   "husky": {
     "hooks": {
@@ -552,48 +553,48 @@ module.exports = {
 <CodeBlock>
 
 ```js
-'use strict'
+"use strict";
 
 module.exports = {
-	types: [
-		{
-			value: 'feat',
-			name: '✨  feat:     A new feature',
-		},
-		{
-			value: 'fix',
-			name: '🐞  fix:      A bug fix',
-		},
-		{
-			value: 'refactor',
-			name:
-				'🛠  refactor: A code change that neither fixes a bug nor adds a feature',
-		},
-		{
-			value: 'docs',
-			name: '📚  docs:     Documentation only changes',
-		},
-		{
-			value: 'test',
-			name: '🏁  test:     Add missing tests or correcting existing tests',
-		},
-		{
-			value: 'chore',
-			name:
-				"🗯  chore:    Changes that don't modify src or test files. Such as updating build tasks, package manager",
-		},
-		{
-			value: 'style',
-			name:
-				'💅  style:    Code Style, Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
-		},
-		{
-			value: 'revert',
-			name: '⏪  revert:   Revert to a commit',
-		},
-	],
-	allowCustomScopes: true,
-}
+  types: [
+    {
+      value: "feat",
+      name: "✨  feat:     A new feature"
+    },
+    {
+      value: "fix",
+      name: "🐞  fix:      A bug fix"
+    },
+    {
+      value: "refactor",
+      name:
+        "🛠  refactor: A code change that neither fixes a bug nor adds a feature"
+    },
+    {
+      value: "docs",
+      name: "📚  docs:     Documentation only changes"
+    },
+    {
+      value: "test",
+      name: "🏁  test:     Add missing tests or correcting existing tests"
+    },
+    {
+      value: "chore",
+      name:
+        "🗯  chore:    Changes that don't modify src or test files. Such as updating build tasks, package manager"
+    },
+    {
+      value: "style",
+      name:
+        "💅  style:    Code Style, Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
+    },
+    {
+      value: "revert",
+      name: "⏪  revert:   Revert to a commit"
+    }
+  ],
+  allowCustomScopes: true
+};
 ```
 
 </CodeBlock>
@@ -604,27 +605,27 @@ module.exports = {
 
 ```js
 module.exports = {
-	rules: {
-		'body-leading-blank': [1, 'always'],
-		'footer-leading-blank': [1, 'always'],
-		'header-max-length': [2, 'always', 72],
-		'scope-case': [2, 'always', 'lower-case'],
-		'subject-case': [
-			2,
-			'never',
-			['sentence-case', 'start-case', 'pascal-case', 'upper-case'],
-		],
-		'subject-empty': [2, 'never'],
-		'subject-full-stop': [2, 'never', '.'],
-		'type-case': [2, 'always', 'lower-case'],
-		'type-empty': [2, 'never'],
-		'type-enum': [
-			2,
-			'always',
-			['feat', 'fix', 'refactor', 'docs', 'test', 'chore', 'style', 'revert'],
-		],
-	},
-}
+  rules: {
+    "body-leading-blank": [1, "always"],
+    "footer-leading-blank": [1, "always"],
+    "header-max-length": [2, "always", 72],
+    "scope-case": [2, "always", "lower-case"],
+    "subject-case": [
+      2,
+      "never",
+      ["sentence-case", "start-case", "pascal-case", "upper-case"]
+    ],
+    "subject-empty": [2, "never"],
+    "subject-full-stop": [2, "never", "."],
+    "type-case": [2, "always", "lower-case"],
+    "type-empty": [2, "never"],
+    "type-enum": [
+      2,
+      "always",
+      ["feat", "fix", "refactor", "docs", "test", "chore", "style", "revert"]
+    ]
+  }
+};
 ```
 
 </CodeBlock>
