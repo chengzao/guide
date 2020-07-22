@@ -12,6 +12,8 @@ categories:
 
 - [workflow-syntax-for-github-actions](https://docs.github.com/cn/actions/reference/workflow-syntax-for-github-actions)
 
+- [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action)
+
 - `.github/workflows/publish.yml`
 
 ```yml
@@ -48,7 +50,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.5.7
         with:
-          BASE_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: build # The folder the action should deploy.
