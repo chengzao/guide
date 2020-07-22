@@ -54,7 +54,9 @@ notifications # https://docs.travis-ci.com/user/notifications/
 
 <CodeBlock>
 
-```bash
+- 项目根目录下创建：`.travis.yml`
+
+```yml
 sudo: false
 language: node_js
 node_js: stable
@@ -64,23 +66,23 @@ cache:
     - node_modules
 
 install:
-    - npm install
+  - npm install
 script:
-    - npm run build
+  - npm run build # 项目打包命令
 after_success:
-    - cd ./guide
-    - git init
-    - git config user.name "chengzao"
-    - git config user.email "test@test.com"
-    - git add .
-    - git commit -m "Travis CI Auto Builder"
-    - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+  - cd ./guide # 项目打包后的目录
+  - git init
+  - git config user.name "your name "
+  - git config user.email "your xxx@email.com"
+  - git add .
+  - git commit -m "Travis CI Auto Builder"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages # Config Github "Personal access tokens"
 branches:
-    only:
-        - master
+  only:
+    - master # 打包的分支
 env:
-    global:
-        - GH_REF: github.com/chengzao/guide.git
+  global:
+    - GH_REF: github.com/chengzao/guide.git # Your github repo url
 ```
 
 </CodeBlock>
