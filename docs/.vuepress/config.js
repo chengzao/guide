@@ -1,10 +1,11 @@
 const { nav, sidebar } = require("./config/navAndsidebar");
 const plugins = require("./config/plugins");
 
+const baseUrl = process.env.BASE_ENV ? process.env.BASE_ENV : "/";
 module.exports = {
   title: "FE Note",
   description: "about front-end docs notes website",
-  base: "/",
+  base: baseUrl,
   locales: {
     "/": {
       lang: "zh-CN"

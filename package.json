@@ -7,6 +7,7 @@
     "debug": "vuepress dev --no-clear-screen --no-cache docs",
     "serve": "vuepress dev docs",
     "build": "vuepress build docs",
+    "build:gp": "cross-env BASE_ENV=guide vuepress build docs",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
@@ -21,6 +22,7 @@
   "dependencies": {
     "@vuepress-reco/vuepress-plugin-extract-code": "^1.0.4",
     "axios": "^0.19.2",
+    "cross-env": "^7.0.2",
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-img-lazy": "^1.0.1",
     "vuepress-plugin-named-chunks": "^1.1.3",
