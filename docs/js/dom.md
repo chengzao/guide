@@ -18,32 +18,118 @@ tags:
 - `Comment`：注释
 - `DocumentFragment`：文档的片段
 
-## 节点树
-
-- 父节点关系(`parentNode`)：直接的那个上级节点
-- 子节点关系(`childNodes`)：直接的下级节点
-- 同级节点关系(`sibling`)：拥有同一个父节点的节点
-
 ## 获取 DOM 元素
 
-<CodeBlock>
+- 获取节点
 
 ```js
-document.getElementById("demo"); // 返回单个标签dom
-document.getElementsByClassName("test"); //返回多个dom 在 IE 5,6,7,8 中无效
-document.getElementsByTagName("div"); // 返回多个dom
 document.querySelector("#demo"); //只返回匹配的第一个元素dom  html5
+
 document.querySelectorAll(".test"); // html5
+
+// 通过id号来获取元素，返回一个元素对象
+document.getElementById(idName)
+
+// 通过name属性获取id号，返回元素对象数组
+document.getElementsByName(name)
+
+// 通过class来获取元素，返回元素对象数组
+document.getElementsByClassName(className)
+
+// 通过标签名获取元素，返回元素对象数组
+document.getElementsByTagName(tagName)
 ```
 
-</CodeBlock>
+- 获取/设置元素的属性值
 
-## 节点对象属性
+```js
+// 括号传入属性名，返回对应属性的属性值
+element.getAttribute(attributeName)
 
-### Node.nodeName 与 Node.nodeType
+// 传入属性名及设置的值
+element.setAttribute(attributeName,attributeValue)
+```
 
-- `nodeName属性返回节点的名称`
-- `nodeType属性返回节点类型的常数值`
+- 创建节点Node
+
+```js
+// 创建一个html元素，这里以创建h3元素为例
+document.createElement("h3")
+
+// 创建一个文本节点；
+document.createTextNode(String);
+
+// 创建一个属性节点，这里以创建class属性为例
+document.createAttribute("class");
+```
+
+- 增添节点
+
+```js
+// 往element内部最后面添加一个节点，参数是节点类型
+element.appendChild(Node);
+
+// 在element内部的中在existingNode前面插入newNode
+elelment.insertBefore(newNode,existingNode);
+
+// insertAdjacentHTML: (beforebegin | afterbegin | beforeend | afterend)
+element.insertAdjacentHTML(position, text)
+```
+
+- 删除节点
+
+```js
+//删除当前节点下指定的子节点，删除成功返回该被删除的节点，否则返回null
+element.removeChild(Node)
+
+```
+
+## DOM常用属性
+
+- 获取当前元素的父节点
+
+```js
+// 返回当前元素的父节点对象
+element.parentNode
+```
+
+- 获取当前元素的子节点
+
+```js
+// 返回当前元素所有子元素节点对象，只返回HTML节点
+element.chlidren
+
+// 返回当前元素多有子节点，包括文本，HTML，属性节点。（回车也会当做一个节点）
+element.chilidNodes
+
+// 返回当前元素的第一个子节点对象
+element.firstChild
+
+// 返回当前元素的最后一个子节点对象
+element.lastChild
+```
+
+- 获取当前元素的同级元素
+
+```js
+// 返回当前元素的下一个同级元素 没有就返回null
+element.nextSibling
+
+// 返回当前元素上一个同级元素 没有就返回 null
+element.previousSibling
+```
+
+- 获取当前元素的文本
+
+```js
+// 返回元素的所有文本，包括html代码
+element.innerHTML
+
+// 返回当前元素的自身及子代所有文本值，只是文本内容，不包括html代码
+element.innerText
+```
+
+- 获取当前节点的节点类型
 
 | 类型                   | nodeName             | nodeType |
 | ---------------------- | -------------------- | :------: |
@@ -55,8 +141,6 @@ document.querySelectorAll(".test"); // html5
 | DOCUMENT_TYPE_NODE     | `DocumentType.name`  |    10    |
 | DOCUMENT_FRAGMENT_NODE | `#document-fragment` |    11    |
 
-<CodeBlock>
-
 ```js
 document.nodeName; // "#document"
 document.nodeType; // 9
@@ -64,7 +148,14 @@ document.querySelector("a").nodeType === 1; // true
 document.querySelector("a").nodeType === Node.ELEMENT_NODE; // true
 ```
 
-</CodeBlock>
+- 设置样式
+
+```js
+// 设置元素的样式时使用style
+element.style.color="#eea";
+```
+
+## 节点对象属性
 
 ### Node.nodeValue
 
@@ -74,28 +165,6 @@ document.querySelector("a").nodeType === Node.ELEMENT_NODE; // true
 
 - `返回当前节点和它的所有后代节点的文本内容`
 - `自动忽略当前节点内部的HTML标签,返回所有文本内容`
-
-### Node.baseURI
-
-- `返回一个字符串,表示当前网页的绝对路径`
-- `如果无法取到这个值(则返回null`
-- `浏览器根据这个属性(计算网页上的相对路径的URL.该属性为只读.`
-- `document.baseURI或element.baseURI`
-
-### Node.ownerDocument
-
-- `返回当前节点所在的顶层文档对象(即document对象`
-
-<CodeBlock>
-
-```js
-var d = document.querySelector("p").ownerDocument;
-d === document; // true
-//document对象本身的ownerDocument属性,返回null
-document.ownerDocument; //null
-```
-
-</CodeBlock>
 
 ### Node.sibling 与 Node.previousSibling
 
@@ -297,10 +366,6 @@ lc.style.backgroundColor = "purple";
 
 </CodeBlock>
 
-### 获取兄弟节点中的某一个
-
-- `someNode = node.parentNode.children[index]`,`index`是索引值
-
 ## DOM 节点对象的方法
 
 ### createElement
@@ -310,6 +375,15 @@ lc.style.backgroundColor = "purple";
 <CodeBlock>
 
 ```js
+// 创建一个html元素，这里以创建h3元素为例
+document.createElement("h3")
+
+// 创建一个文本节点；
+document.createTextNode(String);
+
+// 创建一个属性节点，这里以创建class属性为例
+document.createAttribute("class");
+
 //demo
 newel = document.createElement("h1");
 newel.innerHTML = "<p>hello</p>"; //innerText不能转换HTML标签
@@ -321,26 +395,23 @@ document.body.appendChild(newtext);
 
 </CodeBlock>
 
-### 查找相关的方法
-
-- `Element.querySelector()`
-- `Element.querySelectorAll()`
-- `Element.getElementsByTagName()`
-- `Element.getElementsByClassName()`
-
-### 事件相关的方法
-
-- `Element.addEventListener()`：添加事件的回调函数
-- `Element.removeEventListener()`：移除事件监听函数
-- `Element.dispatchEvent()`：触发事件
 
 ## 节点的添加
 
-### 插入当前节点
+### appendChild
 
 - `Node.appendChild()`:接受一个节点对象作为参数,将其作为`最后一个子节点`,插入当前节点
 
-### 是否有子节点
+```js
+// 往element内部最后面添加一个节点，参数是节点类型
+element.appendChild(Node);
+
+// 在element内部的中在existingNode前面插入newNode
+elelment.insertBefore(newNode,existingNode);
+
+```
+
+### hasChildNodes
 
 - `Node.hasChildNodes()`:返回一个布尔值,表示当前节点是否有子节点
 
@@ -359,11 +430,20 @@ function DOMComb(parent, callback) {
 
 </CodeBlock>
 
-### 将节点插入指定位置
+### insertBefore
 
 - `insertBefore(a,b)`用于将某个节点插入当前节点的指定位置
 - 该方法接受 2 个参数,第一个是`要插入的节点`,第二个是`参照节点`
 - `parentNode.insertBefore(newNode,targetNode)；`
+
+```js
+// 往element内部最后面添加一个节点，参数是节点类型
+element.appendChild(Node);
+
+// 在element内部的中在existingNode前面插入newNode
+elelment.insertBefore(newNode,existingNode);
+
+```
 
 ### insertAdjacentHTML
 
@@ -412,7 +492,7 @@ function DOMComb(parent, callback) {
 - `Element.remove方法用于将当前元素节点从DOM树删除`
 - `Element.focus方法用于将当前页面的焦点`
 
-### 复制节点
+### cloneNode
 
 - `cloneNode(参数) ；booblean类型的参数.`
 - `newNode = oldNode.cloneNode(boolean) ;`用于复制节点, 接受一个布尔值参数
@@ -435,12 +515,10 @@ function DOMComb(parent, callback) {
 </script>
 ```
 
-### 移除节点
+### removeChild
 
-- `父节点.removeChild(子节点)`
-- `自己节点.parentNode.removeChild(自己节点)` 不知道父级的情况下移除自身 Node
-
-<CodeBlock>
+- `parentNode.removeChild(childNode)`
+- `currentNode.parentNode.removeChild(currentNode)` 不知道父级的情况下移除自身 Node
 
 ```html
 <div id="box">
@@ -456,9 +534,7 @@ function DOMComb(parent, callback) {
 </script>
 ```
 
-</CodeBlock>
-
-### 替换节点
+### replaceChild
 
 - 用于将一个新的节点(替换当前节点的某一个子节点
 - `replacedNode = parentNode.replaceChild(newChild, oldChild);`
@@ -475,7 +551,7 @@ function isInPage(node) {
 }
 ```
 
-### 节点是否相等
+### isEqualNode
 
 - 返回一个布尔值,用于检查两个节点是否相等
 - 所谓相等的节点,指的是两个节点的类型相同、属性相同、子节点相同
@@ -546,15 +622,6 @@ delete n2.dataset.foo;
 - `before`方法用于在当前节点的前面,插入一个同级节点
 - `after`方法用于在当前节点的后面,插入一个同级节点
 - `replaceWith`方法使用参数指定的节点,替换当前节点
-
-## Element DOM
-
-## 获取 DOM
-
-- `Element.querySelector()`
-- `Element.querySelectorAll()`
-- `Element.getElementsByTagName()`
-- `Element.getElementsByClassName()`
 
 ## DOM 事件
 
