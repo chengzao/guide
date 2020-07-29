@@ -1,5 +1,5 @@
 ---
-title: issues
+title: 资源集合
 date: 2020-07-20
 sidebar: "auto"
 ---

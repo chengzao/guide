@@ -1,5 +1,5 @@
 ---
-title: web issues
+title: web
 date: 2020-07-22
 sidebar: "auto"
 categories:

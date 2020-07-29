@@ -369,15 +369,45 @@ function DOMComb(parent, callback) {
 
 - `Element.insertAdjacentHTML方法解析HTML字符串;然后将生成的节点插入DOM树的指定位置`
   - `element.insertAdjacentHTML(position, text);`第一个是指定位置;第二个是待解析的字符串
-  - `beforebegin`：在当前元素节点的前面
-  - `afterbegin`：在当前元素节点的里面;插在它的第一个子元素之前
-  - `beforeend`：在当前元素节点的里面;插在它的最后一个子元素之后
-  - `afterend`：在当前元素节点的后面
+  - `beforebegin`：插入到指定元素前面
 
-```js
-var d1 = document.getElementById("one");
-d1.insertAdjacentHTML("afterend", '<div id="two">two</div>');
-```
+  ```js
+  // <div id="parent"></div>
+  let parent = document.getElementById('parent');
+  let node = document.createElement('span');
+  // 等价于 $(parent).after(node);
+  parent.insertAdjacentElement('beforebegin', node);
+  ```
+
+  - `afterbegin`：插入到指定元素内部的头部
+
+  ```js
+  // <div id="parent"></div>
+  let parent = document.getElementById('parent');
+  let node = document.createElement('span');
+  // 等价于 $(parent).prepend(node);
+  parent.insertAdjacentElement('afterbegin', node);
+  ```
+
+  - `beforeend`：插入到指定元素内部的尾部
+
+  ```js
+  // <div id="parent"></div>
+  let parent = document.getElementById('parent');
+  let node = document.createElement('span');
+  // 等价于 $(parent).append(node);
+  parent.insertAdjacentElement('beforeend', node);
+  ```
+
+  - `afterend`：插入到指定元素后面
+
+  ```js
+  // <div id="parent"></div>
+  let parent = document.getElementById('parent');
+  let node = document.createElement('span');
+  // 等价于 $(parent).after(node);
+  parent.insertAdjacentElement('afterend', node);
+  ```
 
 - `Element.remove方法用于将当前元素节点从DOM树删除`
 - `Element.focus方法用于将当前页面的焦点`
@@ -437,6 +467,13 @@ d1.insertAdjacentHTML("afterend", '<div id="two">two</div>');
 
 - 一个节点作为参数(返回一个布尔值(表示参数节点是否为当前节点的后代节点
 - `nodeA.contains(nodeB)`
+
+```js
+// 判断元素是否body元素且是否是body的子孙元素.
+function isInPage(node) {
+  return (node === document.body) ? false : document.body.contains(node);
+}
+```
 
 ### 节点是否相等
 

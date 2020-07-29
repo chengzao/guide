@@ -8,7 +8,11 @@ categories:
   - libs
 ---
 
+:::tip
+
 [原文：「从源码中学习」Vue 源码中的 JS 骚操作](https://juejin.im/post/5c73554cf265da2de33f2a32)
+
+:::
 
 ## inBrowser: 检测当前宿主环境是否是浏览器
 

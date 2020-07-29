@@ -32,14 +32,6 @@ tags:
 
 - `store` ➡️ `dispatch` ➡️ `action` ➡️ `mutation` ➡️ `state`
 
-## router
-
-```js
-component: {
-  render: h => h("router-view");
-}
-```
-
 ## vue 自动注册全局组件
 
 ```js
@@ -69,6 +61,7 @@ function validateFileName(str) {
 const requireComponent = require.context("../../components", true, /\.vue$/);
 // 找到组件文件夹下以.vue命名的文件，如果文件名为index，那么取组件中的name作为注册的组件名
 requireComponent.keys().forEach(filePath => {
+  // 解析文件路径： 返回文件内容
   const componentConfig = requireComponent(filePath);
   const fileName = validateFileName(filePath);
   const _filePath = path.join(__dirname, "../../components", filePath);

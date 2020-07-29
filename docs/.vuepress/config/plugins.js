@@ -33,5 +33,9 @@ module.exports = [
       reverse: false
     }
   ],
-  "copy-code"
+  ["copy-code",
+    {
+      copyMessage: '复制成功 ^~^ !'
+    }
+  ]
 ];
