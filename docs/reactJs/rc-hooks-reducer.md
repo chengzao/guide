@@ -1,5 +1,5 @@
 ---
-title: react hooks
+title: react使用hooks案例
 date: 2020-07-21
 sidebar: "auto"
 tags:
@@ -50,12 +50,7 @@ class Dialog extends React.Component {
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-type Props = {
-  children: React.ReactChild
-  closeModal: () => void
-}
-
-const Modal = React.memo(({ children, closeModal }: Props) => {
+const Modal = React.memo(({ children, closeModal }) => {
   const domEl = document.getElementById('modal-root')
 
   if (!domEl) return null

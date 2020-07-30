@@ -1,5 +1,5 @@
 ---
-title: vue libs
+title: vue中的工具函数
 date: 2020-07-21
 sidebar: "auto"
 tags:
@@ -204,36 +204,4 @@ let ca = cached(function(str) {
 });
 console.log(ca("ac-ae"));
 console.log(ca("ac-ae"));
-```
-
-## dispatch and broadcast
-
-```js
-// 派发事件
-vue.prototype.$dispatch = function(eventName, value) {
-  let parent = this.$parent;
-  while (parent) {
-    parent.$emit(eventName, value);
-    parent = parent.$parent;
-  }
-};
-
-// 广播事件
-Vue.prototype.$broadcast = function(eventName, value) {
-  let broadcast = children => {
-    children.forEach(child => {
-      child.$emit(eventName, value);
-      if (child.$children) {
-        broadcast(child.$children);
-      }
-    });
-  };
-  broadcast(this.$children);
-};
-
-/*
-inheritAttrs: false // 绑定的属性不在dom上显示 ：<div name="xxx"></div> 不显示
-v-bind="$attrs"  // 将 $attrs 上所有属性绑定到dom上传递给子组件
-v-on="$listeners" // 表示将方法绑定到dom上传递给子组件
-*/
 ```

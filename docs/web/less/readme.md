@@ -1,12 +1,12 @@
 ---
-title: less
+title: css预处理器less使用
 date: 2020-07-20
 sidebar: "auto"
 categories:
   - web
 tags:
   - less
-  - 1PX
+  - 1像素问题
 ---
 
 - [lesscss](http://lesscss.org/#)

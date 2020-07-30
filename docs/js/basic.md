@@ -1,10 +1,10 @@
 ---
-title: guide
+title: 基本数据类型
 date: 2020-07-20
 sidebar: "auto"
 ---
 
-## 基本类型
+## 基本数据类型
 
 - `number`: 最大数字是 2<sup>25</sup>-1
 - `string`

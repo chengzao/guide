@@ -1,12 +1,16 @@
 ---
-title: Element DOM
+title: 浏览器Element标签
 date: 2020-07-20
 sidebar: "auto"
 tags:
   - element
 ---
 
+:::tip
+
 [MDN/Element](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)
+
+:::
 
 ## 类型
 

@@ -1,5 +1,5 @@
 ---
-title: git常见命令
+title: git常见命令列表
 date: 2020-07-20
 sidebar: "auto"
 tags:

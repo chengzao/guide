@@ -1,5 +1,5 @@
 ---
-title: 浏览器
+title: 浏览器对象介绍
 date: 2020-07-22
 sidebar: "auto"
 categories:
@@ -148,13 +148,13 @@ for (let p of searchParams) {
 // ["topic", "api"]
 ```
 
-### URL 常见方法
+### Url常见方法
 
 - 将对象解析成 url 字符串
 
 ```js
 /**
- * 将对象解析成url字符串
+ * 将对象解析成url字符串 object => string
  * @param  {Object} obj 参数对象
  * @param  {Boolean} unEncodeURI 不使用编码
  * @return {String} 转换之后的url参数
@@ -178,21 +178,21 @@ const param = (obj = {}, unEncodeURI) => {
 
 ```js
 /**
- * 将url字符串解析成对象
+ * 将url字符串解析成对象 sting => object
  * @param  {String} str 带url参数的地址
  * @param  {Boolean} unDecodeURI 不使用解码
  * @return {Object} 转换之后的url参数
  */
 const unparam = (str = "", unDecodeURI) => {
   let result = {};
-  let query = str.split("?")[1];
+  let queries = str.split("?")
+  let query = queries.length == 1 ? queries[0]: queries[1];
   if (!query) return result;
   let arr = query.split("&");
   arr.forEach((item, idx) => {
-    let param = item.split("=");
-    let name = param[0];
-    let value = param[1] || "";
-
+    // let name = param[0];
+    // let value = param[1] || '';
+    let [name, value=''] = item.split("=");
     if (name) {
       result[name] = unDecodeURI ? value : decodeURIComponent(value);
     }

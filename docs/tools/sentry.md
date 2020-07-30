@@ -1,5 +1,5 @@
 ---
-title: sentry
+title: 前端监控sentry使用
 date: 2020-07-20
 sidebar: "auto"
 tags:

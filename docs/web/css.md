@@ -1,5 +1,5 @@
 ---
-title: css
+title: css的一些介绍
 date: 2020-07-22
 sidebar: "auto"
 categories:
@@ -86,7 +86,9 @@ document.querySelector("#linkElement").disabled = true;
 document.querySelector("#linkElement").disabled = "disabled";
 ```
 
-## 选择器
+## css选择器
+
+- [w3school css_selectors](https://www.w3school.com.cn/cssref/css_selectors.asp)
 
 - 通配符 : `*{}`
 - 标签选择器 : `p{} div{}`

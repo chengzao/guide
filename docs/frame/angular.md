@@ -1,5 +1,5 @@
 ---
-title: angular.js
+title: angular1.x的使用记录
 date: 2020-07-20
 sidebar: "auto"
 tags:

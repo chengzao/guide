@@ -1,5 +1,5 @@
 ---
-title: 一些问题
+title: javascript的module属性
 date: 2020-07-20
 sidebar: "auto"
 tags:
@@ -9,11 +9,6 @@ tags:
 categories:
   - web
 ---
-
-## `click在ios上有300ms延迟，原因及如何解决？`
-
-- 粗暴型，禁用缩放`<meta name="viewport" content="width=device-width, user-scalable=no">`
-- 利用`FastClick`, 检测到 touchend 事件后，立刻出发模拟 click 事件，并且把浏览器 300 毫秒之后真正出发的事件给阻断掉
 
 ## transition 和 animation 的区别
 

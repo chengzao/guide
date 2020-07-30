@@ -1,5 +1,5 @@
 ---
-title: ubuntu
+title: ubuntu常见命名
 date: 2020-07-20
 sidebar: "auto"
 tags:

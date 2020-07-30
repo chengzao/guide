@@ -1,5 +1,5 @@
 ---
-title: mysql
+title: mysql的学习记录
 date: 2020-07-20
 sidebar: "auto"
 tags:

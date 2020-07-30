@@ -1,6 +1,11 @@
 <template>
   <div class="docs-demo-wrapper language-xxx">
-    <div v-if="title" @click="toggle" class="docs-demo-title">{{title}}</div>
+    <div
+      v-if="title"
+      @click="toggle"
+      class="docs-demo-title"
+      :title="title + ' - 点击我展开/折叠'"
+    >{{title}} - 点击我展开/折叠</div>
     <div :style="{height: isExpand ? 'auto' : '0'}" class="docs-demo-container">
       <div class="docs-demo docs-demo__code">
         <slot></slot>
@@ -17,26 +22,26 @@ export default {
   props: {
     show: {
       type: String,
-      default: "true"
+      default: "true",
     },
     title: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
   data() {
     return {
-      isExpand: false
+      isExpand: false,
     };
   },
   methods: {
     toggle() {
       this.isExpand = !this.isExpand;
-    }
+    },
   },
   mounted() {
     this.isExpand = this.show == "false" ? false : true;
-  }
+  },
 };
 </script>
 

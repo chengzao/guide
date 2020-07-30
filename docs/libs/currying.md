@@ -1,5 +1,5 @@
 ---
-title: currying
+title: 柯里化currying
 date: 2020-07-20
 sidebar: "auto"
 tags:

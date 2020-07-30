@@ -1,5 +1,5 @@
 ---
-title: git裸仓库
+title: git裸仓库的使用
 date: 2020-07-20
 sidebar: "auto"
 tags:

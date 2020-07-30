@@ -1,5 +1,5 @@
 ---
-title: 常见方法
+title: 常见的函数算法
 date: 2020-07-22
 sidebar: "auto"
 tags:

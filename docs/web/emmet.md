@@ -1,5 +1,5 @@
 ---
-title: emmet example
+title: emmet的简写示例
 date: 2020-07-22
 sidebar: "auto"
 categories:

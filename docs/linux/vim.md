@@ -1,5 +1,5 @@
 ---
-title: vim
+title: vim的简单使用
 date: 2020-07-20
 sidebar: "auto"
 tags:

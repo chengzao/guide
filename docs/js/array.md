@@ -1,12 +1,16 @@
 ---
-title: Array
+title: Array数组
 date: 2020-07-20
 sidebar: "auto"
 tags:
   - array
 ---
 
+:::tip
+
 [MDN/Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+:::
 
 ## in 运算符
 

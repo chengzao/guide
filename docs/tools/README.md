@@ -1,5 +1,5 @@
 ---
-title: tools
+title: rollup/parcel/lerna
 date: 2020-07-20
 sidebar: "auto"
 tags:

@@ -1,5 +1,5 @@
 ---
-title: react lifecycle
+title: react生命周期
 date: 2020-07-20
 sidebar: "auto"
 tags:
@@ -78,6 +78,8 @@ export default class LifeCycle extends Component {
     )
   }
 }
+
+// Sub Component
 class SubCounter extends Component{
     constructor(props){
         super(props);
@@ -194,8 +196,9 @@ ReactDOM.render(<App />, rootElement);
 
 ## getSnapshotBeforeUpdate
 
-- 接收父组件传递过来的 props 和组件之前的状态，此生命周期钩子必须有返回值，返回值将作为第三个参数传递给`componentDidUpdate`。必须和 `componentDidUpdate` 一起使用，否则会报错
+- 接收父组件传递过来的 props 和组件之前的状态，此生命周期钩子必须有返回值，返回值将作为第三个参数传递给`componentDidUpdate`。
 - 该生命周期钩子触发的时机 ：被调用于 render 之后、更新 DOM 和 refs 之前
+- **`getSnapshotBeforeUpdate`要与`componentDidUpdate` 一起使用，否则会报错**
 
 ```js
 import React, { Component } from "react";

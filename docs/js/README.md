@@ -1,5 +1,5 @@
 ---
-title: 资源集合
+title: web资源列表
 date: 2020-07-20
 sidebar: "auto"
 ---

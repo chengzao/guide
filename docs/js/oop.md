@@ -1,5 +1,5 @@
 ---
-title: 设计模式/构造函数
+title: 函数的设计模式/构造函数
 date: 2020-07-20
 sidebar: "auto"
 ---

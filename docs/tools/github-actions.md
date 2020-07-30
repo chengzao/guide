@@ -1,5 +1,5 @@
 ---
-title: github actions
+title: github的actions使用
 date: 2020-07-19
 sidebar: "auto"
 tags:

@@ -36,7 +36,10 @@ categories:
 
 ## devServer
 
-```json
+- `npm package: mocker-api`
+
+```js
+...
 {
   "open": true,
   "overlay": true,
@@ -50,7 +53,8 @@ categories:
   },
   "historyApiFallback": true,
   "before": app => {
-    // mock api
+    // mock api:
+    // const ApiMocker = require('mocker-api');
     apiMocker(app, path.join(__dirname, "./mock/index.js"));
   },
   "proxy": {
@@ -80,6 +84,15 @@ router
 └── routes.js
 */
 // 自动引入router目录下文件夹内的index.js文件（例：project/index.js）
+
+/**
+require.context(directory,useSubdirectories,regExp)
+
+  directory：说明需要检索的目录
+  useSubdirectories：是否检索子目录
+  regExp: 匹配文件的正则表达式,一般是文件名
+*/
+
 const routerContext = require.context("./", true, /index\.js$/);
 routerContext.keys().forEach(route => {
   // 如果是根目录的 index.js 、不处理

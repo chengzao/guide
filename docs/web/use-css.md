@@ -1,13 +1,15 @@
 ---
-title: css example
+title: css常见问题解决方案
 date: 2020-07-20
 sidebar: "auto"
 categories:
   - web
 tags:
-  - 1PX
-  - clearfix
+  - 1像素问题
+  - 清除浮动
   - css三角形
+  - 百分比单位
+  - 字体超出省略
 ---
 
 ## CSS 画圆半圆扇形三角梯形
@@ -288,92 +290,64 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 }
 ```
 
-- 两端对齐
-
-```css
-// html
-<div>姓名</div>
-<div>手机号码</div>
-<div>账号</div>
-<div>密码</div>
-
-// css
-div {
-  margin: 10px 0;
-  width: 100px;
-  border: 1px solid red;
-  text-align: justify;
-  text-align-last: justify;
-}
-div:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
-}
-```
-
 ## css 百分比单位
 
-- 原理：当浏览器的宽度或者高度发生变化时，通过百分比单位，通过百分比单位可以使得浏览器中的组件的宽和高随着浏览器的变化而变化，从而实现响应式的效果
+### 子元素中的百分比（%）到底是谁的百分比
 
-- css 中的子元素中的百分比（%）到底是谁的百分比？
+- 子元素 height 和 width 的百分比
 
-- 百分比的具体分析
+  - 子元素的 height 或 width 中使用百分比，是相对于子元素的直接父元素，width 相对于父元素的 width，height 相对于父元素的 height
 
-  - 子元素 height 和 width 的百分比
-
-    - 子元素的 height 或 width 中使用百分比，是相对于子元素的直接父元素，width 相对于父元素的 width，height 相对于父元素的 height
-
-  - top 和 bottom 、left 和 right
+- top 和 bottom 、left 和 right
 
   - 子元素的 top 和 bottom 如果设置百分比，则相对于直接非 static 定位(默认定位)的父元素的高度
 
   - 子元素的 left 和 right 如果设置百分比，则相对于直接非 static 定位(默认定位的)父元素的宽度
 
-  - padding
+- padding
 
-    - 子元素的 padding 如果设置百分比，不论是垂直方向或者是水平方向，都相对于`直接父亲元素的width`，而与父元素的 height 无关
+  - 子元素的 padding 如果设置百分比，不论是垂直方向或者是水平方向，都相对于`直接父亲元素的width`，而与父元素的 height 无关
 
-  - margin
+- margin
 
-    - 子元素的 margin 如果设置成百分比，不论是垂直方向还是水平方向，都相对于`直接父元素的width`
+  - 子元素的 margin 如果设置成百分比，不论是垂直方向还是水平方向，都相对于`直接父元素的width`
 
-  - border-radius
+- border-radius
 
-    - border-radius 不一样，如果设置 border-radius 为百分比，则是相对于自身的宽度
+  - border-radius 不一样，如果设置 border-radius 为百分比，则是相对于自身的宽度
 
-  - translate
+- translate
 
-    - 相对于自身
+  - 相对于自身
 
-  - background-size
+- background-size
 
-    - 相对于自身
+  - 相对于自身
 
-- 百分比单位布局应用
+### 百分比单位布局应用
 
-  - 实现一个固定长宽比的长方形
+- 实现一个固定长宽比的长方形
 
-    <div class="trangle"></div>
+```html
+  <div class="trangle"></div>
 
-    .trangle{
+  .trangle{
     height:0;
     width:100%;
     padding-top:75%;
-    }
+  }
+```
 
-    通过设置 padding-top：75%,相对比宽度的 75%，因此这样就设置了一个长宽高恒定比例的长方形
+### 百分比单位缺点
 
-- 百分比单位缺点
+- 计算困难，如果我们要定义一个元素的宽度和高度，按照设计稿，必须换算成百分比单位
 
-  - 计算困难，如果我们要定义一个元素的宽度和高度，按照设计稿，必须换算成百分比单位
+- 各个属性中如果使用百分比，相对父元素的属性并不是唯一的
 
-  - 各个属性中如果使用百分比，相对父元素的属性并不是唯一的
+  - width 和 height 相对于父元素的 width 和 height
 
-    - width 和 height 相对于父元素的 width 和 height
+  - margin、padding 不管垂直还是水平方向都相对比父元素的宽度
 
-    - margin、padding 不管垂直还是水平方向都相对比父元素的宽度
+  - border-radius 则是相对于元素自身
 
-    - border-radius 则是相对于元素自身
-
-  - 造成我们使用百分比单位容易使布局问题变得复杂
+- 造成我们使用百分比单位容易使布局问题变得复杂

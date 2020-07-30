@@ -1,5 +1,5 @@
 ---
-title: vue plugins
+title: vue 常用插件
 date: 2020-07-21
 sidebar: "auto"
 tags:
@@ -16,14 +16,10 @@ prerender-spa-plugin
 # 装饰器
 vue-property-decorator
 
-# 自定义滚动条
-vue-gemini-scrollbar
 
 # 图片预览
 vue-photo-preview
 
-# 基于 Vue 2.x 与高德的地图组件
-vue-amap
 
 # 安装webpack
 webpack webpack-cli
@@ -87,9 +83,6 @@ postcss-sprites
 
 # 使用 vw,vh 自适应
 postcss-px-to-viewport
-
-# 自动删除console.log
-babel-plugin-transform-remove-console
 
 # 图片压缩
 img-loader

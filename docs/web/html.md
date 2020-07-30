@@ -1,5 +1,5 @@
 ---
-title: html
+title: html的简单介绍
 date: 2020-07-22
 sidebar: "auto"
 categories:
@@ -53,53 +53,12 @@ HTML 是一种基本的 WEB 网页设计语言，XHTML 是一个基于 XML 的�
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 ```
 
-## 页面基本组成
-
-<CodeBlock>
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./base.css" />
-    <title>Home</title>
-  </head>
-  <body>
-    <h1>Html Page!</h1>
-    <script src="./common.js"></script>
-  </body>
-</html>
-```
-
-</CodeBlock>
-
 ## 页面加载事件
 
 - `DOMContentLoaded` dom 内容加载完毕
 - `onload` 页面上所有的资源（图片，音频，视频等）被加载以后才会触发`load`事件
 - `$(document).ready()` 监听`DOMContentLoaded`事件
 - `$(document).load()` 监听的是 `load` 事件
-
-## 新语义标签
-
-```bash
-<nav> 表示导航
-<header> 表示页眉
-<footer> 表示页脚
-<section> 表示区块
-<article> 表示文章 如文章、评论、帖子、博客
-<aside> 表示侧边栏 如文章的侧栏
-<figure> 表示媒介内容分组 与 ul > li 做个比较
-<mark> 表示标记 (带用“UI”，不怎么用)
-<progress> 表示进度 (带用“UI”，不怎么用)
-<time> 表示日期
-<hgroup> 标题列表
-<details>
-<summary>
-```
 
 - 兼容
 
@@ -210,20 +169,6 @@ window.addEventListener("popState", stat => {}, false);
 - `localStorage.clear()` 清空所有存储内容
 - `localStorage.key(n)` 以索引值来获取存储内容
 
-## position coords
-
-- 获取当前地理信息`navigator.getCurrentPosition(successCallback, errorCallback, options)`
-- `succssCallback`，并返回一个包含位置信息的对象`position`
-  - `position.coords.latitude` 纬度
-  - `position.coords.longitude` 经度
-  - `position.coords.accuracy` 精度
-  - `position.coords.altitude` 海拔高度
-- `errorCallback`，并返回错误信息`error`, `options`对象
-  - `a)`enableHighAccuracy 高精度模式
-  - `b)`timeout 超时设置，单位为 ms
-  - `c)`maximumAge 表示浏览器重新获取位置信息的时间间隔，单位为 ms
-- 重复获取当前地理信息`navigator.watchPosition(successCallback, errorCallback, options)`
-
 ## FullScreen
 
 - `document.fullScreen` 检测当前是否处于全屏
@@ -256,18 +201,6 @@ window.addEventListener("popState", stat => {}, false);
   });
 </script>
 ```
-
-## 应用缓存
-
-- [Manifest 应用缓存](https://developer.mozilla.org/zh-CN/docs/Web/Manifest)
-
-## 文件读取
-
-- [FileReader 文件读取](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc)
-
-## 多媒体
-
-- [HTML 5 视频/音频参考手册](http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp)
 
 ## noreferrer/noopener
 

@@ -1,5 +1,5 @@
 ---
-title: react canvas poster
+title: 使用canvas生成poster
 date: 2020-07-21
 sidebar: "auto"
 tags:
@@ -93,12 +93,6 @@ export function fetchImage(url) {
     xhr.responseType = "blob";
     xhr.send();
   });
-}
-
-export async function drawerImage(ctx, imgUrl, x, y, w, h) {
-  ctx.save();
-  ctx.drawImage(imgUrl, x, y, w, h);
-  ctx.restore();
 }
 
 export async function drawerImg(ctx, imgUrl, x, y, w, h) {

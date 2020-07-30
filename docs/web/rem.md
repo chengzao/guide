@@ -1,5 +1,5 @@
 ---
-title: rem and viewport
+title: 使用rem和viewport的注意事项
 date: 2020-07-20
 sidebar: "auto"
 categories:
@@ -280,9 +280,63 @@ $max-device-width: 540px;
 }
 ```
 
+## webpack插件
+
+- [postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport)
+- [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem)
+
+## gulp
+
+- 项目目录
+
+```bash
+├── gulpfile.js
+├── output
+├── package-lock.json
+├── package.json
+└── src
+    ├── index.js
+    ├── m
+    │   └── m.css
+    ├── other
+    │   ├── m
+    │   │   └── other-m.css
+    │   └── pc
+    │       └── other-pc.css
+    └── pc
+        └── pc.css
+```
+
+- `gulpfile.js`
+
+```js
+// 将 `src/xxx/m/xxx.css`转换为rem
+
+const { src, dest } = require('gulp');
+var postcss = require('gulp-postcss');
+var pxtorem = require('postcss-pxtorem');
+exports.default = function() {
+    // https://github.com/cuth/postcss-pxtorem 配置
+    var processors = [
+        pxtorem({
+            replace: true,
+            propList: ['*'],
+            exclude: function(path) {
+                const matchPath = /src\/(.+\/)*m\//.test(path)
+                return !matchPath
+            }
+        })
+    ];
+
+    return src('src/**/*.css')
+        .pipe(postcss(processors))
+        .pipe(dest('output/css'));
+}
+```
+
 ## vw 和 vh
 
-[如何在 Vue 项目中使用 vw 实现移动端适配](https://www.w3cplus.com/mobile/vw-layout-in-vue.html)
+- [如何在 Vue 项目中使用 vw 实现移动端适配](https://www.w3cplus.com/mobile/vw-layout-in-vue.html)
 
 ## 相关链接
 

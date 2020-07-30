@@ -1,12 +1,16 @@
 ---
-title: string
+title: string字符串
 date: 2020-07-20
 sidebar: "auto"
 tags:
   - string
 ---
 
+:::tip
+
 [MDN/String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+:::
 
 ## fromCharCode
 

@@ -1,5 +1,5 @@
 ---
-title: win/wsl
+title: windows环境中的wsl使用
 date: 2020-07-22
 sidebar: "auto"
 ---

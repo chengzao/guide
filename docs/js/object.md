@@ -1,12 +1,16 @@
 ---
-title: object
+title: object对象
 date: 2020-07-20
 sidebar: "auto"
 tags:
   - object
 ---
 
+:::tip
+
 [MDN/Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+:::
 
 ## Object.create
 

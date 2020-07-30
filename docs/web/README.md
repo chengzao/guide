@@ -1,5 +1,5 @@
 ---
-title: web
+title: web常见问题方案
 date: 2020-07-22
 sidebar: "auto"
 categories:
@@ -53,6 +53,10 @@ tags:
 - [ftlabs/fastclick](https://github.com/ftlabs/fastclick)
 - [【前端词典】5 种滚动吸顶实现方式的比较[性能升级版]](https://juejin.im/post/5caa0c2d51882543fa41e478)
 - [css-tricks: 常用 midea](http://css-tricks.neatbang.com/media/#%E5%B8%B8%E7%94%A8-midea)
+- [移动端页面输入底部被软键盘遮挡问题](https://www.cnblogs.com/dongcanliang/p/7383508.html)
+- [iOS 下 Html 页面中 input 获取焦点弹出键盘时挡住 input 解决方案—scrollIntoView()](https://www.cnblogs.com/wx1993/p/6059668.html)
+- [移动端软键盘监听（弹出，收起），及影响定位布局的问题](https://www.cnblogs.com/wangyihong/p/7514304.html)
+- [input 光标位置设置至行末端](https://blog.csdn.net/shuanger112/article/details/81704208)
 
 ---
 

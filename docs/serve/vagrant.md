@@ -1,5 +1,5 @@
 ---
-title: vagrant
+title: vagrant虚拟机的使用
 date: 2020-07-21
 sidebar: "auto"
 tags:

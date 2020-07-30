@@ -6,6 +6,93 @@ tags:
   - vue
 ---
 
+:::tip
+
+- [vue-router](https://github.com/vuejs/vue-router)
+
+:::
+
+## 开始使用
+
+```js
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>bar</div>' }
+
+const routes = [
+  { path: '/foo', component: Foo },
+  { path: '/bar', component: Bar }
+]
+
+const router = new VueRouter({
+  routes
+})
+
+const app = new Vue({
+  router
+}).$mount('#app')
+```
+
+## 全局路由钩子
+
+- beforeEach
+
+```js
+router.beforeEach((to, from, next) => {
+  //一般登录拦截用这个,也叫导航钩子守卫
+  if (path === '/login') {
+    next()
+    return
+  }
+  if (token) {
+    next();
+  }
+})
+
+// beforeResolve
+
+// afterEach
+```
+
+## 组件路由钩子
+
+- beforeRouteEnter
+
+```js
+beforeRouteEnter (to, from, next) {
+  // 这里还无法访问到组件实例，this === undefined
+  next( vm => {
+    // 通过 `vm` 访问组件实例
+  })
+}
+
+// beforeRouteUpdate
+
+// beforeRouteLeave
+```
+
+## Vue.$router
+
+```js
+// 跳转到不同的url，但这个方法回向history栈添加一个记录，点击后退会返回到上一个页面
+this.$router.push()
+// 不会有记录
+this.$router.replace()
+// n可为正数可为负数。正数返回上一个页面,类似 window.history.go(n)
+this.$router.go(n)
+```
+
+## Vue.$route
+
+```js
+// 获取通过 params 或/:id传参的参数
+this.$route.params.id
+
+// 获取通过 query 传参的参数
+this.$route.query.id
+```
 
 ## router render
 
@@ -161,9 +248,23 @@ export default {
 }
 ```
 
-- `src/components/RouterCache.vue`
+## 缓存和动画
 
-```vue
+```js
+<transition>
+  <keep-alive :include="['a', 'b']">
+  //或include="a,b" :include="/a|b/",a 和 b 表示组件的 name
+  //因为有些页面,如试试数据统计,要实时刷新,所以就不需要缓存
+    <router-view/> //路由标签
+  </keep-alive>
+  <router-view exclude="c"/>
+  // c 表示组件的 name值
+</transition>
+```
+
+- Cached Router: `RouterCache.vue`
+
+```js
 <template>
   <div>
     <keep-alive>
@@ -178,4 +279,11 @@ export default {
   name: 'RouterCache'
 }
 </script>
+```
+
+## router-view 的 key
+
+```js
+//  Vue 会复用相同组件, key可以解决 组件的 created 和 mounted 不调用问题
+<router-view :key="$route.fullPath"></router-view>
 ```

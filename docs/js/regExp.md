@@ -1,12 +1,17 @@
 ---
-title: regexp
+title: regexp正则
 date: 2020-07-20
 sidebar: "auto"
 tags:
   - regexp
 ---
 
+:::tip
+
 - [MDN/RegExp](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
+:::
+
 - 构造函数定义 `var regex = new RegExp(/表达式/);`
 - 直接量定义 `var regex = /表达式/;`
 - `()` 表示一组

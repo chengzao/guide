@@ -1,12 +1,16 @@
 ---
-title: Date
+title: Date日期
 date: 2020-07-20
 sidebar: "auto"
 tags:
   - Date
 ---
 
+:::tip
+
 [MDN/Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+:::
 
 ## 静态方法
 

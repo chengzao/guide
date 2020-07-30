@@ -1,5 +1,5 @@
 ---
-title: debounce/throttle
+title: 节流和防抖函数(debounce/throttle)
 date: 2020-07-22
 sidebar: "auto"
 tags:

@@ -1,5 +1,5 @@
 ---
-title: commitizen
+title: 使用commitizen格式化提交规范
 date: 2020-07-20
 sidebar: "auto"
 tags:

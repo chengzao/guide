@@ -1,5 +1,5 @@
 ---
-title: nginx/win/mac
+title: nginx在windows和mac中使用示例
 date: 2020-07-21
 sidebar: "auto"
 tags:

@@ -1,5 +1,5 @@
 ---
-title: gitlab
+title: gitlab的服务部署
 date: 2020-07-21
 sidebar: "auto"
 tags:
