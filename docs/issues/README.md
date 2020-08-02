@@ -5,7 +5,7 @@ sidebar: "auto"
 tags:
   - blog
 categories:
-  - web
+  - faq
 ---
 
 ## 博客生成器

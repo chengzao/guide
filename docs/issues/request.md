@@ -6,7 +6,7 @@ tags:
   - cors
   - XMLHttpRequest
 categories:
-  - web
+  - faq
 ---
 
 - 简易版 1

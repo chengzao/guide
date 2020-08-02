@@ -7,7 +7,7 @@ tags:
   - get/post
   - async&defer
 categories:
-  - web
+  - faq
 ---
 
 ## transition 和 animation 的区别

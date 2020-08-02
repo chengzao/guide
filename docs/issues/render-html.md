@@ -5,7 +5,7 @@ sidebar: "auto"
 tags:
   - html/render
 categories:
-  - web
+  - faq
 ---
 
 :::tip

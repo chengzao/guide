@@ -3,9 +3,9 @@ title: github的actions使用
 date: 2020-07-19
 sidebar: "auto"
 tags:
-  - github/actions
+  - github
 categories:
-  - tools
+  - faq
 ---
 
 - [ruanyifeng: getting-started-with-github-actions](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
@@ -91,3 +91,27 @@ categories:
         - name: Test
           run: npm tests
   ```
+
+- [schedule: events-that-trigger-workflows](https://docs.github.com/cn/actions/reference/events-that-trigger-workflows#)
+
+```yml
+# example
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '*/15 * * * *'
+
+
+┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+│ │ ┌───────────── day of the month (1 - 31)
+│ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+│ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+│ │ │ │ │
+│ │ │ │ │
+│ │ │ │ │
+* * * * *
+
+# online website generate cron
+https://crontab.guru/
+```

@@ -7,7 +7,7 @@ tags:
   - jwt
   - token
 categories:
-  - web
+  - faq
 ---
 
 ## Cookie、sessionStorage、localStorage

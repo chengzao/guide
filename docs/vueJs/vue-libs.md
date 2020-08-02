@@ -4,8 +4,6 @@ date: 2020-07-21
 sidebar: "auto"
 tags:
   - vue
-categories:
-  - libs
 ---
 
 :::tip
