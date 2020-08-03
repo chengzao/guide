@@ -5,7 +5,7 @@ sidebar: "auto"
 tags:
   - typeOf
   - instanceof
-  - hasOwnProperty
+  - _hasOwnProperty
   - 工具函数
 categories:
   - libs
@@ -29,9 +29,9 @@ categories:
 - `Object.is(value1, value2);` 判断两个值是否是相同的值
 - `object instanceof constructor` 检测 `constructor.prototype` 是否存在于参数 `object` 的原型链
 
-<CodeBlock>
-
 ## instanceof
+
+<CodeBlock>
 
 <<< @/utils/libs/type/instanceof.js
 
@@ -46,6 +46,8 @@ categories:
 <<< @/utils/libs/type/hasOwnProperty.js
 
 </CodeBlock>
+
+- Object.prototype.toString.call
 
 <CodeBlock title="Object.prototype.toString.call >>">
 
