@@ -4,6 +4,8 @@ date: 2020-07-20
 sidebar: "auto"
 tags:
   - typeOf
+  - instanceof
+  - hasOwnProperty
   - 工具函数
 categories:
   - libs
@@ -29,9 +31,13 @@ categories:
 
 <CodeBlock>
 
+## instanceof
+
 <<< @/utils/libs/type/instanceof.js
 
 </CodeBlock>
+
+## hasOwnProperty
 
 - `obj.hasOwnProperty(prop)` 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性
 

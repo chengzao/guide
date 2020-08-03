@@ -280,12 +280,10 @@ $max-device-width: 540px;
 }
 ```
 
-## webpack插件
+## pxtorem
 
 - [postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport)
 - [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem)
-
-## gulp
 
 - 项目目录
 

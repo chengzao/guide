@@ -4,6 +4,8 @@ date: 2020-07-20
 sidebar: "auto"
 tags:
   - webpack
+  - gulp
+  - pxtorem
 categories:
   - tools
 ---
@@ -105,6 +107,55 @@ routerContext.keys().forEach(route => {
    */
   routes = [...routes, ...(routerModule.default || routerModule)];
 });
+```
+
+## gulp
+
+- 项目目录
+
+```bash
+├── gulpfile.js
+├── output
+├── package-lock.json
+├── package.json
+└── src
+    ├── index.js
+    ├── m
+    │   └── m.css
+    ├── other
+    │   ├── m
+    │   │   └── other-m.css
+    │   └── pc
+    │       └── other-pc.css
+    └── pc
+        └── pc.css
+```
+
+- `gulpfile.js`
+
+```js
+// 将 `src/xxx/m/xxx.css`转换为rem
+
+const { src, dest } = require('gulp');
+var postcss = require('gulp-postcss');
+var pxtorem = require('postcss-pxtorem');
+exports.default = function() {
+    // https://github.com/cuth/postcss-pxtorem 配置
+    var processors = [
+        pxtorem({
+            replace: true,
+            propList: ['*'],
+            exclude: function(path) {
+                const matchPath = /src\/(.+\/)*m\//.test(path)
+                return !matchPath
+            }
+        })
+    ];
+
+    return src('src/**/*.css')
+        .pipe(postcss(processors))
+        .pipe(dest('output/css'));
+}
 ```
 
 ## 相关链接

@@ -13,6 +13,19 @@ tags:
 const asyncDelay = ms => new Promise(r => setTimeout(r, ms));
 ```
 
+## sleep
+
+```js
+function sleep(sleepTime){
+    var start=new Date().getTime();
+    while(true){
+        if(new Date().getTime()-start>sleepTime){
+            break;
+        }
+    }
+}
+```
+
 ## Portal
 
 ```jsx

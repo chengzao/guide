@@ -497,6 +497,25 @@ newArr; // 20
 
 </CodeBlock>
 
+- 实现
+
+```js
+function reduce(arr, reduceCallback, initialValue) {
+  if (!Array.isArray(arr) || !arr.length || typeof reduceCallback !== 'function')
+  {
+    return [];
+  } else {
+    let hasInitialValue = initialValue !== undefined;
+    let value = hasInitialValue ? initialValue : arr[0];
+    // 如果有传递 initialValue，则索引从 1 开始，否则从 0 开始
+    for (let i = hasInitialValue ? 0 : 1, len = arr.length; i < len; i++) {
+      value = reduceCallback(value, arr[i], i, arr);
+    }
+    return value;
+  }
+}
+```
+
 ## valueOf 与 toString
 
 - `toString()`方法返回数组的字符串形式
@@ -539,6 +558,22 @@ arr; // [1, 2, 3, 4]
 ```
 
 </CodeBlock>
+
+- 实现map
+
+```js
+function map(arr, mapCallback) {
+  if (!Array.isArray(arr) || !arr.length || typeof mapCallback !== 'function') {
+    return [];
+  } else {
+    let result = [];
+    for (let i = 0, len = arr.length; i < len; i++) {
+      result.push(mapCallback(arr[i], i, arr));
+    }
+    return result;
+  }
+}
+```
 
 ## indexOf 与 lastIndexOf
 
@@ -608,6 +643,25 @@ arr; // [1, 3, 9, 4, 2, 6]
 ```
 
 </CodeBlock>
+
+- 实现
+
+```js
+function filter(arr, filterCallback) {
+  if (!Array.isArray(arr) || !arr.length || typeof filterCallback !== 'function')
+  {
+    return [];
+  } else {
+    let result = [];
+    for (let i = 0, len = arr.length; i < len; i++) {
+      if (filterCallback(arr[i], i, arr)) {
+        result.push(arr[i]);
+      }
+    }
+    return result;
+  }
+}
+```
 
 ## forEach
 

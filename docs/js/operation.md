@@ -550,3 +550,8 @@ console.log(!!0); // false
 console.log(!!-1); // true
 console.log(!!0.71); // true
 ```
+
+## for in和for of的区别
+
+- 使用`for in`会遍历数组所有的可枚举属性，包括原型, 更适合遍历对象
+- `for of`遍历数组元素值

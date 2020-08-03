@@ -6,20 +6,7 @@ tags:
   - event
 ---
 
-## 介绍
-
-- `事件源.事件 = function(){ 事件驱动程序 }`
-
-- [event-type](http://javascript.ruanyifeng.com/dom/event-type.html)
-
-## 模型
-
-- [事件模型](http://javascript.ruanyifeng.com/dom/event.html)
-- `addEventListener：绑定事件的监听函数`
-- `removeEventListener：移除事件的监听函数`
-- `dispatchEvent：在当前节点上触发指定事件,从而触发监听函数的执行`
-
-### addEventListener
+## addEventListener
 
 - `target.addEventListener(type, listener[, useCapture]);`
 
@@ -36,30 +23,13 @@ request.addEventListener('readystatechange', function () {...}, false);
 
 </CodeBlock>
 
-### removeEventListener
+## removeEventListener
 
 - `target.removeEventListener(type, listener[, useCapture]);`
 
-### dispatchEvent
-
-- `target.dispatchEvent(event)`
-
-### addEventListener
+## 事件兼容
 
 <<< @/utils/libs/event/addEventListener.js
-
-## 事件队列
-
-- 同步任务 synchronous
-- 异步任务 asynchronous
-- 异步运行机制
-  - 所有同步任务都在主线程上执行,形成一个执行栈(execution context stack)
-  - 主线程之外,还存在一个"任务队列" (task queue)
-    只要异步任务有了运行结果,就在"任务队列"之中放置一个事件.
-  - 一旦"执行栈"中的所有同步任务执行完毕,系统就会读取"任务队列",
-    查看队列中的事件任务.那些对应的异步任务,于是结束等待状态,
-    进入执行栈,开始执行
-  - 主线程不断重复上面的第三步
 
 ## 事件循环(Event Loop)
 
@@ -153,15 +123,15 @@ p.addEventListener("click", function(event) {
 
 </CodeBlock>
 
-## 事件如何先捕获后冒泡
-
-在 DOM 标准事件模型中，是先捕获后冒泡。但是如果要实现先冒泡后捕获的效果，对于同一个事件，监听捕获和冒泡，分别对应相应的处理函数，监听到捕获事件，先暂缓执行，直到冒泡事件被捕获后再执行捕获事件。
-
 ## 哪些事件不支持冒泡事件
 
 - 鼠标事件：`mouserleave mouseenter`
 - 焦点事件：`blur focus`
 - UI 事件：`scroll resize`
+
+## 什么是作用域
+
+JavaScript 中的作用域是我们可以有效访问变量或函数的区域。JS 有三种类型的作用域：全局作用域、函数作用域和块作用域(ES6)
 
 ### Event 对象
 
@@ -251,3 +221,48 @@ targetId = event.target ? event.target.id : event.srcElement.id;
 ```
 
 </CodeBlock>
+
+## EventEmitter
+
+```js
+class EventEmitter {
+    constructor() {
+          this.events = Object.create(null);
+      }
+      on(name, fn) {
+        if (!this.events[name]) {
+            this.events[name] = []
+          }
+          this.events[name].push(fn);
+          return this;
+      }
+      emit(name, ...args) {
+        if (!this.events[name]) {
+            return this;
+        }
+        const fns = this.events[name]
+        fns.forEach(fn => fn.call(this, ...args))
+        return this;
+      }
+      off(name,fn) {
+        if (!this.events[name]) {
+            return this;
+        }
+          if (!fn) {
+            this.events[name] = null
+            return this
+          }
+          const index = this.events[name].indexOf(fn);
+          this.events[name].splice(index, 1);
+        return this;
+      }
+      once(name,fn) {
+        const only = () => {
+          fn.apply(this, arguments);
+          this.off(name, only);
+        };
+        this.on(name, only);
+        return this;
+      }
+}
+```
