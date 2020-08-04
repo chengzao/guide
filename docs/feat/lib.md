@@ -351,3 +351,98 @@ function resolvePromise(promise, x, resolve, reject) {
 
 }
 ```
+
+## sleep
+
+```js
+function sleep(sleepTime){
+    var start=new Date().getTime();
+    while(true){
+        if(new Date().getTime()-start>sleepTime){
+            break;
+        }
+    }
+}
+
+// const asyncDelay = ms => new Promise(r => setTimeout(r, ms));
+```
+
+## EventEmitter
+
+```js
+class EventEmitter {
+    constructor() {
+          this.events = Object.create(null);
+      }
+      on(name, fn) {
+        if (!this.events[name]) {
+            this.events[name] = []
+          }
+          this.events[name].push(fn);
+          return this;
+      }
+      emit(name, ...args) {
+        if (!this.events[name]) {
+            return this;
+        }
+        const fns = this.events[name]
+        fns.forEach(fn => fn.call(this, ...args))
+        return this;
+      }
+      off(name,fn) {
+        if (!this.events[name]) {
+            return this;
+        }
+          if (!fn) {
+            this.events[name] = null
+            return this
+          }
+          const index = this.events[name].indexOf(fn);
+          this.events[name].splice(index, 1);
+        return this;
+      }
+      once(name,fn) {
+        const only = () => {
+          fn.apply(this, arguments);
+          this.off(name, only);
+        };
+        this.on(name, only);
+        return this;
+      }
+}
+```
+
+## instanceof
+
+```js
+function instanceof(l, r) {
+  let proto = l.__proto__;
+  let prototype = r.prototype
+  while (true) {
+    if (proto == null) {
+      return false
+    }
+    if (proto == prototype) {
+      return true
+    }
+    proto = proto.__proto__
+  }
+}
+```
+
+## new
+
+```js
+function _new() {
+  // 将 arguments 对象转为数组
+  var args = [].slice.call(arguments);
+  // 取出构造函数
+  var constructor = args.shift();
+  // 创建一个空对象,继承构造函数的 prototype 属性
+  var context = Object.create(constructor.prototype);
+  // 执行构造函数
+  var result = constructor.apply(context, args);
+  // 如果返回结果是对象,就直接返回,则返回 context 对象
+  return typeof result === "object" && result != null ? result : context;
+}
+```
