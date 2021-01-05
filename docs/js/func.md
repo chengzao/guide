@@ -22,6 +22,12 @@ function getSum(){}
 (function (){})()//匿名函数
 //ES6
 ()=>{}
+
+// notes
+(() => {}).length // => 0
+({}).toString() // => [object Object]
+([]+[]).toString() // => ''
+([]+[]).length // => 0
 ```
 
 - 函数表达式

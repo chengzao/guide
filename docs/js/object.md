@@ -600,6 +600,39 @@ Object.defineProperty(o, "a", {
 });
 ```
 
+- 思考扩展
+
+```js
+// 1.0
+if(a == 1 && a ==2 && a == 3){
+  console.log('1.0 如何打印我！')
+}
+
+var s = 0;
+var a = {
+    toString(){
+          console.log('其次：toString.')
+          return s+=1
+    },
+    valueOf(){
+        console.log('优先：valueOf.')
+        return ++s
+    }
+}
+
+// 2.0
+if(a === 1 && a ===2 && a === 3){
+  console.log('2.0 如何打印我！')
+}
+
+// 不建议使用
+Object.definePrototype(window, 'a', {
+  get(){
+    return ++s;
+  }
+})
+```
+
 ### attributesObject
 
 #### `value`
