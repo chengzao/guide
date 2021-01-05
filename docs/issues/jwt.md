@@ -64,7 +64,7 @@ httpOnly    设置了 httpOnly 属性，则无法通过JS读取到该cookie信�
 
 - 注意事项
 
-```plain
+```sh
 不要存储敏感数据
 使用 httpOnly 在一定程度上提高安全性
 尽量减少 cookie 的体积，能存储的数据量不能超过 4kb
@@ -81,7 +81,7 @@ cookie 无法跨域, 设置domain属性，一级域名和二级域名之间是�
 
 - 浏览器禁止 cookie 或不支持 cookie 怎么办？
 
-```plain
+```sh
 一般会把 sessionId 跟在 url 参数后面即重写 url
 移动端对 cookie 的支持不是很好，移动端常用的是 token
 ```
@@ -129,7 +129,7 @@ Authorization: Bearer <token>
 
 - 注意事项
 
-```plain
+```sh
 JWT 不加密的情况下，不能将秘密数据写入 JWT
 JWT 优势：服务器不再需要存储 Session，使得服务器认证鉴权业务可以方便扩展
 JWT 缺点：由于服务器不需要存储 Session 状态，因此使用过程中无法废弃某个 Token 或者更改 Token 的权限。
