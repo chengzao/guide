@@ -41,6 +41,45 @@ c) Node.js的特性是什么？
 - 查看 npm 全局安装包 `npm list -g --depth=0`
 - `nvm（Node.js version manage）`
 
+### mac中nvm自动切换node版本
+
+> zsh安装：https://ohmyz.sh/ ;
+> nvm安装：https://github.com/nvm-sh/nvm
+
+- step1: 进入项目根目录：运行 `node -v > .nvmrc`
+
+- step2: 编辑`.zshrc`最后加入(前提是安装zsh)
+
+```sh
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+​
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+​
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+```
+
+- step3: 命令行运行
+
+```sh
+source ~/.zshrc  # 不报错即可
+```
+
 ## nrm
 
 - 全局安装 `npm install nrm -g`

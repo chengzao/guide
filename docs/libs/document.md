@@ -45,6 +45,41 @@ document.addEventListener(
 document.title = document[state];
 ```
 
+- js
+
+```js
+function getHidden (){
+    let prefixs = ['webkit','moz','mos','o'];
+    if ('hidden' in document) return document.hidden;
+    for (let i = 0; i < prefixs.length; i++) {
+        if (`${prefixs[i]}Hidden` in document){
+            return document[`${prefixs[i]}Hidden`];
+        }
+    }
+    // not support
+    return null;
+}
+
+function getVivibilityState (){
+    let prefixs = ['webkit','moz','mos','o'];
+    if ('visibilityState' in document) return document.visibilityState;
+    for (let i = 0; i < prefixs.length; i++) {
+        if (`${prefixs[i]}VisibilityState` in document){
+            return document[`${prefixs[i]}VisibilityState`];
+        }
+    }
+    // not support
+    return null;
+}
+
+function pageHiddenHandler () {
+    let isHidden = getHidden();
+    // 改变页面title用户观察状态
+    document.title = isHidden ? '藏起来了' : '闪现';
+}
+document.addEventListener('visibilitychange',pageHiddenHandler,false);
+```
+
 ## 监听屏幕旋转变化接口: orientationchange
 
 - js
