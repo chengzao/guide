@@ -68,4 +68,7 @@
 
 - npm
 - npm Intellisense
+
+- any-rule
+- code spell checker
 ```
