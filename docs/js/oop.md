@@ -197,6 +197,121 @@ sub.setState(12);
 // => 02 update, state: 12
 ```
 
+- defineProperty
+
+<CodeBlock>
+
+```js
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
+    />
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="dom-one"></div>
+      <br />
+      <div id="dom-two"></div>
+      <br />
+      <button id="btn">改变</button>
+    </div>
+    <script>
+      /**
+       * 观察监听一个对象成员的变化
+       * @param {Object} obj 观察的对象
+       * @param {String} targetVariable 观察的对象成员
+       * @param {Function} callback 目标变化触发的回调
+       */
+      function observer(obj, targetVariable, callback) {
+        if (!obj.data) {
+          obj.data = {}
+        }
+        Object.defineProperty(obj, targetVariable, {
+          get() {
+            return this.data[targetVariable]
+          },
+          set(val) {
+            this.data[targetVariable] = val
+            // 目标主动通知观察者
+            callback && callback(val)
+          },
+        })
+        if (obj.data[targetVariable]) {
+          callback && callback(obj.data[targetVariable])
+        }
+      }
+
+      const obj = {
+        data: { description: '原始值' },
+      }
+
+      observer(obj, 'description', value => {
+        document.querySelector('#dom-one').innerHTML = value
+        document.querySelector('#dom-two').innerHTML = value
+      })
+
+      btn.onclick = () => {
+        obj.description = '改变了'
+      }
+    </script>
+  </body>
+</html>
+```
+
+</CodeBlock>
+
+## 发布订阅模式
+
+> 发布者 -> 事件中心 <=> 订阅者
+
+<CodeBlock>
+
+```js
+class Event {
+  constructor() {
+    // 所有 eventType 监听器回调函数（数组）
+    this.listeners = {}
+  }
+  /**
+   * 订阅事件
+   * @param {String} eventType 事件类型
+   * @param {Function} listener 订阅后发布动作触发的回调函数，参数为发布的数据
+   */
+  on(eventType, listener) {
+    if (!this.listeners[eventType]) {
+      this.listeners[eventType] = []
+    }
+    this.listeners[eventType].push(listener)
+  }
+  /**
+   * 发布事件
+   * @param {String} eventType 事件类型
+   * @param {Any} data 发布的内容
+   */
+  emit(eventType, data) {
+    const callbacks = this.listeners[eventType]
+    if (callbacks) {
+      callbacks.forEach((c) => {
+        c(data)
+      })
+    }
+  }
+}
+
+const event = new Event()
+event.on('open', (data) => {
+  console.log(data)
+})
+event.emit('open', { open: true })
+```
+
+</CodeBlock>
+
 ## 面向对象
 
 - 封装 继承 多态 作用：复用
