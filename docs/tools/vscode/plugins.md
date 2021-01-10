@@ -12,6 +12,7 @@
 - Add jsdoc comments
 
 - open in browser
+- browser preview
 - PicGo
 
 - Live Server

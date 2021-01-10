@@ -267,6 +267,33 @@ Number("0b11"); // 3   二进制
 Number("0o11"); // 9   八进制
 ```
 
+- js
+
+```js
+function baseConverter(decNumber, base) {
+  const remStack = [];
+  const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let number = decNumber;
+  let rem;
+  let baseString = '';
+
+  if (!(base >= 2 && base <= 36)) {
+    return '';
+  }
+
+  while (number > 0) {
+    rem = Math.floor(number % base);
+    remStack.push(rem);
+    number = Math.floor(number / base);
+  }
+
+  while (remStack.length > 0) {
+    baseString += digits[remStack.pop()];
+  }
+  return baseString;
+}
+```
+
 ## Math
 
 ### `Math.abs()`
