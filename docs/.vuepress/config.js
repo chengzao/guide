@@ -37,17 +37,13 @@ module.exports = {
     searchMaxSuggestions: 10,
     sidebarDepth: 2,
     repo: "chengzao/guide",
-    // editLinkText: "在 GitHub 上编辑此页",
     docsDir: "docs",
     logo: "/logo.png",
     authorAvatar: "/logo.png",
-    // editLinks: true,
-    lastUpdated: "Last Updated",
     smoothScroll: true,
     navbar: true,
     nav,
     sidebar,
-    // blog
     codeTheme: "okaidia",
     type: "blog",
     blogConfig: {

@@ -16,7 +16,6 @@ module.exports = [
       }
     }
   ],
-  "@vuepress/medium-zoom",
   [
     "named-chunks",
     {
@@ -38,5 +37,17 @@ module.exports = [
     {
       copyMessage: '复制成功 ^~^ !'
     }
-  ]
+  ],
+  [
+    'vuepress-plugin-medium-zoom',
+    {
+      selector: '.my-wrapper .my-img',
+      delay: 1000,
+      options: {
+        margin: 24,
+        background: '#BADA55',
+        scrollOffset: 0,
+      },
+    },
+  ],
 ];
