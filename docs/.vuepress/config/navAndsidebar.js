@@ -65,10 +65,10 @@ module.exports = {
           text: "issues",
           link: "/issues/"
         },
-        {
-          text: "libs",
-          link: "/libs/"
-        },
+        // {
+        //   text: "libs",
+        //   link: "/libs/"
+        // },
         {
           text: "tools",
           link: "/tools/"
@@ -88,7 +88,7 @@ module.exports = {
   sidebar: {
     "/js/": genSidebarConfig("JavaScript", "js"),
     "/issues/": genSidebarConfig("issues", "issues"),
-    "/libs/": genSidebarConfig("libs", "libs"),
+    // "/libs/": genSidebarConfig("libs", "libs"),
     "/serve/": genSidebarConfig("serve", "serve"),
     "/tools/": genSidebarConfig("tools", "tools"),
     "/frame/": genSidebarConfig("frame", "frame"),

@@ -4,7 +4,6 @@ date: 2020-07-20
 sidebar: "auto"
 tags:
   - 性能优化
-  - get/post
   - async&defer
 categories:
   - faq

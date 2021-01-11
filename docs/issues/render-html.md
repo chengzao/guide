@@ -14,10 +14,43 @@ categories:
 
 :::
 
+## OIS 七层模型模型
+
+> 原文：https://www.liwenzhou.com/posts/Go/15_socket/
+
+![七层模型](https://gitee.com/cxyz/imgbed/raw/img/2021/OIS-20210111160033.png)
+
+## 五层模型
+
+> 原文：https://www.liwenzhou.com/posts/Go/15_socket/
+
+![五层模型](https://gitee.com/cxyz/imgbed/raw/img/2021/protocol-20210111160334.png)
+
+## socket图解
+
+> 原文：https://www.liwenzhou.com/posts/Go/15_socket/
+
+![Socket](https://gitee.com/cxyz/imgbed/raw/img/2021/Socket-20210111161754.png)
+
+## TCP
+
+:::tip
+
+- 原文：https://www.cnblogs.com/xiaolincoding/p/12638546.html
+- TCP 是面向连接的、可靠的、基于字节流的传输层通信协议
+
+:::
+
+![TCP三次握手，四次挥手](https://gitee.com/cxyz/imgbed/raw/img/2021/TCP-20210111162547.png)
+
+- 为什么挥手需要四次？
+  - 关闭连接时，客户端向服务端发送 FIN 时，仅仅表示客户端不再发送数据了但是还能接收数据；
+  - 服务器收到客户端的 FIN 报文时，先回一个 ACK 应答报文，而服务端可能还有数据需要处理和发送，等服务端不再发送数据时，才发送 FIN 报文给客户端来表示同意现在关闭连接。
+
 ## 从输入 URL 到页面加载的过程
 
 - `1.` 从浏览器接收 url 到开启网络请求线程 (浏览器的机制以及进程与线程之间的关系)
-- `2.` 开启网络线程到发出一个完整的 http 请求 (涉及到 dns 查询，tcp/ip 请求，五层因特网协议栈等知识)
+- `2.` 开启网络线程到发出一个完整的 http 请求 (涉及到 dns 查询，tcp/ip 请求，五层因特网协议栈等知识，tcp三次握手，四次挥手)
 - `3.` 从服务器接收到请求到对应后台接收到请求 (涉及到负载均衡，安全拦截以及后台内部的处理等)
 - `4.` 后台和前台的 http 交互 （这一部分包括 http 头部、响应码、报文结构、cookie 等知识，可以提下静态资源的 cookie 优化，以及编码解码，如 gzip 压缩等）
 - `5.` 单独拎出来的缓存问题，http 的缓存 （这部分包括 http 缓存头部，etag，catch-control 等）

@@ -4,7 +4,6 @@ date: 2020-08-02
 sidebar: "auto"
 tags:
   - graphql
-  - github
 categories:
   - faq
 ---

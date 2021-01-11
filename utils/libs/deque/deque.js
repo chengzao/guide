@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-
-class Deque {
+// 双端队列
+export default class Deque {
   constructor() {
     this.count = 0;
     this.lowestCount = 0;
@@ -98,6 +89,9 @@ class Deque {
   }
 }
 
-  </script>
-</body>
-</html>
+// const deque = new Deque()
+// deque.addBack(12);
+// deque.addBack(21);
+
+// deque.addFront(45)
+// console.log(deque)

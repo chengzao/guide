@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-
-// first in first out
-class Queue {
+// 队列：first in first out
+export default class Queue {
   constructor() {
     this.count=0; // 记录数据大小
     this.lowestCount=0 // 第一个元素
@@ -67,15 +57,11 @@ class Queue {
 }
 
 
-const queue = new Queue()
+// const queue = new Queue()
 
-queue.add(12)
+// queue.add(12)
 
-queue.add(23)
+// queue.add(23)
 
 
-console.log(queue.toString())
-
-  </script>
-</body>
-</html>
+// console.log(queue.toString())
