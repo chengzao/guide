@@ -1,23 +1,22 @@
 <template>
   <div class="docs-demo-wrapper language-xxx">
-    <div
+    <!-- <div
       v-if="title"
       @click="toggle"
       class="docs-demo-title"
       :title="title + ' - 点击我展开/折叠'"
-    >{{title}} - 点击我展开/折叠</div>
+    >{{title}} - 点击我展开/折叠</div> -->
     <div :style="{height: isExpand ? 'auto' : '0'}" class="docs-demo-container">
-      <div class="docs-demo docs-demo__code">
+      <div class="docs-demo docs-demo__code" :class="{'open': !isOpen}">
         <slot></slot>
       </div>
     </div>
-    <span class="docs-trans" @click="toggle">{{isExpand ? '隐藏代码' : '显示代码'}}</span>
+    <span class="docs-trans" @click="open">{{isOpen ? '折叠代码' : '展开代码'}}</span>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-import Vue from "vue";
 export default {
   props: {
     show: {
@@ -32,12 +31,16 @@ export default {
   data() {
     return {
       isExpand: false,
+      isOpen: false
     };
   },
   methods: {
     toggle() {
       this.isExpand = !this.isExpand;
     },
+    open(){
+      this.isOpen = !this.isOpen;
+    }
   },
   mounted() {
     this.isExpand = this.show == "false" ? false : true;
@@ -78,6 +81,10 @@ export default {
 .docs-demo-wrapper .docs-demo__code {
   padding: 0 10px;
   /* overflow-y: auto; */
+}
+.docs-demo-wrapper .docs-demo__code.open{
+  max-height: 500px;
+  overflow: auto;
 }
 
 .docs-demo-wrapper .docs-demo-title {
