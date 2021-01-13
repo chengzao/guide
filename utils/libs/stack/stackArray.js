@@ -1,6 +1,6 @@
 //栈：First In Last out
 const _stackItem = Symbol("stack array");
-class Stack {
+export default class Stack {
   constructor() {
     // 存储栈元素
     this[_stackItem] = [];
@@ -32,10 +32,10 @@ class Stack {
   }
 }
 
-var stack = new Stack();
+// var stack = new Stack();
 
-stack.push(110);
-stack.push(120);
+// stack.push(110);
+// stack.push(120);
 
-console.log(stack.clear());
-console.log(stack.isEmpty());
+// console.log(stack.clear());
+// console.log(stack.isEmpty());

@@ -1,6 +1,6 @@
 //栈：First In Last out
 const _stackItem = Symbol('stack object')
-class Stack{
+export default class Stack{
   constructor(){
     this[_stackItem] = {}
     this.index = 0
