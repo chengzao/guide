@@ -237,7 +237,7 @@ function fn1() {
 - `this`: 触动或调用函数的调用者.
 - `arguments:callee` : 所在的函数体(等于直接调用函数名)
 
-<CodeBlock title="参考示例>>">
+<CodeBlock>
 
 ```js
 function User(login) {

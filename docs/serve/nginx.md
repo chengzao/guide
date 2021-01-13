@@ -271,7 +271,7 @@ location / {
 
 ## nginx 安装
 
-<CodeBlock title="yum安装 >>">
+<CodeBlock>
 
 ```bash
 # cd /etc/yum.repos.d
@@ -295,7 +295,7 @@ enabled=1
 
 </CodeBlock>
 
-<CodeBlock title="安装包安装 >>">
+<CodeBlock>
 
 ```bash
 yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel

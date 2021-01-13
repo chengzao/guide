@@ -465,7 +465,7 @@ content
 
 ## example
 
-<CodeBlock title="mongoose js >>">
+<CodeBlock>
 
 ```js
 var mongoose = require('mongoose');
@@ -513,7 +513,7 @@ doc.save((err) => {})
 
 </CodeBlock>
 
-<CodeBlock  title="mongoose settings >>">
+<CodeBlock>
 
 ```bash
 - use admin

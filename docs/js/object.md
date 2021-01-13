@@ -285,7 +285,7 @@ Math.propertyIsEnumerable("random"); // 返回 false
 this.propertyIsEnumerable("Math"); // 返回 false
 ```
 
-## Object.prototype.**proto**
+## __proto__
 
 - `Object.prototype.__proto__`
 - 返回该对象的原型。该属性可读写

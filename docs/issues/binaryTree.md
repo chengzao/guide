@@ -353,7 +353,7 @@ BST.prototype.compareNodes = function(node1, node2) {
 
 ## 完整版
 
-<CodeBlock show="true" title="点击我展开">
+<CodeBlock>
 
 <<< @/utils/libs/sort/binaryTree.js
 

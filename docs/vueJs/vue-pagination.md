@@ -79,7 +79,7 @@ export default {
 
 ## pagination
 
-<CodeBlock title="vue网页版分页">
+<CodeBlock>
 
 ```html
 <!DOCTYPE html>
@@ -436,7 +436,7 @@ export default {
 
 ## i18n
 
-<CodeBlock title="vue网页版i18n">
+<CodeBlock>
 
 ```html
 <!DOCTYPE html>
@@ -510,7 +510,7 @@ export default {
 
 ## alert
 
-<CodeBlock title="vue网页版alert">
+<CodeBlock>
 
 ```html
 <!DOCTYPE html>

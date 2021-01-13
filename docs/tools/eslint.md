@@ -190,7 +190,7 @@ module.exports = {
 
 ## 配置示例
 
-<CodeBlock title="代码如下 >>">
+<CodeBlock>
 
 ```js
 // 作者：chenhongdong

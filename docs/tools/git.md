@@ -117,7 +117,7 @@ git rm -r --cached .    # 清除版本控制标记，.代表所有文件，也�
 **     # 匹配任意的中间目录，例如a/*/z可以匹配:a/z,a/b/z,a/b/c/z等
 ```
 
-<CodeBlock title="示例: .gitignore >>">
+<CodeBlock>
 
 ```bash
 # 忽略所有以 .c结尾的文件

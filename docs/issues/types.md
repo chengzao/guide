@@ -49,7 +49,7 @@ categories:
 
 - Object.prototype.toString.call
 
-<CodeBlock title="Object.prototype.toString.call >>">
+<CodeBlock>
 
 <<< @/utils/libs/type/Object.prototype.toString.call.js
 
