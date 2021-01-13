@@ -447,17 +447,6 @@ Child.prototype.constructor = Child;
 Child.prototype.sayage = function() {
   console.log(this.age);
 };
-
-var c1 = new Child(16, "小花");
-c1.sayage(); //16
-c1.sayname(); //小花
-c1.num.push(13);
-console.log(c1.num); //12,13
-
-var c2 = new Child(18, "小明");
-c2.sayage(); //18
-c2.sayname(); //小明
-console.log(c2.num); //12
 ```
 
 - 原型式继承`Object.create`

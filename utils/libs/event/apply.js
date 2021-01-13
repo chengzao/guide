@@ -1,4 +1,4 @@
-Function.prototype.apply2 = function (context = {}) {
+Function.prototype._apply = function (context = {}) {
   context.fn = this
   let result;
   // 判断是否有第二个参数
@@ -10,13 +10,3 @@ Function.prototype.apply2 = function (context = {}) {
   delete context.fn
   return result
 }
-
-var foo = {
-  value: 1
-}
-function bar(name, age) {
-  console.log(name)
-  console.log(age)
-  console.log(this.value);
-}
-bar.apply2(foo, ['black', '18']) // black 18 1
