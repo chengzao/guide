@@ -33,9 +33,9 @@ React16 架构可以分为三层：
 
 - Scheduler（调度器）—— 调度任务的优先级，高优任务优先进入**Reconciler**
 
-- Reconciler（协调器）—— 负责找出变化的组件
+- Reconciler（协调器）—— 负责找出变化的组件 （render 阶段）
 
-- Renderer（渲染器）—— 负责将变化的组件渲染到页面上
+- Renderer（渲染器）—— 负责将变化的组件渲染到页面上 (commit 阶段)
 
 ![react process](https://kasong.gitee.io/just-react/img/process.png)
 
@@ -48,7 +48,6 @@ React16 架构可以分为三层：
 
 - [react-router](https://github.com/ReactTraining/react-router)
 
-
 ## libs
 
 - [mobx](https://github.com/mobxjs/mobx)
@@ -60,7 +59,7 @@ React16 架构可以分为三层：
 - [lodash](https://www.lodashjs.com/)
 - [RxJS](https://cn.rx.js.org/)
 - [react-loadable-visibility](https://github.com/stratiformltd/react-loadable-visibility)
-- [react-spinkit/](http://kyleamathews.github.io/react-spinkit/)
+- [react-spinkit](http://kyleamathews.github.io/react-spinkit/)
 
 ## hooks
 
@@ -117,8 +116,7 @@ pre-commit
 
 - [React SSR 详解【近 1W 字】+ 2 个项目实战](https://juejin.im/post/5def0816f265da33aa6aa7fe)
 - [react ssr](https://juejin.im/post/5def0816f265da33aa6aa7fe)
-- [react16 架构](https://kasong.gitee.io/just-react/preparation/newConstructure.html#react16架构)
-- [React 技术揭秘](https://react.iamkasong.com/)
+- [React 技术揭秘 @iamkasong](https://react.iamkasong.com/)
 - [React 开发必须知道的 34 个技巧【近 1W 字】](https://juejin.im/post/5dcb5a80e51d4520db19b906#heading-6)
 - [详解 requestIdleCallback](https://juejin.im/post/5e5f7dc2e51d4526fb5de615)
 

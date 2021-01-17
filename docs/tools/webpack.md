@@ -5,36 +5,23 @@ sidebar: "auto"
 tags:
   - webpack
   - gulp
-  - pxtorem
+  - px2rem
 categories:
   - tools
 ---
 
-## entry
+## webpack优化
 
-- 单个入口: `string|object`
-- 多页面: `object`
-- 动态入口
-
-## output
-
-- `单入口: object`
-- `多入口: object`
-- `publicPath: string`
-- `chunkFilename: string`
-
-## plugins
-
-- `plugins: []`
-
-## module
-
-- `module.rules:[]`
-
-## mode
-
-- `development`
-- `production`
+- 缩小文件搜索范围
+- 使用 DllPlugin
+- 使用 HappyPack
+- 使用 ParallelUglifyPlugin
+- 压缩代码 UglifyJSPlugin
+- CDN(Content Delivery Network) 加速 `output：publicPath`
+- 使用 Tree Shaking, 消除无用的js代码
+- 提取公共代码
+- 分割代码按需加载
+- webpack-bundle-analyzer 是另一个可视化分析工具
 
 ## devServer
 
@@ -158,6 +145,16 @@ exports.default = function() {
 }
 ```
 
+## webpack配置
+
+- [原文地址](http://webpack.wuhaolin.cn/2%E9%85%8D%E7%BD%AE/2-8%E6%95%B4%E4%BD%93%E9%85%8D%E7%BD%AE%E7%BB%93%E6%9E%84.html)
+
+<CodeBlock>
+
+<<< @/docs/tools/webpackConfig.js
+
+</CodeBlock>
+
 ## 相关链接
 
 - [webpack 插件总结归类](https://segmentfault.com/a/1190000016816813)
@@ -168,3 +165,4 @@ exports.default = function() {
 - [webpack：从入门到真实项目配置](https://juejin.im/post/59bb37fa6fb9a00a554f89d2)
 - [webpack 集](https://github.com/poetries/mywiki/wiki/webpack)
 - [JSDoc](http://usejsdoc.org/index.html)
+- [深入浅出 Webpack](http://webpack.wuhaolin.cn)

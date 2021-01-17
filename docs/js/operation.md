@@ -4,6 +4,12 @@ date: 2020-07-20
 sidebar: "auto"
 ---
 
+:::tip
+
+[MDN：运算符优先级](https://developer.mozilla.org/zh-cn/docs/web/javascript/reference/operators/operator_precedence)
+
+:::
+
 - `一元操作符` `++, -- + -`
 - `逻辑操作符` `! && ||`
 - `基本运算符` `+, -, *, /, %(取余)`
@@ -272,8 +278,7 @@ const unescapeHTML = str =>
 ```js
 typeof NaN; // 'number'
 NaN == NaN; // flase
-NaN ===
-  NaN[NaN].indexOf(NaN); //false // -1
+NaN === NaN[NaN].indexOf(NaN); //false // -1
 Boolean(NaN); // false
 Number.isNaN(NaN); // true
 ```
@@ -551,7 +556,7 @@ console.log(!!-1); // true
 console.log(!!0.71); // true
 ```
 
-## for in和for of的区别
+## for in 和 for of 的区别
 
 - 使用`for in`会遍历数组所有的可枚举属性，包括原型, 更适合遍历对象
 - `for of`遍历数组元素值
