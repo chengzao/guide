@@ -10,7 +10,7 @@ categories:
   - tools
 ---
 
-## webpack优化
+## webpack 优化
 
 - 缩小文件搜索范围
 - 使用 DllPlugin
@@ -18,7 +18,7 @@ categories:
 - 使用 ParallelUglifyPlugin
 - 压缩代码 UglifyJSPlugin
 - CDN(Content Delivery Network) 加速 `output：publicPath`
-- 使用 Tree Shaking, 消除无用的js代码
+- 使用 Tree Shaking, 消除无用的 js 代码
 - 提取公共代码
 - 分割代码按需加载
 - webpack-bundle-analyzer 是另一个可视化分析工具
@@ -123,35 +123,35 @@ routerContext.keys().forEach(route => {
 ```js
 // 将 `src/xxx/m/xxx.css`转换为rem
 
-const { src, dest } = require('gulp');
-var postcss = require('gulp-postcss');
-var pxtorem = require('postcss-pxtorem');
+const { src, dest } = require("gulp");
+var postcss = require("gulp-postcss");
+var pxtorem = require("postcss-pxtorem");
 exports.default = function() {
-    // https://github.com/cuth/postcss-pxtorem 配置
-    var processors = [
-        pxtorem({
-            replace: true,
-            propList: ['*'],
-            exclude: function(path) {
-                const matchPath = /src\/(.+\/)*m\//.test(path)
-                return !matchPath
-            }
-        })
-    ];
+  // https://github.com/cuth/postcss-pxtorem 配置
+  var processors = [
+    pxtorem({
+      replace: true,
+      propList: ["*"],
+      exclude: function(path) {
+        const matchPath = /src\/(.+\/)*m\//.test(path);
+        return !matchPath;
+      }
+    })
+  ];
 
-    return src('src/**/*.css')
-        .pipe(postcss(processors))
-        .pipe(dest('output/css'));
-}
+  return src("src/**/*.css")
+    .pipe(postcss(processors))
+    .pipe(dest("output/css"));
+};
 ```
 
-## webpack配置
+## webpack 配置
 
 - [原文地址](http://webpack.wuhaolin.cn/2%E9%85%8D%E7%BD%AE/2-8%E6%95%B4%E4%BD%93%E9%85%8D%E7%BD%AE%E7%BB%93%E6%9E%84.html)
 
 <CodeBlock>
 
-<<< @/docs/tools/webpackConfig.js
+<<< @/utils/libs/js/webpackConfig.js
 
 </CodeBlock>
 
