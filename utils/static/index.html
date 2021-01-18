@@ -1,26 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Example</title>
-  <style>
-    p {
-      border-top: 1px solid #ccc;
-      padding-top: 10px;
-      font-size: 18px;
-    }
-  </style>
-</head>
-<body>
-  <input onchange="getValue(event)" type="range" id="width" min="0" max="100" step="1" value="0">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Example</title>
+    <style>
+      p {
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      onchange="getValue(event)"
+      type="range"
+      id="width"
+      min="0"
+      max="100"
+      step="1"
+      value="0"
+    />
 
-  <div>Lorem ipsum dolor sit amet.</div>
-  <script src="./index.js"></script>
-  <script src="./main.js"></script>
-  <script>
-    function getValue(ev) {
-      console.log(ev.target.value);
-    }
-  </script>
-</body>
+    <div>Lorem ipsum dolor sit amet.</div>
+    <script src="./index.js"></script>
+    <script src="./main.js"></script>
+    <script>
+      function getValue(ev) {
+        console.log(ev.target.value);
+      }
+
+      const PENDING = "pending";
+      const FULFILLED = "fulfilled";
+      const REJECTED = "rejected";
+
+      function MyPromise(executor) {
+        let self = this;
+        self.status = PENDING;
+        self.value = undefined;
+        self.reason = undefined;
+        self.onFulfilledCb = [];
+        self.onRejectedCb = [];
+
+        function resolve(value) {
+          if (self.status === PENDING) {
+            setTimeout(() => {
+              self.status = FULFILLED;
+              self.value = value;
+              self.onFulfilledCb.forEach(cb => cb(self.value));
+            }, 0);
+          }
+        }
+
+        function reject(reason) {
+          if (self.status === PENDING) {
+            setTimeout(() => {
+              self.status = REJECTED;
+              self.reason = reason;
+              self.onRejectedCb.forEach(cb => cb(self.reason));
+            }, 0);
+          }
+        }
+
+        try {
+          executor(resolve, reject);
+        } catch (error) {
+          reject(error);
+        }
+      }
+
+      function resolvePromise(promise, x, resolve, reject) {
+        if (x instanceof MyPromise) {
+          if (x.status === PENDING) {
+            x.then(p => {
+              resolvePromise(promise, p, resolve, reject);
+            });
+          } else {
+            x.then(resolve, reject);
+          }
+        } else {
+          resolve(x);
+        }
+      }
+
+      MyPromise.prototype.then = function(onResolved, onRejected) {
+        onResolved =
+          typeof onResolved === "function" ? onResolved : value => value;
+        onRejected =
+          typeof onRejected === "function"
+            ? onRejected
+            : reason => {
+                throw reason;
+              };
+
+        let promise2;
+        let self = this;
+
+        if (self.status === PENDING) {
+          return (promise1 = new MyPromise((resolve, reject) => {
+            self.onFulfilledCb.push(() => {
+              try {
+                let x = onResolved(self.value);
+                // resolve(x)
+                resolvePromise(promise1, x, resolve, reject);
+              } catch (error) {
+                reject(error);
+              }
+            });
+            self.onRejectedCb.push(() => {
+              try {
+                let x = onRejected(self.reason);
+                resolvePromise(promise1, x, resolve, reject);
+              } catch (error) {
+                reject(error);
+              }
+            });
+          }));
+        } else if (self.status === FULFILLED) {
+          return (promise2 = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+              try {
+                var x = onResolved(self.data);
+                resolvePromise(promise2, x, resolve, reject);
+              } catch (error) {
+                reject(error);
+              }
+            }, 0);
+          }));
+        } else if (self.status === REJECTED) {
+          return new MyPromise((resolve, reject) => {
+            setTimeout(() => {
+              try {
+                let x = onRejected(self.reason);
+                resolvePromise(promise1, x, resolve, reject);
+              } catch (error) {
+                reject(error);
+              }
+            }, 0);
+          });
+        }
+        return self;
+      };
+
+      MyPromise.prototype.catch = function(reject) {
+        return this.then(null, reject);
+      };
+
+      MyPromise.resolve = function(params) {
+        if (params instanceof MyPromise) {
+          return params;
+        }
+        return new MyPromise((resolve, reject) => {
+          if (params && params.then && typeof params.then === "function") {
+            params.then(resolve, reject);
+          } else {
+            resolve(params);
+          }
+        });
+      };
+
+      MyPromise.reject = function(params) {
+        return new MyPromise((resolve, reject) => {
+          reject(params);
+        });
+      };
+
+      MyPromise.prototype.finally = function(cb) {
+        this.then(
+          value => {
+            return MyPromise.resolve(cb()).then(res => {
+              return value;
+            });
+          },
+          error => {
+            return MyPromise.resolve(cb()).then(err => {
+              throw err;
+            });
+          }
+        );
+      };
+
+      MyPromise.prototype.all = function(arr) {
+        let result = [];
+        let count = 0;
+        return new MyPromise((resolve, reject) => {
+          arr.forEach((p, i) => {
+            p.then(res => {
+              result[i] = res;
+              count++;
+              if (count == arr.length) {
+                resolve(result);
+              }
+            }).catch(reject);
+          });
+        });
+      };
+
+      MyPromise.prototype.race = function(arr) {
+        return new MyPromise((resolve, reject) => {
+          arr.forEach(p => {
+            p.then(res => resolve, reject);
+          });
+        });
+      };
+
+      let promise1 = new MyPromise((resolve, reject) => {
+        resolve(1);
+      });
+
+      let x1 = promise1
+        .then(data => {
+          console.log("第一次展示", data.toString());
+          return "22222";
+        })
+        .then(res => {
+          console.log("xxxxxxx", res);
+        });
+
+      // let x2 = promise1.then(data => {
+      //   console.log("第二次展示", data.toString());
+      // });
+
+      // let x3 = promise1.then(data => {
+      //   console.log("第三次展示", data.toString());
+      // });
+    </script>
+  </body>
 </html>

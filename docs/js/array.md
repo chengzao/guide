@@ -501,8 +501,7 @@ newArr; // 20
 
 ```js
 function reduce(arr, reduceCallback, initialValue) {
-  if (!Array.isArray(arr) || !arr.length || typeof reduceCallback !== 'function')
-  {
+  if (!Array.isArray(arr) || !arr.length || typeof reduceCallback !== 'function'){
     return [];
   } else {
     let hasInitialValue = initialValue !== undefined;
@@ -512,6 +511,18 @@ function reduce(arr, reduceCallback, initialValue) {
       value = reduceCallback(value, arr[i], i, arr);
     }
     return value;
+  }
+}
+
+Array.prototype.mReduce = function(fn, initial){
+  let result = initial;
+  let index = 0;
+  if(initial == undefined){
+    result = this[index]
+    index++
+  }
+  while(index<this.length){
+    result = fn(result, this[i])
   }
 }
 ```
