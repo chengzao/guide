@@ -109,57 +109,6 @@
         });
       };
 
-      // koa
-
-      function compose(middleware) {
-
-        return function (context,next) {
-
-          let index = -1
-          return dispatch(0)
-
-          function dispatch(i) {
-            if(i< index) return
-            index = i
-            let fn = middleware[i]
-            if(i == middleware.length) fn = next
-
-            if(!fn) return Promise.resolve()
-
-            try {
-              return Promise.resolve(fn(context, dispatch.bind(null, i+1)));
-            } catch (error) {
-              return Promise.reject(error)
-            }
-          }
-        }
-      }
-
-      function compose(middleware) {
-        function dispatch(index) {
-          if (index === middleware.length) return Promise.resolve();
-
-          let fn = middleware[index];
-
-          return Promise.resolve(fn(() => dispatch(index + 1)));
-        }
-        dispatch(0);
-      }
-
-      // redux compose
-      export default function compose(...funcs) {
-        if (funcs.length === 0) {
-          return arg => arg;
-        }
-
-        if (funcs.length === 1) {
-          return funcs[0];
-        }
-
-        return funcs.reduce((a, b) => (...args) => a(b(...args)));
-      }
-
-      //
       function requestPools(tasks, max = 5) {
         let result = [];
 
@@ -189,6 +138,86 @@
 
         return Promise.all(pools).then(() => result);
       }
+
+      function quickSort(arr) {
+        if (arr.length <= 1) return arr;
+        let mid = arr[0];
+
+        let left = arr.filter(item => item < mid);
+        let right = arr.filter(item => item > mid);
+
+        return quickSort(left).concat(mid, quickSort(right));
+      }
+
+      const array1 = [5, 4, 30, 2, 1, 9, 100, 23];
+      console.log("quickSort ", quickSort(array1));
+
+      function selectionSort(arr) {
+        if (arr.length <= 1) return arr;
+        let len = arr.length;
+        let minIndex, temp;
+        for (let i = 0; i < len - 1; i++) {
+          minIndex = i;
+          for (let j = i + 1; j < len; j++) {
+            if (arr[j] < arr[minIndex]) {
+              minIndex = j;
+            }
+          }
+          // temp = arr[i];
+          // arr[i] = arr[minIndex];
+          // arr[minIndex] = temp;
+          [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]
+        }
+        return arr;
+      }
+      // const selectionSort = array => {
+      //   const len = array.length;
+      //   let minIndex, temp;
+      //   for (let i = 0; i < len - 1; i++) {
+      //     minIndex = i;
+      //     for (let j = i + 1; j < len; j++) {
+      //       if (array[j] < array[minIndex]) {
+      //         // 寻找最小的数
+      //         minIndex = j; // 将最小数的索引保存
+      //       }
+      //     }
+      //     temp = array[i];
+      //     array[i] = array[minIndex];
+      //     array[minIndex] = temp;
+      //     console.log("array: ", array);
+      //   }
+      //   return array;
+      // };
+
+      console.log("selectionSort ", selectionSort(array1));
+
+      function bubbleSort(arr) {
+        const length = arr.length;
+        if (length <= 1) return;
+        // 是否有序
+        let isSort = true;
+        // 记录最后交换索引
+        let lastChangeIndex = 0;
+        let sortBorder = arr.length - 1;
+        for (let i = 0; i < length - 1; i++) {
+          for (let j = 0; j < sortBorder; j++) {
+            if (arr[j] > arr[j + 1]) {
+              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+              isSort = false;
+              lastChangeIndex = j;
+            }
+          }
+          sortBorder = lastChangeIndex;
+          if (isSort) {
+            break;
+          }
+        }
+        return arr;
+      }
+
+      var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
+      console.log(bubbleSort(arr));
+
     </script>
   </body>
 </html>

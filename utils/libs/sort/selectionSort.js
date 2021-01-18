@@ -1,28 +1,18 @@
-const selectionSort = array => {
-  const len = array.length;
+function selectionSort(arr) {
+  if (arr.length <= 1) return arr;
+  let len = arr.length;
   let minIndex, temp;
   for (let i = 0; i < len - 1; i++) {
     minIndex = i;
     for (let j = i + 1; j < len; j++) {
-      if (array[j] < array[minIndex]) {
-        // 寻找最小的数
-        minIndex = j; // 将最小数的索引保存
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
       }
     }
-    temp = array[i];
-    array[i] = array[minIndex];
-    array[minIndex] = temp;
-    console.log('array: ', array);
+    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+    // temp = arr[i];
+    // arr[i] = arr[minIndex];
+    // arr[minIndex] = temp;
   }
-  return array;
-};
-
-// 测试
-const array = [5, 4, 3, 2, 1];
-console.log('原始array:', array);
-selectionSort(array);
-// 原始 array:  [5, 4, 3, 2, 1]
-// array:  		 [1, 4, 3, 2, 5]
-// array:  		 [1, 2, 3, 4, 5]
-// array: 		 [1, 2, 3, 4, 5]
-// array:  		 [1, 2, 3, 4, 5]
+  return arr;
+}
