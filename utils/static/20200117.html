@@ -139,6 +139,33 @@
         return Promise.all(pools).then(() => result);
       }
 
+      function runLimitTask(tasks, n){
+
+        return new Promise((resolve, reject) => {
+          let start = 0 , index = 0, finished=0, result = []
+
+          function run() {
+            if(finished == tasks.length){
+              resolve(result)
+              return
+            }
+
+            while(start < n && index < tasks.length){
+              start ++
+              let cur = index;
+              tasks[index++].then(res => {
+                start --
+                finished++
+                result[cur]=res;
+                run()
+              })
+            }
+          }
+          run()
+        })
+      }
+
+
       function quickSort(arr) {
         if (arr.length <= 1) return arr;
         let mid = arr[0];

@@ -267,7 +267,7 @@ Number("0b11"); // 3   二进制
 Number("0o11"); // 9   八进制
 ```
 
-- js
+- baseConverter
 
 ```js
 function baseConverter(decNumber, base) {

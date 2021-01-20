@@ -7,30 +7,6 @@
   </head>
   <body>
     <script>
-      function Person(name) {
-        this.name = name;
-      }
-
-      Person.prototype.say = function() {
-        console.log("name", this.name);
-      };
-
-      // var p = new Person('xxx')
-      // console.log(p.__proto__)
-
-      // Function.prototype._bind = function(context) {
-      //   let fn = this;
-      //   let args = [...arguments].slice(1);
-      //   let Nop = function() {};
-      //   let bound = function() {
-      //     args = args.concat([...arguments]);
-      //     return fn.apply(this instanceof Nop ? this : context, args);
-      //   };
-      //   Nop.prototype = fn.prototype;
-      //   Nop.prototype.constructor = Nop;
-      //   bound.prototype = new Nop();
-      //   return bound;
-      // };
       Function.prototype._bind = function(obj) {
         let fn = this;
         let args = [...arguments].slice(1);
@@ -102,9 +78,9 @@
 
       console.log(curry(fe)(1)(2)(3)); // 6
 
-      // function thousandth(str) {
-      //   return str.replace(/\d(?=(?:\d{3})+(?:\.\d+|$))/g, "$&,");
-      // }
+      function thousandth(str) {
+        return str.replace(/\d(?=(?:\d{3})+(?:\.\d+|$))/g, "$&,");
+      }
 
       function quickSort(arr) {
         if (arr.length <= 1) {
@@ -119,66 +95,7 @@
         return quickSort(left).concat(pivot, quickSort(right));
       }
 
-      // function foo(a, b) {
-      //   console.log(a,b)
-      //   return this;
-      // }
-      // var obj = {
-      //   b: 200,
-      //   a: 1
-      // }
-      // let fe = foo._bind(obj);
-      // console.log(fe()); //
-      // console.log(new fe()); // 实例 {b: 100}
-      // let fe = foo._call(obj);
-      // console.log(fe)
 
-      // let fe = foo._apply(obj,[1,2]);
-      // console.log(fe)
-
-      // function isObject(params) {
-      //   return typeof params === "object" && params !== null;
-      // }
-
-      // function deepClone(obj, map = new WeakMap()) {
-
-      //   if (obj instanceof RegExp) return new RegExp(obj);
-      //   if (obj instanceof Date) return new Date(obj);
-
-      //   if (obj == null || typeof obj != 'object') return obj;
-
-      //   var t = {}
-      //   if(map.has(obj)){
-      //     return map.get(obj);
-      //   }
-
-      //   map.set(obj, t)
-      //   for(var key in obj){
-      //     if(Object.prototype.hasOwnProperty(obj, key)){
-      //       t[key] =  deepClone(obj[key], map)
-      //     }
-      //   }
-      //   return t;
-      // }
-
-      // function deepClone(obj, map = new WeakMap()) {
-      //     if (obj instanceof RegExp) return new RegExp(obj);
-      //     if (obj instanceof Date) return new Date(obj);
-      //     // 判断是否是一个非对象
-      //     if (obj == null || typeof obj != 'object') return obj;
-
-      //     if (map.has(obj)) {
-      //         return map.get(obj);
-      //     }
-      //     let t = new obj.constructor();
-      //     map.set(obj, t);
-      //     for (let key in obj) {
-      //         if (obj.hasOwnProperty(key)) {
-      //             t[key] = deepClone(obj[key], map);
-      //         }
-      //     }
-      //     return t;
-      // }
 
       function deepClone(obj, map = new WeakMap()) {
         if (obj instanceof RegExp) return new RegExp(obj);
@@ -286,6 +203,7 @@
           }, []).length === 0
         );
       }
+      console.log(is_balance('{[]}'));
 
 
     </script>

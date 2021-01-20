@@ -202,3 +202,8 @@ try {
 } catch (error) {
 }
 
+const xFetch = function(url, config) {
+  let timeout = config.timeout || 5000;
+  let timeoutFn = () => Promise.resolve(setTimeout(() => {}, timeout));
+  return Promise.race([fetch(url), timeoutFn]);
+};
