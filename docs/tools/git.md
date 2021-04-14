@@ -379,7 +379,7 @@ git branch -m 老分支名 新分支名     # 分支重命名
 git push origin --delete [branch-name]  #删除远程分支
 
 git branch --track [branch] [remote-branch] #新建一个分支，与指定的远程分支建立追踪关系
-git branch --set-uptream [branch] [remote-branch] #建立追踪关系，在现有分支和指定的远程分支之间
+git branch --set-upstream-to [branch] [remote-branch] #建立追踪关系，在现有分支和指定的远程分支之间
 ```
 
 </CodeBlock>
@@ -519,6 +519,28 @@ git rebase --continue | --skip | --abort | --quit | --edit-todo | --show-current
 git cat-file -t commitid # 显示对象的类型
 git cat-file -p commitid # 根据对象的类型显示其内容
 ```
+
+## 快速clone
+
+- `git clone --depth=1 origin_branch_url`
+- git --depth=1 使用后 无法查看其它远程分支的解决方案：[git-shallow-clone-clone-depth-misses-remote-branches](https://stackoverflow.com/questions/23708231/git-shallow-clone-clone-depth-misses-remote-branches)
+
+```
+# 拉取全部
+$ git remote set-branches origin '*'
+$ git fetch -v
+$ git checkout your-branch-name
+
+----
+
+# 拉取指定分支
+$ git clone --depth=1 origin_branch_url
+$ git remote set-branches origin 'remote_branch_name'
+$ git fetch --depth=1 origin remote_branch_name
+$ git checkout remote_branch_name
+```
+
+- 
 
 ## 相关链接
 
