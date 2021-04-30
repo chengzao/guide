@@ -1,5 +1,16 @@
 module.exports = [
-  'fulltext-search',
+  [
+    "vuepress-plugin-meilisearch",
+    {
+      "hostUrl": "https://main-meilise-np3uf8w8y6i20yfw-gtw.qovery.io",
+      "apiKey": "f62f2e239917c3e83e57e612f0f118952c828b229132abc948e09e40fbf782e2",
+      "indexUid": "vuepress",
+      "placeholder": "Search as you type...",
+      "maxSuggestions": 20,
+      "cropLength": 50
+    }
+  ],
+  // 'fulltext-search',
   [
     "@vuepress/google-analytics",
     {
@@ -50,4 +61,7 @@ module.exports = [
       },
     },
   ],
+  ['sitemap', {
+    hostname: 'https://guide.chenio.top'
+  }]
 ];
