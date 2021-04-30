@@ -17,7 +17,7 @@
     "gh-pages": "^3.1.0",
     "glob": "^7.1.6",
     "markdown-it-include": "^2.0.0",
-    "vuepress": "^1.8.0",
+    "vuepress": "^1.8.2",
     "vuepress-plugin-copy-code": "^0.0.1",
     "vuepress-plugin-fulltext-search": "^2.1.0",
     "vuepress-plugin-medium-zoom": "^1.1.9",
@@ -31,7 +31,6 @@
     "vuepress-plugin-meilisearch": "^0.10.7",
     "vuepress-plugin-named-chunks": "^1.1.4",
     "vuepress-plugin-reading-progress": "^1.0.10",
-    "vuepress-plugin-run": "^1.0.2",
     "vuepress-plugin-sitemap": "^2.3.1",
     "vuepress-theme-reco": "^1.6.1"
   }

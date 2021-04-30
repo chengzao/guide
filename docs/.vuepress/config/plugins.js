@@ -37,13 +37,6 @@ module.exports = [
   "reading-progress",
   "img-lazy",
   "@vuepress-reco/extract-code",
-  [
-    "run",
-    {
-      row: false,
-      reverse: false
-    }
-  ],
   ["copy-code",
     {
       copyMessage: '复制成功 ^~^ !'
