@@ -5,4 +5,4 @@
 ---
 
 about docs for front end!
-[guide@github](https://guide.chenio.top) | [guide@vercel](https://guide.chengzao.vercel.app/)
+[guide@github](https://guide.chenio.top) | [guide@vercel](https://guide.chengzao.vercel.app)
