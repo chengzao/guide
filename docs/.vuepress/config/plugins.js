@@ -12,12 +12,6 @@ module.exports = [
   ],
   // 'fulltext-search',
   [
-    "@vuepress/google-analytics",
-    {
-      ga: "G-KTXC4MHMH6"
-    }
-  ],
-  [
     "@vuepress/pwa",
     {
       serviceWorker: true,
