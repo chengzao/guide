@@ -1,5 +1,7 @@
-const { nav, sidebar } = require("./config/navAndsidebar");
+// const { nav, sidebar } = require("./config/navAndsidebar");
 const plugins = require("./config/plugins");
+
+const nav = require("./nav.js");
 
 const baseUrl = process.env.BASE_ENV ? "/" + process.env.BASE_ENV : "/";
 module.exports = {
@@ -67,7 +69,7 @@ module.exports = {
     smoothScroll: true,
     navbar: true,
     nav,
-    sidebar,
+    // sidebar,
     codeTheme: "okaidia",
     type: "blog",
     blogConfig: {

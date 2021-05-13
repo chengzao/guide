@@ -11,6 +11,7 @@ module.exports = [
     }
   ],
   // 'fulltext-search',
+  'check-md',
   [
     "@vuepress/pwa",
     {
@@ -50,5 +51,13 @@ module.exports = [
   ],
   ['sitemap', {
     hostname: 'https://guide.chenio.top'
-  }]
+  }],
+  [
+    "vuepress-plugin-auto-sidebar",{
+      collapse: {
+        open: true
+      },
+      sidebarDepth: 1,
+    }
+  ]
 ];

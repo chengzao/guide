@@ -470,10 +470,146 @@ ul a span {
 
 ## utils
 
-<<< @/docs/web/less/util.less
+```less
+// - less border 1px
+
+.min-device-pixel-ratio(@scale2, @scale3) {
+  @media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2) {
+    transform: @scale2;
+  }
+  @media screen and (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+    transform: @scale3;
+  }
+}
+
+.border-1px(@color: #DDD, @radius: 2PX, @style: solid) {
+  &::before {
+    content: "";
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform-origin: 0 0;
+    border: 1PX @style @color;
+    border-radius: @radius;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    @media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2) {
+      width: 200%;
+      height: 200%;
+      border-radius: @radius * 2;
+      transform: scale(.5);
+    }
+    @media screen and (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+      width: 300%;
+      height: 300%;
+      border-radius: @radius * 3;
+      transform: scale(.33);
+    }
+  }
+}
+
+.border-top-1px(@color: #DDD, @style: solid) {
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-top: 1Px @style @color;
+    transform-origin: 0 0;
+    .min-device-pixel-ratio(scaleY(.5), scaleY(.33));
+  }
+}
+
+// - 多行显示
+
+.line-camp( @clamp:2 ) {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @clamp;
+    -webkit-box-orient: vertical;
+}
+```
 
 <CodeBlock title="1pxborder">
 
-<<< @/docs/web/less/border.less
+```less
+@lignt-gray-color: #ccc;
+
+.border-radius(@radius: 0){
+  border-radius: @radius;
+}
+.border(
+    @borderWidth: 1px;
+    @borderStyle: solid;
+    @borderColor: @lignt-gray-color;
+    @borderRadius: 0) {
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        width: 98%;
+        height: 98%;
+        top: 0;
+        left: 0;
+        transform-origin: left top;
+        -webkit-transform-origin: left top;
+        box-sizing: border-box;
+        pointer-events: none;
+    }
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        &:before {
+            width: 200%;
+            height: 200%;
+            -webkit-transform: scale(.5);
+        }
+    }
+    @media (-webkit-min-device-pixel-ratio: 2.5) {
+        &:before {
+            width: 250%;
+            height: 250%;
+            -webkit-transform: scale(.4);
+        }
+    }
+    @media (-webkit-min-device-pixel-ratio: 2.75) {
+        &:before {
+            width: 275%;
+            height: 275%;
+            -webkit-transform: scale(1 / 2.75);
+        }
+    }
+    @media (-webkit-min-device-pixel-ratio: 3) {
+        &:before {
+            width: 300%;
+            height: 300%;
+            transform: scale(1 / 3);
+            -webkit-transform: scale(1 / 3);
+        }
+    }
+   .border-radius(@borderRadius);
+    &:before {
+        border-width: @borderWidth;
+        border-style: @borderStyle;
+        border-color: @borderColor;
+    }
+}
+
+.border-all(
+	@borderWidth: 1px;
+	@borderStyle: solid;
+	@borderColor: @lignt-gray-color;
+	@borderRadius: 0) {
+    .border(@borderWidth; @borderStyle; @borderColor; @borderRadius);
+}
+
+.box{
+   .border-all();
+}
+```
 
 </CodeBlock>
