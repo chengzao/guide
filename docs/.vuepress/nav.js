@@ -13,15 +13,10 @@ module.exports = [
       {
         "text": "Server",
         "link": "/serve/server/"
-      }
-    ]
-  },
-  {
-    "text": "tools",
-    "items": [
+      },
       {
         "text": "Tools",
-        "link": "/tools/"
+        "link": "/serve/tools/"
       }
     ]
   },
