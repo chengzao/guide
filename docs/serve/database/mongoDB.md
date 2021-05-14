@@ -12,8 +12,6 @@ tags:
 
 ## 安装
 
-<>
-
 - `service mongod start|stop|restart`
 - mongo 默认端口: `ip:27017`
 
