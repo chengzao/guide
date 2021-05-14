@@ -140,7 +140,7 @@ npm publish --access=public # 发布一个公开的package
 
 - use
 
-<CodeBlock>
+
 
 ```bash
 ** 注意：package.json的 name 不要与npm install的包名一致 **
@@ -228,7 +228,7 @@ npm logout # 退出npm登录
 npm whoami # 显示 npm 用户名
 ```
 
-</CodeBlock>
+
 
 ## yarn
 
@@ -236,7 +236,7 @@ npm whoami # 显示 npm 用户名
 - [yarn bootcss](https://yarn.bootcss.com/docs/usage.html)
 - 常见命令
 
-<CodeBlock>
+
 
 ```bash
 # 初始化包：
@@ -271,7 +271,7 @@ yarn install --force
 yarn install --production
 ```
 
-</CodeBlock>
+
 
 ## 私有的 npm 仓库
 
@@ -326,7 +326,7 @@ app.all("*", function(req, res, next) {
 
 ## packages
 
-<CodeBlock>
+
 
 ```bash
 crypto-js
@@ -359,7 +359,7 @@ whistle
 lerna
 ```
 
-</CodeBlock>
+
 
 ## 相关链接
 

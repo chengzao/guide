@@ -22,7 +22,7 @@ vim +5 /home/xyz/test.txt  # 打开文件后定位到第5行
 
 ## 底行模式
 
-<CodeBlock>
+
 
 ```bash
 :w      # 保存，:w fileName另存为
@@ -36,11 +36,11 @@ vim +5 /home/xyz/test.txt  # 打开文件后定位到第5行
 :3      # 定位到第3行
 ```
 
-</CodeBlock>
+
 
 ## 命令
 
-<CodeBlock>
+
 
 ```bash
 i # 进入编辑模式，当前光标处插入
@@ -75,11 +75,11 @@ Ctrl + f # 向文件 尾翻 一屏
 Ctrl + b # 向文件 首翻 一屏
 ```
 
-</CodeBlock>
+
 
 ## vim 安装与配置
 
-<CodeBlock>
+
 
 ```bash
 cd ~
@@ -96,7 +96,7 @@ syntax on
 hi MatchParen ctermbg=blue ctermfg=white   # 匹配的括号颜色修改
 ```
 
-</CodeBlock>
+
 
 ## vim plugin
 

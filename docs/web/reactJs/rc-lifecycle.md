@@ -19,7 +19,7 @@ tags:
 
 - 代码
 
-<CodeBlock>
+
 
 ```js
 import React, { Component } from 'react'
@@ -112,7 +112,7 @@ class SubCounter extends Component{
 }
 ```
 
-</CodeBlock>
+
 
 - 父子组件触发示意图
 

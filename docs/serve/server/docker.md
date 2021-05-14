@@ -12,7 +12,7 @@ categories:
 
 - `.dockerignore`
 
-<CodeBlock>
+
 
 ```bash
 .git
@@ -20,11 +20,11 @@ node_modules
 npm-debug.log
 ```
 
-</CodeBlock>
+
 
 - `Dockerfile`
 
-<CodeBlock>
+
 
 ```bash
 FROM, RUN, COPY, ADD, CMD, ENTRYPOINT, ENV, ARG,
@@ -35,11 +35,11 @@ shell 格式：CMD <命令>
 exec 格式：CMD ["可执行文件", "参数1", "参数2"...]
 ```
 
-</CodeBlock>
+
 
 - `编写Dockerfile文件`
 
-<CodeBlock>
+
 
 ```bash
 # FROM node:8.4：该 image 文件继承官方的 node image，
@@ -64,11 +64,11 @@ EXPOSE 3000
 CMD node demos/01.js
 ```
 
-</CodeBlock>
+
 
 - `RUN命令与CMD命令`
 
-<CodeBlock>
+
 
 ```bash
 - RUN命令在 image 文件的构建阶段执行，执行结果都会打包进入 image 文件
@@ -83,11 +83,11 @@ CMD node demos/01.js
 - docker run --rm -p 8000:3000 -it koa-demo:0.0.1
 ```
 
-</CodeBlock>
+
 
 - `docker image`
 
-<CodeBlock>
+
 
 ```bash
 # 列出本机的所有 image 文件。
@@ -117,11 +117,11 @@ docker image build -t [username]/[repository]:[tag] .
 docker image push [username]/[repository]:[tag]
 ```
 
-</CodeBlock>
+
 
 - `Docker Compose工具:管理多个容器的联动`
 
-<CodeBlock>
+
 
 ```bash
 # https://yeasy.gitbooks.io/docker_practice/compose/commands.html
@@ -150,7 +150,7 @@ web:
      - wordpress:/var/www/html
 ```
 
-</CodeBlock>
+
 
 - `在容器的命令行，按下 Ctrl + c 停止 Node 进程，然后按下 Ctrl + d （或者输入 exit）退出容器`
 
@@ -168,7 +168,7 @@ web:
 - `docker save` 和 `docker load`
 - `docker pull [选项] [Docker Registry url]<仓库名>:<标签>`
 
-<CodeBlock>
+
 
 ```bash
 docker pull ubuntu:14.04
@@ -177,11 +177,11 @@ Docker Registry url：<域名/IP>[:端口号]。默认 Docker Hub
 仓库名： <用户名>/<软件名>。默认为 library，也就是官方镜像
 ```
 
-</CodeBlock>
+
 
 - `docker run [选项]`
 
-<CodeBlock>
+
 
 ```bash
 docker run -it --rm ubuntu:14.04 bash
@@ -197,11 +197,11 @@ bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell�
 -v：表示需要将本地哪个目录挂载到容器中
 ```
 
-</CodeBlock>
+
 
 - `docker images` 列出镜像
 
-<CodeBlock>
+
 
 ```bash
 docker images -f dangling=true  #显示虚悬镜像
@@ -217,11 +217,11 @@ docker images --format "{{.ID}}: {{.Repository}}"
 docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
 ```
 
-</CodeBlock>
+
 
 - `docker commit [选项] <容器ID或容器名> [<仓库名>[:<标签>]]`
 
-<CodeBlock>
+
 
 ```bash
 # 这条命令会用 nginx 镜像启动一个容器，命名为 webserver，并且映射了 80 端口，
@@ -242,22 +242,22 @@ docker commit \
     nginx:v2
 ```
 
-</CodeBlock>
+
 
 - `docker rmi [选项] <镜像1> [<镜像2> ...]` 删除本地镜像
 
-<CodeBlock>
+
 
 ```bash
 docker rmi $(docker images -q -f dangling=true)
 docker rmi $(docker images -q redis)
 ```
 
-</CodeBlock>
+
 
 - `docker volume`
 
-<CodeBlock>
+
 
 ```bash
 docker volume help
@@ -289,7 +289,7 @@ docker run -d -P \
     python app.py
 ```
 
-</CodeBlock>
+
 
 ## 参考示例
 

@@ -273,7 +273,7 @@ const unescapeHTML = str =>
 
 - `NaN是 JavaScript 的特殊值,表示"非数字"(Not a Number)`
 
-<CodeBlock>
+
 
 ```js
 typeof NaN; // 'number'
@@ -283,12 +283,12 @@ Boolean(NaN); // false
 Number.isNaN(NaN); // true
 ```
 
-</CodeBlock>
+
 
 - `NaN与任何数(包括它自己)的运算,得到的都是NaN`
 - 判断 NaN 的方法
 
-<CodeBlock>
+
 
 ```js
 //isNaN方法可以用来判断一个值是否为NaN
@@ -305,11 +305,11 @@ isNaN([123]); // false
 isNaN(["123"]); // false
 ```
 
-</CodeBlock>
+
 
 ## if else
 
-<CodeBlock>
+
 
 ```js
 if (condition) {
@@ -323,11 +323,11 @@ if (条件 / boolean) {
 }
 ```
 
-</CodeBlock>
+
 
 ## switch case
 
-<CodeBlock>
+
 
 ```js
 switch (变量){
@@ -344,7 +344,7 @@ switch (变量){
 }
 ```
 
-</CodeBlock>
+
 
 ## 三元运算符/三目运算符
 
@@ -352,7 +352,7 @@ switch (变量){
 - `(condition) ? expr1 : expr2`
 - 如果 condition 为`true`,则返回 expr1 的值,否则返回 expr2 的值
 
-<CodeBlock>
+
 
 ```js
 var a = 16;
@@ -362,7 +362,7 @@ var c = 24;
 (a > b ? a : b) > c ? alert(a > b ? a : b) : alert(c);
 ```
 
-</CodeBlock>
+
 
 ## 循环语句
 
@@ -382,7 +382,7 @@ while(条件语句/boolean)｛
 - 终止循环：break
 - 立即结束本次循环,开始下一次循环：continue
 
-<CodeBlock>
+
 
 ```javascript
 var a = 1;
@@ -404,7 +404,7 @@ function node2Fragment(el) {
 },
 ```
 
-</CodeBlock>
+
 
 ### do while
 
@@ -413,7 +413,7 @@ function node2Fragment(el) {
 通过`while`来进行判断,如果判断通过那么再执行一次,
 如果判断不通过却结束循环.
 
-<CodeBlock>
+
 
 ```js
 do {
@@ -421,13 +421,13 @@ do {
 } while (条件语句 / boolean);
 ```
 
-</CodeBlock>
+
 
 - 区别
 - `while`先判断再做,
 - `do-while`先做再判断；
 
-<CodeBlock>
+
 
 ```js
 var k = 0;
@@ -438,11 +438,11 @@ do {
 console.log(sum);
 ```
 
-</CodeBlock>
+
 
 ### for 循环
 
-<CodeBlock>
+
 
 ```js
 for (initialize; test; increment) {
@@ -463,13 +463,13 @@ for(var i=0; i < 101 ; i++ ){
 alert(sum);
 ```
 
-</CodeBlock>
+
 
 - `for in`循环用来遍历一个对象的全部属性
 - `for in`它遍历的是对象所有可遍历(`enumerable`)的属性,会跳过不可遍历的属性
 - `for in`它不仅遍历对象自身的属性,还遍历继承的属性
 
-<CodeBlock>
+
 
 ```js
 // name 是 Person 本身的属性
@@ -501,14 +501,14 @@ for (var key in person) {
 // name
 ```
 
-</CodeBlock>
+
 
 ## break 与 continue
 
 - `break 终止循环`
 - `continue 跳出本次循环,进入下一次循环`
 
-<CodeBlock>
+
 
 ```js
 // break
@@ -538,7 +538,7 @@ console.log("continue is over");
 // 1 3 4 5 continue is over
 ```
 
-</CodeBlock>
+
 
 ## 使用 `&` 判断奇偶性
 

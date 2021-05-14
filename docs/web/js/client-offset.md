@@ -38,7 +38,35 @@ console.table({clientHeight,clientWidth,clientLeft,clientTop});
 
 - document 兼容写法
 
-<<< @/utils/libs/client/clientWidthAndHeight.js
+```js
+// 正常浏览器（包括IE9+）
+window.innerWidth
+// 标准模式
+document.documentElement.clientWidth
+// 怪异模式
+document.body.clientWidth
+
+// client 兼容写法
+function client() {
+  if (window.innerWidth != null) {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight
+    }
+    // document.compatMode 用来判断当前浏览器采用的渲染方式
+  } else if (document.compatMode == "CSS1Compat") {
+    return {
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight
+    }
+  } else {
+    return {
+      width: document.body.clientWidth,
+      height: document.body.clientHeight
+    }
+  }
+}
+```
 
 - document example
 
@@ -77,7 +105,11 @@ offsetLeft, offsetTop});
 
 - 兼容写法
 
-<<< @/utils/libs/client/offsetWidthAndHeight.js
+```js
+// 网页内容实际宽高 (不包括工具栏和滚动条等边线）
+var offsetWidth = document.documentElement.offsetWidth || document.body.offsetWidth;
+var offsetHeight = document.documentElement.offsetHeight || document.body.offsetHeight;
+```
 
 - document example
 
@@ -190,7 +222,11 @@ console.table({ offsetLeft, offsetTop });
 
 - document
 
-<<< @/utils/libs/client/scrollHeight.js
+```js
+// 网页内容实际宽高（包括工具栏和滚动条等边线）
+var scrollWidth = document.documentElement.scrollWidth || document.body.scrollWidth;
+var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+```
 
 ```js
 // css
@@ -206,7 +242,38 @@ console.table({scrollHeight, scrollWidth});
 
 - `scrollTop`和`scrollLeft` 被卷去部分的 `顶部/左侧` 到可视区域 `顶部/左侧` 的距离
 
-<<< @/utils/libs/client/scrollTop.js
+```js
+// 正常浏览器（除了ie678之外的浏览器）
+window.pageYOffset
+// 已经声明DTD（标准模式）
+document.documentElement.scrollTop
+// 未声明 DTD（怪异模式）
+document.body.scrollTop
+
+//页面滚动座标onscroll
+//scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+function scroll() {
+  if (window.pageYOffset != null) {
+    //正常浏览器
+    return {
+      top: window.pageYOffset,
+      left: window.pageXOffset
+    }
+  } else if (document.compatMode == "CSS1Compat") {
+    //有DTD的网页
+    return {
+      top: document.documentElement.scrollTop,
+      left: document.documentElement.scrollLeft
+    }
+  } else {
+    //没有DTD的
+    return {
+      top: document.body.scrollTop,
+      left: document.body.scrollLeft
+    }
+  }
+}
+```
 
 ![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-scroll.png)
 
@@ -279,13 +346,32 @@ demo.currentStyle["left"];
 
 - 兼容写法
 
-<<< @/utils/libs/client/getStyle.js
+```js
+//window.getComputedStyle(element,伪元素)["属性名"]
+// 第二个参数：
+//    表示指定节点的伪元素（比如:before、:after、:first-line、:first-letter等）
+var result = window.getComputedStyle(div, ':before');
+// 一般情况下没有伪元素,我们用 null 来替代.
+window.getComputedStyle(demo, null)["left"]
+
+function getStyle(obj, attr) {
+  if (obj.currentStyle) {
+    return obj.currentStyle[attr]; //ie678
+  } else {
+    return getComputedStyle(obj, null)[attr]; //正常浏览器
+  }
+}
+```
 
 ## pageX/pageY
 
 - `以当前文档的左上角为基准点`
 
-<<< @/utils/libs/client/pageXY.js
+```js
+var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+
+var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+```
 
 - example
 
@@ -374,4 +460,31 @@ observer.observe(target);
 </script>
 ```
 
-<<< @/utils/libs/client/default.js
+```js
+// 网页元素左上角的视口横坐标
+Element.getBoundingClientRect().left
+// Element.offsetLeft
+
+// 网页元素左上角的视口纵坐标
+Element.getBoundingClientRect().top
+// Element.offsetTop
+
+// 网页元素左上角的网页横坐标
+Element.getBoundingClientRect().left + document.documentElement.scrollLeft
+// Element.offsetLeft + document.documentElement.scrollLeft
+
+// 网页元素左上角的网页纵坐标
+Element.getBoundingClientRect().top + document.documentElement.scrollTop
+// Element.offsetTop + document.documentElement.scrollTop
+
+// 视口高度
+window.innerHeight // 包括滚动条
+document.documentElement.clientHeight // 不包括滚动条
+
+// 视口宽度
+window.innerWidth // 包括滚动条
+document.documentElement.clientWidth // 不包括滚动条
+
+window.outerHeight
+window.outerWidth
+```

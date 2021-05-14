@@ -291,11 +291,30 @@ this.propertyIsEnumerable("Math"); // 返回 false
 - 返回该对象的原型。该属性可读写
 - `__proto__`兼容
 
-<CodeBlock>
 
-<<< @/utils/libs/object/proto.js
 
-</CodeBlock>
+```js
+// __proto__ 兼容
+function getProto(attr) {
+  if (attr.__proto__) {
+    return attr.__proto__;
+  } else {
+    return attr.constructor.prototype;
+  }
+}
+
+/*example:
+    function Hello(){}
+    var hello = new Hello();
+    getProto(hello).sayHello=function(){
+      console.log('hello');
+    }
+    hello.sayHello();
+
+ */
+```
+
+
 
 ## Object.preventExtensions
 

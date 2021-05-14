@@ -136,7 +136,7 @@ tags:
 
 - `window.setInterval( 函数名,毫秒值 )`(通常省略`window`)
 
-<CodeBlock>
+
 
 ```js
 setInterval(fn,1000);
@@ -166,20 +166,20 @@ window.setInterval(function() {
 }, 1000);
 ```
 
-</CodeBlock>
+
 
 ## setTimeout
 
 ### 设置定时器名称
 
-<CodeBlock>
+
 
 ```js
 var timer = setInterval(fn, 1000);
 var timer = setTimeout(fn, 1000);
 ```
 
-</CodeBlock>
+
 
 ### 清除定时器
 
@@ -187,18 +187,18 @@ var timer = setTimeout(fn, 1000);
 - `clearInterval()`
 - 要用定时器,先清定时器！
 
-<CodeBlock>
+
 
 ```js
 clearInterval(定时器名);
 clearTimeout(定时器名);
 ```
 
-</CodeBlock>
+
 
 ### 用 setTimeout 来实现 setInterval
 
-<CodeBlock>
+
 
 ```js
 function callback() {
@@ -208,14 +208,14 @@ function callback() {
 setTimeout(callback, 200);
 ```
 
-</CodeBlock>
+
 
 ### 递归与 arguments.callee
 
 - 递归 : 函数自己调用自己.
 - 要设置跳出循环的条件,如果不设置,容易发生死循环.
 
-<CodeBlock>
+
 
 ```js
 var num = 0;
@@ -231,13 +231,13 @@ function fn1() {
 }
 ```
 
-</CodeBlock>
+
 
 - 返回正被执行的`Function`对调用时推荐使用函数递归`arguments.callee`代替函数名本身.
 - `this`: 触动或调用函数的调用者.
 - `arguments:callee` : 所在的函数体(等于直接调用函数名)
 
-<CodeBlock>
+
 
 ```js
 function User(login) {
@@ -259,15 +259,40 @@ setTimeout(function() {
 setTimeout(user.sayHi.bind(user), 1000); // John
 ```
 
-</CodeBlock>
+
 
 ## formateTime
 
-<CodeBlock>
 
-<<< @/utils/libs/date/formate.js
 
-</CodeBlock>
+```js
+module.exports = {
+  formatDateTime(time, fmt) {
+    var date = new Date(time)
+    var o = {
+      'Y+': date.getFullYear(), // 年
+      'M+': date.getMonth() + 1, // 月份
+      'D+': date.getDate(), // 日
+      'h+': date.getHours(), // 小时
+      'm+': date.getMinutes(), // 分
+      's+': date.getSeconds(), // 秒
+      'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+      S: date.getMilliseconds(), // 毫秒
+    }
+    for (var k in o) {
+      if (new RegExp('(' + k + ')').test(fmt)) {
+        fmt = fmt.replace(
+          RegExp.$1,
+          o[k] < 10 ? '0' + o[k] : o[k],
+        )
+      }
+    }
+    return fmt
+  }
+}
+```
+
+
 
 ## formateDate
 

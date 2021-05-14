@@ -27,7 +27,7 @@ tags:
 
 - mysql 登录命令
 
-<CodeBlock>
+
 
 ```bash
 mysql -h localhost -P 3306 -u root -p
@@ -40,11 +40,11 @@ mysql -h localhost -P 3306 -u root -p
 mysql -u root -p
 ```
 
-</CodeBlock>
+
 
 - 退出登录
 
-<CodeBlock>
+
 
 ```bash
 - exit;
@@ -52,11 +52,11 @@ mysql -u root -p
 - \q;
 ```
 
-</CodeBlock>
+
 
 - `prompt [参数] [字符串]`提示符
 
-<CodeBlock>
+
 
 ```bash
 # 参数：
@@ -68,7 +68,7 @@ mysql -u root -p
 ps : prompt mysql \h>
 ```
 
-</CodeBlock>
+
 
 ## 数据类型
 
@@ -114,7 +114,7 @@ ps : prompt mysql \h>
 
 ## 约束
 
-<CodeBlock>
+
 
 ```sql
 PRIMARY KEY    -- 主键约束，用于唯一标识对应的记录,可以赋值
@@ -128,11 +128,11 @@ DEFAULT		    -- 默认值约束，用于设置字段的默认值
 CHARACTER SET gbk   -- 指定一个字符集
 ```
 
-</CodeBlock>
+
 
 - 外键约束
 
-<CodeBlock>
+
 
 ```sql
 FOREIGN KEY (Id_P) REFERENCES Persons(Id_P)
@@ -142,13 +142,13 @@ RESTRICT
 NO ACTION
 ```
 
-</CodeBlock>
+
 
 ## 添加约束
 
 - 添加主键约束
 
-<CodeBlock>
+
 
 ```sql
 ALTER TABLE tb_name ADD [CONSTRAINT[smybol]] PRIMARY KEY [index_type](index_col_name,...)
@@ -156,11 +156,11 @@ ALTER TABLE tb_name ADD [CONSTRAINT[smybol]] PRIMARY KEY [index_type](index_col_
 ALTER TABLE users2 ADD CONSTRAINT PRIMARY KEY (id);
 ```
 
-</CodeBlock>
+
 
 - 添加唯一约束
 
-<CodeBlock>
+
 
 ```sql
 ALTER TABLE tb_name ADD [CONSTRAINT[smybol]] UNIQUE [INDEX|KEY][index_name] [index_type] (index_col_name,...)
@@ -168,11 +168,11 @@ ALTER TABLE tb_name ADD [CONSTRAINT[smybol]] UNIQUE [INDEX|KEY][index_name] [ind
 ALTER TABLE users2 ADD UNIQUE (username);
 ```
 
-</CodeBlock>
+
 
 - 添加外键约束
 
-<CodeBlock>
+
 
 ```sql
 ALTER TABLE tb_name ADD [CONSTRAINT[smybol]] FOREIGN KEY [index_name] (index_col_name,...) reference_definition
@@ -180,11 +180,11 @@ ALTER TABLE tb_name ADD [CONSTRAINT[smybol]] FOREIGN KEY [index_name] (index_col
 ALTER TABLE users2 ADD FOREIGN KEY(pid) REFERENCES provinces (id);
 ```
 
-</CodeBlock>
+
 
 - 添加/删除默认约束
 
-<CodeBlock>
+
 
 ```sql
 ALTER TABLE tb_name ALTER [COLUMN] col_name{SET DEFAULT literal|DROP DEFAULT}
@@ -195,11 +195,11 @@ ALTER TABLE users2 ALTER age SET DEFAULT 15;
 ALTER TABLE users2 ALTER age DROP DEFAULT;
 ```
 
-</CodeBlock>
+
 
 - 删除约束
 
-<CodeBlock>
+
 
 ```sql
 -- 主键:
@@ -213,13 +213,13 @@ ALTER TABLE table_name DROP {INDEX|KEY} index_name;
 ALTER TABLE table_name DROP FOREIGN KEY fk-symbol;
 ```
 
-</CodeBlock>
+
 
 ## 数据表的基本操作
 
 - 创建数据表 -- 最后一列不需要逗号
 
-<CodeBlock>
+
 
 ```sql
 CREATE TABLE 表名
@@ -246,11 +246,11 @@ create table students
 );
 ```
 
-</CodeBlock>
+
 
 - 查看数据表
 
-<CodeBlock>
+
 
 ```sql
 -- 查看当前数据库中的所有表
@@ -262,11 +262,11 @@ SHOW COLUMNS FROM tb_name;
 show create table tb_name;
 ```
 
-</CodeBlock>
+
 
 - 增加列
 
-<CodeBlock>
+
 
 ```sql
 ALTER TABLE table_name ADD 列名 列的类型;
@@ -274,11 +274,11 @@ ALTER TABLE table_name ADD 列名 列的类型;
 alter table students add address char(60);
 ```
 
-</CodeBlock>
+
 
 - 修改列名/数据类型
 
-<CodeBlock>
+
 
 ```sql
 ALTER TABLE table_name MODIFY 列名 数据类型 [FIRST|ALTER col_name];
@@ -291,22 +291,22 @@ alter table students change tel telphone char(13) default "-";
 alter table students change name name char(16) not null;
 ```
 
-</CodeBlock>
+
 
 - 删除列
 
-<CodeBlock>
+
 
 ```sql
 ALTER TABLE table_name DROP 列名;
 alter table students drop birthday;
 ```
 
-</CodeBlock>
+
 
 - 修改表名
 
-<CodeBlock>
+
 
 ```sql
 alter table 表名 rename 新表名;
@@ -315,11 +315,11 @@ rename table 表名 to 新表名;
 alter table students rename workmates;
 ```
 
-</CodeBlock>
+
 
 - 删除数据表
 
-<CodeBlock>
+
 
 ```sql
 DROP TABLE 表名;
@@ -327,13 +327,13 @@ DROP TABLE 表名;
 drop table workmates;
 ```
 
-</CodeBlock>
+
 
 ## 表记录的基本操作
 
 - 向表中插入记录
 
-<CodeBlock>
+
 
 ```sql
 INSERT [INTO] table_name [(col_name,...)] {VALUES|VALUE} ({expr|DEFAULE},...),(...),...
@@ -348,11 +348,11 @@ insert into students (name, sex, age) values("孙丽华", "女", 21);
 insert into students set username='李四',sex="女",age=19;
 ```
 
-</CodeBlock>
+
 
 - 更新表中的记录
 
-<CodeBlock>
+
 
 ```sql
 -- 单表更新
@@ -369,11 +369,11 @@ update students set age=age+id;
 update students set tel=default where id=5;
 ```
 
-</CodeBlock>
+
 
 - 删除表中的记录
 
-<CodeBlock>
+
 
 ```sql
 DELETE FROM table_name [WHERE where_condition]
@@ -386,11 +386,11 @@ delete from students where age<20;
 delete from students;
 ```
 
-</CodeBlock>
+
 
 - 查询表中的记录
 
-<CodeBlock>
+
 
 ```sql
 SELECT select_expr [,select_expr,...]
@@ -416,18 +416,18 @@ select students.name as uname, students.age as uage from students;
 select * from students where sex="女";
 ```
 
-</CodeBlock>
+
 
 - create select
 
-<CodeBlock>
+
 
 ```sql
 -- 创建数据表同时将查询结果写入到数据表
 CREATE TABLE IF NOT EXISTS table_name [(create_definition,...)] select_statement
 ```
 
-</CodeBlock>
+
 
 ## 相关链接
 

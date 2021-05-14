@@ -14,7 +14,7 @@ categories:
 
 ## manjaro 命令
 
-<CodeBlock>
+
 
 ```bash
 pacman -S   # 安装
@@ -30,7 +30,7 @@ pacman -Sc  # 清理包缓存
 pacman -Syyu  # 更新系统
 ```
 
-</CodeBlock>
+
 
 ## Manjaro 配置
 
@@ -38,7 +38,7 @@ pacman -Syyu  # 更新系统
 - 安装 gedit`sudo pacman -S gedit`
 - 在 `/etc/pacman.conf`中添加`archlinuxcn`源 `sudo gedit /etc/pacman.conf`
 
-<CodeBlock>
+
 
 ```bash
 [archlinuxcn]
@@ -49,7 +49,7 @@ SigLevel = Never
 Server = http://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
 ```
 
-</CodeBlock>
+
 
 - 更新源列表 `sudo pacman -Syyu`
 - 安装 yaourt,使用 AUR 源里的软件 `sudo pacman -S yaourt pacaur`
@@ -62,7 +62,7 @@ Server = http://mirrors.tuna.tsinghua.edu.cn/arch4edu/$arch
 - 更换默认的 shell `chsh -s /bin/zsh`
 - 安装搜狗输入法
 
-<CodeBlock>
+
 
 ```bash
 sudo pacman -S fcitx-sogoupinyin
@@ -70,11 +70,11 @@ sudo pacman -S fcitx-im         # 全部安装
 sudo pacman -S fcitx-configtool # 图形化配置工具
 ```
 
-</CodeBlock>
+
 
 - 设置中文输入法环境变量，编辑`~/.xprofile`文件，增加下面几行(如果文件不存在，则新建)
 
-<CodeBlock>
+
 
 ```bash
 export GTK_IM_MODULE=fcitx
@@ -82,7 +82,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 ```
 
-</CodeBlock>
+
 
 ## 常用软件安装
 

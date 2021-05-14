@@ -10,7 +10,7 @@ categories:
 
 ## 如何使用分支
 
-<CodeBlock>
+
 
 ```bash
 git checkout -b [branch]       # 新建一个分支，并切换到该分支
@@ -25,11 +25,11 @@ git branch -r   # 查看远程分支
 git checkout -b a origin/a  # 拉去远程分支到本地
 ```
 
-</CodeBlock>
+
 
 ## 分支管理策略
 
-<CodeBlock>
+
 
 ```bash
 git checkout -b dev                                 # 首先，仍然创建并切换dev分支：
@@ -42,11 +42,11 @@ git log --graph --pretty=oneline --abbrev-commit    # 合并后，我们用git l
 # 能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 ```
 
-</CodeBlock>
+
 
 ## Bug 分支
 
-<CodeBlock>
+
 
 ```bash
 ------------                        # 我们在dev分支上，发现master分支上有代号101号bug
@@ -66,11 +66,11 @@ git stash pop                    # git stash pop，恢复的同时把stash内容
 # 一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除
 ```
 
-</CodeBlock>
+
 
 ## 合并分支上特定文件
 
-<CodeBlock>
+
 
 ```bash
 git checkout source_branch <path>...
@@ -86,11 +86,11 @@ git merge --no-ff b_tmp  # 合并b_tmp到b分支
 git branch -d b_tmp # 删除b_tmp分支
 ```
 
-</CodeBlock>
+
 
 ## rebase 合并多个 commit
 
-<CodeBlock>
+
 
 ```bash
 git log --oneline
@@ -138,11 +138,11 @@ ba3849c add readme.md
 -----------
 ```
 
-</CodeBlock>
+
 
 ## rebase 修改 commit
 
-<CodeBlock>
+
 
 ```bash
 -----------
@@ -170,11 +170,11 @@ git log --oneline
 -----------
 ```
 
-</CodeBlock>
+
 
 ## rebase 合并非连续 commit
 
-<CodeBlock>
+
 
 ```bash
 git log --oneline
@@ -212,11 +212,11 @@ c5a0c7a 合并非连续的commit
 -----------
 ```
 
-</CodeBlock>
+
 
 ## 使用 cherry-pick 合并 dev 分支的 commit 到 master 中
 
-<CodeBlock>
+
 
 ```bash
 git log --oneline --all
@@ -244,11 +244,11 @@ cf5c910 add readme.md
 -----------
 ```
 
-</CodeBlock>
+
 
 ## example
 
-<CodeBlock>
+
 
 ```bash
 # 如果git pull提示“no tracking information”，
@@ -276,7 +276,7 @@ git reset HEAD~1
 git reset --hard HEAD~1
 ```
 
-</CodeBlock>
+
 
 ## 快速下载 github
 

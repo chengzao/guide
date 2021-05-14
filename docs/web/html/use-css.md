@@ -67,7 +67,7 @@ a:active {
 
 ## 1border(1 像素问题)
 
-<CodeBlock>
+
 
 ```html
 <style type="text/css">
@@ -132,11 +132,11 @@ a:active {
 <div class="box scale－single">scale single</div>
 ```
 
-</CodeBlock>
+
 
 ## 解决 IE9 不能使用 opacity
 
-<CodeBlock>
+
 
 ```css
 opacity: 0.5;
@@ -144,13 +144,13 @@ filter: alpha(opacity = 50);
 filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 ```
 
-</CodeBlock>
+
 
 ## 清除浮动的方式
 
 - 额外标签法
 
-<CodeBlock>
+
 
 ```css
 .clear {
@@ -158,11 +158,11 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 }
 ```
 
-</CodeBlock>
+
 
 - 伪元素
 
-<CodeBlock>
+
 
 ```css
 .clearfix:after {
@@ -178,11 +178,11 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 }
 ```
 
-</CodeBlock>
+
 
 - 双伪元素
 
-<CodeBlock>
+
 
 ```css
 .clearfix:after,
@@ -198,11 +198,11 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 }
 ```
 
-</CodeBlock>
+
 
 - BFC 清除内部浮动:父级触发块级格式化上下文,形成独立渲染区域
 
-<CodeBlock>
+
 
 ```css
 /* fu */
@@ -227,7 +227,7 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 }
 ```
 
-</CodeBlock>
+
 
 ## 横屏布局
 

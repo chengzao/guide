@@ -43,8 +43,6 @@ lessc -x styles.less styles.css
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 @charset 'utf-8';
@@ -56,7 +54,7 @@ lessc -x styles.less styles.css
 }
 ```
 
-</CodeBlock>
+
 
 ## 变量
 
@@ -78,8 +76,6 @@ lessc -x styles.less styles.css
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 @charset 'utf-8';
@@ -92,7 +88,7 @@ lessc -x styles.less styles.css
 }
 ```
 
-</CodeBlock>
+
 
 ## 混合
 
@@ -109,8 +105,6 @@ lessc -x styles.less styles.css
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 .bord {
@@ -124,7 +118,7 @@ lessc -x styles.less styles.css
 }
 ```
 
-</CodeBlock>
+
 
 - 混合-带参数
 
@@ -140,8 +134,6 @@ lessc -x styles.less styles.css
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 .border_hunhe {
@@ -151,7 +143,7 @@ lessc -x styles.less styles.css
 }
 ```
 
-</CodeBlock>
+
 
 - 混合-默认值
 
@@ -169,8 +161,6 @@ lessc -x styles.less styles.css
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 .border_hunhe2 {
@@ -181,7 +171,7 @@ lessc -x styles.less styles.css
 }
 ```
 
-</CodeBlock>
+
 
 - 混合用法:默认值为变量
 
@@ -200,8 +190,6 @@ lessc -x styles.less styles.css
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 .border_hunhe3 {
@@ -212,7 +200,7 @@ lessc -x styles.less styles.css
 }
 ```
 
-</CodeBlock>
+
 
 ## 匹配模式
 
@@ -260,8 +248,6 @@ lessc -x styles.less styles.css
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 /* 三角形 border */
@@ -280,7 +266,7 @@ lessc -x styles.less styles.css
 }
 ```
 
-</CodeBlock>
+
 
 - 运算: 其中一个带单位即可.**注意:减法之间的格式;命名变量在运算中不可添加单位**
 
@@ -303,8 +289,6 @@ lessc -x styles.less styles.css
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 .add {
@@ -322,7 +306,7 @@ lessc -x styles.less styles.css
 }
 ```
 
-</CodeBlock>
+
 
 ## 嵌套用法
 
@@ -360,8 +344,6 @@ ul {
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 ul {
@@ -394,7 +376,7 @@ ul a span {
 }
 ```
 
-</CodeBlock>
+
 
 ## argument 用法
 
@@ -411,8 +393,6 @@ ul a span {
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
-
 ```less
 //less编译后的对应css文件：
 .bor2 {
@@ -423,7 +403,7 @@ ul a span {
 }
 ```
 
-</CodeBlock>
+
 
 ## 避免编译
 
@@ -433,7 +413,7 @@ ul a span {
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
+
 
 ```less
 //less编译后的对应css文件：
@@ -442,7 +422,7 @@ ul a span {
 }
 ```
 
-</CodeBlock>
+
 
 ## important 用法
 
@@ -456,7 +436,7 @@ ul a span {
 }
 ```
 
-<CodeBlock title="less编译后的对应css文件：">
+
 
 ```less
 //less编译后的对应css文件：
@@ -466,7 +446,7 @@ ul a span {
 }
 ```
 
-</CodeBlock>
+
 
 ## utils
 
@@ -536,7 +516,7 @@ ul a span {
 }
 ```
 
-<CodeBlock title="1pxborder">
+< title="1pxborder">
 
 ```less
 @lignt-gray-color: #ccc;
@@ -611,5 +591,3 @@ ul a span {
    .border-all();
 }
 ```
-
-</CodeBlock>

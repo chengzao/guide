@@ -11,11 +11,137 @@ categories:
 
 - 简易版 1
 
-<<< @/utils/libs/js/XMLHttpRequest.js
+```js
+// 1.实例化
+var xhr = new XMLHttpRequest();
+// 2.请求行
+//第三个参数：true 为 异步 ; false 为同步
+// GET传参
+xhr.open('get', 'index.php?name=xiaoming&&age=10', true);
+//POST
+xhr.open('post', 'index.php', true);
+// 3.请求头:
+//GET方式可以不设请求头
+xhr.setRequestHeader('Content-Type', 'text/html');
+// POST方式必须要设置请求头
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+// 4.请求主体
+// GET方式
+xhr.send(null);
+// POST参数放到请求主体里
+xhr.send('name=xiaoming&age=10');
+// 5.响应状态 ：request.responseText或者request.responseXML
+// 事件的监听，来监听状态的变化
+xhr.onreadystatechange = function () {
+  // console.log(xhr.readyState);
+  // console.log(xhr.status);
+
+  // 此状态则为响应结果完成
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    // 通过DOM操作将内容放到页面上
+    document.getElementById('result').innerHTML = xhr.responseText;
+  }
+}
+```
 
 - 简易版 2
 
-<<< @/utils/libs/js/ajax.js
+```js
+var Ajax = {
+  params: function (params) {
+    var data = '';
+    // 拼凑参数
+    for (key in params) {
+      data += key + '=' + params[key] + '&';
+    }
+
+    // 将最后一个&字符截掉
+    return data.slice(0, -1);
+  },
+  // 兼容
+  createXHR: function () {
+    if (typeof XMLHttpRequest != "undefined") {
+      return new XMLHttpRequest();
+    } else if (typeof ActiveXObject != "undefined") {
+      if (typeof arguments.callee.activeXString != "string") {
+        var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0",
+          "MSXML2.XMLHttp"
+        ],
+          i, len;
+
+        for (i = 0, len = versions.length; i < len; i++) {
+          try {
+            new ActiveXObject(versions[i]);
+            arguments.callee.activeXString = versions[i];
+            break;
+          } catch (ex) {
+            //skip
+          }
+        }
+      }
+      return new ActiveXObject(arguments.callee.activeXString);
+    } else {
+      throw new Error("No XHR object available.");
+    }
+  },
+  // 字符串转json
+  strToJson: function (str) {
+    var json = (new Function("return " + str))();
+    return json;
+  },
+  // Ajax实例
+  ajax: function (options) {
+    // 实例化XMLHttpRequest
+    // var xhr = new XMLHttpRequest,
+    var _this = this,
+      xhr = _this.createXHR(),
+
+      // 默认为get方式
+      type = options.type || 'GET',
+      // 默认请求路径
+      url = options.url || location.pathname,
+      // 格式化数据key1=value1&key2=value2
+      data = _this.params(options.data);
+
+    // get 方式将参数拼接到URL上并将data设置成null
+    if (type == 'get') {
+      url = url + '?' + data;
+      data = null;
+    }
+
+    xhr.open(type, url);
+
+    // post 方式设置请求头
+    if (type == 'post') {
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    }
+
+    // 发送请求主体
+    xhr.send(data);
+
+    // 监听响应
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        // 获取响应类型
+        var contentType = xhr.getResponseHeader('Content-Type');
+
+        var data = xhr.responseText;
+
+        // 解析JSON
+        if (contentType.indexOf('json') != -1 && typeof JSON != "undefined") {
+          data = JSON.parse(data);
+        }
+
+        // 调用success
+        options.success(data);
+      } else {
+        options.error('请求失败!');
+      }
+    }
+
+  }
+};
+```
 
 ## API 详解
 
@@ -155,7 +281,24 @@ fetch 的 post 请求的时候，导致 fetch 第一次发送了一个 Options �
 - JSONP 的缺点则是：它只支持 GET 请求而不支持 POST 等其它类型的 HTTP 请求；它只支持跨域 HTTP 请求这种情况，
   不能解决不同域的两个页面之间如何进行 JavaScript 调用的问题
 
-<<< @/utils/libs/js/jsonp.js
+```js
+function jsonp({ url, params, cb }) {
+  return new Promise((resolve, reject) => {
+    let script = document.createElement('script')
+    window[cb] = function (data) {
+      resolve(data);
+      document.body.removeChild(script)
+    }
+    params = { ...params, cb }
+    let arrs = [];
+    for (let key in params) {
+      arrs.push(`${key}=${params[key]}`)
+    }
+    script.src = `${url}?${arrs.join('&')}`
+    document.body.appendChild(script)
+  })
+}
+```
 
 ## cors
 

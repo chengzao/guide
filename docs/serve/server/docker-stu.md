@@ -14,7 +14,7 @@ categories:
 
 - Dockerfile
 
-<CodeBlock>
+
 
 ```bash
 # Dockerfile
@@ -39,11 +39,11 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 ```
 
-</CodeBlock>
+
 
 - docker - run
 
-<CodeBlock>
+
 
 ```bash
 # 进入Dockerfile所在文件夹运行如下
@@ -61,11 +61,11 @@ docker run -itd --name containername -p 10020:20  imageid
 ssh root@127.0.0.1 -p 10020
 ```
 
-</CodeBlock>
+
 
 - docker-compose.yml
 
-<CodeBlock>
+
 
 ```bash
 version: '2'
@@ -79,7 +79,7 @@ services:
       - '10020:22'
 ```
 
-</CodeBlock>
+
 
 - ssh 连接 centos: `ssh root@127.0.0.1 -p 10020`
 
@@ -87,7 +87,7 @@ services:
 
 - Dockerfile
 
-<CodeBlock>
+
 
 ```bash
 # Dockerfile
@@ -114,11 +114,11 @@ CMD /usr/sbin/sshd -D
 # CMD ["/usr/sbin/sshd", "-D"]
 ```
 
-</CodeBlock>
+
 
 - docker-compose.yml
 
-<CodeBlock>
+
 
 ```bash
 version: '3'
@@ -136,7 +136,7 @@ services:
       - '10010:22'
 ```
 
-</CodeBlock>
+
 
 - docker-compose -f "docker-compose.yml" up -d --build
 - ssh root@127.0.0.1 -p 10020
@@ -145,7 +145,7 @@ services:
 
 - YApi for Mac
 
-<CodeBlock>
+
 
 ```bash
 - docker run -d -p 27017:27017 --name mymongo -v /Users/pc/srv/mongodb/db:/data/db  mongo:latest
@@ -163,21 +163,21 @@ services:
 - 账号名："admin@admin.com"，密码："ymfe.org"
 ```
 
-</CodeBlock>
+
 
 ## nginx
 
-<CodeBlock>
+
 
 ```bash
 docker run --name some-nginx -v E:\huashu\api911\gaiban\nginx.conf:/etc/nginx/nginx.conf:ro -v E:\huashu\api911\gaiban:/usr/share/nginx/html:ro -p 80:80 -d  4610
 ```
 
-</CodeBlock>
+
 
 ## mongo
 
-<CodeBlock>
+
 
 ```bash
 # https://brickyang.github.io/2017/03/15/%E5%88%A9%E7%94%A8-Docker-%E8%BF%90%E8%A1%8C-MongoDB/
@@ -212,11 +212,11 @@ use admin
 db.dropUser('czh') // true
 ```
 
-</CodeBlock>
+
 
 ## mysql
 
-<CodeBlock>
+
 
 ```bash
 # mysql版本
@@ -255,11 +255,11 @@ https://www.cnblogs.com/jiangxiaobo/p/6110647.html
 
 ```
 
-</CodeBlock>
+
 
 ## redis
 
-<CodeBlock>
+
 
 ```bash
 docker pull redis
@@ -274,11 +274,11 @@ docker exec -it myredis redis-cli
 info
 ```
 
-</CodeBlock>
+
 
 ## registry
 
-<CodeBlock>
+
 
 ```bash
 
@@ -317,4 +317,4 @@ https://github.com/mkuchin/docker-registry-web
 https://github.com/kwk/docker-registry-frontend
 ```
 
-</CodeBlock>
+

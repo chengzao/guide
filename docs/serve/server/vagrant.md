@@ -89,7 +89,7 @@ ssh: 127.0.0.1
 
 - 初始化项目：`vagrant init centos/7`
 
-<CodeBlock>
+
 
 ```ruby
 # -*- mode: ruby -*-
@@ -170,7 +170,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-</CodeBlock>
+
 
 ## plugin
 
@@ -282,7 +282,7 @@ end
 
 - `vagrant plugin install vagrant-bindfs`
 
-<CodeBlock>
+
 
 ```ruby
 Vagrant.config(2) do |config|
@@ -321,7 +321,7 @@ Vagrant.config(2) do |config|
 end
 ```
 
-</CodeBlock>
+
 
 ## packge
 
@@ -338,7 +338,7 @@ vagrant package
 
 - Vagrantfile
 
-<CodeBlock>
+
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -372,7 +372,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-</CodeBlock>
+
 
 - ssh
 

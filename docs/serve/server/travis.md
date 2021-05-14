@@ -17,9 +17,9 @@ categories:
 - [前端持续集成解决方案](https://www.jianshu.com/p/f9aa74d3066d)
 - [在 github 中使用 travis CI](http://onetracy.com/2017/01/01/travis/)
 
-## 配置
+## travis配置
 
-<CodeBlock>
+
 
 ```bash
 # https://docs.travis-ci.com/user/job-lifecycle/
@@ -48,11 +48,10 @@ branches # https://docs.travis-ci.com/user/customizing-the-build/#safelisting-or
 notifications # https://docs.travis-ci.com/user/notifications/
 ```
 
-</CodeBlock>
+
 
 ## 参考示例
 
-<CodeBlock>
 
 - 项目根目录下创建：`.travis.yml`
 
@@ -84,5 +83,3 @@ env:
   global:
     - GH_REF: github.com/chengzao/guide.git # Your github repo url
 ```
-
-</CodeBlock>

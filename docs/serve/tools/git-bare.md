@@ -11,7 +11,7 @@ categories:
 - 安装: [INSTALL](https://github.com/git/git/blob/master/INSTALL)
 - [git 的源码包下载地址](https://github.com/git/git/releases)
 
-<CodeBlock>
+
 
 ```bash
 # 系统环境 centos7  源码安装版git --> prefix=/usr/local/git
@@ -46,11 +46,11 @@ cd ~
 rm -rf git-v2.22.0 v2.22.0.tar.gz
 ```
 
-</CodeBlock>
+
 
 - 配置用户
 
-<CodeBlock>
+
 
 ```bash
 # 使用git用户
@@ -96,11 +96,11 @@ git clone完后，进入`demo`文件夹，第一次拉取成功后是一个空�
 服务器中执行拉取上传的文件到`deloy`文件夹中
 ```
 
-</CodeBlock>
+
 
 - 自动部署
 
-<CodeBlock>
+
 
 ```bash
 - 进入`demo.git`的`hooks`文件夹中,创建编辑 `post-receive` 文件,
@@ -120,11 +120,11 @@ echo '拉取文件'
 sleep 10
 ```
 
-</CodeBlock>
+
 
 - 使用
 
-<CodeBlock>
+
 
 ```bash
 # 进入deloy文件夹中执行
@@ -140,7 +140,7 @@ git remote -v
 # 修改remote的地址可以进入 .git 编辑 config 文件中的url
 ```
 
-</CodeBlock>
+
 
 ---
 

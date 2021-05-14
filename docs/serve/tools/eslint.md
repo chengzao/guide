@@ -190,7 +190,7 @@ module.exports = {
 
 ## 配置示例
 
-<CodeBlock>
+
 
 ```js
 // 作者：chenhongdong
@@ -1151,4 +1151,4 @@ module.exports = {
 };
 ```
 
-</CodeBlock>
+

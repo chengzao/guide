@@ -10,7 +10,7 @@ tags:
 
 - `target.addEventListener(type, listener[, useCapture]);`
 
-<CodeBlock>
+
 
 ```js
 // type：事件名称，大小写敏感。
@@ -21,7 +21,7 @@ window.addEventListener('load', function () {...}, false);
 request.addEventListener('readystatechange', function () {...}, false);
 ```
 
-</CodeBlock>
+
 
 ## removeEventListener
 
@@ -29,7 +29,52 @@ request.addEventListener('readystatechange', function () {...}, false);
 
 ## 事件兼容
 
-<<< @/utils/libs/event/addEventListener.js
+```js
+/**
+ * 事件的监听与移除
+ *
+  var textbox = document.getElementById('input');
+  EventUtil.addHandler(textbox, 'textInput', function (e) {
+    e.target.value = e.target.value.replace(/[^0-9\.]/g, '')
+  })
+ */
+var EventUtil = {
+  addHandler: function (element, type, handler) {
+    if (element.addEventListener) { //DOM2级
+      element.addEventListener(type, handler, false);
+    } else if (element.attachEvent) { //DOM1级
+      element.attachEvent("on" + type, handler);
+    } else {
+      element["on" + type] = handler; //DOM0级
+    }
+  },
+  removeHandler: function (element, type, handler) { //类似addHandler
+    if (element.removeEventListener) {
+      element.removeEventListener(type, handler, false);
+    } else if (element.detachEvent) {
+      element.detachEvent("on" + type, handler);
+    } else {
+      element["on" + type] = null;
+    }
+  }
+}
+// carry
+var addEvent = (function () {
+  if (window.addEventListener) {
+    return function (el, sType, fn, capture) {
+      el.addEventListener(sType, function (e) {
+        fn.call(el, e);
+      }, (capture));
+    };
+  } else if (window.attachEvent) {
+    return function (el, sType, fn, capture) {
+      el.attachEvent("on" + sType, function (e) {
+        fn.call(el, e);
+      });
+    };
+  }
+})();
+```
 
 ## 事件循环(Event Loop)
 
@@ -44,41 +89,129 @@ request.addEventListener('readystatechange', function () {...}, false);
   - `script(主程序代码)—>process.nextTick—>Promises...——>setTimeout——>setInterval——>setImmediate——> I/O——>UI rendering`
 - 在 ES6 中`macro-task`队列又称为`ScriptJobs`，而`micro-task`又称`PromiseJobs`
 
-<CodeBlock>
+
 
 ```bash
-假设：
+假设
 macro-task队列包含任务: a1, a2 , a3
 micro-task队列包含任务: b1, b2 , b3
 
-执行顺序为，首先执行marco-task队列开头的任务，也就是 a1 任务，执行完毕后，在执行micro-task队列里的所有任务，也就是依次执行***b1, b2 , b3***，执行完后清空micro-task中的任务，接着执行marco-task中的第二个任务，依次循环。
+执行顺序为,首先执行marco-task队列开头的任务,也就是 a1 任务,执行完毕后
+在执行micro-task队列里的所有任务,也就是依次执行***b1, b2 , b3***,
+执行完后清空micro-task中的任务,接着执行marco-task中的第二个任务,依次循环.
 ```
 
-</CodeBlock>
+
 
 - 示例
 
-<CodeBlock>
 
-<<< @/utils/libs/js/eventloop.js
 
-</CodeBlock>
+```js
+async function async1() {
+  console.log('async1 start') // 2
+  await async2();
+  console.log('async1 end'); // 6
+}
+/* async/await 等同于
+function async1() {
+  console.log('async1 start'); // 2
+  Promise.resolve(async2()).then(() => {
+    console.log('async1 end'); // 7
+  });
+}
+*/
+
+async function async2() {
+  console.log('async2'); // 3
+}
+
+console.log('script start'); // 1
+
+setTimeout(function () {
+  console.log('setTimeout'); // 8
+}, 0)
+
+async1()
+
+new Promise(function (resolve) {
+  console.log('promise1'); // 4
+  resolve()
+}).then(function () {
+  console.log('promise2'); // 7
+})
+
+console.log('script end'); // 5
+```
+
+
 
 - 示例 2
 
-<CodeBlock>
 
-<<< @/utils/libs/js/eventloop-01.js
 
-</CodeBlock>
+```js
+const p1 = new Promise((resolve, reject) => {
+  console.log('1'); // 1
+  resolve();
+})
+  .then(() => {
+    console.log('2'); // 3
+    new Promise((resolve, reject) => {
+      console.log('3'); // 4
+      resolve();
+    })
+      .then(() => {
+        console.log('4'); // 6
+      })
+      .then(() => {
+        console.log('5'); // 8
+      });
+  })
+  .then(() => {
+    console.log('6'); // 7
+  });
+
+const p2 = new Promise((resolve, reject) => {
+  console.log('7'); // 2
+  resolve();
+}).then(() => {
+  console.log('8'); // 5
+});
+// 1 7 2 3 8 4 6 5
+```
+
+
 
 - 示例 2
 
-<CodeBlock>
 
-<<< @/utils/libs/js/eventloop-02.js
 
-</CodeBlock>
+```js
+const p1 = new Promise((resolve, reject) => {
+  console.log('1'); // 1
+  resolve();
+})
+  .then(() => {
+    console.log('2'); // 2
+    return new Promise((resolve, reject) => {
+      console.log('3'); // 3
+      resolve();
+    })
+      .then(() => {
+        console.log('4'); // 4
+      })
+      .then(() => {
+        console.log('5'); // 5
+      });
+  })
+  .then(() => {
+    console.log('6'); //6
+  });
+// 1 2 3 4 5 6
+```
+
+
 
 ## 事件的传播(事件流)
 
@@ -94,7 +227,7 @@ micro-task队列包含任务: b1, b2 , b3
 - 事件委托指的是，不在事件的发生地（直接 dom）上设置监听函数，而是在其父元素上设置监听函数，通过事件冒泡，父元素可以监听到子元素上事件的触发，通过判断事件发生元素 DOM 的类型，来做出不同的响应
 - 好处：比较合适动态元素的绑定，新添加的子元素也会有监听函数，也可以有事件触发机制
 
-<CodeBlock>
+
 
 ```js
 var ul = document.querySelector("ul");
@@ -121,7 +254,7 @@ p.addEventListener("click", function(event) {
 });
 ```
 
-</CodeBlock>
+
 
 ## 哪些事件不支持冒泡事件
 
@@ -141,7 +274,7 @@ JavaScript 中的作用域是我们可以有效访问变量或函数的区域。
 - bubbles：布尔值，可选，默认为 false，表示事件对象是否冒泡
 - cancelable：布尔值，可选，默认为 false，表示事件是否可以被取消
 
-<CodeBlock>
+
 
 ```js
 var ev = new Event("look", {
@@ -158,11 +291,11 @@ function myEventHandler(event) {
 }
 ```
 
-</CodeBlock>
+
 
 - `bubbles属性返回一个布尔值，表示当前事件是否会冒泡`
 
-<CodeBlock>
+
 
 ```js
 function goInput(e) {
@@ -174,11 +307,11 @@ function goInput(e) {
 }
 ```
 
-</CodeBlock>
+
 
 ### 自定义事件
 
-<CodeBlock>
+
 
 ```js
 // 新建事件实例
@@ -191,13 +324,13 @@ elem.addEventListener('build', function (e) { ... }, false);
 elem.dispatchEvent(event);
 ```
 
-</CodeBlock>
+
 
 ## 事件对象 Event
 
 - 兼容性写法
 
-<CodeBlock>
+
 
 ```js
 event = event || window.event;
@@ -208,20 +341,61 @@ document.onclick = function(event) {
 };
 ```
 
-</CodeBlock>
+
 
 ## 事件目标 target
 
 - 兼容性写法
 
-<CodeBlock>
+
 
 ```js
 targetId = event.target ? event.target.id : event.srcElement.id;
 ```
 
-</CodeBlock>
+
 
 ## EventEmitter
 
-<<< @/utils/libs/event/eventEmitter.js
+```js
+class EventEmitter {
+  constructor() {
+        this.events = Object.create(null);
+    }
+    on(name, fn) {
+      if (!this.events[name]) {
+          this.events[name] = []
+        }
+        this.events[name].push(fn);
+        return this;
+    }
+    emit(name, ...args) {
+      if (!this.events[name]) {
+          return this;
+      }
+      const fns = this.events[name]
+      fns.forEach(fn => fn.call(this, ...args))
+      return this;
+    }
+    off(name,fn) {
+      if (!this.events[name]) {
+          return this;
+      }
+        if (!fn) {
+          this.events[name] = null
+          return this
+        }
+        const index = this.events[name].indexOf(fn);
+        this.events[name].splice(index, 1);
+      return this;
+    }
+    once(name,fn) {
+      const only = () => {
+        fn.apply(this, arguments);
+        this.off(name, only);
+      };
+      this.on(name, only);
+      return this;
+    }
+}
+```

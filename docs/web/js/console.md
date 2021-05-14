@@ -17,7 +17,7 @@ tags:
   - `%o` (这是字母 o，不是 0)，它接受对象
   - `%c` CSS 格式字符串
 
-<CodeBlock>
+
 
 ```js
 var number = 11 * 9;
@@ -30,20 +30,20 @@ console.log('I like %s but I do not like %s.', 'Skittles', 'pus');
 > I like Skittles but I do not like pus.
 ```
 
-</CodeBlock>
+
 
 ## dir
 
 - 查看 DOM 结构对象
 
-<CodeBlock>
+
 
 ```js
 let ele = document.body;
 console.dir(ele);
 ```
 
-</CodeBlock>
+
 
 ## warn
 
@@ -57,20 +57,20 @@ console.dir(ele);
 
 - 对输入的表达式进行断言，只有表达式为 false 时，才输出相应的信息到控制台
 
-<CodeBlock>
+
 
 ```js
 var arr = [1, 2, 3];
 console.assert(arr.length === 4);
 ```
 
-</CodeBlock>
+
 
 ## `count()`
 
 - 计数器
 
-<CodeBlock>
+
 
 ```js
 for (let i = 0; i < 10; i++) {
@@ -80,7 +80,7 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-</CodeBlock>
+
 
 ## `countReset()`
 
@@ -104,7 +104,7 @@ for (let i = 0; i < 10; i++) {
 
 - 需要查找 DOM 中某个元素的事件侦听器感时，谷歌控制台了 `getEventListeners`使找到这些事件更加容易且直观
 
-<CodeBlock>
+
 
 ```js
 getEventListeners($(".selector"));
@@ -113,7 +113,7 @@ getEventListeners($(".selector"));
 getEventListeners($("selector")).eventName[0].listener;
 ```
 
-</CodeBlock>
+
 
 ## 监控事件
 
@@ -141,7 +141,7 @@ getEventListeners($("selector")).eventName[0].listener;
 
 ## console
 
-<CodeBlock>
+
 
 ```js
 console.log()
@@ -164,9 +164,9 @@ console.dir()，console.dirxml()
 console.group()，console.groupEnd()，console.groupCollapsed()
 ```
 
-</CodeBlock>
 
-<CodeBlock>
+
+
 
 ```js
 debugger;
@@ -202,4 +202,4 @@ greet("bob");
 // "hi bob"
 ```
 
-</CodeBlock>
+

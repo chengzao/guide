@@ -19,7 +19,7 @@ tags:
 
 - 常见的查询条件
 
-<CodeBlock>
+
 
 ```bash
 $or   # 或关系
@@ -46,7 +46,7 @@ $centerSphere  # 范围查询，球形范围（基于LBS）
 $slice  # 查询字段集合中的元素（比如从第几个之后，第N到第M个元素
 ```
 
-</CodeBlock>
+
 
 ## [connect](https://mongoosejs.com/docs/index.html)
 
@@ -465,7 +465,7 @@ content
 
 ## example
 
-<CodeBlock>
+
 
 ```js
 var mongoose = require('mongoose');
@@ -511,9 +511,9 @@ doc.save((err) => {})
 // TODO
 ```
 
-</CodeBlock>
 
-<CodeBlock>
+
+
 
 ```bash
 - use admin
@@ -560,4 +560,4 @@ doc.save((err) => {})
   show tables
 ```
 
-</CodeBlock>
+

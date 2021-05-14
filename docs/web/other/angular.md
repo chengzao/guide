@@ -10,7 +10,7 @@ tags:
 
 - 描述：ng-?指令表示 angular 框架对元素的操作，常见的有如下几种：
 
-<CodeBlock>
+
 
 ```bash
 ng-app  # 定义应用程序的根元素,若不为""时需在js脚本中初始化。
@@ -53,11 +53,11 @@ ng-srcset # 指定 <img> 元素的 srcset 属性。H5的新属性，允许输入
 	<img ng-src="source.jpg" width="100%" ng-srcset="source_400.jpg 400w, source_600.jpg 600w, source_1280.jpg 1280w">
 ```
 
-</CodeBlock>
+
 
 ### [ng-module](https://docs.angularjs.org/guide/module)
 
-<CodeBlock>
+
 
 ```js
 var myFilterModule = angular.module("myFilterApp", []);
@@ -132,11 +132,11 @@ var myApp = angular.module("myApp", ["myFilterApp"]);
 </script>
 ```
 
-</CodeBlock>
+
 
 ### [ng-init](https://docs.angularjs.org/api/ng/directive/ngInit) 用法
 
-<CodeBlock>
+
 
 ```js
 <script>
@@ -155,11 +155,11 @@ var myApp = angular.module("myApp", ["myFilterApp"]);
 </div>
 ```
 
-</CodeBlock>
+
 
 ### [ng-repeat](https://docs.angularjs.org/api/ng/directive/ngRepeat) 用法
 
-<CodeBlock>
+
 
 ```html
 <div ng-controller="repeatController">
@@ -239,11 +239,11 @@ var myApp = angular.module("myApp", ["myFilterApp"]);
 </script>
 ```
 
-</CodeBlock>
+
 
 ### [ng-switch](https://docs.angularjs.org/api/ng/directive/ngSwitch) 用法
 
-<CodeBlock>
+
 
 ```html
 <div ng-controller="ExampleController">
@@ -309,11 +309,11 @@ var myApp = angular.module("myApp", ["myFilterApp"]);
 </script>
 ```
 
-</CodeBlock>
+
 
 ## 指令
 
-<CodeBlock>
+
 
 ```bash
 ng-app # 相当于一个入，告诉angular来管理ng-app指令所在的元素及其子元素。
@@ -335,11 +335,11 @@ ng-class:
    多选多：<div ng-class="{'classA':布尔值,'classB':布尔值}"></div>
 ```
 
-</CodeBlock>
+
 
 ### [ng-controller as](https://docs.angularjs.org/api/ng/directive/ngController) 用法
 
-<CodeBlock>
+
 
 ```html
 <div id="ctrl-as-exmpl" ng-controller="SettingsController1 as settings">
@@ -403,11 +403,11 @@ ng-class:
 </script>
 ```
 
-</CodeBlock>
+
 
 ## 事件
 
-<CodeBlock>
+
 
 ```bash
 ng-copy # 用户触发拷贝事件时，规定拷贝事件的行为
@@ -432,11 +432,11 @@ ng-mouseover # 规定鼠标指针位于元素上方时的行为
 ng-mouseup # 规定当在元素上松开鼠标按钮时的行为
 ```
 
-</CodeBlock>
+
 
 ## 样式
 
-<CodeBlock>
+
 
 ```bash
 ng-class # 指定 HTML 元素使用的 CSS 类
@@ -448,11 +448,11 @@ ng-style # 指定元素的 style 属性,可在控制器中为ng-style所在变�
 *ng-cloak # 在应用正要加载时防止其闪烁。如<p ng-cloak>{{ 5 + 5 }}</p>
 ```
 
-</CodeBlock>
+
 
 ## from 表单
 
-<CodeBlock>
+
 
 ```bash
 ng-submit # 规定submit 事件的行为
@@ -488,11 +488,11 @@ ng-options:
 <option ng-repeat="x in address">{{x}}</option>
 ```
 
-</CodeBlock>
+
 
 - form 表单的系统检验指令
 
-<CodeBlock>
+
 
 ```bash
 $error.required # 唯一值验证
@@ -509,11 +509,11 @@ $valid # 字段内容合法的,如formname.$valid
 $invalid # 字段内容是非法的
 ```
 
-</CodeBlock>
+
 
 ### [ng-form](https://docs.angularjs.org/api/ng/directive/form) 用法
 
-<CodeBlock>
+
 
 ```html
 <form name="myForm" ng-controller="FormController" class="my-form">
@@ -547,11 +547,11 @@ $invalid # 字段内容是非法的
 </script>
 ```
 
-</CodeBlock>
+
 
 ### [ng-model-options](https://docs.angularjs.org/api/ng/directive/ngModelOptions) 用法
 
-<CodeBlock>
+
 
 ```html
 <div ng-controller="ExampleController">
@@ -590,11 +590,11 @@ $invalid # 字段内容是非法的
 </script>
 ```
 
-</CodeBlock>
+
 
 ## angualr 方法
 
-<CodeBlock>
+
 
 ```bash
 angular.isArray()	# 如果引用的是数组返回 true
@@ -631,11 +631,11 @@ angular.forEach(objs, function(data, index, array) {
 });
 ```
 
-</CodeBlock>
+
 
 ## 自定义指令
 
-<CodeBlock>
+
 
 ```bash
 -  template:
@@ -697,11 +697,11 @@ angular.module('docsTabsExample', [])
 });
 ```
 
-</CodeBlock>
+
 
 ### [ng-transclude](https://docs.angularjs.org/api/ng/directive/ngTransclude) 用法
 
-<CodeBlock>
+
 
 ```html
 <script>
@@ -736,11 +736,11 @@ angular.module('docsTabsExample', [])
 </div>
 ```
 
-</CodeBlock>
+
 
 ### Transclude fallback content
 
-<CodeBlock>
+
 
 ```html
 <script>
@@ -769,11 +769,11 @@ angular.module('docsTabsExample', [])
 </my-button>
 ```
 
-</CodeBlock>
+
 
 - Multi-slot transclusion
 
-<CodeBlock>
+
 
 ```html
 <style>
@@ -822,11 +822,11 @@ angular.module('docsTabsExample', [])
 </script>
 ```
 
-</CodeBlock>
+
 
 ### directives controller 用法
 
-<CodeBlock>
+
 
 ```js
 angular
@@ -916,11 +916,11 @@ angular
 </div>
 ```
 
-</CodeBlock>
+
 
 ### directive scope `&`
 
-<CodeBlock>
+
 
 ```js
 angular
@@ -969,11 +969,11 @@ angular
 </div>
 ```
 
-</CodeBlock>
+
 
 ### directive scope `@ =`
 
-<CodeBlock>
+
 
 ```js
 // script.js
@@ -1034,13 +1034,13 @@ Name: {{customVajta}}
 </html>
 ```
 
-</CodeBlock>
+
 
 ## 过滤器(filter)
 
 - date : 格式化显示数据
 
-<CodeBlock>
+
 
 ```html
 <!-- 需要传递参数告诉它，要按照我们想要的格式去显示
@@ -1054,7 +1054,7 @@ Name: {{customVajta}}
 <p>{{9838232323 | date :'yyyy年MM月dd日 HH:mm:ss'}}</p>
 ```
 
-</CodeBlock>
+
 
 - orderBy: 对我们数据进行排序
 - 一般和 ng-repeat 一起使用，第一个参数，是个字符串：
@@ -1065,7 +1065,7 @@ Name: {{customVajta}}
   - 可以传递一个布尔值，或者字符串，angular 进根据它对数据进行全局查找
   - 也可以传递一个对象，angular 会按照对象的属性到数据中精确查找对应的属性。
 
-<CodeBlock>
+
 
 ```bash
 描述：过滤器
@@ -1079,11 +1079,11 @@ orderBy:"?":某属性按从小到大排序 ( orderBy:'-id' , id 降序排列   )
 filter:"?":按条件过滤，如filter:{'name':'iphone'}为查找属性name值为iphone的对象
 ```
 
-</CodeBlock>
+
 
 ### filter demo
 
-<CodeBlock>
+
 
 ```html
 <div ng-app="myApp" ng-controller="myCtrl">
@@ -1158,7 +1158,7 @@ app.filter("addOneFilter", [
 ]);
 ```
 
-</CodeBlock>
+
 
 ## angular 服务
 
@@ -1172,31 +1172,31 @@ app.filter("addOneFilter", [
 
 - constant: `用于定义常量，一旦定义就不能被改变。可以被注入到任何地方，但是不能被装饰器(decorator)装饰`
 
-<CodeBlock>
+
 
 ```js
 app.constant("APP_KEY", "a1s2d3f4");
 ```
 
-</CodeBlock>
+
 
 ### value
 
 - value： `用来定义值。但与 constant 的区别是：可以被修改，可以被 decorator 装饰，不能被注入到 config 中`
 
-<CodeBlock>
+
 
 ```js
 app.value("version", "1.0");
 ```
 
-</CodeBlock>
+
 
 ### decorator
 
 - decorator: `用来装饰其他 provider 的，不过 constant 除外`
 
-<CodeBlock>
+
 
 ```js
 var app = angular.module("myApp", []);
@@ -1219,13 +1219,13 @@ app.decorator("myService", function($delegate) {
 });
 ```
 
-</CodeBlock>
+
 
 ### factory
 
 - factory: 需要返回一个包含数据，方法的对象
 
-<CodeBlock>
+
 
 ```js
 // 创建
@@ -1256,13 +1256,13 @@ angular.module("myApp").controller("MainCtrl", function($scope, User) {
 });
 ```
 
-</CodeBlock>
+
 
 ### service
 
 - service
 
-<CodeBlock>
+
 
 ```js
 // 创建
@@ -1293,13 +1293,13 @@ angular.module("myApp").controller("MainCtrl", function($scope, User) {
 });
 ```
 
-</CodeBlock>
+
 
 ### provider
 
 - provider: 创建 provider，与 factory、service 不同的是，provider 需要使用 `this.$get` 来返回方法和数据, 可以在 config 中被调用和配置
 
-<CodeBlock>
+
 
 ```js
 var app = angular.module("myApp", []);
@@ -1371,7 +1371,7 @@ myApp.controller('ctrl',['$scope','CustomService',function($scope,CustomService)
 }]);
 ```
 
-</CodeBlock>
+
 
 ## 扩展小知识
 
@@ -1386,7 +1386,7 @@ myApp.controller('ctrl',['$scope','CustomService',function($scope,CustomService)
 
 - 在一个页面里创建多个 ng-app
 
-<CodeBlock>
+
 
 ```js
 <div id="A1" ng-app="app1">
@@ -1405,7 +1405,7 @@ myApp.controller('ctrl',['$scope','CustomService',function($scope,CustomService)
 </script>
 ```
 
-</CodeBlock>
+
 
 ## 相关链接
 

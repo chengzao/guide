@@ -23,7 +23,7 @@ npm install -g commitizen
 
 - 方式一：在全局安装适配器（Adapter)
 
-<CodeBlock>
+
 
 ```bash
 npm install -g cz-conventional-changelog
@@ -35,11 +35,11 @@ npm install -g cz-conventional-changelog
 git cz
 ```
 
-</CodeBlock>
+
 
 - 方式二：在项目安装适配器（Adapter)
 
-<CodeBlock>
+
 
 ```bash
 commitizen init cz-conventional-changelog --save-dev --save-exact --force
@@ -67,11 +67,11 @@ commitizen init cz-conventional-changelog --save-dev --save-exact --force
 npm run commit
 ```
 
-</CodeBlock>
+
 
 - Adapter options
 
-<CodeBlock>
+
 
 ```bash
 feat    # 新功能
@@ -87,7 +87,7 @@ chore   # 非 src 或者 测试文件的更新
 revert  # commit 回退
 ```
 
-</CodeBlock>
+
 
 ### 自定义 Adapter
 
@@ -99,7 +99,7 @@ npm i -g cz-customizable / npm i -D cz-customizable
 
 - 修改 `.czrc` 或 `package.json` 中的 config 为
 
-<CodeBlock>
+
 
 ```bash
 # .czrc
@@ -113,11 +113,11 @@ npm i -g cz-customizable / npm i -D cz-customizable
 }
 ```
 
-</CodeBlock>
+
 
 - 同时在`~/` 或项目目录下创建 `.cz-config.js` 文件
 
-<CodeBlock>
+
 
 ```js
 "use strict";
@@ -166,7 +166,7 @@ module.exports = {
 };
 ```
 
-</CodeBlock>
+
 
 ## changelog
 
@@ -253,7 +253,7 @@ $ standard-version --tag-prefix "stable-"
 
 - `release.sh`
 
-<CodeBlock>
+
 
 ```shell
 #!/bin/bash
@@ -274,7 +274,7 @@ echo "Git push origin $master"
 echo "Release finished."
 ```
 
-</CodeBlock>
+
 
 ## Commitlint
 
@@ -287,7 +287,7 @@ npm i -D @commitlint/config-conventional @commitlint/cli
 
 - 在项目目录下创建配置文件 `.commitlintrc.js`
 
-<CodeBlock>
+
 
 ```js
 module.exports = {
@@ -327,11 +327,11 @@ module.exports = {
 };
 ```
 
-</CodeBlock>
+
 
 - 针对自定义的 Adapter 进行 Lint
 
-<CodeBlock>
+
 
 ```bash
 npm i -D @commitlint/cli
@@ -361,7 +361,7 @@ module.exports = {
 }
 ```
 
-</CodeBlock>
+
 
 ## husky
 
@@ -369,7 +369,7 @@ module.exports = {
 - 安装 `npm install husky --save-dev`
 - 使用
 
-<CodeBlock>
+
 
 ```json
 // package.json
@@ -391,7 +391,7 @@ module.exports = {
 }
 ```
 
-</CodeBlock>
+
 
 ## 参考示例
 
@@ -399,7 +399,7 @@ module.exports = {
 
 - package.json
 
-<CodeBlock>
+
 
 ```json
 {
@@ -449,11 +449,11 @@ module.exports = {
 }
 ```
 
-</CodeBlock>
+
 
 - .commitlintrc.js
 
-<CodeBlock>
+
 
 ```js
 module.exports = {
@@ -493,13 +493,13 @@ module.exports = {
 };
 ```
 
-</CodeBlock>
+
 
 ### 自定义 Adapter
 
 - package.json
 
-<CodeBlock>
+
 
 ```json
 {
@@ -546,11 +546,11 @@ module.exports = {
 }
 ```
 
-</CodeBlock>
+
 
 - .cz-config.js
 
-<CodeBlock>
+
 
 ```js
 "use strict";
@@ -597,11 +597,11 @@ module.exports = {
 };
 ```
 
-</CodeBlock>
+
 
 - .commitlintrc.js
 
-<CodeBlock>
+
 
 ```js
 module.exports = {
@@ -628,4 +628,4 @@ module.exports = {
 };
 ```
 
-</CodeBlock>
+

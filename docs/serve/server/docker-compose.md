@@ -10,7 +10,7 @@ categories:
 
 ## Compose 命令说明
 
-<CodeBlock>
+
 
 ```bash
 # https://docs.docker.com/compose/reference/overview/
@@ -113,13 +113,13 @@ docker-compose build [options] [SERVICE...]
 docker-compose top
 ```
 
-</CodeBlock>
+
 
 ## Compose 模板文件
 
 - 默认的模板文件名称为 `docker-compose.yml`，格式为 YAML 格式
 
-<CodeBlock>
+
 
 ```bash
 # https://docs.docker.com/compose/compose-file/
@@ -168,11 +168,11 @@ read_only, shm_size, restart, stdin_open, tty, user, working_dir
 Compose 模板文件支持动态读取主机的系统环境变量和当前目录下的 .env 文件中的变量
 ```
 
-</CodeBlock>
+
 
 ## 参考示例
 
-<CodeBlock>
+
 
 ```bash
 version: '2'
@@ -204,4 +204,4 @@ networks:
     driver: bridge
 ```
 
-</CodeBlock>
+

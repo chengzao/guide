@@ -66,7 +66,7 @@ gpgkey=https://nginx.org/keys/nginx_signing.key
 
 - `vim /etc/nginx/nginx.conf`
 
-<CodeBlock>
+
 
 ```bash
 user  nginx;
@@ -123,11 +123,11 @@ http {
 }
 ```
 
-</CodeBlock>
+
 
 - `vim /etc/nginx/conf.d/default.conf`
 
-<CodeBlock>
+
 
 ```bash
 server {
@@ -175,7 +175,7 @@ server {
 }
 ```
 
-</CodeBlock>
+
 
 - 检查 nginx 配置文件: `nginx -t`
 - 重启 nginx 服务: `service nginx restart`
@@ -228,7 +228,7 @@ acme.sh  --upgrade  --auto-upgrade
 - step1: `cp default.conf chenio_cn.conf` 和 `mv default.conf default.conf.bak`
 - step2: `vim /etc/nginx/conf.d/chenio_cn.conf`
 
-<CodeBlock>
+
 
 ```bash
 server {
@@ -271,7 +271,7 @@ server {
 }
 ```
 
-</CodeBlock>
+
 
 - step3: `nginx -t`
 - step4: `service nginx restart`

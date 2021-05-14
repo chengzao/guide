@@ -12,7 +12,7 @@ tags:
 
 ## 安装
 
-<CodeBlock>
+<>
 
 - `service mongod start|stop|restart`
 - mongo 默认端口: `ip:27017`
@@ -53,7 +53,7 @@ docker run -d -p 27017:27017 --name mymongo -v my-mongo-db:/data/db  -v my-mongo
 docker exec -it mymongo mongo
 ```
 
-</CodeBlock>
+
 
 ## 基础命令
 
@@ -71,7 +71,7 @@ docker exec -it mymongo mongo
 
 - `db.<collection>.drop()` # 删除相应的集合
 
-  <CodeBlock>
+
 
   ```bash
   # 创建使用
@@ -90,7 +90,7 @@ docker exec -it mymongo mongo
   show collections
   ```
 
-  </CodeBlock>
+
 
 - `db.dropDatabase()` # 删除相应的数据库
 
@@ -137,7 +137,7 @@ show dbs
   - `name`: 要创建的集合名称
   - `options`: 可选参数, 指定有关内存大小及索引的选项
 
-<CodeBlock>
+
 
 ```bash
 # optins:
@@ -163,13 +163,13 @@ db.createCollection("item2", { capped : true, autoIndexId : true, size :
 db.item3.insert({"name":"hello"})
 ```
 
-</CodeBlock>
+
 
 ## 插入文档
 
 - 插入文档： 一个写入对象： `db.<collection>.insert({})`
 
-<CodeBlock>
+
 
 ```bash
 # 写入数据
@@ -189,7 +189,7 @@ db.items.insert([{"name":"abc"},{"name":"efg"}])
 db.items.find({})
 ```
 
-</CodeBlock>
+
 
 - `db.<collection>.insertOne({})` # 插入一个文档
 
@@ -547,7 +547,7 @@ db.items.drop()
 
 ## 授权登录
 
-<CodeBlock>
+
 
 ```bash
 docker pull mongo
@@ -575,4 +575,4 @@ use admin
 db.dropUser('czh') # true
 ```
 
-</CodeBlock>
+

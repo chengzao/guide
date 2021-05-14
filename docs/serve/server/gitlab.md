@@ -10,20 +10,20 @@ categories:
 
 - hosts
 
-<CodeBlock>
+
 
 ```bash
 127.0.0.1	jenkins.chenio.com
 127.0.0.1	gitlab.chenio.com
 ```
 
-</CodeBlock>
+
 
 ## gitlab-ce
 
 - gitlab-ce for window
 
-<CodeBlock>
+
 
 ```bash
 # local hosts add: 127.0.0.1  gitlab.chenio.com
@@ -55,11 +55,11 @@ docker run -d --hostname localhost -p 9090:80 -p 10443:443 --name gitlab -v d:/d
 http://localhost:10080/
 ```
 
-</CodeBlock>
+
 
 - gitlab-ce for Mac
 
-<CodeBlock>
+
 
 ```bash
 # https://docs.gitlab.com/omnibus/docker/#run-the-image
@@ -99,13 +99,13 @@ docker-compose down
 http://localhost:9090
 ```
 
-</CodeBlock>
+
 
 ## gitlab-runner
 
 ### docker
 
-<CodeBlock>
+
 
 ```bash
 # test rep
@@ -144,13 +144,13 @@ alpine:latest
 docker logs gitlab-runner
 ```
 
-</CodeBlock>
+
 
 ### docker-compose
 
 - gitab-runner
 
-<CodeBlock>
+
 
 ```bash
 # Dockerfile
@@ -164,11 +164,11 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get install -y nodejs
 ```
 
-</CodeBlock>
+
 
 - docker-compose.yml
 
-<CodeBlock>
+
 
 ```bash
 version: '2'
@@ -186,13 +186,13 @@ services:
       - '/Users/pc/srv/gitlab-runner/config:/etc/gitlab-runner'
 ```
 
-</CodeBlock>
+
 
 - `docker-compose -f "docker-compose.yml" up -d --build`
 
 - `docker exec -it gitlab-runner gitlab-ci-multi-runner register`
 
-<CodeBlock>
+
 
 ```bash
 # step1: Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com/):
@@ -207,11 +207,11 @@ test, build, deploy
 shell
 ```
 
-</CodeBlock>
+
 
 - gitlab-ci.yml
 
-<CodeBlock>
+
 
 ```bash
 # This file is a template, and might need editing before it works on your project.
@@ -249,11 +249,11 @@ cache:
   - node_modules/
 ```
 
-</CodeBlock>
+
 
 ### windows
 
-<CodeBlock>
+
 
 ```bash
 # runner安装下载
@@ -288,13 +288,13 @@ https://docs.gitlab.com/runner/register/index.html
 - rmdir /s GitLab-Runner
 ```
 
-</CodeBlock>
+
 
 ## jenkins docker
 
 - jenkins for mac
 
-<CodeBlock>
+
 
 ```bash
 # https://github.com/jenkinsci/docker/blob/master/README.md
@@ -309,11 +309,11 @@ docker run -d -p 8080:8080 -p 50000:50000 --name devops-jenkins -v /Users/pc/srv
 docker logs devops-jenkins
 ```
 
-</CodeBlock>
+
 
 - jenkins for windows
 
-<CodeBlock>
+
 
 ```bash
 # https://github.com/jenkinsci/docker/blob/master/README.md
@@ -330,7 +330,7 @@ D:/docker/jenkins_home/secrets/initialAdminPassword
 # local hosts add: 127.0.0.1  jenkins.chenio.com
 ```
 
-</CodeBlock>
+
 
 ## jenkins docker-compose
 
@@ -338,7 +338,7 @@ D:/docker/jenkins_home/secrets/initialAdminPassword
 
 - docker-compose.yml
 
-<CodeBlock>
+
 
 ```bash
 # docker-compose.yml
@@ -356,7 +356,7 @@ services:
       - '/Users/pc/srv/jenkins_home:/var/jenkins_home'
 ```
 
-</CodeBlock>
+
 
 - 运行：docker-compose up -d
 
@@ -364,7 +364,7 @@ services:
 
 - `docker-compose.yml`
 
-<CodeBlock>
+
 
 ```bash
 # local hosts add: 127.0.0.1  jenkins.chenio.com
@@ -382,7 +382,7 @@ services:
       - 'd:/docker/jenkins_home:/var/jenkins_home'
 ```
 
-</CodeBlock>
+
 
 - 运行：docker-compose up -d
 
@@ -445,7 +445,7 @@ services:
 | coverage      |    no    | 定义给定作业的代码覆盖率设置                                                  |
 | retry         |    no    | job 执行发生故障时自动重试次数                                                |
 
-<CodeBlock>
+
 
 ```bash
 # job示例
@@ -475,7 +475,7 @@ job1:
     - docker
 ```
 
-</CodeBlock>
+
 
 - image and services: 这两个关键字允许使用一个自定义的 Docker 镜像和一系列的服务，并且可以用于整个 job 周期
 - before_script:
@@ -487,7 +487,7 @@ job1:
   - 支持定义为 global 和 job 类型， job 类型会覆盖掉 global 类型的值
   - 定义在所有 job（包括失败的 job）之后运行的命令
 
-<CodeBlock>
+
 
 ```bash
 # script示例
@@ -504,7 +504,7 @@ job:
     - execute this after my script
 ```
 
-</CodeBlock>
+
 
 - stages
   - 只支持 global 类型
@@ -512,7 +512,7 @@ job:
   - stages 中的元素顺序决定了对应 job 的执行顺序
   - 下一个 阶段 的 job 只会在前一个 阶段 的 job 执行成功后开始执行
 
-<CodeBlock>
+
 
 ```bash
 # stages示例
@@ -533,13 +533,13 @@ stages:
 如果 job 没有定义 stage, 则 job 的 stage 将会被设置成 test
 ```
 
-</CodeBlock>
+
 
 - stage
   - 相同 stage 的 job 会并行执行
   - stage 的值必须定义在 stages 中，可以通过设置 stage 来对 job 进行分组，相同分组的 job 将会并行执行.
 
-<CodeBlock>
+
 
 ```bash
 # stage示例
@@ -565,13 +565,13 @@ job 4:
   script: make deploy
 ```
 
-</CodeBlock>
+
 
 - script
   - script 是 job 运行需要的唯一一个必须字段, 通过 script 来指定应该如何执行 job
   - script 可以设置为 string 和 array 类型
 
-<CodeBlock>
+
 
 ```bash
 # script 设置为 string 来设置 job 执行什么命令
@@ -591,7 +591,7 @@ script:
   - "ps -aux | grep gcc"
 ```
 
-</CodeBlock>
+
 
 - YAML 中的特殊字符:
   `:` 、 `{` 、 `}` 、 `[` 、 `]` 、`,` 、 `&` 、 `*` 、 `#` 、 `?` 、 `|` 、 `-` 、 `<` 、 `>` 、 `=` 、 `!` 、 `%` 、`@` 、`` ` 。
@@ -606,7 +606,7 @@ script:
   - only 和 except 支持同时设置, 当同时设置时 only 和 except 将会同时起作用.
   - only 和 except 也可以用来指定 forks 作业的存储库路径
 
-<CodeBlock>
+
 
 ```bash
 # job 会跳过所有分支, 只在以 issue- 开头的 ref 时运行
@@ -637,14 +637,14 @@ job:
     - master@gitlab-org/gitlab-ce
 ```
 
-</CodeBlock>
+
 
 - artifacts:
   - 用于指定成功后应附加到 job 的文件和目录的列表
   - 只能使用项目工作间内的文件或目录路径
   - 定义一个空的 dependencies 数组可以禁用 artifact 传递
 
-<CodeBlock>
+
 
 ```bash
 # artifacts示例
@@ -654,11 +654,11 @@ job:
   dependencies: []
 ```
 
-</CodeBlock>
+
 
 - variables: GitLab CI 允许你为.gitlab-ci.yml 增加变量，该变量将会被设置入任务环境
 
-<CodeBlock>
+
 
 ```bash
 # 变量
@@ -668,11 +668,11 @@ variables:
 # 注意:整数和字符串一样，对于设置变量名和变量值来说都是合法的。但浮点数是非法的。
 ```
 
-</CodeBlock>
+
 
 - tags：用来确定使用哪个 runner 运行当前任务，如果不设置的话将使用通用 runner 运行
 
-<CodeBlock>
+
 
 ```bash
 # 只有同时定义了 ruby 和 postgres 的 runner 才能运行这个 job
@@ -683,11 +683,11 @@ job:
     - postgres
 ```
 
-</CodeBlock>
+
 
 - allow_failure: 允许 job 失败. job 失败不会影响最终结果
 
-<CodeBlock>
+
 
 ```bash
 #  当 job1 运行失败, 也不会打断 CI 执行，CI 会继续运行下一阶段
@@ -709,7 +709,7 @@ job3:
     - deploy_to_staging
 ```
 
-</CodeBlock>
+
 
 - when 用来指示 job 应该在什么时候开始运行
   - on_success - 只有之前的阶段全部成功时才会执行.(默认值)
@@ -717,7 +717,7 @@ job3:
   - always - 无论之前的阶段是否执行成功都执行
   - manual - 手动执行
 
-<CodeBlock>
+
 
 ```bash
 stages:
@@ -760,6 +760,6 @@ cleanup_job:
 # 3 可以通过 Gitlab 控制台手动执行 deploy_job
 ```
 
-</CodeBlock>
+
 
 - [GitLab-CI 中的 artifacts 使用研究](https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/)

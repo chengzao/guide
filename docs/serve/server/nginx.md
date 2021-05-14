@@ -12,7 +12,7 @@ categories:
 
 - 主要结构
 
-<CodeBlock>
+
 
 ```nginx
 ##定义Nginx运行的用户和用户组用user指令
@@ -105,7 +105,7 @@ http {
  }
 ```
 
-</CodeBlock>
+
 
 ## upstream
 
@@ -271,7 +271,7 @@ location / {
 
 ## nginx 安装
 
-<CodeBlock>
+
 
 ```bash
 # cd /etc/yum.repos.d
@@ -293,9 +293,9 @@ enabled=1
 
 ```
 
-</CodeBlock>
 
-<CodeBlock>
+
+
 
 ```bash
 yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel
@@ -316,7 +316,7 @@ nginx -V #查看版本
 # server nginx: https://github.com/chengzao/note/blob/master/others/linux/nginx.txt
 ```
 
-</CodeBlock>
+
 
 [nginx server lib](/libs/nginx.txt)
 
@@ -342,7 +342,7 @@ nginx -V #查看版本
 
 - nginx.conf
 
-<CodeBlock>
+
 
 ```nginx
 #user  nobody;
@@ -468,7 +468,7 @@ http {
 }
 ```
 
-</CodeBlock>
+
 
 - server
 

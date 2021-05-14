@@ -18,7 +18,7 @@ tags:
 - 首先安装`ruby`
 - 安装 sass
 
-<CodeBlock>
+
 
 ```bash
 # 1.删除原gem源
@@ -50,13 +50,13 @@ node-sass -w src --output dist --output-style expanded --source-map=true
 node-sass -w src --output dist --output-style expanded --source-map=map
 ```
 
-</CodeBlock>
+
 
 ## 基本使用
 
 - `命令行编译`
 
-<CodeBlock>
+
 
 ```bash
 # 单文件转换命令
@@ -71,11 +71,11 @@ sass --watch app/sass:public/stylesheets
 # 例: sass --watch src:dist --style expanded
 ```
 
-</CodeBlock>
+
 
 - `命令行编译配置选项`
 
-<CodeBlock>
+
 
 ```bash
 # 编译格式
@@ -97,7 +97,7 @@ sass --style [option] # 表示解析后的css是什么排版格式
 sass --sourcemap # 表示开启sourcemap调试。
 ```
 
-</CodeBlock>
+
 
 ## 注释
 
@@ -137,7 +137,7 @@ $highlight-border: 1px solid $highlight-color;
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -152,7 +152,7 @@ html {
 }
 ```
 
-</CodeBlock>
+
 
 ## 嵌套 CSS 规则
 
@@ -173,7 +173,7 @@ html {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -190,7 +190,7 @@ html {
 }
 ```
 
-</CodeBlock>
+
 
 ## 父选择器的标识符&
 
@@ -210,7 +210,7 @@ article a {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -231,7 +231,7 @@ body.ie #content aside {
 }
 ```
 
-</CodeBlock>
+
 
 ## 群组选择器的嵌套
 
@@ -252,7 +252,7 @@ aside {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -268,7 +268,7 @@ aside a {
 }
 ```
 
-</CodeBlock>
+
 
 ## 子组合选择器和同层组合选择器：`>、+ 和 ~`
 
@@ -294,7 +294,7 @@ article {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -319,7 +319,7 @@ nav + article {
 }
 ```
 
-</CodeBlock>
+
 
 ## 嵌套属性
 
@@ -333,7 +333,7 @@ nav {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -344,7 +344,7 @@ nav {
 }
 ```
 
-</CodeBlock>
+
 
 ## 导入局部的 SASS 文件
 
@@ -382,7 +382,7 @@ $family: unquote("Droid+Sans");
 @import url("http://fonts.googleapis.com/css?family=#{$family}");
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -400,7 +400,7 @@ $family: unquote("Droid+Sans");
 @import url("http://fonts.googleapis.com/css?family=Droid+Sans");
 ```
 
-</CodeBlock>
+
 
 ## 混合器 mixin
 
@@ -418,7 +418,7 @@ $family: unquote("Droid+Sans");
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -431,7 +431,7 @@ $family: unquote("Droid+Sans");
 }
 ```
 
-</CodeBlock>
+
 
 - 混合器中的 CSS 规则
 
@@ -451,7 +451,7 @@ ul.plain {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -467,7 +467,7 @@ ul.plain li {
 }
 ```
 
-</CodeBlock>
+
 
 - 给混合器传参
 
@@ -487,7 +487,7 @@ a {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -504,7 +504,7 @@ a:visited {
 }
 ```
 
-</CodeBlock>
+
 
 - 混合器传参: sass 允许通过语法\$name: value 的形式指定每个参数的值
 
@@ -523,7 +523,7 @@ a {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -540,7 +540,7 @@ a:visited {
 }
 ```
 
-</CodeBlock>
+
 
 - 混合器传参:默认参数值 默认值使用`$name: default-value`的声明形式
 
@@ -560,7 +560,7 @@ a {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -577,7 +577,7 @@ a:visited {
 }
 ```
 
-</CodeBlock>
+
 
 - mixin 向混合样式中导入内容 : `@content`
 
@@ -596,7 +596,7 @@ $color: green;
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -607,7 +607,7 @@ $color: green;
 }
 ```
 
-</CodeBlock>
+
 
 ## 使用选择器继承来精简`CSS Extend`
 
@@ -624,7 +624,7 @@ $color: green;
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -638,7 +638,7 @@ $color: green;
 }
 ```
 
-</CodeBlock>
+
 
 ## mixin and extend 不同
 
@@ -670,7 +670,7 @@ $color: green;
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -691,7 +691,7 @@ $color: green;
 }
 ```
 
-</CodeBlock>
+
 
 ## function 函数指令
 
@@ -725,7 +725,7 @@ $base: 32;
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -742,7 +742,7 @@ $base: 32;
 }
 ```
 
-</CodeBlock>
+
 
 ## 控制指令 (Control Directives)
 
@@ -775,7 +775,7 @@ p {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -788,7 +788,7 @@ p {
 }
 ```
 
-</CodeBlock>
+
 
 - `@for`
 
@@ -800,7 +800,7 @@ p {
 }
 ```
 
-<CodeBlock title="scss编译后">
+< title="scss编译后">
 
 ```scss
 // 编译后
@@ -817,7 +817,7 @@ p {
 }
 ```
 
-</CodeBlock>
+
 
 - `@each`
 
@@ -828,8 +828,6 @@ p {
   }
 }
 ```
-
-<CodeBlock title="scss编译后">
 
 ```scss
 // 编译后
@@ -850,7 +848,7 @@ p {
 }
 ```
 
-</CodeBlock>
+
 
 - `@while`
 
@@ -864,7 +862,7 @@ $i: 6;
 }
 ```
 
-<CodeBlock title="scss编译后">
+
 
 ```scss
 // 编译后
@@ -881,7 +879,7 @@ $i: 6;
 }
 ```
 
-</CodeBlock>
+
 
 - `@media`
 
@@ -912,7 +910,7 @@ $value: 1.5;
 }
 ```
 
-<CodeBlock title="scss编译后">
+
 
 ```scss
 // 编译后
@@ -940,7 +938,7 @@ $value: 1.5;
 }
 ```
 
-</CodeBlock>
+
 
 ## 插值语句
 
@@ -960,7 +958,7 @@ p {
 }
 ```
 
-<CodeBlock title="scss编译后">
+
 
 ```scss
 // 编译后
@@ -973,7 +971,7 @@ p {
 }
 ```
 
-</CodeBlock>
+
 
 - 运算: 数字运算
 
@@ -996,7 +994,7 @@ p {
 }
 ```
 
-<CodeBlock title="scss编译后">
+
 
 ```scss
 // 编译后
@@ -1020,7 +1018,7 @@ p {
 }
 ```
 
-</CodeBlock>
+
 
 - 运算: 颜色值运算
 
@@ -1047,7 +1045,7 @@ div {
 }
 ```
 
-<CodeBlock title="scss编译后">
+
 
 ```scss
 // 编译后
@@ -1070,7 +1068,7 @@ div {
 }
 ```
 
-</CodeBlock>
+
 
 - 字符串运算
 
@@ -1089,7 +1087,7 @@ p:before {
 }
 ```
 
-<CodeBlock title="scss编译后">
+
 
 ```scss
 // 编译后
@@ -1108,7 +1106,7 @@ p:before {
 }
 ```
 
-</CodeBlock>
+
 
 - `@at-root`
 
@@ -1123,7 +1121,7 @@ p:before {
 }
 ```
 
-<CodeBlock title="scss编译后">
+
 
 ```scss
 // 编译后
@@ -1139,4 +1137,4 @@ p:before {
 }
 ```
 
-</CodeBlock>
+

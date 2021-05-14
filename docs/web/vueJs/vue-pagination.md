@@ -79,7 +79,7 @@ export default {
 
 ## pagination
 
-<CodeBlock>
+
 
 ```html
 <!DOCTYPE html>
@@ -432,11 +432,11 @@ export default {
 </html>
 ```
 
-</CodeBlock>
+
 
 ## i18n
 
-<CodeBlock>
+
 
 ```html
 <!DOCTYPE html>
@@ -506,11 +506,11 @@ export default {
 </html>
 ```
 
-</CodeBlock>
+
 
 ## alert
 
-<CodeBlock>
+
 
 ```html
 <!DOCTYPE html>
@@ -754,4 +754,4 @@ export default {
 </html>
 ```
 
-</CodeBlock>
+

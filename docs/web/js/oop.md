@@ -199,7 +199,7 @@ sub.setState(12);
 
 - defineProperty
 
-<CodeBlock>
+
 
 ```js
 <!DOCTYPE html>
@@ -263,13 +263,13 @@ sub.setState(12);
 </html>
 ```
 
-</CodeBlock>
+
 
 ## 发布订阅模式
 
 > 发布者 -> 事件中心 <=> 订阅者
 
-<CodeBlock>
+
 
 ```js
 class Event {
@@ -310,7 +310,7 @@ event.on('open', (data) => {
 event.emit('open', { open: true })
 ```
 
-</CodeBlock>
+
 
 ## 面向对象
 

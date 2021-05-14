@@ -12,7 +12,7 @@ categories:
 
 - 配置生效优先级：`local > global > system`
 
-<CodeBlock>
+
 
 ```bash
 # 配置
@@ -36,11 +36,11 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
-</CodeBlock>
+
 
 - ssh-keygen
 
-<CodeBlock>
+
 
 ```bash
 # 存放密钥的文件夹
@@ -63,7 +63,7 @@ id_dsa.pub # 公钥文件
 ssh -T git@github.com
 ```
 
-</CodeBlock>
+
 
 - [Connecting to GitHub with SSH](https://help.github.com/en/articles/connecting-to-github-with-ssh)
 
@@ -86,7 +86,7 @@ git clone -b [branch] origin_url # 克隆远程分支
 
 - 添加文件到暂存区
 
-<CodeBlock>
+
 
 ```bash
 git add fileName  # 将工作区的某个文件添加到暂存区。
@@ -105,7 +105,7 @@ git add .gitignore
 git rm -r --cached .    # 清除版本控制标记，.代表所有文件，也可指定具体文件
 ```
 
-</CodeBlock>
+
 
 ## .gitignore
 
@@ -117,7 +117,7 @@ git rm -r --cached .    # 清除版本控制标记，.代表所有文件，也�
 **     # 匹配任意的中间目录，例如a/*/z可以匹配:a/z,a/b/z,a/b/c/z等
 ```
 
-<CodeBlock>
+
 
 ```bash
 # 忽略所有以 .c结尾的文件
@@ -139,7 +139,7 @@ doc/*.txt
 doc/**/*.pdf
 ```
 
-</CodeBlock>
+
 
 ## `.gitkeep`
 
@@ -147,7 +147,7 @@ git 默认会忽略空的文件夹, 使用.gitkeep 来追踪空的文件夹
 
 ## commit
 
-<CodeBlock>
+
 
 ```bash
 git commit -m "提交说明"    # 将暂存区内容提交到本地仓库
@@ -172,7 +172,7 @@ git commit --amend -m [message]
 git commit --amend [file1] [file2] ...
 ```
 
-</CodeBlock>
+
 
 ## status
 
@@ -183,7 +183,7 @@ git status -s   # 让结果以更简短的形式输出
 
 ## diff
 
-<CodeBlock>
+
 
 ```bash
 git diff                     # 比较工作区与暂存区的区别
@@ -200,13 +200,13 @@ git diff <commit-id> <commit-id>
 # 注：如果只想统计哪些文件被改动，多少行被改动，可以添加--stat参数
 ```
 
-</CodeBlock>
+
 
 ## log
 
 - [Git-Basics-Viewing-the-Commit-History](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
 
-<CodeBlock>
+
 
 ```bash
 git log                 # 查看所有commit记录(SHA-A校验和，作者名称，邮箱，提交时间，提交说明)
@@ -225,7 +225,7 @@ git log -p --no-merges master.. #查看尚未合并的文件变更
 –pretty # 可以通过 –pretty 对提交信息进行定制
 ```
 
-</CodeBlock>
+
 
 ## blame
 
@@ -247,7 +247,7 @@ git config --global alias.l "log --oneline --graph"
 
 ## tag
 
-<CodeBlock>
+
 
 ```bash
 git tag           				 # 查看标签列表
@@ -273,13 +273,13 @@ git push origin :refs/tags/<tagname>  # 从远程删除命令tag
 git checkout -b [branch] [tag]  # 新建一个分支，指向某个tag
 ```
 
-</CodeBlock>
+
 
 ## 文件恢复
 
 - `文件恢复（未commit）git checkout`
 
-<CodeBlock>
+
 
 ```bash
 # 删除暂存区中的文件：
@@ -304,7 +304,7 @@ git checkout -- 文件名
 # 务必注意：git checkout会抛弃当前工作区的更改!!!不可恢复！！！务必小心！！！
 ```
 
-</CodeBlock>
+
 
 - 文件恢复（已 add 未 commit）git reset HEAD
 
@@ -315,7 +315,7 @@ git checkout -- filename # 工作区恢复成暂存区
 
 - 版本回退（已 commit）git reset –hard
 
-<CodeBlock>
+
 
 ```bash
 git reset HEAD^             # 恢复成上次提交的版本
@@ -329,7 +329,7 @@ git reset --hard commitid      # git log查看到的Hash值，取前七位即可
 # - hard：修改HEAD指针指向，暂存区内容丢失，工作区恢复以前状态
 ```
 
-</CodeBlock>
+
 
 ## reflog
 
@@ -360,7 +360,7 @@ git show some-branch:some-file.js  #查看其他分支中的文件
 
 ## branch
 
-<CodeBlock>
+
 
 ```bash
 git branch [branch-name]   # 创建分支
@@ -382,11 +382,11 @@ git branch --track [branch] [remote-branch] #新建一个分支，与指定的�
 git branch --set-upstream-to [branch] [remote-branch] #建立追踪关系，在现有分支和指定的远程分支之间
 ```
 
-</CodeBlock>
+
 
 ## checkout
 
-<CodeBlock>
+
 
 ```bash
 git checkout branch_name         # 切换分支
@@ -405,11 +405,11 @@ git checkout -b [branch] [tag]  #新建一个分支，指向某个tag
 git checkout commitid
 ```
 
-</CodeBlock>
+
 
 ## merge
 
-<CodeBlock>
+
 
 ```bash
 git merge [branch]      # 合并指定分支到当前分支
@@ -425,13 +425,13 @@ git checkout master # 切换到master
 git merge [branch_name] --no-ff #合并指定分支到当前分支master
 ```
 
-</CodeBlock>
+
 
 ## stash
 
 - 切换分支时暂存未 commit 的更改
 
-<CodeBlock>
+
 
 ```bash
 git stash   # 保存当前的改动
@@ -441,11 +441,11 @@ git stash apply stash@{1}
 git stash pop # 恢复并删除stash@{1}
 ```
 
-</CodeBlock>
+
 
 ## remote
 
-<CodeBlock>
+
 
 ```bash
 git remote update   # 更新远程仓储
@@ -458,11 +458,11 @@ git remote add [shortname] [url]    # 增加一个新的远程仓库，并命名
 git remote prune origin
 ```
 
-</CodeBlock>
+
 
 ## pull 和 push
 
-<CodeBlock>
+
 
 ```bash
 git pull [remote] [branch]  # 取回远程仓库的变化，并与本地分支合并
@@ -475,7 +475,7 @@ git push [remote] --force   # 强行推送当前分支到远程仓库
 git push [remote] --all    # 推送所有分支到远程仓库
 ```
 
-</CodeBlock>
+
 
 ## archive
 
@@ -487,7 +487,7 @@ git archive     # 生成一个可供发布的压缩包
 
 - 注意：不可用于多人线上操作，适用于自己开发的分支使用
 
-<CodeBlock>
+
 
 ```bash
 # 合并多个commit为一个完整commit
@@ -509,7 +509,7 @@ git rebase --continue | --skip | --abort | --quit | --edit-todo | --show-current
 # git rebase 内的commit可以手动添加commit和调整commit顺序
 ```
 
-</CodeBlock>
+
 
 ## cat-file
 
@@ -540,7 +540,7 @@ $ git fetch --depth=1 origin remote_branch_name
 $ git checkout remote_branch_name
 ```
 
-- 
+-
 
 ## 相关链接
 

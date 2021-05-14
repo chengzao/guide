@@ -26,7 +26,7 @@ categories:
 - `ps -ef | grep nginx`
 - 显示磁盘的占用率: `df -hT`
 
-<CodeBlock>
+
 
 ```bash
 -a：# 显示所有文件系统的磁盘使用情况
@@ -39,7 +39,7 @@ categories:
 --sync：# 在取得磁盘信息前,先执行sync命令
 ```
 
-</CodeBlock>
+
 
 - `du -sh /usr` # 显示`usr`的大小
 
@@ -79,7 +79,7 @@ mail -s "test" linux@163.com < aa
 - 标准输出 (stdout)：代码为 `1` ,使用 `>` 或 `>>`
 - 标准错误输出(stderr)：代码为 `2` ,使用 `2>` 或 `2>>`
 
-<CodeBlock>
+
 
 ```bash
 >  --> ps: ifconfig > test.log    # 将结果保存在test.log
@@ -95,7 +95,7 @@ mail -s "test" linux@163.com < aa
 > --> ps: ifconfig > /dev/null 2>&1
 ```
 
-</CodeBlock>
+
 
 ## 关机
 
@@ -124,7 +124,7 @@ mail -s "test" linux@163.com < aa
 
 ## alias 别名
 
-<CodeBlock>
+
 
 ```bash
 alias # 查看系统已拥有别名
@@ -137,7 +137,7 @@ source ./bashrc  # 立即生效
 'unalias 别名'  # 然后去系统关系删掉对应的条件
 ```
 
-</CodeBlock>
+
 
 ## 服务启动与关闭
 
@@ -178,7 +178,7 @@ echo 'Hello!!' >> a.txt   # 文件追加内容
 - `more` `less` 查看文件，如`more /etc/passwd`、`less /etc/passwd`
 - `ls + 参数 + 文件`
 
-<CodeBlock>
+
 
 ```bash
 ls -a  # a隐藏
@@ -200,7 +200,7 @@ tail # 查看文件后几行 –n –f
 tail index.html、tail -f -n 5 index.html
 ```
 
-</CodeBlock>
+
 
 ## 编辑文件
 
@@ -213,7 +213,7 @@ vi text/a.txt
 
 - `cp + 参数 + 源文件 + 目标文件`
 
-<CodeBlock>
+
 
 ```bash
 cp -r # 复制目录
@@ -225,7 +225,7 @@ cp -a # 拷贝源文件后的所有属性一致
 - cp -R test1 test1-bak       # 复制文件夹test1下所有文件
 ```
 
-</CodeBlock>
+
 
 ## 重命名与移动
 
@@ -238,7 +238,7 @@ cp -a # 拷贝源文件后的所有属性一致
 
 - `rm -rf 文件`
 
-<CodeBlock>
+
 
 ```bash
 r # 删除
@@ -249,7 +249,7 @@ f # 强制删除
 - rmdir (Remove Directory) # 删除文件夹，只能删除空文件夹
 ```
 
-</CodeBlock>
+
 
 ## 软连接和硬链接 ln
 
@@ -293,7 +293,7 @@ f # 强制删除
 
 - man
 
-<CodeBlock>
+
 
 ```bash
 man ls  # 查看ls的帮助信息
@@ -303,13 +303,13 @@ man -f + 命令 # 相当于 whatis + 命令
 man -k + 命令 # 相当于 apropos + 命令
 ```
 
-</CodeBlock>
+
 
 - `命令 + --help` 查看该命令的帮助信息
 
 ## 压缩/解压
 
-<CodeBlock>
+
 
 ```bash
 tar 参数
@@ -332,13 +332,13 @@ tar -jtvf 压缩包名.tar.bz2        # 查看压缩文件
 tar -ztvf 压缩包名.tar.gz         # 查看压缩文件
 ```
 
-</CodeBlock>
+
 
 ## wc 统计
 
 - `wc` 统计用来计算数字,并将统计结果显示输出
 
-<CodeBlock>
+
 
 ```bash
 -c # 统计字节数
@@ -351,7 +351,7 @@ wc -l test.txt > test.log`
 wc < test.log
 ```
 
-</CodeBlock>
+
 
 ## 挂载命令
 
@@ -380,7 +380,7 @@ mount -t iso9660 /dev/sr0 /mnt/cdrom/
 - 查看运行级别 `runlevel`
 - 修改默认运行级别 `/etc/inittab`
 
-<CodeBlock>
+
 
 ```bash
 0 # 关机
@@ -392,7 +392,7 @@ mount -t iso9660 /dev/sr0 /mnt/cdrom/
 6 # 重启
 ```
 
-</CodeBlock>
+
 
 ## 查询已安装的服务
 
@@ -411,7 +411,7 @@ chkconfig --list   # 自启动服务
 - 查看服务 `ps aux`
 - 查看系统开启端口号 netstat
 
-<CodeBlock>
+
 
 ```bash
 # 安装 net-tools 服务
@@ -426,13 +426,13 @@ netstat -tlunp   # 启动服务(监听的服务)
 netstat -an  # 已经启动的服务
 ```
 
-</CodeBlock>
+
 
 ## RPM 包服务
 
 - rpm 常用命令组合
 
-<CodeBlock>
+
 
 ```bash
 －ivh：# 安装显示安装进度--install--verbose--hash
@@ -470,7 +470,7 @@ rpm　--recompile　vim-4.6-4.src.rpm  # 这个命令会把源代码解包并编
 rpm　--rebuild　vim-4.6-4.src.rpm　# 在安装完成后，还会把编译生成的可执行文件重新包装成i386.rpm的RPM软件包
 ```
 
-</CodeBlock>
+
 
 - 独立服务安装位置(一般)
 
@@ -503,7 +503,7 @@ service apache3 restart  启动apache3服务
 
 - 让源码包的 apache3 服务能被 chkconfig 与 ntsysv 命令管理自启动 (不推荐)
 
-<CodeBlock>
+
 
 ```bash
 # chkconfig:运行级别　启动顺序　关闭顺序
@@ -514,7 +514,7 @@ vi /etc/init.d/appache3
 chkconfig --add apche3
 ```
 
-</CodeBlock>
+
 
 ## 进程
 
@@ -548,7 +548,7 @@ chkconfig --add apche3
 
 - `kill(选项) 进程或作业识别号` 杀死单一进程
 
-<CodeBlock>
+
 
 ```bash
 -l：# 列出所有信号名称
@@ -569,11 +569,11 @@ ps: kill -HUP 进程号 | kill -1 进程号  # 重启进程
 ps: kill -9 进程号  # 强制杀死进程
 ```
 
-</CodeBlock>
+
 
 - `killall [选项I/i] [信号] 进程号`
 
-<CodeBlock>
+
 
 ```bash
 -e：# 对长名称进行精确匹配
@@ -590,11 +590,11 @@ i ：# 交互式,询问是否要杀死进程
 I ：# 忽略进程名的大小写
 ```
 
-</CodeBlock>
+
 
 - `pkill (选项) 进程名称`
 
-<CodeBlock>
+
 
 ```bash
 -o：# 仅向找到的最小（起始）进程号发送信号
@@ -606,7 +606,7 @@ I ：# 忽略进程名的大小写
 pkill -9 -t pts/1
 ```
 
-</CodeBlock>
+
 
 ## 系统定时任务
 
@@ -615,7 +615,7 @@ pkill -9 -t pts/1
 - `anacron`
 - `crontab`
 
-<CodeBlock>
+
 
 ```bash
 yum install vixie-cron -y
@@ -668,7 +668,7 @@ ls /etc/cron.*   # 将需要定时执行的脚本复制到任意一个目录下
 ps: 0 */2 * * * user1 echo 'hello...'
 ```
 
-</CodeBlock>
+
 
 ## 基本权限
 
@@ -711,7 +711,7 @@ x : 执行 # 对文件的可执行权限;可进入目录的权限.例：cd
 - `gpasswd -a 用户名 用户组` 添加用户名的副所属组
 - `gpasswd -d 用户名 用户组` 删除用户名的副所属组
 
-<CodeBlock>
+
 
 ```bash
 # 加入相应用户组群拥有权限
@@ -742,7 +742,7 @@ groupdel xyz
 usermod –G xyz xyz # 强制删除该用户的主目录和目录下的所有文件和子目录
 ```
 
-</CodeBlock>
+
 
 ## 用户组
 
@@ -797,7 +797,7 @@ chown -R 用户:群组 目录
 
 ## 文件权限(rwx)
 
-<CodeBlock>
+
 
 ```bash
 # 字母
@@ -835,13 +835,13 @@ rwx   # 组权拥有读、写、执行
 rwx   # 其他拥有读、执行  (-表示没有)
 ```
 
-</CodeBlock>
+
 
 ## chmod 修改文件与目录的权限
 
 - `chmod 选项 模式 文件名` 修改文件权限
 
-<CodeBlock>
+
 
 ```bash
 # 选项 ：
@@ -869,7 +869,7 @@ chmod u+x 文件
 chmod g+w 目录
 ```
 
-</CodeBlock>
+
 
 - `ACL` 权限
 
@@ -878,7 +878,7 @@ chmod g+w 目录
 - `sudo -l` 查看可用的 sudo 命令
 - `vim /etc/sudoers` 赋予用户权限命令
 
-<CodeBlock>
+
 
 ```bash
   root      ALL         =   (ALL)       ALL
@@ -892,7 +892,7 @@ user2 ALL=/usr/bin/passwd [A-Za-z]*, !/usr/bin/passwd "", !/usr/bin/passwd root
 # %组名  被管理主机的地址 = (可使用的身份)  授权命令(绝对路径)
 ```
 
-</CodeBlock>
+
 
 - `sudo /sbin/shutdown -r now` 普通用户自行 sudo 赋予的命令
 
@@ -922,7 +922,7 @@ user2 ALL=/usr/bin/passwd [A-Za-z]*, !/usr/bin/passwd "", !/usr/bin/passwd root
 - `默认网关` 在内网中进行通信以及使内网 IP 与公网 IP 进行互相转换通信
 - 配置 linux 的 ip
 
-<CodeBlock>
+
 
 ```bash
 # virtualBox (桥接模式):
@@ -943,7 +943,7 @@ ifcfg-eth0  # 对应的网卡名
 service network restart  # 重启网络服务
 ```
 
-</CodeBlock>
+
 
 ## 新建.sh 脚本
 
@@ -1044,7 +1044,7 @@ whereis ls
 
 - `find`
 
-<CodeBlock>
+
 
 ```bash
 `find + 搜索范围 + 搜索条件 + 搜索内容` # 搜索符合条件的文件
@@ -1073,7 +1073,7 @@ find /home -size +20k -a -100k
 find /home -size +20k -a -100k -exec ls -lh {} \;
 ```
 
-</CodeBlock>
+
 
 - `grep`
 

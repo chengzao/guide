@@ -12,7 +12,7 @@ tags:
 
 - `函数在全局环境中运行,那么this就是指顶层对象`
 
-<CodeBlock>
+
 
 ```js
 this === window; // true
@@ -22,7 +22,7 @@ function f() {
 }
 ```
 
-</CodeBlock>
+
 
 ## 箭头函数中的 this
 
@@ -78,7 +78,7 @@ a.func2();
 
 - `构造函数中的this,指的是实例对象`
 
-<CodeBlock>
+
 
 ```js
 var Obj = function(p) {
@@ -97,13 +97,13 @@ o.p; // "Hello World!"
 o.m(); // "Hello World!"
 ```
 
-</CodeBlock>
+
 
 ## 使用
 
 - 函数调用,`this就代表全局对象`
 
-<CodeBlock>
+
 
 ```js
 var x = 1;
@@ -113,11 +113,11 @@ function test() {
 test(); // 1
 ```
 
-</CodeBlock>
+
 
 - 作为对象方法的调用,`this 永远指向最后调用它的那个对象`
 
-<CodeBlock>
+
 
 ```js
 function test() {
@@ -131,11 +131,11 @@ obj.m = test;
 obj.m(); //
 ```
 
-</CodeBlock>
+
 
 - 作为构造函数调用, `this就指这个新对象`
 
-<CodeBlock>
+
 
 ```js
 function test() {
@@ -146,11 +146,11 @@ var obj = new test();
 obj.x; // 1
 ```
 
-</CodeBlock>
+
 
 - `apply`调用, 改变`this`指向
 
-<CodeBlock>
+
 
 ```js
 var x = 0;
@@ -166,7 +166,7 @@ obj.m.apply(); // 0
 obj.m.apply(obj); //1
 ```
 
-</CodeBlock>
+
 
 ## 绑定 this 的方法
 
@@ -294,19 +294,82 @@ print();
 
 - 实现 call
 
-<<< @/utils/libs/event/call.js
+```js
+Function.prototype.call2 = function (context = {}) {
+  context.fn = this;
+  let args = [...arguments].slice(1);
+  let result = context.fn(...args);
+  delete context.fn;
+  return result;
+}
+
+var foo = {
+  value: 1
+}
+function bar(name, age) {
+  console.log(name)
+  console.log(age)
+  console.log(this.value);
+}
+bar.call2(foo, 'xxx', '18') // xxx 18 1
+```
 
 - 实现 apply
 
-<<< @/utils/libs/event/apply.js
+```js
+Function.prototype._apply = function (context = {}) {
+  context.fn = this
+  let result;
+  // 判断是否有第二个参数
+  if (arguments[1]) {
+    result = context.fn(...arguments[1])
+  } else {
+    result = context.fn()
+  }
+  delete context.fn
+  return result
+}
+
+var foo = {
+  value: 1
+}
+function bar(name, age) {
+  console.log(name)
+  console.log(age)
+  console.log(this.value);
+}
+bar._apply(foo, ['xxx', '18']) // xxx 18 1
+```
 
 ### bind 兼容
 
-<CodeBlock>
 
-<<< @/utils/libs/event/bind.js
 
-</CodeBlock>
+```js
+Function.prototype._bind = function(context) {
+  let func = this;
+  let params = [].slice.call(arguments, 1);
+  let Nop = function() {};
+  let bound = function() {
+    params = params.concat([].slice.call(arguments, 0));
+    return func.apply(this instanceof Nop ?
+      this : context, params);
+  }
+  Nop.prototype = func.prototype;
+  bound.prototype = new Nop();
+  return bound;
+}
+
+function foo() {
+  this.b = 100;
+  return this.a;
+}
+let fe = foo._bind({ a: 1 });
+console.log(fe()); // 1
+console.log(new fe()); // 实例 {b: 100}
+```
+
+
 
 ## 相关链接
 

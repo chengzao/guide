@@ -179,7 +179,7 @@ element.style.color="#eea";
 - `nextElementSibling` ：火狐谷歌 IE9-11 (下一个兄弟节点)
 - 兼容写法：`b.nextElementSibling || b.nextSibling`
 
-<CodeBlock>
+
 
 ```js
 <div class="box"></div>
@@ -193,14 +193,14 @@ var n = b.nextElementSibling || b.nextSibling;
 n.style.backgroundColor = "purple";
 ```
 
-</CodeBlock>
+
 
 - `previousSibling` ：IE678 (上一个兄弟节点)
 - 在谷歌火狐中也有这个方法,只不过是得到换行.
 - `previousElementSibling` ：火狐谷歌 IE9-11 (上一个兄弟节点)
 - 兼容写法：`b.previousElementSibling || b.previousSibling`
 
-<CodeBlock>
+
 
 ```js
 //1.获取id名为box的盒子.
@@ -223,14 +223,14 @@ function siblings(elm) {
 }
 ```
 
-</CodeBlock>
+
 
 ### Node.parentNode
 
 - `返回当前节点的父节点`
 - 只可能是三种类型：`element、 document和documentfragment`
 
-<CodeBlock>
+
 
 ```js
 //从父节点移除指定节点
@@ -239,14 +239,14 @@ if (node.parentNode) {
 }
 ```
 
-</CodeBlock>
+
 
 ### Node.parentElement
 
 - 返回当前节点的父 Element 节点
 - 如果当前节点没有父节点,或者父节点类型不是 Element 节点,则返回`null`
 
-<CodeBlock>
+
 
 ```js
 //设置指定节点的父Element节点的CSS属性
@@ -255,7 +255,7 @@ if (node.parentElement) {
 }
 ```
 
-</CodeBlock>
+
 
 ### Node.childNodes
 
@@ -265,7 +265,7 @@ if (node.parentElement) {
 - `nodeType == 2` 表示是属性节点
 - `nodeType == 3` 是文本节点
 
-<CodeBlock>
+
 
 ```html
 <div id="box">
@@ -295,7 +295,7 @@ if (node.parentElement) {
 </script>
 ```
 
-</CodeBlock>
+
 
 ### Node.firstChild 与 Node.lastChild
 
@@ -306,7 +306,7 @@ if (node.parentElement) {
 - `firstElementChild` ：火狐谷歌 IE9-11 (第一个子节点)
 - 兼容写法：`b.firstElementChild || b.firstChild`
 
-<CodeBlock>
+
 
 ```html
 <div id="box">
@@ -324,14 +324,14 @@ if (node.parentElement) {
 </script>
 ```
 
-</CodeBlock>
+
 
 - `lastChild` ：IE678 (最后一个子节点)
 - 在谷歌火狐中也有这个方法,只不过是得到最后一个换行.
 - `lastElementChild` ：火狐谷歌 IE9-11 (最后一个子节点)
 - 兼容写法：`b.lastElementChild || b.lastChild`
 
-<CodeBlock>
+
 
 ```js
 //1.获取父盒子
@@ -342,13 +342,13 @@ var lc = b.lastElementChild || b.lastChild;
 lc.style.backgroundColor = "purple";
 ```
 
-</CodeBlock>
+
 
 ### children
 
 - 在 IE678 中注释会被当做节点.解决方法：`注释写到父节点外部`
 
-<CodeBlock>
+
 
 ```html
 <div id="box">
@@ -368,7 +368,7 @@ lc.style.backgroundColor = "purple";
 </script>
 ```
 
-</CodeBlock>
+
 
 ## DOM 节点对象的方法
 
@@ -376,7 +376,7 @@ lc.style.backgroundColor = "purple";
 
 - `newNode = document.createElement(“标签名”)`
 
-<CodeBlock>
+
 
 ```js
 // 创建一个html元素，这里以创建h3元素为例
@@ -397,7 +397,7 @@ newtext = document.createTextNode("hello world");
 document.body.appendChild(newtext);
 ```
 
-</CodeBlock>
+
 
 
 ## 节点的添加
@@ -419,7 +419,7 @@ elelment.insertBefore(newNode,existingNode);
 
 - `Node.hasChildNodes()`:返回一个布尔值,表示当前节点是否有子节点
 
-<CodeBlock>
+
 
 ```js
 function DOMComb(parent, callback) {
@@ -432,7 +432,7 @@ function DOMComb(parent, callback) {
 }
 ```
 
-</CodeBlock>
+
 
 ### insertBefore
 
@@ -639,7 +639,7 @@ DocumentFragment 节点代表一个文档的片段，本身就是一个完整的
 它没有父节点，parentNode 返回 null，但是可以插入任意数量的子节点。
 它不属于当前文档，操作 DocumentFragment 节点，要比直接操作 DOM 树快得多
 
-<CodeBlock>
+
 
 ```js
 //var docFrag = document.createDocumentFragment();
@@ -654,20 +654,94 @@ document.querySelector("ul").appendChild(docFrag);
 console.log(docFrag.textContent); // ''
 ```
 
-</CodeBlock>
+
 
 ## 兼容节点
 
-<CodeBlock>
 
-<<< @/utils/libs/dom/getNextElement.js
+- 获取下一个紧邻的兄弟元素
 
-<<< @/utils/libs/dom/getPreviousElement.js
+```js
+// 获取下一个紧邻的兄弟元素
+function getNextElement(element) {
+  var ele = element;
+  if (ele.nextElementSibling) return ele.nextElementSibling;
+  do {
+    ele = ele.nextSibling;
+  } while (ele && ele.nodeType !== 1);
+  return ele;
+}
+```
 
-<<< @/utils/libs/dom/getFirstElement.js
+- 获取上一个紧邻的兄弟元素
 
-<<< @/utils/libs/dom/getLastElement.js
+```js
+// 获取上一个紧邻的兄弟元素
+function getPreviousElement(element) {
+  var ele = element;
+  if (ele.perviousElementSibling) return ele.perviousElementSibling;
+  do {
+    ele = ele.perviousSibling;
+  } while (ele && ele.nodeType !== 1);
+  return ele;
+}
+```
 
-<<< @/utils/libs/dom/getAllSibling.js
+- 获取第一个子元素
 
-</CodeBlock>
+```js
+// 获取第一个子元素
+function getFirstElement(parent) {
+  if (parent.firstElementChild) return parent.firstElementChild;
+  var ele = parent.firstChild;
+  while (ele && ele.nodeType !== 1) ele = ele.nextSibling;
+  return ele;
+}
+```
+
+- 获取最后一个子元素
+
+```js
+// 获取最后一个子元素
+function getLastElement(parent) {
+  if (parent.LastElementChild) return parent.LastElementChild;
+  var ele = parent.lastChild;
+  while (ele && ele.nodeType !== 1) ele = ele.perviousSibling;
+  return ele;
+}
+```
+
+- 取所有兄弟元素
+
+```js
+// 获取所有兄弟元素
+function getAllSibling(ele) {
+  if (!ele) return null;
+  var elements = [];
+  var el = ele.previousSibling;
+  while (el) {
+    if (el.nodeType === 1)
+      elements.push(el);
+    el = el.previousSibling;
+  }
+  el = element.nextSibling;
+  while (el) {
+    if (el.nodeType === 1)
+      elements.push(el);
+    el = el.nextSibling;
+  }
+  return elements;
+}
+
+// 查找所有兄弟节点
+function siblings(elm) {
+  var a = [];
+  var p = elm.parentNode.children;
+  for (var i = 0, pl = p.length; i < pl; i++) {
+    if (p[i] !== elm) {
+      a.push(p[i]);
+    }
+    return a;
+  }
+}
+```

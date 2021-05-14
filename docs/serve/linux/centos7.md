@@ -26,7 +26,7 @@ sudo /etc/init.d/networking restart
 
 ## systemctl 服务
 
-<CodeBlock>
+
 
 ```bash
 sudo systemctl start service_name   # 启动服务
@@ -40,7 +40,7 @@ sudo systemctl enable service_name   # 开机自启用可以用enable启用
 sudo systemctl disable service_name  # 禁用
 ```
 
-</CodeBlock>
+
 
 ## passwd
 
@@ -48,7 +48,7 @@ sudo systemctl disable service_name  # 禁用
 
 ## curl
 
-<CodeBlock>
+
 
 ```bash
 curl https://www.baidu.com
@@ -63,11 +63,11 @@ curl -O file_url
 curl -O https://raw.githubusercontent.com/amix/vimrc/master/README.md
 ```
 
-</CodeBlock>
+
 
 ## rsync 同步
 
-<CodeBlock>
+
 
 ```bash
 # 参数
@@ -92,11 +92,11 @@ rsync -a -P --delete 源 目标
 rsync -a -P 用户@主机:源 目标
 ```
 
-</CodeBlock>
+
 
 ## ssh root 禁用
 
-<CodeBlock>
+
 
 ```bash
 # 查找：
@@ -109,7 +109,7 @@ PermitRootLogin no
 systemctl restart sshd.service
 ```
 
-</CodeBlock>
+
 
 ## 禁止 root 本地登录
 
@@ -122,7 +122,7 @@ auth required pam_succeed_if.so user != root quiet
 
 - vmware 虚拟机工具
 
-<CodeBlock>
+
 
 ```bash
 su root
@@ -131,11 +131,11 @@ ls
 ./vmware-install.pl
 ```
 
-</CodeBlock>
+
 
 ## port 修改
 
-<CodeBlock>
+
 
 ```bash
 # 查找：/etc/ssh/sshd_config
@@ -147,13 +147,13 @@ Port 5000
 systemctl restart sshd.service
 ```
 
-</CodeBlock>
+
 
 ## SELINUX
 
 ## 关闭 SELINUX
 
-<CodeBlock>
+
 
 ```bash
 vi /etc/selinux/config  修改 SELINUX=disabled
@@ -165,14 +165,14 @@ sestatus -v
 systemctl restart sshd.service
 ```
 
-</CodeBlock>
+
 
 ## 不关 SELINUX
 
 - 但是需要添加一下 SELINUX 的端口, 使用 semanage 工具
 - 安装 semanage
 
-<CodeBlock>
+
 
 ```bash
 yum -y install policycoreutils-python
@@ -193,13 +193,13 @@ ssh_port_t   -->  tcp    5000, 22
 systemctl restart sshd.service
 ```
 
-</CodeBlock>
+
 
 - 防火墙中放行新加入端口
 
   - 方法 1
 
-  <CodeBlock>
+
 
   ```bash
   # 启动 systemctl
@@ -226,11 +226,11 @@ systemctl restart sshd.service
 
   ```
 
-  </CodeBlock>
+
 
   - 方法 2
 
-  <CodeBlock>
+
 
   ```bash
   # 复制 firewalld 有关 sshd 的设定档案：
@@ -245,7 +245,7 @@ systemctl restart sshd.service
   firewall-cmd --reload
   ```
 
-  </CodeBlock>
+
 
 ## 通过软件源在线安装
 
@@ -263,7 +263,7 @@ sudo rpm -ivh 软件名
 
 ## 安装 nginx
 
-<CodeBlock>
+
 
 ```bash
 yum install epel-release -y
@@ -284,13 +284,13 @@ firewall-cmd --permanent --add-service=http
 firewall-cmd --permanent --zone=trusted --add-port=80/tcp
 ```
 
-</CodeBlock>
+
 
 ## nvm 安装换源
 
 - [Node Version Manager: nvm](https://github.com/creationix/nvm)
 
-<CodeBlock>
+
 
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
@@ -301,7 +301,7 @@ export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 source ~/git/nvm/nvm.sh
 ```
 
-</CodeBlock>
+
 
 ## firewall-cmd
 
@@ -426,7 +426,7 @@ firewall-cmd --add-forward-port=proto=80:proto=tcp:toaddr=192.168.0.1:toport=808
 
 ## Yum 命令
 
-<CodeBlock>
+
 
 ```bash
 yum(选项)(参数)
@@ -442,7 +442,7 @@ R  # 设置yum处理一个命令的最大等待时间
 C  # 完全从缓存中运行，而不去下载或者更新任何头文件
 ```
 
-</CodeBlock>
+
 
 ## 命令行命令失效
 
@@ -450,7 +450,7 @@ C  # 完全从缓存中运行，而不去下载或者更新任何头文件
 
 ## 常用命令
 
-<CodeBlock>
+
 
 ```bash
 yum repolist
@@ -474,11 +474,11 @@ cat /etc/redhat-release # 查看系统版本
 ps -ef | grep nginx
 ```
 
-</CodeBlock>
+
 
 ## `ss server`
 
-<CodeBlock>
+
 
 ```bash
 mac SSR: https://github.com/qinyuhang/ShadowsocksX-NG-R
@@ -497,11 +497,11 @@ https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E
 https://segmentfault.com/a/1190000012654072
 ```
 
-</CodeBlock>
+
 
 - install
 
-<CodeBlock>
+
 
 ```bash
 # 需要安装git
@@ -512,11 +512,11 @@ vim /etc/rc.d/rc.local
 ssserver -c /etc/shadowsocks.json -d start
 ```
 
-</CodeBlock>
+
 
 - `config`
 
-<CodeBlock>
+
 
 ```bash
 # shadowsocks.json
@@ -534,7 +534,7 @@ ssserver -c /etc/shadowsocks.json -d start
 }
 ```
 
-</CodeBlock>
+
 
 ## 相关链接
 

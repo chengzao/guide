@@ -125,7 +125,7 @@ BigInt("abc"); // → SyntaxError
 
 ## 文档基本结构
 
-<CodeBlock>
+
 
 ```js
 document.head; // 文档的头标签
@@ -147,7 +147,7 @@ document.activeElement; // 属性返回当前文档中获得焦点的那个元�
 document.defaultView;
 ```
 
-</CodeBlock>
+
 
 ## 文档兼容模式
 
@@ -193,7 +193,7 @@ document.defaultView;
 - `document.implementation`属性返回一个对象,用来甄别当前环境部署了哪些 DOM 相关接口
 - `implementation`属性的`hasFeature`方法,可以判断当前环境是否部署了特定版本的特定接口
 
-<CodeBlock>
+
 
 ```js
 document.implementation.hasFeature("HTML", "2.0"); // true
@@ -201,7 +201,7 @@ document.implementation.hasFeature("HTML", "2.0"); // true
 document.implementation.hasFeature("MutationEvents", "2.0"); // true
 ```
 
-</CodeBlock>
+
 
 - `document.cookie`属性用来操作浏览器 Cookie
 
@@ -419,7 +419,7 @@ var a = -21.1;
 - `用于将一个值转为字符串`
 - `一个成员的值是undefined、函数或 XML 对象，这个成员会被过滤`
 
-<CodeBlock>
+
 
 ```js
 var obj = {
@@ -430,13 +430,13 @@ var obj = {
 JSON.stringify(obj); // "{}"
 ```
 
-</CodeBlock>
+
 
 - `数组的成员是undefined、函数或 XML 对象,则这些值被转成null`
 - `JSON.stringify方法会忽略对象的不可遍历属性`
 - `第二个参数`
 
-<CodeBlock>
+
 
 ```js
 // 接受一个数组,作为第二个参数,指定需要转成字符串的属性
@@ -471,24 +471,24 @@ JSON.stringify({ a: 1, b: 2 }, f);
 // '{"a": 2,"b": 4}'
 ```
 
-</CodeBlock>
+
 
 - `第三个参数,用于增加返回的JSON字符串的可读性`
 
-<CodeBlock>
+
 
 ```js
 JSON.stringify({ p1: 1, p2: 2 }, null, 2);
 JSON.stringify({ p1: 1, p2: 2 }, null, "|-");
 ```
 
-</CodeBlock>
+
 
 ### JSON.parse
 
 - `用于将JSON字符串转化成对象`
 
-<CodeBlock>
+
 
 ```js
 JSON.parse("{}"); // {}
@@ -501,7 +501,7 @@ var o = JSON.parse('{"name": "张三"}');
 o.name; // 张三
 ```
 
-</CodeBlock>
+
 
 - 实现一个 JSON.stringify
 
