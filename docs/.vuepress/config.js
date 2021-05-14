@@ -74,12 +74,12 @@ module.exports = {
     type: "blog",
     blogConfig: {
       category: {
-        location: 2,
-        text: "Category"
+        location: 3,
+        text: "category"
       },
       tag: {
-        location: 3,
-        text: "Tag"
+        location: 4,
+        text: "tag"
       }
     },
     friendLink: [

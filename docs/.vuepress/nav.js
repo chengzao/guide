@@ -1,52 +1,53 @@
 module.exports = [
   {
-    "text": "serve",
+    "text": "frontend",
     "items": [
       {
-        "text": "Database",
-        "link": "/serve/database/"
+        "text": "Css",
+        "link": "/frontend/css/"
       },
       {
-        "text": "Linux",
-        "link": "/serve/linux/"
+        "text": "Javascript",
+        "link": "/frontend/javascript/"
       },
       {
-        "text": "Server",
-        "link": "/serve/server/"
+        "text": "Reactjs",
+        "link": "/frontend/reactjs/"
       },
       {
-        "text": "Tools",
-        "link": "/serve/tools/"
+        "text": "Vuejs",
+        "link": "/frontend/vuejs/"
       }
     ]
   },
   {
-    "text": "web",
+    "text": "snippets",
     "items": [
       {
-        "text": "Html",
-        "link": "/web/html/"
-      },
-      {
         "text": "Issues",
-        "link": "/web/issues/"
+        "link": "/snippets/issues/"
       },
       {
-        "text": "Js",
-        "link": "/web/js/"
-      },
-      {
-        "text": "Other",
-        "link": "/web/other/"
-      },
-      {
-        "text": "React Js",
-        "link": "/web/reactJs/"
-      },
-      {
-        "text": "Vue Js",
-        "link": "/web/vueJs/"
+        "text": "Tools",
+        "link": "/snippets/tools/"
       }
     ]
-  }
+  },
+  {
+    "text": "backend",
+    "items": [
+      {
+        "text": "Server",
+        "link": "/backend/server/"
+      },
+      {
+        "text": "Linux",
+        "link": "/backend/linux/"
+      },
+      {
+        "text": "Sql",
+        "link": "/backend/sql/"
+      }
+    ]
+  },
 ];
