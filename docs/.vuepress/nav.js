@@ -3,51 +3,29 @@ module.exports = [
     "text": "frontend",
     "items": [
       {
-        "text": "Css",
-        "link": "/frontend/css/"
-      },
-      {
-        "text": "Javascript",
-        "link": "/frontend/javascript/"
+        "text": "Issues",
+        "link": "/frontend/issues/"
       },
       {
         "text": "Reactjs",
         "link": "/frontend/reactjs/"
       },
       {
-        "text": "Vuejs",
-        "link": "/frontend/vuejs/"
-      }
-    ]
-  },
-  {
-    "text": "snippets",
-    "items": [
-      {
-        "text": "Issues",
-        "link": "/snippets/issues/"
+        "text": "Tools",
+        "link": "/frontend/tools/"
       },
       {
-        "text": "Tools",
-        "link": "/snippets/tools/"
+        "text": "Vuejs",
+        "link": "/frontend/vuejs/"
+      },
+      {
+        "text": "Web",
+        "link": "/frontend/web/"
       }
     ]
   },
   {
     "text": "backend",
-    "items": [
-      {
-        "text": "Server",
-        "link": "/backend/server/"
-      },
-      {
-        "text": "Linux",
-        "link": "/backend/linux/"
-      },
-      {
-        "text": "Sql",
-        "link": "/backend/sql/"
-      }
-    ]
+    "link": "/backend/"
   },
 ];
