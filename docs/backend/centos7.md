@@ -1,6 +1,6 @@
 ---
 autoGroup-3: linux
-title: centos7的一些命令参数
+title: centos7命令参数
 date: 2020-07-20
 sidebar: "auto"
 tags:
