@@ -3,7 +3,9 @@ title: 移动端的touch事件
 date: 2020-07-20
 sidebar: "auto"
 tags:
-  - mobile
+  - touch
+categories:
+  - frontend
 ---
 
 ## 点击事件

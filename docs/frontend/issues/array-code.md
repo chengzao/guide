@@ -1,10 +1,11 @@
 ---
-autoGroup-1: 数组方法
 title: 工具函数
 date: 2020-07-22
 sidebar: "auto"
 tags:
   - array
+categories:
+  - frontend
 ---
 
 ## 升序算法

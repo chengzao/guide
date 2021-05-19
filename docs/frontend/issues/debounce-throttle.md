@@ -5,6 +5,8 @@ sidebar: "auto"
 tags:
   - debounce
   - throttle
+categories:
+  - frontend
 ---
 
 ::: tip 原文

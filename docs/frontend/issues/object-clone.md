@@ -1,10 +1,11 @@
 ---
-autoGroup-1: 对象方法
 title: 对象工具函数
 date: 2020-07-30
 sidebar: "auto"
 tags:
   - 工具函数
+categories:
+  - frontend
 ---
 
 ## 简易克隆对象

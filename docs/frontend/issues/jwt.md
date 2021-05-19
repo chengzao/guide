@@ -6,6 +6,8 @@ tags:
   - Cookie
   - jwt
   - token
+categories:
+  - frontend
 ---
 
 ## Cookie、sessionStorage、localStorage

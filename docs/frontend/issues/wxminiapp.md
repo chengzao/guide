@@ -4,6 +4,8 @@ date: 2020-07-20
 sidebar: "auto"
 tags:
   - 微信小程序
+categories:
+  - frontend
 ---
 
 - [小程序注册](https://mp.weixin.qq.com/wxopen/waregister?action=step1)

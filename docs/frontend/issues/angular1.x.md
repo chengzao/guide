@@ -1,9 +1,11 @@
 ---
-title: angular1.x的使用记录
+title: angular1.x的使用
 date: 2020-07-20
 sidebar: "auto"
 tags:
   - angular.js
+categories:
+  - frontend
 ---
 
 ## ng 指令

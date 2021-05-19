@@ -5,9 +5,11 @@ sidebar: "auto"
 tags:
   - cors
   - XMLHttpRequest
+categories:
+  - frontend
 ---
 
-- 简易版 1
+## XMLHttpRequest
 
 ```js
 // 1.实例化
@@ -42,7 +44,7 @@ xhr.onreadystatechange = function () {
 }
 ```
 
-- 简易版 2
+- ajax
 
 ```js
 var Ajax = {

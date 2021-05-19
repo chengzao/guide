@@ -5,7 +5,8 @@ sidebar: "auto"
 tags:
   - stack
   - queue
-  - linked
+categories:
+  - frontend
 ---
 
 

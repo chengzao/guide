@@ -4,6 +4,8 @@ date: 2020-07-20
 sidebar: "auto"
 tags:
   - currying
+categories:
+  - frontend
 ---
 
 - 逐步接收参数，并缓存供后期计算使用

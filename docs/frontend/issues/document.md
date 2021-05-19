@@ -4,6 +4,8 @@ date: 2020-07-20
 sidebar: "auto"
 tags:
   - 工具函数
+categories:
+  - frontend
 ---
 
 ## visibilityChange 判断页面可见状态

@@ -3,29 +3,21 @@ module.exports = [
     "text": "frontend",
     "items": [
       {
-        "text": "Issues",
-        "link": "/frontend/issues/"
+        "text": "learn",
+        "link": "/frontend/learn/"
       },
       {
-        "text": "Reactjs",
-        "link": "/frontend/reactjs/"
+        "text": "Issues",
+        "link": "/frontend/issues/"
       },
       {
         "text": "Tools",
         "link": "/frontend/tools/"
       },
-      {
-        "text": "Vuejs",
-        "link": "/frontend/vuejs/"
-      },
-      {
-        "text": "Web",
-        "link": "/frontend/web/"
-      }
     ]
   },
   {
-    "text": "backend",
-    "link": "/backend/"
+    "text": "services",
+    "link": "/services/"
   },
 ];

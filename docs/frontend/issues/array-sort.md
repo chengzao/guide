@@ -1,10 +1,11 @@
 ---
-autoGroup-2: 数组方法
 title: 常见十种算法
 date: 2020-07-20
 sidebar: "auto"
 tags:
   - array
+categories:
+  - frontend
 ---
 
 :::tip

@@ -6,6 +6,8 @@ tags:
   - typeOf
   - instanceof
   - _hasOwnProperty
+categories:
+  - frontend
 ---
 
 ## typeOf 类型判断

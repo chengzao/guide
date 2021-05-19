@@ -4,6 +4,8 @@ date: 2020-07-20
 sidebar: "auto"
 tags:
   - blog
+categories:
+  - frontend
 ---
 
 ## 博客生成器
