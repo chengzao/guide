@@ -3,7 +3,7 @@ title: 常见的浏览器事件封装
 date: 2020-07-20
 sidebar: "auto"
 tags:
-  - 工具函数
+  - event
 categories:
   - frontend
 ---

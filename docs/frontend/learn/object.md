@@ -293,8 +293,6 @@ this.propertyIsEnumerable("Math"); // 返回 false
 - 返回该对象的原型。该属性可读写
 - `__proto__`兼容
 
-
-
 ```js
 // __proto__ 兼容
 function getProto(attr) {
@@ -315,8 +313,6 @@ function getProto(attr) {
 
  */
 ```
-
-
 
 ## Object.preventExtensions
 
