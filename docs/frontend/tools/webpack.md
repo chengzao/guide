@@ -23,41 +23,154 @@ categories:
 - 分割代码按需加载
 - webpack-bundle-analyzer 是另一个可视化分析工具
 
-## devServer
 
-- `npm package: mocker-api`
+## mocker-api
+
+- https://github.com/jaywcjlove/mocker-api
+- "mocker-api": "^2.8.1"
+
+- `/mocker/index.js`
 
 ```js
-...
-{
-  "open": true,
-  "overlay": true,
-  "hot": true,
-  "host": "0.0.0.0",
-  "port": 8080,
-  "inline": true,
-  "disableHostCheck": true,
-  "stats": {
-    "colors": true
+// mocker-api: https://github.com/jaywcjlove/mocker-api
+const delay = require("mocker-api/lib/delay");
+
+const noProxy = process.env.NO_PROXY === 'true';
+
+const proxy = {
+  _proxy: {
+    priority: "mocker",
+    proxy: {
+      "/api/(.*)": "http://xxx/mock/35",
+    },
+    changeHost: true,
   },
-  "historyApiFallback": true,
-  "before": app => {
-    // mock api:
-    // const ApiMocker = require('mocker-api');
-    apiMocker(app, path.join(__dirname, "./mock/index.js"));
-  },
-  "proxy": {
-    "/api": {
-      "target": "http://example.com/api", // trunk 环境
-      "changeOrigin": true,
-      "secure": false,
-      "logLevel": "debug",
-      "pathRewrite": {
-        "^/api": ""
+  "GET /api/info/:id": (req, res) => {},
+};
+
+module.exports = (noProxy ? {} : delay(proxy, 1000));
+```
+
+- vue.config.js
+
+```js
+module.exports = {
+    devServer: {
+        "open": true,
+        "overlay": true,
+        "hot": true,
+        "host": "0.0.0.0",
+        "port": 8080,
+        "inline": true,
+        "disableHostCheck": true,
+        "stats": {
+          "colors": true
+        },
+        "historyApiFallback": true,
+        proxy: {
+          "/api": {
+            "target": "http://xxx.com/api", // trunk 环境
+            "changeOrigin": true,
+            "secure": false,
+            "logLevel": "debug",
+            "pathRewrite": {
+              "^/api": ""
+            }
+          },
+          // '/': {
+          //   target: '//xxx.com',
+          //   ws: false,
+          //   secure: false,
+          //   changeOrigin: true
+          // }
+        },
+        before: function (app, server, compiler) {
+          if(process.NODE_ENV !== 'production'){
+            const mockerFile = path.resolve('./mocker/index.js');
+            apiMocker(app, mockerFile, {})
+          }
+        },
+    },
+}
+```
+
+- node server
+
+```js
+module.exports = {
+    devServer: {
+      port: port,
+      proxy: {
+      // 代理 /api/user/login 到 http://127.0.0.1:3000/user/login
+      [process.env.VUE_APP_BASE_API]: {
+        target: 'http://127.0.0.1:3000/',
+        changeOrigin: true,
+        pathRewrite: {
+          ["^" + process.env.VUE_APP_BASE_API]: ""
+        }
       }
     }
-  }
 }
+```
+
+- axios
+
+```js
+// request.js
+import axios from 'axios'
+import { message } from 'ant-design-vue'
+import store from '@/store'
+
+function showErrorMessage(errMessage) {
+  const content = errMessage || 'error'
+  message.error(content, 5 * 1000)
+}
+// 创建axios 实例
+const service = axios.create({
+  baseURL: process.env.VUE_APP_BASE_API, // url基础地址，解决不同数据源url变化问题
+  timeout: 15 * 1000
+  // withCredentials: true // 跨域时若要发送cokkies需要设置该选项
+})
+
+// 请求拦截
+service.interceptors.request.use(
+  config => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      config.headers['authorization'] = 'Bearer ' + token
+    }
+    return config
+  },
+  error => {
+    return Promise.reject(error)
+  }
+)
+// 响应拦截
+service.interceptors.response.use(
+  response => {
+    // 进返回数据部分
+    const res = response.data
+    // 仅仅返回数据部分
+    if (res.code !== 1) {
+      showErrorMessage(res.message)
+      //  todo
+      if (res.code === 1004) {
+        store.dispatch('user/resetToken').then(() => {
+          location.reload()
+        })
+      }
+      return Promise.reject(new Error(res.message || 'Error'))
+    } else {
+      return Promise.resolve(res)
+    }
+  },
+  error => {
+    showErrorMessage(error.message)
+    return Promise.reject(error)
+  }
+)
+
+export default service
 ```
 
 ## 自动引入某文件夹下的文件
@@ -148,8 +261,6 @@ exports.default = function() {
 ## webpack 配置
 
 - [原文地址](http://webpack.wuhaolin.cn/2%E9%85%8D%E7%BD%AE/2-8%E6%95%B4%E4%BD%93%E9%85%8D%E7%BD%AE%E7%BB%93%E6%9E%84.html)
-
-
 
 ```js
 const path = require("path");
@@ -358,7 +469,72 @@ module.exports = {
 };
 ```
 
+## 配置 externals 引入 cdn 资源
 
+- webpack.config.js
+
+```js
+module.exports = {
+  configureWebpack: config => {
+    config.externals = {
+      vue: "Vue",
+      "element-ui": "ELEMENT",
+      "vue-router": "VueRouter",
+      vuex: "Vuex",
+      axios: "axios"
+    };
+  },
+  chainWebpack: config => {
+    const cdn = {
+      // 访问https://unpkg.com/element-ui/lib/theme-chalk/index.css获取最新版本
+      css: ["//unpkg.com/element-ui@2.10.1/lib/theme-chalk/index.css"],
+      js: [
+        "//unpkg.com/vue@2.6.10/dist/vue.min.js", // 访问https://unpkg.com/vue/dist/vue.min.js获取最新版本
+        "//unpkg.com/vue-router@3.0.6/dist/vue-router.min.js",
+        "//unpkg.com/vuex@3.1.1/dist/vuex.min.js",
+        "//unpkg.com/axios@0.19.0/dist/axios.min.js",
+        "//unpkg.com/element-ui@2.10.1/lib/index.js"
+      ]
+    };
+
+    // 如果使用多页面打包，使用vue inspect --plugins查看html是否在结果数组中
+    config.plugin("html").tap(args => {
+      // html中添加cdn
+      args[0].cdn = cdn;
+      return args;
+    });
+  }
+};
+```
+
+- html template
+
+```html
+<!-- 使用CDN的CSS文件 -->
+<% for (var i in htmlWebpackPlugin.options.cdn &&
+htmlWebpackPlugin.options.cdn.css) { %>
+<link rel="stylesheet" href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" />
+<% } %>
+
+<!-- 使用CDN的JS文件 -->
+<% for (var i in htmlWebpackPlugin.options.cdn &&
+htmlWebpackPlugin.options.cdn.js) { %>
+<script
+  type="text/javascript"
+  src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"
+></script>
+<% } %>
+```
+
+
+
+## rollup.js
+
+https://rollupjs.org
+
+## parcel
+
+https://v2.parceljs.org/getting-started/webapp/
 
 ## 相关链接
 

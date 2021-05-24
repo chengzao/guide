@@ -1,16 +1,16 @@
 module.exports = [
-  [
-    "vuepress-plugin-meilisearch",
-    {
-      "hostUrl": "https://main-meilise-gbx6ghw8jive6u0h-gtw.qovery.io",
-      "apiKey": "1133481d50d6ebb46b5c167c4593e70706da4c77256f94ef3880b4c331cf1540",
-      "indexUid": "vuepress",
-      "placeholder": "Search as you type...",
-      "maxSuggestions": 20,
-      "cropLength": 50
-    }
-  ],
-  // 'fulltext-search',
+  // [
+  //   "vuepress-plugin-meilisearch",
+  //   {
+  //     "hostUrl": "https://main-meilise-gbx6ghw8jive6u0h-gtw.qovery.io",
+  //     "apiKey": "1133481d50d6ebb46b5c167c4593e70706da4c77256f94ef3880b4c331cf1540",
+  //     "indexUid": "vuepress",
+  //     "placeholder": "Search as you type...",
+  //     "maxSuggestions": 20,
+  //     "cropLength": 50
+  //   }
+  // ],
+  'fulltext-search',
   'check-md',
   [
     "@vuepress/pwa",

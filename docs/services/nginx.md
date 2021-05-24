@@ -319,7 +319,7 @@ nginx -V #查看版本
 
 
 
-[nginx server lib](/libs/nginx.txt)
+[nginx server lib](/static/nginx.txt)
 
 ## ssl
 
