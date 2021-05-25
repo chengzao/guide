@@ -40,19 +40,19 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
 
-  # scrape-docs:
-  #   needs: build-and-deploy
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #   - uses: actions/checkout@v2.3.4
-  #   - name: Run docs-scraper
-  #     env:
-  #       HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
-  #       API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
-  #       CONFIG_FILE_PATH: ${{ github.workspace }}/docs/.vuepress/docs-scraper/docs-scraper.config.json
-  #     run: |
-  #       docker run -t --rm \
-  #         -e MEILISEARCH_HOST_URL=$HOST_URL \
-  #         -e MEILISEARCH_API_KEY=$API_KEY \
-  #         -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
-  #         getmeili/docs-scraper:v0.10.4 pipenv run ./docs_scraper config.json
+  scrape-docs:
+    needs: build-and-deploy
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - name: Run docs-scraper
+      env:
+        HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+        API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+        CONFIG_FILE_PATH: ${{ github.workspace }}/docs/.vuepress/docs-scraper/docs-scraper.config.json
+      run: |
+        docker run -t --rm \
+          -e MEILISEARCH_HOST_URL=$HOST_URL \
+          -e MEILISEARCH_API_KEY=$API_KEY \
+          -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
+          getmeili/docs-scraper:v0.10.4 pipenv run ./docs_scraper config.json
