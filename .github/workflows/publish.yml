@@ -56,3 +56,14 @@ jobs:
           -e MEILISEARCH_API_KEY=$API_KEY \
           -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
           getmeili/docs-scraper:v0.10.4 pipenv run ./docs_scraper config.json
+
+  algolia-docs:
+    needs: build-and-deploy
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - uses: darrenjennings/algolia-docsearch-action@v0.1.0
+      with:
+        algolia_application_id: ${{ secrets.ALGOLIA_APP_ID }}
+        algolia_api_key: ${{ secrets.ALGOLIA_API_KEY }}
+        file: ${{ github.workspace }}/docs/.vuepress/docs-scraper/docs-scraper.config.json
