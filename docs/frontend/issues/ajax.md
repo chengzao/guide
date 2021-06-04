@@ -357,5 +357,5 @@ xhr.withCredentials = true;
 - [浏览器跨域方法与基于 Fetch 的 Web 请求最佳实践](https://segmentfault.com/a/1190000006095018)
 - [fetch-jsonp](https://github.com/camsong/fetch-jsonp)
 - [前端常见跨域解决方案（全）](https://segmentfault.com/a/1190000011145364)
-- [navigator.sendBeacon](<https://developer.mozilla.org/zh-CN/docs/Web/API/Beacon_API/Using_the_Beacon_API#WorkerNavigator.sendBeacon()>)
+- [navigator.sendBeacon](https://developer.mozilla.org/zh-CN/docs/Web/API/Beacon_API/Using_the_Beacon_API#WorkerNavigator.sendBeacon())
 - [Web sendBeacon 刷新/关闭页面之前发送请求](http://obkoro1.com/web_accumulate/accumulate/)

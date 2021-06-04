@@ -9,14 +9,15 @@
     "build": "vuepress build docs",
     "build:gp": "cross-env BASE_ENV=guide vuepress build docs",
     "deploy": "npm run build && gh-pages -d dist",
-    "docs:nav": "vuepress nav docs -f"
+    "docs:nav": "vuepress nav docs -f",
+    "lint": "vuepress check-md docs"
   },
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.8.2",
     "@vuepress/plugin-medium-zoom": "^1.8.2",
     "@vuepress/plugin-pwa": "^1.8.2",
     "gh-pages": "^3.1.0",
     "glob": "^7.1.6",
+    "husky": "^6.0.0",
     "markdown-it-include": "^2.0.0",
     "vuepress": "^1.8.2",
     "vuepress-plugin-auto-sidebar": "^2.2.2",

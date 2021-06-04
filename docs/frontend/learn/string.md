@@ -225,7 +225,7 @@ splits; // ["Hello", "World.", "How"]
 
 ## Symbol.iterator
 
-- `[@@iterator]()` 方法返回一个新的 Iterator 对象
+- ```[@@iterator]()``` 方法返回一个新的 Iterator 对象
 
 ```js
 var string = "A\uD835\uDC68";

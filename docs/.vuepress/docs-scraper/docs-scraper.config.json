@@ -1,6 +1,5 @@
 {
   "index_uid": "vuepress",
-  "index_name": "vuepress",
   "sitemap_urls": ["https://guide.chenio.top/sitemap.xml"],
   "sitemap_alternate_links": true,
   "start_urls": ["https://guide.chenio.top"],

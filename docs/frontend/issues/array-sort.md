@@ -731,7 +731,6 @@ console.log('newArr:', newArr);
 
 - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer)
 - [visualgo.net/en](https://visualgo.net/en)
-- [www.ee.ryerson.ca](www.ee.ryerson.ca)
 
 ## 相关链接
 

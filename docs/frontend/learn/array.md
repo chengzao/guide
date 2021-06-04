@@ -732,7 +732,7 @@ res; // true
 
 
 
-## `[Symbol.iterator]()`
+## `Symbol.iterator`
 
 
 
