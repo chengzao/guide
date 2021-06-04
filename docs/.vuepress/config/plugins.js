@@ -12,7 +12,6 @@ module.exports = [
   ],
   // 'fulltext-search',
   "check-md",
-  '@vuepress/last-updated',
   [
     "@vuepress/pwa",
     {
