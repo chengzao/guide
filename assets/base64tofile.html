@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     * @ ajax 请求获取base64格式
+     * @param {String}    url 需要请求的图片的连接
+     * @return {Promise}  promise对象
+     */
+     const getBase = (url) => {
+      return new Promise((resolve, reject) => {
+        fetch(url).then(res => res.blob())
+          .then(blob => {
+            let reader = new FileReader();
+            reader.onloadend = function () {
+              resolve(reader.result)
+            };
+            reader.readAsDataURL(blob);
+          })
+          .catch(error => {
+            reject(error)
+          });
+      })
+
+    }
+
+    /**
+     * @ base64转化为对应的文件
+     * @param {String}  base  base64字符
+     * @param {String}  name  文件名称
+     * @return: {file} 返回的文件
+     */
+    const base64toFile = (base, name) => {
+      var arr = base.split(',');
+      var mime = arr[0].match(/:(.*?);/)[1];
+      var bstr = atob(arr[1]);
+      var n = bstr.length;
+      var u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      //转换成file对象
+      return new File([u8arr], name, {
+        type: mime
+      });
+    }
+
+
+    /**
+     * @ 图片转化为文件类型
+     * @param {String} url  请求图片的地址
+     * @param {String} name 转换后的文件名称
+     * @return: {file}
+     */
+    const imgUrlToFile = async (url, name = 'file') => {
+      let fileObj = {};
+      await getBase(url).then(base => {
+        fileObj = base64toFile(base, name);
+      })
+      return fileObj;
+    }
+
+    // const url = 'https://cdn.jsdelivr.net/gh/chengzao/imgbed@cdn/images/20200101233506.png'
+    const url = 'https://n.sinaimg.cn/tech/transform/774/w320h454/20190312/Jw5G-hufnxfm3452998.gif'
+
+    imgUrlToFile(url,
+      'aaa').then(fileObj => {
+      console.log(fileObj); // 打印出来的file类型
+    });
+  </script>
+</body>
+</html>

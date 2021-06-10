@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <input type="file" name="" id="upload"> -->
+  <img id="img"></img>
+  <script>
+    // let url = 'https://cdn.jsdelivr.net/gh/chengzao/imgbed@cdn/images/20200101233506.png';
+    let url = 'https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/data.json';
+
+    fetch(url).then(res => res.blob()).then(res => {
+      // console.log('res', res)
+      let fr = new FileReader();
+      // 读取成功回调
+      fr.onload = e => {
+        // e.target.result 就是图片的 base64 地址，可以直接用于图片的 src
+        let img = e.target.result;
+        console.log(img)
+      }
+      // 失败回调
+      fr.onerror = e => {
+        // error handle
+      }
+      // 读取图片
+      fr.readAsDataURL(res);
+    });
+
+
+    // let img = new Image()
+
+    // img.setAttribute('crossOrign', 'anonymous')
+
+    // img.onload =  function(e){
+    //   console.log('e', e)
+    // }
+
+    // img.src = url
+
+
+    // upload.addEventListener('change', function(ev){
+    //   console.log(ev.target.file)
+    // }, false)
+
+    var img =
+  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=508387608,2848974022&fm=26&gp=0.jpg"; //imgurl 就是你的图片路径
+
+function getBase64Image(img) {
+  var canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0, img.width, img.height);
+  var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
+  var dataURL = canvas.toDataURL("image/" + ext);
+
+  return dataURL;
+}
+
+var image = new Image();
+image.src = img;
+image.setAttribute("crossOrigin", "Anonymous");
+image.onload = function() {
+  var base64 = getBase64Image(image);
+  // console.log(base64);
+
+  document.getElementById("img").src = base64;
+
+  var formData = new FormData();
+
+  //转换base64到file
+  var file = btof(base64, "test");
+  console.log(file)
+  formData.append("imageName", file);
+};
+
+function btof(data, fileName) {
+  const dataArr = data.split(",");
+  const byteString = atob(dataArr[1]);
+  var mime = arr[0].match(/:(.*?);/)[1];
+  const options = {
+    type: mime,
+    endings: "native"
+  };
+  const u8Arr = new Uint8Array(byteString.length);
+  for (let i = 0; i < byteString.length; i++) {
+    u8Arr[i] = byteString.charCodeAt(i);
+  }
+  return new File([u8Arr], fileName + ".jpg", options);
+}
+
+
+
+  </script>
+</body>
+</html>
