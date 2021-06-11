@@ -5,7 +5,6 @@ sidebar: "auto"
 tags:
   - typeOf
   - instanceof
-  - _hasOwnProperty
 categories:
   - frontend
 ---
