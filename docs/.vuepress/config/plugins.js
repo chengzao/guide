@@ -16,9 +16,12 @@ module.exports = [
     "@vuepress/pwa",
     {
       serviceWorker: true,
-      updatePopup: {
-        message: "发现新内容",
-        buttonText: "刷新"
+      updatePopup: true,
+      generateSWConfig:{
+        skipWaiting: true,
+        clientsClaim: true,
+        importWorkboxFrom: 'disabled',
+        importScripts:['https://cdn.jsdelivr.net/npm/workbox-cdn/workbox/workbox-sw.js']
       }
     }
   ],

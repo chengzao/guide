@@ -16,22 +16,22 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v2
-        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-yarn-
 
       - name: Install and Build 🔧
         run: |
-          npm install
-          npm run build
+          yarn
+          yarn build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
@@ -43,16 +43,22 @@ jobs:
   scrape-docs:
     needs: build-and-deploy
     runs-on: ubuntu-18.04
+
     steps:
-    - uses: actions/checkout@v2.3.4
-    - name: Run docs-scraper
-      env:
-        HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
-        API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
-        CONFIG_FILE_PATH: ${{ github.workspace }}/docs/.vuepress/docs-scraper/docs-scraper.config.json
-      run: |
-        docker run -t --rm \
-          -e MEILISEARCH_HOST_URL=$HOST_URL \
-          -e MEILISEARCH_API_KEY=$API_KEY \
-          -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
-          getmeili/docs-scraper:v0.10.4 pipenv run ./docs_scraper config.json
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Run docs-scraper
+        env:
+          HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+          API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+          CONFIG_FILE_PATH: ${{ github.workspace }}/docs/.vuepress/docs-scraper/docs-scraper.config.json
+        run: |
+          docker run -t --rm \
+            -e MEILISEARCH_HOST_URL=$HOST_URL \
+            -e MEILISEARCH_API_KEY=$API_KEY \
+            -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
+            getmeili/docs-scraper:v0.10.4 pipenv run ./docs_scraper config.json
