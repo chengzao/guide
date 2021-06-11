@@ -20,7 +20,7 @@ module.exports = [
       generateSWConfig:{
         // skipWaiting: true,
         // clientsClaim: true,
-        globStrict: false,
+        // globStrict: false,
         importWorkboxFrom: 'disabled',
         importScripts:['https://cdn.jsdelivr.net/npm/workbox-cdn/workbox/workbox-sw.js']
       }
