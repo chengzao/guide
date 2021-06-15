@@ -14,13 +14,13 @@ categories:
 
 - 客户端渲染 CSR（Client Side Rendering）
 
-![scr](https://gitee.com/cxyz/imgbed/raw/img/img/Client-Side-Rendering.png)
+![Client-Side-Rendering](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/Client-Side-Rendering.png)
 
 - 服务端渲染 SSR（Server Side Rendering）
 
 指将单页应用（SPA）在服务器端渲染成 HTML 片段，发送到浏览器，然后交由浏览器为其绑定状态与事件，成为完全可交互页面的过程
 
-![spa](https://gitee.com/cxyz/imgbed/raw/img/img/Server-Side-Rendering.jpeg)
+![Server-Side-Rendering](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/Server-Side-Rendering.jpeg)
 
 ---
 

@@ -1,8 +1,8 @@
 {
   "index_uid": "vuepress",
-  "sitemap_urls": ["https://guide.chenio.top/sitemap.xml"],
+  "sitemap_urls": ["https://guide.czhlink.com/sitemap.xml"],
   "sitemap_alternate_links": true,
-  "start_urls": ["https://guide.chenio.top"],
+  "start_urls": ["https://guide.czhlink.com"],
   "selectors": {
     "lvl0": {
       "selector": "p.sidebar-heading.open",

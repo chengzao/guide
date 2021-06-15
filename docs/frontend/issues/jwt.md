@@ -77,7 +77,7 @@ cookie 无法跨域, 设置domain属性，一级域名和二级域名之间是�
 - session 是另一种记录服务器和客户端会话状态的机制
 - session 是基于 cookie 实现的，session 存储在服务器端，sessionId 会被存储到客户端的 cookie 中
 
-![session](https://gitee.com/cxyz/imgbed/raw/img/img/20200101224144.png)
+![20200101224144](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200101224144.png)
 
 - 浏览器禁止 cookie 或不支持 cookie 怎么办？
 
@@ -101,13 +101,13 @@ cookie 无法跨域, 设置domain属性，一级域名和二级域名之间是�
 - 简单 token 的组成： uid(用户唯一的身份标识)、time(时间戳)、sign（签名）
 - 特点: 服务端无状态化、可扩展性好 / 支持移动端设备 / 支持跨程序调用
 
-![Acesss Token](https://gitee.com/cxyz/imgbed/raw/img/img/20200101224829.png)
+![20200101224829](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200101224829.png)
 
 ### Refresh Token
 
 - refresh token 是用于刷新 access token 的 token
 
-![refresh token](https://gitee.com/cxyz/imgbed/raw/img/img/20200101225133.png)
+![20200101225133](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200101225133.png)
 
 ## Token 和 Session 的区别
 
@@ -119,7 +119,7 @@ cookie 无法跨域, 设置domain属性，一级域名和二级域名之间是�
 - JSON Web Token（JWT）是跨域认证解决方案,是一种认证授权机制
 - [JWT](https://jwt.io/) | [jsonwebtoken](https://www.jsonwebtoken.io/)
 
-![JWT](https://gitee.com/cxyz/imgbed/raw/img/img/20200101230305.png)
+![20200101230305](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200101230305.png)
 
 - HTTP Request Headers
 

@@ -19,8 +19,8 @@ categories:
 
 - ASCII 控制字符
 
-![ascii 1](https://gitee.com/cxyz/imgbed/raw/img/img/wiki_ascii_01.png)
+![wiki_ascii_01](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/wiki_ascii_01.png)
 
 - ASCII 可显示字符
 
-![ascii 2](https://gitee.com/cxyz/imgbed/raw/img/img/wiki_ascii_02.png)
+![wiki_ascii_02](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/wiki_ascii_02.png)

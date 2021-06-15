@@ -57,7 +57,7 @@ module.exports = [
   [
     "sitemap",
     {
-      hostname: "https://guide.chenio.top"
+      hostname: "https://guide.czhlink.com"
     }
   ],
   [

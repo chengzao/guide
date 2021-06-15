@@ -110,7 +110,7 @@ function scroll() {
 }
 ```
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-scroll.png)
+![dom-scroll](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/dom-scroll.png)
 
 - document example
 

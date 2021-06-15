@@ -14,11 +14,11 @@ categories:
 - [原文：你真的了解 React 生命周期吗](https://juejin.im/post/5df648836fb9a016526eba01)
 - [react 生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-  ![react lifecycle](https://gitee.com/cxyz/imgbed/raw/img/img/wojtekmaj-pl-react-lifecycle-methods-diagram-1576117898899.png)
+  ![wojtekmaj-pl-react-lifecycle-methods-diagram-1576117898899](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/wojtekmaj-pl-react-lifecycle-methods-diagram-1576117898899.png)
 
 - 旧版
 
-  ![react lifecycle](https://gitee.com/cxyz/imgbed/raw/img/img/20200101233506.png)
+  ![20200101233506](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200101233506.png)
 
 - 代码
 
@@ -119,7 +119,7 @@ class SubCounter extends Component{
 
 - 父子组件触发示意图
 
-![父子组件触发示意图](https://gitee.com/cxyz/imgbed/raw/img/img/20200101234008.png)
+![20200101234008](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200101234008.png)
 
 ## `static getDerivedStateFromProps`
 

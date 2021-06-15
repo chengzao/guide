@@ -90,7 +90,7 @@ console.table({ offsetLeft, offsetTop });
 | offsetLeft | 100   | margin |
 | offsetTop  | 100   | margin |
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-offsetLeft.png)
+![dom-offsetLeft](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/dom-offsetLeft.png)
 
 - 父级有定位
 
@@ -99,8 +99,8 @@ console.table({ offsetLeft, offsetTop });
 | offsetLeft | 100   | margin |
 | offsetTop  | 100   | margin |
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-offsetleft2.png)
+![dom-offsetleft2](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/dom-offsetleft2.png)
 
 - offset img
 
-![](https://gitee.com/cxyz/imgbed/raw/img/img/dom-offset.png)
+![dom-offset](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/dom-offset.png)

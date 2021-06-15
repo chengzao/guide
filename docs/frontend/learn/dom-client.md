@@ -13,7 +13,7 @@ categories:
 - `clientHeight`：表示的是可视区域的高度，`不包含border和滚动条`
 - `clientTop`：表示边框 border 的厚度，在未指定的情况下一般为 0
 
-![client](https://gitee.com/cxyz/imgbed/raw/img/img/client.png)
+![client](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/client.png)
 
 - element example
 

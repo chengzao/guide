@@ -631,4 +631,4 @@ let fn = reqiure("");
 
 ## 原型链示意图
 
-![oop](https://gitee.com/cxyz/imgbed/raw/img/img/oop.jpg)
+![oop](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/oop.jpg)

@@ -18,19 +18,19 @@ categories:
 
 > 原文：https://www.liwenzhou.com/posts/Go/15_socket/
 
-![七层模型](https://gitee.com/cxyz/imgbed/raw/img/2021/OIS-20210111160033.png)
+![OIS-20210111160033](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/OIS-20210111160033.png)
 
 ## 五层模型
 
 > 原文：https://www.liwenzhou.com/posts/Go/15_socket/
 
-![五层模型](https://gitee.com/cxyz/imgbed/raw/img/2021/protocol-20210111160334.png)
+![protocol-20210111160334](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/protocol-20210111160334.png)
 
 ## socket图解
 
 > 原文：https://www.liwenzhou.com/posts/Go/15_socket/
 
-![Socket](https://gitee.com/cxyz/imgbed/raw/img/2021/Socket-20210111161754.png)
+![Socket-20210111161754](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/Socket-20210111161754.png)
 
 ## TCP
 
@@ -41,7 +41,7 @@ categories:
 
 :::
 
-![TCP三次握手，四次挥手](https://gitee.com/cxyz/imgbed/raw/img/2021/TCP-20210111162547.png)
+![TCP-20210111162547](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/TCP-20210111162547.png)
 
 - 为什么挥手需要四次？
   - 关闭连接时，客户端向服务端发送 FIN 时，仅仅表示客户端不再发送数据了但是还能接收数据；

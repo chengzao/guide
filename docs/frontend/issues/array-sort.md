@@ -21,7 +21,7 @@ categories:
   - 每次冒泡操作都会对相邻的两个元素进行比较，看是否满足大小关系要求。如果不满足就让它俩互换;
   - 一次冒泡会让至少一个元素移动到它应该在的位置，重复 n 次，就完成了 n 个数据的排序工作.
 
-![bubbleSort](https://gitee.com/cxyz/imgbed/raw/img/img/bubbleSortArray.gif)
+![bubbleSortArray](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/bubbleSortArray.gif)
 
 - 代码
 
@@ -57,7 +57,7 @@ console.log(bubbleSort(arr));
   - 左右分别用一个空数组去存储比较后的数据。
   - 最后递归执行上述操作，直到`数组长度 <= 1`
 
-![quickSort](https://gitee.com/cxyz/imgbed/raw/img/img/quickSort.gif)
+![quickSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/quickSort.gif)
 
 - 代码 1
 
@@ -199,7 +199,7 @@ console.log('quickSort2 ', quickSort2(array2));
   - 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾
   - 重复第二步，直到所有元素均排序完毕
 
-![selectionSort](https://gitee.com/cxyz/imgbed/raw/img/img/selectionSort.gif)
+![selectionSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/selectionSort.gif)
 
 - 代码
 
@@ -234,7 +234,7 @@ function selectionSort(arr) {
 
 排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序
 
-![mergeSort](https://gitee.com/cxyz/imgbed/raw/img/img/mergeSort.gif)
+![mergeSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/mergeSort.gif)
 
 - 代码
 
@@ -290,7 +290,7 @@ console.timeEnd('归并排序耗时');
   - 将新元素插入到该位置后；
   - 重复步骤 2 ~ 5
 
-![insertionSort](https://gitee.com/cxyz/imgbed/raw/img/img/insertionSort.gif)
+![insertionSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/insertionSort.gif)
 
 - 代码
 
@@ -407,7 +407,7 @@ binaryInsertionSort(array2);
   - 分别进行直接插入排序。
   - 待整个序列中的记录基本有序时，再对全体记录进行依次直接插入排序。
 
-![shellSort](https://gitee.com/cxyz/imgbed/raw/img/img/shellSort.gif)
+![shellSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/shellSort.gif)
 
 - 代码
 

@@ -24,7 +24,7 @@ categories:
 
 - [Redux 关系图解](https://segmentfault.com/a/1190000011473973)
 
-  ![react-redux](https://gitee.com/cxyz/imgbed/raw/img/img/react-redux-01.png)
+  ![react-redux-01](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/react-redux-01.png)
 
 ## Provider
 

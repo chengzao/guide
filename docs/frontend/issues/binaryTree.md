@@ -63,7 +63,7 @@ BST.prototype.insertNode = function(node, newNode) {
 
 - 示例图
 
-  ![in order node](https://gitee.com/cxyz/imgbed/raw/img/img/20200102225508.png)
+  ![20200102225508](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200102225508.png)
 
 - 代码
 
@@ -117,7 +117,7 @@ BST.prototype.inOrderDescNode = function(node, nodeArr) {
 
 - 示例图
 
-  ![preOrderNode](https://gitee.com/cxyz/imgbed/raw/img/img/20200102225235.png)
+  ![20200102225235](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200102225235.png)
 
 - 代码
 
@@ -154,7 +154,7 @@ BST.prototype.preOrderNode = function(node, nodeArr) {
 
 - 示例图
 
-  ![reOrder](https://gitee.com/cxyz/imgbed/raw/img/img/20200102225635.png)
+  ![20200102225635](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200102225635.png)
 
 - 代码
 
