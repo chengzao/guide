@@ -40,20 +40,6 @@ module.exports = {
         text: "tag"
       }
     },
-    friendLink: [
-      {
-        title: "vuepress",
-        desc: "Vue-powered Static Site Generator",
-        link: "https://vuepress.vuejs.org/"
-      },
-      {
-        title: "vuepress-theme-reco",
-        desc: "A simple and beautiful vuepress Blog & Doc theme.",
-        avatar:
-          "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        link: "https://vuepress-theme-reco.recoluan.com"
-      }
-    ]
   },
   markdown: {
     extendMarkdown: md => {
