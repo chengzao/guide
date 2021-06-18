@@ -15,6 +15,7 @@ module.exports = [
     "meta",
     { name: "apple-mobile-web-app-status-bar-style", content: "black" }
   ],
+  ["meta", {name:"google-site-verification", content:"eHyT7Ws8-2CUA3HNtea2CWJqk-R2c21lN58XjjS6SeU"}],
   ["meta", { name: "msapplication-TileColor", content: "#000000" }],
   [
     'script',{},

@@ -1,10 +1,14 @@
+const MEILI_URL = 'https://main-meilise-g4knoyw7zans28xi-gtw.qovery.io'
+const MEILI_KEY = '1133481d50d6ebb46b5c167c4593e70706da4c77256f94ef3880b4c331cf1540'
+const MEILI_INDEX = 'vuepress'
+
 module.exports = [
   [
     "vuepress-plugin-meilisearch",
     {
-      hostUrl: "https://main-meilise-hxwkas5z3lnxw2bx-gtw.qovery.io",
-      apiKey: "1133481d50d6ebb46b5c167c4593e70706da4c77256f94ef3880b4c331cf1540",
-      indexUid: "vuepress",
+      hostUrl: MEILI_URL,
+      apiKey: MEILI_KEY,
+      indexUid: MEILI_INDEX,
       placeholder: "Search as you type...",
       maxSuggestions: 520,
       cropLength: 50
