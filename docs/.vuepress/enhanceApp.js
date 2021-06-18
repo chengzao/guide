@@ -20,27 +20,27 @@ export default ({
   //   }
   // });
 
-  router.beforeEach((to,from, next) => {
-    if(!isServer){
-      (function(w, doc,l){
-        if(w[l]) {
-          return w[l]
-        }else{
-          var body = doc.querySelector('body');
-          var sc = doc.createElement('noscript');
-          var ifr = doc.createElement('iframe');
-          ifr.src= "https://www.googletagmanager.com/ns.html?id=GTM-NRFTTPL";
-          ifr.width = 0;
-          ifr.height = 0;
-          ifr.style = "display:none;visibility:hidden"
-          sc.appendChild(ifr);
-          w[l] = sc;
-          body.insertBefore(sc,doc.querySelector('#app'));
-        }
-      })(window,document, 'GTMNRFTTPL');
-    }
-    next()
-  })
+  // router.beforeEach((to,from, next) => {
+  //   if(!isServer){
+  //     (function(w, doc,l){
+  //       if(w[l]) {
+  //         return w[l]
+  //       }else{
+  //         var body = doc.querySelector('body');
+  //         var sc = doc.createElement('noscript');
+  //         var ifr = doc.createElement('iframe');
+  //         ifr.src= "https://www.googletagmanager.com/ns.html?id=GTM-NRFTTPL";
+  //         ifr.width = 0;
+  //         ifr.height = 0;
+  //         ifr.style = "display:none;visibility:hidden"
+  //         sc.appendChild(ifr);
+  //         w[l] = sc;
+  //         body.insertBefore(sc,doc.querySelector('#app'));
+  //       }
+  //     })(window,document, 'GTMNRFTTPL');
+  //   }
+  //   next()
+  // })
 
 
 };
