@@ -31,7 +31,7 @@
   "dependencies": {
     "cross-env": "^7.0.3",
     "vuepress-plugin-img-lazy": "^1.0.4",
-    "vuepress-plugin-meilisearch": "^0.10.7",
+    "vuepress-plugin-meilisearch": "^0.11.0",
     "vuepress-plugin-named-chunks": "^1.1.4",
     "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-plugin-sitemap": "^2.3.1",
