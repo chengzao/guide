@@ -1,4 +1,4 @@
-const MEILI_URL = 'https://main-meilise-g4knoyw7zans28xi-gtw.qovery.io'
+const MEILI_URL = 'https://z968b6a4c-gtw.qovery.io'
 const MEILI_KEY = '1133481d50d6ebb46b5c167c4593e70706da4c77256f94ef3880b4c331cf1540'
 const MEILI_INDEX = 'vuepress'
 
