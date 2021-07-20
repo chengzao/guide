@@ -20,7 +20,10 @@ module.exports = [
     "@vuepress/pwa",
     {
       serviceWorker: true,
-      updatePopup: true,
+      updatePopup: {
+        message: "发现新内容",
+        buttonText: "刷新"
+      },
       generateSWConfig:{
         // skipWaiting: true,
         // clientsClaim: true,
