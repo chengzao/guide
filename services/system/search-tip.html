@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>搜索小技巧 | FE Note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'/guide/js/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NRFTTPL');
+    </script>
+    <link rel="icon" href="/guide/logo.png">
+    <link rel="manifest" href="/guide/manifest.json">
+    <link rel="stylesheet" href="/guide/css/prism-okaidia.css">
+    <script>
+    !function(t, a, e) {
+      var n = a.createElement("script");
+      n.type = "text/javascript", n.src = "/guide/js/gtag.js?id=G-ERESYWH7YN",
+      n.async = !0, n.crossOrigin = "anonymous", n.onload = function() {
+          function a() {
+              dataLayer.push(arguments);
+          }
+          t.dataLayer = t.dataLayer || [], a("js", new Date()), a("config", "G-ERESYWH7YN");
+      };
+      var r = a.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(n, r);
+    }(window, document);
+    </script>
+    <meta name="description" content="about front-end docs notes website">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="google-site-verification" content="eHyT7Ws8-2CUA3HNtea2CWJqk-R2c21lN58XjjS6SeU">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/guide/assets/css/0.styles.7423aaf3.css" as="style"><link rel="preload" href="/guide/assets/js/app.5d49456a.js" as="script"><link rel="preload" href="/guide/assets/js/4.236dd9a4.js" as="script"><link rel="preload" href="/guide/assets/js/1.c97d17d0.js" as="script"><link rel="preload" href="/guide/assets/js/93.e98ae4c9.js" as="script"><link rel="prefetch" href="/guide/assets/js/10.ffd01fba.js"><link rel="prefetch" href="/guide/assets/js/100.d540ecb7.js"><link rel="prefetch" href="/guide/assets/js/101.8e146367.js"><link rel="prefetch" href="/guide/assets/js/102.76133742.js"><link rel="prefetch" href="/guide/assets/js/103.2dc54880.js"><link rel="prefetch" href="/guide/assets/js/104.e6567471.js"><link rel="prefetch" href="/guide/assets/js/105.e7aa893e.js"><link rel="prefetch" href="/guide/assets/js/106.a595674d.js"><link rel="prefetch" href="/guide/assets/js/107.62947153.js"><link rel="prefetch" href="/guide/assets/js/108.5e1849f5.js"><link rel="prefetch" href="/guide/assets/js/109.fceb5fb4.js"><link rel="prefetch" href="/guide/assets/js/11.f6e00393.js"><link rel="prefetch" href="/guide/assets/js/110.3795c198.js"><link rel="prefetch" href="/guide/assets/js/111.d5634703.js"><link rel="prefetch" href="/guide/assets/js/112.a996b59c.js"><link rel="prefetch" href="/guide/assets/js/113.c26d5b97.js"><link rel="prefetch" href="/guide/assets/js/114.ff03957e.js"><link rel="prefetch" href="/guide/assets/js/12.f75959d5.js"><link rel="prefetch" href="/guide/assets/js/13.09e16f22.js"><link rel="prefetch" href="/guide/assets/js/14.a3e00c44.js"><link rel="prefetch" href="/guide/assets/js/15.537ce31a.js"><link rel="prefetch" href="/guide/assets/js/16.5a37523c.js"><link rel="prefetch" href="/guide/assets/js/17.100e2c12.js"><link rel="prefetch" href="/guide/assets/js/18.94f6055c.js"><link rel="prefetch" href="/guide/assets/js/19.4880fb3c.js"><link rel="prefetch" href="/guide/assets/js/2.918e739f.js"><link rel="prefetch" href="/guide/assets/js/20.87bc61dd.js"><link rel="prefetch" href="/guide/assets/js/21.c271e64e.js"><link rel="prefetch" href="/guide/assets/js/22.54cce853.js"><link rel="prefetch" href="/guide/assets/js/23.bbde5dac.js"><link rel="prefetch" href="/guide/assets/js/24.20289f1d.js"><link rel="prefetch" href="/guide/assets/js/25.881a5f17.js"><link rel="prefetch" href="/guide/assets/js/26.fa9ebaaf.js"><link rel="prefetch" href="/guide/assets/js/27.a4ae28fa.js"><link rel="prefetch" href="/guide/assets/js/28.2eafefa6.js"><link rel="prefetch" href="/guide/assets/js/29.1623202b.js"><link rel="prefetch" href="/guide/assets/js/30.672532f9.js"><link rel="prefetch" href="/guide/assets/js/31.ef12ff92.js"><link rel="prefetch" href="/guide/assets/js/32.3e457df5.js"><link rel="prefetch" href="/guide/assets/js/33.14d665f2.js"><link rel="prefetch" href="/guide/assets/js/34.c305f718.js"><link rel="prefetch" href="/guide/assets/js/35.92a4a292.js"><link rel="prefetch" href="/guide/assets/js/36.a16925cf.js"><link rel="prefetch" href="/guide/assets/js/37.49322f58.js"><link rel="prefetch" href="/guide/assets/js/38.52c49bc3.js"><link rel="prefetch" href="/guide/assets/js/39.f5e8d940.js"><link rel="prefetch" href="/guide/assets/js/40.3928dc6a.js"><link rel="prefetch" href="/guide/assets/js/41.add4030a.js"><link rel="prefetch" href="/guide/assets/js/42.aa7433ba.js"><link rel="prefetch" href="/guide/assets/js/43.4898bccc.js"><link rel="prefetch" href="/guide/assets/js/44.42bbf66c.js"><link rel="prefetch" href="/guide/assets/js/45.f5dd9fa0.js"><link rel="prefetch" href="/guide/assets/js/46.eef12ee5.js"><link rel="prefetch" href="/guide/assets/js/47.4a6852cb.js"><link rel="prefetch" href="/guide/assets/js/48.24092aa8.js"><link rel="prefetch" href="/guide/assets/js/49.4cf7469e.js"><link rel="prefetch" href="/guide/assets/js/5.2b34b5df.js"><link rel="prefetch" href="/guide/assets/js/50.2ac05422.js"><link rel="prefetch" href="/guide/assets/js/51.68e20f0c.js"><link rel="prefetch" href="/guide/assets/js/52.1006f24a.js"><link rel="prefetch" href="/guide/assets/js/53.bfe46c69.js"><link rel="prefetch" href="/guide/assets/js/54.c540edd0.js"><link rel="prefetch" href="/guide/assets/js/55.a1c6b864.js"><link rel="prefetch" href="/guide/assets/js/56.6e16373b.js"><link rel="prefetch" href="/guide/assets/js/57.0428d48a.js"><link rel="prefetch" href="/guide/assets/js/58.9b70872e.js"><link rel="prefetch" href="/guide/assets/js/59.c6ec4cd6.js"><link rel="prefetch" href="/guide/assets/js/6.4639a002.js"><link rel="prefetch" href="/guide/assets/js/60.966947d6.js"><link rel="prefetch" href="/guide/assets/js/61.c2c95456.js"><link rel="prefetch" href="/guide/assets/js/62.bad8e1fd.js"><link rel="prefetch" href="/guide/assets/js/63.51c87ba8.js"><link rel="prefetch" href="/guide/assets/js/64.244f0441.js"><link rel="prefetch" href="/guide/assets/js/65.0f7f8724.js"><link rel="prefetch" href="/guide/assets/js/66.aeedec7d.js"><link rel="prefetch" href="/guide/assets/js/67.056f192f.js"><link rel="prefetch" href="/guide/assets/js/68.33425cd4.js"><link rel="prefetch" href="/guide/assets/js/69.e4453aae.js"><link rel="prefetch" href="/guide/assets/js/7.e863a4e1.js"><link rel="prefetch" href="/guide/assets/js/70.5483bfa2.js"><link rel="prefetch" href="/guide/assets/js/71.bbba0392.js"><link rel="prefetch" href="/guide/assets/js/72.d0da2f5e.js"><link rel="prefetch" href="/guide/assets/js/73.159249e2.js"><link rel="prefetch" href="/guide/assets/js/74.562b3449.js"><link rel="prefetch" href="/guide/assets/js/75.8dfcbddc.js"><link rel="prefetch" href="/guide/assets/js/76.ee981bd1.js"><link rel="prefetch" href="/guide/assets/js/77.b7a30a81.js"><link rel="prefetch" href="/guide/assets/js/78.deeeebf0.js"><link rel="prefetch" href="/guide/assets/js/79.ff9ecb90.js"><link rel="prefetch" href="/guide/assets/js/8.7bf25d13.js"><link rel="prefetch" href="/guide/assets/js/80.ffffd18e.js"><link rel="prefetch" href="/guide/assets/js/81.71584312.js"><link rel="prefetch" href="/guide/assets/js/82.5bffc20c.js"><link rel="prefetch" href="/guide/assets/js/83.f4ba6737.js"><link rel="prefetch" href="/guide/assets/js/84.23d57f12.js"><link rel="prefetch" href="/guide/assets/js/85.8fdbe9aa.js"><link rel="prefetch" href="/guide/assets/js/86.3d30d6fc.js"><link rel="prefetch" href="/guide/assets/js/87.f2048f94.js"><link rel="prefetch" href="/guide/assets/js/88.fa58ea6d.js"><link rel="prefetch" href="/guide/assets/js/89.1caa577f.js"><link rel="prefetch" href="/guide/assets/js/9.6c640538.js"><link rel="prefetch" href="/guide/assets/js/90.e24c359e.js"><link rel="prefetch" href="/guide/assets/js/91.67a016d8.js"><link rel="prefetch" href="/guide/assets/js/92.69ce8028.js"><link rel="prefetch" href="/guide/assets/js/94.cca7637e.js"><link rel="prefetch" href="/guide/assets/js/95.e6c0be72.js"><link rel="prefetch" href="/guide/assets/js/96.03c9a1cc.js"><link rel="prefetch" href="/guide/assets/js/97.676069c5.js"><link rel="prefetch" href="/guide/assets/js/98.2ba08ba4.js"><link rel="prefetch" href="/guide/assets/js/99.779ca513.js">
+    <link rel="stylesheet" href="/guide/assets/css/0.styles.7423aaf3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>FE Note</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>about front-end docs notes website</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/guide/" class="home-link router-link-active"><img src="/guide/logo.png" alt="FE Note" class="logo"> <span class="site-name">FE Note</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/frontend/learn/" class="nav-link"><i class="undefined"></i>
+  笔记
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/react/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/issues/" class="nav-link"><i class="undefined"></i>
+  问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/services/tools/" class="nav-link"><i class="undefined"></i>
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/guide/services/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/guide/services/system/" class="nav-link router-link-active"><i class="undefined"></i>
+  系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/categories/frontend/" class="nav-link"><i class="undefined"></i>
+  frontend
+</a></li><li class="dropdown-item"><!----> <a href="/guide/categories/system/" class="nav-link"><i class="undefined"></i>
+  system
+</a></li><li class="dropdown-item"><!----> <a href="/guide/categories/services/" class="nav-link"><i class="undefined"></i>
+  services
+</a></li></ul></div></div><div class="nav-item"><a href="/guide/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/chengzao/guide" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/guide/logo.png" alt="author-avatar" class="personal-img" data-v-39576ba9> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>100</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>86</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/frontend/learn/" class="nav-link"><i class="undefined"></i>
+  笔记
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/react/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/issues/" class="nav-link"><i class="undefined"></i>
+  问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      其他
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/services/tools/" class="nav-link"><i class="undefined"></i>
+  工具
+</a></li><li class="dropdown-item"><!----> <a href="/guide/services/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/guide/services/system/" class="nav-link router-link-active"><i class="undefined"></i>
+  系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/categories/frontend/" class="nav-link"><i class="undefined"></i>
+  frontend
+</a></li><li class="dropdown-item"><!----> <a href="/guide/categories/system/" class="nav-link"><i class="undefined"></i>
+  system
+</a></li><li class="dropdown-item"><!----> <a href="/guide/categories/services/" class="nav-link"><i class="undefined"></i>
+  services
+</a></li></ul></div></div><div class="nav-item"><a href="/guide/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/chengzao/guide" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>System</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/services/system/" aria-current="page" class="sidebar-link">windows环境中的wsl使用</a></li><li><a href="/guide/services/system/aria2.html" class="sidebar-link">aria2</a></li><li><a href="/guide/services/system/centos7.html" class="sidebar-link">centos7命令参数</a></li><li><a href="/guide/services/system/docker.html" class="sidebar-link">docker命令列表</a></li><li><a href="/guide/services/system/docker-compose.html" class="sidebar-link">docker-compose命令</a></li><li><a href="/guide/services/system/docker-stu.html" class="sidebar-link">docker使用示例</a></li><li><a href="/guide/services/system/gitlab.html" class="sidebar-link">gitlab的服务部署</a></li><li><a href="/guide/services/system/linux.html" class="sidebar-link">linux命令参数</a></li><li><a href="/guide/services/system/manjaro.html" class="sidebar-link">manjaro命令参数</a></li><li><a href="/guide/services/system/nginx.html" class="sidebar-link">nginx安装使用</a></li><li><a href="/guide/services/system/nodejs.html" class="sidebar-link">node.js的记录</a></li><li><a href="/guide/services/system/search-tip.html" aria-current="page" class="active sidebar-link">搜索小技巧</a></li><li><a href="/guide/services/system/travis.html" class="sidebar-link">持续部署环境travis-ci的使用介绍</a></li><li><a href="/guide/services/system/ubuntu.html" class="sidebar-link">ubuntu常见命名</a></li><li><a href="/guide/services/system/vagrant.html" class="sidebar-link">vagrant虚拟机的使用</a></li><li><a href="/guide/services/system/vim.html" class="sidebar-link">vim的简单使用</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>搜索小技巧</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">搜索小技巧</h1> <div data-v-f875f3fc><!----> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2021/8/1</span></i> <!----> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>search</span><span class="tag-item" data-v-f875f3fc>github</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="github搜索"><a href="#github搜索" class="header-anchor">#</a> github搜索</h2> <ul><li>searching-on-github： https://docs.github.com/cn/github/searching-for-information-on-github/searching-on-github</li></ul> <h3 id="_1、根据star-fork数筛选"><a href="#_1、根据star-fork数筛选" class="header-anchor">#</a> 1、根据star，fork数筛选</h3> <ul><li>1、 大于等于</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>语法： 关键字 stars:&gt;= 数量 forks:&gt;=数量
+
+例子：
+
+//搜索springboot有关star数&gt;=5000的内容
+springboot stars:&gt;=5000
+
+//搜索springboot 的star&gt;=5000，且fork数&gt;=5000的内容
+springboot stars:&gt;=5000 forks:&gt;=5000
+
+可单独搜索，也可组合搜索，中间用空格隔开，是&amp;（且）的关系。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>2、范围查询</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>语法： 关键字 stars:范围1..范围2
+
+例子：
+
+//搜索star数在 4000到500的springboot相关内容
+springboot stars:4000..5000
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="_2、-关键字-in"><a href="#_2、-关键字-in" class="header-anchor">#</a> 2、 关键字 in</h3> <blockquote><p>搜索关键字在github上发布的位置 ，主要以下3个位置</p></blockquote> <ul><li>name: 发布的仓库名称</li> <li>description: 指的是文章的摘要部分</li> <li>Readme: 说明文档</li> <li>USERNAME: 表示在USERNAME中搜索 TSP 关键字</li> <li>ORGNAME: 表示在组织或机构名中搜索 TSP 关键字</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>语法：关键字 in
+
+例子：
+
+//查找名称中包含netty的内容
+netty in:name
+
+//逗号分隔，是 || (或)的关系，指的是查询名称，或者描述中包含netty的内容
+netty in:name,description
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="_3、awesome-关键字"><a href="#_3、awesome-关键字" class="header-anchor">#</a> 3、awesome + 关键字</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>语法：awesome 关键字
+
+例子：
+
+awesome springboot
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_4、搜索某个语言-某个地区"><a href="#_4、搜索某个语言-某个地区" class="header-anchor">#</a> 4、搜索某个语言，某个地区</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>例子：
+
+// 表示在TSP项目中筛选编程语言为MATLAB的项目
+TSP language:MATLAB
+
+// 表示在TSP项目中筛选开发者为中国人的项目
+TSP location:china
+
+// 表示在TSP项目中筛选开发者粉丝大于1000的项目
+TSP followers:&gt;1000
+
+// 表示搜索用户命为UCAS的开发者的项目
+UCAS in:fullname
+
+// 表示筛选TSP项目中是中国人写的而且是MATLAB语言的的项目
+TSP language:MATLAB&amp;location:china
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="_5、查看源码利器-t"><a href="#_5、查看源码利器-t" class="header-anchor">#</a> 5、查看源码利器 t</h3> <blockquote><p>用 t ，该框架所有的类以列表形式平铺展开，方便查看</p></blockquote> <h3 id="_6、实现某行-某块代码高亮"><a href="#_6、实现某行-某块代码高亮" class="header-anchor">#</a> 6、实现某行，某块代码高亮</h3> <ul><li>某行高亮: <code>#L23</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>https://github.com/xxx/xxx.js#L23
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>某个代码块: <code>#L23-35</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>https://github.com/xxx/xxx.js#L23-L35
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="_7、查询某位用户"><a href="#_7、查询某位用户" class="header-anchor">#</a> 7、查询某位用户</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>语法：user:名称
+
+例子：user:fullname
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="google搜索"><a href="#google搜索" class="header-anchor">#</a> google搜索</h2> <h3 id="_1、关键词包含在标题中"><a href="#_1、关键词包含在标题中" class="header-anchor">#</a> 1、关键词包含在标题中</h3> <ul><li><code>intitle:（关键词）</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>intitle:github
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>allintitle</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 相当于intitle:zabbix intitle:docker
+allintitle:zabbix docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_2、关键词包含在正文中"><a href="#_2、关键词包含在正文中" class="header-anchor">#</a> 2、关键词包含在正文中</h3> <ul><li><code>intext:（关键词）</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>intext:github
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="_3、限定搜索网站"><a href="#_3、限定搜索网站" class="header-anchor">#</a> 3、限定搜索网站</h3> <ul><li><code>（关键词）inurl:（网站类型）</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>网站类型:
+
+〔.com〕商业组织和公司
+〔.net〕网络服务商
+〔.gov〕政府部门
+〔.org〕非营利性组织
+〔.int〕国际组织
+〔.edu〕教育部门
+
+示例：
+baidu inurl:.org
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>allinurl</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 相当于 inurl:zabbix inurl:docker
+allinurl:zabbix hadoop
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_4、限定在两个数值之间进行搜索"><a href="#_4、限定在两个数值之间进行搜索" class="header-anchor">#</a> 4、限定在两个数值之间进行搜索</h3> <ul><li><code>开始时间.. 结束时间</code>： 关键词 2018.. 2021</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>xxx 1920.. 1950
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="_5、指定网站内搜索"><a href="#_5、指定网站内搜索" class="header-anchor">#</a> 5、指定网站内搜索</h3> <ul><li><code>site:域名 关键词</code></li></ul> <h3 id="_6、限定文件类型"><a href="#_6、限定文件类型" class="header-anchor">#</a> 6、限定文件类型</h3> <ul><li><code>（关键词）filetype:文件类型</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>常见文件类型
+
+〔pdf〕PDF文件
+〔xls〕:excle文件
+〔ppt〕:powerpoint文件
+〔doc〕:word文件
+〔txt〕:文本文档
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="_7、精确搜索-给关键词加引号"><a href="#_7、精确搜索-给关键词加引号" class="header-anchor">#</a> 7、精确搜索(给关键词加引号)</h3> <ul><li><code>&quot;关键词&quot;</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 搜索 小苹果 关键词
+&quot;小苹果&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>排除关键词：<code>关键词 -排除关键词</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>足球 -篮球
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>包含某个关键词：<code>关键词 +附加关键词</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>足球 +篮球
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="_8、星号"><a href="#_8、星号" class="header-anchor">#</a> 8、星号（*）</h3> <ul><li>常用的案例:搜索报错中的特定路径 , 有个词忘记了或者不会打</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>git push remote error does not match * user account
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>搜索词模糊</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>architect*
+
+返回是所有包含 architect、architectural、以及其他所有以「architect」作为开头的词汇的条目
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></div></section> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/chengzao/guide/edit/master/docs/services/system/search-tip.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">1/30/2022</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/guide/services/system/nodejs.html" class="prev">
+            node.js的记录
+          </a></span> <span class="next"><a href="/guide/services/system/travis.html">
+            持续部署环境travis-ci的使用介绍
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#github搜索" class="sidebar-link reco-side-github搜索" data-v-cb1513f6>github搜索</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_1、根据star-fork数筛选" class="sidebar-link reco-side-_1、根据star-fork数筛选" data-v-cb1513f6>1、根据star，fork数筛选</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_2、-关键字-in" class="sidebar-link reco-side-_2、-关键字-in" data-v-cb1513f6>2、 关键字 in</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_3、awesome-关键字" class="sidebar-link reco-side-_3、awesome-关键字" data-v-cb1513f6>3、awesome + 关键字</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_4、搜索某个语言-某个地区" class="sidebar-link reco-side-_4、搜索某个语言-某个地区" data-v-cb1513f6>4、搜索某个语言，某个地区</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_5、查看源码利器-t" class="sidebar-link reco-side-_5、查看源码利器-t" data-v-cb1513f6>5、查看源码利器 t</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_6、实现某行-某块代码高亮" class="sidebar-link reco-side-_6、实现某行-某块代码高亮" data-v-cb1513f6>6、实现某行，某块代码高亮</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_7、查询某位用户" class="sidebar-link reco-side-_7、查询某位用户" data-v-cb1513f6>7、查询某位用户</a></li><li class="level-2" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#google搜索" class="sidebar-link reco-side-google搜索" data-v-cb1513f6>google搜索</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_1、关键词包含在标题中" class="sidebar-link reco-side-_1、关键词包含在标题中" data-v-cb1513f6>1、关键词包含在标题中</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_2、关键词包含在正文中" class="sidebar-link reco-side-_2、关键词包含在正文中" data-v-cb1513f6>2、关键词包含在正文中</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_3、限定搜索网站" class="sidebar-link reco-side-_3、限定搜索网站" data-v-cb1513f6>3、限定搜索网站</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_4、限定在两个数值之间进行搜索" class="sidebar-link reco-side-_4、限定在两个数值之间进行搜索" data-v-cb1513f6>4、限定在两个数值之间进行搜索</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_5、指定网站内搜索" class="sidebar-link reco-side-_5、指定网站内搜索" data-v-cb1513f6>5、指定网站内搜索</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_6、限定文件类型" class="sidebar-link reco-side-_6、限定文件类型" data-v-cb1513f6>6、限定文件类型</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_7、精确搜索-给关键词加引号" class="sidebar-link reco-side-_7、精确搜索-给关键词加引号" data-v-cb1513f6>7、精确搜索(给关键词加引号)</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/system/search-tip.html#_8、星号" class="sidebar-link reco-side-_8、星号" data-v-cb1513f6>8、星号（*）</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/guide/assets/js/app.5d49456a.js" defer></script><script src="/guide/assets/js/4.236dd9a4.js" defer></script><script src="/guide/assets/js/1.c97d17d0.js" defer></script><script src="/guide/assets/js/93.e98ae4c9.js" defer></script>
+  </body>
+</html>
