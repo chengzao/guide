@@ -1,0 +1,37 @@
+{
+  "index_uid": "vuepress",
+  "sitemap_urls": ["https://guide.czhlink.com/sitemap.xml"],
+  "sitemap_alternate_links": true,
+  "start_urls": ["https://guide.czhlink.com"],
+  "selectors": {
+    "lvl0": {
+      "selector": "p.sidebar-heading.open",
+      "global": true,
+      "default_value": "Documentation"
+    },
+    "lvl1": ".page h1",
+    "lvl2": ".page h2",
+    "lvl3": ".page h3",
+    "lvl4": ".page h4",
+    "lvl5": ".page h5",
+    "text": ".page p, .page li, .page a",
+    "lang": {
+      "selector": "/html/@lang",
+      "type": "xpath",
+      "global": true,
+      "default_value": "en-US"
+    }
+  },
+  "selectors_exclude": [
+    ".table-of-contents"
+  ],
+  "strip_chars": " .,;:#",
+  "scrap_start_urls": true,
+  "custom_settings": {
+    "synonyms": {
+      "relevancy": ["relevant", "relevance"],
+      "relevant": ["relevancy", "relevance"],
+      "relevance": ["relevancy", "relevant"]
+    }
+  }
+}

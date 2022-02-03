@@ -1,0 +1,155 @@
+ /* @import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
+ html,body
+   font-family "Fira Code" */
+
+.content:not(.custom)
+  overflow hidden
+  ul li
+    word-wrap break-word
+
+.content:not(.custom)
+  h1,h2,h3,h4,h5
+    line-height normal
+    word-break break-word
+
+.home .hero img
+  max-height 240px
+  border-radius 50%
+  overflow hidden
+
+.home .hero h1
+  display none
+
+.content h1
+  font-size 1.5rem
+  color #2c3e50
+
+.content h2
+  font-size 1.2rem
+  color #4e6e8e
+
+.content h3
+  font-size 1rem
+  color #434343
+
+details summary:focus
+  outline none
+
+details summary:hover
+  cursor pointer
+
+
+.hide
+  display none
+
+@keyframes rocking {
+  0%,
+  100% {
+    transform: rotateZ(-10deg);
+  }
+  50% {
+    transform: rotateZ(10deg);
+  }
+}
+
+.vue-typer {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.vue-typer .custom.char.typed {
+  color: #009688;
+}
+.vue-typer .custom.char.selected {
+  color: #e91e63;
+}
+
+.vue-typer .custom.caret {
+  animation: rocking 1s ease-in-out 0s infinite;
+}
+.vue-typer .custom.caret.typing {
+  background-color: #009688;
+}
+.vue-typer .custom.caret.selecting {
+  display: inline-block;
+  background-color: #e91e63;
+}
+
+.sidebar > .sidebar-links > li:not(:first-child)
+  margin-top 0.2rem
+
+.sidebar > .sidebar-links > li > a.sidebar-link
+  font-size 1em !important
+  line-height 1 !important
+  font-weight 600 !important
+
+.tag-item
+    cursor: pointer
+
+.preview-code .editor pre
+  flex: 1
+
+.theme-reco-content .icon.outbound
+  color: #0fa6e2
+
+.custom-reco-pages
+  .home-blog .home-blog-wrapper .info-wrapper
+    overflow: visible
+
+.page .side-bar
+  box-shadow 1px 2px 4px 0px #ccc;
+  min-height: 300px;
+  max-height: 50%;
+
+.content__default:not(.custom)
+  margin-top 2rem
+
+.info-wrapper div.tags
+  max-height: 555px;
+  overflow: auto;
+
+.meilisearch-autocomplete .dsb-dropdown-menu
+  max-height: 600px;
+  overflow-y: auto;
+
+.meilisearch-autocomplete .dsb-dropdown-menu .dsb-suggestions
+  max-height: 520px;
+  overflow-y: auto;
+
+.search-box ul.suggestions
+  padding-bottom: 10px;
+  max-height: 520px;
+  overflow-y: auto;
+
+div[class*="language-"]
+  overflow hidden
+  margin-bottom 10px
+
+pre[class*=language-]
+  position: relative;
+  background-color: #282c34;
+  border-radius: 6px;
+  max-height: 520px;
+  overflow: auto;
+  margin: 5px 0;
+  padding-top: 5px;
+
+@media (max-width: $MQMobileNarrow)
+  pre[class*=language-]
+    max-height: inherit;
+  .search-box
+    .suggestions
+      min-width: calc(88vw) !important
+
+.timeline-wrapper .timeline-content
+  .year
+    margin-top: 10px !important
+  .year-wrapper li
+    padding: 10px 0 !important
+
+.sidebar-heading
+  span
+    text-transform: uppercase
+
+
+blockquote > p
+  word-break: break-word;
+  word-wrap:break-word;

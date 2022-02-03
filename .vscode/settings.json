@@ -1,0 +1,11 @@
+{
+  "markdownlint.ignore": [
+    "README.md"
+  ],
+  "cSpell.words": [
+    "centos",
+    "chengzao",
+    "reco",
+    "vuepress"
+  ]
+}
