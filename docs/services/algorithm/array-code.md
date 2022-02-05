@@ -288,6 +288,33 @@ console.log(str);
 
 ## array2Tree
 
+- 递归
+
+```js
+let arr = [
+    {id: 1, name: '部门1', pid: 0},
+    {id: 2, name: '部门2', pid: 1},
+    {id: 3, name: '部门3', pid: 1},
+    {id: 4, name: '部门4', pid: 3},
+    {id: 5, name: '部门5', pid: 4},
+]
+
+function array2tree(array, pid){
+  return array.reduce((pre, cur) =>{
+    if(cur.pid == pid){
+      pre.push(cur);
+      const children = array2tree(array, cur.id)
+      if(children.length){
+        cur.children = children;
+      }
+    }
+    return pre;
+  }, [])
+}
+```
+
+- 其他
+
 ```js
 function array2tree({ key, pKey, data }) {
   let obj = {};
@@ -338,6 +365,23 @@ function tree2array(arr) {
 //
 let rs2 = tree2array(rs);
 console.log(rs2);
+```
+
+- 其他
+
+```js
+function tree2array(tree){
+  return tree.reduce((acc, cur) => {
+    if(cur.children){
+      const sub = tree2array(cur.children);
+      delete cur.children;
+      acc.push(cur, ...sub);
+    }else{
+       acc.push(cur);
+    }
+    return acc;
+  }, [])
+}
 ```
 
 ## js使用filter递归过滤树形结构数组

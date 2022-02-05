@@ -272,7 +272,7 @@ function atrGetEle(ele, attr, value) {
 
 ## deepCLone
 
-
+- 方法1
 
 ```js
 // 对象数组的深拷贝
@@ -286,6 +286,11 @@ var objDeepCopy = function(source) {
   }
   return sourceCopy;
 };
+```
+
+- 方法2
+
+```js
 
 function isObject(obj) {
   return Object.prototype.toString.call(obj) == "[object Object]";
@@ -305,6 +310,11 @@ var objDeepCopy = function(obj) {
     return newObj;
   }
 };
+```
+
+- 方法3
+
+```js
 function deepClone(obj, map = new WeakMap()) {
   if (obj instanceof RegExp) return new RegExp(obj);
   if (obj instanceof Date) return new Date(obj);
@@ -324,8 +334,6 @@ function deepClone(obj, map = new WeakMap()) {
   return t;
 }
 ```
-
-
 
 ## other
 
@@ -730,7 +738,7 @@ let fib = n => Math.round(
 
 - [原文：从零一步一步实现一个完整版的 Promise](https://juejin.im/post/5d59757f6fb9a06ae76405c6)
 
-- 简易版
+- 简化版
 
 ```js
 function myPromise(constructor) {
@@ -998,7 +1006,7 @@ const xFetch = function(url, config) {
 };
 ```
 
-
+- 其他版本promise实现：<https://juejin.cn/post/6946022649768181774#heading-38>
 
 ## 监听数组变化
 

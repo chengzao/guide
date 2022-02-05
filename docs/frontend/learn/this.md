@@ -1,6 +1,6 @@
 ---
 title: js中的this使用
-date: 2020-07-20
+date: 2022-02-05
 sidebar: "auto"
 tags:
   - this
@@ -292,13 +292,17 @@ var print = d.getTime.bind(d);
 print();
 ```
 
-## 实现 call,apply,bind
+## call&apply&bind
 
-- 实现 call
+### 实现call
+
+- es6写法
 
 ```js
-Function.prototype.call2 = function (context = {}) {
-  context.fn = this;
+Function.prototype._call = function (context) {
+  // 判断 context 是否传入，如果未传入则设置为 window
+  let context = context || window;
+  context.fn = this; // 将调用函数设为对象的方法
   let args = [...arguments].slice(1);
   let result = context.fn(...args);
   delete context.fn;
@@ -313,13 +317,34 @@ function bar(name, age) {
   console.log(age)
   console.log(this.value);
 }
-bar.call2(foo, 'xxx', '18') // xxx 18 1
+bar._call(foo, 'xxx', '18') // xxx 18 1
 ```
 
-- 实现 apply
+- es5写法
 
 ```js
-Function.prototype._apply = function (context = {}) {
+Function.prototype.call2 = function (context) {
+    var context = context || window;
+
+    context.fn = this;
+
+    var args = [];
+    for(var i = 1, len = arguments.length; i < len; i++) {
+        args.push('arguments[' + i + ']');
+    }
+
+    var result = eval('context.fn(' + args +')');
+
+    delete context.fn
+    return result;
+}
+```
+
+### 实现apply
+
+```js
+Function.prototype._apply = function (context) {
+  var context = context || window;
   context.fn = this
   let result;
   // 判断是否有第二个参数
@@ -343,8 +368,7 @@ function bar(name, age) {
 bar._apply(foo, ['xxx', '18']) // xxx 18 1
 ```
 
-### bind 兼容
-
+### 实现bind
 
 
 ```js
@@ -371,9 +395,71 @@ console.log(fe()); // 1
 console.log(new fe()); // 实例 {b: 100}
 ```
 
+## 实现instanceof
 
+```js
+function instanceOf(left, right) {
+    let proto = left.__proto__
+    // let proto = Object.getPrototypeOf(left) // 也可以这样获取
+    while (true) {
+        if (proto === null) return false
+        if (proto === right.prototype) {
+            return true
+        }
+        proto = proto.__proto__
+    }
+}
+```
+
+## 实现Object.create
+
+```js
+function create(obj) {
+  function F(){}
+  F.prototype = obj
+  return new F()
+}
+```
+
+## 实现new
+
+```js
+function _new(fn, ...args) {
+  var constructor = [].shift.call(arguments);
+  var obj = {};
+
+  obj.__proto__ = constructor.prototype;
+  var ret = constructor.apply(obj, arguments);
+
+  return typeof ret === 'object' ? ret : obj;
+}
+```
+
+- other
+
+```js
+function _new() {
+  let newObject = null;
+  let constructor = Array.prototype.shift.call(arguments);
+  let result = null;
+  // 判断参数是否是一个函数
+  if (typeof constructor !== "function") {
+    console.error("type error");
+    return;
+  }
+  // 新建一个空对象，对象的原型为构造函数的 prototype 对象
+  newObject = Object.create(constructor.prototype);
+  // 将 this 指向新建对象，并执行函数
+  result = constructor.apply(newObject, arguments);
+  // 判断返回对象
+  let flag = result && (typeof result === "object" || typeof result === "function");
+  // 判断返回结果
+  return flag ? result : newObject;
+}
+```
 
 ## 相关链接
 
 - [Javascript 的 this 用法](http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html)
 - [this、apply、call、bind](https://juejin.im/post/59bfe84351882531b730bac2)
+- [「2021」高频前端面试题汇总之手写代码篇](https://juejin.cn/post/6946136940164939813#heading-0)
