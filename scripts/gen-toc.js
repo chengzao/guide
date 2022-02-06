@@ -14,8 +14,6 @@ function readdirSync(fileDir){
     const isDir = fs.statSync(filePath).isDirectory()
     if(isDir) {
       readdirSync(filePath)
-      console.log(filePath);
-
       try {
         let readmePath = path.join(filePath, 'README.md')
         let isEx = fs.existsSync(readmePath)
