@@ -6,7 +6,7 @@ categories:
   - system
 ---
 
-<toc>
+<!-- dirToc -->
 
 ## menu (15)
 
@@ -26,7 +26,7 @@ categories:
 - [vagrant虚拟机的使用](./vagrant.md)
 - [vim的简单使用](./vim.md)
 
-<toc>
+<!-- dirToc -->
 
 ## windows dos
 

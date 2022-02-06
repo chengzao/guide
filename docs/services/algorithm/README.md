@@ -6,7 +6,7 @@ autoIgnore: true
 
 数据结构与算法
 
-<toc>
+<!-- dirToc -->
 
 ## menu (5)
 
@@ -16,4 +16,4 @@ autoIgnore: true
 - [栈/队列/链表](./stack-deque.md)
 - [两数之和](./to-sum.md)
 
-<toc>
+<!-- dirToc -->

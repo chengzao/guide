@@ -8,7 +8,7 @@ categories:
   - frontend
 ---
 
-<toc>
+<!-- dirToc -->
 
 ## menu (30)
 
@@ -43,7 +43,9 @@ categories:
 - [css常见问题](./use-css.md)
 - [html常见布局](./use-html.md)
 
-<toc>
+<!-- dirToc -->
+
+---
 
 - [30-seconds-of-interviews](https://github.com/30-seconds/30-seconds-of-interviews)
 - [点击 form 只提交 form 中 input 的一部分](https://segmentfault.com/q/1010000005331233)

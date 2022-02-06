@@ -8,7 +8,7 @@ categories:
   - frontend
 ---
 
-<toc>
+<!-- dirToc -->
 
 ## menu (15)
 
@@ -28,7 +28,7 @@ categories:
 - [vscode](./vscode.md)
 - [webpack](./webpack.md)
 
-<toc>
+<!-- dirToc -->
 
 - [ASCII@wikipedia](https://zh.wikipedia.org/wiki/ASCII)
 

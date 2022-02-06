@@ -18,7 +18,7 @@ categories:
 - [nuxt.js](https://zh.nuxtjs.org/)
 - [vue-cli](https://github.com/vuejs/vue-cli)
 
-<toc>
+<!-- dirToc -->
 
 ## menu (7)
 
@@ -30,7 +30,7 @@ categories:
 - [vue2.x 路由](./vue-router.md)
 - [vue2.x的slot使用](./vue-slot.md)
 
-<toc>
+<!-- dirToc -->
 
 ## vue生命周期
 

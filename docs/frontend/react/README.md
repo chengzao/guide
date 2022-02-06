@@ -8,7 +8,7 @@ categories:
   - frontend
 ---
 
-<toc>
+<!-- dirToc -->
 
 ## menu (4)
 
@@ -17,7 +17,7 @@ categories:
 - [react生命周期](./rc-lifecycle.md)
 - [react redux](./rc-redux.md)
 
-<toc>
+<!-- dirToc -->
 
 :::tip
 
