@@ -8,7 +8,7 @@ categories:
   - frontend
 ---
 
-<<!-- dirToc -->
+<!-- dirToc -->
 
 ## menu (17)
 
@@ -30,7 +30,7 @@ categories:
 - [CSR & SSR](./scr-ssr.md)
 - [web安全防范](./web-xss.md)
 
-<!-- dirToc -->>
+<!-- dirToc -->
 
 ## 博客生成器
 

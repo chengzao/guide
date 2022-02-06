@@ -8,16 +8,6 @@ categories:
   - frontend
 ---
 
-## Url
-
-- [vue](https://cn.vuejs.org/index.html)
-- [vuex](https://github.com/vuejs/vuex)
-- [vue-router](https://github.com/vuejs/vue-router)
-- [awesome-vue](https://github.com/vuejs/awesome-vue)
-- [vuepress](https://github.com/vuejs/vuepress)
-- [nuxt.js](https://zh.nuxtjs.org/)
-- [vue-cli](https://github.com/vuejs/vue-cli)
-
 <!-- dirToc -->
 
 ## menu (7)
@@ -31,6 +21,16 @@ categories:
 - [vue2.x的slot使用](./vue-slot.md)
 
 <!-- dirToc -->
+
+## 官网
+
+- [vue](https://cn.vuejs.org/index.html)
+- [vuex](https://github.com/vuejs/vuex)
+- [vue-router](https://github.com/vuejs/vue-router)
+- [awesome-vue](https://github.com/vuejs/awesome-vue)
+- [vuepress](https://github.com/vuejs/vuepress)
+- [nuxt.js](https://zh.nuxtjs.org/)
+- [vue-cli](https://github.com/vuejs/vue-cli)
 
 ## vue生命周期
 

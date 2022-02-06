@@ -2,7 +2,7 @@
 title: 栈/队列/链表
 date: 2021-01-11
 sidebar: "auto"
-autoSort: 8888
+autoSort: 888
 tags:
   - stack
   - queue

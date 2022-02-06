@@ -1,10 +1,8 @@
 ---
-title: 关于数据结构与算法
+title: 数据结构与算法
 sidebar: "auto"
-autoIgnore: true
+autoSort: 9999
 ---
-
-数据结构与算法
 
 <!-- dirToc -->
 

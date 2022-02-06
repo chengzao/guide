@@ -30,6 +30,8 @@ categories:
 
 <!-- dirToc -->
 
+## ASCII
+
 - [ASCII@wikipedia](https://zh.wikipedia.org/wiki/ASCII)
 
 - ASCII 控制字符

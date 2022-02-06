@@ -19,18 +19,15 @@ categories:
 
 <!-- dirToc -->
 
-:::tip
+
+## 网站导航
 
 - [facebook/react](https://github.com/facebook/react)
 - [react.js](https://reactjs.org/)
 - [30-seconds-of-react](https://github.com/30-seconds/30-seconds-of-react)
-
-:::
-
 - [https://esprima.org/demo/parse.html#](https://esprima.org/demo/parse.html#)
 - [https://astexplorer.net/](https://astexplorer.net/)
 - [https://babeljs.io/repl](https://babeljs.io/repl)
-
 - [overreacted](https://overreacted.io/)
 - [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
 - [为什么 React 元素有一个\$\$typeof 属性？](https://overreacted.io/zh-hans/why-do-react-elements-have-typeof-property/)
