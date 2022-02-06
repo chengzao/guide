@@ -8,6 +8,17 @@ categories:
   - frontend
 ---
 
+<toc>
+
+## menu (4)
+
+- [使用canvas生成poster](./rc-canvas-poster.md)
+- [react使用hooks案例](./rc-hooks-reducer.md)
+- [react生命周期](./rc-lifecycle.md)
+- [react redux](./rc-redux.md)
+
+<toc>
+
 :::tip
 
 - [facebook/react](https://github.com/facebook/react)

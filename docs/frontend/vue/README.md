@@ -18,6 +18,20 @@ categories:
 - [nuxt.js](https://zh.nuxtjs.org/)
 - [vue-cli](https://github.com/vuejs/vue-cli)
 
+<toc>
+
+## menu (7)
+
+- [vue2.x常见问题](./vue-issues.md)
+- [vue中的工具函数](./vue-libs.md)
+- [pagination/i18n/alert](./vue-pagination.md)
+- [vue 常用插件](./vue-plugins.md)
+- [vue2.x组件通讯方法](./vue-props.md)
+- [vue2.x 路由](./vue-router.md)
+- [vue2.x的slot使用](./vue-slot.md)
+
+<toc>
+
 ## vue生命周期
 
 - [vue 生命周期-图来源官网](https://cn.vuejs.org/v2/guide/instance.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%BE%E7%A4%BA)

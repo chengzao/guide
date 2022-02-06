@@ -4,12 +4,13 @@
   "license": "MIT",
   "homepage": "https://chengzao.github.io/guide",
   "scripts": {
-    "serve": "vuepress dev docs",
-    "build": "vuepress build docs",
+    "serve": "vuepress dev docs && npm run gen:toc",
+    "build": "npm run gen:toc && vuepress build docs",
     "build:page": "cross-env BASE_ENV=guide vuepress build docs",
     "deploy": "npm run build && gh-pages -d dist",
     "docs:nav": "vuepress nav docs -f",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "gen:toc": "node scripts/gen-toc.js"
   },
   "devDependencies": {
     "@vuepress/plugin-medium-zoom": "^1.9.7",

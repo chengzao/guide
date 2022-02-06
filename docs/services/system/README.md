@@ -6,6 +6,28 @@ categories:
   - system
 ---
 
+<toc>
+
+## menu (15)
+
+- [aria2](./aria2.md)
+- [centos7命令参数](./centos7.md)
+- [docker-compose命令](./docker-compose.md)
+- [docker使用示例](./docker-stu.md)
+- [docker命令列表](./docker.md)
+- [gitlab的服务部署](./gitlab.md)
+- [linux命令参数](./linux.md)
+- [manjaro命令参数](./manjaro.md)
+- [nginx安装使用](./nginx.md)
+- [node.js的记录](./nodejs.md)
+- [搜索小技巧](./search-tip.md)
+- [持续部署环境travis-ci的使用介绍](./travis.md)
+- [ubuntu常见命名](./ubuntu.md)
+- [vagrant虚拟机的使用](./vagrant.md)
+- [vim的简单使用](./vim.md)
+
+<toc>
+
 ## windows dos
 
 - `window常用DOS命令`

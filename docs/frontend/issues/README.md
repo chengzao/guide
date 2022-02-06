@@ -8,6 +8,30 @@ categories:
   - frontend
 ---
 
+<toc>
+
+## menu (17)
+
+- [ajax和cors](./ajax.md)
+- [angular1.x的使用](./angular1.x.md)
+- [节流和防抖函数(debounce/throttle)](./debounce-throttle.md)
+- [数据类型判断](./define-types.md)
+- [常见的浏览器事件封装](./event.md)
+- [github的graphql使用](./graphql-github.md)
+- [如何处理前端异常](./handleError.md)
+- [网络协议记录](./http.md)
+- [Cookie、JWT、Token](./jwt.md)
+- [Learn jest.js note](./learn-jest.md)
+- [micro frontend](./micro-frontend.md)
+- [移动端的touch事件](./mobile.md)
+- [对象工具函数](./object-clone.md)
+- [工具方法集合](./other.md)
+- [URL到页面加载过程](./render-html.md)
+- [CSR & SSR](./scr-ssr.md)
+- [web安全防范](./web-xss.md)
+
+<toc>
+
 ## 博客生成器
 
 - [jamstack](https://jamstack.org/generators/)
