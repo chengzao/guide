@@ -63,6 +63,7 @@ React16 架构可以分为三层：
 - [RxJS](https://cn.rx.js.org/)
 - [react-loadable-visibility](https://github.com/stratiformltd/react-loadable-visibility)
 - [react-spinkit](http://kyleamathews.github.io/react-spinkit/)
+- [remix](https://github.com/remix-run/remix)
 
 ## hooks
 
@@ -81,3 +82,4 @@ React16 架构可以分为三层：
 - [react live](https://github.com/FormidableLabs/react-live)
 - [「React进阶」 React 全部 api 解读+基础实践大全](https://mp.weixin.qq.com/s/wdChmE2-UDNFVyzG7RV0sg)
 - [图解react](https://7kms.github.io/react-illustration-series/main/macro-structure/)
+- [100行代码实现React核心调度功能](https://mp.weixin.qq.com/s/uuxHlanqyN2HneYOz7DMVw)

@@ -13,13 +13,20 @@ categories:
 ## webpack
 
 - [tapable（webpack核心模块）使用手册](https://mp.weixin.qq.com/s/DtBfVFTuznD0en_-OUPKJQ)
-- [分享15个Webpack实用的插件！！！](https://mp.weixin.qq.com/s?__biz=MzAxOTAzNjUwMg==&mid=2448543713&idx=1&sn=58c9f7098c00d8e0d8451b7f7227baa7&scene=58&subscene=0)
+- [分享15个Webpack实用的插件！！！](https://mp.weixin.qq.com/s?__biz=MzAxOTAzNjUwMg==&mid=2448543713&idx=1&sn=58c9f7098c00d8e0d8451b7f7227baa7&scene=58&subscene=0)]
 
 ## 其他打包工具
 
 - [esbuild](https://esbuild.org/)
 - [parcel](https://parceljs.org/)
 - [rollup](https://rollupjs.org/)
+
+## mock server
+
+- [YApi](https://github.com/YMFE/yapi)
+- [mockjs](http://mockjs.com/)
+- [easy-mock](https://www.easy-mock.com/)
+- [mswjs/msw](https://github.com/mswjs/msw)
 
 ## 配置mock api
 

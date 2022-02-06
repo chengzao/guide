@@ -46,12 +46,6 @@ categories:
 - [strider](https://github.com/Strider-CD/strider)
 - [atlassian](https://www.atlassian.com/zh)
 
-## mock api
-
-- [YApi](https://github.com/YMFE/yapi)
-- [mockjs](http://mockjs.com/)
-- [easy-mock](https://www.easy-mock.com/)
-
 ## 评论系统
 
 - [Disqus](https://disqus.com/)
