@@ -139,6 +139,8 @@ pre[class*=language-]
   .search-box
     .suggestions
       min-width: calc(88vw) !important
+  .collapse-sidebar-btn
+    display: none !important;
 
 .timeline-wrapper .timeline-content
   .year
@@ -154,3 +156,37 @@ pre[class*=language-]
 blockquote > p
   word-break: break-word;
   word-wrap:break-word;
+
+
+// narrow desktop / iPad
+@media (max-width: $MQNarrow)
+  .page, .password-wrapper-in
+    padding-right: 0 !important
+  .page .side-bar
+    display: none;
+
+
+
+.collapse-sidebar-btn
+  width 30px
+  height 30px
+  background-color: #eaecef
+  border-radius: 50%
+  cursor pointer
+  display: inline-block
+  position: fixed
+  top: 5rem
+  right: 1rem
+
+
+.sidebar.collapse
+  width: 0
+  height: 0
+  overflow: hidden
+  transition: all 0.5s ease-in-out
+  transform: translateX(100%)
+  transform-origin: right
+  z-index: -1
+
+.page.collapse
+  margin-left: 0

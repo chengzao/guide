@@ -4,5 +4,5 @@ sidebar: false
 ---
 
 <ClientOnly>
-  <todo-index />
+  <getua />
 </ClientOnly>
