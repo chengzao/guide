@@ -1,7 +1,6 @@
 const plugins = require("./config/plugins");
 const head = require("./config/head");
 const nav = require("./config/nav.js");
-const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const isProd = process.env.NODE_ENV === "production";
 const baseUrl = process.env.BASE_ENV ? "/" + process.env.BASE_ENV : "";
 module.exports = {
@@ -93,7 +92,6 @@ module.exports = {
             },
           },
         };
-        config.plugins.push(new HardSourceWebpackPlugin());
       }
     }
   },

@@ -16,7 +16,6 @@
     "@vuepress/plugin-medium-zoom": "^1.9.7",
     "cross-env": "^7.0.3",
     "gh-pages": "^3.2.3",
-    "hard-source-webpack-plugin": "^0.13.1",
     "husky": "^7.0.4",
     "markdown-it-include": "^2.0.0",
     "vuepress": "^1.9.7",
