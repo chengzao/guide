@@ -20,7 +20,6 @@
     },
     mounted() {
       if(!window) return
-      var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
       var localStore = [], sessionStore = [];
         for (var i = 0; i < localStorage.length; i++) {
           localStore.push({ key: localStorage.key(i), value: localStorage.getItem(localStorage.key(i)) });
@@ -33,7 +32,6 @@
           language: window.navigator.language,
           dpr: window.devicePixelRatio,
           ua: window.navigator.userAgent,
-          orientation: orientation,
           colorDepth: screen.colorDepth,
           pixelDepth: screen.pixelDepth,
           outerWidth: window.outerWidth,

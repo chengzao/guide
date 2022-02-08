@@ -181,6 +181,26 @@ window.addEventListener("popState", stat => {}, false);
 - `localStorage.clear()` 清空所有存储内容
 - `localStorage.key(n)` 以索引值来获取存储内容
 
+- 获取本地localStorage所有存储内容
+
+```js
+var localStore = [];
+
+for (var i = 0; i < localStorage.length; i++) {
+  localStore.push({ key: localStorage.key(i), value: localStorage.getItem(localStorage.key(i)) });
+}
+```
+
+- 获取本地sessionStorage所有存储内容
+
+```js
+var sessionStore = [];
+
+for (var i = 0; i < sessionStorage.length; i++) {
+  sessionStore.push({ key: sessionStorage.key(i), value: sessionStorage.getItem(sessionStorage.key(i)) });
+}
+```
+
 ## FullScreen
 
 - `document.fullScreen` 检测当前是否处于全屏

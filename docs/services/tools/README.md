@@ -10,13 +10,14 @@ categories:
 
 <!-- dirToc -->
 
-## menu (15)
+## menu (17)
 
 - [axios请求封装](./axios.md)
 - [使用commitizen格式化提交规范](./commitizen.md)
 - [前端开发使用的代理工具](./dev-proxy.md)
 - [editorConfig格式化插件](./editorConfig.md)
 - [前端eslint的格式化解决方案](./eslint.md)
+- [get window userAgent](./get-ua.md)
 - [git裸仓库的使用](./git-bare.md)
 - [git常见使用场景](./git-example.md)
 - [git常见命令列表](./git.md)
@@ -24,6 +25,7 @@ categories:
 - [meilisearch](./meilisearch.md)
 - [前端prettier格式化插件](./prettier.md)
 - [前端监控sentry使用](./sentry.md)
+- [todo list](./todo.md)
 - [typescript](./typescript.md)
 - [vscode](./vscode.md)
 - [webpack](./webpack.md)
