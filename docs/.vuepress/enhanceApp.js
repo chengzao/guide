@@ -23,6 +23,7 @@ export default ({
   function insertBtn() {
     var el = document.createElement("span");
     el.className = "collapse-sidebar-btn";
+    el.title = "收起侧边栏";
 
     window.onload = function () {
       var app = document.getElementById("app");

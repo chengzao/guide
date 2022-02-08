@@ -3,7 +3,7 @@
     <ClientOnly>
       <div class="viewBox" v-for="(value, index) in viewBoxes" :key="index" >
         <div class="viewBox-content-item">
-          <p>{{ index }} : {{value}}</p>
+          <p class="viewBox-content-text">{{ index }} : {{value}}</p>
         </div>
       </div>
     </ClientOnly>
@@ -28,10 +28,8 @@
           sessionStore.push({ key: sessionStorage.key(i), value: sessionStorage.getItem(sessionStorage.key(i)) });
         }
         this.viewBoxes = {
-          href: window.location.href,
-          language: window.navigator.language,
-          dpr: window.devicePixelRatio,
           ua: window.navigator.userAgent,
+          dpr: window.devicePixelRatio,
           colorDepth: screen.colorDepth,
           pixelDepth: screen.pixelDepth,
           outerWidth: window.outerWidth,
@@ -56,7 +54,7 @@ pre {
   white-space: -o-pre-wrap;
 }
 
-.item {
-  margin-bottom: 10px;
+.viewBox .viewBox-content-text{
+  line-height: 1.5;
 }
 </style>

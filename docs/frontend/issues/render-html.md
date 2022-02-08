@@ -34,12 +34,9 @@ categories:
 
 ## TCP
 
-:::tip
+> 原文：https://www.cnblogs.com/xiaolincoding/p/12638546.html
 
-- 原文：https://www.cnblogs.com/xiaolincoding/p/12638546.html
 - TCP 是面向连接的、可靠的、基于字节流的传输层通信协议
-
-:::
 
 ![TCP-20210111162547](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/TCP-20210111162547.png)
 
