@@ -1,13 +1,13 @@
 module.exports = [
-  'fulltext-search',
+  "fulltext-search",
   "reading-progress",
   "img-lazy",
   "@vuepress-reco/extract-code",
   [
     "copy-code",
     {
-      copyMessage: "复制成功 ^~^ !"
-    }
+      copyMessage: "复制成功 ^~^ !",
+    },
   ],
   [
     "vuepress-plugin-medium-zoom",
@@ -17,31 +17,38 @@ module.exports = [
       options: {
         margin: 24,
         background: "#BADA55",
-        scrollOffset: 0
-      }
-    }
+        scrollOffset: 0,
+      },
+    },
   ],
   [
-    '@vuepress/last-updated',
+    "@vuepress/last-updated",
     {
       transformer: (timestamp, lang) => {
         return new Date(timestamp).toLocaleDateString();
-      }
-    }
+      },
+    },
   ],
   [
     "sitemap",
     {
-      hostname: "https://guide.czhlink.com"
-    }
+      hostname: "https://guide.czhlink.com",
+    },
   ],
   [
     "vuepress-plugin-auto-sidebar",
     {
       collapse: {
-        open: true
+        open: true,
       },
-      sidebarDepth: 1
-    }
-  ]
+      sidebarDepth: 1,
+    },
+  ],
+  [
+    "named-chunks",
+    {
+      pageChunkName: (page) => "page" + page.key.slice(1),
+      layoutChunkName: (layout) => "layout-" + layout.componentName,
+    },
+  ],
 ];
