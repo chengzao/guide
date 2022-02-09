@@ -26,39 +26,6 @@ typeof Math   //return object
 typeof Date   //return function
 typeof new Date()   //return object
 typeof JSON   //return object
-
-function isType(data, type) {
-  const typeObj = {
-    '[object String]': 'string',
-    '[object Number]': 'number',
-    '[object Boolean]': 'boolean',
-    '[object Null]': 'null',
-    '[object Undefined]': 'undefined',
-    '[object Object]': 'object',
-    '[object Array]': 'array',
-    '[object Function]': 'function',
-    '[object Date]': 'date', // Object.prototype.toString.call(new Date())
-    '[object RegExp]': 'regExp',
-    '[object Map]': 'map',
-    '[object Set]': 'set',
-    '[object HTMLDivElement]': 'dom', // document.querySelector('#app')
-    '[object WeakMap]': 'weakMap',
-    '[object Window]': 'window',  // Object.prototype.toString.call(window)
-    '[object Error]': 'error', // new Error('1')
-    '[object Arguments]': 'arguments',
-    '[object BigInt]': 'BigInt',
-    '[object Symbol]': 'Symbol'
-  }
-  let name = Object.prototype.toString.call(data) // 借用Object.prototype.toString()获取数据类型
-  let typeName = typeObj[name] || '未知类型' // 匹配数据类型
-  return typeName === type // 判断该数据类型是否为传入的类型
-}
-console.log(
-  isType({}, 'object'), // true
-  isType([], 'array'), // true
-  isType(new Date(), 'object'), // false
-  isType(new Date(), 'date'), // true
-)
 ```
 
 ## eqeqeq
@@ -110,36 +77,7 @@ console.log("o typeof is : ", typeof (o))//object
 console.log("a typeof is : ", typeof (a))//object
 console.log("o instanceof Array is : ", o instanceof Array); // false
 console.log("a instanceof Array is : ", a instanceof Array); // true
-
-// custom
-function instanceOf2(l, r) {
-  let proto = l.__proto__;
-  let prototype = r.prototype
-  while (true) {
-    if (proto == null) {
-      return false
-    }
-    if (proto == prototype) {
-      return true
-    }
-    proto = proto.__proto__
-  }
-}
-
-function Car() { }
-function Dog() { }
-var car = new Car();
-var dog = new Dog()
-
-console.log(instanceOf2(dog, Car))
-// expected output: false
-console.log(instanceOf2(car, Car));
-// expected output: true
-console.log(instanceOf2(car, Object));
-// expected output: true
 ```
-
-
 
 ## hasOwnProperty
 
@@ -171,11 +109,7 @@ isTrue = f.hasOwnProperty("web");
 console.log("web -> " + isTrue); // false
 ```
 
-
-
 - Object.prototype.toString.call
-
-
 
 ```js
 // 判断类型
@@ -190,8 +124,6 @@ Object.prototype.toString.call(obj).slice(8, -1);
 // obj != null || obj != undefined 除外
 obj.constructor.name.toString().toLowerCase();
 ```
-
-
 
 ## toRawType
 

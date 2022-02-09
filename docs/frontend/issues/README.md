@@ -10,11 +10,11 @@ categories:
 
 <!-- dirToc -->
 
-## menu (17)
+## menu (18)
 
 - [ajax和cors](./ajax.md)
 - [angular1.x的使用](./angular1.x.md)
-- [节流和防抖函数(debounce/throttle)](./debounce-throttle.md)
+- [常见手写函数整理（一）](./custom-fn-01.md)
 - [数据类型判断](./define-types.md)
 - [常见的浏览器事件封装](./event.md)
 - [github的graphql使用](./graphql-github.md)
@@ -26,6 +26,7 @@ categories:
 - [移动端的touch事件](./mobile.md)
 - [对象工具函数](./object-clone.md)
 - [工具方法集合](./other.md)
+- [实现Promise](./promise.md)
 - [URL到页面加载过程](./render-html.md)
 - [CSR & SSR](./scr-ssr.md)
 - [web安全防范](./web-xss.md)

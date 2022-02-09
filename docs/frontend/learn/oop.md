@@ -333,70 +333,6 @@ var obj2 = new Func("xiao ming");
 console.log(obj1.showUserName === obj2.showUserName); //true
 ```
 
-## 构造函数 new 命令的原理
-
-1. 创建一个空对象,作为将要返回的对象实例
-2. 拷贝构造函数中的方法和属性到这个空对象中
-3. 生成一个**proto**指针,指向构造函数的原型对象
-4. this 指向这个空对象
-
-- 代码 1
-
-```js
-function Person(name) {
-  var obj = new Object();
-  obj.name = name;
-  obj.__proto__ = Person.prototype;
-  return obj;
-}
-Person.prototype.getName = function() {
-  console.log(this.name);
-};
-var person = new Person("hainan");
-person.getName();
-```
-
-- 代码 2
-
-```js
-function _new() {
-  // 将 arguments 对象转为数组
-  var args = [].slice.call(arguments);
-  // 取出构造函数
-  var constructor = args.shift();
-  // 创建一个空对象,继承构造函数的 prototype 属性
-  var context = Object.create(constructor.prototype);
-  // 执行构造函数
-  var result = constructor.apply(context, args);
-  // 如果返回结果是对象,就直接返回,则返回 context 对象
-  return typeof result === "object" && result != null ? result : context;
-}
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
-}
-var actor = _new(Person, "张三", 28);
-actor; // => {name: "张三", age: 28}
-```
-
-- 代码 3
-
-```js
-function _new(func) {
-  let o = Object.create(func.prototype);
-  let k = func.call(o);
-  return typeof k === "object" ? k : o;
-}
-
-function M() {
-  this.name = "liwenli";
-}
-
-let m = _new(M);
-console.log(m instanceof M); // instanceof 检测实例
-console.log(m.__proto__.constructor === M);
-```
-
 ## 构造函数的继承
 
 - 拷贝继承
@@ -468,45 +404,27 @@ Child.prototype = Object.create(Super.prototype);
 //或 Child.prototype.__proto__ = Super.prototype
 
 Child.prototype.constructor = Child;
+
+// 使用
 var child = new Child("cat");
 ```
 
-- 继承
+- ES6的Class继承
 
 ```js
-// 链接：https://juejin.im/post/5a96d78ef265da4e9311b4d8
-
-function fancyShadowMerge(target, source) {
-  for (const key of Reflect.ownKeys(source)) {
-    Reflect.defineProperty(
-      target,
-      key,
-      Reflect.getOwnPropertyDescriptor(source, key)
-    );
-  }
-  return target;
-}
-
-// Core
-function inherit(child, parent) {
-  const objectPrototype = Object.prototype;
-  // 继承父类的原型
-  const parentPrototype = Object.create(parent.prototype);
-  let childPrototype = child.prototype;
-  // 若子类没有继承任何类，直接合并子类原型和父类原型上的所有方法
-  // 包含可枚举/不可枚举的方法
-  if (Reflect.getPrototypeOf(childPrototype) === objectPrototype) {
-    child.prototype = fancyShadowMerge(parentPrototype, childPrototype);
-  } else {
-    // 若子类已经继承子某个类
-    // 父类的原型将在子类原型链的尽头补全
-    while (Reflect.getPrototypeOf(childPrototype) !== objectPrototype) {
-      childPrototype = Reflect.getPrototypeOf(childPrototype);
+class Animal {
+    constructor(name) {
+        this.name = name
     }
-    Reflect.setPrototypeOf(childPrototype, parent.prototype);
-  }
-  // 重写被污染的子类的constructor
-  parentPrototype.constructor = child;
+    getName() {
+        return this.name
+    }
+}
+class Dog extends Animal {
+    constructor(name, age) {
+        super(name)
+        this.age = age
+    }
 }
 ```
 

@@ -7,3 +7,4 @@ dist
 .deploy*/
 yarn.lock
 test
+example

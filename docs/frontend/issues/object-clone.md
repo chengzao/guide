@@ -8,26 +8,6 @@ categories:
   - frontend
 ---
 
-## 简易克隆对象
-
-
-
-```js
-//简易克隆对象
-function extend2(tag, source) {
-  for (var item in source) {
-    tag[item] = source[item];
-  }
-  return tag;
-}
-//
-JSON.parse(JSON.stringify(obj))
-//
-Object.create({}, obj)
-```
-
-
-
 ## formateMoney
 
 ```js
@@ -62,29 +42,6 @@ function formatNumber(num) {
 }
 ```
 
-## 二分查找
-
-```js
-// 二分查找，前提是数组为有序数组, 返回索引值, O(㏒n)复杂度
-function binarySearch(target, arr) {
-  let start = 0;
-  let end = arr.length - 1;
-
-  while (start <= end) {
-    let mid = parseInt(start + (end - start) / 2);
-    if (target == arr[mid]) {
-      return mid;
-    } else if (target > arr[mid]) {
-      start = mid + 1;
-    } else {
-      end = mid - 1;
-    }
-  }
-  return -1;
-}
-let arr = [1, 4, 6, 8, 9, 21, 45, 67, 98];
-console.log(binarySearch(67, arr));
-```
 
 ## 获取类名 ClassName
 
@@ -268,83 +225,17 @@ function atrGetEle(ele, attr, value) {
 }
 ```
 
-
-
-## deepCLone
-
-- 方法1
+## createScriptLink
 
 ```js
-// 对象数组的深拷贝
-var objDeepCopy = function(source) {
-  var sourceCopy = source instanceof Array ? [] : {};
-  for (var item in source) {
-    sourceCopy[item] =
-      typeof source[item] === "object"
-        ? objDeepCopy(source[item])
-        : source[item];
-  }
-  return sourceCopy;
-};
-```
-
-- 方法2
-
-```js
-
-function isObject(obj) {
-  return Object.prototype.toString.call(obj) == "[object Object]";
-}
-
-var objDeepCopy = function(obj) {
-  if (!isObject(obj)) return obj;
-  if (typeof window !== "undefined" && window.JSON) {
-    // 浏览器环境下 并支持window.JSON 则使用 JSON
-    return JSON.parse(JSON.stringify(obj));
-  } else {
-    var newObj = obj.constructor === Array ? [] : {};
-    for (var key in obj) {
-      newObj[key] =
-        typeof obj[key] === "object" ? deepCopy(obj[key]) : obj[key];
-    }
-    return newObj;
-  }
-};
-```
-
-- 方法3
-
-```js
-function deepClone(obj, map = new WeakMap()) {
-  if (obj instanceof RegExp) return new RegExp(obj);
-  if (obj instanceof Date) return new Date(obj);
-  // 判断是否是一个非对象
-  if (obj == null || typeof obj != "object") return obj;
-
-  if (map.has(obj)) {
-    return map.get(obj);
-  }
-  let t = {};
-  map.set(obj, t);
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      t[key] = deepClone(obj[key], map);
-    }
-  }
-  return t;
-}
-```
-
-## other
-
-
-
-```js
-var calendarLink = {
+var styles = {
   // 插入script标签
-  createSrc: function (url) {
+  createSrc: function (url, {key, value}) {
     var scrEle = document.createElement("script");
     scrEle.src = url;
+    srcEle.type = "text/javascript";
+    srcEle.charset = "utf-8";
+    key && srcEle.setAttribute(key, value)
     document.body.appendChild(scrEle);
   },
   // 插入样式表
@@ -364,8 +255,8 @@ var calendarLink = {
       window.attachEvent("onload", this.createSrc.bind(this, url));
     else window.onload = this.createSrc.bind(this, url);
   },
-  removeDom: function () {
-    var reSrc = document.querySelector('#appendEle');
+  removeDom: function (id) {
+    var reSrc = document.querySelector(id);
     reSrc.parentNode.removeChild(reSrc);
   },
 }
@@ -734,279 +625,6 @@ let fib = n => Math.round(
 );
 ```
 
-## Promise
-
-- [原文：从零一步一步实现一个完整版的 Promise](https://juejin.im/post/5d59757f6fb9a06ae76405c6)
-
-- 简化版
-
-```js
-function myPromise(constructor) {
-  let self = this;
-  self.status = "pending"; //定义状态改变前的初始状态
-  self.value = undefined; //定义状态为fulfilled的时候的状态
-  self.reason = undefined; //定义状态为rejected的时候的状态
-  self.resolveCb = [];
-  self.rejectCb = [];
-  function resolve(value) {
-    if (self.status === "pending") {
-      self.value = value;
-      self.status = "fulfilled";
-      self.resolveCb.forEach(cb => cb(data));
-    }
-  }
-  function reject(reason) {
-    if (self.status === "pending") {
-      self.reason = reason;
-      self.status = "rejected";
-      self.rejectCb.forEach(cb => cb(reason))
-    }
-  }
-  //捕获构造异常
-  try {
-    constructor(resolve, reject);
-  } catch (e) {
-    reject(e);
-  }
-}
-myPromise.prototype.then = function(onResolved, onRejected) {
-   if (this.status == "fulfilled") {
-      onResolved(this.value);
-    }
-    if (this.status == "rejected") {
-      onRejected(this.reason);
-    }
-    if (this.status == "pending") {
-      this.resolveCb.push(() => onResolved(this.value));
-      this.rejectCb.push(() => onRejected(this.reason));
-    }
-};
-// demo
-var p = new myPromise(function(resolve, reject) {
-  resolve(1);
-});
-p.then(function(x) {
-  console.log(x);
-});
-```
-
-- 完整版
-
-
-
-```js
-function Promise(executor) {
-  var self = this;
-  // Promise 状态
-  self.status = 'pending'
-  // Promise 值
-  self.data = undefined
-  // Promise resolve 时的回调函数集
-  self.onResolvedCallback = []
-  // Promise reject 时的回调函数集
-  self.onRejectedCallback = []
-
-  // reslove
-  function resolve(value) {
-    if (value instanceof Promise) {
-      value.then(resolve, reject)
-      return
-    }
-    setTimeout(function () {
-      if (self.status === 'pending') {
-        self.status = 'fulfilled'
-        self.data = value
-        // 执行resolve的回调函数，将value传递到callback中
-        self.onResolvedCallback.forEach(cb => cb(value))
-      }
-    })
-  }
-
-  // reject
-  function reject(reason) {
-    setTimeout(function () {
-      if (self.status === 'pending') {
-        self.status = 'rejected'
-        self.data = reason
-        // 执行reject的回调函数，将reason传递到callback中
-        self.onRejectedCallback.forEach(cb => cb(reason))
-      }
-    })
-  }
-
-  // 执行executor并传入相应的参数
-  try {
-    executor(resolve, reject)
-  } catch (error) {
-    reject(error)
-  }
-}
-
-function resolvePromise(promise2, x, resolve, reject) {
-  let then
-  let thenCalledOrThrow = false
-  if (promise2 === x) {
-    reject(new TypeError('Chaining cycle detected for promise!'))
-    return
-  }
-
-  if (x instanceof Promise) {
-    if (x.status === 'pending') {
-      x.then(value => {
-        resolvePromise(promise2, value, resolve, reject)
-      }, err => {
-        reject(err)
-      })
-    } else {
-      x.then(resolve, reject)
-    }
-    return
-  }
-
-  if ((x !== null) && ((typeof x === 'function') || (typeof x === 'object'))) {
-    try {
-      then = x.then
-      if (typeof then === 'function') {
-        then.call(x, value => {
-          if (thenCalledOrThrow) return
-          thenCalledOrThrow = true
-          resolvePromise(promise2, value, resolve, reject)
-          return
-        }, err => {
-          if (thenCalledOrThrow) return
-          thenCalledOrThrow = true
-          reject(err)
-          return
-        })
-      } else {
-        resolve(x)
-      }
-    } catch (error) {
-      if (thenCalledOrThrow) return
-      thenCalledOrThrow = true
-      reject(error)
-    }
-  } else {
-    resolve(x)
-  }
-}
-
-Promise.prototype.then = function (onResolve, onReject) {
-  let self = this
-  let promise2
-  // 处理参数默认值
-  onResolve = typeof onResolve === 'function' ? onResolve : function (value) { return value }
-  onReject = typeof onReject === 'function' ? onReject : function (reason) { throw reason }
-  // 等待
-  if (self.status === 'pending') {
-    return promise2 = new Promise(function (resolve, reject) {
-      self.onResolvedCallback.push(function (value) {
-        try {
-          var x = onResolve(value)
-          resolvePromise(promise2, x, resolve, reject)
-        } catch (error) {
-          reject(error)
-        }
-      })
-
-      self.onRejectedCallback.push(function (reason) {
-        try {
-          var x = onReject(reason)
-          resolvePromise(promise2, x, resolve, reject)
-        } catch (error) {
-          reject(error)
-        }
-      })
-
-    })
-  }
-  // 成功
-  if (self.status === 'fulfilled') {
-    return promise2 = new Promise(function (resolve, reject) {
-      setTimeout(function () {
-        try {
-          var x = onResolve(self.data)
-          resolvePromise(promise2, x, resolve, reject)
-        } catch (error) {
-          // 如果出错，以捕获到的错误做为promise2的结果
-          reject(error)
-        }
-      }, 0)
-    })
-  }
-  // 失败
-  if (self.status === 'rejected') {
-    return promise2 = new Promise(function (resolve, reject) {
-      setTimeout(function () {
-        try {
-          var x = onReject(self.data)
-          resolvePromise(promise2, x, resolve, reject)
-        } catch (error) {
-          reject(error)
-        }
-      }, 0)
-    })
-  }
-}
-
-Promise.prototype.catch = function (onReject) {
-  return this.then(null, onReject)
-}
-
-Promise.resolve = function (value) {
-  return new Promise(function (resolve, reject) { resolve(value) })
-}
-
-Promise.reject = function (reason) {
-  return new Promise(function (resolve, reject) { reject(reason) })
-}
-
-Promise.all = function (promises) {
-  return new Promise((resolve, reject) => {
-    let values = []
-    let count = 0
-    promises.forEach((promise, index) => {
-      promise.then(value => {
-        values[index] = value
-        count++
-        if (count === promises.length) {
-          resolve(values)
-        }
-      }, reject)
-    })
-  })
-}
-
-Promise.race = function (promises) {
-  return new Promise((resolve, reject) => {
-    promises.forEach(promise => {
-      promise.then(resolve, reject)
-    })
-  })
-}
-
-Promise.deferred = function () {
-  var defer = {}
-  defer.promise = new Promise((resolve, reject) => {
-    defer.resolve = resolve
-    defer.reject = reject
-  })
-  return defer
-}
-
-try {
-  module.exports = Promise
-} catch (error) {
-}
-
-const xFetch = function(url, config) {
-  let timeout = config.timeout || 5000;
-  let timeoutFn = () => Promise.resolve(setTimeout(() => {}, timeout));
-  return Promise.race([fetch(url), timeoutFn]);
-};
-```
-
-- 其他版本promise实现：<https://juejin.cn/post/6946022649768181774#heading-38>
 
 ## 监听数组变化
 
@@ -1336,32 +954,3 @@ Math.random()
   .substring(2, 15);
 ```
 
-## 使用setTimeout代替setInterval进行间歇调用
-
-```js
-var executeTimes = 0;
-var intervalTime = 500;
-var intervalId = null;
-
-// setInterval的Demo
-intervalId = setInterval(intervalFun,intervalTime);
-
-function intervalFun(){
-    executeTimes++;
-    console.log("doIntervalFun——"+executeTimes);
-    if(executeTimes==5){
-        clearInterval(intervalId);
-    }
-}
-
-// setTimeout的Demo
-setTimeout(timeOutFun,intervalTime);
-
-function timeOutFun(){
-    executeTimes++;
-    console.log("doTimeOutFun——"+executeTimes);
-    if(executeTimes<5){
-        setTimeout(arguments.callee,intervalTime);
-    }
-}
-```

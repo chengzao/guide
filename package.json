@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": "https://chengzao.github.io/guide",
   "scripts": {
-    "serve": "vuepress dev docs && npm run gen:toc",
+    "serve": " npm run gen:toc && vuepress dev docs",
     "build": "npm run gen:toc && vuepress build docs",
     "build:page": "cross-env BASE_ENV=guide vuepress build docs",
     "deploy": "npm run build && gh-pages -d dist",
