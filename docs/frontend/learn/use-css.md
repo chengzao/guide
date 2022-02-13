@@ -568,6 +568,17 @@ a:active {
 }
 ```
 
+- noreferrer/noopener
+
+```html
+<a
+  href="https://an.evil.site"
+  target="_blank"
+  rel="noopener noreferrer nofollow"
+  >a链接</a
+>
+```
+
 ## 解决 IE9 不能使用 opacity
 
 ```css
@@ -575,3 +586,30 @@ opacity: 0.5;
 filter: alpha(opacity = 50);
 filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 ```
+
+## html 转义符
+
+```bash
+`&times；` -> `×`
+
+`&nbsp;` 半角的不断行的空白格（推荐使用）
+
+`&ensp;` 半角的空格
+
+`&emsp;` 全角的空格
+```
+
+- 兼容
+
+```html
+<!-- cc:ie6 快捷键 -->
+<!--[if lte IE 8]>
+  <script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+<![endif]-->
+```
+
+## 页面三层结构
+
+- `结构层`HTML
+- `表现层`CSS
+- `行为层`JavaScript

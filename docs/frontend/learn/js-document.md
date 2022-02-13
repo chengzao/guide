@@ -37,12 +37,6 @@ document.defaultView;
 
 ## document
 
-### 节点获取
-
-- 对于正常的网页,直接使用`document`或`window.document`
-- 对于 iframe 载入的网页,使用 iframe 节点的`contentDocument`属性
-- 对 Ajax 操作返回的文档,使用`XMLHttpRequest`对象的`responseXML`属性
-
 ### 节点集合属性
 
 - `document.links`属性返回当前文档所有设定了 href 属性的 a 及 area 元素
@@ -71,7 +65,6 @@ document.defaultView;
 - `document.designMode`属性控制当前文档是否可编辑
 - `document.implementation`属性返回一个对象,用来甄别当前环境部署了哪些 DOM 相关接口
 - `implementation`属性的`hasFeature`方法,可以判断当前环境是否部署了特定版本的特定接口
-
 
 ```js
 document.implementation.hasFeature("HTML", "2.0"); // true

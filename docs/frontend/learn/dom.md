@@ -14,6 +14,18 @@ categories:
 
 :::
 
+## 浏览器内核
+
+```bash
+safari    Webkit
+chrome    Blink (current) / Webkit (pre)   -webkit-
+chromium  Blink
+firefox   Gecko   -moz-
+ie        Trident -ms-
+edge      EdgeHTML
+Opera12.17及更早版本曾经采用的内核  Presto  -o-
+```
+
 ## 类型
 
 - `Document`：整个文档树的顶层节点
@@ -571,12 +583,6 @@ n2.dataset.foo = 'baz'
 delete n2.dataset.foo;
 ```
 
-## DOM 事件
-
-- `Element.addEventListener()`：添加事件的回调函数
-- `Element.removeEventListener()`：移除事件监听函数
-- `Element.dispatchEvent()`：触发事件
-
 ## DocumentFragment
 
 DocumentFragment 节点代表一个文档的片段，本身就是一个完整的 DOM 树形结构。
@@ -684,3 +690,77 @@ function siblings(elm) {
   }
 }
 ```
+
+## BFC
+
+- Block Formatting Context 块级格式化上下文,形成独立渲染区域
+- [前端精选文摘：BFC 神奇背后的原理](http://www.cnblogs.com/lhb25/p/inside-block-formatting-ontext.html)
+
+### 如何触发 BFC
+
+- 根元素 : 在块格式化上下文中
+- float的值不为none
+- position为absolute或fixed
+- display的值为 inline-block, flex, inline-flex，table，table-cell，table-caption中的其中一个
+- overflow的值不为visible
+
+## Flex
+
+> <https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html>
+
+- flex-direction: row | row-reverse | column | column-reverse; 属性决定主轴的方向, 默认row
+- flex-wrap: nowrap | wrap | wrap-reverse;
+- flex-flow: flex-direction || flex-wrap;
+- justify-content: flex-start | flex-end | center | space-between | space-around; 属性定义了项目在主轴上的对齐方式
+- align-items: flex-start | flex-end | center | baseline | stretch; 属性定义项目在交叉轴上如何对齐
+- flex :flex-grow flex-shrink flex-basis
+
+```
+flex: auto (1 1 auto) 和 none (0 0 auto)
+
+flex-grow 属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大
+flex-shrink 属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+flex-basis 属性定义了在分配多余空间之前，项目占据的主轴空间（main size）
+```
+
+## position 定位
+
+- [MDN/position](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)
+- 静态定位(标准流) : `position:static`
+
+- 绝对定位 ：`position：absolute`
+  - 绝对定位的盒子不占页面上的位置（脱离标准流）
+  - 绝对定位以后会影响元素的显示方式：display：inline-block
+
+- 相对定位 ：`position:relative`
+  - 相对定位是占据标准流的位置
+  - 相对自身的位置进行定位
+
+- 固定定位 ： `position:fixed;`
+  - 使用盒子显示浏览器的固定位置
+  - 固定定位会脱离标准流
+  - 固定定位会改变元素的显示方式
+
+- 粘性定位元素 ：`position:stickily`
+- z-index：用来设置当前盒子所在的层次 `z-index：12；`
+
+
+### 盒子模型分类
+
+- IE 盒子模型: `IE的content部分包含了 border 和 padding;`
+
+  ![ie_boxModel](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/ie_boxModel.jpg)
+
+- 标准 W3C 盒子模型
+
+  - `width：border-left + padding-left + width + padding-right + border-right`
+  - `height: border-top + padding-top + height + padding-bottom + border-bottom`
+
+  ![_boxModel](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/_boxModel.jpg)
+
+### css3 盒模型属性
+
+- `box-sizing: border-box`: 计算方式为 `width = border + padding + content`
+- `box-sizing: content-box`: 计算方式为 `width = content`
+
+  ![boxModel](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/boxModel.png)

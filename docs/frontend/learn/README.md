@@ -45,7 +45,7 @@ categories:
 
 <!-- dirToc -->
 
-## 参考文档
+## CSS
 
 - [30-seconds-of-interviews](https://github.com/30-seconds/30-seconds-of-interviews)
 - [点击 form 只提交 form 中 input 的一部分](https://segmentfault.com/q/1010000005331233)
@@ -71,9 +71,8 @@ categories:
 - [我写 CSS 的常用套路(附 demo 的效果实现与源码）](https://mp.weixin.qq.com/s?__biz=MzI4NDYxNTM0OQ==&mid=2247484531&idx=1&sn=3eea398198111c5d1aa8a02677abc552&chksm=ebf9f3a9dc8e7abf6fafe3ebff07c487a0e17c1aff117d9b139ee7c2e2f541dd24f84d9ca178&mpshare=1&scene=1&srcid=&sharer_sharetime=1582201097809&sharer_shareid=6d5a36aa649f337987f3518aaba03999#rd)
 - [55 个提高你 CSS 开发效率的必备片段](https://mp.weixin.qq.com/s?__biz=MzI3MzgxNDY2MQ==&mid=2247484445&idx=1&sn=1e612690c9496c0e8d93a285eb0ea70d&chksm=eb1cc1f7dc6b48e18eb8593e8552d5f67125a8d2a7c4618ba2e4012e9aa51400f514e6b8807b&mpshare=1&scene=1&srcid=&sharer_sharetime=1586134601809&sharer_shareid=6d5a36aa649f337987f3518aaba03999#rd)
 
----
 
-移动端调试
+## 移动端调试
 
 - [github@mobileTech](https://github.com/jtyjty99999/mobileTech)
 - [移动 web 开发问题和优化小结](https://segmentfault.com/a/1190000011338800)
@@ -93,23 +92,13 @@ categories:
 - [移动端软键盘监听（弹出，收起），及影响定位布局的问题](https://www.cnblogs.com/wangyihong/p/7514304.html)
 - [input 光标位置设置至行末端](https://blog.csdn.net/shuanger112/article/details/81704208)
 
----
+## regexp
 
-ie
+- [JS 正则表达式完整教程（略长）](https://juejin.im/post/5965943ff265da6c30653879#heading-0)
+- [2019 年 JS 正则大全(常用)](https://juejin.im/post/5d245d4151882555300feb77)
+- [前端常用60余种工具方法](https://segmentfault.com/a/1190000022736837)
 
-- [CSS hack 是什么？IE6\7\8\9\10 浏览器的 CSS hack 大全介绍](http://www.cr173.com/html/17948_1.html)
-- [IE6 下 png 背景不透明问题的综合拓展](http://www.zhangxinxu.com/wordpress/2009/08/ie6%E4%B8%8Bpng%E8%83%8C%E6%99%AF%E4%B8%8D%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98%E7%9A%84%E7%BB%BC%E5%90%88%E6%8B%93%E5%B1%95/)
-- [IE6 PNG 透明终极解决方案](http://wtqq520.iteye.com/blog/1978280)
-- [IE6 png 透明 (三种解决方法)](http://www.cnblogs.com/yuzhongwusan/archive/2009/04/17/1438119.html)
-- [hjzheng/IE6-bugs](https://github.com/hjzheng/IE6-bugs)
-- [通过 JS 判断浏览器类型，详细区分 IE 各版本浏览器](http://blog.csdn.net/littleqiang_w/article/details/50463939)
-- [一行代码解决各种 IE 兼容问题,IE6,IE7,IE8,IE9,IE10](http://blog.csdn.net/jgwei/article/details/18599433)
-- [ie6、7 margin 负值部分无法看到的解决方法](http://www.phpvar.com/archives/1399.html)
-- [浅析 CSS——元素重叠及 position 定位的 z-index 顺序](http://www.cnblogs.com/mind/archive/2012/04/01/2198995.html)
-- [Centering in CSS: A Complete Guide](https://css-tricks.com/centering-css-complete-guide/)
-- [去除 inline-block 元素间间距的 N 种方法](http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)
-
----
+## 文档
 
 - [developer mozilla cn](https://developer.mozilla.org/zh-CN/)
 - [javascript.fun](http://www.javascript.fun/)
@@ -134,9 +123,6 @@ ie
 - [hellogithub](https://hellogithub.com/)
 - [30-seconds-of-code 中文版](https://github.com/kujian/30-seconds-of-code)
 - [usejsdoc](http://usejsdoc.org/index.html)
-
----
-
 - [zhaotoday/esdoc](https://github.com/zhaotoday/esdoc)
 - [jsdoc](https://www.css88.com/doc/jsdoc/index.html)
 - [自定义滚动条的实现思路与关键算法](https://juejin.im/post/5cde85dfe51d45108f254145)
@@ -152,10 +138,13 @@ ie
 - [如何使用 Tween.js 各类原生动画运动缓动算法](http://www.zhangxinxu.com/wordpress/2016/12/how-use-tween-js-animation-easing/)
 - [前端必备自定义滚动库——iScroll](https://juejin.im/post/5bc57e616fb9a05d396f3fc9)
 - [你不知道的 Web Workers （上）[7.8K 字 | 多图预警]](https://juejin.im/post/5ef2a554f265da02e47d952b)
+- [你不知道的 Blob](https://juejin.im/post/5ed604aaf265da770e1bcc18)
+- [前端图片 canvas，file，blob，DataURL 等格式转换](https://juejin.im/post/5b5187da51882519ec07fa41)
+- [为什么视频网站的视频链接地址是 blob？](https://juejin.im/post/5d1ea7a8e51d454fd8057bea)
+- [FileSaver.js](https://github.com/eligrey/FileSaver.js)
+- [（三万字长文）类型即正义：TypeScript 从入门到实践系列，正式完结！](https://zhuanlan.zhihu.com/p/144004258)
 
----
-
-github 登录授权
+## github 登录授权
 
 - [AnDongCai@back-login](https://github.com/AnDongCai/back-login)
 - [linwalker@node-login](https://github.com/linwalker/node-login)
@@ -163,10 +152,16 @@ github 登录授权
 - [GitHub OAuth 第三方登录示例教程](http://www.ruanyifeng.com/blog/2019/04/github-oauth.html)
 - [基于 Github API 的图床 Chrome 插件开发全纪录](https://juejin.im/post/5cd38990e51d453a543f9e3e)
 
----
+## ie
 
-- [你不知道的 Blob](https://juejin.im/post/5ed604aaf265da770e1bcc18)
-- [前端图片 canvas，file，blob，DataURL 等格式转换](https://juejin.im/post/5b5187da51882519ec07fa41)
-- [为什么视频网站的视频链接地址是 blob？](https://juejin.im/post/5d1ea7a8e51d454fd8057bea)
-- [FileSaver.js](https://github.com/eligrey/FileSaver.js)
-- [（三万字长文）类型即正义：TypeScript 从入门到实践系列，正式完结！](https://zhuanlan.zhihu.com/p/144004258)
+- [CSS hack 是什么？IE6\7\8\9\10 浏览器的 CSS hack 大全介绍](http://www.cr173.com/html/17948_1.html)
+- [IE6 下 png 背景不透明问题的综合拓展](http://www.zhangxinxu.com/wordpress/2009/08/ie6%E4%B8%8Bpng%E8%83%8C%E6%99%AF%E4%B8%8D%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98%E7%9A%84%E7%BB%BC%E5%90%88%E6%8B%93%E5%B1%95/)
+- [IE6 PNG 透明终极解决方案](http://wtqq520.iteye.com/blog/1978280)
+- [IE6 png 透明 (三种解决方法)](http://www.cnblogs.com/yuzhongwusan/archive/2009/04/17/1438119.html)
+- [hjzheng/IE6-bugs](https://github.com/hjzheng/IE6-bugs)
+- [通过 JS 判断浏览器类型，详细区分 IE 各版本浏览器](http://blog.csdn.net/littleqiang_w/article/details/50463939)
+- [一行代码解决各种 IE 兼容问题,IE6,IE7,IE8,IE9,IE10](http://blog.csdn.net/jgwei/article/details/18599433)
+- [ie6、7 margin 负值部分无法看到的解决方法](http://www.phpvar.com/archives/1399.html)
+- [浅析 CSS——元素重叠及 position 定位的 z-index 顺序](http://www.cnblogs.com/mind/archive/2012/04/01/2198995.html)
+- [Centering in CSS: A Complete Guide](https://css-tricks.com/centering-css-complete-guide/)
+- [去除 inline-block 元素间间距的 N 种方法](http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)

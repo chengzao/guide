@@ -499,37 +499,6 @@ newArr; // 20
 ```
 
 
-
-- 实现
-
-```js
-function reduce(arr, reduceCallback, initialValue) {
-  if (!Array.isArray(arr) || !arr.length || typeof reduceCallback !== 'function'){
-    return [];
-  } else {
-    let hasInitialValue = initialValue !== undefined;
-    let value = hasInitialValue ? initialValue : arr[0];
-    // 如果有传递 initialValue，则索引从 1 开始，否则从 0 开始
-    for (let i = hasInitialValue ? 0 : 1, len = arr.length; i < len; i++) {
-      value = reduceCallback(value, arr[i], i, arr);
-    }
-    return value;
-  }
-}
-
-Array.prototype.mReduce = function(fn, initial){
-  let result = initial;
-  let index = 0;
-  if(initial == undefined){
-    result = this[index]
-    index++
-  }
-  while(index<this.length){
-    result = fn(result, this[i])
-  }
-}
-```
-
 ## valueOf 与 toString
 
 - `toString()`方法返回数组的字符串形式
@@ -571,23 +540,6 @@ newArr; // [2, 3, 4, 5]
 arr; // [1, 2, 3, 4]
 ```
 
-### 实现map
-
-- 方法1
-
-```js
-function map(arr, mapCallback) {
-  if (!Array.isArray(arr) || !arr.length || typeof mapCallback !== 'function') {
-    return [];
-  } else {
-    let result = [];
-    for (let i = 0, len = arr.length; i < len; i++) {
-      result.push(mapCallback(arr[i], i, arr));
-    }
-    return result;
-  }
-}
-```
 ## indexOf 与 lastIndexOf
 
 - `indexOf()`返回元素第一次出现的位置，没有则返回`-1`
@@ -653,27 +605,6 @@ var newArr = arr.filter((element, index) => {
 });
 newArr; // [9, 6]
 arr; // [1, 3, 9, 4, 2, 6]
-```
-
-
-
-- 实现
-
-```js
-function filter(arr, filterCallback) {
-  if (!Array.isArray(arr) || !arr.length || typeof filterCallback !== 'function')
-  {
-    return [];
-  } else {
-    let result = [];
-    for (let i = 0, len = arr.length; i < len; i++) {
-      if (filterCallback(arr[i], i, arr)) {
-        result.push(arr[i]);
-      }
-    }
-    return result;
-  }
-}
 ```
 
 ## forEach
