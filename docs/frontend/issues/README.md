@@ -10,12 +10,12 @@ categories:
 
 <!-- dirToc -->
 
-## menu (18)
+## menu (16)
 
 - [ajax和cors](./ajax.md)
 - [angular1.x的使用](./angular1.x.md)
 - [常见手写函数整理（一）](./custom-fn-01.md)
-- [数据类型判断](./define-types.md)
+- [问题整理（一）](./custom-fq-01.md)
 - [常见的浏览器事件封装](./event.md)
 - [github的graphql使用](./graphql-github.md)
 - [如何处理前端异常](./handleError.md)
@@ -23,9 +23,7 @@ categories:
 - [Cookie、JWT、Token](./jwt.md)
 - [Learn jest.js note](./learn-jest.md)
 - [micro frontend](./micro-frontend.md)
-- [移动端的touch事件](./mobile.md)
 - [对象工具函数](./object-clone.md)
-- [工具方法集合](./other.md)
 - [实现Promise](./promise.md)
 - [URL到页面加载过程](./render-html.md)
 - [CSR & SSR](./scr-ssr.md)

@@ -1,6 +1,6 @@
 ---
-title: dom.default
-date: 2020-07-20
+title: 文档属性兼容
+date: 2020-02-20
 sidebar: "auto"
 tags:
   - dom

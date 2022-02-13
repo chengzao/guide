@@ -1,6 +1,6 @@
 ---
 title: 基本数据类型
-date: 2020-07-20
+date: 2020-05-20
 sidebar: "auto"
 categories:
   - frontend

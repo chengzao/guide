@@ -1,6 +1,6 @@
 ---
-title: 数据类型-document
-date: 2020-07-20
+title: 浏览器事件兼容
+date: 2021-07-20
 sidebar: "auto"
 categories:
   - frontend
