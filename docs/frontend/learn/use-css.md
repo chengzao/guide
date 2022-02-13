@@ -8,24 +8,223 @@ tags:
   - css三角形
   - 百分比单位
   - 字体超出省略
+  - 居中
 categories:
   - frontend
 ---
 
-## CSS的border边框圆角
+## 水平居中
+
+- 此类元素需要水平居中，则父级元素必须是块级元素:
+
+<codepen slug="dyVwgMO" />
+
+```css
+.parent {
+    text-align: center;
+}
+```
+
+## 垂直居中
+
+- 通过设置上下内间距一致达到垂直居中的效果:
+
+<codepen slug="dyVwgMO" />
+
+```css
+.single-line {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+```
+
+- 通过设置 height 和 line-height 一致达到垂直居中:
+
+<codepen slug="dyVwgMO" />
+
+```css
+.single-line {
+  height: 100px;
+  line-height: 100px;
+}
+```
+
+## 水平垂直居中
+
+```html
+<div class="parent">
+  <div class="child"></div>
+</div>
+```
+
+### 固定宽高的块级盒子
+
+- absolute + 负 margin:
+
+<codepen slug="GROvNeE" />
+
+```css
+.parent{
+  position: relative;
+}
+.child{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  margin: -50px 0 0 -50px;
+}
+```
+
+- absolute + margin auto
+
+<codepen slug="qBVXREN" />
+
+```css
+.parent{
+  position: relative;
+}
+.child{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+```
+
+- absolute + calc
+
+<codepen slug="vYWJgKJ" />
+
+```css
+.parent{
+  position: relative;
+}
+.child{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: calc(50% - 50px);
+  top: calc(50% - 50px);
+}
+```
+
+### 不固定宽高的块级盒子
+
+- absolute + transform
+
+<codepen slug="bGYrgwm" />
+
+```css
+.parent{
+  position: relative;
+}
+
+.child{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+- flex
+
+<codepen slug="NWwvdbE" />
+
+```css
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+- table-cell
+
+<codepen slug="MWOvJbN" />
+
+```css
+.parent {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 600px;
+}
+.child {
+  display: inline-block;
+}
+```
+
+- grid
+
+<codepen slug="mdqMRWX" />
+
+```css
+.parent {
+  display: grid;
+}
+.child {
+  align-self: center;
+  justify-self: center;
+}
+```
+
+- line-height + vertical-align
+
+<codepen slug="ExbvZmK" />
+
+```css
+.parent{
+  line-height: 150px;
+  text-align: center;
+  height: 150px;
+}
+
+.child{
+  display: inline-block;
+  line-height: initial;
+  vertical-align: middle;
+}
+```
+
+- writing-mode
+
+<codepen slug="rNYzjwV" />
+
+```html
+<div class="parent box">
+  <div class="middle">
+    <div class="child bg">writing-mode</div>
+  </div>
+</div>
+<style>
+.parent {
+  writing-mode: vertical-lr;
+  text-align: center;
+}
+.parent .middle {
+  display: inline-block;
+  writing-mode: horizontal-tb;
+  text-align: center;
+  width: 100%;
+}
+.parent .child {
+  display: inline-block;
+}
+</style>
+```
+
+## CSS的border边框
 
 <codepen slug="wvPKdjm" />
 
 ```css
-/* 半圆 */
-.half-circle {
-  height: 50px;
-  border-radius: 50px 50px 0 0;
-}
-/* 扇形 */
-.sector {
-  border-radius: 100px 0 0;
-}
 /* 三角 */
 .triangle {
   width: 0px;
@@ -33,37 +232,6 @@ categories:
   background: none;
   border: 50px solid red;
   border-color: red transparent transparent transparent;
-}
-/* 梯形 */
-.ladder {
-  width: 50px;
-  height: 0px;
-  background: none;
-  border: 50px solid red;
-  border-color: red transparent transparent transparent;
-}
-```
-
-## a 伪类的顺序
-
-- `link visited hover active`
-  - `link`:平常的状态
-  - `visited`:被访问过之后
-  - `hover`:鼠标放到链接上的时候
-  - `active`:链接被按下的时候
-
-```css
-a:link {
-  background-color: blue;
-}
-a:visited {
-  background-color: pink;
-}
-a:hover {
-  background-color: purple;
-}
-a:active {
-  background-color: yellow;
 }
 ```
 
@@ -116,14 +284,6 @@ a:active {
     -webkit-transform-origin: left top;
     transform-origin: left top;
 }
-```
-
-## 解决 IE9 不能使用 opacity
-
-```css
-opacity: 0.5;
-filter: alpha(opacity = 50);
-filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 ```
 
 ## 清除浮动的方式
@@ -279,7 +439,7 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 
 > forked: [https://juejin.cn/post/6936913689115099143](https://juejin.cn/post/6936913689115099143)
 
--padding设置百分比
+- padding设置百分比
 
 <codepen slug="wvrRagE" />
 
@@ -352,205 +512,9 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 
 - 造成我们使用百分比单位容易使布局问题变得复杂
 
-## 水平居中
-
-- 此类元素需要水平居中，则父级元素必须是块级元素:
-
-<codepen slug="dyVwgMO" />
-
-```css
-.parent {
-    text-align: center;
-}
-```
-
-## 垂直居中
-
-- 通过设置上下内间距一致达到垂直居中的效果:
-
-<codepen slug="dyVwgMO" />
-
-```css
-.single-line {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-```
-
-- 通过设置 height 和 line-height 一致达到垂直居中:
-
-<codepen slug="dyVwgMO" />
-
-```css
-.single-line {
-  height: 100px;
-  line-height: 100px;
-}
-```
-
-## 水平垂直居中
-
-<codepen slug="ymaKoM" />
-
-### 固定宽高的块级盒子
-
-- absolute + 负 margin:
-
-<codepen slug="YzrdJQQ" />
-
-```css
-.parent{
-  position: relative;
-}
-.child{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100px;
-  height: 100px;
-  margin: -50px 0 0 -50px;
-}
-```
-
-- absolute + margin auto:
-
-<codepen slug="YzrdJQQ" />
-
-```css
-.parent{
-  position: relative;
-}
-.child{
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-```
-
-- absolute + calc:
-
-<codepen slug="YzrdJQQ" />
-
-```css
-.parent{
-  position: relative;
-}
-.child{
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  left: calc(50% - 50px);
-  top: calc(50% - 50px);
-}
-```
-
-### 不固定宽高的块级盒子
-
-- absolute + transform:
-
-<codepen slug="qBPLJVq" />
-
-```css
-.parent{
-  position: relative;
-}
-
-.child{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-```
-
-- flex :
-
-<codepen slug="qBPLJVq" />
-
-```css
-.parent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-```
-
-- table-cell
-
-<codepen slug="qBPLJVq" />
-
-```css
-.parent {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  width: 600px;
-}
-.child {
-  display: inline-block;
-}
-```
-
-- grid
-
-<codepen slug="qBPLJVq" />
-
-```css
-.parent {
-  display: grid;
-}
-.child {
-  align-self: center;
-  justify-self: center;
-}
-```
-
-- line-height + vertical-align
-
-<codepen slug="qBPLJVq" />
-
-```css
-.parent{
-  line-height: 150px;
-  text-align: center;
-}
-
-.child{
-  display: inline-block;
-  line-height: initial;
-  vertical-align: middle;
-}
-```
-
-- writing-mode
-
-<codepen slug="qBPLJVq" />
-
-```css
-.parent {
-  width: 600px;
-  writing-mode: vertical-lr;
-  text-align: center;
-}
-.parent .middle {
-  display: inline-block;
-  writing-mode: horizontal-tb;
-  text-align: center;
-  width: 100%;
-}
-.parent .child {
-  display: inline-block;
-}
-```
-
 ## 如何判断元素是否到达可视区域
 
-Fork: [https://juejin.cn/post/6905539198107942919](https://juejin.cn/post/6905539198107942919)
+> 原文: [「2021」高频前端面试题汇总之前端性能优化篇](https://juejin.cn/post/6941278592215515143#heading-9)
 
 - window.innerHeight 是浏览器可视区的高度；
 - document.body.scrollTop || document.documentElement.scrollTop 是浏览器滚动的过的距离；
@@ -559,41 +523,55 @@ Fork: [https://juejin.cn/post/6905539198107942919](https://juejin.cn/post/690553
 
 ![image-isvisible](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/image-isvisible.4mjhm8qyr9m0.webp)
 
-## css实现文字两端对齐
-
-> https://zhuanlan.zhihu.com/p/53428937
+- code
 
 ```html
-// html
-<div class="row">
-  <span>姓名</span><input type="text">
+<div class="container">
+     <img src="loading.gif"  data-src="pic.png">
+     <img src="loading.gif"  data-src="pic.png">
 </div>
-<div class="row">
-  <span>联系方式</span><input type="text">
-</div>
+<script>
+var imgs = document.querySelectorAll('img');
+function lozyLoad(){
+		var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+		var winHeight= window.innerHeight;
+		for(var i=0;i < imgs.length;i++){
+			if(imgs[i].offsetTop < scrollTop + winHeight ){
+				imgs[i].src = imgs[i].getAttribute('data-src');
+			}
+		}
+	}
+  window.onscroll = lozyLoad();
+</script>
+```
 
-// css 1.0
-.row span {
-    display: inline-block;
-    width: 4em;
-    text-align: justify;
-    text-align-last: justify;
- }
+## a 伪类的顺序
 
-// css 2.0
-.row input {
-  vertical-align: top;
+- `link visited hover active`
+  - `link`:平常的状态
+  - `visited`:被访问过之后
+  - `hover`:鼠标放到链接上的时候
+  - `active`:链接被按下的时候
+
+```css
+a:link {
+  background-color: blue;
 }
-.row span {
-  display: inline-block;
-  width: 4em;
-  text-align: justify;
-  height: 20px;
-  overflow: hidden;
+a:visited {
+  background-color: pink;
 }
-.row span:after {
-  content: '';
-  display: inline-block;
-  width: 100%;
+a:hover {
+  background-color: purple;
 }
+a:active {
+  background-color: yellow;
+}
+```
+
+## 解决 IE9 不能使用 opacity
+
+```css
+opacity: 0.5;
+filter: alpha(opacity = 50);
+filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 ```

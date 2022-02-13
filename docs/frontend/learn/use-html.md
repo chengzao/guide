@@ -3,229 +3,289 @@ title: html常见布局
 date: 2020-07-20
 sidebar: "auto"
 tags:
-  - layout
+  - 布局
 categories:
   - frontend
 ---
 
-> Fork原文：https://juejin.cn/post/6941206439624966152
-
+> 原文：[1.5 万字 CSS 基础拾遗（核心知识、常见需求）](https://juejin.cn/post/6941206439624966152)
 
 ## 两栏布局（边栏定宽主栏自适应）
 
-<codepen slug="WNZLaKm" />
+- float + overflow（BFC 原理）
 
-### float + overflow（BFC 原理）
-
-```html
-<div class="section">
-  <aside class="float">aside</aside>
-  <main class="hidden">main</main>
-</div>
-
-aside {
-  width: 200px;
-  height: 50px;
-}
-main {
-  height: 100px;
-}
-
-.hidden {
-  overflow: hidden;
-}
-.float {
-  float: left;
-}
-```
-
-### float + margin
+<codepen slug="WNXERZm" />
 
 ```html
 <div class="section">
-  <aside class="float">aside</aside>
-  <main class="margin">main</main>
+  <div class="left">aside</div>
+  <div class="main">main</div>
 </div>
-
-aside {
-  width: 200px;
-  height: 50px;
-}
-main {
-  height: 100px;
-}
-
-.float {
-  float: left;
-}
-
-.margin {
-  margin-left: 200px;
-}
+<style>
+  .left {
+    width: 200px;
+    height: 50px;
+    float: left;
+  }
+  .main {
+    height: 100px;
+    overflow: hidden;
+  }
+</style>
 ```
 
-### flex
+- float + margin
+
+<codepen slug="yLPogvL" />
+
+```html
+<div class="section">
+  <div class="left">aside</div>
+  <div class="main">main</div>
+</div>
+<style>
+  .left {
+    width: 200px;
+    height: 50px;
+    float: left;
+  }
+  .main {
+    height: 100px;
+    margin-left: 200px;
+  }
+</style>
+```
+
+- flex
+
+<codepen slug="podrRKo" />
 
 ```html
 <div class="section flex">
-  <aside class="orange">aside</aside>
-  <main class="green">main</main>
+  <div class="left">aside</div>
+  <div class="main">main</div>
 </div>
-
-aside {
-  width: 200px;
-  height: 50px;
-}
-main {
-  height: 100px;
-}
-
-.flex {
-  display: flex;
-}
-.flex main {
-  flex: 1;
-}
+<style>
+  .flex{
+    display: flex;
+  }
+  .left {
+    width: 200px;
+    height: 50px;
+  }
+  .main {
+    height: 100px;
+    flex: 1;
+  }
+</style>
 ```
 
-### grid
+- grid
+
+<codepen slug="yLPogqy" />
 
 ```html
-<div class=" grid">
-  <aside class="orange">aside</aside>
-  <main class="green">main</main>
+<div class="section grid">
+  <div class="left">aside</div>
+  <div class="main">main</div>
 </div>
-
-aside {
-  width: 200px;
-  height: 50px;
-}
-main {
-  height: 100px;
-}
-.grid {
-  display: grid;
-  grid-template-columns: 200px auto;
-}
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 200px auto;
+  }
+  .left {
+    width: 200px;
+    height: 50px;
+  }
+  .main {
+    height: 100px;
+    flex: 1;
+  }
+</style>
 ```
 
 ## 三栏布局（两侧栏定宽主栏自适应）
 
-<codepen slug="vYevVzp" />
+- 圣杯布局
 
-### 圣杯布局
+<codepen slug="mdqMRGj" />
 
 ```html
-<section class="grail clearfix">
-  <main class="green">main</main>
-  <aside class="w150 left orange">aside</aside>
-  <aside class="w150 right orange">aside</aside>
-</section>
-
-.grail main {
-  width: 100%;
-  float: left;
-}
-.grail .left {
-  float: left;
-  position: relative;
-  left: -150px;
-  margin-left: -100%;
-}
-.grail .right {
-  float: left;
-  position: relative;
-  right: -150px;
-  margin-left: -150px;
-}
+<div class="section clearfix">
+  <div class="main">main</div>
+  <div class="left">left</div>
+  <div class="right">right</div>
+</div>
+<style>
+  .section{
+    /* there */
+    padding: 0 150px;
+  }
+  .main {
+    height: 100px;
+    /* there */
+    width: 100%;
+    float: left;
+  }
+  .left {
+    width: 150px;
+    height: 50px;
+    /* there */
+    float: left;
+    position: relative;
+    left: -150px;
+    margin-left: -100%;
+  }
+  .right {
+    width: 150px;
+    height: 50px;
+    /* there */
+    float: left;
+    position: relative;
+    right: -150px;
+    margin-left: -150px;
+  }
+</style>
 ```
 
-### 双飞翼布局
+- 双飞翼布局
+
+<codepen slug="oNoeZXd" />
 
 ```html
-<section class="wings clearfix">
-  <main><div class="green inner">main</div></main>
-  <aside class="w150 left orange">aside</aside>
-  <aside class="w150 right orange">aside</aside>
-</section>
+<div class="section clearfix">
+  <div class="main"><div class="inner">inner</div></div>
+  <div class="left">left</div>
+  <div class="right">right</div>
+</div>
+<style>
+  .main {
+    height: 100px;
 
-.wings main {
-  float: left;
-  width: 100%;
-}
-.wings .inner {
-  margin: 0 150px;
+    float: left;
+    width: 100%;
+  }
+  .inner{
+    margin: 0 150px;
+    height: 100px;
+  }
+
+  .left {
+    width: 150px;
+    height: 50px;
+
+    float: left;
+    margin-left: -100%;
+  }
+  .right {
+    width: 150px;
+    height: 50px;
+
+    float: left;
+    margin-left: -150px;
+  }
+</style>
+```
+
+- float + overflow (BFC原理)
+
+<codepen slug="rNYzyMw" />
+
+```html
+<div class="section clearfix">
+  <div class="left">left</div>
+  <div class="right">right</div>
+  <div class="main">main</div>
+</div>
+<style>
+.main {
   height: 100px;
-}
-.wings .left {
-  margin-left: -100%;
-}
-.wings .right {
-  float: left;
-  margin-left: -150px;
-}
-```
 
-### float + overflow (BFC原理)
-
-```html
-<section>
-  <aside class="w150 left orange">aside</aside>
-  <aside class="w150 right orange">aside</aside>
-  <main class="green hidden">main</main>
-</section>
+  overflow:hidden;
+}
 
 .left {
+  width: 150px;
+  height: 50px;
+
   float: left;
 }
 .right {
+  width: 150px;
+  height: 50px;
+
   float: right;
 }
-.hidden {
-  overflow: hidden;
-}
+</style>
 ```
 
-### flex
+- flex
+
+<codepen slug="rNYzyjw" />
 
 ```html
-<section class="flex">
-  <aside class="w150  orange">aside</aside>
-  <main class="green">main</main>
-  <aside class="w150  orange">aside</aside>
-</section>
-
+<div class="section flex">
+  <div class="left">left</div>
+  <div class="main">main</div>
+  <div class="right">right</div>
+</div>
+<style>
 .flex {
   display: flex;
 }
-.flex main {
-  flex: 1;
+.main {
+  height: 100px;
+
+  flex:1;
 }
+
+.left {
+  width: 150px;
+  height: 50px;
+}
+.right {
+  width: 150px;
+  height: 50px;
+}
+</style>
 ```
 
-### grid
+- grid
+
+<codepen slug="YzExZVd" />
 
 ```html
-<section class="grid">
-  <aside class=" orange">aside</aside>
-  <main class="green">main</main>
-  <aside class=" orange">aside</aside>
-</section>
-
+<div class="section grid">
+  <div class="left">left</div>
+  <div class="main">main</div>
+  <div class="right">right</div>
+</div>
+<style>
 .grid {
   display: grid;
   grid-template-columns: 150px auto 150px;
 }
-.grid aside {
+
+.main {
+  height: 100px;
+}
+.left {
+  width: 150px;
   height: 50px;
 }
+.right {
+  width: 150px;
+  height: 50px;
+}
+</style>
 ```
 
 ## 多列等高布局
 
-<codepen slug="poWqxOM" />
+- padding + 负margin
 
-### padding + 负margin
+<codepen slug="PoOKpOY" />
 
 ```html
 <main>
@@ -236,97 +296,59 @@ main {
     <p>222</p>
     <p>222</p>
     <p>222</p>
-    <p>222</p>
   </section>
   <section class="padmar blue">
     <p>333</p>
     <p>333</p>
   </sectoin>
 </main>
-
+<style>
 main {
   overflow: hidden;
-}
-section {
-  float: left;
-  width: 33.33%;
-  color: #fff;
 }
 .padmar {
   padding-bottom: 1000px;
   margin-bottom: -1000px;
 }
-```
-
-### 设置父级背景图片
-
-```html
-<main class="bg">
-  <section class="green">
-    <p>111</p>
-  </section>
-  <section class="orange">
-    <p>222</p>
-    <p>222</p>
-    <p>222</p>
-    <p>222</p>
-  </section>
-  <section class="blue">
-    <p>333</p>
-    <p>333</p>
-  </sectoin>
-</main>
-
-main {
-  overflow: hidden;
-}
 section {
   float: left;
   width: 33.33%;
   color: #fff;
 }
-
-.bg {
-  background: url(https://bubuzou.oss-cn-shenzhen.aliyuncs.com/blog/202102/line_bg.png) repeat-y;
-  background-size: 700px 1px;
-}
+</style>
 ```
-
 
 ## 三行布局（头尾定高主栏自适应）
 
 <codepen slug="YzrdJJY" />
 
-### calc
+- calc
+
+<codepen slug="oNoeZmV" />
 
 ```html
 <div class="layout">
-    <header></header>
+    <header>header</header>
     <main>
-        <div class="inner"></div>
+        <div class="inner">main</div>
     </main>
-    <footer></footer>
+    <footer>footer</footer>
 </div>
-
-html,body,.layout {
-    height: 100%;
-}
-body {
-  margin: 0;
-}
-header, footer {
-  height: 50px;
-}
-main {
-  overflow-y: auto;
-}
-<!-- ///////////////////// -->
-main{
-  height: calc(100% - 100px);
-}
+<style>
+  main{
+    height: calc(100% - 100px);
+    background: #87e8de;
+  }
+  header, footer {
+    height: 50px;
+    background: #bfbfbf;
+  }
+</style>
 ```
 
-### absolute
+- absolute
+
+<codepen slug="mdqMWgd" />
 
 ```html
 <div class="layout">
@@ -336,25 +358,20 @@ main{
     </main>
     <footer></footer>
 </div>
-
-html,body,.layout {
-    height: 100%;
-}
-body {
-  margin: 0;
-}
-header, footer {
-  height: 50px;
-}
-main {
-  overflow-y: auto;
-}
-<!-- /////////////////////// -->
+<style>
 .layout{
   position: relative;
 }
 header{
-  positon: absolute;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+}
+footer{
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
 }
 main{
@@ -362,16 +379,16 @@ main{
   padding: 50px 0;
   box-sizing: border-box;
 }
-
-footer{
-  position: absolute;
-  bootom: 0;
-  width: 100%;
+header, footer {
+  height: 50px;
+  background: #bfbfbf;
 }
+</style>
 ```
 
+- flex
 
-### flex
+<codepen slug="YzExVyz" />
 
 ```html
 <div class="layout">
@@ -381,21 +398,7 @@ footer{
     </main>
     <footer></footer>
 </div>
-
-html,body,.layout {
-    height: 100%;
-}
-body {
-  margin: 0;
-}
-header, footer {
-  height: 50px;
-}
-main {
-  overflow-y: auto;
-}
-
-<!-- /////////////////////// -->
+<style>
 .layout{
   display: flex;
   flex-direction: column;
@@ -403,10 +406,16 @@ main {
 main{
   flex: 1
 }
+header, footer {
+  height: 50px;
+  background: #bfbfbf;
+}
+</style>
 ```
 
-### grid
+- grid
 
+<codepen slug="QWOMvyM" />
 
 ```html
 <div class="layout">
@@ -416,23 +425,53 @@ main{
     </main>
     <footer></footer>
 </div>
-
-html,body,.layout {
-    height: 100%;
-}
-body {
-  margin: 0;
-}
-header, footer {
-  height: 50px;
-}
-main {
-  overflow-y: auto;
-}
-
-<!-- /////////////////////// -->
+<style>
 .layout{
   display: grid;
   grid-template-rows: 50px 1fr 50px;
+}
+header, footer {
+  height: 50px;
+  background: #bfbfbf;
+}
+</style>
+```
+
+## css实现文字两端对齐
+
+> <https://zhuanlan.zhihu.com/p/53428937>
+
+```html
+// html
+<div class="row">
+  <span>姓名</span><input type="text">
+</div>
+<div class="row">
+  <span>联系方式</span><input type="text">
+</div>
+
+// css 1.0
+.row span {
+    display: inline-block;
+    width: 4em;
+    text-align: justify;
+    text-align-last: justify;
+ }
+
+// css 2.0
+.row input {
+  vertical-align: top;
+}
+.row span {
+  display: inline-block;
+  width: 4em;
+  text-align: justify;
+  height: 20px;
+  overflow: hidden;
+}
+.row span:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
 }
 ```
