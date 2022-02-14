@@ -8,9 +8,8 @@ categories:
   - frontend
 ---
 
-## lifecycle
+## 生命周期
 
-- [原文：你真的了解 React 生命周期吗](https://juejin.im/post/5df648836fb9a016526eba01)
 - [react 生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
   ![wojtekmaj-pl-react-lifecycle-methods-diagram-1576117898899](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/wojtekmaj-pl-react-lifecycle-methods-diagram-1576117898899.png)
@@ -19,106 +18,29 @@ categories:
 
   ![20200101233506](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200101233506.png)
 
-- 代码
-
-
-
-```js
-import React, { Component } from 'react'
-
-export default class LifeCycle extends Component {
-  static defaultProps = {
-      name:'计数器'
-  }
-  constructor(props){
-    super();
-    this.state = {number:0,users:[]};//初始化默认的状态对象
-    console.log('1. constructor 初始化 props and state');
-
-  }
-  //componentWillMount在渲染过程中可能会执行多次
-  componentWillMount(){
-    console.log('2. componentWillMount 组件将要挂载');
-    //localStorage.get('userss');
-  }
-  //componentDidMount在渲染过程中永远只有执行一次
-  //一般是在componentDidMount执行副作用，进行异步操作
-  componentDidMount(){
-    console.log('4. componentDidMount 组件挂载完成');
-    fetch('https://api.github.com/users').then(res=>res.json()).then(users=>{
-        console.log(users);
-        this.setState({users});
-    });
-  }
-  shouldComponentUpdate(nextProps,nextState){
-    console.log('Counter',nextProps,nextState);
-    console.log('5. shouldComponentUpdate 询问组件是否需要更新');
-    return true;
-  }
-  componentWillUpdate(nextProps, nextState){
-    console.log('6. componentWillUpdate 组件将要更新');
-  }
-  componentDidUpdate(prevProps, prevState)){
-    console.log('7. componentDidUpdate 组件更新完毕');
-  }
-  add = ()=>{
-      this.setState({number:this.state.number});
-  };
-  render() {
-    console.log('3.render渲染，也就是挂载')
-    return (
-      <div style={{border:'5px solid red',padding:'5px'}}>
-        <p>{this.props.name}:{this.state.number}</p>
-        <button onClick={this.add}>+</button>
-        <ul>
-            {
-                this.state.users.map(user=>(<li>{user.login}</li>))
-            }
-        </ul>
-        {this.state.number%2==0&&<SubCounter number={this.state.number}/>}
-      </div>
-    )
-  }
-}
-
-// Sub Component
-class SubCounter extends Component{
-    constructor(props){
-        super(props);
-        this.state = {number:0};
-    }
-    componentWillUnmount(){
-        console.log('SubCounter componentWillUnmount');
-    }
-    //调用此方法的时候会把新的属性对象和新的状态对象传过来
-    shouldComponentUpdate(nextProps,nextState){
-        console.log('SubCounter',nextProps,nextState);
-        if(nextProps.number%3==0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    //componentWillReceiveProp 组件收到新的属性对象
-    componentWillReceiveProps(){
-      console.log('SubCounter 1.componentWillReceiveProps')
-    }
-    render(){
-        console.log('SubCounter  2.render')
-        return(
-            <div style={{border:'5px solid green'}}>
-                <p>{this.props.number}</p>
-            </div>
-        )
-    }
-}
-```
-
-
-
 - 父子组件触发示意图
 
 ![20200101234008](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200101234008.png)
+
+- 即将废弃的生命周期
+
+```js
+UNSAFE_componentWillMount
+UNSAFE_componentWillReceiveProps
+UNSAFE_componentWillUpdate
+```
+
+## react类组件生命周期
+
+> 来源：[React 进阶实践指南](https://juejin.cn/book/6945998773818490884/section/6952042099374030863)
+
+- 初始化阶段：`constructor -> getDerivedStateFromProps / componentWillMount -> render -> componentDidMount`
+
+![react-lifecycle-01](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/react-lifecycle-01.40xtjmv6tgq0.webp)
+
+- 更新阶段: `componentWillReceiveProps( props 改变) / getDerivedStateFromProp -> shouldComponentUpdate -> componentWillUpdate -> render -> getSnapshotBeforeUpdate -> componentDidUpdate`
+
+![react-lifecycle-02](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/react-lifecycle-02.mahx6qw49q8.webp)
 
 ## `static getDerivedStateFromProps`
 

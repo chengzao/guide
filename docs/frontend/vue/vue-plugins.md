@@ -1,5 +1,5 @@
 ---
-title: vue 常用插件
+title: vue2插件
 date: 2020-07-21
 sidebar: "auto"
 tags:
@@ -8,99 +8,94 @@ categories:
   - frontend
 ---
 
-```bash
-# 骨架屏
-vue-skeleton-webpack-plugin
 
-# 预渲染插件
-prerender-spa-plugin
+## vue2自动注册全局组件
 
-# 装饰器
-vue-property-decorator
+```js
+const path = require("path");
+/**
+ * 首字母大写
+ * @param str 字符串
+ * @example heheHaha
+ * @return {string} HeheHaha
+ */
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+/**
+ * 对符合'xx/xx.vue'组件格式的组件取组件名
+ * @param str fileName
+ * @example abc/bcd/def/basicTable.vue
+ * @return {string} BasicTable
+ */
+function validateFileName(str) {
+  return (
+    /^\S+\.vue$/.test(str) &&
+    str.replace(/^\S+\/(\w+)\.vue$/, (rs, $1) => capitalizeFirstLetter($1))
+  );
+}
 
+const requireComponent = require.context("../../components", true, /\.vue$/);
+// 找到组件文件夹下以.vue命名的文件，如果文件名为index，那么取组件中的name作为注册的组件名
+requireComponent.keys().forEach(filePath => {
+  // 解析文件路径： 返回文件内容
+  const componentConfig = requireComponent(filePath);
+  const fileName = validateFileName(filePath);
+  const _filePath = path.join(__dirname, "../../components", filePath);
+  if (!componentConfig.default.name) {
+    console.error(
+      `Vue Components path: (${_filePath}) should have a component name!!!`
+    );
+  }
+  const componentName = componentConfig.default.name
+    ? componentConfig.default.name
+    : fileName + "Com";
 
-# 图片预览
-vue-photo-preview
+  console.log({ componentName });
+  Vue.component(componentName, componentConfig.default || componentConfig);
+});
+```
 
+## 自动注册views下的路由
 
-# 安装webpack
-webpack webpack-cli
+- `router.js`
 
-# 配置 ES6/7/8 转 ES5代码
-babel-loader
-@babel/core
-@babel/preset-env
+```js
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import routes from './routes'
 
-# ES6/7/8 Api 转es5
-@babel-polyfill
+Vue.use(VueRouter)
 
-# 配置 scss 转 css
-sass-loader
-dart-sass
-css-loader
-style-loader
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
 
-# 配置 postcss 实现自动添加css3前缀
-postcss-loader
-autoprefixer
+export default router
+```
 
-html-webpack-plugin
-webpack-dev-server
+- `routes.js`
 
-# 解析文件url，并将文件复制到输出的目录中
-file-loader
+```js
+// 利用 webpack 读取 views 目录下的 router.js
+const routerFile = require.context('../', true, /^\.\/views\/[\w.-]+\/router.js$/)
 
-# 功能与 file-loader 类似，如果文件小于限制的大小。则会返回 base64 编码，否则使用 file-loader将文件复制到输出的目录中
-url-loader
+// 返回的 routerFile.keys() 是一个路由配置的路径数组列表 ['./views/Page/router.js']
+// 循环递归调用 routerFile 去解析 每一项的路径地址 './views/Page/router.js'
+// 返回 文件内容: Module { default: { path: "/page", name: 'xxx', children:[{},...]}, ... }
 
-# 用于解析.vue文件
-vue-loader
+// 获取返回路由集合
+const routesConfig = (r => {
+  return r.keys().map(key => r(key).default)
+})(routerFile)
 
-# 用于编译模板
-vue-template-compiler
+// redirect
+const redirectConfig = {
+  path: '*',
+  redirect: '/'
+}
 
-# 用于缓存loader编译的结果
-cache-loader
-
-# 使用 worker 池来运行loader，每个 worker 都是一个 node.js 进程
-thread-loader
-
-# 用于压缩css代码
-@intervolga/optimize-cssnano-plugin
-
-# 用于提取css到文件中
-mini-css-extract-plugin
-
-# 用于删除上次构建的文件
-clean-webpack-plugin
-
-# 合并 webpack配置
-webpack-merge
-
-# 用户拷贝静态资源
-copy-webpack-plugin
-
-# 精灵图自动合成
-postcss-sprites
-
-# 使用 vw,vh 自适应
-postcss-px-to-viewport
-
-# 图片压缩
-img-loader
-imagemin
-imagemin-jpegtran
-imagemin-pngquant
-
-memory-fs
-
-register-service-worker
-workbox
-
-js-cookie
-fastclick
-
-raw-loader
-
-iScroll better-scroll
+const routes = routesConfig.concat(redirectConfig)
+return routes
 ```

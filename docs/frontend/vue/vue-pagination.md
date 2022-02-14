@@ -1,5 +1,5 @@
 ---
-title: pagination/i18n/alert
+title: vue2分页组件
 date: 2020-07-21
 sidebar: "auto"
 tags:
