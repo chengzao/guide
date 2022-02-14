@@ -44,7 +44,7 @@ categories:
 - [fengxianqi/qiankun-example](https://github.com/fengxianqi/qiankun-example)
 - [qiankun 微前端实践及常见问题](https://juejin.cn/post/6943763969576271879)
 - [微前端 | 7. 微应用沙箱实现原理](https://zhuanlan.zhihu.com/p/145169867)
-
+- [深入浅出解析阿里成熟的微前端框架 qiankun 源码](https://mp.weixin.qq.com/s/8qHSYHFECn-y-OHI3XjiqQ)
 
 ## qiankun
 

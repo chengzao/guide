@@ -3,10 +3,323 @@ title: 对象工具函数
 date: 2020-07-30
 sidebar: "auto"
 tags:
-  - 工具函数
+  - array2tree
+  - tree2array
+  - lru
 categories:
   - frontend
 ---
+
+## array2tree
+
+- 递归
+
+```js
+let arr = [
+    {id: 1, name: '部门1', pid: 0},
+    {id: 2, name: '部门2', pid: 1},
+    {id: 3, name: '部门3', pid: 1},
+    {id: 4, name: '部门4', pid: 3},
+    {id: 5, name: '部门5', pid: 4},
+]
+
+function array2tree(array, pid){
+  return array.reduce((pre, cur) =>{
+    if(cur.pid == pid){
+      pre.push(cur);
+      const children = array2tree(array, cur.id)
+      if(children.length){
+        cur.children = children;
+      }
+    }
+    return pre;
+  }, [])
+}
+```
+
+- 使用object
+
+```js
+function array2tree(items, rootId) {
+    const result = [];   // 存放结果集
+    const map = {};  //
+
+    // map存储
+    for (const item of items) {
+        map[item.id] = { ...item }
+    }
+
+    for (const item of items) {
+        const id = item.id; // 当前节点id
+        const pid = item.pid; // 当前节点的父节点id
+        const treeItem = map[id]; // 当前节点对应的树对象
+        if (pid === rootId) {  // 找到根节点
+            result.push(treeItem);
+        } else {
+            // 找到当前节点的父级
+            if (map[pid] && !map[pid].children) {
+                map[pid].children = []
+            }
+            // 添加到父级
+            map[pid].children.push(treeItem)
+        }
+    }
+    return result;
+}
+
+let arr = [
+  {id: 1, name: '部门1', pid: 0},
+  {id: 2, name: '部门2', pid: 1},
+  {id: 3, name: '部门3', pid: 1},
+  {id: 4, name: '部门4', pid: 3},
+  {id: 5, name: '部门5', pid: 4},
+]
+let rs = array2tree(arr, 0);
+console.log(rs);
+```
+
+## tree2array
+
+```js
+function tree2array(tree){
+  return tree.reduce((acc, cur) => {
+    if(cur.children){
+      const sub = tree2array(cur.children);
+      delete cur.children;
+      acc.push(cur, ...sub);
+    }else{
+      acc.push(cur);
+    }
+    return acc;
+  }, [])
+}
+
+let rs2 = tree2array(rs);
+console.log(rs2)
+```
+
+## js使用filter递归过滤树形结构数组
+
+> Fork from : https://www.jianshu.com/p/5b816c76298f
+
+```js
+// 菜单列表
+const menuList = [{
+    name: '系统管理',
+    code: 'system_manage',
+    children: [{
+        name: '用户管理',
+        code: 'user_manage',
+        children: [{
+            name: '添加用户',
+            code: 'add_user'
+        }, {
+            name: '编辑用户',
+            code: 'edit_user'
+        }, {
+            name: '删除用户',
+            code: 'del_user'
+        }]
+    }, {
+        name: '角色管理',
+        code: 'role_manage',
+        children: [{
+            name: '添加角色',
+            code: 'add_role'
+        }]
+    }]
+}, {
+    name: '业务管理',
+    code: 'bus_manage',
+    children: [{
+        name: '流程管理',
+        code: 'process_manage'
+    }]
+}, {
+    name: '订单管理',
+    code: 'order_manage'
+}]
+
+// 权限列表
+const myMenuCode = ['system_manage', 'user_manage', 'add_user', 'order_manage']
+
+const filterMenu = (menuList, menuCode) => {
+    return menuList.filter(item => {
+        return menuCode.indexOf(item.code) > -1
+    }).map(item => {
+        item = Object.assign({}, item)
+        if (item.children) {
+            item.children = filterMenu(item.children, menuCode)
+        }
+        return item
+    })
+}
+
+// 过滤后的菜单
+const myMenu = filterMenu(menuList, myMenuCode)
+
+console.log(myMenu)
+```
+
+
+## cached
+
+```js
+function cached(fn) {
+  const cache = Object.create(null)
+  return function cachedFn(str) {
+    if (!cache[str]) {
+      cache[str] = fn(str)
+    }
+    return cache[str]
+  }
+}
+// test
+var cachedComputed = cached(computed)
+cachedComputed('ss')
+// 打印2000s have passed
+cachedComputed('ss')
+// 不再打印
+```
+
+## Url2Object
+
+```js
+function serilizeUrl(url) {
+  var urlObject = {}
+  if (/\?/.test(url)) {
+    var urlString = url.substring(url.indexOf('?') + 1)
+    console.log(urlString)
+    var urlArray = urlString.split('&')
+    for (var i = 0, len = urlArray.length; i < len; i++) {
+      var urlItem = urlArray[i]
+      console.log(urlItem)
+      var item = urlItem.split('=')
+      if (
+        item.length == 2 &&
+        item[0] != '' &&
+        item[0] != '""' &&
+        item[0] != '"'
+      ) {
+        urlObject[item[0]] = encodeURIComponent(item[1])
+      }
+    }
+    return urlObject
+  }
+  return {}
+}
+```
+
+## LRU
+
+- LRU（Least recently used，最近最少使用）算法。最近被访问的数据那么它将来访问的概率就大，缓存满的时候，优先淘汰最无人问津者
+
+- 实现逻辑 Map : [原文：146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/solution/146-lruhuan-cun-ji-zhi-by-alexer-660/)
+
+```bash
+Map 中的键值是有序的，而添加到对象中的键则不是。因此，当对它进行遍历时，Map 对象是按插入的顺序返回键值
+Map.prototype.keys()
+  返回一个新的 Iterator对象， 它按插入顺序包含了Map对象中每个元素的键 。
+
+1、尾部元素一直是最新set的，对应于LRU的最近使用原则
+  Map.set()
+2、头部元素是最远使用的，用于LRU容量满载时删除最远使用的元素，可获取其key
+  Map.keys().next().value
+
+解题步骤
+get
+  元素存在 delete、set
+  元素不存在 return -1
+put
+  元素存在  delete、set
+  元素不存在
+  容量超载 delete map头部元素(map.keys().next().value)、set
+  不超载   set
+```
+
+```js
+let myMap = new Map();
+
+// 添加键
+myMap.set("1", "a");
+myMap.set("2", "b");
+myMap.set("3", "c");
+myMap.set("4", "d");
+
+console.log(myMap.get("2")); // b
+
+console.log(myMap.delete("4")); // true
+
+console.log(myMap);
+
+let val = myMap.keys();
+console.log(val.next());
+console.log(val.next());
+```
+
+- 代码
+
+```js
+/**
+ * @param {number} capacity 容量
+ */
+var LRUCache = function(capacity) {
+  this.cap = capacity;
+  this.cache = new Map();
+};
+
+/**
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function(key) {
+  let cache = this.cache;
+  if (cache.has(key)) {
+    let val = cache.get(key);
+    // 删除元素
+    cache.delete(key);
+    // 重新插入到map结构最后
+    cache.set(key, val);
+    return val;
+  } else {
+    return -1;
+  }
+};
+
+/**
+ * @param {number} key
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function(key, value) {
+  let cache = this.cache;
+  if (cache.has(key)) {
+    // 删除元素
+    cache.delete(key);
+  } else {
+    if (cache.size == this.cap) {
+      // 删除map中第一个元素
+      cache.delete(cache.keys().next().value);
+    }
+  }
+  // 重新赋值插入
+  cache.set(key, value);
+};
+
+//  Your LRUCache object will be instantiated and called as such:
+var cache = new LRUCache(2);
+cache.put(1, 1);
+cache.put(2, 2);
+cache.get(1); // 返回  1
+cache.put(3, 3); // 该操作会使得密钥 2 作废
+cache.get(2); // 返回 -1 (未找到)
+cache.put(4, 4); // 该操作会使得密钥 1 作废
+cache.get(1); // 返回 -1 (未找到)
+cache.get(3); // 返回  3
+cache.get(4); // 返回  4
+
+console.log(cache);
+```
 
 ## formateMoney
 
@@ -43,7 +356,7 @@ function formatNumber(num) {
 ```
 
 
-## 获取类名 ClassName
+## 获取标签的ClassName
 
 ```js
 //获取类名ClassName
@@ -72,13 +385,9 @@ function getClassName(str) {
 }
 ```
 
-
-
-## 动画 animate
+## js动画animate
 
 - 简易版
-
-
 
 ```js
 //动画animate
@@ -118,10 +427,7 @@ function animate(obj, target) {
 ```
 
 
-
 - animate
-
-
 
 ```js
 //animate fn回调
@@ -151,11 +457,7 @@ function animateTwo(obj, json, fn) {
 }
 ```
 
-
-
 - animate 多属性动画
-
-
 
 ```js
 //fn为回调函数
@@ -206,11 +508,7 @@ function animate(obj, json, fn) {
 }
 ```
 
-
-
-## 根据属性得到具体元素
-
-
+## getEleArributeValue
 
 ```js
 // 根据属性得到具体元素
@@ -225,43 +523,9 @@ function atrGetEle(ele, attr, value) {
 }
 ```
 
-## createScriptLink
+## before&after
 
 ```js
-var styles = {
-  // 插入script标签
-  createSrc: function (url, {key, value}) {
-    var scrEle = document.createElement("script");
-    scrEle.src = url;
-    srcEle.type = "text/javascript";
-    srcEle.charset = "utf-8";
-    key && srcEle.setAttribute(key, value)
-    document.body.appendChild(scrEle);
-  },
-  // 插入样式表
-  createStyle: function (url) {
-    var scrEle = document.createElement("link");
-    scrEle.rel = "stylesheet";
-    scrEle.href = url;
-    document.head.appendChild(scrEle);
-  },
-  on: function (url) {
-    if (!url) {
-      return false;
-    }
-    if (window.addEventListener)
-      window.addEventListener("load", this.createSrc.bind(this, url), false);
-    else if (window.attachEvent)
-      window.attachEvent("onload", this.createSrc.bind(this, url));
-    else window.onload = this.createSrc.bind(this, url);
-  },
-  removeDom: function (id) {
-    var reSrc = document.querySelector(id);
-    reSrc.parentNode.removeChild(reSrc);
-  },
-}
-
-
 //
 Function.prototype.before = function (beforefn) {
   let _self = this; // 缓存原函数的引用
@@ -295,67 +559,11 @@ func();
 
 
 
-## console.log
+## console
 
 ```js
 const log = (type) => console.log.bind(console, type);
 ```
-
-## cached
-
-
-
-```js
-function cached(fn) {
-  const cache = Object.create(null)
-  return function cachedFn(str) {
-    if (!cache[str]) {
-      cache[str] = fn(str)
-    }
-    return cache[str]
-  }
-}
-// test
-var cachedComputed = cached(computed)
-cachedComputed('ss')
-// 打印2000s have passed
-cachedComputed('ss')
-// 不再打印
-```
-
-
-
-## UrlToObject
-
-
-
-```js
-function serilizeUrl(url) {
-  var urlObject = {}
-  if (/\?/.test(url)) {
-    var urlString = url.substring(url.indexOf('?') + 1)
-    console.log(urlString)
-    var urlArray = urlString.split('&')
-    for (var i = 0, len = urlArray.length; i < len; i++) {
-      var urlItem = urlArray[i]
-      console.log(urlItem)
-      var item = urlItem.split('=')
-      if (
-        item.length == 2 &&
-        item[0] != '' &&
-        item[0] != '""' &&
-        item[0] != '"'
-      ) {
-        urlObject[item[0]] = encodeURIComponent(item[1])
-      }
-    }
-    return urlObject
-  }
-  return {}
-}
-```
-
-
 
 ## hexToRGB
 
@@ -595,37 +803,6 @@ getCorrectResult() //方法：确认我们的计算结果无误，以防万一
 ```
 
 
-
-## 斐波那契数
-
-```js
-// fn1
-var fib = function (N) {
-  if (N == 0) return 0;
-  if (N == 1) return 1;
-  return fib(N - 1) + fib(N - 2)
-};
-
-// fn2
-let fib = n => {
-  if (n == 0) return 0;
-  let a1 = 0;
-  a2 = 1;
-  for (let i = 1; i < n; i++) {
-    [a1, a2] = [a2, a1 + a2];
-  }
-  return a2;
-}
-
-// fn3
-let fib = n => Math.round(
-  (Math.pow((1 + Math.sqrt(5)) / 2, n) -
-    Math.pow((1 - Math.sqrt(5)) / 2, n)) /
-  Math.sqrt(5)
-);
-```
-
-
 ## 监听数组变化
 
 ```js
@@ -645,81 +822,7 @@ arr.unshift('Good2')
 console.log(arr)
 ```
 
-## 最大公约数&最小公倍数
 
-```js
-// 最大公约数: 能同时被两数整除的最大数字
-function maxDivisor(num1, num2) {
-  let max = num1 > num2 ? num1 : num2,
-    min = num1 > num2 ? num2 : num1;
-  for (var i = min; i >= 1; i--) {
-    if (max % i == 0 && min % i == 0) {
-      return i;
-    }
-  }
-}
-
-console.log(maxDivisor(60, 30)); // 30
-
-// 最小公倍数: 能同时整除两数的最小数字
-function minDivisor(num1, num2) {
-  let max = num1 > num2 ? num1 : num2,
-    min = num1 > num2 ? num2 : num1,
-    result = 0;
-  // 这个循环，当两数同为质数时，终止的最大条件值为 i = min
-  for (var i = 1; i <= min; i++) {
-    result = i * max;
-    if (result % max == 0 && result % min == 0) {
-      return result;
-    }
-  }
-}
-console.log(minDivisor(6, 8)); // 24
-```
-
-## 验证是否为回文
-
-```js
-// 数组方法生成倒装的新字符串与原字符串对比
-function isPalindrome(str) {
-  str = '' + str;
-  if (!str || str.length < 2) {
-    return false;
-  }
-  return (
-    Array.from(str)
-      .reverse()
-      .join('') === str
-  );
-}
-
-// 倒序循环生成新字符串与原字符串对比
-function isPalindrome(str) {
-  str = '' + str;
-  if (!str || str.length < 2) {
-    return false;
-  }
-  var newStr = '';
-  for (var i = str.length - 1; i >= 0; i--) {
-    newStr += str[i];
-  }
-  return str1 === str;
-}
-
-// 以中间点为基点，从头至中与从尾至中逐一字符串进行对比，若有一个不同，则 return false
-function isPalindrome(str) {
-  str = '' + str;
-  if (!str || str.length < 2) {
-    return false;
-  }
-  for (let i = 0; i < str.length / 2; i++) {
-    if (str[i] !== str[str.length - 1 - i]) {
-      return false;
-    }
-  }
-  return true;
-}
-```
 
 ## FIFO
 
@@ -757,170 +860,6 @@ fifo.set("name-10", 10);
 console.log(fifo);
 ```
 
-## 判断一个数是否为质数
-
-```js
-function isPrime(num) {
-  if (num === 1) {
-    return "1 不是质数，请输入大于1的数字";
-  } else if (num <= 3) {
-    return num > 1;
-  } else {
-    let sq = Math.sqrt(num);
-    for (let i = 2; i <= sq; i++) {
-      if (num % i === 0) {
-        return false;
-      }
-    }
-    return true;
-  }
-}
-```
-
-## 实现类 vue 的 filter 函数
-
-```js
-// {{ message | fn1 | fn2 }}
-function filterMap() {
-  var args = [].slice.call(arguments);
-  if (args.length == 0) {
-    throw Error("处理函数不能为空");
-  }
-  return function next(val) {
-    return args.length == 1
-      ? args.shift()(val)
-      : args.reduce((pre, cur) => {
-          let value = typeof pre == "function" ? pre(val) : pre;
-          return cur(value);
-        }, args.shift());
-  };
-}
-
-function fn1(val) {
-  return "fn1" + val;
-}
-function fn2(val) {
-  return "fn2" + val;
-}
-function fn3(val) {
-  return "fn3" + val;
-}
-
-var s = filterMap(fn1, fn2)("123");
-console.log(s);
-```
-
-## LRU
-
-- LRU（Least recently used，最近最少使用）算法。最近被访问的数据那么它将来访问的概率就大，缓存满的时候，优先淘汰最无人问津者
-
-- 实现逻辑 Map : [原文：146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/solution/146-lruhuan-cun-ji-zhi-by-alexer-660/)
-
-```bash
-Map 中的键值是有序的，而添加到对象中的键则不是。因此，当对它进行遍历时，Map 对象是按插入的顺序返回键值
-Map.prototype.keys()
-  返回一个新的 Iterator对象， 它按插入顺序包含了Map对象中每个元素的键 。
-
-1、尾部元素一直是最新set的，对应于LRU的最近使用原则
-  Map.set()
-2、头部元素是最远使用的，用于LRU容量满载时删除最远使用的元素，可获取其key
-  Map.keys().next().value
-
-解题步骤
-get
-  元素存在 delete、set
-  元素不存在 return -1
-put
-  元素存在  delete、set
-  元素不存在
-  容量超载 delete map头部元素(map.keys().next().value)、set
-  不超载   set
-```
-
-```js
-let myMap = new Map();
-
-// 添加键
-myMap.set("1", "a");
-myMap.set("2", "b");
-myMap.set("3", "c");
-myMap.set("4", "d");
-
-console.log(myMap.get("2")); // b
-
-console.log(myMap.delete("4")); // true
-
-console.log(myMap);
-
-let val = myMap.keys();
-console.log(val.next());
-console.log(val.next());
-```
-
-- 代码
-
-```js
-/**
- * @param {number} capacity 容量
- */
-var LRUCache = function(capacity) {
-  this.cap = capacity;
-  this.cache = new Map();
-};
-
-/**
- * @param {number} key
- * @return {number}
- */
-LRUCache.prototype.get = function(key) {
-  let cache = this.cache;
-  if (cache.has(key)) {
-    let val = cache.get(key);
-    // 删除元素
-    cache.delete(key);
-    // 重新插入到map结构最后
-    cache.set(key, val);
-    return val;
-  } else {
-    return -1;
-  }
-};
-
-/**
- * @param {number} key
- * @param {number} value
- * @return {void}
- */
-LRUCache.prototype.put = function(key, value) {
-  let cache = this.cache;
-  if (cache.has(key)) {
-    // 删除元素
-    cache.delete(key);
-  } else {
-    if (cache.size == this.cap) {
-      // 删除map中第一个元素
-      cache.delete(cache.keys().next().value);
-    }
-  }
-  // 重新赋值插入
-  cache.set(key, value);
-};
-
-//  Your LRUCache object will be instantiated and called as such:
-var cache = new LRUCache(2);
-cache.put(1, 1);
-cache.put(2, 2);
-cache.get(1); // 返回  1
-cache.put(3, 3); // 该操作会使得密钥 2 作废
-cache.get(2); // 返回 -1 (未找到)
-cache.put(4, 4); // 该操作会使得密钥 1 作废
-cache.get(1); // 返回 -1 (未找到)
-cache.get(3); // 返回  3
-cache.get(4); // 返回  4
-
-console.log(cache);
-```
-
 ## 字符串正则去重
 
 ```js
@@ -932,7 +871,7 @@ var res = str.replace(/(.).*(\1)/g, function($1, $2, $3) {
 });
 ```
 
-## 使用 Array 来重复字符
+## 使用Array来重复字符
 
 ```js
 for (let a = "", i = 7; i--; ) a += 0;

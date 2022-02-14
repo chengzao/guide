@@ -1,9 +1,10 @@
 ---
-title: 20210722代码片段
-date: 2021-07-22
+title: 代码片段(一)
+date: 2021-10-22
 sidebar: "auto"
 tags:
   - array
+  - tree
 categories:
   - frontend
 ---
@@ -286,167 +287,6 @@ str = str.split('').reverse().join('');
 console.log(str);
 ```
 
-## array2Tree
-
-- 递归
-
-```js
-let arr = [
-    {id: 1, name: '部门1', pid: 0},
-    {id: 2, name: '部门2', pid: 1},
-    {id: 3, name: '部门3', pid: 1},
-    {id: 4, name: '部门4', pid: 3},
-    {id: 5, name: '部门5', pid: 4},
-]
-
-function array2tree(array, pid){
-  return array.reduce((pre, cur) =>{
-    if(cur.pid == pid){
-      pre.push(cur);
-      const children = array2tree(array, cur.id)
-      if(children.length){
-        cur.children = children;
-      }
-    }
-    return pre;
-  }, [])
-}
-```
-
-- 其他
-
-```js
-function array2tree({ key, pKey, data }) {
-  let obj = {};
-  let result = [];
-  // 生成map
-  obj = data.reduce((acc, current) => {
-    acc[current[key]] = current;
-    return acc;
-  }, {});
-  data.forEach((item) => {
-    // 获取父节点
-    let pNode = obj[item[pKey]];
-    if (pNode) {
-      if (pNode.children) {
-        pNode.children.push(item);
-      } else {
-        pNode.children = [item];
-      }
-    } else {
-      result.push(item);
-    }
-  });
-  return result;
-}
-//
-let arr = [{ id: 1 },{ id: 2, pId: 1 },{ id: 3, pId: 2 },{ id: 4 },{ id: 5, pId: 2 },{ id: 6, pId: 4 }];
-let rs = array2tree({ key: "id", pKey: "pId", data: arr });
-console.log(rs);
-```
-
-## tree2Array
-
-```js
-function tree2array(arr) {
-  let result = [];
-  let next = function (list) {
-    list.forEach((item) => {
-      if (item.children) {
-        next(item.children);
-      }
-      delete item.children;
-      result.push(item);
-    });
-  };
-  next(arr);
-  return result;
-}
-//
-let rs2 = tree2array(rs);
-console.log(rs2);
-```
-
-- 其他
-
-```js
-function tree2array(tree){
-  return tree.reduce((acc, cur) => {
-    if(cur.children){
-      const sub = tree2array(cur.children);
-      delete cur.children;
-      acc.push(cur, ...sub);
-    }else{
-       acc.push(cur);
-    }
-    return acc;
-  }, [])
-}
-```
-
-## js使用filter递归过滤树形结构数组
-
-> Fork from : https://www.jianshu.com/p/5b816c76298f
-
-```js
-// 菜单列表
-const menuList = [{
-    name: '系统管理',
-    code: 'system_manage',
-    children: [{
-        name: '用户管理',
-        code: 'user_manage',
-        children: [{
-            name: '添加用户',
-            code: 'add_user'
-        }, {
-            name: '编辑用户',
-            code: 'edit_user'
-        }, {
-            name: '删除用户',
-            code: 'del_user'
-        }]
-    }, {
-        name: '角色管理',
-        code: 'role_manage',
-        children: [{
-            name: '添加角色',
-            code: 'add_role'
-        }]
-    }]
-}, {
-    name: '业务管理',
-    code: 'bus_manage',
-    children: [{
-        name: '流程管理',
-        code: 'process_manage'
-    }]
-}, {
-    name: '订单管理',
-    code: 'order_manage'
-}]
-
-// 权限列表
-const myMenuCode = ['system_manage', 'user_manage', 'add_user', 'order_manage']
-
-const filterMenu = (menuList, menuCode) => {
-    return menuList.filter(item => {
-        return menuCode.indexOf(item.code) > -1
-    }).map(item => {
-        item = Object.assign({}, item)
-        if (item.children) {
-            item.children = filterMenu(item.children, menuCode)
-        }
-        return item
-    })
-}
-
-// 过滤后的菜单
-const myMenu = filterMenu(menuList, myMenuCode)
-
-console.log(myMenu)
-```
-
 ## 有序数组合并为一个数组
 
 ```js
@@ -489,4 +329,151 @@ function binarySearch(target, arr) {
 }
 let arr = [1, 4, 6, 8, 9, 21, 45, 67, 98];
 console.log(binarySearch(67, arr));
+```
+
+## 最大公约数&最小公倍数
+
+```js
+// 最大公约数: 能同时被两数整除的最大数字
+function maxDivisor(num1, num2) {
+  let max = num1 > num2 ? num1 : num2,
+    min = num1 > num2 ? num2 : num1;
+  for (var i = min; i >= 1; i--) {
+    if (max % i == 0 && min % i == 0) {
+      return i;
+    }
+  }
+}
+
+console.log(maxDivisor(60, 30)); // 30
+
+// 最小公倍数: 能同时整除两数的最小数字
+function minDivisor(num1, num2) {
+  let max = num1 > num2 ? num1 : num2,
+    min = num1 > num2 ? num2 : num1,
+    result = 0;
+  // 这个循环，当两数同为质数时，终止的最大条件值为 i = min
+  for (var i = 1; i <= min; i++) {
+    result = i * max;
+    if (result % max == 0 && result % min == 0) {
+      return result;
+    }
+  }
+}
+console.log(minDivisor(6, 8)); // 24
+```
+
+## 验证是否为回文
+
+```js
+// 数组方法生成倒装的新字符串与原字符串对比
+function isPalindrome(str) {
+  str = '' + str;
+  if (!str || str.length < 2) {
+    return false;
+  }
+  return (
+    Array.from(str)
+      .reverse()
+      .join('') === str
+  );
+}
+
+// 倒序循环生成新字符串与原字符串对比
+function isPalindrome(str) {
+  str = '' + str;
+  if (!str || str.length < 2) {
+    return false;
+  }
+  var newStr = '';
+  for (var i = str.length - 1; i >= 0; i--) {
+    newStr += str[i];
+  }
+  return str1 === str;
+}
+
+// 以中间点为基点，从头至中与从尾至中逐一字符串进行对比，若有一个不同，则 return false
+function isPalindrome(str) {
+  str = '' + str;
+  if (!str || str.length < 2) {
+    return false;
+  }
+  for (let i = 0; i < str.length / 2; i++) {
+    if (str[i] !== str[str.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+```
+
+## 斐波那契数
+
+- 递归版
+
+```js
+// fn1
+var fib = function (N) {
+  if (N == 0) return 0;
+  if (N == 1) return 1;
+  return fib(N - 1) + fib(N - 2)
+};
+```
+
+- 动态规划(1)
+
+```js
+var fib = function(n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    var dp = []; 
+    dp[0]=0, dp[1]=1;
+    for (let i = 2; i <= n; i++) {
+      dp[i] = dp[i-1] + dp[i-2]
+    }
+    return dp[n];
+};
+```
+
+- 动态规划(2)
+
+```js
+let fib = n => {
+  if (n == 0) return 0;
+  let a1 = 0, a2 = 1;
+  for (let i = 1; i < n; i++) {
+    [a1, a2] = [a2, a1 + a2];
+  }
+  return a2;
+}
+```
+
+- 公式版
+
+```js
+let fib = n => Math.round(
+  (Math.pow((1 + Math.sqrt(5)) / 2, n) -
+    Math.pow((1 - Math.sqrt(5)) / 2, n)) /
+  Math.sqrt(5)
+);
+```
+
+## 判断一个数是否为质数
+
+```js
+function isPrime(num) {
+  if (num === 1) {
+    return "1 不是质数，请输入大于1的数字";
+  } else if (num <= 3) {
+    return num > 1;
+  } else {
+    let sq = Math.sqrt(num);
+    for (let i = 2; i <= sq; i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+}
 ```

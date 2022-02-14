@@ -91,3 +91,5 @@ React16 架构可以分为三层：
 - [「React进阶」 React 全部 api 解读+基础实践大全](https://mp.weixin.qq.com/s/wdChmE2-UDNFVyzG7RV0sg)
 - [图解react](https://7kms.github.io/react-illustration-series/main/macro-structure/)
 - [100行代码实现React核心调度功能](https://mp.weixin.qq.com/s/uuxHlanqyN2HneYOz7DMVw)
+- [React 框架运行时优化方案的演进](https://mp.weixin.qq.com/s/mV1Ffc-t6DCfNFfRjPq2_g)
+

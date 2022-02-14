@@ -371,3 +371,11 @@ const data = async () => {
 
 data()
 ```
+
+## github 登录授权
+
+- [AnDongCai@back-login](https://github.com/AnDongCai/back-login)
+- [linwalker@node-login](https://github.com/linwalker/node-login)
+- [第三方登入例子-GitHub 授权登入（node-koa）](https://segmentfault.com/a/1190000009722474)
+- [GitHub OAuth 第三方登录示例教程](http://www.ruanyifeng.com/blog/2019/04/github-oauth.html)
+- [基于 Github API 的图床 Chrome 插件开发全纪录](https://juejin.im/post/5cd38990e51d453a543f9e3e)
