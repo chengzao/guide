@@ -173,6 +173,8 @@ console.log(jsonStringify([1, "false", false])); // "[1,"false",false]"
 console.log(jsonStringify({ b: undefined })); // "{"b":"undefined"}"
 ```
 
+- 完整参考[实现 JSON.stringify](https://juejin.cn/post/6946022649768181774#heading-34)
+
 ## 实现一个 JSON.parse
 
 ```js
@@ -180,6 +182,8 @@ var jsonStr = '{ "age": 20, "name": "jack" }';
 var json = new Function("return " + jsonStr)();
 console.log(json);
 ```
+
+- 完整参考[实现 JSON.parse](https://juejin.cn/post/6946022649768181774#heading-35)
 
 ## a==1 && a==2 && a==3 问题
 
