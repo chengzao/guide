@@ -2,9 +2,86 @@
 title: 问题整理（一）
 date: 2020-07-20
 sidebar: "auto"
+tags:
+  - 继承
 categories:
   - frontend
 ---
+
+## 构造函数的继承
+
+- 寄生组合式继承
+
+```js
+function Father(name) {
+  this.name = name;
+}
+Father.prototype.sayname = function() {
+  console.log(this.name);
+};
+
+function Child(age, name) {
+  Father.call(this, name); //继承属性
+
+  this.age = age;
+}
+
+// 用一个 F 空的构造函数去取代执行了 Parent 这个构造函数
+function create(proto) {
+  function F() {}
+  F.prototype = proto;
+  return new F();
+}
+
+Child.prototype = create(Parent.prototype); //继承方法
+Child.prototype.constructor = Child;
+
+// Child原型方法
+Child.prototype.sayage = function() {
+  console.log(this.age);
+};
+```
+
+- 原型式继承`Object.create`
+
+```js
+function Super() {
+  this.type = "super";
+  this.colors = ["red", "blue", "black"];
+}
+function Child(name) {
+  Super.call(this);  // <- there
+
+  this.type = "child";
+  this.name = "name";
+}
+
+Child.prototype = Object.create(Super.prototype); // <- there
+//或 Object.setPrototypeOf(Child.prototype, Super.prototype)
+Child.prototype.constructor = Child; // <- there
+
+// 使用
+var child = new Child("cat");
+```
+
+- ES6的Class继承
+
+```js
+class Animal {
+    constructor(name) {
+        this.name = name
+    }
+    getName() {
+        return this.name
+    }
+}
+class Dog extends Animal {
+    constructor(name, age) {
+        super(name)
+        this.age = age
+    }
+}
+```
 
 ## Math.random
 
@@ -142,48 +219,6 @@ export const includesUA = (ua) => {
 }
 ```
 
-## 实现一个 JSON.stringify
-
-```js
-function jsonStringify(obj) {
-  let type = typeof obj;
-  if (type !== "object") {
-    if (/string|undefined|function/.test(type)) {
-      obj = '"' + obj + '"';
-    }
-    return String(obj);
-  } else {
-    let json = [];
-    let arr = Array.isArray(obj);
-    for (let k in obj) {
-      let v = obj[k];
-      let type = typeof v;
-      if (/string|undefined|function/.test(type)) {
-        v = '"' + v + '"';
-      } else if (type === "object") {
-        v = jsonStringify(v);
-      }
-      json.push((arr ? "" : '"' + k + '":') + String(v));
-    }
-    return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
-  }
-}
-console.log(jsonStringify({ x: 5 })); // "{"x":5}"
-console.log(jsonStringify([1, "false", false])); // "[1,"false",false]"
-console.log(jsonStringify({ b: undefined })); // "{"b":"undefined"}"
-```
-
-- 完整参考[实现 JSON.stringify](https://juejin.cn/post/6946022649768181774#heading-34)
-
-## 实现一个 JSON.parse
-
-```js
-var jsonStr = '{ "age": 20, "name": "jack" }';
-var json = new Function("return " + jsonStr)();
-console.log(json);
-```
-
-- 完整参考[实现 JSON.parse](https://juejin.cn/post/6946022649768181774#heading-35)
 
 ## a==1 && a==2 && a==3 问题
 
@@ -268,59 +303,6 @@ Point2.prototype.getName = function () {}
 
 Object.keys(Point2.prototype) // [ 'getName' ]
 Object.getOwnPropertyNames(Point2.prototype) // [ 'constructor', 'getName' ]
-```
-
-## formateTime
-
-```js
-module.exports = {
-  formatDateTime(time, fmt) {
-    var date = new Date(time)
-    var o = {
-      'Y+': date.getFullYear(), // 年
-      'M+': date.getMonth() + 1, // 月份
-      'D+': date.getDate(), // 日
-      'h+': date.getHours(), // 小时
-      'm+': date.getMinutes(), // 分
-      's+': date.getSeconds(), // 秒
-      'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
-      S: date.getMilliseconds(), // 毫秒
-    }
-    for (var k in o) {
-      if (new RegExp('(' + k + ')').test(fmt)) {
-        fmt = fmt.replace(
-          RegExp.$1,
-          o[k] < 10 ? '0' + o[k] : o[k],
-        )
-      }
-    }
-    return fmt
-  }
-}
-```
-
-## formateDate
-
-```js
-const formatTime = date => {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  const second = date.getSeconds();
-
-  return (
-    [year, month, day].map(formatNumber).join("/") +
-    " " +
-    [hour, minute, second].map(formatNumber).join(":")
-  );
-};
-
-const formatNumber = n => {
-  n = n.toString();
-  return n[1] ? n : "0" + n;
-};
 ```
 
 ## 水印watermark

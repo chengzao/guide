@@ -8,7 +8,7 @@ categories:
   - frontend
 ---
 
-## 手写typOf
+## 手写typof
 
 ```js
 function typeOf(obj) {
@@ -19,7 +19,7 @@ typeOf({})        // 'object'
 typeOf(new Date)  // 'date'
 ```
 
-## 手写instanceOf
+## 手写instanceof
 
 ```js
 function instanceOf(l, r) {
@@ -236,22 +236,24 @@ setInterval(throttle(fn, 1000, '参数1', '参数2'), 10);
 
 ```js
 function new() {
-  // 将 arguments 对象转为数组
+  // 1.将 arguments 对象转为数组
   var args = [].slice.call(arguments);
-  // 取出构造函数
+  var result = null
+  // 2.取出构造函数
   var constructor = args.shift();
-  // 判断参数是否是一个函数
+  // 3.判断参数是否是一个函数
   if (typeof constructor !== "function") {
     console.error("type error");
     return;
   }
-  // 创建一个空对象,继承构造函数的 prototype 属性
+  // 4.创建一个空对象,继承构造函数的 prototype 属性
   // var context.__proto__ = constructor.prototype;
   var context = Object.create(constructor.prototype);
-  // 执行构造函数
+  // 5.执行构造函数
   var result = constructor.apply(context, args);
-  // 如果返回结果是对象,就直接返回,则返回 context 对象
-  return typeof result === "object" && result != null ? result : context;
+  var isObject = (typeof result === "object") && result != null
+  // 6.如果返回结果是对象,就直接返回,则返回 context 对象
+  return isObject ? result : context;
 }
 ```
 
@@ -869,4 +871,77 @@ function pipe(fns){
     })
   }
 }
+```
+
+## formateTime
+
+```js
+module.exports = {
+  formatDateTime(time, fmt) {
+    var date = new Date(time)
+    var o = {
+      'Y+': date.getFullYear(), // 年
+      'M+': date.getMonth() + 1, // 月份
+      'D+': date.getDate(), // 日
+      'h+': date.getHours(), // 小时
+      'm+': date.getMinutes(), // 分
+      's+': date.getSeconds(), // 秒
+      'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+      S: date.getMilliseconds(), // 毫秒
+    }
+    for (var k in o) {
+      if (new RegExp('(' + k + ')').test(fmt)) {
+        fmt = fmt.replace(
+          RegExp.$1,
+          o[k] < 10 ? '0' + o[k] : o[k],
+        )
+      }
+    }
+    return fmt
+  }
+}
+```
+
+## 实现一个 JSON.stringify
+
+- 完整参考[实现 JSON.stringify](https://juejin.cn/post/6946022649768181774#heading-34)
+
+```js
+function jsonStringify(obj) {
+  let type = typeof obj;
+  if (type !== "object") {
+    if (/string|undefined|function/.test(type)) {
+      obj = '"' + obj + '"';
+    }
+    return String(obj);
+  } else {
+    let json = [];
+    let arr = Array.isArray(obj);
+    for (let k in obj) {
+      let v = obj[k];
+      let type = typeof v;
+      if (/string|undefined|function/.test(type)) {
+        v = '"' + v + '"';
+      } else if (type === "object") {
+        v = jsonStringify(v);
+      }
+      json.push((arr ? "" : '"' + k + '":') + String(v));
+    }
+    return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+  }
+}
+console.log(jsonStringify({ x: 5 })); // "{"x":5}"
+console.log(jsonStringify([1, "false", false])); // "[1,"false",false]"
+console.log(jsonStringify({ b: undefined })); // "{"b":"undefined"}"
+```
+
+
+## 实现一个 JSON.parse
+
+- 完整参考[实现 JSON.parse](https://juejin.cn/post/6946022649768181774#heading-35)
+
+```js
+var jsonStr = '{ "age": 20, "name": "jack" }';
+var json = new Function("return " + jsonStr)();
+console.log(json);
 ```
