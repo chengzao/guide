@@ -745,6 +745,7 @@ Object.assign2 = function(target, ...source) {
 - 逐步接收参数，并缓存供后期计算使用
 - 不立即计算，延后执行
 - 符合计算的条件，将缓存的参数，统一传递给执行方法
+- curry1：判断参数是否满足条件，满足条件执行方法，不满足则缓存参数
 
 ```js
 function curry(fn) {
@@ -753,7 +754,7 @@ function curry(fn) {
   return function next() {
     var args = [].slice.call(arguments);
 
-    // 判断是否执行计算
+    // 判断是否执行计算，即最后一个执行函数参数是否为空
     if (args.length > 0) {
       // 收集传入的参数，进行缓存
       allArgs = allArgs.concat(args);
@@ -776,19 +777,62 @@ var add = currying(function() {
 console.log(add(10, 2, 3)(4)());
 ```
 
-- es6
+- curry2: 判断最后的参数是否与函数需要的参数数量相同，如果相同，则执行计算
 
 ```js
-const curry = (fn, arr = []) => (...args) =>
-  (arg => (arg.length === fn.length ? fn(...arg) : curry(fn, arg)))([
-    ...arr,
-    ...args
-  ]);
+function curry(fn) {
+    var _args = [];
+    return function next() {
+      // 将参数收集起来
+      [].push.apply(_args, [].slice.call(arguments));
+      // 判断是否执行计算
+      if (_args.length === fn.length) {
+        const args = _args
+        _args = []
+        return fn.apply(this, args);
+      }
+      return next;
+    }
+}
+var abc = function(a, b, c) {
+  return a + b + c;
+};
 
-let curryTest = curry((a, b, c, d) => a + b + c + d);
-console.log(curryTest(1, 2, 3)(4)); //返回10
-console.log(curryTest(1, 2)(4)(3)); //返回10
-console.log(curryTest(1, 2)(3, 4)); //返回10
+var curried = curry(abc)
+console.log(curried(1)(2)(3))
+```
+
+- curry3: 使用toString调用函数
+
+```js
+function curry2(fn) {
+    var _args = [];
+
+    function next() {
+        var args = [].slice.call(arguments);
+        _args = _args.concat(args)
+        return next;
+    }
+    // 字符类型
+    next.toString = function() {
+        return fn.apply(null, _args);
+    }
+    // 数值类型
+    next.valueOf = function() {
+        return fn.apply(null, _args);
+    }
+    return next;
+
+}
+var add = curry2(function() {
+    var sum = 0;
+    for (var i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    return sum;
+});
+
+alert(add(1, 2, 3)(4))
 ```
 
 ## 实现字符串的repeat方法
@@ -800,5 +844,29 @@ function repeat(s, n) {
 
 function repeat(s, n) {
   return (n > 0) ? s.concat(repeat(s, --n)) : "";
+}
+```
+
+## compose and pipe
+
+- compose
+
+```js
+function compose(fns){
+  return function(arg){
+    return fns.reduceRight((acc, fn) => fn(acc), arg);
+  }
+}
+```
+
+- pipe
+
+```js
+function pipe(fns){
+  return function(...args){
+    return fns.reduce((acc, fn) => {
+      return fn(acc)
+    })
+  }
 }
 ```
