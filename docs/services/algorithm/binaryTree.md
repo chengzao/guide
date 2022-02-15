@@ -60,6 +60,43 @@ BST.prototype.insertNode = function(node, newNode) {
 };
 ```
 
+## 前序排列查询
+
+- 示例图
+
+  ![20200102225235](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200102225235.png)
+
+- 代码
+
+```js
+/**
+ * 前序查询
+ * @param node obj 节点
+ * @returns {Array}
+ */
+BST.prototype.preOrder = function(node) {
+  var nodeArr = [];
+  var node = this.root;
+  if (node !== null) {
+    this.preOrderNode(node, nodeArr);
+  }
+  return nodeArr;
+};
+
+/**
+ * 前序(中->左->右)
+ * @param node obj 节点
+ * @param nodeArr 存储查询的值
+ */
+BST.prototype.preOrderNode = function(node, nodeArr) {
+  if (node !== null) {
+    nodeArr.push(node.data);  // <- there
+    this.preOrderNode(node.left, nodeArr);
+    this.preOrderNode(node.right, nodeArr);
+  }
+};
+```
+
 ## 中序排列查询
 
 - 示例图
@@ -95,7 +132,7 @@ BST.prototype.inOrder = function(sort = "ASC") {
 BST.prototype.inOrderAscNode = function(node, nodeArr) {
   if (node !== null) {
     this.inOrderAscNode(node.left, nodeArr);
-    nodeArr.push(node.data);
+    nodeArr.push(node.data);  // <- there
     this.inOrderAscNode(node.right, nodeArr);
   }
 };
@@ -108,45 +145,8 @@ BST.prototype.inOrderAscNode = function(node, nodeArr) {
 BST.prototype.inOrderDescNode = function(node, nodeArr) {
   if (node !== null) {
     this.inOrderDescNode(node.right, nodeArr);
-    nodeArr.push(node.data);
+    nodeArr.push(node.data); // <- there
     this.inOrderDescNode(node.left, nodeArr);
-  }
-};
-```
-
-## 前序排列查询
-
-- 示例图
-
-  ![20200102225235](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200102225235.png)
-
-- 代码
-
-```js
-/**
- * 前序查询
- * @param node obj 节点
- * @returns {Array}
- */
-BST.prototype.preOrder = function(node) {
-  var nodeArr = [];
-  var node = this.root;
-  if (node !== null) {
-    this.preOrderNode(node, nodeArr);
-  }
-  return nodeArr;
-};
-
-/**
- * 前序(中->左->右)
- * @param node obj 节点
- * @param nodeArr 存储查询的值
- */
-BST.prototype.preOrderNode = function(node, nodeArr) {
-  if (node !== null) {
-    nodeArr.push(node.data);
-    this.preOrderNode(node.left, nodeArr);
-    this.preOrderNode(node.right, nodeArr);
   }
 };
 ```
@@ -183,7 +183,7 @@ BST.prototype.reOrderNode = function(node, nodeArr) {
   if (node !== null) {
     this.reOrderNode(node.left, nodeArr);
     this.reOrderNode(node.right, nodeArr);
-    nodeArr.push(node.data);
+    nodeArr.push(node.data);  // <- there
   }
 };
 ```
@@ -710,3 +710,30 @@ console.log('compareNodes: ', bst.compareNodes(bst.root, bst1));
 ```
 
 
+
+## 广度优先
+
+- 层序遍历
+
+```js
+function BFS(root) {
+    const queue = [] // 初始化队列queue
+    // 根结点首先入队
+    queue.push(root)
+    // 队列不为空，说明没有遍历完全
+    while(queue.length) {
+        const top = queue[0] // 取出队头元素  
+        // 访问 top
+        console.log(top.val)
+        // 如果左子树存在，左子树入队
+        if(top.left) {
+            queue.push(top.left)
+        }
+        // 如果右子树存在，右子树入队
+        if(top.right) {
+            queue.push(top.right)
+        }
+        queue.shift() // 访问完毕，队头元素出队
+    }
+}
+```

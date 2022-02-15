@@ -12,7 +12,7 @@ categories:
 :::tip
 
 [原文: JavaScript 数据结构与算法之美 - 十大经典排序算法](https://juejin.im/post/5d3ea9a4e51d4561f060cd2d)
-
+       
 :::
 
 ## 冒泡排序
@@ -89,37 +89,9 @@ const quickSort0 = arr => {
 };
 const array0 = [5, 14, 3, 21, 10];
 console.log('quickSort0 ', quickSort0(array0));
-
-const quickSort1 = arr => {
-  if (arr.length <= 1) {
-    return arr;
-  }
-  // 基准值取数组第一个
-  const pivot = arr.pop();
-  // const left = []; //存放比基准点小的数组
-  // const right = []; //存放比基准点大的数组
-  //遍历数组，进行判断分配
-  // for (let i = 1; i < arr.length; i++) {
-  //   if (arr[i] <= midVal) {
-  //     left.push(arr[i]); //比基准点小的放在左边数组
-  //   } else {
-  //     right.push(arr[i]); //比基准点大的放在右边数组
-  //   }
-  // }
-  let left = arr.filter(item => item < pivot);
-  let right = arr.filter(item => item >= pivot);
-  //递归执行以上操作，对左右两个数组进行操作，直到数组长度为 <= 1
-  return quickSort1(left).concat(pivot, quickSort1(right));
-};
-const array1 = [5, 4, 3, 2, 1];
-console.log('quickSort1 ', quickSort1(array1));
 ```
 
-
-
 - 原地分区版快速排序实现
-
-
 
 ```js
 // 原地分区版快速排序实现
