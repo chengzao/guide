@@ -17,8 +17,6 @@ categories:
 
 ### stack Array
 
-
-
 ```js
 //栈：First In Last out
 const _stackItem = Symbol("stack array");
@@ -63,11 +61,7 @@ export default class Stack {
 // console.log(stack.isEmpty());
 ```
 
-
-
 ### stack Object
-
-
 
 ```js
 //栈：First In Last out
@@ -134,15 +128,11 @@ stack.push(120)
 console.log(stack.size())
 ```
 
-
-
 ## 队列
 
 ### 普通队列
 
 先进先出 (First In First Out)
-
-
 
 ```js
 // 队列：first in first out
@@ -210,11 +200,7 @@ export default class Queue {
 // console.log(queue.toString())
 ```
 
-
-
 ### 双端队列
-
-
 
 ```js
 // 双端队列
@@ -316,13 +302,9 @@ export default class Deque {
 // console.log(deque)
 ```
 
-
-
 ## 链表
 
 ### 单链表
-
-
 
 ```js
 export function defaultEquals(a, b) {
@@ -452,7 +434,57 @@ export default class LinkedList {
 }
 ```
 
+- 链表的中间结点 [leetcode 876](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
 
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var middleNode = function(head) {
+    let fast = head, slow = head
+
+    while(fast!=null && fast.next !=null){
+        fast = fast.next.next // 每次走2步
+        slow = slow.next // 每次走1步
+    }
+    return slow
+};
+```
+
+- 反转链表 [leetcode 206](https://leetcode-cn.com/problems/reverse-linked-list/)
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function(head) {
+	let pre = null, cur = head;
+
+    while(cur){
+        let tmp = cur.next;
+        cur.next = pre; // 当前指针next指向之前
+        pre = cur; // 前进一步
+        cur = tmp; // 前进一步
+    }
+    return pre
+};
+```
 
 ### 双链表
 
@@ -585,8 +617,6 @@ export default class LinkedList {
   }
 }
 ```
-
-
 
 ```js
 import LinkedList,{defaultEquals, Node} from './linkedList.js';
@@ -733,5 +763,3 @@ export default class DoublyLinkedList extends LinkedList {
   }
 }
 ```
-
-

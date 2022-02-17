@@ -665,18 +665,6 @@ function mReduce(arr, reduceCallback, initialValue) {
     return value;
   }
 }
-
-Array.prototype.mReduce = function(fn, initial){
-  let result = initial;
-  let index = 0;
-  if(initial == undefined){
-    result = this[index]
-    index++
-  }
-  while(index<this.length){
-    result = fn(result, this[i])
-  }
-}
 ```
 
 ::: details
