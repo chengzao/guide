@@ -224,34 +224,6 @@ randomNumber(arr2, 8, 1, 10);
 console.log(arr2);
 ```
 
-## 查找 1-9 中缺少的数字
-
-```js
-var str = '236489';
-if (str.indexOf('1') != -1) {
-  findOneOfNumber(str);
-} else {
-  findOneOfNumber(str);
-  console.log('1');
-}
-
-function findOneOfNumber(str) {
-  str = str.split('').sort(function (a, b) {
-    return a - b;
-  }).reverse();
-  console.log(str);
-  for (var i = 0; i < (str.length - 1); i++) {
-    var s = str[i] - str[i + 1];
-    //console.log(s)
-    if (s == 1) {
-
-    } else {
-      console.log(str[i] + "***" + str[i + 1]);
-    }
-  }
-}
-```
-
 ## toRMB 形式
 
 ```js
@@ -305,6 +277,34 @@ function mergeArray (left, right) {
 }
 
 mergeArray([2,4,5], [1,3,6])
+```
+
+- [leetcode 88](https://leetcode-cn.com/problems/merge-sorted-array/)
+
+```js
+var merge = function(nums1, m, nums2, n) {
+    // 初始化两个指针的指向，初始化 nums1 尾部索引k
+    let i = m - 1, j = n - 1, k = m + n - 1
+    // 当两个数组都没遍历完时，指针同步移动
+    while(i >= 0 && j >= 0) {
+        // 取较大的值，从末尾往前填补
+        if(nums1[i] >= nums2[j]) {
+            nums1[k] = nums1[i] // <-
+            i--
+            k--
+        } else {
+            nums1[k] = nums2[j]
+            j--
+            k--
+        }
+    }
+    // nums2 留下的情况，特殊处理一下
+    while(j>=0) {
+        nums1[k] = nums2[j]
+        k--
+        j--
+    }
+};
 ```
 
 ## 二分查找
@@ -426,7 +426,7 @@ var fib = function (N) {
 var fib = function(n) {
     if (n == 0) return 0;
     if (n == 1) return 1;
-    var dp = []; 
+    var dp = [];
     dp[0]=0, dp[1]=1;
     for (let i = 2; i <= n; i++) {
       dp[i] = dp[i-1] + dp[i-2]

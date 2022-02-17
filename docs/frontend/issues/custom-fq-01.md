@@ -622,3 +622,66 @@ typeof Date   //return function
 typeof new Date()   //return object
 typeof JSON   //return object
 ```
+
+## 判断对象是否存在循环引用
+
+> [「2021」高频前端面试题汇总之手写代码篇](https://juejin.cn/post/6946136940164939813#heading-68)
+
+```js
+const isCycleObject = (obj,parent) => {
+    const parentArr = parent || [obj];
+    for(let i in obj) {
+        if(typeof obj[i] === 'object') {
+            let flag = false;
+            parentArr.forEach((pObj) => {
+                // 如果对象存在循环引用，则返回true
+                if(pObj === obj[i]){
+                    flag = true;
+                }
+            })
+            if(flag) return true;
+            flag = isCycleObject(obj[i],[...parentArr,obj[i]]);
+            if(flag) return true;
+        }
+    }
+    return false;
+}
+
+
+const a = 1;
+const b = {a};
+const c = {b};
+const o = {d:{a:3},c}
+o.c.b.aa = a;
+
+console.log(isCycleObject(o)
+```
+
+## 实现简单版路由
+
+```js
+// hash路由
+class Route{
+  constructor(){
+    // 路由存储对象
+    this.routes = {}
+    // 当前hash
+    this.currentHash = ''
+    // 绑定this，避免监听时this指向改变
+    this.freshRoute = this.freshRoute.bind(this)
+    // 监听
+    window.addEventListener('load', this.freshRoute, false)
+    window.addEventListener('hashchange', this.freshRoute, false)
+  }
+  // 存储
+  storeRoute (path, cb) {
+    this.routes[path] = cb || function () {}
+  }
+  // 更新
+  freshRoute () {
+    // location.hash.slice(1) 去除#
+    this.currentHash = location.hash.slice(1) || '/'
+    this.routes[this.currentHash]()
+  }
+}
+```
