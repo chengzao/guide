@@ -1,6 +1,6 @@
 ---
 title: 常见手写函数整理（一）
-date: 2022-02-09
+date: 2022-02-16
 sidebar: "auto"
 tags:
   - function

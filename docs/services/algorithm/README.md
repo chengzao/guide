@@ -1,5 +1,6 @@
 ---
 title: 数据结构与算法
+date: 2021-06-05
 sidebar: "auto"
 autoSort: 9999
 ---

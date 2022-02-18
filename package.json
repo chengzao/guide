@@ -10,13 +10,14 @@
     "deploy": "npm run build && gh-pages -d dist",
     "docs:nav": "vuepress nav docs -f",
     "prepare": "husky install",
-    "gen:toc": "node scripts/gen-toc.js"
+    "gen:toc": "node scripts/gen-toc.js",
+    "debug": "vuepress dev docs --debug"
   },
   "devDependencies": {
     "@vuepress/plugin-medium-zoom": "^1.9.7",
     "cross-env": "^7.0.3",
     "gh-pages": "^3.2.3",
-    "husky": "^7.0.0",
+    "husky": "^7.0.4",
     "markdown-it-include": "^2.0.0",
     "vuepress": "^1.9.7",
     "vuepress-plugin-auto-sidebar": "^2.3.2",
@@ -29,6 +30,6 @@
     "vuepress-plugin-img-lazy": "^1.0.4",
     "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-plugin-sitemap": "^2.3.1",
-    "vuepress-theme-reco": "^1.6.10"
+    "vuepress-theme-reco": "^1.6.11"
   }
 }

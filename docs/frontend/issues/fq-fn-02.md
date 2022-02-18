@@ -1,6 +1,6 @@
 ---
 title: 对象工具函数
-date: 2020-07-30
+date: 2022-02-12
 sidebar: "auto"
 tags:
   - array2tree
@@ -9,6 +9,9 @@ tags:
 categories:
   - frontend
 ---
+
+
+{{$page.frontmatter}}
 
 ## array2tree
 

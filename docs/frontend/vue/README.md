@@ -1,6 +1,6 @@
 ---
 title: Vue
-date: 2020-07-21
+date: 2022-02-14
 sidebar: "auto"
 tags:
   - vue

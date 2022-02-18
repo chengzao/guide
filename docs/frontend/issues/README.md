@@ -14,10 +14,10 @@ categories:
 
 - [ajax和cors](./ajax.md)
 - [angular1.x的使用](./angular1.x.md)
-- [常见手写函数整理（一）](./custom-fn-01.md)
-- [问题整理（一）](./custom-fq-01.md)
-- [对象工具函数](./custom-fq-02.md)
 - [常见的浏览器事件封装](./event.md)
+- [常见手写函数整理（一）](./fq-fn-01.md)
+- [对象工具函数](./fq-fn-02.md)
+- [问题整理（一）](./fq-fn-03.md)
 - [github的graphql使用](./graphql-github.md)
 - [如何处理前端异常](./handleError.md)
 - [网络协议记录](./http.md)

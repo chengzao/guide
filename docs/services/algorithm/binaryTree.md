@@ -722,7 +722,7 @@ function BFS(root) {
     queue.push(root)
     // 队列不为空，说明没有遍历完全
     while(queue.length) {
-        const top = queue[0] // 取出队头元素  
+        const top = queue[0] // 取出队头元素
         // 访问 top
         console.log(top.val)
         // 如果左子树存在，左子树入队
