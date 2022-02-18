@@ -31,7 +31,11 @@ function genToc(filePath) {
       const toc = [];
       files.forEach((item) => {
         const data = fs.readFileSync(path.join(filePath, item), "utf-8");
-        let meta = data.match(/---([\s\S]*)---/g)[0];
+        let meta = data
+          .split("\n")
+          .slice(0, 50)
+          .join("\n")
+          .match(/---([\s\S]*)---/g)[0];
         let title = meta.split("\n")[1];
         if (/^title/g.test(title)) {
           title = title
