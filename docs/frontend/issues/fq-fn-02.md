@@ -10,9 +10,6 @@ categories:
   - frontend
 ---
 
-
-{{$page.frontmatter}}
-
 ## array2tree
 
 - 递归

@@ -5,4 +5,4 @@
 ---
 
 about docs for front end! 👉
-[website there!](https://guide.czhlink.com) | [guide@github](https://chengzao.github.io/guide)
+[website there!](https://guide.czhlink.com) | [backup website!](https://chengzao.github.io/guide)
