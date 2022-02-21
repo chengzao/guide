@@ -896,3 +896,10 @@ Math.random()
   .substring(2, 15);
 ```
 
+## 类数组转数组
+
+```js
+Array.prototype.slice.call(arguments);
+Array.prototype.concat.apply([], arguments);
+Array.from(arguments)
+```
