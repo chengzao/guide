@@ -1,5 +1,5 @@
 ---
-title: 对象工具函数
+title: 工具函数
 date: 2022-02-12
 sidebar: "auto"
 tags:
@@ -893,7 +893,7 @@ Math.random()
   .substring(2, 15);
 ```
 
-## 类数组转数组
+## 伪数组（类数组）转数组
 
 ```js
 Array.prototype.slice.call(arguments);

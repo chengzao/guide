@@ -10,26 +10,28 @@ categories:
 
 <!-- dirToc -->
 
-## menu (18)
+## menu (20)
 
 - [angular1.x的使用](./angular1.x.md)
+- [axios请求封装](./axios.md)
 - [基本数据类型](./basic.md)
-- [文档属性兼容](./dom-default.md)
-- [浏览器标签](./dom.md)
+- [使用commitizen格式化提交规范](./commitizen.md)
+- [BOM与DOM事件](./dom.md)
 - [github的graphql使用](./graphql-github.md)
 - [如何处理前端异常](./handleError.md)
 - [网络协议记录](./http.md)
-- [浏览器事件兼容](./js-document.md)
 - [Cookie、JWT、Token](./jwt.md)
 - [Learn jest.js note](./learn-jest.md)
 - [css预处理器less使用](./less.md)
 - [micro frontend](./micro-frontend.md)
-- [函数的设计模式/构造函数](./oop.md)
+- [前端prettier格式化插件](./prettier.md)
 - [使用rem和viewport的注意事项](./rem.md)
 - [URL到页面加载过程](./render-html.md)
 - [css预处理器sass使用](./sass.md)
 - [CSR & SSR](./scr-ssr.md)
+- [typescript](./typescript.md)
 - [web安全防范](./web-xss.md)
+- [webpack](./webpack.md)
 
 <!-- dirToc -->
 

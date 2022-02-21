@@ -201,8 +201,6 @@ sub.setState(12);
 
 - defineProperty
 
-
-
 ```js
 <!DOCTYPE html>
 <html>
@@ -265,13 +263,9 @@ sub.setState(12);
 </html>
 ```
 
-
-
 ## 发布订阅模式
 
 > 发布者 -> 事件中心 <=> 订阅者
-
-
 
 ```js
 class Event {
@@ -311,8 +305,6 @@ event.on('open', (data) => {
 })
 event.emit('open', { open: true })
 ```
-
-
 
 ## 面向对象
 
