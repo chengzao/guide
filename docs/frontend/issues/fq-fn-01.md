@@ -40,7 +40,7 @@ function instanceOf(l, r) {
 
 ## 手写Object.create
 
-- [MDN: Object.create Polyfill](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+- [MDN: Object.create Polyfill](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create#polyfill)
 
 ```js
 if (typeof Object.create !== "function") {
@@ -313,6 +313,33 @@ Function.prototype._apply = function (context) {
 }
 ```
 
+::: details
+
+- [36个手写题](https://juejin.cn/post/6946022649768181774#heading-28)
+
+```js
+Function.prototype.apply2 = function (context, arr) {
+    var context = context || window;
+    context.fn = this;
+
+    var result;
+    if (!arr) {
+        result = context.fn();
+    } else {
+        var args = [];
+        for (var i = 0, len = arr.length; i < len; i++) {
+            args.push('arr[' + i + ']');
+        }
+        result = eval('context.fn(' + args + ')')
+    }
+
+    delete context.fn
+    return result;
+}
+```
+
+:::
+
 ## 实现bind
 
 ```js
@@ -411,6 +438,35 @@ function deepClone(obj, map = new WeakMap()) {
 ::: details
 
 - [36 个 JS 手写题](https://juejin.cn/post/6946022649768181774#heading-9)
+
+```js
+const isObject = (target) => (typeof target === "object" || typeof target === "function") && target !== null;
+
+function deepClone(target, map = new WeakMap()) {
+    if (map.get(target)) {
+        return target;
+    }
+    // 获取当前值的构造函数：获取它的类型
+    let constructor = target.constructor;
+    // 检测当前对象target是否与正则、日期格式对象匹配
+    if (/^(RegExp|Date)$/i.test(constructor.name)) {
+        // 创建一个新的特殊对象(正则类/日期类)的实例
+        return new constructor(target);
+    }
+    if (isObject(target)) {
+        map.set(target, true);  // 为循环引用的对象做标记
+        const cloneTarget = Array.isArray(target) ? [] : {};
+        for (let prop in target) {
+            if (target.hasOwnProperty(prop)) {
+                cloneTarget[prop] = deepClone(target[prop], map);
+            }
+        }
+        return cloneTarget;
+    } else {
+        return target;
+    }
+}
+```
 
 :::
 
