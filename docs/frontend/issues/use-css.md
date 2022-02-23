@@ -545,7 +545,7 @@ function lozyLoad(){
 </script>
 ```
 
-- 图片懒加载: [36 个 JS 手写题](https://juejin.cn/post/6946022649768181774#heading-13)
+- 图片懒加载（imgLazyLoad）: [36 个 JS 手写题](https://juejin.cn/post/6946022649768181774#heading-13)
 
 ```js
 let imgList = [...document.querySelectorAll('img')]

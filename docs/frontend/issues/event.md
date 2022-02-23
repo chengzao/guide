@@ -228,48 +228,43 @@ function dispatchDOMEvent(el, payload, eventInit) {
 }
 ```
 
-## EventEmitter
+## EventEmitter（发布订阅模式）
+
+> [36个手写题](https://juejin.cn/post/6946022649768181774#heading-10)
 
 ```js
 class EventEmitter {
-  constructor() {
-      this.events = Object.create(null);
-  }
-  on(name, fn) {
-      if (!this.events[name]) {
-          this.events[name] = []
-      }
-      this.events[name].push(fn);
-      return this;
-  }
-  emit(name, ...args) {
-      if (!this.events[name]) {
-          return this;
-      }
-      const fns = this.events[name]
-      fns.forEach(fn => fn.call(this, ...args))
-      return this;
-  }
-  off(name, fn) {
-      if (!this.events[name]) {
-          return this;
-      }
-      if (!fn) {
-          this.events[name] = null
-          return this
-      }
-      const index = this.events[name].indexOf(fn);
-      this.events[name].splice(index, 1);
-      return this;
-  }
-  once(name, fn) {
-      const only = () => {
-          fn.apply(this, arguments);
-          this.off(name, only);
-      };
-      this.on(name, only);
-      return this;
-  }
+    constructor() {
+        this.cache = {}
+    }
+    on(name, fn) {
+        if (this.cache[name]) {
+            this.cache[name].push(fn)
+        } else {
+            this.cache[name] = [fn]
+        }
+    }
+    off(name, fn) {
+        let tasks = this.cache[name]
+        if (tasks) {
+            const index = tasks.findIndex(f => f === fn || f.callback === fn)
+            if (index >= 0) {
+                tasks.splice(index, 1)
+            }
+        }
+    }
+    emit(name, once = false, ...args) {
+        if (this.cache[name]) {
+            // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
+            let tasks = this.cache[name].slice()
+            for (let fn of tasks) {
+                fn(...args)
+            }
+            if (once) {
+                delete this.cache[name]
+            }
+        }
+    }
 }
 ```
 
