@@ -320,8 +320,6 @@ section {
 
 ## 三行布局（头尾定高主栏自适应）
 
-<codepen slug="YzrdJJY" />
-
 - calc
 
 <codepen slug="oNoeZmV" />
