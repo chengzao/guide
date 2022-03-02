@@ -36,13 +36,13 @@ categories:
 
 > [https://v2.vuejs.org/v2/guide/instance.html](https://v2.vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)
 
-![lifecycle](https://cn.vuejs.org/images/lifecycle.png)
+![lifecycle](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/lifecycle.6jyenz2z3i40.png)
 
 ## vue3
 
 > [https://vuejs.org/guide/essentials/lifecycle.html](https://vuejs.org/guide/essentials/lifecycle.html)
 
-![vue3 lifecycle](https://vuejs.org/assets/lifecycle.cec11dcc.png)
+![vue3 lifecycle](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/lifecycle.4oqnk7mo0c80.png)
 
 ## vuex工作流
 
