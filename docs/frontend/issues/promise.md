@@ -540,6 +540,20 @@ Promise.any = function(promiseArr) {
 }
 ```
 
+## Promise.prototype.finally
+
+> https://es6.ruanyifeng.com/#docs/promise#Promise-prototype-finally
+
+```js
+Promise.prototype.finally = function (callback) {
+  let P = this.constructor;
+  return this.then(
+    value  => P.resolve(callback()).then(() => value),
+    reason => P.resolve(callback()).then(() => { throw reason })
+  );
+};
+```
+
 ## 参考文档
 
 - [原文：从零一步一步实现一个完整版的 Promise](https://juejin.im/post/5d59757f6fb9a06ae76405c6)
