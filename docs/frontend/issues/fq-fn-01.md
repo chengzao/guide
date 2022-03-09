@@ -953,19 +953,17 @@ module.exports = {
 ```js
 function jsonStringify(data) {
   let dataType = typeof data;
-  // 判断类型是否为普通类型
-  if (dataType !== 'object') {
+  if (dataType !== 'object') { // 判断类型是否为普通类型
     return String(data);
   } else if (dataType === 'object') {
-    if (Array.isArray(data)) {
+    if (Array.isArray(data)) { // 判断是否是数组
       let result = [];
       data.forEach((item, index) => {
         result[index] = jsonStringify(item);
       });
       result = "[" + result + "]";
       return result.replace(/'/g, '"');
-
-    } else {
+    } else { // 判断是否是对象
       let result = [];
       Object.keys(data).forEach((item, index) => {
         result.push('"' + item + '"' + ":" + jsonStringify(data[item]));
@@ -974,10 +972,6 @@ function jsonStringify(data) {
     }
   }
 }
-
-console.log(jsonStringify({ x: 5 })); // "{"x":5}"
-console.log(jsonStringify([1, "false", false])); // "[1,"false",false]"
-console.log(jsonStringify({ b: undefined })); // "{"b":"undefined"}"
 ```
 
 - 完整请参考[实现 JSON.stringify](https://juejin.cn/post/6946022649768181774#heading-34)
