@@ -948,44 +948,112 @@ module.exports = {
 
 ## 实现一个 JSON.stringify
 
-- 完整参考[实现 JSON.stringify](https://juejin.cn/post/6946022649768181774#heading-34)
+- 简单版：支持 obect/array/string/number
 
 ```js
-function jsonStringify(obj) {
-  let type = typeof obj;
-  if (type !== "object") {
-    if (/string|undefined|function/.test(type)) {
-      obj = '"' + obj + '"';
+function jsonStringify(data) {
+  let dataType = typeof data;
+  // 判断类型是否为普通类型
+  if (dataType !== 'object') {
+    return String(data);
+  } else if (dataType === 'object') {
+    if (Array.isArray(data)) {
+      let result = [];
+      data.forEach((item, index) => {
+        result[index] = jsonStringify(item);
+      });
+      result = "[" + result + "]";
+      return result.replace(/'/g, '"');
+
+    } else {
+      let result = [];
+      Object.keys(data).forEach((item, index) => {
+        result.push('"' + item + '"' + ":" + jsonStringify(data[item]));
+      });
+      return ("{" + result + "}").replace(/'/g, '"');
     }
-    return String(obj);
-  } else {
-    let json = [];
-    let arr = Array.isArray(obj);
-    for (let k in obj) {
-      let v = obj[k];
-      let type = typeof v;
-      if (/string|undefined|function/.test(type)) {
-        v = '"' + v + '"';
-      } else if (type === "object") {
-        v = jsonStringify(v);
-      }
-      json.push((arr ? "" : '"' + k + '":') + String(v));
-    }
-    return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
   }
 }
+
 console.log(jsonStringify({ x: 5 })); // "{"x":5}"
 console.log(jsonStringify([1, "false", false])); // "[1,"false",false]"
 console.log(jsonStringify({ b: undefined })); // "{"b":"undefined"}"
 ```
 
+- 完整请参考[实现 JSON.stringify](https://juejin.cn/post/6946022649768181774#heading-34)
+
+```js
+function jsonStringify(data) {
+    let dataType = typeof data;
+    
+    if (dataType !== 'object') {
+        let result = data;
+        //data 可能是 string/number/null/undefined/boolean
+        if (Number.isNaN(data) || data === Infinity) {
+            //NaN 和 Infinity 序列化返回 "null"
+            result = "null";
+        } else if (dataType === 'function' || dataType === 'undefined' || dataType === 'symbol') {
+            //function 、undefined 、symbol 序列化返回 undefined
+            return undefined;
+        } else if (dataType === 'string') {
+            result = '"' + data + '"';
+        }
+        //boolean 返回 String()
+        return String(result);
+    } else if (dataType === 'object') {
+        if (data === null) {
+            return "null"
+        } else if (data.toJSON && typeof data.toJSON === 'function') {
+            return jsonStringify(data.toJSON());
+        } else if (data instanceof Array) {
+            let result = [];
+            //如果是数组
+            //toJSON 方法可以存在于原型链中
+            data.forEach((item, index) => {
+                if (typeof item === 'undefined' || typeof item === 'function' || typeof item === 'symbol') {
+                    result[index] = "null";
+                } else {
+                    result[index] = jsonStringify(item);
+                }
+            });
+            result = "[" + result + "]";
+            return result.replace(/'/g, '"');
+            
+        } else {
+            //普通对象
+            /**
+             * 循环引用抛错(暂未检测，循环引用时，堆栈溢出)
+             * symbol key 忽略
+             * undefined、函数、symbol 为属性值，被忽略
+             */
+            let result = [];
+            Object.keys(data).forEach((item, index) => {
+                if (typeof item !== 'symbol') {
+                    //key 如果是symbol对象，忽略
+                    if (data[item] !== undefined && typeof data[item] !== 'function'
+                        && typeof data[item] !== 'symbol') {
+                        //键值如果是 undefined、函数、symbol 为属性值，忽略
+                        result.push('"' + item + '"' + ":" + jsonStringify(data[item]));
+                    }
+                }
+            });
+            return ("{" + result + "}").replace(/'/g, '"');
+        }
+    }
+}
+```
 
 ## 实现一个 JSON.parse
 
 - 完整参考[实现 JSON.parse](https://juejin.cn/post/6946022649768181774#heading-35)
 
 ```js
+// new Function
 var jsonStr = '{ "age": 20, "name": "jack" }';
 var json = new Function("return " + jsonStr)();
 console.log(json);
+
+// eval
+var json = '{"a":"1", "b":2}';
+var obj = eval("(" + json + ")");  // obj 就是 json 反序列化之后得到的对象
 ```
