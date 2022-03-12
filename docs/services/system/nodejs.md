@@ -283,6 +283,13 @@ npm publish [--tag <beta|latest|...>]
 
 - 方式二：`npm link`
 
+## npm version
+
+- npm version[https://docs.npmjs.com/cli/v8/configuring-npm/package-json#dependencies]
+- [使用 npm 的语义版本控制](http://nodejs.cn/learn/semantic-versioning-using-npm)
+- [node-semver](https://github.com/npm/node-semver#tilde-ranges-123-12-1)
+
+
 ## 相关链接
 
 - [开源许可证](http://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html)
