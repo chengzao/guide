@@ -10,14 +10,12 @@ categories:
 
 <!-- dirToc -->
 
-## menu (12)
+## menu (10)
 
 - [前端开发使用的代理工具](./dev-proxy.md)
 - [editorConfig格式化插件](./editorConfig.md)
 - [前端eslint的格式化解决方案](./eslint.md)
 - [window userAgent](./get-ua.md)
-- [git裸仓库的使用](./git-bare.md)
-- [git常见使用场景](./git-example.md)
 - [git常见命令列表](./git.md)
 - [github的actions使用](./github-actions.md)
 - [meilisearch](./meilisearch.md)

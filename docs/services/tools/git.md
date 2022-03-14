@@ -12,8 +12,6 @@ categories:
 
 - 配置生效优先级：`local > global > system`
 
-
-
 ```bash
 # 配置
 git config --global user.name "用户名"          # 配置用户名
@@ -36,11 +34,7 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
-
-
 - ssh-keygen
-
-
 
 ```bash
 # 存放密钥的文件夹
@@ -63,8 +57,6 @@ id_dsa.pub # 公钥文件
 ssh -T git@github.com
 ```
 
-
-
 - [Connecting to GitHub with SSH](https://help.github.com/en/articles/connecting-to-github-with-ssh)
 
 ## init
@@ -86,8 +78,6 @@ git clone -b [branch] origin_url # 克隆远程分支
 
 - 添加文件到暂存区
 
-
-
 ```bash
 git add fileName  # 将工作区的某个文件添加到暂存区。
 git add -u     # 添加所有被tracked文件中被修改或删除的文件信息到暂存区，不处理untracked的文件
@@ -105,8 +95,6 @@ git add .gitignore
 git rm -r --cached .    # 清除版本控制标记，.代表所有文件，也可指定具体文件
 ```
 
-
-
 ## .gitignore
 
 ```bash
@@ -116,8 +104,6 @@ git rm -r --cached .    # 清除版本控制标记，.代表所有文件，也�
 ?      # 匹配任意一个字符
 **     # 匹配任意的中间目录，例如a/*/z可以匹配:a/z,a/b/z,a/b/c/z等
 ```
-
-
 
 ```bash
 # 忽略所有以 .c结尾的文件
@@ -139,15 +125,11 @@ doc/*.txt
 doc/**/*.pdf
 ```
 
-
-
 ## `.gitkeep`
 
 git 默认会忽略空的文件夹, 使用.gitkeep 来追踪空的文件夹
 
 ## commit
-
-
 
 ```bash
 git commit -m "提交说明"    # 将暂存区内容提交到本地仓库
@@ -172,8 +154,6 @@ git commit --amend -m [message]
 git commit --amend [file1] [file2] ...
 ```
 
-
-
 ## status
 
 ```bash
@@ -182,8 +162,6 @@ git status -s   # 让结果以更简短的形式输出
 ```
 
 ## diff
-
-
 
 ```bash
 git diff                     # 比较工作区与暂存区的区别
@@ -204,8 +182,6 @@ git diff <commit-id> <commit-id>
 
 - [Git-Basics-Viewing-the-Commit-History](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
 
-
-
 ```bash
 git log                 # 查看所有commit记录(SHA-A校验和，作者名称，邮箱，提交时间，提交说明)
 git log -p -次数                # 查看最近多少次的提交记录
@@ -222,8 +198,6 @@ git log -p --no-merges master.. #查看尚未合并的文件变更
 
 –pretty # 可以通过 –pretty 对提交信息进行定制
 ```
-
-
 
 ## blame
 
@@ -244,8 +218,6 @@ git config --global alias.l "log --oneline --graph"
 ```
 
 ## tag
-
-
 
 ```bash
 git tag           				 # 查看标签列表
@@ -271,13 +243,9 @@ git push origin :refs/tags/<tagname>  # 从远程删除命令tag
 git checkout -b [branch] [tag]  # 新建一个分支，指向某个tag
 ```
 
-
-
 ## 文件恢复
 
 - `文件恢复（未commit）git checkout`
-
-
 
 ```bash
 # 删除暂存区中的文件：
@@ -302,8 +270,6 @@ git checkout -- 文件名
 # 务必注意：git checkout会抛弃当前工作区的更改!!!不可恢复！！！务必小心！！！
 ```
 
-
-
 - 文件恢复（已 add 未 commit）git reset HEAD
 
 ```bash
@@ -312,8 +278,6 @@ git checkout -- filename # 工作区恢复成暂存区
 ```
 
 - 版本回退（已 commit）git reset –hard
-
-
 
 ```bash
 git reset HEAD^             # 恢复成上次提交的版本
@@ -327,7 +291,18 @@ git reset --hard commitid      # git log查看到的Hash值，取前七位即可
 # - hard：修改HEAD指针指向，暂存区内容丢失，工作区恢复以前状态
 ```
 
+- git reset
 
+```bash
+# 在本地环境
+git reset —soft 撤销commit
+git reset —mixed 撤销commit和add动作
+
+
+# 已提交远程仓库
+git reset  —hard 撤销不保留记录
+git reset —revert 撤销，保留提交记录
+```
 
 ## reflog
 
@@ -358,8 +333,6 @@ git show some-branch:some-file.js  #查看其他分支中的文件
 
 ## branch
 
-
-
 ```bash
 git branch [branch-name]   # 创建分支
 git branch          # 查看本地分支
@@ -380,11 +353,7 @@ git branch --track [branch] [remote-branch] #新建一个分支，与指定的�
 git branch --set-upstream-to [branch] [remote-branch] #建立追踪关系，在现有分支和指定的远程分支之间
 ```
 
-
-
 ## checkout
-
-
 
 ```bash
 git checkout branch_name         # 切换分支
@@ -403,11 +372,7 @@ git checkout -b [branch] [tag]  #新建一个分支，指向某个tag
 git checkout commitid
 ```
 
-
-
 ## merge
-
-
 
 ```bash
 git merge [branch]      # 合并指定分支到当前分支
@@ -423,13 +388,9 @@ git checkout master # 切换到master
 git merge [branch_name] --no-ff #合并指定分支到当前分支master
 ```
 
-
-
 ## stash
 
 - 切换分支时暂存未 commit 的更改
-
-
 
 ```bash
 git stash   # 保存当前的改动
@@ -439,11 +400,7 @@ git stash apply stash@{1}
 git stash pop # 恢复并删除stash@{1}
 ```
 
-
-
 ## remote
-
-
 
 ```bash
 git remote update   # 更新远程仓储
@@ -456,11 +413,7 @@ git remote add [shortname] [url]    # 增加一个新的远程仓库，并命名
 git remote prune origin
 ```
 
-
-
 ## pull 和 push
-
-
 
 ```bash
 git pull [remote] [branch]  # 取回远程仓库的变化，并与本地分支合并
@@ -473,8 +426,6 @@ git push [remote] --force   # 强行推送当前分支到远程仓库
 git push [remote] --all    # 推送所有分支到远程仓库
 ```
 
-
-
 ## archive
 
 ```bash
@@ -484,7 +435,6 @@ git archive     # 生成一个可供发布的压缩包
 ## rebase
 
 - 注意：不可用于多人线上操作，适用于自己开发的分支使用
-
 
 ```bash
 # 合并多个commit为一个完整commit
@@ -539,16 +489,270 @@ $ git fetch --depth=1 origin remote_branch_name
 $ git checkout remote_branch_name
 ```
 
+## 如何使用分支
+
+```bash
+git checkout -b [branch]       # 新建一个分支，并切换到该分支
+git branch           # 命令会列出所有分支，当前分支前面会标一个*号。
+git add .
+git commit -m "提交分支branch"
+git checkout master        # 切换回master分支
+git merge [branch]         # 把branch分支合并到master分支
+git branch -d branch       # 合并完成后删除branch分支
+
+git branch -r   # 查看远程分支
+git checkout -b a origin/a  # 拉去远程分支到本地
+```
+
+## 分支管理策略
+
+```bash
+git checkout -b dev                                 # 首先，仍然创建并切换dev分支：
+git add readme.txt                                  # 修改readme.txt文件，并提交一个新的commit
+git checkout master                                 # 现在，我们切换回master分支
+git merge --no-ff -m "merge with no-ff" dev         # 准备合并dev分支，请注意--no-ff参数，表示禁用Fast forward
+git log --graph --pretty=oneline --abbrev-commit    # 合并后，我们用git log看看分支历史：
+
+# 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，
+# 能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+```
+
+## Bug 分支
+
+```bash
+------------                        # 我们在dev分支上，发现master分支上有代号101号bug
+git stash                           # 冷冻现在在dev分支上的工作状态 冻结吧！
+git checkout master            # 这个bug发生在master主分支上,我们切回master分支
+git checkout -b issue-101       # 创建代号101的修复bug分支
+
+# 修改你的bug
+git add readme.txt              # 提交到暂存区
+git commit -m "fix bug 101"     # 注意填写信息，以免日后查证
+git checkout master             # 切换回master分支
+git merge --no-ff -m "merged bug fix 101" issue-101     # 合并分支，注意不使用fast forward模式
+git branch -d issue-101         # 删除issue-101分支
+git checkout dev                 # bug 改完了，是时候回到dev继续写bug了
+git stash list                   # 查看刚刚的冻结现场
+git stash pop                    # git stash pop，恢复的同时把stash内容也删了：
+# 一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除
+```
+
+## 合并分支上特定文件
+
+```bash
+git checkout source_branch <path>...
+
+# 将a分支中的test文件合并到主分支b
+------------------------
+# 使用git checkout 将根据b分支创建一个b_tmp分支，避免影响b分支
+git checkout -b b_tmp  # 新建b_tmp分支并切换
+git checkout a test # 将a分支中的test文件覆盖到b_tmp中
+git commit -am "merge branch a"
+git checkout b  # 切换到b分支
+git merge --no-ff b_tmp  # 合并b_tmp到b分支
+git branch -d b_tmp # 删除b_tmp分支
+```
+
+## rebase 合并多个 commit
+
+```bash
+git log --oneline
+-----------
+972c774 (HEAD -> master) mod readme.md content
+64b9edd add index.js
+7d7d42b add index.css
+7a5e790 add index.html
+ba3849c add readme.md
+-----------
+
+step1: git rebase -i ba3849c
+# 进入编辑界面如下，修改 pick  -> s
+-----------
+pick 7a5e790 add index.html
+s 7d7d42b add index.css
+s b9edd add index.js
+pick 972c774 mod readme.md content
+-----------
+
+step1保存退出后，自动跳转到这里修改
+-----------
+# This is a combination of 3 commits.
+# 自己加的commit
+add index static objects
+
+# This is the 1st commit message:
+
+add index.html
+
+# This is the commit message #2:
+
+add index.css
+
+# This is the commit message #3:
+
+add index.js
+-----------
+
+step2: git log --oneline # 查看日志
+-----------
+1e59df0 (HEAD -> master) mod readme.md content
+ba3958e add index static objects
+ba3849c add readme.md
+-----------
+```
+
+## rebase 修改 commit
+
+```bash
+-----------
+1c08687 (HEAD -> master) mod readme.md content
+30fa507 add index
+0aa75f0 add readme.md
+-----------
+
+git rebase -i 0aa75f0
+-----------
+pick 30fa507 add index
+r 1c08687 mod readme.md content
+-----------
+
+-----------
+# mod readme.md content
+修改 readme.md 内容
+-----------
+
+git log --oneline
+-----------
+26d1338 (HEAD -> master) 修改 readme.md 内容
+30fa507 add index
+0aa75f0 add readme.md
+-----------
+```
+
+## rebase 合并非连续 commit
+
+```bash
+git log --oneline
+-----------
+26d1338 (HEAD -> master) 修改 readme.md 内容
+30fa507 add index
+0aa75f0 add readme.md
+-----------
+
+git rebase -i 0aa75f0
+-----------
+pick 0aa75f0 add readme.md
+# pick 30fa507 add index
+s 26d1338 修改 readme.md 内容
+pick 30fa507 add index
+-----------
+
+git rebase --continue
+-----------
+# This is a combination of 2 commits.
+合并非连续的commit
+# This is the 1st commit message:
+
+add readme.md
+
+# This is the commit message #2:
+
+修改 readme.md 内容
+-----------
+
+git log --oneline # 查看日志
+-----------
+de9b2eb (HEAD -> master) add index
+c5a0c7a 合并非连续的commit
+-----------
+```
+
+## 使用 cherry-pick 合并 dev 分支的 commit 到 master 中
+
+```bash
+git log --oneline --all
+-----------
+c4570cf (dev) mod index.html content
+479e26c (HEAD -> master) mod readme.md content
+599b625 add index.js
+432febf add index.css
+8702882 add index.html
+cf5c910 add readme.md
+-----------
+
+step1: git checkout master
+step2: git cherry-pick c4570cf
+
+git log --oneline --all
+-----------
+88ae02b (HEAD -> master) mod index.html content
+c4570cf (dev) mod index.html content
+479e26c mod readme.md content
+599b625 add index.js
+432febf add index.css
+8702882 add index.html
+cf5c910 add readme.md
+-----------
+```
+
+## 本地使用多个git存储库
+
+Forked from：<https://docs.github.com/en/developers/overview/managing-deploy-keys#using-multiple-repositories-on-one-server>
+
+- 配置：~/.ssh/config
+
+```bash
+Host github.com-repo-0
+        Hostname github.com
+        IdentityFile=/home/user/.ssh/repo-0_deploy_key
+
+Host github.com-repo-1
+        Hostname github.com
+        IdentityFile=/home/user/.ssh/repo-1_deploy_key
+```
+
+- Host github.com-repo-0 - 存储库的别名
+- Hostname github.com - 配置与别名一起使用的主机名
+- IdentityFile=/home/user/.ssh/repo-0_deploy_key - 为别名分配私钥
+- 使用
+
+```bash
+git clone git@github.com-repo-1:OWNER/repo-1.git
+```
+
+## git快速获取特定tag分支
+
+```bash
+git -c protocol.version=2 fetch origin v15.0.1 --depth=1
+git fetch origin tag v15.0.1
+```
+
+## git-commit语义化
+
+```bash
+build	主要目的是修改项目构建系统(例如 glup，webpack，rollup 的配置等)的提交
+ci	主要目的是修改项目继续集成流程(例如 Travis，Jenkins，GitLab CI，Circle等)的提交
+docs	文档更新
+feat	新增功能
+fix	bug 修复
+perf	性能, 体验优化
+refactor	重构代码(既没有新增功能，也没有修复 bug)
+style	不影响程序逻辑的代码修改(修改空白字符，格式缩进，补全缺失的分号等，没有改变代码逻辑)
+test	新增测试用例或是更新现有测试
+revert	回滚某个更早之前的提交
+chore	不属于以上类型的其他类型
+```
+
 ## 管理工具
 
-- Git: https://git-scm.com/
-- fossil: https://www.fossil-scm.org
-- github: https://github.com/
-- gitee: https://gitee.com/
-- gitlab: https://gitlab.com/explore
-- gitea: https://github.com/go-gitea/gitea
-- gogs: https://gogs.io/
+- fossil: <https://www.fossil-scm.org>
+- github: <https://github.com/>
+- gitee: <https://gitee.com/>
+- gitlab: <https://gitlab.com/explore>
+- gitea: <https://github.com/go-gitea/gitea>
+- gogs: <https://gogs.io/>
 
 ## 其他
 
-- git web版： https://github.com/isomorphic-git/isomorphic-git
+- [git web版: isomorphic-git/isomorphic-git](https://github.com/isomorphic-git/isomorphic-git)
+- git 官网: <https://git-scm.com/>
