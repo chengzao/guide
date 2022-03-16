@@ -1069,3 +1069,22 @@ var json = '{"a":"1", "b":2}';
 var obj = eval("(" + json + ")");  // obj 就是 json 反序列化之后得到的对象
 ```
 
+## AOP
+
+> https://juejin.cn/post/7072545785769885726#heading-84
+
+```
+Function.prototype.before=function(fn){
+  return (...arg)=>{
+    fn.call(this,...arg)
+    this(...arg)
+  }
+}
+Function.prototype.after=function(fn){
+  return (...arg)=>{
+    const result =this(...arg)
+    fn.call(this,...arg)
+    return result
+  }
+}
+```
