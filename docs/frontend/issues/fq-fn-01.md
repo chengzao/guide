@@ -881,6 +881,23 @@ var add = curry2(function() {
 alert(add(1, 2, 3)(4))
 ```
 
+## 偏函数partial
+
+```js
+function partial(fn, ...args) {
+  return (...arg) => {
+    // 收集参数
+    return fn(...args, ...arg)
+  }
+}
+// demo
+function add(...args) {
+  return args.reduce((a, b) => a + b)
+}
+let partial_add = partial(add, 1, 2);
+console.log(partial_add(3, 4, 5));
+```
+
 ## 实现字符串的repeat方法
 
 ```js
@@ -1051,3 +1068,4 @@ console.log(json);
 var json = '{"a":"1", "b":2}';
 var obj = eval("(" + json + ")");  // obj 就是 json 反序列化之后得到的对象
 ```
+
