@@ -59,6 +59,13 @@ React16 架构可以分为三层：
 
 - [react-router](https://github.com/ReactTraining/react-router)
 
+## React16中的setState是同步还是异步
+
+> https://vue3js.cn/interview/React/setState.html
+
+- 在组件生命周期或React合成事件中，setState是异步
+- 在setTimeout或者原生dom事件中，setState是同步
+
 ## libs
 
 - [mobx](https://github.com/mobxjs/mobx)
@@ -92,4 +99,5 @@ React16 架构可以分为三层：
 - [图解react](https://7kms.github.io/react-illustration-series/main/macro-structure/)
 - [100行代码实现React核心调度功能](https://mp.weixin.qq.com/s/uuxHlanqyN2HneYOz7DMVw)
 - [React 框架运行时优化方案的演进](https://mp.weixin.qq.com/s/mV1Ffc-t6DCfNFfRjPq2_g)
+- [web前端面试 - 面试官系列](https://vue3js.cn/interview/React/React.html)
 
