@@ -7,8 +7,9 @@ autoSort: 9999
 
 <!-- dirToc -->
 
-## menu (6)
+## menu (7)
 
+- [leetcode代码片段(三)](./alg-fa-03.md)
 - [二叉树与链表(一)](./alg-fq-01.md)
 - [代码片段(一)](./alg-fq-02.md)
 - [常见的十种数组排序](./array-sort.md)
