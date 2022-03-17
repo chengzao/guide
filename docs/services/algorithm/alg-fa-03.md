@@ -139,3 +139,83 @@ var uniquePaths = function(m, n) {
     return dp[m-1][n-1]
 };
 ```
+
+## 搜索插入位置(35)
+
+> <https://leetcode-cn.com/problems/search-insert-position/>
+
+```js
+var searchInsert = function(nums, target) {
+    let len = nums.length;
+    let left = 0, right = len-1
+
+    while(left <= right){
+        let mid = ~~(left + (right-left)/2)
+        if(nums[mid] >= target){
+            right = mid -1
+        }else{
+            left = mid + 1
+        }
+    }
+    return left
+}
+```
+
+## 最长递增子序列(300)
+
+> <https://leetcode-cn.com/problems/longest-increasing-subsequence/>
+
+- 方法1
+
+```js
+var lengthOfLIS = function(nums) {
+    let len = nums.length;
+    let dp = Array.from({length:len}).fill(1)
+    let max = 1
+
+    for(let i=0; i<len; i++){
+        for(let j=0; j<i; j++){
+            if(nums[i] > nums[j]){
+                dp[i] = Math.max(dp[i], dp[j]+1)
+            }
+        }
+        max = Math.max(max, dp[i])
+    }
+    return max
+}
+```
+
+- 方法2
+
+```js
+var lengthOfLIS = function(nums) {
+    let len = nums.length;
+    let arr = [nums[0]]
+
+    for(let i=0; i<len;i++){
+        if(nums[i] > arr[arr.length-1]){
+            arr.push(nums[i])
+        }else{
+            let pos = searchInsert(arr, nums[i])
+            arr[pos] = nums[i]
+        }
+    }
+    return arr.length
+}
+
+function searchInsert(nums, target){
+    let len = nums.length;
+    let left = 0, right = len-1
+
+    while(left <= right){
+        let mid = ~~(left + (right-left)/2)
+        if(nums[mid] >= target){
+            right = mid -1
+        }else{
+            left = mid + 1
+        }
+    }
+
+    return left
+}
+```
