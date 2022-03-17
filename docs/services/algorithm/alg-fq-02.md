@@ -395,57 +395,6 @@ function isPalindrome(str) {
 }
 ```
 
-## 斐波那契数
-
-- 递归版
-
-```js
-// fn1
-var fib = function (N) {
-  if (N == 0) return 0;
-  if (N == 1) return 1;
-  return fib(N - 1) + fib(N - 2)
-};
-```
-
-- 动态规划(1)
-
-```js
-var fib = function(n) {
-    if (n == 0) return 0;
-    if (n == 1) return 1;
-    var dp = [];
-    dp[0]=0, dp[1]=1;
-    for (let i = 2; i <= n; i++) {
-      dp[i] = dp[i-1] + dp[i-2]
-    }
-    return dp[n];
-};
-```
-
-- 动态规划(2)
-
-```js
-let fib = n => {
-  if (n == 0) return 0;
-  let a1 = 0, a2 = 1;
-  for (let i = 1; i < n; i++) {
-    [a1, a2] = [a2, a1 + a2];
-  }
-  return a2;
-}
-```
-
-- 公式版
-
-```js
-let fib = n => Math.round(
-  (Math.pow((1 + Math.sqrt(5)) / 2, n) -
-    Math.pow((1 - Math.sqrt(5)) / 2, n)) /
-  Math.sqrt(5)
-);
-```
-
 ## 判断一个数是否为质数
 
 ```js

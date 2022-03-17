@@ -219,15 +219,11 @@ export const includesUA = (ua) => {
 }
 ```
 
-
 ## a==1 && a==2 && a==3 问题
 
-```js
-// 1.0
-if(a == 1 && a ==2 && a == 3){
-  console.log('1.0 如何打印我！')
-}
+- 全局变量，利用对象toString方法
 
+```js
 var s = 0;
 var a = {
     toString(){
@@ -240,17 +236,47 @@ var a = {
     }
 }
 
-// 2.0
-if(a === 1 && a ===2 && a === 3){
-  console.log('2.0 如何打印我！')
+if(a == 1 && a ==2 && a == 3){
+  console.log('1.0 如何打印我！')
 }
+```
 
-// 不建议使用
-Object.definePrototype(window, 'a', {
+- 使用definePrototype对变量劫持
+
+```js
+var s = 0;
+window.a = 1
+
+Object.defineProperty(window, 'a', {
   get(){
     return ++s;
   }
 })
+
+if(a == 1 && a ==2 && a == 3){
+  console.log('2.0 如何打印我！')
+}
+```
+
+- 使用array的toString方法
+
+```js
+var a = [1,2,3]
+// 数组toString默认回去调用join方法
+// 重写join方法
+a.join = a.shift
+
+if(a == 1 && a ==2 && a == 3){
+  console.log('3.0 如何打印我！')
+}
+
+// 例如
+var b = [1,2,3]
+Array.prototype.join = function(){
+  return this.map(item => item*2)
+}
+console.log(b.toString())
+// [2, 4, 6]
 ```
 
 ## new Function
@@ -306,6 +332,8 @@ Object.getOwnPropertyNames(Point2.prototype) // [ 'constructor', 'getName' ]
 ```
 
 ## 水印watermark
+
+::: details
 
 ```js
 function watermark(text) {
@@ -464,6 +492,8 @@ function watermark(text) {
 export default watermark
 ```
 
+:::
+
 ## 浏览器标识
 
 ```js
@@ -511,57 +541,6 @@ if (url.indexOf("micromessenger") > -1) {
 if (url.indexOf("15b202") > -1) {
   //判断微信内置浏览器，QQ内置浏览器
   alert("QQ和微信内置浏览器，做你想做的操作");
-}
-```
-
-## 判断浏览器平台
-
-```js
-var tools = {
-  isMobile() {
-    var isMobile = false
-    // 判断是pc还是移动端
-    var system = {
-      win: false,
-      mac: false,
-      x11: false,
-    }
-    // 检测平台
-    var p = navigator.platform
-    system.win = p.indexOf('Win') === 0
-    system.mac = p.indexOf('Mac') === 0
-    system.x11 = p === 'X11'
-
-    system.ipad = p === 'iPad'
-
-    // 跳转语句
-    if (!system.win && !system.mac && !system.x11 && !system.ipad) {
-      isMobile = true
-    }
-    return isMobile
-  },
-  // 判断是否是移动端
-  checkPlatform() {
-    var utils = {}
-    var isBudge = (function () {
-      // 手持设备：ipad、iphone、android、ipod
-      return /mobile/i.test(navigator.userAgent)
-    })()
-    var isMac = (function () {
-      return /macintosh/i.test(navigator.userAgent)
-    })()
-    var isWindows = (function () {
-      return /windows nt/i.test(navigator.userAgent)
-    })()
-    var isLinux = (function () {
-      return /linux/i.test(navigator.userAgent)
-    })()
-    var isIpad = (function () {
-      return /ipad/i.test(navigator.userAgent)
-    })()
-    utils.isMobile = !(isWindows || isMac || (isLinux && !isBudge) || isIpad)
-    return utils
-  },
 }
 ```
 
