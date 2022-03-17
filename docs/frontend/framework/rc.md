@@ -1,5 +1,5 @@
 ---
-title: react
+title: React
 date: 2022-02-14
 sidebar: "auto"
 tags:
@@ -7,18 +7,6 @@ tags:
 categories:
   - frontend
 ---
-
-<!-- dirToc -->
-
-## menu (4)
-
-- [使用canvas生成poster](./rc-canvas-poster.md)
-- [react使用hooks案例](./rc-hooks-reducer.md)
-- [react生命周期](./rc-lifecycle.md)
-- [react redux](./rc-redux.md)
-
-<!-- dirToc -->
-
 
 ## 网站导航
 
@@ -61,7 +49,7 @@ React16 架构可以分为三层：
 
 ## React16中的setState是同步还是异步
 
-> https://vue3js.cn/interview/React/setState.html
+> <https://vue3js.cn/interview/React/setState.html>
 
 - 在组件生命周期或React合成事件中，setState是异步
 - 在setTimeout或者原生dom事件中，setState是同步
@@ -100,4 +88,3 @@ React16 架构可以分为三层：
 - [100行代码实现React核心调度功能](https://mp.weixin.qq.com/s/uuxHlanqyN2HneYOz7DMVw)
 - [React 框架运行时优化方案的演进](https://mp.weixin.qq.com/s/mV1Ffc-t6DCfNFfRjPq2_g)
 - [web前端面试 - 面试官系列](https://vue3js.cn/interview/React/React.html)
-

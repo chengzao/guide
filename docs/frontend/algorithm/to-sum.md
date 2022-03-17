@@ -1,5 +1,5 @@
 ---
-title: 两数之和
+title: 两数/三数/四数之和
 date: 2021-02-05
 sidebar: "auto"
 tags:

@@ -1,6 +1,6 @@
 ---
 title: Vue
-date: 2022-02-14
+date: 2022-02-24
 sidebar: "auto"
 tags:
   - vue
@@ -8,19 +8,6 @@ categories:
   - frontend
 ---
 
-<!-- dirToc -->
-
-## menu (7)
-
-- [vue2.x常见问题](./vue-issues.md)
-- [vue中的工具函数](./vue-libs.md)
-- [vue2分页组件](./vue-pagination.md)
-- [vue2插件](./vue-plugins.md)
-- [vue2.x组件通讯方法](./vue-props.md)
-- [vue2.x 路由](./vue-router.md)
-- [vue2.x的slot使用](./vue-slot.md)
-
-<!-- dirToc -->
 
 ## 官网
 
@@ -51,7 +38,6 @@ categories:
 ![vuex](https://vuex.vuejs.org/vuex.png)
 
 - `store` ➡️ `dispatch` ➡️ `action` ➡️ `mutation` ➡️ `state`
-
 
 ## 相关链接
 

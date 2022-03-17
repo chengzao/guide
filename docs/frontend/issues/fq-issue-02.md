@@ -1,5 +1,5 @@
 ---
-title: 工具函数
+title: 常见问题整理（二）
 date: 2022-02-12
 sidebar: "auto"
 tags:
@@ -160,7 +160,6 @@ const myMenu = filterMenu(menuList, myMenuCode)
 
 console.log(myMenu)
 ```
-
 
 ## cached
 
@@ -355,7 +354,6 @@ function formatNumber(num) {
 }
 ```
 
-
 ## 获取标签的ClassName
 
 ```js
@@ -425,7 +423,6 @@ function animate(obj, target) {
   }, 25)
 }
 ```
-
 
 - animate
 
@@ -522,42 +519,6 @@ function atrGetEle(ele, attr, value) {
   return aEle;
 }
 ```
-
-## before&after
-
-```js
-//
-Function.prototype.before = function (beforefn) {
-  let _self = this; // 缓存原函数的引用
-  return function () { // 代理函数
-    beforefn.apply(this, arguments); // 执行前置函数
-    return _self.apply(this, arguments); // 执行原函数
-  }
-}
-
-Function.prototype.after = function (afterfn) {
-  let _self = this;
-  return function () {
-    let set = _self.apply(this, arguments);
-    afterfn.apply(this, arguments);
-    return set;
-  }
-}
-
-let func = () => console.log('func');
-func = func.before(() => {
-  console.log('===before===');
-}).after(() => {
-  console.log('===after===');
-});
-
-func();
-// ===before===
-// func
-// ===after===
-```
-
-
 
 ## console
 
@@ -665,8 +626,6 @@ console.log(randomString(true, 1, 4));
 - 简单的进制转换：`5..toString(2) //0101`
 - 解决相关此问题的类库：[bignumber.js](https://github.com/MikeMcl/bignumber.js)
 - 简单解决方案：将小数转成整数来运算，之后再转回小数
-
-
 
 ```js
 'use strict'
@@ -802,11 +761,10 @@ convertToInt() //方法：将小数转成整数
 getCorrectResult() //方法：确认我们的计算结果无误，以防万一
 ```
 
-
 ## 监听数组变化
 
 ```js
-function ObserverableArray() {
+function ObservableArray() {
   return new Proxy([], {
     get(target, propKey) {
       const matArr = ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'];
@@ -815,14 +773,12 @@ function ObserverableArray() {
     }
   })
 }
-const arr = new ObserverableArray()
+const arr = new ObservableArray()
 
 arr.push('Good')
 arr.unshift('Good2')
 console.log(arr)
 ```
-
-
 
 ## FIFO
 
@@ -869,20 +825,6 @@ var res = str.replace(/(.).*(\1)/g, function($1, $2, $3) {
   $1 = $2 + $1.substring(1).replace(new RegExp($2, "g"), "");
   return $1;
 });
-```
-
-## 使用Array来重复字符
-
-```js
-for (let a = "", i = 7; i--; ) a += 0;
-
-let b = Array(7).join(0); // "0000000"
-let c = Array(7).join("La"); // "LaLaLaLaLaLa"
-
-let d = "0".repeat(7); // "0000000"
-let e = Array(7)
-  .fill("Ab")
-  .join(""); // AbAbAbAbAbAbAb
 ```
 
 ## 使用 toString(16)取随机字符串

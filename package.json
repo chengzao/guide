@@ -8,7 +8,6 @@
     "build": "npm run gen:toc && vuepress build docs",
     "build:page": "cross-env BASE_ENV=guide vuepress build docs",
     "deploy": "npm run build && gh-pages -d dist",
-    "docs:nav": "vuepress nav docs -f",
     "prepare": "husky install",
     "gen:toc": "node scripts/gen-toc.js",
     "debug": "vuepress dev docs --debug"

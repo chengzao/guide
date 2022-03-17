@@ -190,11 +190,6 @@ http://www.example.com/detail/index.html    同  源    只是目录不同
 - nodejs 中间件代理跨域
 - WebSocket 协议跨域
 
-## fetch 发送 2 次请求的原因
-
-fetch 的 post 请求的时候，导致 fetch 第一次发送了一个 Options 请求，询问服务器是否支持修改的请求头，
-如果服务器支持，则在第二次中发送真正的请求
-
 ## jsonp
 
 - JSONP 的优点是：它不像 XMLHttpRequest 对象实现的 Ajax 请求那样受到同源策略的限制；它的兼容性更好，
@@ -225,7 +220,7 @@ function jsonp({ url, params, cb }) {
 // server
 app.get('/get',function(req,res){
     let { cb } = req.query; // 定义好的字段
-    
+
     async function fn(callback){
         let data = await axios.get(`${url}`);
         let res2  = data.data;

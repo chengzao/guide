@@ -46,7 +46,7 @@ categories:
 - [微前端 | 7. 微应用沙箱实现原理](https://zhuanlan.zhihu.com/p/145169867)
 - [深入浅出解析阿里成熟的微前端框架 qiankun 源码](https://mp.weixin.qq.com/s/8qHSYHFECn-y-OHI3XjiqQ)
 
-## qiankun
+## 初始化配置
 
 - jsconfig.json
 

@@ -1,5 +1,5 @@
 ---
-title: 数据结构与算法
+title: 导航目录
 date: 2021-06-05
 sidebar: "auto"
 autoSort: 9999
@@ -15,6 +15,6 @@ autoSort: 9999
 - [常见的十种数组排序](./array-sort.md)
 - [二叉树算法](./binaryTree.md)
 - [栈/队列/链表](./stack-deque.md)
-- [两数之和](./to-sum.md)
+- [两数/三数/四数之和](./to-sum.md)
 
 <!-- dirToc -->

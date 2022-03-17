@@ -23,8 +23,6 @@ npm install -g commitizen
 
 - 方式一：在全局安装适配器（Adapter)
 
-
-
 ```bash
 npm install -g cz-conventional-changelog
 
@@ -35,11 +33,7 @@ npm install -g cz-conventional-changelog
 git cz
 ```
 
-
-
 - 方式二：在项目安装适配器（Adapter)
-
-
 
 ```bash
 commitizen init cz-conventional-changelog --save-dev --save-exact --force
@@ -67,11 +61,7 @@ commitizen init cz-conventional-changelog --save-dev --save-exact --force
 npm run commit
 ```
 
-
-
 - Adapter options
-
-
 
 ```bash
 feat    # 新功能
@@ -87,8 +77,6 @@ chore   # 非 src 或者 测试文件的更新
 revert  # commit 回退
 ```
 
-
-
 ### 自定义 Adapter
 
 - 安装 cz-customizable
@@ -98,8 +86,6 @@ npm i -g cz-customizable / npm i -D cz-customizable
 ```
 
 - 修改 `.czrc` 或 `package.json` 中的 config 为
-
-
 
 ```bash
 # .czrc
@@ -113,11 +99,7 @@ npm i -g cz-customizable / npm i -D cz-customizable
 }
 ```
 
-
-
 - 同时在`~/` 或项目目录下创建 `.cz-config.js` 文件
-
-
 
 ```js
 "use strict";
@@ -165,8 +147,6 @@ module.exports = {
   allowBreakingChanges: ["feat", "fix"]
 };
 ```
-
-
 
 ## changelog
 
@@ -239,6 +219,17 @@ $ standard-version --tag-prefix "stable-"
 # output tag: stable-v2.0.0
 ```
 
+- example
+
+```json
+"scripts": {
+  "publish:release": "standard-version",
+  "publish:minor": "standard-version --release-as minor",
+  "publish:major": "standard-version --release-as major",
+  "publish:beta": "standard-version --prerelease beta"
+}
+```
+
 ## 集成 npm
 
 - package
@@ -252,8 +243,6 @@ $ standard-version --tag-prefix "stable-"
 ```
 
 - `release.sh`
-
-
 
 ```shell
 #!/bin/bash
@@ -274,8 +263,6 @@ echo "Git push origin $master"
 echo "Release finished."
 ```
 
-
-
 ## Commitlint
 
 - [Commitlint: 校验你的 message](https://github.com/marionebl/commitlint)
@@ -286,8 +273,6 @@ npm i -D @commitlint/config-conventional @commitlint/cli
 ```
 
 - 在项目目录下创建配置文件 `.commitlintrc.js`
-
-
 
 ```js
 module.exports = {
@@ -327,11 +312,7 @@ module.exports = {
 };
 ```
 
-
-
 - 针对自定义的 Adapter 进行 Lint
-
-
 
 ```bash
 npm i -D @commitlint/cli
@@ -361,15 +342,11 @@ module.exports = {
 }
 ```
 
-
-
 ## husky
 
 - [husky](https://github.com/typicode/husky)
 - 安装 `npm install husky --save-dev`
 - 使用
-
-
 
 ```json
 // package.json
@@ -391,15 +368,11 @@ module.exports = {
 }
 ```
 
-
-
 ## 参考示例
 
-### 默认 Adapter
+### 默认Adapter
 
 - package.json
-
-
 
 ```json
 {
@@ -449,11 +422,7 @@ module.exports = {
 }
 ```
 
-
-
 - .commitlintrc.js
-
-
 
 ```js
 module.exports = {
@@ -493,13 +462,9 @@ module.exports = {
 };
 ```
 
-
-
-### 自定义 Adapter
+### 自定义校验
 
 - package.json
-
-
 
 ```json
 {
@@ -546,11 +511,7 @@ module.exports = {
 }
 ```
 
-
-
 - .cz-config.js
-
-
 
 ```js
 "use strict";
@@ -597,11 +558,7 @@ module.exports = {
 };
 ```
 
-
-
 - .commitlintrc.js
-
-
 
 ```js
 module.exports = {
@@ -627,5 +584,3 @@ module.exports = {
   }
 };
 ```
-
-

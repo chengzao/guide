@@ -996,7 +996,7 @@ function jsonStringify(data) {
 ```js
 function jsonStringify(data) {
     let dataType = typeof data;
-    
+
     if (dataType !== 'object') {
         let result = data;
         //data 可能是 string/number/null/undefined/boolean
@@ -1029,7 +1029,7 @@ function jsonStringify(data) {
             });
             result = "[" + result + "]";
             return result.replace(/'/g, '"');
-            
+
         } else {
             //普通对象
             /**
@@ -1073,7 +1073,7 @@ var obj = eval("(" + json + ")");  // obj 就是 json 反序列化之后得到�
 
 > https://juejin.cn/post/7072545785769885726#heading-84
 
-```
+```js
 Function.prototype.before=function(fn){
   return (...arg)=>{
     fn.call(this,...arg)
@@ -1087,4 +1087,17 @@ Function.prototype.after=function(fn){
     return result
   }
 }
+
+// use
+let func = () => console.log('func');
+func = func.before(() => {
+  console.log('===before===');
+}).after(() => {
+  console.log('===after===');
+});
+
+func();
+// ===before===
+// func
+// ===after===
 ```
