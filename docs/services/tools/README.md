@@ -8,12 +8,11 @@ categories:
 
 <!-- dirToc -->
 
-## menu (22)
+## menu (21)
 
 - [aria2](./aria2.md)
+- [站点工具](./ascii.md)
 - [centos7命令参数](./centos7.md)
-- [docker-compose命令](./docker-compose.md)
-- [docker使用示例](./docker-stu.md)
 - [docker命令列表](./docker.md)
 - [window userAgent](./get-ua.md)
 - [git常见命令列表](./git.md)
