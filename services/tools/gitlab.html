@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>gitlab的服务部署 | FE Note</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'/guide/js/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NRFTTPL');
+    </script>
+    <link rel="icon" href="/guide/logo.png">
+    <link rel="manifest" href="/guide/manifest.json">
+    <link rel="stylesheet" href="/guide/css/prism-okaidia.css">
+    <script>
+    !function(t, a, e) {
+      var n = a.createElement("script");
+      n.type = "text/javascript", n.src = "/guide/js/gtag.js?id=G-ERESYWH7YN",
+      n.async = !0, n.crossOrigin = "anonymous", n.onload = function() {
+          function a() {
+              dataLayer.push(arguments);
+          }
+          t.dataLayer = t.dataLayer || [], a("js", new Date()), a("config", "G-ERESYWH7YN");
+      };
+      var r = a.getElementsByTagName("script")[0];
+      r.parentNode.insertBefore(n, r);
+    }(window, document);
+    </script>
+    <meta name="description" content="about front-end docs notes website">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="google-site-verification" content="eHyT7Ws8-2CUA3HNtea2CWJqk-R2c21lN58XjjS6SeU">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/guide/assets/js/chunk-vue.e07ddfb5.js" as="script"><link rel="preload" href="/guide/assets/css/1.styles.9fee1af6.css" as="style"><link rel="preload" href="/guide/assets/js/npm.vuepress-theme-reco.9fee1af6.js" as="script"><link rel="preload" href="/guide/assets/js/npm.core-js.852c3e3e.js" as="script"><link rel="preload" href="/guide/assets/css/4.styles.f6bfd7f0.css" as="style"><link rel="preload" href="/guide/assets/js/npm.vuepress.f6bfd7f0.js" as="script"><link rel="preload" href="/guide/assets/js/npm.lodash.a34cf4fe.js" as="script"><link rel="preload" href="/guide/assets/css/5.styles.4a16689b.css" as="style"><link rel="preload" href="/guide/assets/js/npm.vuepress-reco.4a16689b.js" as="script"><link rel="preload" href="/guide/assets/js/npm.vue.11f4b21f.js" as="script"><link rel="preload" href="/guide/assets/js/npm.axios.9aa8742d.js" as="script"><link rel="preload" href="/guide/assets/js/npm.babel.8f164b03.js" as="script"><link rel="preload" href="/guide/assets/css/40.styles.f5e88091.css" as="style"><link rel="preload" href="/guide/assets/js/npm.vssue.f5e88091.js" as="script"><link rel="preload" href="/guide/assets/js/npm.date-fns.e29cd96c.js" as="script"><link rel="preload" href="/guide/assets/js/npm.vue-property-decorator.d1b64a4f.js" as="script"><link rel="preload" href="/guide/assets/css/48.styles.b0ea7b17.css" as="style"><link rel="preload" href="/guide/assets/js/npm.vuepress-plugin-reading-progress.b0ea7b17.js" as="script"><link rel="preload" href="/guide/assets/css/46.styles.a3cab173.css" as="style"><link rel="preload" href="/guide/assets/js/npm.vuepress-plugin-copy-code.a3cab173.js" as="script"><link rel="preload" href="/guide/assets/js/npm.qs.219ba63d.js" as="script"><link rel="preload" href="/guide/assets/css/49.styles.deeb74e8.css" as="style"><link rel="preload" href="/guide/assets/js/npm.vuepress-plugin-smooth-scroll.deeb74e8.js" as="script"><link rel="preload" href="/guide/assets/js/npm.call-bind.25cef64a.js" as="script"><link rel="preload" href="/guide/assets/js/npm.debug.0d8e0226.js" as="script"><link rel="preload" href="/guide/assets/js/npm.function-bind.a0cf88c9.js" as="script"><link rel="preload" href="/guide/assets/js/npm.has-symbols.9875423f.js" as="script"><link rel="preload" href="/guide/assets/js/npm.vuepress-plugin-img-lazy.142e7268.js" as="script"><link rel="preload" href="/guide/assets/js/npm.dayjs.1cdac829.js" as="script"><link rel="preload" href="/guide/assets/js/npm.escape-html.373f4e5c.js" as="script"><link rel="preload" href="/guide/assets/js/npm.get-intrinsic.7a483e2b.js" as="script"><link rel="preload" href="/guide/assets/js/npm.has.7b447a10.js" as="script"><link rel="preload" href="/guide/assets/js/npm.lodash.debounce.030f0814.js" as="script"><link rel="preload" href="/guide/assets/js/npm.medium-zoom.5ca9fa3a.js" as="script"><link rel="preload" href="/guide/assets/js/npm.ms.399f7b0e.js" as="script"><link rel="preload" href="/guide/assets/js/npm.nprogress.f657eb80.js" as="script"><link rel="preload" href="/guide/assets/js/npm.object-inspect.49082d02.js" as="script"><link rel="preload" href="/guide/assets/js/npm.regenerator-runtime.9057d452.js" as="script"><link rel="preload" href="/guide/assets/js/npm.side-channel.68f307db.js" as="script"><link rel="preload" href="/guide/assets/js/npm.smoothscroll-polyfill.018e00e7.js" as="script"><link rel="preload" href="/guide/assets/js/npm.valine.875b5f10.js" as="script"><link rel="preload" href="/guide/assets/js/npm.vue-class-component.cf97710e.js" as="script"><link rel="preload" href="/guide/assets/js/npm.vue-demi.1a583b3d.js" as="script"><link rel="preload" href="/guide/assets/js/npm.vue-i18n.08764e47.js" as="script"><link rel="preload" href="/guide/assets/js/npm.vue-loader.82b0b0e3.js" as="script"><link rel="preload" href="/guide/assets/js/npm.webpack.037e0ba0.js" as="script"><link rel="preload" href="/guide/assets/js/app.22f942b5.js" as="script"><link rel="preload" href="/guide/assets/css/14.styles.99b04e21.css" as="style"><link rel="preload" href="/guide/assets/js/npm.vuepress-plugin-fulltext-search.99b04e21.js" as="script"><link rel="preload" href="/guide/assets/js/page-90f907aa.716c6a06.js" as="script"><link rel="prefetch" href="/guide/assets/css/126.styles.dbcac7e5.css"><link rel="prefetch" href="/guide/assets/css/127.styles.f8f7974d.css"><link rel="prefetch" href="/guide/assets/css/15.styles.f285afb9.css"><link rel="prefetch" href="/guide/assets/css/16.styles.68a28170.css"><link rel="prefetch" href="/guide/assets/js/126.dbcac7e5.js"><link rel="prefetch" href="/guide/assets/js/127.f8f7974d.js"><link rel="prefetch" href="/guide/assets/js/128.eb30ae2d.js"><link rel="prefetch" href="/guide/assets/js/16.68a28170.js"><link rel="prefetch" href="/guide/assets/js/layout-TimeLines.d07557b2.js"><link rel="prefetch" href="/guide/assets/js/npm.charenc.0147e050.js"><link rel="prefetch" href="/guide/assets/js/npm.crypt.a5bd5e53.js"><link rel="prefetch" href="/guide/assets/js/npm.flexsearch.a1f45a4e.js"><link rel="prefetch" href="/guide/assets/js/npm.md5.02c15f81.js"><link rel="prefetch" href="/guide/assets/js/npm.prismjs.f285afb9.js"><link rel="prefetch" href="/guide/assets/js/npm.setimmediate.a1c2039f.js"><link rel="prefetch" href="/guide/assets/js/npm.timers-browserify.bf291a99.js"><link rel="prefetch" href="/guide/assets/js/npm.vue-click-outside.bff4fc23.js"><link rel="prefetch" href="/guide/assets/js/page-005e6c35.b1a77ffe.js"><link rel="prefetch" href="/guide/assets/js/page-05798f2b.9a345895.js"><link rel="prefetch" href="/guide/assets/js/page-09c6e9ab.83f4f0e1.js"><link rel="prefetch" href="/guide/assets/js/page-0cbf1aab.329133c1.js"><link rel="prefetch" href="/guide/assets/js/page-0cd88c0f.b027bcf0.js"><link rel="prefetch" href="/guide/assets/js/page-1493d54b.3306b885.js"><link rel="prefetch" href="/guide/assets/js/page-17b582eb.6b13b987.js"><link rel="prefetch" href="/guide/assets/js/page-1852186a.252adf9c.js"><link rel="prefetch" href="/guide/assets/js/page-18f00c8b.3a68d9cd.js"><link rel="prefetch" href="/guide/assets/js/page-1982f56a.538a9fa4.js"><link rel="prefetch" href="/guide/assets/js/page-19f48aff.210f5ccf.js"><link rel="prefetch" href="/guide/assets/js/page-1c26ac4b.a1fd1655.js"><link rel="prefetch" href="/guide/assets/js/page-1c46f5ab.3f923214.js"><link rel="prefetch" href="/guide/assets/js/page-221e0c32.f1f10a34.js"><link rel="prefetch" href="/guide/assets/js/page-24976c0b.a8085295.js"><link rel="prefetch" href="/guide/assets/js/page-265c4a7e.3adc7547.js"><link rel="prefetch" href="/guide/assets/js/page-2858ebea.02335229.js"><link rel="prefetch" href="/guide/assets/js/page-29559f8b.fbeba2a5.js"><link rel="prefetch" href="/guide/assets/js/page-2e27bdad.a440c9a0.js"><link rel="prefetch" href="/guide/assets/js/page-2e4cb8ab.5eda084b.js"><link rel="prefetch" href="/guide/assets/js/page-2f248b0b.a2571471.js"><link rel="prefetch" href="/guide/assets/js/page-321e7eea.116c6c4b.js"><link rel="prefetch" href="/guide/assets/js/page-32a1870d.29345c46.js"><link rel="prefetch" href="/guide/assets/js/page-3673e46a.57b65d04.js"><link rel="prefetch" href="/guide/assets/js/page-37306b0b.c01f427e.js"><link rel="prefetch" href="/guide/assets/js/page-37e09f6a.9103a3fc.js"><link rel="prefetch" href="/guide/assets/js/page-37efe66a.7a256987.js"><link rel="prefetch" href="/guide/assets/js/page-39e916f0.13fc153b.js"><link rel="prefetch" href="/guide/assets/js/page-3a7ef9eb.b432ee7e.js"><link rel="prefetch" href="/guide/assets/js/page-3b86fbaa.0bd04eeb.js"><link rel="prefetch" href="/guide/assets/js/page-44714a6b.9bafb2de.js"><link rel="prefetch" href="/guide/assets/js/page-4b468700.c3b500a6.js"><link rel="prefetch" href="/guide/assets/js/page-4bf2e7fd.7c24106b.js"><link rel="prefetch" href="/guide/assets/js/page-4daf884a.a8a56dcc.js"><link rel="prefetch" href="/guide/assets/js/page-4dc3136b.e23bd3be.js"><link rel="prefetch" href="/guide/assets/js/page-4f8959cb.28735d46.js"><link rel="prefetch" href="/guide/assets/js/page-4fb88c8b.2de7b4be.js"><link rel="prefetch" href="/guide/assets/js/page-4ff7afff.31120e47.js"><link rel="prefetch" href="/guide/assets/js/page-521a09eb.75ac1404.js"><link rel="prefetch" href="/guide/assets/js/page-5900f271.8b3259fc.js"><link rel="prefetch" href="/guide/assets/js/page-5c30984b.7b2372ae.js"><link rel="prefetch" href="/guide/assets/js/page-5d34a3cb.95ff444d.js"><link rel="prefetch" href="/guide/assets/js/page-5fe1b6aa.21c9a2ff.js"><link rel="prefetch" href="/guide/assets/js/page-68dbf5aa.ffe198a0.js"><link rel="prefetch" href="/guide/assets/js/page-69ec6b4b.dd63cf99.js"><link rel="prefetch" href="/guide/assets/js/page-6acd1126.185e1781.js"><link rel="prefetch" href="/guide/assets/js/page-6ad03320.66f3d248.js"><link rel="prefetch" href="/guide/assets/js/page-6ae92f3e.d08829ca.js"><link rel="prefetch" href="/guide/assets/js/page-6af8ea4b.04a13748.js"><link rel="prefetch" href="/guide/assets/js/page-6bac659a.c33a5c54.js"><link rel="prefetch" href="/guide/assets/js/page-6c84e740.f9450a99.js"><link rel="prefetch" href="/guide/assets/js/page-7040312a.ab353950.js"><link rel="prefetch" href="/guide/assets/js/page-719d672b.fa0e3a98.js"><link rel="prefetch" href="/guide/assets/js/page-737352ab.016fc0da.js"><link rel="prefetch" href="/guide/assets/js/page-768ddd0b.6ac658dd.js"><link rel="prefetch" href="/guide/assets/js/page-7844a1b2.a400e533.js"><link rel="prefetch" href="/guide/assets/js/page-791dc52a.5f393680.js"><link rel="prefetch" href="/guide/assets/js/page-7abcf829.63e417e1.js"><link rel="prefetch" href="/guide/assets/js/page-7ef5983a.70afaea7.js"><link rel="prefetch" href="/guide/assets/js/page-7fc4e92b.cd7e67db.js"><link rel="prefetch" href="/guide/assets/js/page-82deb3ea.4cb187df.js"><link rel="prefetch" href="/guide/assets/js/page-953c6676.3b302871.js"><link rel="prefetch" href="/guide/assets/js/page-96a3e4a6.27e37982.js"><link rel="prefetch" href="/guide/assets/js/page-afafcbea.987fe74e.js"><link rel="prefetch" href="/guide/assets/js/page-b6e43d0e.b8b40472.js"><link rel="prefetch" href="/guide/assets/js/page-b8c8d8ea.a0c2a3d9.js"><link rel="prefetch" href="/guide/assets/js/page-ba34d7ea.c174e69d.js"><link rel="prefetch" href="/guide/assets/js/page-bfe34c2a.230e1dc8.js"><link rel="prefetch" href="/guide/assets/js/page-d0ea490a.02b3e6ea.js"><link rel="prefetch" href="/guide/assets/js/page-d68118aa.8b71ea1a.js"><link rel="prefetch" href="/guide/assets/js/page-d87406c0.cb46a68c.js"><link rel="prefetch" href="/guide/assets/js/page-dd7fb7c2.3356e411.js"><link rel="prefetch" href="/guide/assets/js/page-e7266b80.e60c0f9a.js"><link rel="prefetch" href="/guide/assets/js/page-f5c06ff6.df34681d.js">
+    <link rel="stylesheet" href="/guide/assets/css/1.styles.9fee1af6.css"><link rel="stylesheet" href="/guide/assets/css/4.styles.f6bfd7f0.css"><link rel="stylesheet" href="/guide/assets/css/5.styles.4a16689b.css"><link rel="stylesheet" href="/guide/assets/css/40.styles.f5e88091.css"><link rel="stylesheet" href="/guide/assets/css/48.styles.b0ea7b17.css"><link rel="stylesheet" href="/guide/assets/css/46.styles.a3cab173.css"><link rel="stylesheet" href="/guide/assets/css/49.styles.deeb74e8.css"><link rel="stylesheet" href="/guide/assets/css/14.styles.99b04e21.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-130b300a><div data-v-130b300a><div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-130b300a data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>FE Note</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>about front-end docs notes website</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-130b300a><header class="navbar" data-v-130b300a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/guide/" class="home-link router-link-active"><img src="/guide/logo.png" alt="FE Note" class="logo"> <span class="site-name">FE Note</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/frontend/learn/" class="nav-link"><i class="undefined"></i>
+  笔记
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/framework/" class="nav-link"><i class="undefined"></i>
+  框架
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/issues/" class="nav-link"><i class="undefined"></i>
+  问题
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      服务
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/services/tools/" class="nav-link router-link-active"><i class="undefined"></i>
+  工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/categories/frontend/" class="nav-link"><i class="undefined"></i>
+  frontend
+</a></li><li class="dropdown-item"><!----> <a href="/guide/categories/system/" class="nav-link"><i class="undefined"></i>
+  system
+</a></li><li class="dropdown-item"><!----> <a href="/guide/categories/services/" class="nav-link"><i class="undefined"></i>
+  services
+</a></li></ul></div></div><div class="nav-item"><a href="/guide/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/chengzao/guide" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask" data-v-130b300a></div> <aside class="sidebar" data-v-130b300a><div class="personal-info-wrapper" data-v-39576ba9 data-v-130b300a><img src="/guide/logo.png" alt="author-avatar" class="personal-img" data-v-39576ba9> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>74</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>68</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      前端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/frontend/learn/" class="nav-link"><i class="undefined"></i>
+  笔记
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/framework/" class="nav-link"><i class="undefined"></i>
+  框架
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/issues/" class="nav-link"><i class="undefined"></i>
+  问题
+</a></li><li class="dropdown-item"><!----> <a href="/guide/frontend/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      服务
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/services/tools/" class="nav-link router-link-active"><i class="undefined"></i>
+  工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/categories/frontend/" class="nav-link"><i class="undefined"></i>
+  frontend
+</a></li><li class="dropdown-item"><!----> <a href="/guide/categories/system/" class="nav-link"><i class="undefined"></i>
+  system
+</a></li><li class="dropdown-item"><!----> <a href="/guide/categories/services/" class="nav-link"><i class="undefined"></i>
+  services
+</a></li></ul></div></div><div class="nav-item"><a href="/guide/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/chengzao/guide" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Tools</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/services/tools/" aria-current="page" class="sidebar-link">导航目录</a></li><li><a href="/guide/services/tools/aria2.html" class="sidebar-link">aria2</a></li><li><a href="/guide/services/tools/ascii.html" class="sidebar-link">站点工具</a></li><li><a href="/guide/services/tools/centos7.html" class="sidebar-link">centos7命令参数</a></li><li><a href="/guide/services/tools/docker.html" class="sidebar-link">docker命令列表</a></li><li><a href="/guide/services/tools/get-ua.html" class="sidebar-link">window userAgent</a></li><li><a href="/guide/services/tools/git.html" class="sidebar-link">git常见命令列表</a></li><li><a href="/guide/services/tools/github-actions.html" class="sidebar-link">github的actions使用</a></li><li><a href="/guide/services/tools/gitlab.html" aria-current="page" class="active sidebar-link">gitlab的服务部署</a></li><li><a href="/guide/services/tools/linux.html" class="sidebar-link">linux命令参数</a></li><li><a href="/guide/services/tools/manjaro.html" class="sidebar-link">manjaro命令参数</a></li><li><a href="/guide/services/tools/meilisearch.html" class="sidebar-link">meilisearch</a></li><li><a href="/guide/services/tools/nginx.html" class="sidebar-link">nginx安装使用</a></li><li><a href="/guide/services/tools/nodejs.html" class="sidebar-link">node.js的记录</a></li><li><a href="/guide/services/tools/search-tip.html" class="sidebar-link">搜索小技巧</a></li><li><a href="/guide/services/tools/sentry.html" class="sidebar-link">前端监控sentry使用</a></li><li><a href="/guide/services/tools/todo.html" class="sidebar-link">todo list</a></li><li><a href="/guide/services/tools/travis.html" class="sidebar-link">持续部署环境travis-ci的使用介绍</a></li><li><a href="/guide/services/tools/ubuntu.html" class="sidebar-link">ubuntu常见命名</a></li><li><a href="/guide/services/tools/vagrant.html" class="sidebar-link">vagrant虚拟机的使用</a></li><li><a href="/guide/services/tools/vim.html" class="sidebar-link">vim的简单使用</a></li><li><a href="/guide/services/tools/vscode.html" class="sidebar-link">vscode</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>gitlab的服务部署</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-130b300a><main class="page"><section><div class="page-title"><h1 class="title">gitlab的服务部署</h1> <div data-v-f875f3fc><!----> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2020/7/21</span></i> <!----> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>gitlab</span></i></div></div> <div class="theme-reco-content content__default"><ul><li>hosts</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token number">127.0</span>.0.1	jenkins.chenio.com
+<span class="token number">127.0</span>.0.1	gitlab.chenio.com
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="gitlab-ce"><a href="#gitlab-ce" class="header-anchor">#</a> gitlab-ce</h2> <ul><li>gitlab-ce for window</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># local hosts add: 127.0.0.1  gitlab.chenio.com</span>
+<span class="token comment"># docker-compose.yml</span>
+
+version: <span class="token string">'2'</span>
+services:
+  web:
+    image: <span class="token string">'gitlab/gitlab-ce:latest'</span>
+    restart: always
+    hostname: <span class="token string">'gitlab.chenio.com'</span>
+    environment:
+      GITLAB_OMNIBUS_CONFIG: <span class="token operator">|</span>
+        external_url <span class="token string">'http://gitlab.chenio.com:9090'</span>
+        gitlab_rails<span class="token punctuation">[</span><span class="token string">'gitlab_shell_ssh_port'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2224</span>
+    ports:
+      - <span class="token string">'9090:9090'</span>
+      - <span class="token string">'2224:22'</span>
+    volumes:
+      - <span class="token string">'d:/docker/gitlab/config:/etc/gitlab'</span>
+      - <span class="token string">'d:/docker/gitlab/logs:/var/log/gitlab'</span>
+
+<span class="token comment"># run docker-compose.yml</span>
+<span class="token function">docker-compose</span> up -d
+
+<span class="token comment"># windows10</span>
+<span class="token function">docker</span> run -d --hostname localhost -p <span class="token number">9090</span>:80 -p <span class="token number">10443</span>:443 --name gitlab -v d:/docker/gitlab/config:/etc/gitlab -v d:/docker/gitlab/logs:/var/log/gitlab gitlab/gitlab-ce:latest
+
+http://localhost:10080/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><ul><li>gitlab-ce for Mac</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># https://docs.gitlab.com/omnibus/docker/#run-the-image</span>
+
+<span class="token comment"># docker run</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> run --detach <span class="token punctuation">\</span>
+	--hostname <span class="token number">0.0</span>.0.0 <span class="token punctuation">\</span>
+	--publish <span class="token number">443</span>:443 --publish <span class="token number">9090</span>:80 --publish <span class="token number">22</span>:22 <span class="token punctuation">\</span>
+	--name gitlab <span class="token punctuation">\</span>
+	--restart always <span class="token punctuation">\</span>
+	--volume /Users/pc/srv/gitlab/config:/etc/gitlab <span class="token punctuation">\</span>
+	--volume /Users/pc/srv/gitlab/logs:/var/log/gitlab <span class="token punctuation">\</span>
+	--volume /Users/pc/srv/gitlab/data:/var/opt/gitlab <span class="token punctuation">\</span>
+	gitlab/gitlab-ce:latest
+
+<span class="token comment"># docker-compose.yml文件</span>
+web:
+  image: <span class="token string">'gitlab/gitlab-ce:latest'</span>
+  restart: always
+  hostname: <span class="token string">'gitlab.example.com'</span>
+  environment:
+    GITLAB_OMNIBUS_CONFIG: <span class="token operator">|</span>
+      external_url <span class="token string">'http://gitlab.example.com:9090'</span>
+      gitlab_rails<span class="token punctuation">[</span><span class="token string">'gitlab_shell_ssh_port'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2224</span>
+  ports:
+    - <span class="token string">'9090:9090'</span>
+    - <span class="token string">'2224:22'</span>
+  volumes:
+    - <span class="token string">'/Users/pc/srv/gitlab/config:/etc/gitlab'</span>
+    - <span class="token string">'/Users/pc/srv/gitlab/logs:/var/log/gitlab'</span>
+    - <span class="token string">'/Users/pc/srv/gitlab/data:/var/opt/gitlab'</span>
+
+<span class="token comment"># run docker-compose.yml</span>
+<span class="token function">docker-compose</span> up -d
+<span class="token function">docker-compose</span> down
+
+http://localhost:9090
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><h2 id="gitlab-runner"><a href="#gitlab-runner" class="header-anchor">#</a> gitlab-runner</h2> <h3 id="docker"><a href="#docker" class="header-anchor">#</a> docker</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># test rep</span>
+https://gitlab.com/chengzao/gitlab-test.git
+
+<span class="token comment"># Windows下使用docker部署gitlab CI服务</span>
+https://www.jianshu.com/p/0abe441d5d3c
+
+<span class="token comment"># docker之CI/CD持续集成—GitLab CI服务器</span>
+https://zhuanlan.zhihu.com/p/54064430
+https://idig8.com/2018/11/20/987/
+
+<span class="token comment"># 在docker中执行gitlab-runner</span>
+https://segmentfault.com/a/1190000012279248
+
+https://docs.gitlab.com/runner/
+https://docs.gitlab.com/runner/install/docker.html
+https://docs.gitlab.com/runner/register/
+
+<span class="token comment"># start</span>
+<span class="token function">docker</span> run -d --name gitlab-runner --restart always <span class="token punctuation">\</span>
+  -v /var/run/docker.sock:/var/run/docker.sock <span class="token punctuation">\</span>
+  -v /etc/gitlab-runner <span class="token punctuation">\</span>
+  gitlab/gitlab-runner:latest
+
+<span class="token comment"># register</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it gitlab-runner gitlab-ci-multi-runner register
+
+<span class="token function">sudo</span> <span class="token function">docker</span> run --rm -t -i -v /Users/pc/srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
+
+<span class="token comment"># config</span>
+<span class="token function">docker</span>
+alpine:latest
+
+<span class="token comment"># log</span>
+<span class="token function">docker</span> logs gitlab-runner
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><h3 id="docker-compose"><a href="#docker-compose" class="header-anchor">#</a> docker-compose</h3> <ul><li>gitab-runner</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># Dockerfile</span>
+FROM gitlab/gitlab-runner:latest
+
+RUN <span class="token function">apt-get</span> update -y
+
+<span class="token comment"># https://github.com/nodesource/distributions/blob/master/README.md</span>
+RUN <span class="token function">curl</span> -sL https://deb.nodesource.com/setup_11.x <span class="token operator">|</span> <span class="token function">bash</span> -
+
+RUN <span class="token function">apt-get</span> <span class="token function">install</span> -y nodejs
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>docker-compose.yml</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>version: <span class="token string">'2'</span>
+services:
+  web:
+    build: <span class="token builtin class-name">.</span>
+    image: <span class="token string">'czh/gitlab-runner'</span>
+    restart: always
+    container_name: gitlab-runner
+    extra_hosts:
+      - <span class="token string">&quot;gitlab.chenio.com:192.168.137.138&quot;</span>
+      - <span class="token string">&quot;jenkins.chenio.com:192.168.137.138&quot;</span>
+    volumes:
+      - <span class="token string">'/var/run/docker.sock:/var/run/docker.sock'</span>
+      - <span class="token string">'/Users/pc/srv/gitlab-runner/config:/etc/gitlab-runner'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li><p><code>docker-compose -f &quot;docker-compose.yml&quot; up -d --build</code></p></li> <li><p><code>docker exec -it gitlab-runner gitlab-ci-multi-runner register</code></p></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># step1: Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com/):</span>
+http://gitlab.chenio.com:9090/
+<span class="token comment"># step2: Please enter the gitlab-ci token for this runner:</span>
+raQ5xxxxxxxxxxxxWQ
+<span class="token comment"># step3: Please enter the gitlab-ci description for this runner:</span>
+runner-name
+<span class="token comment"># step4: Please enter the gitlab-ci tags for this runner (comma separated):</span>
+test, build, deploy
+<span class="token comment"># step5: Please enter the executor: parallels, shell, ssh, virtualbox, docker+machine, docker-ssh+machine, docker, docker-ssh, kubernetes:</span>
+shell
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>gitlab-ci.yml</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># This file is a template, and might need editing before it works on your project.</span>
+<span class="token comment"># see https://docs.gitlab.com/ce/ci/yaml/README.html for all available options</span>
+<span class="token comment"># react simple demo</span>
+<span class="token comment"># you can delete this line if you're not using Docker</span>
+image: node:latest
+
+before_script:
+  - <span class="token builtin class-name">echo</span> <span class="token string">&quot;Before script installing package&quot;</span>
+  - <span class="token function">node</span> -v
+  - <span class="token function">npm</span> -v
+  - <span class="token function">npm</span> <span class="token function">install</span>
+
+after_script:
+  - <span class="token builtin class-name">echo</span> <span class="token string">&quot;After script section&quot;</span>
+
+build:
+  stage: build
+  script:
+    - <span class="token function">npm</span> run build
+
+test:
+  stage: <span class="token builtin class-name">test</span>
+  script:
+    - <span class="token function">npm</span> run <span class="token builtin class-name">test</span>
+
+deploy:
+  stage: deploy
+  script:
+    - <span class="token builtin class-name">echo</span> <span class="token string">&quot;Do your deploy here&quot;</span>
+
+cache:
+  paths:
+  - node_modules/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h3 id="windows"><a href="#windows" class="header-anchor">#</a> windows</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># runner安装下载</span>
+https://docs.gitlab.com/runner/install/windows.html
+- C盘新建GitLab-Runner文件夹
+- 将下载好的文件exe文件放进GitLab-Runner， 重命名为gitlab-runner.exe
+- Windows PowerShell Run as administrator
+
+<span class="token comment"># 注册</span>
+https://docs.gitlab.com/runner/register/index.html
+- ./gitlab-runner.exe register
+
+<span class="token comment"># Install the Runner as a service and start it</span>
+- gitlab-runner <span class="token function">install</span>
+- gitlab-runner start
+
+<span class="token comment"># stop</span>
+- <span class="token builtin class-name">cd</span> C:<span class="token punctuation">\</span>GitLab-Runner
+- gitlab-runner stop
+
+<span class="token comment"># update</span>
+- <span class="token builtin class-name">cd</span> C:<span class="token punctuation">\</span>GitLab-Runner
+- gitlab-runner stop
+- 重复runner安装下载
+- gitlab-runner start
+
+<span class="token comment"># Uninstall</span>
+- <span class="token builtin class-name">cd</span> C:<span class="token punctuation">\</span>GitLab-Runner
+- gitlab-runner stop
+- gitlab-runner uninstall
+- <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>
+- <span class="token function">rmdir</span> /s GitLab-Runner
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><h2 id="jenkins-docker"><a href="#jenkins-docker" class="header-anchor">#</a> jenkins docker</h2> <ul><li>jenkins for mac</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># https://github.com/jenkinsci/docker/blob/master/README.md</span>
+
+<span class="token comment"># step1</span>
+<span class="token function">docker</span> pull jenkins/jenkins:latest
+
+<span class="token comment"># step2</span>
+<span class="token function">docker</span> run -d -p <span class="token number">8080</span>:8080 -p <span class="token number">50000</span>:50000 --name devops-jenkins -v /Users/pc/srv/jenkins_home:/var/jenkins_home jenkins/jenkins:latest
+
+<span class="token comment"># 查看log</span>
+<span class="token function">docker</span> logs devops-jenkins
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>jenkins for windows</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># https://github.com/jenkinsci/docker/blob/master/README.md</span>
+
+<span class="token comment"># step1</span>
+<span class="token function">docker</span> pull jenkins/jenkins:latest
+
+<span class="token comment"># step2</span>
+<span class="token function">docker</span> run -d -p <span class="token number">8080</span>:8080 -p <span class="token number">50000</span>:50000 --name devops-jenkins -v d:/docker/jenkins_home:/var/jenkins_home jenkins/jenkins:latest
+
+<span class="token comment"># 初始密码位置</span>
+D:/docker/jenkins_home/secrets/initialAdminPassword
+
+<span class="token comment"># local hosts add: 127.0.0.1  jenkins.chenio.com</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h2 id="jenkins-docker-compose"><a href="#jenkins-docker-compose" class="header-anchor">#</a> jenkins docker-compose</h2> <h3 id="jenkins-for-mac"><a href="#jenkins-for-mac" class="header-anchor">#</a> jenkins for mac</h3> <ul><li>docker-compose.yml</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># docker-compose.yml</span>
+version: <span class="token string">'2'</span>
+services:
+  web:
+    image: <span class="token string">'jenkins/jenkins:latest'</span>
+    restart: always
+    hostname: <span class="token string">'jenkins.chenio.com'</span>
+    pid: <span class="token string">&quot;host&quot;</span>
+    ports:
+      - <span class="token string">'8080:8080'</span>
+      - <span class="token string">'50000:50000'</span>
+    volumes:
+      - <span class="token string">'/Users/pc/srv/jenkins_home:/var/jenkins_home'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>运行：docker-compose up -d</li></ul> <h3 id="jenkins-for-windows"><a href="#jenkins-for-windows" class="header-anchor">#</a> jenkins for windows</h3> <ul><li><code>docker-compose.yml</code></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># local hosts add: 127.0.0.1  jenkins.chenio.com</span>
+version: <span class="token string">'3'</span>
+services:
+  web:
+    image: <span class="token string">'jenkins/jenkins:latest'</span>
+    restart: always
+    hostname: <span class="token string">'jenkins.chenio.com'</span>
+    pid: <span class="token string">&quot;host&quot;</span>
+    ports:
+      - <span class="token string">'8080:8080'</span>
+      - <span class="token string">'50000:50000'</span>
+    volumes:
+      - <span class="token string">'d:/docker/jenkins_home:/var/jenkins_home'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>运行：docker-compose up -d</li></ul> <h2 id="gitlab-ci"><a href="#gitlab-ci" class="header-anchor">#</a> GitLab-CI</h2> <ul><li><a href="https://docs.gitlab.com/ee/ci/yaml/" target="_blank" rel="noopener noreferrer">Configuration of your jobs with .gitlab-ci.yml<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://blog.csdn.net/kunyus/article/details/81390330" target="_blank" rel="noopener noreferrer">原文：Gitlab-CI job 配置文件 .gitlab-ci.yml 配置方式(翻译)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>gitlab-ci 使用 YAML 文件管理配置 job</li> <li>Job: YAML 文件定义了一系列带有约束说明的 job, job <strong>至少</strong>需要要包含 script
+<ul><li>script 可以直接执行系统命令(如：./configure;make;make install)或者直接执行脚本(test.sh)</li> <li>任务是由 CI 接管并且在服务器执行, 并且<strong>每一个任务的执行都是独立的</strong></li></ul></li> <li>job 的名称具有<strong>唯一性</strong>在文件中只能出现一次; 下列词汇是<strong>保留字段，不能被使用</strong>命名为 job 名称</li> <li>关键字: 不可以被用于 Job 名 的保留字</li></ul> <table><thead><tr><th>关键字</th> <th style="text-align:center;">是否必须</th> <th>描述</th></tr></thead> <tbody><tr><td>image</td> <td style="text-align:center;">no</td> <td>用于 docker 镜像</td></tr> <tr><td>services</td> <td style="text-align:center;">no</td> <td>用于 docker 服务</td></tr> <tr><td>stages</td> <td style="text-align:center;">no</td> <td>定义构建阶段</td></tr> <tr><td>types</td> <td style="text-align:center;">no</td> <td>stages 的别名(已废除)</td></tr> <tr><td>before_script</td> <td style="text-align:center;">no</td> <td>定义在每个 job 之前运行的命令</td></tr> <tr><td>after_script</td> <td style="text-align:center;">no</td> <td>定义在每个 job 之后运行的命令</td></tr> <tr><td>variables</td> <td style="text-align:center;">no</td> <td>定义构建变量</td></tr> <tr><td>cache</td> <td style="text-align:center;">no</td> <td>定义一组文件列表，可在后续运行中使用</td></tr></tbody></table> <ul><li>only and except 保留字</li></ul> <table><thead><tr><th>关键字</th> <th>描述</th></tr></thead> <tbody><tr><td>branches</td> <td>当一个分支被 push 上来</td></tr> <tr><td>tags</td> <td>当一个打了 tag 的分支被 push 上来</td></tr> <tr><td>api</td> <td>当一个 pipline 被 piplines api 所触发调起</td></tr> <tr><td>external</td> <td>当使用了 GitLab 以外的 CI 服务</td></tr> <tr><td>pipelines</td> <td>针对多项目触发器而言，当使用 CI_JOB_TOKEN 并使用 gitlab 所提供的 api 创建多个 pipelines 的时候</td></tr> <tr><td>pushes</td> <td>当 pipeline 被用户的 git push 操作所触发的时候</td></tr> <tr><td>schedules</td> <td>针对预定好的 pipline 而言（每日构建一类）</td></tr> <tr><td>triggers</td> <td>用 token 创建 piplines 的时候</td></tr> <tr><td>web</td> <td>在 GitLab 页面上 Pipelines 标签页下，你按了 run pipline 的时候</td></tr></tbody></table> <ul><li>job 可以配置的参数列表</li></ul> <table><thead><tr><th style="text-align:left;">参数名称</th> <th style="text-align:center;">是否必须</th> <th style="text-align:left;">参数说明</th></tr></thead> <tbody><tr><td style="text-align:left;">script</td> <td style="text-align:center;">yes</td> <td style="text-align:left;">需要在 docker 容器中运行的脚本</td></tr> <tr><td style="text-align:left;">image</td> <td style="text-align:center;">no</td> <td style="text-align:left;">所使用的 docker 镜像</td></tr> <tr><td style="text-align:left;">services</td> <td style="text-align:center;">no</td> <td style="text-align:left;">需要关联的 docker 服务</td></tr> <tr><td style="text-align:left;">stage</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义当前 job 运行在那个阶段 (默认: test)</td></tr> <tr><td style="text-align:left;">variables</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义 job 级别的变量</td></tr> <tr><td style="text-align:left;">only</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义一列 git 分支，并为其创建 job</td></tr> <tr><td style="text-align:left;">except</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义一列 git 分支，不创建 job</td></tr> <tr><td style="text-align:left;">tags</td> <td style="text-align:center;">no</td> <td style="text-align:left;">通过 tags 确定使用指定还是使用通用部署程序</td></tr> <tr><td style="text-align:left;">allow_failure</td> <td style="text-align:center;">no</td> <td style="text-align:left;">允许 job 失败， job 失败不会影响最终结果</td></tr> <tr><td style="text-align:left;">when</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义 job 在什么时候运行， 支持参数 on_success, on_failure, always 或者 manual</td></tr> <tr><td style="text-align:left;">dependencies</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义 job 依赖关系，这样他们就可以互相传递 artifacts</td></tr> <tr><td style="text-align:left;">artifacts</td> <td style="text-align:center;">no</td> <td style="text-align:left;">Define list of job artifacts</td></tr> <tr><td style="text-align:left;">cache</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义应在后续运行之间缓存的文件列表</td></tr> <tr><td style="text-align:left;">before_script</td> <td style="text-align:center;">no</td> <td style="text-align:left;">覆盖 job 执行前需要执行的脚本设置</td></tr> <tr><td style="text-align:left;">after_script</td> <td style="text-align:center;">no</td> <td style="text-align:left;">覆盖 job 执行后需要执行的脚本设置</td></tr> <tr><td style="text-align:left;">environment</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义此作业完成部署的环境名称</td></tr> <tr><td style="text-align:left;">coverage</td> <td style="text-align:center;">no</td> <td style="text-align:left;">定义给定作业的代码覆盖率设置</td></tr> <tr><td style="text-align:left;">retry</td> <td style="text-align:center;">no</td> <td style="text-align:left;">job 执行发生故障时自动重试次数</td></tr></tbody></table> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># job示例</span>
+
+image: ruby:2.1
+services:
+  - postgres
+
+before_script:
+  - bundle <span class="token function">install</span>
+
+after_script:
+  - <span class="token function">rm</span> secrets
+
+stages:
+  - build
+  - <span class="token builtin class-name">test</span>
+  - deploy
+
+job1:
+  stage: build
+  script:
+    - execute-script-for-job1
+  only:
+    - master
+  tags:
+    - <span class="token function">docker</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><ul><li>image and services: 这两个关键字允许使用一个自定义的 Docker 镜像和一系列的服务，并且可以用于整个 job 周期</li> <li>before_script:
+<ul><li>必须是数组或多行字符串</li> <li>支持定义为 global 和 job 类型， job 类型会覆盖掉 global 类型的值</li> <li>定义在所有 job（包括 deploy job）之前运行的命令。（在 <em>artifacts</em> 运行之后）</li></ul></li> <li>after_script
+<ul><li>必须是数组或多行字符串</li> <li>支持定义为 global 和 job 类型， job 类型会覆盖掉 global 类型的值</li> <li>定义在所有 job（包括失败的 job）之后运行的命令</li></ul></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># script示例</span>
+
+before_script:
+  - global before script
+
+job:
+  before_script:
+    - execute this instead of global before script
+  script:
+    - my <span class="token builtin class-name">command</span>
+  after_script:
+    - execute this after my script
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>stages
+<ul><li>只支持 global 类型</li> <li>定义了 job 支持的执行阶段和顺序</li> <li>stages 中的元素顺序决定了对应 job 的执行顺序</li> <li>下一个 阶段 的 job 只会在前一个 阶段 的 job 执行成功后开始执行</li></ul></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># stages示例</span>
+stages:
+  - build
+  - <span class="token builtin class-name">test</span>
+  - deploy
+
+<span class="token comment"># 运行顺序：</span>
+<span class="token number">1</span>. 运行所有的 build
+<span class="token number">2</span>. 如果所有作业都 build 运行成功，那么开始运行所有的 <span class="token builtin class-name">test</span>
+<span class="token number">3</span>. 如果所有作业都 <span class="token builtin class-name">test</span> 运行成功，那么开始运行所有的 deploy
+<span class="token number">4</span>. 如果所有作业都 deploy 成功，则标记 job 为 passed
+<span class="token number">5</span>. 如果在之前动作中有任何失败，则标记 job 为 failed 并终止 job 执行
+
+<span class="token comment"># 没有定义stages时的默认动作</span>
+如果 .gitlab-ci.yml 文件中没有定义 stages , stages 将会被设置成 build -<span class="token operator">&gt;</span> <span class="token builtin class-name">test</span> -<span class="token operator">&gt;</span> deploy.
+如果 job 没有定义 stage, 则 job 的 stage 将会被设置成 <span class="token builtin class-name">test</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>stage
+<ul><li>相同 stage 的 job 会并行执行</li> <li>stage 的值必须定义在 stages 中，可以通过设置 stage 来对 job 进行分组，相同分组的 job 将会并行执行.</li></ul></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># stage示例</span>
+stages:
+  - build
+  - <span class="token builtin class-name">test</span>
+  - deploy
+
+job <span class="token number">1</span>:
+  stage: build
+  script: <span class="token function">make</span> build dependencies
+
+job <span class="token number">2</span>:
+  stage: build
+  script: <span class="token function">make</span> build artifacts
+
+job <span class="token number">3</span>:
+  stage: <span class="token builtin class-name">test</span>
+  script: <span class="token function">make</span> <span class="token builtin class-name">test</span>
+
+job <span class="token number">4</span>:
+  stage: deploy
+  script: <span class="token function">make</span> deploy
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li>script
+<ul><li>script 是 job 运行需要的唯一一个必须字段, 通过 script 来指定应该如何执行 job</li> <li>script 可以设置为 string 和 array 类型</li></ul></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># script 设置为 string 来设置 job 执行什么命令</span>
+job:
+  script: <span class="token string">&quot;bundle exec rspec&quot;</span>
+
+<span class="token comment"># script 设置为 array 来指定运行多个命令</span>
+job:
+  script:
+    - <span class="token function">uname</span> -a
+    - bundle <span class="token builtin class-name">exec</span> rspec
+
+<span class="token comment"># 如果命令中包含有特殊字符, 则需要用双引号将 script 括起来</span>
+job:
+script:
+  - <span class="token function">make</span>
+  - <span class="token string">&quot;ps -aux | grep gcc&quot;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li><p>YAML 中的特殊字符:
+<code>:</code> 、 <code>{</code> 、 <code>}</code> 、 <code>[</code> 、 <code>]</code> 、<code>,</code> 、 <code>&amp;</code> 、 <code>*</code> 、 <code>#</code> 、 <code>?</code> 、 <code>|</code> 、 <code>-</code> 、 <code>&lt;</code> 、 <code>&gt;</code> 、 <code>=</code> 、 <code>!</code> 、 <code>%</code> 、<code>@</code> 、`` ` 。</p></li> <li><p>only and except</p> <ul><li>只有满足 only 条件的 branches 和 tags 才会被运行</li> <li>except 和 only 相反, 满足 except 条件的 branches 和 tags 将 不会 被运行</li></ul></li> <li><p>refs 策略的使用规则:</p> <ul><li>only 和 except 支持使用正则表达式.</li> <li>only 和 except 支持使用特殊的关键字.</li> <li>only 和 except 支持同时设置, 当同时设置时 only 和 except 将会同时起作用.</li> <li>only 和 except 也可以用来指定 forks 作业的存储库路径</li></ul></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># job 会跳过所有分支, 只在以 issue- 开头的 ref 时运行</span>
+
+job:
+  <span class="token comment"># use regexp</span>
+  only:
+    - /^issue-.*$/
+  <span class="token comment"># use special keyword</span>
+  except:
+    - branches
+
+<span class="token comment"># job 只会执行有 tags 或者通过API触发器构建的 refs</span>
+
+job:
+  <span class="token comment"># use special keywords</span>
+  only:
+    - tags
+    - triggers
+    - schedules
+
+<span class="token comment"># 只会在除 gitlab-org/gitlab-ce 的 master 分支外的其他分支时才会运行</span>
+
+job:
+  only:
+    - branches@gitlab-org/gitlab-ce
+  except:
+    - master@gitlab-org/gitlab-ce
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><ul><li>artifacts:
+<ul><li>用于指定成功后应附加到 job 的文件和目录的列表</li> <li>只能使用项目工作间内的文件或目录路径</li> <li>定义一个空的 dependencies 数组可以禁用 artifact 传递</li></ul></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># artifacts示例</span>
+job:
+  stage: build
+  script: <span class="token function">make</span> build
+  dependencies: <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>variables: GitLab CI 允许你为.gitlab-ci.yml 增加变量，该变量将会被设置入任务环境</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 变量</span>
+
+variables:
+    DATABASE_URL: <span class="token string">&quot;postgres://postgres@postgres/my_database&quot;</span>
+<span class="token comment"># 注意:整数和字符串一样，对于设置变量名和变量值来说都是合法的。但浮点数是非法的。</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>tags：用来确定使用哪个 runner 运行当前任务，如果不设置的话将使用通用 runner 运行</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 只有同时定义了 ruby 和 postgres 的 runner 才能运行这个 job</span>
+
+job:
+  tags:
+    - ruby
+    - postgres
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>allow_failure: 允许 job 失败. job 失败不会影响最终结果</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">#  当 job1 运行失败, 也不会打断 CI 执行，CI 会继续运行下一阶段</span>
+
+job1:
+  stage: <span class="token builtin class-name">test</span>
+  script:
+    - execute_script_that_will_fail
+  allow_failure: <span class="token boolean">true</span>
+
+job2:
+  stage: <span class="token builtin class-name">test</span>
+  script:
+    - execute_script_that_will_succeed
+
+job3:
+  stage: deploy
+  script:
+    - deploy_to_staging
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><ul><li>when 用来指示 job 应该在什么时候开始运行
+<ul><li>on_success - 只有之前的阶段全部成功时才会执行.(默认值)</li> <li>on_failure - 当之前的阶段执行过程中出现过任何错误时执行</li> <li>always - 无论之前的阶段是否执行成功都执行</li> <li>manual - 手动执行</li></ul></li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>stages:
+  - build
+  - cleanup_build
+  - <span class="token builtin class-name">test</span>
+  - deploy
+  - cleanup
+
+build_job:
+  stage: build
+  script:
+    - <span class="token function">make</span> build
+
+cleanup_build_job:
+  stage: cleanup_build
+  script:
+    - cleanup build when failed
+  when: on_failure
+
+test_job:
+  stage: <span class="token builtin class-name">test</span>
+  script:
+    - <span class="token function">make</span> <span class="token builtin class-name">test</span>
+
+deploy_job:
+  stage: deploy
+  script:
+    - <span class="token function">make</span> deploy
+  when: manual
+
+cleanup_job:
+  stage: cleanup
+  script:
+    - cleanup after <span class="token function">jobs</span>
+  when: always
+
+<span class="token comment"># 1 cleanup_build_job 只有在 build_job 失败时才会执行</span>
+<span class="token comment"># 2 不论其他 job 是否执行成功, cleanup_job 总会在最后一个被执行</span>
+<span class="token comment"># 3 可以通过 Gitlab 控制台手动执行 deploy_job</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><ul><li><a href="https://zacksleo.github.io/2017/04/18/GitLab-CI%E4%B8%AD%E7%9A%84artifacts%E4%BD%BF%E7%94%A8%E7%A0%94%E7%A9%B6/" target="_blank" rel="noopener noreferrer">GitLab-CI 中的 artifacts 使用研究<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></section> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/chengzao/guide/edit/master/docs/services/tools/gitlab.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">3/17/2022</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/guide/services/tools/github-actions.html" class="prev">
+            github的actions使用
+          </a></span> <span class="next"><a href="/guide/services/tools/linux.html">
+            linux命令参数
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#gitlab-ce" class="sidebar-link reco-side-gitlab-ce" data-v-cb1513f6>gitlab-ce</a></li><li class="level-2" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#gitlab-runner" class="sidebar-link reco-side-gitlab-runner" data-v-cb1513f6>gitlab-runner</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#docker" class="sidebar-link reco-side-docker" data-v-cb1513f6>docker</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#docker-compose" class="sidebar-link reco-side-docker-compose" data-v-cb1513f6>docker-compose</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#windows" class="sidebar-link reco-side-windows" data-v-cb1513f6>windows</a></li><li class="level-2" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#jenkins-docker" class="sidebar-link reco-side-jenkins-docker" data-v-cb1513f6>jenkins docker</a></li><li class="level-2" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#jenkins-docker-compose" class="sidebar-link reco-side-jenkins-docker-compose" data-v-cb1513f6>jenkins docker-compose</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#jenkins-for-mac" class="sidebar-link reco-side-jenkins-for-mac" data-v-cb1513f6>jenkins for mac</a></li><li class="level-3" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#jenkins-for-windows" class="sidebar-link reco-side-jenkins-for-windows" data-v-cb1513f6>jenkins for windows</a></li><li class="level-2" data-v-cb1513f6><a href="/guide/services/tools/gitlab.html#gitlab-ci" class="sidebar-link reco-side-gitlab-ci" data-v-cb1513f6>GitLab-CI</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/guide/assets/js/chunk-vue.e07ddfb5.js" defer></script><script src="/guide/assets/js/npm.vuepress-plugin-fulltext-search.99b04e21.js" defer></script><script src="/guide/assets/js/page-90f907aa.716c6a06.js" defer></script><script src="/guide/assets/js/npm.vuepress-theme-reco.9fee1af6.js" defer></script><script src="/guide/assets/js/npm.core-js.852c3e3e.js" defer></script><script src="/guide/assets/js/npm.vuepress.f6bfd7f0.js" defer></script><script src="/guide/assets/js/npm.lodash.a34cf4fe.js" defer></script><script src="/guide/assets/js/npm.vuepress-reco.4a16689b.js" defer></script><script src="/guide/assets/js/npm.vue.11f4b21f.js" defer></script><script src="/guide/assets/js/npm.axios.9aa8742d.js" defer></script><script src="/guide/assets/js/npm.babel.8f164b03.js" defer></script><script src="/guide/assets/js/npm.vssue.f5e88091.js" defer></script><script src="/guide/assets/js/npm.date-fns.e29cd96c.js" defer></script><script src="/guide/assets/js/npm.vue-property-decorator.d1b64a4f.js" defer></script><script src="/guide/assets/js/npm.vuepress-plugin-reading-progress.b0ea7b17.js" defer></script><script src="/guide/assets/js/npm.vuepress-plugin-copy-code.a3cab173.js" defer></script><script src="/guide/assets/js/npm.qs.219ba63d.js" defer></script><script src="/guide/assets/js/npm.vuepress-plugin-smooth-scroll.deeb74e8.js" defer></script><script src="/guide/assets/js/npm.call-bind.25cef64a.js" defer></script><script src="/guide/assets/js/npm.debug.0d8e0226.js" defer></script><script src="/guide/assets/js/npm.function-bind.a0cf88c9.js" defer></script><script src="/guide/assets/js/npm.has-symbols.9875423f.js" defer></script><script src="/guide/assets/js/npm.vuepress-plugin-img-lazy.142e7268.js" defer></script><script src="/guide/assets/js/npm.dayjs.1cdac829.js" defer></script><script src="/guide/assets/js/npm.escape-html.373f4e5c.js" defer></script><script src="/guide/assets/js/npm.get-intrinsic.7a483e2b.js" defer></script><script src="/guide/assets/js/npm.has.7b447a10.js" defer></script><script src="/guide/assets/js/npm.lodash.debounce.030f0814.js" defer></script><script src="/guide/assets/js/npm.medium-zoom.5ca9fa3a.js" defer></script><script src="/guide/assets/js/npm.ms.399f7b0e.js" defer></script><script src="/guide/assets/js/npm.nprogress.f657eb80.js" defer></script><script src="/guide/assets/js/npm.object-inspect.49082d02.js" defer></script><script src="/guide/assets/js/npm.regenerator-runtime.9057d452.js" defer></script><script src="/guide/assets/js/npm.side-channel.68f307db.js" defer></script><script src="/guide/assets/js/npm.smoothscroll-polyfill.018e00e7.js" defer></script><script src="/guide/assets/js/npm.valine.875b5f10.js" defer></script><script src="/guide/assets/js/npm.vue-class-component.cf97710e.js" defer></script><script src="/guide/assets/js/npm.vue-demi.1a583b3d.js" defer></script><script src="/guide/assets/js/npm.vue-i18n.08764e47.js" defer></script><script src="/guide/assets/js/npm.vue-loader.82b0b0e3.js" defer></script><script src="/guide/assets/js/npm.webpack.037e0ba0.js" defer></script><script src="/guide/assets/js/app.22f942b5.js" defer></script>
+  </body>
+</html>
