@@ -1,6 +1,6 @@
 <template>
   <div class="touch-page-menu">
-    <div class="menu-icon">
+    <div class="menu-icon" v-show="items.length > 3">
       <span @click="show = !show" >
         <svg viewBox="0 0 100 80" width="26" height="26">
           <rect width="100" height="20" rx="8"></rect>
@@ -26,7 +26,7 @@
     mounted () {
       this.$nextTick(() => {
         this.items.push(...this.$page.headers)
-        window.addEventListener('click', this.handleClick)
+        document.addEventListener('click', this.handleClick)
       })
     },
     watch: {
@@ -43,18 +43,16 @@
         this.show = false
       },
       handleClick(ev){
-        if(!this.$el.contains(ev.target)){
+        let target = ev.target || ev.srcElement
+        if(!this.$el.contains(target)){
           this.show = false
         }
       }
     },
     beforeDestroy () {
       this.items = []
-      window.removeEventListener('click', this.handleClick)
+      document.removeEventListener('click', this.handleClick)
     },
-    beforeRouteLeave(){
-      console.log('beforeRouteLeave')
-    }
   }
 </script>
 
