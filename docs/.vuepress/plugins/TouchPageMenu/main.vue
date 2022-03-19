@@ -61,24 +61,33 @@
 <style scoped>
 .touch-page-menu{
   position: fixed;
-  bottom: 0;
+  bottom: 9rem;
   right: 0;
   transform: translate(-50%, -50%);
   width: 26px;
   height: 26px;
   fill: #3eaf7c;
-  z-index: 9999;
+  z-index: 6;
+  box-shadow: var(--box-shadow);
+  padding: 5px;
+  border-radius: 4px;
+  display: none;
 }
 
 .menu-content{
   position: absolute;
-  bottom: 0;
-  right: 0;
-  font-size: 18px;
+  bottom: 10px;
+  right: 12px;
+  max-width: 12rem;
+  width: 10rem;
+  max-height: 18rem;
+  font-size: 1rem;
   padding: 10px;
-  background: #000;
+  background-color: var(--background-color);
   border-radius: 10px;
-  color: white;
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
+  overflow: auto;
 }
 
 .menu-content .item{

@@ -1,3 +1,4 @@
+const TouchPageMenu = require("../plugins/TouchPageMenu/index");
 module.exports = [
   "fulltext-search",
   "reading-progress",
@@ -51,4 +52,5 @@ module.exports = [
       layoutChunkName: (layout) => "layout-" + layout.componentName,
     },
   ],
+  TouchPageMenu,
 ];
