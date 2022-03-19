@@ -64,12 +64,15 @@
   transform: translate(-50%, -50%);
   width: 26px;
   height: 26px;
-  fill: #3eaf7c;
   z-index: 6;
-  box-shadow: var(--box-shadow);
   padding: 5px;
   border-radius: 4px;
   display: none;
+}
+
+.touch-page-menu .menu-icon{
+  fill: #3eaf7c;
+  box-shadow: var(--box-shadow);
 }
 
 .menu-content{
