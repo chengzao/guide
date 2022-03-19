@@ -26,7 +26,6 @@
     mounted () {
       this.$nextTick(() => {
         this.items.push(...this.$page.headers)
-        document.addEventListener('click', this.handleClick)
       })
     },
     watch: {
@@ -42,16 +41,9 @@
         this.$router.push({ hash: '#'+item.slug })
         this.show = false
       },
-      handleClick(ev){
-        let target = ev.target || ev.srcElement
-        if(!this.$el.contains(target)){
-          this.show = false
-        }
-      }
     },
     beforeDestroy () {
       this.items = []
-      document.removeEventListener('click', this.handleClick)
     },
   }
 </script>
@@ -59,7 +51,7 @@
 <style scoped>
 .touch-page-menu{
   position: fixed;
-  bottom: 9rem;
+  bottom: 1rem;
   right: 0;
   transform: translate(-50%, -50%);
   width: 26px;
@@ -77,12 +69,12 @@
 
 .menu-content{
   position: absolute;
-  bottom: 10px;
-  right: 12px;
+  bottom: 28px;
+  right: 28px;
   max-width: 12rem;
   width: 10rem;
-  max-height: 18rem;
-  font-size: 1rem;
+  max-height: 18.8rem;
+  font-size: 0.8rem;
   padding: 10px;
   background-color: var(--background-color);
   border-radius: 10px;
