@@ -25,13 +25,14 @@
     },
     mounted () {
       this.$nextTick(() => {
-        this.items.push(...this.$page.headers)
+        let data = this.$page.headers
+        data && this.items.push(...data)
       })
     },
     watch: {
       '$page.relativePath': {
         handler (val) {
-          this.items = this.$page.headers
+          this.items = this.$page.headers || []
         },
         deep: true
       },

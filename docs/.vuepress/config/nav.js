@@ -3,15 +3,15 @@ module.exports = [
     text: "前端",
     items: [
       {
-        text: "问题笔记",
+        text: "笔记",
         link: "/frontend/issues/",
       },
       {
-        text: "web框架",
-        link: "/frontend/framework/",
+        text: "框架",
+        link: "/frontend/library/",
       },
       {
-        text: "前端算法",
+        text: "算法",
         link: "/frontend/algorithm/",
       },
     ],
@@ -20,7 +20,7 @@ module.exports = [
     text: "其他",
     items: [
       {
-        text: "工具服务",
+        text: "工具",
         link: "/services/tools/",
       },
     ],
