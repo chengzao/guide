@@ -512,18 +512,6 @@ function getHidden (){
     return null;
 }
 
-function getVivibilityState (){
-    let prefixs = ['webkit','moz','mos','o'];
-    if ('visibilityState' in document) return document.visibilityState;
-    for (let i = 0; i < prefixs.length; i++) {
-        if (`${prefixs[i]}VisibilityState` in document){
-            return document[`${prefixs[i]}VisibilityState`];
-        }
-    }
-    // not support
-    return null;
-}
-
 function pageHiddenHandler () {
     let isHidden = getHidden();
     // 改变页面title用户观察状态

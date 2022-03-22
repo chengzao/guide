@@ -1,5 +1,5 @@
 ---
-title: 常见的浏览器事件封装
+title: 常见的事件封装
 date: 2020-07-20
 sidebar: "auto"
 tags:
@@ -209,7 +209,7 @@ function dispatchDOMEvent(el, payload, eventInit) {
     event = new Event(type, eventInit);
   } else {
     event = document.createEvent("HTMLEvents");
-    event.initEvent(type, eventInit?.bubbles, eventInit?.cancelable);
+    event.initEvent(type, eventInit.bubbles, eventInit.cancelable);
   }
   return el.dispatchEvent(event);
 }
@@ -255,7 +255,7 @@ class EventEmitter {
 }
 ```
 
-### 自定义事件event
+## 自定义事件event
 
 ```js
 // 新建事件实例
