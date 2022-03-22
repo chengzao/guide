@@ -1,9 +1,10 @@
 ---
-title: window userAgent
-date: 2021-09-18
+title: 获取UserAgent
+date: 2022-03-18
 sidebar: "auto"
 categories:
   - frontend
+  - userAgent
 ---
 
 <ClientOnly>

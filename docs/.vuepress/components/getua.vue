@@ -20,27 +20,25 @@
     },
     mounted() {
       if(!window) return
-      var localStore = [], sessionStore = [];
-        for (var i = 0; i < localStorage.length; i++) {
-          localStore.push({ key: localStorage.key(i), value: localStorage.getItem(localStorage.key(i)) });
-        }
-        for (var i = 0; i < sessionStorage.length; i++) {
-          sessionStore.push({ key: sessionStorage.key(i), value: sessionStorage.getItem(sessionStorage.key(i)) });
-        }
-        this.viewBoxes = {
-          ua: window.navigator.userAgent,
-          dpr: window.devicePixelRatio,
-          colorDepth: screen.colorDepth,
-          pixelDepth: screen.pixelDepth,
-          outerWidth: window.outerWidth,
-          outerHeight: window.outerHeight,
-          innerWidth: window.innerWidth,
-          innerHeight: window.innerHeight,
-          screenWidth: screen.width,
-          screenHeight: screen.height,
-          localStore: localStore,
-          sessionStore: sessionStore
-        };
+      // var localStore = [], sessionStore = [];
+      //   for (var i = 0; i < localStorage.length; i++) {
+      //     localStore.push({ key: localStorage.key(i), value: localStorage.getItem(localStorage.key(i)) });
+      //   }
+      //   for (var i = 0; i < sessionStorage.length; i++) {
+      //     sessionStore.push({ key: sessionStorage.key(i), value: sessionStorage.getItem(sessionStorage.key(i)) });
+      //   }
+      this.viewBoxes = {
+        ua: window.navigator.userAgent,
+        dpr: window.devicePixelRatio,
+        colorDepth: screen.colorDepth,
+        pixelDepth: screen.pixelDepth,
+        outerWidth: window.outerWidth,
+        outerHeight: window.outerHeight,
+        innerWidth: window.innerWidth,
+        innerHeight: window.innerHeight,
+        screenWidth: screen.width,
+        screenHeight: screen.height
+      };
     }
   }
 </script>

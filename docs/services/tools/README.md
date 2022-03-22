@@ -14,7 +14,7 @@ categories:
 - [站点工具](./ascii.md)
 - [centos7命令参数](./centos7.md)
 - [docker命令列表](./docker.md)
-- [window userAgent](./get-ua.md)
+- [获取UserAgent](./get-ua.md)
 - [git常见命令列表](./git.md)
 - [github的actions使用](./github-actions.md)
 - [gitlab的服务部署](./gitlab.md)
