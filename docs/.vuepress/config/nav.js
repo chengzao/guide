@@ -4,15 +4,11 @@ module.exports = [
     items: [
       {
         text: "笔记",
-        link: "/frontend/learn/",
+        link: "/frontend/issues/",
       },
       {
         text: "框架",
-        link: "/frontend/framework/",
-      },
-      {
-        text: "问题",
-        link: "/frontend/issues/",
+        link: "/frontend/library/",
       },
       {
         text: "算法",
@@ -21,7 +17,7 @@ module.exports = [
     ],
   },
   {
-    text: "服务",
+    text: "其他",
     items: [
       {
         text: "工具",
