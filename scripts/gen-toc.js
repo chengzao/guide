@@ -55,7 +55,7 @@ function genToc(filePath) {
       }
       content = content.replace(
         /<!-- dirToc -->[\s\S]*<!-- dirToc -->/g,
-        `<!-- dirToc -->\n\n## menu (${toc.length})\n\n${tocStr}\n<!-- dirToc -->`
+        `<!-- dirToc -->\n\n> The Article Total （ ${toc.length} ）\n\n${tocStr}\n<!-- dirToc -->`
       );
       // 写入文件
       fs.writeFileSync(readmePath, content, "utf-8");

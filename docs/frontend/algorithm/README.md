@@ -7,7 +7,7 @@ autoSort: 9999
 
 <!-- dirToc -->
 
-## menu (7)
+> The Article Total （ 7 ）
 
 - [二叉树与链表(一)](./alg-fq-01.md)
 - [代码片段(一)](./alg-fq-02.md)

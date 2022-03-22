@@ -10,7 +10,7 @@ categories:
 
 <!-- dirToc -->
 
-## menu (28)
+> The Article Total （ 28 ）
 
 - [ajax和cors](./ajax.md)
 - [资源列表](./all-urls.md)
