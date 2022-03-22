@@ -1,6 +1,6 @@
 ---
-title: 函数的设计模式/构造函数
-date: 2020-07-20
+title: 设计模式/构造函数
+date: 2021-06-20
 sidebar: "auto"
 categories:
   - frontend
@@ -268,42 +268,39 @@ sub.setState(12);
 > 发布者 -> 事件中心 <=> 订阅者
 
 ```js
-class Event {
-  constructor() {
-    // 所有 eventType 监听器回调函数（数组）
-    this.listeners = {}
-  }
-  /**
-   * 订阅事件
-   * @param {String} eventType 事件类型
-   * @param {Function} listener 订阅后发布动作触发的回调函数，参数为发布的数据
-   */
-  on(eventType, listener) {
-    if (!this.listeners[eventType]) {
-      this.listeners[eventType] = []
+class EventEmitter {
+    constructor() {
+        this.cache = {}
     }
-    this.listeners[eventType].push(listener)
-  }
-  /**
-   * 发布事件
-   * @param {String} eventType 事件类型
-   * @param {Any} data 发布的内容
-   */
-  emit(eventType, data) {
-    const callbacks = this.listeners[eventType]
-    if (callbacks) {
-      callbacks.forEach((c) => {
-        c(data)
-      })
+    on(name, fn) {
+        if (this.cache[name]) {
+            this.cache[name].push(fn)
+        } else {
+            this.cache[name] = [fn]
+        }
     }
-  }
+    off(name, fn) {
+        let tasks = this.cache[name]
+        if (tasks) {
+            const index = tasks.findIndex(f => f === fn || f.callback === fn)
+            if (index >= 0) {
+                tasks.splice(index, 1)
+            }
+        }
+    }
+    emit(name, once = false, ...args) {
+        if (this.cache[name]) {
+            // 创建副本，如果回调函数内继续注册相同事件，会造成死循环
+            let tasks = this.cache[name].slice()
+            for (let fn of tasks) {
+                fn(...args)
+            }
+            if (once) {
+                delete this.cache[name]
+            }
+        }
+    }
 }
-
-const event = new Event()
-event.on('open', (data) => {
-  console.log(data)
-})
-event.emit('open', { open: true })
 ```
 
 ## 面向对象
