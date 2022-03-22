@@ -44,52 +44,16 @@ xhr.onreadystatechange = function () {
 }
 ```
 
-- ajax
+## XMLHttpRequest兼容性
 
 ```js
-const getJSON = function(url) {
-    return new Promise((resolve, reject) => {
-        const xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Mscrosoft.XMLHttp');
-        xhr.open('GET', url, false);
-        xhr.setRequestHeader('Accept', 'application/json');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState !== 4) return;
-            if (xhr.status === 200 || xhr.status === 304) {
-                resolve(xhr.responseText);
-            } else {
-                reject(new Error(xhr.responseText));
-            }
-        }
-        xhr.send();
-    })
+var xhr;
+if (XMLHttpRequest) {
+  xhr = new XMLHttpRequest();
+} else {
+  xhr = new ActiveObject("Microsoft.XMLHTTP");
 }
-
 ```
-
-## API 详解
-
-- `xhr.open()` 发起请求，可以是 get、post 方式
-- `xhr.setRequestHeader()` 设置请求头
-- `xhr.send()` 发送请求主体 get 方式使用`xhr.send(null)`
-- `xhr.onreadystatechange = function () {}` 监听响应状态
-- `xhr.readyState`
-  - `xhr.readyState = 0`时，`UNSENT` open 尚未调用
-  - `xhr.readyState = 1`时，`OPENED` open 已调用
-  - `xhr.readyState = 2`时，`HEADERS_RECEIVED` 接收到头信息
-  - `xhr.readyState = 3`时，`LOADING` 接收到响应主体
-  - `xhr.readyState = 4`时，`DONE` 响应完成
-- `xhr.status`表示响应码，如 200
-- `xhr.statusText`表示响应信息，如 OK
-- `xhr.getAllResponseHeaders()` 获取全部响应头信息
-- `xhr.getResponseHeader('key')` 获取指定头信息
-- `xhr.responseText`、`xhr.responseXML`都表示响应主体
-- **GET 和 POST 请求方式的差异**
-  - GET 没有请求主体，使用`xhr.send(null)`
-  - GET 可以通过在请求 URL 上添加请求参数
-  - POST 可以通过`xhr.send('name=xiaoming&age=10')`
-  - POST 需要设置 `xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');`
-  - GET 效率更好
-  - GET 大小限制约 4K，POST 则没有限制
 
 ## GET 请求
 
@@ -129,75 +93,7 @@ xhr.onreadystatechange = function() {
 };
 ```
 
-## XML
-
-- XML 是一种标记语言，很类似 HTML，其宗旨是用来传输数据，具有自我描述性（固定的格式的数据）
-- 语法规则
-  - 必须有一个根元素
-  - 不可有空格、不可以数字或.开头、大小写敏感
-  - 不可交叉嵌套
-  - 属性双引号（浏览器自动修正成双引号了）
-  - 特殊符号要使用实体 ps:`&lt; &gt;`
-  - 注释和 HTML 一样
-  - `<?xml version="1.0" encoding="UTF-8"?>` 文档最开始
-
-## XMLHttpRequest 兼容性
-
-- IE5、IE6 中使用 `ActiveObject("Microsoft.XMLHTTP")`
-
-```js
-var xhr;
-if (XMLHttpRequest) {
-  xhr = new XMLHttpRequest();
-} else {
-  xhr = new ActiveObject("Microsoft.XMLHTTP");
-}
-```
-
-## 同源
-
-- 同源策略是浏览器的一种安全策略，所谓同源是指，域名，协议，端口完全相同。
-
-## 跨域场景
-
-```bash
-主域名： http://www.example.com/
-
-http://api.example.com/index.html    不同源  域名不同
-
-https//www.example.com/index.htm    不同源  协议不同
-
-http://www.example.com:8080/index.html  不同源  端口不同
-
-http://api.example.com:8080/index.html  不同源  域名、端口不同
-
-https://api.example.com/index.html  不同源  协议、域名不同
-
-https://www.example.com:8080/index.html   不同源    端口、协议不同
-
-http://www.example.com/detail/index.html    同  源    只是目录不同
-```
-
-## 跨域方案
-
-- 通过 jsonp 跨域
-- document.domain + iframe 跨域
-- location.hash + iframe
-- window.name + iframe 跨域
-- postMessage 跨域
-- 跨域资源共享（CORS）
-- nginx 代理跨域
-- nodejs 中间件代理跨域
-- WebSocket 协议跨域
-
-## jsonp
-
-- JSONP 的优点是：它不像 XMLHttpRequest 对象实现的 Ajax 请求那样受到同源策略的限制；它的兼容性更好，
-  在更加古老的浏览器中都可以运行，不需要 XMLHttpRequest 或 ActiveX 的支持；
-  并且在请求完毕后可以通过调用 callback 的方式回传结果
-
-- JSONP 的缺点则是：它只支持 GET 请求而不支持 POST 等其它类型的 HTTP 请求；它只支持跨域 HTTP 请求这种情况，
-  不能解决不同域的两个页面之间如何进行 JavaScript 调用的问题
+## JSONP
 
 ```js
 function jsonp({ url, params, cb }) {
@@ -208,28 +104,23 @@ function jsonp({ url, params, cb }) {
       document.body.removeChild(script)
     }
     params = { ...params, cb }
-    let arrs = [];
+    let queries = [];
     for (let key in params) {
-      arrs.push(`${key}=${params[key]}`)
+      queries.push(`${key}=${params[key]}`)
     }
-    script.src = `${url}?${arrs.join('&')}`
+    script.src = `${url}?${queries.join('&')}`
     document.body.appendChild(script)
   })
 }
 
-// server
+// node server
 app.get('/get',function(req,res){
     let { cb } = req.query; // 定义好的字段
-
-    async function fn(callback){
-        let data = await axios.get(`${url}`);
-        let res2  = data.data;
-        res.send( `${callback}(${JSON.stringify(res2)})` );
-    }
-    fn(url, cb);
+    const data = {"message": "data jsonp"}
+    res.send( `${cb}(${JSON.stringify(data)})` );
 })
 
-// 使用
+// web 使用
 jsonp({
   url: 'http://localhost:3000/get',
   cb: 'show' // 定义好的字段
@@ -255,7 +146,7 @@ Content-Type: text/html; charset=utf-8
 - CORS 请求默认不发送 Cookie 和 HTTP 认证信息。如果要把 Cookie 发到服务器，
   需要指定`Access-Control-Allow-Credentials`字段
 
-```
+```bash
 Access-Control-Allow-Credentials: true
 ```
 

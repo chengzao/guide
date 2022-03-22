@@ -10,8 +10,6 @@ categories:
 
 ## 获取键盘事件的键值
 
-
-
 ```js
 function getKeyCode(e) {
   e = e ? e : (window.event ? window.event : "")
@@ -19,11 +17,7 @@ function getKeyCode(e) {
 }
 ```
 
-
-
 ## onmousewheel 兼容
-
-
 
 ```js
 // 兼容onmousewheel
@@ -46,11 +40,7 @@ function addMouseWheelEvent(element, func) {
 
 ```
 
-
-
 ## 禁止选中
-
-
 
 ```js
 // 禁止选中
@@ -72,11 +62,7 @@ function disabledSel() {
 }
 ```
 
-
-
 ## requestAnimationFrame
-
-
 
 ```js
 (function () {
@@ -108,11 +94,7 @@ function disabledSel() {
 }());
 ```
 
-
-
 ## DOMContentLoaded
-
-
 
 ```js
 // Javascript封装DOMContentLoaded事件
@@ -150,66 +132,71 @@ function ready(callback) {
 
 ```
 
-
-
-## 阻止冒泡
-
-
+## stopPropagation(阻止冒泡)
 
 ```js
-var util = {
-  // 阻止事件冒泡
-  stopPro: function (e) {
-    e = e || window.event;
-    if (document.all) { //只有ie识别
-      e.cancelBubble = true;
-    } else {
-      e.stopPropagation();
-    }
-  }
-}
-
-```
-
-
-
-## 阻止默认事件
-
-
-
-```js
-var util = {
-  // 取消默认行为
-  stopDefault: function (e) {
-    e = e || window.event;
-    if (document.all) {
-      window.event.returnValue = false;
-    } else {
-      event.preventDefault();
-    }
-  },
-}
-```
-
-
-
-## targetElement
-
-
-
-```js
-var util = {
-  // target兼容
-  targetEl: function (e) {
-    // event兼容
-    var event = e || window.event;
-    var targetEl = event.target || event.srcElement;
-    return targetEl;
+const stopPropagation = function (e) {
+  e = e || window.event;
+  if (document.all) { //只有ie识别
+    e.cancelBubble = true;
+  } else {
+    e.stopPropagation();
   }
 }
 ```
 
+## preventDefault(阻止默认事件)
 
+```js
+const stopDefault = function (e) {
+  e = e || window.event;
+  if (document.all) {
+    window.event.returnValue = false;
+  } else {
+    event.preventDefault();
+  }
+}
+```
+
+## 事件对象Event
+
+```js
+const event = event || window.event;
+```
+
+## 事件目标event.target
+
+```js
+const eventTarget = event.target || event.srcElement;
+```
+
+## addEventListener
+
+```js
+const addEvent = function (element, type, handler) {
+  if (element.addEventListener) { //DOM2级
+    element.addEventListener(type, handler, false);
+  } else if (element.attachEvent) { //DOM1级
+    element.attachEvent("on" + type, handler);
+  } else {
+    element["on" + type] = handler; //DOM0级
+  }
+}
+```
+
+## removeEventListener
+
+```js
+const  removeEvent = function (element, type, handler) {
+  if (element.removeEventListener) {
+    element.removeEventListener(type, handler, false);
+  } else if (element.detachEvent) {
+    element.detachEvent("on" + type, handler);
+  } else {
+    element["on" + type] = null;
+  }
+}
+```
 
 ## dispatchDOMEvent
 
@@ -281,39 +268,11 @@ elem.addEventListener('build', function (e) { ... }, false);
 elem.dispatchEvent(event);
 ```
 
-## 事件对象 Event
-
-- 兼容性写法
-
-```js
-event = event || window.event;
-//demo
-document.onclick = function(event) {
-  event = event || window.event;
-  console.log(event); //event 事件对象
-};
-```
-
-## 事件目标 target
-
-- 兼容性写法
-
-```js
-targetId = event.target ? event.target.id : event.srcElement.id;
-```
-
 ## 事件循环(Event Loop)
 
 - [最后一次搞懂 Event Loop](https://juejin.im/post/5cbc0a9cf265da03b11f3505)
 - 原地址：[从 promise、process.nextTick、setTimeout 出发，谈谈 Event Loop 中的 Job queue #5](https://github.com/forthealllight/blog/issues/5)
-- 执行顺序`同步代码—>microTask—>macroTask :`
-- macrotask 宏任务：
-  - `script(主程序代码),setTimeout, setInterval, setImmediate(Node.js 环境), I/O, UI rendering`
-- microtask 微任务：
-  - `process.nextTick(Node.js 环境), Promises, Object.observe, MutationObserver`
-- 执行顺序应该为：
-  - `script(主程序代码)—>process.nextTick—>Promises...——>setTimeout——>setInterval——>setImmediate——> I/O——>UI rendering`
-- 在 ES6 中`macro-task`队列又称为`ScriptJobs`，而`micro-task`又称`PromiseJobs`
+- 执行顺序`同步代码—>microTask—>macroTask`
 
 ## 事件的传播(事件流)
 
@@ -352,56 +311,7 @@ p.addEventListener("click", function(event) {
 });
 ```
 
-## EventListener事件兼容
-
-```js
-/**
- * 事件的监听与移除
- *
-  var textbox = document.getElementById('input');
-  EventUtil.addHandler(textbox, 'textInput', function (e) {
-    e.target.value = e.target.value.replace(/[^0-9\.]/g, '')
-  })
- */
-var EventUtil = {
-  addHandler: function (element, type, handler) {
-    if (element.addEventListener) { //DOM2级
-      element.addEventListener(type, handler, false);
-    } else if (element.attachEvent) { //DOM1级
-      element.attachEvent("on" + type, handler);
-    } else {
-      element["on" + type] = handler; //DOM0级
-    }
-  },
-  removeHandler: function (element, type, handler) { //类似addHandler
-    if (element.removeEventListener) {
-      element.removeEventListener(type, handler, false);
-    } else if (element.detachEvent) {
-      element.detachEvent("on" + type, handler);
-    } else {
-      element["on" + type] = null;
-    }
-  }
-}
-// carry
-var addEvent = (function () {
-  if (window.addEventListener) {
-    return function (el, sType, fn, capture) {
-      el.addEventListener(sType, function (e) {
-        fn.call(el, e);
-      }, (capture));
-    };
-  } else if (window.attachEvent) {
-    return function (el, sType, fn, capture) {
-      el.attachEvent("on" + sType, function (e) {
-        fn.call(el, e);
-      });
-    };
-  }
-})();
-```
-
-## 长按事件
+## touch长按事件
 
 ```js
 var touch = {
@@ -434,7 +344,7 @@ var touch = {
 }
 ```
 
-## 双击事件
+## touch双击事件
 
 ```js
 var touch = {
@@ -522,7 +432,7 @@ var touch = {
 }
 ```
 
-## 向上滑动事件
+## touch向上滑动事件
 
 ```js
 var touch = {
@@ -563,7 +473,7 @@ var touch = {
 }
 ```
 
-## 向下滑动事件
+## touch向下滑动事件
 
 ```js
 var touch = {
@@ -604,7 +514,7 @@ var touch = {
 }
 ```
 
-## 向左滑动事件
+## touch向左滑动事件
 
 ```js
 var touch = {
@@ -645,7 +555,7 @@ var touch = {
 }
 ```
 
-## 向右滑动事件
+## touch向右滑动事件
 
 ```js
 var touch = {
