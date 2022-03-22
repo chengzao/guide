@@ -335,8 +335,6 @@ const formatMoney = function(num) {
     .replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, "$&,");
 };
 
-//
-Number(num).toLocalString()
 ```
 
 ## formateNumber
@@ -563,15 +561,17 @@ const toCamelCaseVar = (variable) => {
 // console.log(toCamelCaseVar('Foo_style_css')) // fooStyleCss
 ```
 
-## toChineseNum
+## numToChinese
+
+> 将数字1234转换为'一千二百三十四'
 
 ```js
-function toChineseNum(num) {
+function numToChinese(num) {
   num += ''
   let numLength = num.length
   let numStr = '零一二三四五六七八九十'
   let unitArr = ['', '十', '百', '千', '万']
-  function getResult(str) {
+  function helper(str) {
     let res = '';
     if (str.length > 5) {
       let first = str.slice(-5);
@@ -593,9 +593,9 @@ function toChineseNum(num) {
   }
 
   if (numLength > 8) {
-    return getResult(num.slice(0, numLength - 8)) + '亿' + getResult(num.slice(-8))
+    return helper(num.slice(0, numLength - 8)) + '亿' + helper(num.slice(-8))
   }
-  return getResult(num)
+  return helper(num)
 }
 ```
 
