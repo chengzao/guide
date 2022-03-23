@@ -1,5 +1,5 @@
 ---
-title: 二叉搜索树算法
+title: 二叉搜索树
 date: 2022-02-20
 sidebar: "auto"
 autoSort: 887
