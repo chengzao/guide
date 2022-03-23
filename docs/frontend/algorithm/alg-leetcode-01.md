@@ -219,3 +219,87 @@ function searchInsert(nums, target){
     return left
 }
 ```
+
+## LRU 缓存
+
+> LRU（Least recently used，最近最少使用）算法。最近被访问的数据那么它将来访问的概率就大，缓存满的时候，优先淘汰最无人问津者
+
+- 实现逻辑 Map : [原文：146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/solution/146-lruhuan-cun-ji-zhi-by-alexer-660/)
+
+```js
+Map 中的键值是有序的，而添加到对象中的键则不是。因此，当对它进行遍历时，Map 对象是按插入的顺序返回键值
+Map.prototype.keys()
+  返回一个新的 Iterator对象， 它按插入顺序包含了Map对象中每个元素的键 。
+
+1、尾部元素一直是最新set的，对应于LRU的最近使用原则
+  Map.set()
+2、头部元素是最远使用的，用于LRU容量满载时删除最远使用的元素，可获取其key
+  Map.keys().next().value
+
+解题步骤
+get
+  元素存在 delete、set
+  元素不存在 return -1
+put
+  元素存在  delete、set
+  元素不存在
+  容量超载 delete map头部元素(map.keys().next().value)、set
+  不超载   set
+```
+
+- 实现代码 [leetcode 146](https://leetcode-cn.com/problems/lru-cache/)
+
+```js
+/**
+ * @param {number} capacity
+ */
+var LRUCache = function(capacity) {
+  this.cap = capacity;
+  this.cache = new Map();
+};
+
+/**
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function(key) {
+  let cache = this.cache;
+  if (cache.has(key)) {
+    let val = cache.get(key);
+    // 删除元素
+    cache.delete(key);
+    // 重新插入到map结构最后
+    cache.set(key, val);
+    return val;
+  } else {
+    return -1;
+  }
+};
+
+/**
+ * @param {number} key
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function(key, value) {
+  let cache = this.cache;
+  if (cache.has(key)) {
+    // 删除元素
+    cache.delete(key);
+  } else {
+    if (cache.size == this.cap) {
+      // 删除map中第一个元素
+      cache.delete(cache.keys().next().value);
+    }
+  }
+  // 重新赋值插入
+  cache.set(key, value);
+};
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * var obj = new LRUCache(capacity)
+ * var param_1 = obj.get(key)
+ * obj.put(key,value)
+ */
+```

@@ -5,7 +5,6 @@ sidebar: "auto"
 tags:
   - array2tree
   - tree2array
-  - lru
 categories:
   - frontend
 ---
@@ -207,117 +206,6 @@ function serilizeUrl(url) {
   }
   return {}
 }
-```
-
-## LRU
-
-- LRU（Least recently used，最近最少使用）算法。最近被访问的数据那么它将来访问的概率就大，缓存满的时候，优先淘汰最无人问津者
-
-- 实现逻辑 Map : [原文：146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/solution/146-lruhuan-cun-ji-zhi-by-alexer-660/)
-
-```bash
-Map 中的键值是有序的，而添加到对象中的键则不是。因此，当对它进行遍历时，Map 对象是按插入的顺序返回键值
-Map.prototype.keys()
-  返回一个新的 Iterator对象， 它按插入顺序包含了Map对象中每个元素的键 。
-
-1、尾部元素一直是最新set的，对应于LRU的最近使用原则
-  Map.set()
-2、头部元素是最远使用的，用于LRU容量满载时删除最远使用的元素，可获取其key
-  Map.keys().next().value
-
-解题步骤
-get
-  元素存在 delete、set
-  元素不存在 return -1
-put
-  元素存在  delete、set
-  元素不存在
-  容量超载 delete map头部元素(map.keys().next().value)、set
-  不超载   set
-```
-
-```js
-let myMap = new Map();
-
-// 添加键
-myMap.set("1", "a");
-myMap.set("2", "b");
-myMap.set("3", "c");
-myMap.set("4", "d");
-
-console.log(myMap.get("2")); // b
-
-console.log(myMap.delete("4")); // true
-
-console.log(myMap);
-
-let val = myMap.keys();
-console.log(val.next());
-console.log(val.next());
-```
-
-- 代码
-
-```js
-/**
- * @param {number} capacity 容量
- */
-var LRUCache = function(capacity) {
-  this.cap = capacity;
-  this.cache = new Map();
-};
-
-/**
- * @param {number} key
- * @return {number}
- */
-LRUCache.prototype.get = function(key) {
-  let cache = this.cache;
-  if (cache.has(key)) {
-    let val = cache.get(key);
-    // 删除元素
-    cache.delete(key);
-    // 重新插入到map结构最后
-    cache.set(key, val);
-    return val;
-  } else {
-    return -1;
-  }
-};
-
-/**
- * @param {number} key
- * @param {number} value
- * @return {void}
- */
-LRUCache.prototype.put = function(key, value) {
-  let cache = this.cache;
-  if (cache.has(key)) {
-    // 删除元素
-    cache.delete(key);
-  } else {
-    if (cache.size == this.cap) {
-      // 删除map中第一个元素
-      cache.delete(cache.keys().next().value);
-    }
-  }
-  // 重新赋值插入
-  cache.set(key, value);
-};
-
-//  Your LRUCache object will be instantiated and called as such:
-var cache = new LRUCache(2);
-cache.put(1, 1);
-cache.put(2, 2);
-cache.get(1); // 返回  1
-cache.put(3, 3); // 该操作会使得密钥 2 作废
-cache.get(2); // 返回 -1 (未找到)
-cache.put(4, 4); // 该操作会使得密钥 1 作废
-cache.get(1); // 返回 -1 (未找到)
-cache.get(3); // 返回  3
-cache.get(4); // 返回  4
-
-console.log(cache);
 ```
 
 ## formateMoney
@@ -841,4 +729,220 @@ Math.random()
 Array.prototype.slice.call(arguments);
 Array.prototype.concat.apply([], arguments);
 Array.from(arguments)
+```
+
+## 最大值 / 最小值
+
+- 最小值
+
+```js
+function MinNum(arr) {
+  var min = arr[0];
+  for (var i = 0; i < arr.length; i++) {
+    if (min > arr[i]) {
+      min = arr[i]
+    }
+  }
+  return min;
+}
+console.log(MinNum([2, 3, -44, 555, 222]))
+
+// 最小值
+Math.min.apply(Math, [32, 18, 38, 12, 43, 31, 17])
+```
+
+- 最大值
+
+```js
+function MaxNum(arr) {
+  var max = arr[0];
+  for (var i = 0; i < arr.length; i++) {
+    if (max < arr[i]) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
+
+console.log(MaxNum([2, 3, 3, 42, 1123]))
+
+var a = [1, 2, 3, [5, 6],
+  [1, 4, 8]
+];
+var ta = a.join(",").split(","); //转化为一维数组
+console.log(Math.max.apply(null, ta)); //最大值
+console.log(Math.min.apply(null, ta)); //最小值
+```
+
+## 随机生成范围内不重复数字
+
+```js
+// 随机生成范围内不重复数字
+// aArray空数组 len数组个数  min最小值  max最大值
+function randomNumber(aArray, len, min, max) {
+  if (len >= (max - min)) {
+    console.log('超过' + min + '-' + max + '之间的个数范围' + (max - min - 1) + '个的总数');
+    return;
+  }
+  if (aArray.length >= len) {
+    aArray.sort(function (a, b) {
+      return a - b
+    });
+    return aArray;
+  }
+  var nowNub = parseInt(Math.random() * (max - min - 1)) + (min + 1);
+  //判断数组内是否有重复
+  for (var j = 0; j < aArray.length; j++) {
+    if (nowNub == aArray[j]) {
+      // 再次执行函数
+      randomNumber(aArray, len, min, max);
+      return;
+    }
+  }
+  // 添加到数组
+  aArray.push(nowNub);
+  //再次执行函数
+  randomNumber(aArray, len, min, max);
+  return aArray;
+}
+
+//定义一个空数组接收
+var arr2 = [];
+randomNumber(arr2, 8, 1, 10);
+console.log(arr2);
+```
+
+## toRMB 形式
+
+```js
+// 将数字12345678转化成 RMB形式
+function re(str) {
+  str += '';
+  return str.split("").reverse().join("");
+}
+
+function toRMB(num) {
+  var tmp = '';
+  for (var i = 1; i <= re(num).length; i++) {
+    tmp += re(num)[i - 1];
+    // console.log(tmp)
+    if (i % 3 == 0 && i != re(num).length) {
+      tmp += ',';
+    }
+  }
+  return re(tmp);
+}
+
+var num1 = 12345789;
+console.log(toRMB(num1));
+```
+
+## 字符串反转
+
+```js
+// 字符串反转，如将 '12345678' 变成 '87654321'
+// split : 将字符串分割成字符串数组,反序,在将数组转换为字符串
+var str = '123456789';
+str = str.split('').reverse().join('');
+console.log(str);
+```
+
+## 最大公约数与最小公倍数
+
+- 最大公约数: 能同时被两数整除的最大数字
+
+```js
+function maxDivisor(num1, num2) {
+  let max = num1 > num2 ? num1 : num2,
+    min = num1 > num2 ? num2 : num1;
+  for (var i = min; i >= 1; i--) {
+    if (max % i == 0 && min % i == 0) {
+      return i;
+    }
+  }
+}
+
+console.log(maxDivisor(60, 30)); // 30
+```
+
+- 最小公倍数: 能同时整除两数的最小数字
+
+```js
+function minDivisor(num1, num2) {
+  let max = num1 > num2 ? num1 : num2,
+    min = num1 > num2 ? num2 : num1,
+    result = 0;
+  // 这个循环，当两数同为质数时，终止的最大条件值为 i = min
+  for (var i = 1; i <= min; i++) {
+    result = i * max;
+    if (result % max == 0 && result % min == 0) {
+      return result;
+    }
+  }
+}
+console.log(minDivisor(6, 8)); // 24
+```
+
+## 验证是否为回文
+
+```js
+// 数组方法生成倒装的新字符串与原字符串对比
+function isPalindrome(str) {
+  str = '' + str;
+  if (!str || str.length < 2) {
+    return false;
+  }
+  return (
+    Array.from(str)
+      .reverse()
+      .join('') === str
+  );
+}
+
+// 倒序循环生成新字符串与原字符串对比
+function isPalindrome(str) {
+  str = '' + str;
+  if (!str || str.length < 2) {
+    return false;
+  }
+  var newStr = '';
+  for (var i = str.length - 1; i >= 0; i--) {
+    newStr += str[i];
+  }
+  return str1 === str;
+}
+
+// 以中间点为基点，从头至中与从尾至中逐一字符串进行对比，若有一个不同，则 return false
+function isPalindrome(str) {
+  str = '' + str;
+  if (!str || str.length < 2) {
+    return false;
+  }
+  for (let i = 0; i < str.length / 2; i++) {
+    if (str[i] !== str[str.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+```
+
+## 判断一个数是否为质数
+
+```js
+function isPrime(num) {
+  if (num === 1) {
+    return "1 不是质数，请输入大于1的数字";
+  } else if (num <= 3) {
+    return num > 1;
+  } else {
+    let sq = Math.sqrt(num);
+    for (let i = 2; i <= sq; i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+}
 ```

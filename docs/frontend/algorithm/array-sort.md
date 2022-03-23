@@ -1,6 +1,6 @@
 ---
 title: 常见的十种数组排序
-date: 2020-06-18
+date: 2021-06-18
 sidebar: "auto"
 autoSort: 886
 tags:
@@ -47,8 +47,6 @@ var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
 console.log(bubbleSort(arr));
 ```
 
-
-
 ## 快速排序
 
 - 相关资料： [资料 1](https://gist.github.com/ideawu/a114679bb8f0a94452d462ae14b7c977) | [资料 2](https://www.jianshu.com/p/34209c493a79) | [资料 3](http://data.biancheng.net/view/117.html) | [资料 4](http://data.biancheng.net/view/117.html)
@@ -60,12 +58,11 @@ console.log(bubbleSort(arr));
 
 ![quickSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/quickSort.gif)
 
-- 代码 1
-
-
+- 代码实现
 
 ```js
-const quickSort0 = arr => {
+const quickSort = nums => {
+  let arr = [...nums]
   if (arr.length <= 1) {
     return arr;
   }
@@ -85,10 +82,9 @@ const quickSort0 = arr => {
     }
   }
   //递归执行以上操作，对左右两个数组进行操作，直到数组长度为 <= 1
-  return quickSort0(left).concat(midIndexVal, quickSort0(right));
+  return quickSort(left).concat(midIndexVal, quickSort(right));
 };
-const array0 = [5, 14, 3, 21, 10];
-console.log('quickSort0 ', quickSort0(array0));
+console.log('quickSort ', quickSort([5, 14, 3, 21, 10]));
 ```
 
 - 原地分区版快速排序实现
@@ -149,21 +145,9 @@ const partition = (arr, left, right) => {
 
 const array2 = [8, 5, 1, 13, 2, 6, 9, 21];
 
-// partitionIndex = partition(arr, left, right);
-// 执行 部分 结果
-// ...
-// 8, 5, 1, 13, 2, 6, 9, 21
-// 8, 5, 1, 2, 13, 6, 9, 21
-// 8, 5, 1, 2, 6, 13, 9, 21
-// 8, 5, 1, 2, 6, 13, 9, 21
-// ...
-// 6, 5, 1, 2, 8, 13, 9, 21 => swap(arr, pivotIdx, index - 1);
-
 console.log('quickSort2 ', quickSort2(array2));
 // => [ 1, 2, 5, 6, 8, 9, 13, 21 ]
 ```
-
-
 
 ## 选择排序
 
@@ -175,8 +159,6 @@ console.log('quickSort2 ', quickSort2(array2));
 ![selectionSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/selectionSort.gif)
 
 - 代码
-
-
 
 ```js
 function selectionSort(arr) {
@@ -199,8 +181,6 @@ function selectionSort(arr) {
 }
 ```
 
-
-
 ## 归并排序
 
 - 相关资料：[资料 1](https://www.jianshu.com/p/33cffa1ce613)
@@ -210,8 +190,6 @@ function selectionSort(arr) {
 ![mergeSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/mergeSort.gif)
 
 - 代码
-
-
 
 ```js
 const mergeSort = arr => {
@@ -248,8 +226,6 @@ console.log('arr :', mergeSort(arr));
 console.timeEnd('归并排序耗时');
 ```
 
-
-
 ## 插入排序
 
 ### 直接插入
@@ -266,8 +242,6 @@ console.timeEnd('归并排序耗时');
 ![insertionSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/insertionSort.gif)
 
 - 代码
-
-
 
 ```js
 // 插入排序
@@ -304,8 +278,6 @@ insertionSort(array);
 // array:  		 [1, 2, 3, 4, 5]
 ```
 
-
-
 ### 拆半插入
 
 - 步骤
@@ -318,8 +290,6 @@ insertionSort(array);
 **注：`x >> 1` 是位运算中的右移运算，表示右移一位，等同于 x 除以 2 再取整，即 `x >> 1 == Math.floor(x/2)`**
 
 - 代码
-
-
 
 ```js
 // 折半插入排序
@@ -357,21 +327,7 @@ const binaryInsertionSort = array => {
 const array2 = [5, 4, 3, 2, 1];
 console.log('原始 array2:', array2);
 binaryInsertionSort(array2);
-// 原始 array2:  [5, 4, 3, 2, 1]
-// array2 :     [5, 5, 3, 2, 1]
-// array2 :     [4, 5, 5, 2, 1]
-// array2 :     [4, 4, 5, 2, 1]
-// array2 :     [3, 4, 5, 5, 1]
-// array2 :     [3, 4, 4, 5, 1]
-// array2 :     [3, 3, 4, 5, 1]
-// array2 :     [2, 3, 4, 5, 5]
-// array2 :     [2, 3, 4, 4, 5]
-// array2 :     [2, 3, 3, 4, 5]
-// array2 :     [2, 2, 3, 4, 5]
-// array2 :     [1, 2, 3, 4, 5]
 ```
-
-
 
 ## 希尔排序
 
@@ -383,8 +339,6 @@ binaryInsertionSort(array2);
 ![shellSort](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/shellSort.gif)
 
 - 代码
-
-
 
 ```js
 const shellSort = arr => {
@@ -432,13 +386,9 @@ console.log('newArr:', newArr);
 // newArr:     [10, 14, 19, 27, 33, 35, 42, 44]
 ```
 
-
-
 ## 堆排序
 
 - 代码
-
-
 
 ```js
 // 堆排序
@@ -498,13 +448,9 @@ console.log('newArr:', newArr);
 // newArr:     [1, 2, 2, 3, 4, 5, 5, 6, 8, 9]
 ```
 
-
-
 ## 桶排序
 
 - 代码
-
-
 
 ```js
 // 桶排序
@@ -597,13 +543,9 @@ console.log('newArr:', newArr);
 // newArr:  	 [1, 2, 2, 3, 4, 5, 5, 6, 8, 9]
 ```
 
-
-
 ## 计数排序
 
 - 代码
-
-
 
 ```js
 const countingSort = array => {
@@ -647,13 +589,9 @@ console.log('newArr: ', newArr);
 // newArr:  	 [1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 4, 4, 6, 7, 7, 8, 8, 9, 9]
 ```
 
-
-
 ## 基数排序
 
 - 代码
-
-
 
 ```js
 /**
@@ -698,15 +636,154 @@ console.log('newArr:', newArr);
 // newArr:  	 [2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
 ```
 
-
-
 ## 算法可视化工具
 
 - [algorithm-visualizer](https://github.com/algorithm-visualizer/algorithm-visualizer)
 - [visualgo.net/en](https://visualgo.net/en)
 
-## 相关链接
+## 二分查找(Binary Search)
 
-- [JavaScript 数据结构与算法之美 - 时间和空间复杂度](https://juejin.im/post/5cf37b6d6fb9a07eb15d3e88)
-- [JavaScript 数据结构与算法之美 - 十大经典排序算法汇总](https://juejin.im/post/5d3ea9a4e51d4561f060cd2d)
-- [漫画：“排序算法” 大总结](https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653200809&idx=1&sn=44ed67f5382b0aea78867b41e92bf3e3&chksm=8c99d373bbee5a653932f01581a8cacbbeaf565b71b7df4698af43d5eabc75e3443d3c80e0ed&mpshare=1&scene=1&srcid=&sharer_sharetime=1576460561375&sharer_shareid=6d5a36aa649f337987f3518aaba03999#rd)
+> 二分查找，前提是数组为有序数组, 返回索引值, O(㏒n)复杂度
+
+- [leetcode 704](https://leetcode-cn.com/problems/binary-search/)
+
+```js
+var search = function(nums, target){
+  let left = 0, right = nums.length - 1;
+  while(left <= right){
+    const mid = Math.floor((right-left)/2 + left)
+    const midVal = nums[mid]
+    if(midVal == target){
+      return mid
+    }else if(midVal > target){
+      right = mid - 1
+    }else{
+      left = mid + 1
+    }
+  }
+  return -1
+}
+```
+
+## 搜索插入位置
+
+- [leetcode 35](https://leetcode-cn.com/problems/search-insert-position/)
+
+```js
+var searchInsert = function(nums, target) {
+    const len = nums.length;
+    let left = 0, right=len-1, index = len;
+
+    while(left <= right){
+        let mid = Math.floor((right - left) /2 + left)
+        if(target <= nums[mid]){
+            index = mid;
+            right = mid - 1;
+        }else{
+            left = mid + 1;
+        }
+    }
+    return index
+};
+```
+
+## 有序数组合并为一个数组
+
+```js
+function mergeArray (left, right) {
+  let result = [],
+       il = 0,
+       ir = 0;
+  while(il < left.length && ir < right.length) {
+    if (left[il] < right[ir]) {
+      result.push(left[il++]);
+    } else {
+      result.push(right[ir++]);
+    }
+  }
+  return result.concat(left[il] ? left.slice(il) : right.slice(ir));
+}
+
+mergeArray([2,4,5], [1,3,6])
+```
+
+- [leetcode 88](https://leetcode-cn.com/problems/merge-sorted-array/)
+
+```js
+var merge = function(nums1, m, nums2, n) {
+    // 初始化两个指针的指向，初始化 nums1 尾部索引k
+    let i = m - 1, j = n - 1, k = m + n - 1
+    // 当两个数组都没遍历完时，指针同步移动
+    while(i >= 0 && j >= 0) {
+        // 取较大的值，从末尾往前填补
+        if(nums1[i] >= nums2[j]) {
+            nums1[k] = nums1[i] // <-
+            i--
+            k--
+        } else {
+            nums1[k] = nums2[j]
+            j--
+            k--
+        }
+    }
+    // nums2 留下的情况，特殊处理一下
+    while(j>=0) {
+        nums1[k] = nums2[j]
+        k--
+        j--
+    }
+};
+```
+
+## 数组去重
+
+- 方法1
+
+```js
+function unique(arr) {
+  var result = [];
+  for (var i = 0, len = arr.length; i < len; i++) {
+    var arri = arr[i];
+    if (result.indexOf(arri) < 0) {
+      result.push(arri);
+    }
+
+  }
+  return result;
+}
+```
+
+- 方法2
+
+```js
+function unique(arr) {
+  for (let i = 0, len = arr.length; i < len; i++) {
+    for (let j = i + 1; j < len; j++) {
+      if (arr[i] == arr[j]) {
+        arr.splice(j, 1)
+        len--;
+        j--
+      }
+    }
+  }
+  return arr
+}
+```
+
+- 方法3
+
+```js
+function unique(arr) {
+  return arr.filter((item, index) => {
+    return arr.indexOf(item) === index
+  })
+}
+```
+
+- 方法4
+
+```js
+function unique(arr) {
+  return [...new Set(arr)]
+}
+```

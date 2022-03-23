@@ -1,310 +1,15 @@
 ---
-title: 栈/队列/链表
-date: 2021-01-11
+title: 链表(LinkedList)
+date: 2022-03-18
 sidebar: "auto"
 autoSort: 888
 tags:
-  - stack
-  - queue
+  - LinkedList
 categories:
   - frontend
 ---
 
-
-## 栈
-
-先进后出（First In Last Out）
-
-### stack Array
-
-```js
-//栈：First In Last out
-const _stackItem = Symbol("stack array");
-export default class Stack {
-  constructor() {
-    // 存储栈元素
-    this[_stackItem] = [];
-  }
-  // 添加一个栈顶元素
-  push(value) {
-    this[_stackItem].push(value);
-  }
-  // 移除栈顶元素, 并返回
-  pop() {
-    return this[_stackItem].pop();
-  }
-  // 返回栈顶元素
-  peek() {
-    const len = this[_stackItem].length;
-    return this[_stackItem][len - 1];
-  }
-  // 判断栈是否为空
-  isEmpty() {
-    return this[_stackItem].length === 0;
-  }
-  // 清空栈
-  clear() {
-    this[_stackItem] = [];
-  }
-  // 返回栈里的元素个数
-  size() {
-    return this[_stackItem].length;
-  }
-}
-
-// var stack = new Stack();
-
-// stack.push(110);
-// stack.push(120);
-
-// console.log(stack.clear());
-// console.log(stack.isEmpty());
-```
-
-### stack Object
-
-```js
-//栈：First In Last out
-const _stackItem = Symbol('stack object')
-export default class Stack{
-  constructor(){
-    this[_stackItem] = {}
-    this.index = 0
-  }
-
-  // 添加一个栈顶元素
-  push(value){
-    this[_stackItem][this.index] = value;
-    this.index++;
-  }
-  // 移除栈顶元素, 并返回
-  pop(){
-    if(this.isEmpty()){
-      return undefined
-    }
-    this.index --;
-    const result = this[_stackItem][this.index]
-    delete this[_stackItem][this.index]
-    return result;
-  }
-  // 返回栈顶元素
-  peek(){
-    if(this.isEmpty()){
-      return undefined
-    }
-    return this[_stackItem][this.index-1]
-  }
-  // 判断栈是否为空
-  isEmpty(){
-    return this.index === 0
-  }
-  // 清空栈
-  clear(){
-    this[_stackItem] = {}
-    this.index = 0
-  }
-  // 返回栈里的元素个数
-  size(){
-    return this.index;
-  }
-
-  toString(){
-    if(this.isEmpty()){
-      return ''
-    }
-    let str = `${this[_stackItem][0]}`
-    for(let i=1; i< this.index; i++){
-      str = `${str}, ${this[_stackItem][i]}`
-    }
-    return str
-  }
-}
-
-var stack = new Stack()
-
-stack.push(110)
-stack.push(120)
-
-console.log(stack.size())
-```
-
-## 队列
-
-### 普通队列
-
-先进先出 (First In First Out)
-
-```js
-// 队列：first in first out
-export default class Queue {
-  constructor() {
-    this.count=0; // 记录数据大小
-    this.lowestCount=0 // 第一个元素
-    this.items = {}
-  }
-
-  add(value) {
-    this.items[this.count] = value;
-    this.count ++;
-  }
-
-  remove() {
-    if(this.isEmpty()){
-      return undefined
-    }
-    const result = this.items[this.count]
-    delete this.items[this.count]
-    this.lowestCount++
-    return result
-  }
-
-  peek() {
-    if(this.isEmpty()){
-      return undefined
-    }
-
-    return this.items[this.lowestCount];
-  }
-
-  isEmpty() {
-    return this.size() === 0
-  }
-
-  clear() {
-    this.items = {}
-    this.count = 0
-    this.lowestCount = 0
-  }
-
-  size() {
-    return this.count - this.lowestCount
-  }
-
-  toString() {
-    if(this.isEmpty()){
-      return ''
-    }
-
-    let str = `${this.items[this.lowestCount]}`
-    for(let i=this.lowestCount+1; i<this.count; i++){
-      str = `${str}, ${this.items[i]}`
-    }
-    return str
-  }
-}
-
-
-// const queue = new Queue()
-// queue.add(12)
-// queue.add(23)
-// console.log(queue.toString())
-```
-
-### 双端队列
-
-```js
-// 双端队列
-export default class Deque {
-  constructor() {
-    this.count = 0;
-    this.lowestCount = 0;
-    this.items = {};
-  }
-
-  addFront(value) {
-    if(this.isEmpty()){
-      this.addBack(value)
-    }else if(this.lowestCount > 0){
-      this.lowestCount --;
-      this.items[this.lowestCount] = value;
-    }else{
-      for (let i = this.count; i > 0; i--) {
-        this.items[i] = this.items[i - 1];
-      }
-      this.count++;
-      this.items[0] = value;
-    }
-  }
-
-  addBack(value) {
-    this.items[this.count] = value;
-    this.count ++
-  }
-
-  removeFront() {
-    if(this.isEmpty()){
-      return void 0
-    }
-    const result = this.items[this.lowestCount]
-    delete this.items[this.lowestCount]
-    this.lowestCount ++
-    return result;
-  }
-
-  removeBack() {
-    if(this.isEmpty()){
-      return void 0
-    }
-    this.count --;
-    const result = this.items[this.count];
-    delete this.items[this.count]
-    return result;
-  }
-
-  peekFront() {
-    if(this.isEmpty()){
-      return void 0
-    }
-
-    return this.items[this.lowestCount]
-  }
-
-  peekBack() {
-    if(this.isEmpty()){
-      return void 0
-    }
-    return this.items[this.count-1]
-  }
-
-  isEmpty() {
-    return this.size() === 0;
-  }
-
-  clear() {
-    this.items = {};
-    this.count = 0;
-    this.lowestCount = 0;
-  }
-
-  size() {
-    return this.count - this.lowestCount;
-  }
-
-  toString() {
-    if(this.isEmpty()){
-      return ''
-    }
-
-    let str = `${this.items[this.lowestCount]}`
-
-    for(let i=this.lowestCount+1; i<this.count; i++){
-      str = `${str}, ${this.items[i]}`
-    }
-    return str;
-  }
-}
-
-// const deque = new Deque()
-// deque.addBack(12);
-// deque.addBack(21);
-
-// deque.addFront(45)
-// console.log(deque)
-```
-
-## 链表
-
-### 单链表
+## 单链表
 
 ```js
 export function defaultEquals(a, b) {
@@ -432,58 +137,6 @@ export default class LinkedList {
     return objString;
   }
 }
-```
-
-- 链表的中间结点 [leetcode 876](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
-
-```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-var middleNode = function(head) {
-    let fast = head, slow = head
-
-    while(fast!=null && fast.next !=null){
-        fast = fast.next.next // 每次走2步
-        slow = slow.next // 每次走1步
-    }
-    return slow
-};
-```
-
-- 反转链表 [leetcode 206](https://leetcode-cn.com/problems/reverse-linked-list/)
-
-```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
-var reverseList = function(head) {
-	let pre = null, cur = head;
-
-    while(cur){
-        let tmp = cur.next;
-        cur.next = pre; // 当前指针next指向之前
-        pre = cur; // 前进一步
-        cur = tmp; // 前进一步
-    }
-    return pre
-};
 ```
 
 ### 双链表
@@ -762,4 +415,38 @@ export default class DoublyLinkedList extends LinkedList {
     return objString;
   }
 }
+```
+
+## 单链表的中间结点
+
+- [leetcode 876](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+
+```js
+var middleNode = function(head) {
+	let fast = head, slow = head;
+
+  while(fast !=null && fast.next !=null){
+   	fast = fast.next.next  // 每次走2步
+    slow = slow.next // 每次走1步
+  }
+  return slow
+}
+```
+
+## 反转单链表
+
+- [leetcode 206](https://leetcode-cn.com/problems/reverse-linked-list/)
+
+```js
+var reverseList = function(head) {
+	let pre = null, cur = head
+
+  while(cur != null){
+  	let tmp = cur.next
+    cur.next = pre
+    pre = cur
+    cur = tmp
+  }
+  return pre
+};
 ```

@@ -1,6 +1,6 @@
 ---
-title: 二叉树算法
-date: 2020-07-20
+title: 二叉搜索树算法
+date: 2022-02-20
 sidebar: "auto"
 autoSort: 887
 tags:
@@ -9,9 +9,7 @@ categories:
   - frontend
 ---
 
-- [原文：二叉树算法](https://mp.weixin.qq.com/s?__biz=MzI0MTUxOTE5NQ==&mid=2247483941&idx=1&sn=bd18647cb580da4e5aadf72ee1f0f7b8&chksm=e90b1d11de7c9407cde027c43ab43323fa07702ff4855745163e8f3ebbf682c95b33987d6210&mpshare=1&scene=1&srcid=&sharer_sharetime=1572521393442&sharer_shareid=6d5a36aa649f337987f3518aaba03999#rd)
-
-## 基本结构
+## Tree基本结构
 
 ```js
 function BinaryTree(data, left, right) {
@@ -62,11 +60,13 @@ BST.prototype.insertNode = function(node, newNode) {
 
 ## 前序排列查询
 
+> `val -> 左 -> 右`
+
 - 示例图
 
   ![20200102225235](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200102225235.png)
 
-- 代码
+- 递归实现
 
 ```js
 /**
@@ -97,13 +97,42 @@ BST.prototype.preOrderNode = function(node, nodeArr) {
 };
 ```
 
+- 使用栈实现 [leetcode 144](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)
+
+```js
+var preOrderNode = function(root) {
+    let result = []
+    if(!root) return result
+
+    const stack = [] // 栈结构
+    stack.push(root)
+
+    while(stack.length){
+        const cur = stack.pop();
+        result.push(cur.val)
+        // 若栈顶结点有右孩子，则将右孩子入栈
+        if(cur.right){
+            stack.push(cur.right)
+        }
+        // 若栈顶结点有左孩子，则将左孩子入栈
+        if(cur.left){
+            stack.push(cur.left)
+        }
+
+    }
+    return result
+};
+```
+
 ## 中序排列查询
+
+> `左 -> val -> 右`
 
 - 示例图
 
   ![20200102225508](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200102225508.png)
 
-- 代码
+- 递归实现
 
 ```js
 /**
@@ -151,13 +180,46 @@ BST.prototype.inOrderDescNode = function(node, nodeArr) {
 };
 ```
 
+- 使用栈实现 [leetcode 94](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
+
+```js
+const inorderTraversal = function(root) {
+  // 定义结果数组
+  const res = []
+  // 初始化栈结构
+  const stack = []
+  // 用一个 cur 结点充当游标
+  let cur = root
+  // 当 cur 不为空、或者 stack 不为空时，重复以下逻辑
+  while(cur || stack.length) {
+      // 这个 while 的作用是把寻找最左叶子结点的过程中，途径的所有结点都记录下来
+      while(cur) {
+          // 将途径的结点入栈
+          stack.push(cur)
+          // 继续搜索当前结点的左孩子
+          cur = cur.left
+      }
+      // 取出栈顶元素
+      cur = stack.pop()
+      // 将栈顶元素入栈
+      res.push(cur.val)
+      // 尝试读取 cur 结点的右孩子
+      cur = cur.right
+  }
+  // 返回结果数组
+  return res
+};
+```
+
 ## 后序排列查询
+
+> `左 -> 右 -> val`
 
 - 示例图
 
   ![20200102225635](https://cdn.jsdelivr.net/gh/chengzao/imgbed@main/images/20200102225635.png)
 
-- 代码
+- 递归实现
 
 ```js
 /**
@@ -185,6 +247,40 @@ BST.prototype.reOrderNode = function(node, nodeArr) {
     this.reOrderNode(node.right, nodeArr);
     nodeArr.push(node.data);  // <- there
   }
+};
+```
+
+- 非递归实现 [leetcode 145](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/)
+
+```js
+const postOrder = function(root) {
+  // 定义结果数组
+  const res = []
+  // 处理边界条件
+  if(!root) {
+      return res
+  }
+  // 初始化栈结构
+  const stack = []
+  // 首先将根结点入栈
+  stack.push(root)
+  // 若栈不为空，则重复出栈、入栈操作
+  while(stack.length) {
+      // 将栈顶结点记为当前结点
+      const cur = stack.pop()
+      // 当前结点就是当前子树的根结点，把这个结点放在结果数组的(头部)
+      res.unshift(cur.val)   //
+      // 若当前子树根结点有左孩子，则将左孩子入栈
+      if(cur.left) {
+        stack.push(cur.left)
+      }
+      // 若当前子树根结点有右孩子，则将右孩子入栈
+      if(cur.right) {
+        stack.push(cur.right)
+      }
+  }
+  // 返回结果数组
+  return res
 };
 ```
 
@@ -299,418 +395,6 @@ BST.prototype.removeNode = function(node, data) {
 };
 ```
 
-## 其他方法
-
-```js
-// 求二叉树节点个数
-BST.prototype.sizeOfNode = function(node) {
-  if (!node) {
-    return 0;
-  }
-  return 1 + this.sizeOfNode(node.left) + this.sizeOfNode(node.right);
-};
-
-// 求二叉树层级
-BST.prototype.levelOfNode = function(node) {
-  if (!node) {
-    return 0;
-  }
-  return (
-    Math.max(this.levelOfNode(node.left), this.levelOfNode(node.right)) + 1
-  );
-};
-
-// 求二叉树第K层的节点个数
-BST.prototype.numKLevel = function(node, k) {
-  if (k < 0) {
-    return 0;
-  }
-  if (node === null) {
-    return 0;
-  }
-  if (node !== null && k === 1) {
-    return 1;
-  }
-  return this.numKLevel(node.left, k - 1) + this.numKLevel(node.right, k - 1);
-};
-
-// 比较二叉树是否相同
-BST.prototype.compareNodes = function(node1, node2) {
-  if (node1 === null && node2 === null) {
-    return true;
-  }
-  if (
-    (node1 !== null && node2 === null) ||
-    (node1 === null && node2 !== null)
-  ) {
-    return false;
-  }
-  return (
-    this.compareNodes(node1.left, node2.left) &&
-    this.compareNodes(node1.right, node2.right)
-  );
-};
-```
-
-## 完整版
-
-
-
-```js
-// node节点
-function BinaryTree(data, left, right) {
-  this.data = data; // 节点的值
-  this.left = left; // 左节点
-  this.right = right; // 右节点
-}
-
-function BST() {
-  this.root = null;
-}
-
-/**
- * 定义插入属性
- * @param key int|float 要插入的值
- */
-BST.prototype.insert = function (data) {
-  var newNode = new BinaryTree(data, null, null);
-  // 如果没有root节点
-  if (this.root === null) {
-    this.root = newNode;
-  } else {
-    this.insertNode(this.root, newNode);
-  }
-}
-
-/**
- * 插入数据 left小 ，right大
- * @param node obj 节点数据
- * @param newNode obj 要插入的节点数据
- */
-BST.prototype.insertNode = function (node, newNode) {
-  if (newNode.data < node.data) {
-    if (node.left === null) {
-      node.left = newNode;
-    } else {
-      this.insertNode(node.left, newNode);
-    }
-  } else {
-    if (node.right === null) {
-      node.right = newNode;
-    } else {
-      this.insertNode(node.right, newNode);
-    }
-  }
-};
-
-/**
- * 中序排列查询
- * @param node obj 节点
- * @returns {Array}
- */
-BST.prototype.inOrder = function (sort = "ASC") {
-  var nodeArr = [];
-  var node = this.root;
-  if (node !== null) {
-    if (sort.toUpperCase() == "DESC") {
-      this.inOrderDescNode(node, nodeArr);
-    } else {
-      this.inOrderAscNode(node, nodeArr);
-    }
-  }
-  return nodeArr;
-};
-
-/**
- * 中序查询-升序(左->中->右)
- * @param node obj 节点
- * @param nodeArr array 存储排序的值
- */
-BST.prototype.inOrderAscNode = function (node, nodeArr) {
-  if (node !== null) {
-    this.inOrderAscNode(node.left, nodeArr);
-    nodeArr.push(node.data);
-    this.inOrderAscNode(node.right, nodeArr);
-  }
-};
-
-/**
- * 中序查询-降序(右->中->左)
- * @param node obj 节点
- * @param nodeArr array 存储排序的值
- */
-BST.prototype.inOrderDescNode = function (node, nodeArr) {
-  if (node !== null) {
-    this.inOrderDescNode(node.right, nodeArr);
-    nodeArr.push(node.data);
-    this.inOrderDescNode(node.left, nodeArr);
-  }
-};
-
-/**
- * 前序查询
- * @param node obj 节点
- * @returns {Array}
- */
-BST.prototype.preOrder = function (node) {
-  var nodeArr = [];
-  var node = this.root;
-  if (node !== null) {
-    this.preOrderNode(node, nodeArr);
-  }
-  return nodeArr;
-};
-
-/**
- * 前序(中->左->右)
- * @param node obj 节点
- * @param nodeArr 存储查询的值
- */
-BST.prototype.preOrderNode = function (node, nodeArr) {
-  if (node !== null) {
-    nodeArr.push(node.data);
-    this.preOrderNode(node.left, nodeArr);
-    this.preOrderNode(node.right, nodeArr);
-  }
-};
-
-
-/**
- * 后序查询
- * @param node obj 节点
- * @returns {Array}
- */
-BST.prototype.reOrder = function (node) {
-  var nodeArr = [];
-  var node = this.root;
-  if (node !== null) {
-    this.reOrderNode(node, nodeArr);
-  }
-  return nodeArr;
-};
-
-/**
- * 后序(左->右->中)
- * @param node obj 节点
- * @param nodeArr 存储查询的值
- */
-BST.prototype.reOrderNode = function (node, nodeArr) {
-  if (node !== null) {
-    this.reOrderNode(node.left, nodeArr);
-    this.reOrderNode(node.right, nodeArr);
-    nodeArr.push(node.data);
-  }
-};
-
-
-/**
- * 最大值
- * @param node obj 节点
- * @returns {*}
- */
-BST.prototype.max = function (node) {
-  var node = this.root;
-  var newNode = this.maxNode(node);
-  return newNode === null ? null : newNode.data;
-};
-
-/**
- * 查找一个节点最大的值
- * @param node obj 节点
- * @returns {*}
- */
-BST.prototype.maxNode = function (node) {
-  if (node === null) return null;
-  while (node !== null && node.right !== null) {
-    node = node.right;
-  }
-  return node;
-};
-
-/**
- * 最小值
- * @param node obj 节点
- * @returns {*}
- */
-BST.prototype.min = function (node) {
-  var node = this.root;
-  var newNode = this.minNode(node);
-  return newNode === null ? null : newNode.data;
-};
-
-/**
- * 查找一个节点最小值
- * @param node obj 节点
- * @returns {*}
- */
-BST.prototype.minNode = function (node) {
-  if (node === null) return null;
-  if (node.left !== null) return this.minNode(node.left);
-  return node;
-};
-
-BST.prototype.searchNode = function (node, data) {
-  if (node === null) {
-    return false
-  }
-  if (data < node.data) {
-    return this.searchNode(node.left, data)
-  } else if (data > node.data) {
-    return this.searchNode(node.right, data)
-  } else {
-    return true
-  }
-}
-
-/**
- * 查找一个节点是否存在
- * @param data 节点值
- * @returns {*}
- */
-BST.prototype.search = function (data) {
-  return this.searchNode(this.root, data)
-}
-
-/**
- * 移除一个节点
- * @param data int|float 要移除的节点值
- * @param node obj 节点
- * @returns {*}
- */
-BST.prototype.remove = function (data) {
-  var node = this.root;
-  return this.removeNode(node, data);
-};
-
-/**
- * 移除节点
- * @param data int|float 要移除的节点值
- * @param node obj 节点
- * @returns {*}
- */
-BST.prototype.removeNode = function (node, data) {
-  if (node === null) return null;
-  if (data < node.data) {
-    node.left = this.removeNode(node.left, data)
-    return node
-  } else if (data > node.data) {
-    node.right = this.removeNode(node.right, data)
-    return node
-  } else {
-    // 这事判断第一种情况,没有左右分支的情况下,
-    if (node.left === null && node.right === null) {
-      node = null
-      return node
-    }
-    // 这是左子树为空的情况
-    if (node.left === null) {
-      node = node.right
-      return node
-    } else if (node.right === null) {
-      // 这是右子树为空的情况
-      node = node.left
-      return node
-    } else {
-      // 如果左右两个分支都存在的时候
-      // 寻找该节点的右节点的最小节点
-      var aux = this.minNode(node.right)
-      // 将改节点与找到的最小节点值互换
-      node.data = aux.data
-      // 删掉替换后的最小节点
-      node.right = this.removeNode(node.right, aux.data)
-      return node
-    }
-  }
-};
-
-// 求二叉树节点个数
-BST.prototype.sizeOfNode = function (node) {
-  if (!node) {
-    return 0
-  }
-  return 1 + this.sizeOfNode(node.left) + this.sizeOfNode(node.right);
-}
-
-// 求二叉树层级
-BST.prototype.levelOfNode = function (node) {
-  if (!node) {
-    return 0
-  }
-  return Math.max(this.levelOfNode(node.left), this.levelOfNode(node.right)) + 1
-}
-
-// 求二叉树第K层的节点个数
-BST.prototype.numKLevel = function (node, k) {
-  if (k < 0) {
-    return 0
-  }
-  if (node === null) {
-    return 0
-  }
-  if (node !== null && k === 1) {
-    return 1
-  }
-  return this.numKLevel(node.left, k - 1) + this.numKLevel(node.right, k - 1)
-}
-
-// 比较二叉树是否相同
-BST.prototype.compareNodes = function (node1, node2) {
-  if (node1 === null && node2 === null) {
-    return true
-  }
-  if ((node1 !== null && node2 === null) || (node1 === null && node2 !== null)) {
-    return false
-  }
-  return (this.compareNodes(node1.left, node2.left) && this.compareNodes(node1.right, node2.right))
-}
-
-
-//测试数据
-var bst = new BST();
-var nums = [10, 3, 18, 2, 4, 13, 21, 9, 8, 9];
-for (var i = 0; i < nums.length; i++) {
-  bst.insert(nums[i]);
-}
-
-// console.log(bst);
-
-// console.log("inOrder-Asc: ", bst.inOrder());
-// console.log("inOrder-Desc: ", bst.inOrder('DESC'));
-
-// console.log('preOrder: ', bst.preOrder());
-
-// console.log('reOrder: ', bst.reOrder());
-
-// console.log('max: ', bst.max());
-// console.log('min: ', bst.min());
-
-// console.log('search: ', bst.search(21));
-// console.log('search: ', bst.search(22));
-
-// console.log('remove: ', bst.remove(2));
-// console.log('remove: ', bst.remove(9));
-// console.log('remove: ', bst.remove(18));
-
-// console.log('sizeOfNode: ', bst.sizeOfNode(bst.root));
-
-// console.log('levelOfNode: ', bst.levelOfNode(bst.root));
-
-// console.log('numKLevel: ', bst.numKLevel(bst.root, 3));
-
-var bst1 =  {
-  data: 10,
-  left:  {
-    data: 3,
-    left:  { data: 2, left: null, right: null },
-    right: { data: 21, left: null, right: null }
-  },
-  right:  null
-}
-console.log('compareNodes: ', bst.compareNodes(bst.root, bst1));
-```
-
-
-
 ## 广度优先
 
 - 层序遍历
@@ -736,4 +420,136 @@ function BFS(root) {
         queue.shift() // 访问完毕，队头元素出队
     }
 }
+```
+
+## 翻转二叉树
+
+- [leetcode 226](https://leetcode-cn.com/problems/invert-binary-tree/)
+
+```js
+var invertTree = function(root) {
+	if(!root) return root
+
+  let left = invertTree(root.left)
+  let right = invertTree(root.right)
+
+  root.left = right;
+  root.right = left
+
+  return root
+}
+```
+
+## 相同的树
+
+- [leetcode 100](https://leetcode-cn.com/problems/same-tree/)
+
+```js
+var isSameTree = function(p, q) {
+    if(p ==null && q == null) return true
+    if(p == null || q == null) return false
+    if(p.val != q.val) return false
+
+		// 分别比较左子树 和 右子树
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
+};
+```
+
+## 其他方法
+
+```js
+// 求二叉树节点个数
+const sizeOfNode = function(node) {
+  if (!node) {
+    return 0;
+  }
+  return 1 + sizeOfNode(node.left) + sizeOfNode(node.right);
+};
+
+// 求二叉树层级
+const levelOfNode = function(node) {
+  if (!node) {
+    return 0;
+  }
+  return (
+    Math.max(levelOfNode(node.left), levelOfNode(node.right)) + 1
+  );
+};
+
+// 求二叉树第K层的节点个数
+const numKLevel = function(node, k) {
+  if (k < 0) {
+    return 0;
+  }
+  if (node === null) {
+    return 0;
+  }
+  if (node !== null && k === 1) {
+    return 1;
+  }
+  return numKLevel(node.left, k - 1) + numKLevel(node.right, k - 1);
+};
+```
+
+## Trie (前缀树)
+
+> 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查
+
+- [leetcode 208](https://leetcode-cn.com/problems/implement-trie-prefix-tree/)
+
+```js
+var Trie = function() {
+    this.children = {}
+};
+
+/**
+ * @param {string} word
+ * @return {void}
+ */
+Trie.prototype.insert = function(word) {
+    let node = this.children
+    for(const ch of word){
+        if(!node[ch]){
+           node[ch]={}
+        }
+        node = node[ch]
+    }
+    node.isEnd = true
+};
+
+Trie.prototype.searchPrefix = function(word) {
+    let node = this.children
+    for(const ch of word){
+        if(!node[ch]) {
+            return false
+        }
+        node = node[ch]
+    }
+    return node
+};
+
+/**
+ * @param {string} word
+ * @return {boolean}
+ */
+Trie.prototype.search = function(word) {
+    const node = this.searchPrefix(word)
+    return node !== undefined && node.isEnd != undefined
+};
+
+/**
+ * @param {string} prefix
+ * @return {boolean}
+ */
+Trie.prototype.startsWith = function(prefix) {
+    return this.searchPrefix(prefix)
+};
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * var obj = new Trie()
+ * obj.insert(word)
+ * var param_2 = obj.search(word)
+ * var param_3 = obj.startsWith(prefix)
+ */
 ```
