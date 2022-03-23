@@ -1,5 +1,5 @@
 ---
-title: aria2
+title: aria2配置
 date: 2021-10-01
 sidebar: "auto"
 tags:

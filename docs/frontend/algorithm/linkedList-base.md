@@ -1,5 +1,5 @@
 ---
-title: 链表(LinkedList)
+title: 链表
 date: 2022-03-18
 sidebar: "auto"
 autoSort: 888
@@ -139,7 +139,7 @@ export default class LinkedList {
 }
 ```
 
-### 双链表
+## 双链表
 
 - linkedList.js
 
@@ -417,7 +417,7 @@ export default class DoublyLinkedList extends LinkedList {
 }
 ```
 
-## 单链表的中间结点
+## 单链表中间结点(876)
 
 - [leetcode 876](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
 
@@ -433,7 +433,7 @@ var middleNode = function(head) {
 }
 ```
 
-## 反转单链表
+## 反转链表(206)
 
 - [leetcode 206](https://leetcode-cn.com/problems/reverse-linked-list/)
 

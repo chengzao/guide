@@ -10,7 +10,7 @@ categories:
 
 > The Article Total （ 21 ）
 
-- [aria2](./aria2.md)
+- [aria2配置](./aria2.md)
 - [站点工具](./ascii.md)
 - [centos7命令参数](./centos7.md)
 - [docker命令列表](./docker.md)
@@ -26,7 +26,7 @@ categories:
 - [搜索小技巧](./search-tip.md)
 - [前端监控sentry使用](./sentry.md)
 - [todo list](./todo.md)
-- [持续部署环境travis-ci的使用介绍](./travis.md)
+- [travis-ci的使用](./travis.md)
 - [ubuntu常见命名](./ubuntu.md)
 - [vagrant虚拟机的使用](./vagrant.md)
 - [vim的简单使用](./vim.md)

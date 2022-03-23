@@ -9,7 +9,7 @@ categories:
   - frontend
 ---
 
-## fib斐波那契数列(509)
+## fib斐波那契(509)
 
 > <https://leetcode-cn.com/problems/fibonacci-number/>
 
@@ -501,7 +501,7 @@ function searchInsert(nums, target){
 }
 ```
 
-## LRU 缓存
+## LRU缓存(146)
 
 > LRU（Least recently used，最近最少使用）算法。最近被访问的数据那么它将来访问的概率就大，缓存满的时候，优先淘汰最无人问津者
 
