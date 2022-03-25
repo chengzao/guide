@@ -165,7 +165,7 @@ XSS 的攻击方式千变万化，但还是可以大致细分为几种类型。
 - 如何防御
 
 ```bash
-1. csp 建立白名单
+1. csp 建立白名单: 设置 HTTP Header 中的 Content-Security-Policy
 2. 转义字符
 3. HttpOnly Cookie
 ```
@@ -343,4 +343,4 @@ exec(`git clone ${params.repo} /some/path`);
 ## 参考资料
 
 - [常见 Web 安全攻防总结](https://zoumiaojiang.com/article/common-web-security/)
-- [常见六大 Web 安全攻防解析](https://juejin.cn/post/6844903772930441230G)
+- [常见六大 Web 安全攻防解析](https://juejin.cn/post/6844903772930441230)
