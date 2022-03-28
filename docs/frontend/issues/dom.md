@@ -778,7 +778,7 @@ function siblings(elm) {
 
 - flex-direction: row | row-reverse | column | column-reverse; 属性决定主轴的方向, 默认row
 - flex-wrap: nowrap | wrap | wrap-reverse;
-- flex-flow: flex-direction || flex-wrap;
+- flex-flow: flex-direction | flex-wrap;
 - justify-content: flex-start | flex-end | center | space-between | space-around; 属性定义了项目在主轴上的对齐方式
 - align-items: flex-start | flex-end | center | baseline | stretch; 属性定义项目在交叉轴上如何对齐
 - flex :flex-grow flex-shrink flex-basis
