@@ -39,6 +39,38 @@ type undefined // 返回 undefined
 - `undefined`是一个表示”此处无定义”的原始值，转为数值时为`NaN`
 - `void 0`
 
+## 数据类型检测的方式有哪些
+
+- typeof, 可用于基本数据类型判断
+
+```js
+typeof [];     // object
+typeof {};     // object
+typeof null;   // object
+```
+
+- instanceof, 只能正确判断引用数据类型，而不能判断基本数据类型
+
+```js
+2 instanceof Number;     // false
+true instanceof Boolean; // false
+'str' instanceof String; // false
+```
+
+- constructor, 不能判断 null与undefined, 也不能判断修改原型链后的数据类型
+
+```js
+function Fn(){};
+// 修改原型链
+Fn.prototype = new Array();
+var f = new Fn();
+
+f.constructor===Fn;    // false
+f.constructor===Array; // true
+```
+
+- Object.prototype.toString.call, 使用对象的原型方法 toString 来判断数据类型
+
 ## 栈和队列(LIFO/FIFO)
 
 - `栈`数据结构的访问规则是`LIFO(Last-in-First-Out,后进先出)`
