@@ -9,7 +9,7 @@ categories:
   - frontend
 ---
 
-## fib斐波那契(509)
+## fib斐波那契(leetcode509)
 
 > <https://leetcode-cn.com/problems/fibonacci-number/>
 
@@ -64,7 +64,7 @@ let fib = n => Math.round(
 );
 ```
 
-## 两数之和(1)
+## 两数之和(leetcode1)
 
 > <https://leetcode-cn.com/problems/two-sum/>
 
@@ -116,7 +116,7 @@ function twoSum(nums, start, target) {
 };
 ```
 
-## 三数之和(15)
+## 三数之和(leetcode15)
 
 > <https://leetcode-cn.com/problems/3sum/>
 
@@ -178,7 +178,7 @@ var threeSum = function(nums) {
 };
 ```
 
-## 四数之和(18)
+## 四数之和(leetcode18)
 
 > <https://leetcode-cn.com/problems/4sum/>
 
@@ -345,7 +345,7 @@ function add(a ,b){
 console.log(add(a,b))
 ```
 
-## 爬楼梯(70)
+## 爬楼梯(leetcode70)
 
 > <https://leetcode-cn.com/problems/climbing-stairs/>
 
@@ -378,7 +378,7 @@ var climbStairs = function(n) {
 }
 ```
 
-## 跳跃游戏(55)
+## 跳跃游戏(leetcode55)
 
 > <https://leetcode-cn.com/problems/jump-game/>
 
@@ -396,7 +396,7 @@ var canJump = function(nums) {
 };
 ```
 
-## 不同路径(62)
+## 不同路径(leetcode62)
 
 > <https://leetcode-cn.com/problems/unique-paths/>
 
@@ -421,7 +421,7 @@ var uniquePaths = function(m, n) {
 };
 ```
 
-## 搜索插入位置(35)
+## 搜索插入位置(leetcode35)
 
 > <https://leetcode-cn.com/problems/search-insert-position/>
 
@@ -442,7 +442,7 @@ var searchInsert = function(nums, target) {
 }
 ```
 
-## 最长递增子序列(300)
+## 最长递增子序列(leetcode300)
 
 > <https://leetcode-cn.com/problems/longest-increasing-subsequence/>
 
@@ -501,7 +501,7 @@ function searchInsert(nums, target){
 }
 ```
 
-## LRU缓存(146)
+## LRU缓存(leetcode146)
 
 > LRU（Least recently used，最近最少使用）算法。最近被访问的数据那么它将来访问的概率就大，缓存满的时候，优先淘汰最无人问津者
 
@@ -583,4 +583,106 @@ LRUCache.prototype.put = function(key, value) {
  * var param_1 = obj.get(key)
  * obj.put(key,value)
  */
+```
+
+## 二叉树的层序遍历(leetcode102)
+
+> https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+
+```js
+var levelOrder = function(root) {
+    // 初始化结果数组
+    const res = []  
+    // 处理边界条件
+    if(!root) {
+        return res
+    }  
+    // 初始化队列
+    const queue = []   
+    // 队列第一个元素是根结点
+    queue.push(root)  
+    // 当队列不为空时，反复执行以下逻辑
+    while(queue.length) {
+        // level 用来存储当前层的结点
+        const level = []  
+        // 缓存刚进入循环时的队列长度，这一步很关键，因为队列长度后面会发生改变
+        const len = queue.length  
+        // 循环遍历当前层级的结点
+        for(let i=0;i<len;i++) {
+            // 取出队列的头部元素
+            const top = queue.shift()  
+            // 将头部元素的值推入 level 数组
+            level.push(top.val)
+            // 如果当前结点有左孩子，则推入下一层级
+            if(top.left) {
+                queue.push(top.left)
+            }
+            if(top.right) {
+                queue.push(top.right)
+            }
+        }
+        // 将 level 推入结果数组
+        res.push(level)
+    }
+    // 返回结果数组
+    return res
+};
+```
+
+- 面试题，将treeNode使用层序遍历输出
+
+```js
+const ExampleTreeRoot = {
+  name: "Top",
+  children: [
+    {
+      name: "Level 1",
+      children: [
+        {
+          name: "Level 1-1",
+          children: [],
+        },
+        {
+          name: "Level 1-2",
+          children: [],
+        },
+      ],
+    },
+    {
+      name: "Level 2",
+      children: [
+        {
+          name: "Level 2-1",
+          children: [],
+        },
+        {
+          name: "Level 2-2",
+          children: [],
+        },
+      ],
+    },
+  ],
+};
+
+function bfs(root) {
+  const queue = []; // 初始化队列queue
+  const ans = [];
+  // 根结点首先入队
+  queue.push(root);
+  // 队列不为空，说明没有遍历完全
+  while (queue.length) {
+    const top = queue[0]; // 取出队头元素
+    // 访问 top
+    ans.push(top.name);
+    if (top.children) {
+      top.children.forEach((chid) => {
+        queue.push(chid);
+      });
+    }
+    queue.shift(); // 访问完毕，队头元素出队
+  }
+  console.log(ans);
+}
+
+bfs(ExampleTreeRoot);
 ```
