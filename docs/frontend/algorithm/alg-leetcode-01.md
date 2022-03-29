@@ -1,6 +1,6 @@
 ---
 title: leetcode题目(一)
-date: 2022-03-16
+date: 2022-03-29
 sidebar: "auto"
 tags:
   - array
@@ -685,4 +685,35 @@ function bfs(root) {
 }
 
 bfs(ExampleTreeRoot);
+```
+
+## 有效的括号(leetcode20)
+
+> https://leetcode-cn.com/problems/valid-parentheses/
+> 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效
+
+```js
+var isValid = function(s) {
+    let map = {
+        "(": ")",
+        "[": "]",
+        "{": "}"
+    }
+    if(!s){return true}
+    if(s.length % 2) return false;  // 如果s.length为奇数
+    
+    const stack = []
+    let len = s.length;
+    for(let i=0; i<len; i++){
+        let ch = s[i]
+        if (ch === "(" || ch === "{" || ch === "["){
+            stack.push(map[ch])
+        }else{
+            if (!stack.length || stack.pop() !== ch) {
+                return false;
+            }
+        }
+    }
+    return !stack.length
+};
 ```
