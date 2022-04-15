@@ -27,7 +27,7 @@ categories:
 - [gatsby](https://www.gatsbyjs.org/)
 - [vuepress](https://github.com/vuejs/vuepress)
 - [hexo](https://hexo.io/zh-cn/index.html)
-- [hugo](https://github.com/stkevintan/canoe-blog)
+- [hugo](https://github.com/gohugoio/hugo)
 - [docsify](https://github.com/docsifyjs/docsify/)
 - [jekyll](https://www.jekyll.com.cn/)
 - [docusaurus](https://docusaurus.io/)
