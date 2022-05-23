@@ -535,6 +535,10 @@ htmlWebpackPlugin.options.cdn.js) { %>
 - 快速获取浏览器中选中dom节点的vue实例。`$0.vue`
 - 本地调试https，跳过https证书验证方法，在浏览器里输入：`thisisunsafe`
 
+## chrome调试mouseenter事件
+- 1.选中调试的element节点
+- 2.控制台执行：`$0.dispatchEvent(new MouseEvent('mouseenter', { 'bubbles': true }))`
+
 ## splitChunks配置
 
 ```js
