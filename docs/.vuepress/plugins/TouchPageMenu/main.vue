@@ -51,6 +51,8 @@
 
 <style scoped>
 .touch-page-menu{
+  --menu-color: #3eaf7c;
+
   position: fixed;
   bottom: 1rem;
   right: 0;
@@ -61,10 +63,11 @@
   padding: 5px;
   border-radius: 4px;
   display: none;
+  cursor: pointer;
 }
 
 .touch-page-menu .menu-icon{
-  fill: #3eaf7c;
+  fill: var(--menu-color);
   box-shadow: var(--box-shadow);
 }
 
@@ -88,4 +91,8 @@
   margin-bottom: 10px;
 }
 
+.menu-content .item:hover{
+  color: var(--menu-color);
+  text-decoration: underline;
+}
 </style>
