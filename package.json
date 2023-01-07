@@ -18,7 +18,7 @@
     "gh-pages": "4.0.0",
     "husky": "8.0.1",
     "markdown-it-include": "2.0.0",
-    "vuepress": "1.9.7",
+    "vuepress": "1.9.8",
     "vuepress-plugin-auto-sidebar": "2.3.2",
     "vuepress-plugin-copy-code": "0.0.1",
     "vuepress-plugin-fulltext-search": "2.2.1",
