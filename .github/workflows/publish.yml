@@ -14,11 +14,17 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+          
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'    
 
       - name: Install and Build 🔧
         run: |
-          npm ci
-          npm run build:page --openssl-legacy-provider
+          yarn
+          yarn run build:page
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
