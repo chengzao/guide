@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const getYMLData = require('./getYMLData');
 
 const fileDir = path.join(__dirname, "../docs");
 
@@ -31,17 +32,8 @@ function genToc(filePath) {
       const toc = [];
       files.forEach((item) => {
         const data = fs.readFileSync(path.join(filePath, item), "utf-8");
-        let meta = data
-          .split("\n")
-          .slice(0, 50)
-          .join("\n")
-          .match(/---([\s\S]*)---/g)[0];
-        let title = meta.split("\n")[1];
-        if (/^title/g.test(title)) {
-          title = title
-            .replace(/title: /, "")
-            .replace(/\n/, "")
-            .replace(/\r/, "");
+        let title = getYMLData(data).title
+        if(title) {
           toc.push({ title: title, link: item });
         }
       });
