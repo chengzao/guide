@@ -18,7 +18,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
-          npm run build:page
+          npm run build:page --openssl-legacy-provider
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
