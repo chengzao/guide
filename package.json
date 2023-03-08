@@ -16,7 +16,7 @@
     "@vuepress/plugin-medium-zoom": "1.9.9",
     "cross-env": "7.0.3",
     "gh-pages": "5.0.0",
-    "husky": "8.0.1",
+    "husky": "8.0.3",
     "markdown-it-include": "2.0.0",
     "vuepress": "1.9.9",
     "vuepress-plugin-auto-sidebar": "2.3.2",
