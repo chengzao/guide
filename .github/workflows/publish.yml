@@ -22,8 +22,8 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          npm ci
-          npm run build:page
+          yarn
+          yarn run build:page
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
