@@ -237,3 +237,11 @@ child.on("message", res => console.log(res)); // on方法接收数据
 process.on("message", res => console.log(res));
 process.send({ message: "from_child" });
 ```
+
+## 为什么type null是object
+
+> 原文: [The history of “typeof null”](https://2ality.com/2013/10/typeof-null.html)
+
+在 javascript 的最初版本中，使用的 32位系统，js为了性能优化，使用低位来存储变量的类型信息;
+在判断数据类型时，是根据机器码低位标识来判断的，而null的机器码标识为全0，而对象的机器码低位标识为000。
+所以typeof null的结果被误判为Object
