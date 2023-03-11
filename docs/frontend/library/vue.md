@@ -39,6 +39,19 @@ categories:
 
 - `store` ➡️ `dispatch` ➡️ `action` ➡️ `mutation` ➡️ `state`
 
+## vue3与vue2的区别
+
+> 原文 https://juejin.cn/post/7146996646394462239
+
+- vue3性能比Vue2.x快
+- proxy取代Object.defineproperty
+- diff方法优化： vue3新增了静态标记（patchflag）
+- 静态提升
+- 事件侦听器缓存
+- 按需引入，通过treeSharking 体积比vue2.x更小
+- 组合API（类似react hooks），可以将data与对应的逻辑写到一起，更容易理解
+- 更好的Ts支持
+
 ## 相关链接
 
 - [基于 vue-cli@3 的项目可行性优化方案探索](https://github.com/HaoChuan9421/vue-cli3-optimization)

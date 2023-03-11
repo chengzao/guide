@@ -5,6 +5,9 @@ sidebar: "auto"
 autoSort: 9999
 ---
 
+常见数据结构: 数组、栈、队列、树、堆、链表、哈希表、图
+
+
 <!-- dirToc -->
 
 > The Article Total （ 5 ）

@@ -8,22 +8,22 @@ categories:
 
 ## 基本数据类型
 
-- `number`: 最大数字是 2<sup>25</sup>-1
-- `string`
-- `boolean`
-- `null`
-- `undefined`
-- `Symbol`
-- `BigInt`: 大于等于 2<sup>25</sup>的所有数字
+- [Number](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/Number): 最大数字是 2<sup>53</sup>-1
+- [String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)
+- [Boolean](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+- [null](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/null)
+- [undefined](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined)
+- [Symbol](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+- [BigInt](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/BigInt): 大于 2<sup>53</sup>的所有数字
 
 ## 引用类型
 
 - `Object 、Array 、Function 、Date 、Math 、Regexp 、JSON`
 
-## Boolean 布尔
+## Boolean布尔
 
 - 类型转换：`!!undefined --> false`
-- 布尔转换
+- 布尔类型的值的转换规则
 
 ```js
 undefined,null,false,0,NaN,""  // 返回 false
@@ -38,6 +38,14 @@ type undefined // 返回 undefined
 - `null`是一个表示“空”的对象，转为数值时为 0
 - `undefined`是一个表示”此处无定义”的原始值，转为数值时为`NaN`
 - `void 0`
+
+## JavaScript 中的包装类型
+
+```js
+typeof new String('abc')  // object
+typeof new Object('xxx')  // object
+typeof new Boolean(false) // object
+```
 
 ## 数据类型检测的方式有哪些
 
@@ -76,14 +84,14 @@ f.constructor===Array; // true
 - `栈`数据结构的访问规则是`LIFO(Last-in-First-Out,后进先出)`
 - `队列`数据结构的访问规则是`FIFO(First-In-First-Out, 先进先出)`
 
-## javascript tag async & defer
+## script标签async与defer的区别
 
 - [原文：彻底搞懂 async & defer](https://github.com/xiaoyu2er/blog/issues/8)
 - 两者都不会阻止 document 的解析
 - defer 会在 DOMContentLoaded 前依次执行
 - async 则是 onload 下载完立即执行，不一定是在 DOMContentLoaded 前
 
-## javascript tag module
+## script标签module
 
 - [原文](http://houdunren.gitee.io/note/js/13%20%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1.html#%E6%A0%87%E7%AD%BE%E4%BD%BF%E7%94%A8)
 - 标签使用`<script type="module"></script>`

@@ -554,6 +554,35 @@ Promise.prototype.finally = function (callback) {
 };
 ```
 
+## Promise.retry
+
+```js
+/*
+* @param {function} fn - 方法名
+* @param {number} delay - 延迟的时间
+* @param {number} times - 重发的次数
+*/
+function retry(fn, delay, times) {
+  return new Promise((resolve, reject) => {
+    function func() {
+      Promise.resolve(fn()).then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          // 接口失败后，判断剩余次数不为0时，继续重发
+          if (times !== 0) {
+            setTimeout(func, delay);
+            times--;
+          } else {
+            reject(err);
+          }
+        });
+    }
+    func();
+  });
+}
+```
+
 ## 参考文档
 
 - [原文：从零一步一步实现一个完整版的 Promise](https://juejin.im/post/5d59757f6fb9a06ae76405c6)

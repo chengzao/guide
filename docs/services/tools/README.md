@@ -8,11 +8,12 @@ categories:
 
 <!-- dirToc -->
 
-> The Article Total （ 21 ）
+> The Article Total （ 22 ）
 
 - [aria2配置](./aria2.md)
 - [站点工具](./ascii.md)
 - [centos7命令参数](./centos7.md)
+- [curl的GET和POST使用](./curl.md)
 - [docker命令列表](./docker.md)
 - [获取UserAgent](./get-ua.md)
 - [git常见命令列表](./git.md)

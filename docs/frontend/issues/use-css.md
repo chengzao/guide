@@ -644,3 +644,34 @@ filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);
 - `结构层`HTML
 - `表现层`CSS
 - `行为层`JavaScript
+
+## css font-family
+
+> 原视频 [网页的默认全局字体该如何设置？](https://www.bilibili.com/video/BV1b54y1Z7pu)
+
+```css
+@font-face {
+  font-family: Emoji;
+  src: local("Apple Color Emojiji"), local("Segoe UI Emoji"), local("Segoe UI Symbol"), local("Noto Color Emoji");
+  unicode-range: U+1F000-1F644, U+203C-3299;
+}
+body {
+  font-family: system-ui, —apple-system, Segoe UI, Rototo, Emoji, Helvetica, Arial, sans-serif;
+}
+```
+
+- 衬线字体
+
+```css
+.font-serif {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+```
+
+- 等宽字体
+
+```css
+.font-mono {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+```
