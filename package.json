@@ -13,12 +13,12 @@
     "debug": "vuepress dev docs --debug"
   },
   "devDependencies": {
-    "@vuepress/plugin-medium-zoom": "1.9.9",
+    "@vuepress/plugin-medium-zoom": "1.9.10",
     "cross-env": "7.0.3",
     "gh-pages": "5.0.0",
     "husky": "8.0.3",
     "markdown-it-include": "2.0.0",
-    "vuepress": "1.9.9",
+    "vuepress": "1.9.10",
     "vuepress-plugin-auto-sidebar": "2.3.2",
     "vuepress-plugin-copy-code": "0.0.1",
     "vuepress-plugin-fulltext-search": "2.2.1",
