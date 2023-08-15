@@ -13,7 +13,7 @@
     "debug": "vuepress dev docs --debug"
   },
   "devDependencies": {
-    "@vuepress/plugin-medium-zoom": "1.9.9",
+    "@vuepress/plugin-medium-zoom": "1.9.10",
     "cross-env": "7.0.3",
     "gh-pages": "5.0.0",
     "husky": "8.0.3",
