@@ -10,7 +10,7 @@ categories:
 
 <!-- dirToc -->
 
-> The Article Total （ 28 ）
+> The Article Total （ 29 ）
 
 - [ajax和cors](./ajax.md)
 - [资源列表](./all-urls.md)
@@ -25,6 +25,7 @@ categories:
 - [常见手写函数整理（一）](./fq-fn-01.md)
 - [常见问题整理（一）](./fq-issue-01.md)
 - [常见问题整理（二）](./fq-issue-02.md)
+- [常见问题整理（三）](./fq-issue-03.md)
 - [github的graphql使用](./graphql-github.md)
 - [如何处理前端异常](./handleError.md)
 - [Learn jest.js note](./learn-jest.md)

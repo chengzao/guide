@@ -8,7 +8,7 @@ categories:
 
 <!-- dirToc -->
 
-> The Article Total （ 13 ）
+> The Article Total （ 14 ）
 
 - [使用canvas生成poster](./rc-canvas-poster.md)
 - [react使用hooks案例](./rc-hooks-reducer.md)
@@ -23,5 +23,6 @@ categories:
 - [vue2.x 路由](./vue-router.md)
 - [vue2.x的slot使用](./vue-slot.md)
 - [Vue](./vue.md)
+- [vue2实现tab组件](./vue2-tab.md)
 
 <!-- dirToc -->
