@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "license": "MIT",
   "homepage": "https://chengzao.github.io/guide",
+  "engines": {
+    "node": "16.20.2"
+  },
   "scripts": {
     "serve": " npm run gen:toc && vuepress dev docs",
     "build": "npm run gen:toc && vuepress build docs",
