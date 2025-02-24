@@ -575,7 +575,7 @@ export function digitToChinese(num) {
 // 测试用例
 console.log(digitToChinese(1234)); // 一千二百三十四
 console.log(digitToChinese(1001)); // 一千零一
-console.log(digitToChinese(1010)); // 一千零十
+console.log(digitToChinese(1010)); // 一千零一十
 console.log(digitToChinese(10000)); // 一万
 console.log(digitToChinese(123456789)); // 一亿二千三百四十五万六千七百八十九
 console.log(digitToChinese(100000000)); // 一亿
