@@ -451,7 +451,7 @@ const toCamelCaseVar = (variable) => {
 
 ## numToChinese
 
-> 将数字1234转换为'一千二百三十四'
+> 将数字1234转换为'一千二百三十四' (10000以内)
 
 ```js
 function numToChinese(num) {
@@ -485,6 +485,85 @@ function numToChinese(num) {
   }
   return helper(num)
 }
+```
+
+- 一亿以内
+
+```js
+const digitToChinese = (num) => {
+  // 处理 0 的特殊情况
+  if (num === 0) return '零';
+
+  // 定义中文数字和单位
+  const digits = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+  const units = ['', '十', '百', '千']; // 四位内的单位
+  const bigUnits = ['', '万', '亿', '万亿']; // 大单位
+
+  // 转换四位数以下的数字
+  const convertSection = (section) => {
+    let str = '';
+    let zero = false; // 标记是否需要添加“零”
+    let unitIndex = 0;
+
+    while (section > 0) {
+      const digit = section % 10;
+      if (digit === 0) {
+        zero = true; // 遇到 0，标记需要处理
+      } else {
+        // 如果之前有 0，则先补上“零”
+        if (zero) {
+          str = digits[0] + str;
+          zero = false;
+        }
+        str = digits[digit] + units[unitIndex] + str;
+      }
+      section = Math.floor(section / 10);
+      unitIndex++;
+    }
+    return str;
+  };
+
+  // 将数字按四位分割
+  let numStr = num.toString();
+  const sections = [];
+  while (numStr.length > 0) {
+    sections.push(numStr.slice(-4));
+    numStr = numStr.slice(0, -4);
+  }
+
+  // 处理每一组并添加大单位
+  let result = '';
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = parseInt(sections[i], 10);
+    if (section > 0) {
+      const sectionStr = convertSection(section);
+      result += sectionStr + bigUnits[i];
+    } else if (result && i > 0) {
+      // 如果当前组为 0，且不是最低位，且前面已有内容，则添加“零”
+      result += digits[0];
+    }
+  }
+
+  // 去掉末尾多余的“零”
+  result = result.replace(/零+$/, '');
+
+  // 处理开头为“一百”的情况，去掉“一”
+  if (result.startsWith('一十')) {
+    result = result.slice(1);
+  }
+
+  return result;
+};
+
+// 测试用例
+console.log(digitToChinese(1234)); // 一千二百三十四
+console.log(digitToChinese(1001)); // 一千零一
+console.log(digitToChinese(1010)); // 一千零十
+console.log(digitToChinese(10000)); // 一万
+console.log(digitToChinese(123456789)); // 一亿二千三百四十五万六千七百八十九
+console.log(digitToChinese(100000000)); // 一亿
+console.log(digitToChinese(100000001)); // 一亿零一
+console.log(digitToChinese(100010001)); // 一亿零一万零一
 ```
 
 ## randomString
