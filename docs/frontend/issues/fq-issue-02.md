@@ -490,70 +490,87 @@ function numToChinese(num) {
 - 一亿以内
 
 ```js
-const digitToChinese = (num) => {
-  // 处理 0 的特殊情况
+
+/**
+ * 将数字转换为中文大写
+ * @param {number} num 要转换的数字
+ * @returns {string} 转换后的中文大写
+ */
+export function digitToChinese(num) {
+  // 基本数字到中文的映射
+  const digits = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+
+  // 如果是0，直接返回零
   if (num === 0) return '零';
 
-  // 定义中文数字和单位
-  const digits = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
-  const units = ['', '十', '百', '千']; // 四位内的单位
-  const bigUnits = ['', '万', '亿', '万亿']; // 大单位
+  // 将数字转为字符串
+  const numStr = num.toString();
 
-  // 转换四位数以下的数字
-  const convertSection = (section) => {
-    let str = '';
-    let zero = false; // 标记是否需要添加“零”
-    let unitIndex = 0;
-
-    while (section > 0) {
-      const digit = section % 10;
-      if (digit === 0) {
-        zero = true; // 遇到 0，标记需要处理
+  // 处理亿级别
+  if (num >= 100000000) {
+    const yi = Math.floor(num / 100000000);
+    const rest = num % 100000000;
+    let result = digitToChinese(yi) + '亿';
+    if (rest > 0) {
+      // 如果余数小于一万，需要加"零"
+      if (rest < 10000) {
+        result += '零' + digitToChinese(rest);
       } else {
-        // 如果之前有 0，则先补上“零”
-        if (zero) {
-          str = digits[0] + str;
-          zero = false;
+        // 如果余数大于一万但小于十万，需要加"零"
+        if (rest < 100000) {
+          result += '零' + digitToChinese(rest);
+        } else {
+          result += digitToChinese(rest);
         }
-        str = digits[digit] + units[unitIndex] + str;
       }
-      section = Math.floor(section / 10);
-      unitIndex++;
     }
-    return str;
-  };
-
-  // 将数字按四位分割
-  let numStr = num.toString();
-  const sections = [];
-  while (numStr.length > 0) {
-    sections.push(numStr.slice(-4));
-    numStr = numStr.slice(0, -4);
+    return result;
   }
 
-  // 处理每一组并添加大单位
+  // 处理万级别
+  if (num >= 10000) {
+    const wan = Math.floor(num / 10000);
+    const rest = num % 10000;
+    let result = digitToChinese(wan) + '万';
+    if (rest > 0) {
+      // 如果余数小于一千，需要加"零"
+      if (rest < 1000) {
+        result += '零' + digitToChinese(rest);
+      } else {
+        result += digitToChinese(rest);
+      }
+    }
+    return result;
+  }
+
+  // 处理千级别及以下
   let result = '';
-  for (let i = sections.length - 1; i >= 0; i--) {
-    const section = parseInt(sections[i], 10);
-    if (section > 0) {
-      const sectionStr = convertSection(section);
-      result += sectionStr + bigUnits[i];
-    } else if (result && i > 0) {
-      // 如果当前组为 0，且不是最低位，且前面已有内容，则添加“零”
-      result += digits[0];
+  const units = ['', '十', '百', '千'];
+  for (let i = 0; i < numStr.length; i++) {
+    const digit = parseInt(numStr[i]);
+    if (digit === 0) {
+      // 当数字是0时
+      if (i < numStr.length - 1 && parseInt(numStr[i + 1]) !== 0) {
+        result += '零';
+      }
+    } else {
+      // 处理一十的特殊情况
+      if (digit === 1 && i === 0 && numStr.length === 2) {
+        result += '十';
+      } else {
+        result += digits[digit] + units[numStr.length - 1 - i];
+      }
     }
   }
 
-  // 去掉末尾多余的“零”
+  // 处理末尾的零
   result = result.replace(/零+$/, '');
 
-  // 处理开头为“一百”的情况，去掉“一”
-  if (result.startsWith('一十')) {
-    result = result.slice(1);
-  }
+  // 处理连续的零
+  result = result.replace(/零+/g, '零');
 
   return result;
-};
+}
 
 // 测试用例
 console.log(digitToChinese(1234)); // 一千二百三十四
